@@ -1,0 +1,40 @@
+<h1>Parent Comments</h1>
+
+<%= link_to 'New Comment', new_comment_path %>
+<br />
+<br />
+There are <%= pluralize(Comment.count, "comment") %> in this database.
+<br />
+<br />
+
+
+<table>
+  <tr>
+    <th>Score</th>
+    <th>Comment</th>
+    <th>Name</th>    
+    <th>Activity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @comments.each do |comment| %>
+  <tr>
+    
+    <td style="text-align: center; padding: 5px 15px 0px 15px"><b><%= comment.score %></b></td>
+    <td style="padding: 5px 15px 0px 15px">
+      <%= truncate(comment.comment, :length => 70, :seperator => ' ') %>
+    </td>
+    <td style="padding: 5px 15px 0px 15px"><%= comment.name %></td>
+    <td style="padding: 5px 15px 0px 15px"><%= comment.activity %></td>
+    <td style="padding: 0px 10px 0px 30px"><%= link_to 'Show', comment %></td>
+    <td style="padding-right: 10px"><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    <td style="padding-right: 10px"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
