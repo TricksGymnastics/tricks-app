@@ -1,0 +1,53 @@
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br />
+    <%= f.number_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :activity %><br />
+    <!-- <%= f.text_field :activity %> -->
+    <%= f.radio_button :activity, "Gymnastics", checked: true %>
+    <%= label_tag(:activity , "Gymnastics") %><br />
+    <%= f.radio_button :activity, "Dance" %>
+    <%= label_tag(:activity, "Dance") %><br />
+    <%= f.radio_button :activity, "Swim" %>
+    <%= label_tag(:activity, "Swim") %><br />
+    <!--
+    <%= radio_button_tag(:activity, "Gymnastics") %>
+    <%= label_tag(:activity , "Gymnastics") %><br />
+    <%= radio_button_tag(:activity, "Dance") %>
+    <%= label_tag(:activity, "Dance") %><br />
+    <%= radio_button_tag(:activity, "Swim") %>
+    <%= label_tag(:activity, "Swim") %><br />
+    <%= if label_tag == :activity1
+      @comment.activity = "Gymnastics"
+      elsif label_tag == "Dance" 
+        @coment.activity = "Dance"
+        end %>
+
+      -->
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
