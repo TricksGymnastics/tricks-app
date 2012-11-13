@@ -1,15 +1,20 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: trebuchet, verdana, arial, helvetica, sans-serif;
+  font-family: trebuchet ms, verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-family: trebuchet ms, verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+td{
+  padding: 0px 15px 0px 15px;
+  border-width: 10px;
 }
 
 pre {
@@ -19,6 +24,7 @@ pre {
 }
 
 a {
+  font-size: 14px;
   color: #000;
   &:visited {
     color: #666;
@@ -65,5 +71,6 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+    padding: 20px 20px 20px 20px;
   }
 }

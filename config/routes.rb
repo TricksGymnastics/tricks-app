@@ -1,5 +1,7 @@
 Comments::Application.routes.draw do
-  get "sessions/new"
+
+  root :to => 'comments#index'
+  
 
   resources :users
 

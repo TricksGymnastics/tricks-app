@@ -22,15 +22,15 @@ There are <%= pluralize(Comment.count, "comment") %> in this database.
 <% @comments.each do |comment| %>
   <tr>
     
-    <td style="text-align: center; padding: 5px 15px 0px 15px"><b><%= comment.score %></b></td>
-    <td style="padding: 5px 15px 0px 15px">
+    <td style="text-align: center"><b><%= comment.score %></b></td>
+    <td>
       <%= truncate(comment.comment, :length => 70, :seperator => ' ') %>
     </td>
-    <td style="padding: 5px 15px 0px 15px"><%= comment.name %></td>
-    <td style="padding: 5px 15px 0px 15px"><%= comment.activity %></td>
-    <td style="padding: 0px 10px 0px 30px"><%= link_to 'Show', comment %></td>
-    <td style="padding-right: 10px"><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td style="padding-right: 10px"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= comment.name %></td>
+    <td><%= comment.activity %></td>
+    <td style="padding: 0px 0px 0px 10px"><%= link_to 'Show', comment %></td>
+    <td style="padding: 0px 0px 0px 10px"><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    <td style="padding: 0px 0px 0px 10px"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
