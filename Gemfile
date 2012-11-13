@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+	source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 
@@ -39,3 +39,4 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'thin'
+gem 'newrelic_rpm'
