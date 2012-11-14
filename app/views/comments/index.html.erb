@@ -14,6 +14,7 @@ There are <%= pluralize(Comment.count, "comment") %> in this database.
     <th>Comment</th>
     <th>Name</th>    
     <th>Activity</th>
+    <th>E-mail</th>
     <th></th>
     <th></th>
     <th></th>
@@ -28,6 +29,7 @@ There are <%= pluralize(Comment.count, "comment") %> in this database.
     </td>
     <td><%= comment.name %></td>
     <td><%= comment.activity %></td>
+    <td><%= comment.email %></td>
     <td style="padding: 0px 0px 0px 10px"><%= link_to 'Show', comment %></td>
     <td style="padding: 0px 0px 0px 10px"><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td style="padding: 0px 0px 0px 10px"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
