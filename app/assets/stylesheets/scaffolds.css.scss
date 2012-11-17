@@ -1,9 +1,8 @@
 body {
-  background-color: #fff;
-  color: #333;
   font-family: trebuchet ms, verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  text-align: left;
 }
 
 p, ol, ul, td {
@@ -14,16 +13,20 @@ p, ol, ul, td {
 
 td{
   padding: 0px 15px 0px 15px;
+  border: solid 2px #222;
+}
+
+th {
+  text-align: center;
 }
 
 pre {
-  background-color: #eee;
+  background-color: #fff;
   padding: 10px;
   font-size: 11px;
 }
 
 a {
-  font-size: 14px;
   color: #000;
   &:visited {
     color: #666;

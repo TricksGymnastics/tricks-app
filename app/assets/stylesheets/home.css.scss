@@ -1,0 +1,51 @@
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+body {
+  	background-color: #a3b0ff;
+	color: #222;
+	font-size: 14px;
+  	font-family: trebuchet ms;
+	margin: 20px 50px 0px 50px;
+	text-align: left;
+}
+
+#container {
+	float: left;
+	width: 1000px;
+	border: solid 2px #555;
+	margin-top: 40px;
+	background-color: #fff;
+	padding: 0px 30px 80px 30px;
+}
+
+#user_header {
+	text-align: right;
+	margin-top: 15px;
+	margin-right: 25px;
+	font-size: 15px;
+}
+
+#flash_notice, #flash_error, #flash_alert {
+  align: center;
+  padding: 5px 8px;
+  margin: 10px 0;
+  width: 400px;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 2px #6C6;
+}
+
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 2px #C66;
+}
