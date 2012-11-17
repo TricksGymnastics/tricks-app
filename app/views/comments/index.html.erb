@@ -1,42 +1,52 @@
-<h1>Parent Comments</h1>
+<h1 style="text-align:center">Parent Comments</h1>
 
-<%= link_to 'New Comment', new_comment_path %>
-<br />
-<br />
-There are <%= pluralize(Comment.count, "comment") %> in this database.
-<br />
-<br />
-
-
-<table>
-  <tr>
-    <th>Score</th>
-    <th>Comment</th>
-    <th>Name</th>    
-    <th>Activity</th>
-    <th>E-mail</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @comments.each do |comment| %>
-  <tr>
-    
-    <td style="text-align: center"><b><%= comment.score %></b></td>
-    <td>
-      <%= truncate(comment.comment, :length => 70, :seperator => ' ') %>
-    </td>
-    <td><%= comment.name %></td>
-    <td><%= comment.activity %></td>
-    <td><%= comment.email %></td>
-    <td style="padding: 0px 0px 0px 10px"><%= link_to 'Show', comment %></td>
-    <td style="padding: 0px 0px 0px 10px"><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td style="padding: 0px 0px 0px 10px"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% if can? :create, @comment %>
+<h3 style="font-size: 22px;"><%= link_to 'New Comment', new_comment_path %></h3>
 <% end %>
-</table>
 
-<br />
+<% if can? :showtable, @comment %>
+    There are <%= pluralize(Comment.count, "comment") %> in this database.
+    <br />
+    <br />
+    <table>
+      <tr>
+        <th>Score</th>
+        <th>Comment</th>
+        <th>Name</th>    
+        <th>Activity</th>
+        <th>E-mail</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
+    <% @comments.each do |comment| %>
+      <tr>
+        
+        <td style="text-align: center"><b><%= comment.score %></b></td>
+        <td>
+          <%= truncate(comment.comment, :length => 50, :seperator => " " ) %>
+        </td>
+        <td><%= comment.name %></td>
+        <td><%= comment.activity %></td>
+        <td><%= comment.email %></td>
+        <% if can? :show, @comment %>
+        <td style="padding: 0px 10px 0px 10px"><%= link_to 'Show', comment %></td>
+        <% end %>
 
+        <% if can? :update, @comment %>
+        <td style="padding: 0px 10px 0px 10px"><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <% end %>
+
+        <% if can? :destroy, @comment %>
+        <td style="padding: 0px 10px 0px 10px"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
+        <% end %>
+
+      </tr>
+    <% end %>
+    </table>
+<% else %>
+    <div>
+        <p>You do not have permission to view comments.</p>
+    </div>
+<% end %>
