@@ -1,29 +1,40 @@
-<p>
-  <b>Comment:</b>
-  <%= @comment.comment %>
-</p>
+<% if can? :read, Comment %>
+  <p>
+    <b>Comment:</b>
+    <%= @comment.comment %>
+  </p>
 
-<p>
-  <b>Name:</b>
-  <%= @comment.name %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @comment.name %>
+  </p>
 
-<p>
-  <b>Email:</b>
-  <%= @comment.email %>
-</p>
-
-<p>
-  <b>Score:</b>
-  <%= @comment.score %>
-</p>
-
-<p>
-  <b>Activity:</b>
-  <%= @comment.activity %>
-</p>
-
-<% if can? :update, @comment %>
-  <%= link_to 'Edit', edit_comment_path(@comment) %> |
+  <p>
+    <b>Email:</b>
+    <%= @comment.email %>
+  </p>
+  <% if can? :update, Comment %>
+  <p>
+    <b>Score:</b>
+    <%= @comment.score %>
+  </p>
+  <% end %>
+  <p>
+    <b>Activity:</b>
+    <%= @comment.activity %>
+  </p>
+  <% if can? :update, Comment %>
+  <p>
+    <b>Date Created:</b>
+    <%= @comment.created_at.strftime("%b %e,%Y (%l:%M %p )") %>
+  </p>
+  <p>
+    <b>Date last modified:</b>
+    <%= @comment.updated_at.strftime("%b %e,%Y (%l:%M %p )") %>
+  </p>
+  <% end %>
+  <% if can? :update, Comment %>
+    <%= link_to 'Edit', edit_comment_path(@comment) %> |
+  <% end %>
+  <%= link_to 'Back', comments_path %>
 <% end %>
-<%= link_to 'Back', comments_path %>

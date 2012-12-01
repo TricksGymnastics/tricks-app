@@ -5,6 +5,7 @@ Comments::Application.routes.draw do
   resources :comments
   resources :users
   resources :sessions 
+  resources :kid_quotes
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

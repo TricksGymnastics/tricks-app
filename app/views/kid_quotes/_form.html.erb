@@ -1,0 +1,29 @@
+<%= form_for(@kid_quote) do |f| %>
+  <% if @kid_quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kid_quote.errors.count, "error") %> prohibited this kid_quote from being saved:</h2>
+
+      <ul>
+      <% @kid_quote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :quote %><br />
+    <%= f.text_area :quote %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age, :min => 0 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

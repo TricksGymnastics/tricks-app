@@ -21,12 +21,14 @@
   </div>
   <div>
      <%= f.label :email %><br />
-     <%= f.text_field :email %>
+     <%= f.email_field :email %>
   </div>
+  <% if can? :update, @comment %>
   <div class="field">
     <%= f.label :score %><br />
-    <%= f.number_field :score %>
+    <%= f.number_field :score, :min => 0, :max => 10 %>
   </div>
+  <% end %>
   <div class="field">
     <%= f.label :activity %><br />
     <%= f.radio_button :activity, "Gymnastics", checked: true %>
@@ -36,7 +38,15 @@
     <%= f.radio_button :activity, "Swim" %>
     <%= label_tag(:activity, "Swim") %><br />
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <% if can? :manage, Comment %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% else %>
+    <div class="actions">
+      <%= f.submit :confirm => "After you submit this comment, you will not be able to edit it. Click 'Ok' to submit your comment, or 'Cancel' to edit it." %>
+    </div>
+  <% end %>
+  
 <% end %>

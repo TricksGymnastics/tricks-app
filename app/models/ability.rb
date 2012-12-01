@@ -3,18 +3,40 @@ class Ability
 
 	def initialize(user) 
 		user ||= User.new
-    	if user.role == "author"
-			can :manage, :all
-			cannot :showtable, :all
-			cannot :update, :all
-			cannot :destroy, :all
-	 	end
-	 	if user.role == "admin" 
-	 		can :manage, :all
+			can :read, Comment
+			can :create, Comment
+			cannot :show, Comment
+		## List of Actions ##
+		# :read
+		# :create
+		# :show
+		# :update
+		# :destroy		
+		# :manage
+
+		if user.role == "superadmin"
+		   	can :manage, :all
+		end
+
+		if user.role == "admin" 
+	 		can :manage, Comment
+	 		can :manage, KidQuote
+	 		#can :manage, Schedule
        	end
+
        	if user.role == "moderator"
-         	can :manage, :all
+       		can :manage, Comment
+	 		can :manage, KidQuote
+	 		#can :manage, Schedule
          	cannot :destroy, :all
         end 
-  	end 
+
+    	if user.role == "author"
+			can :create, Comment
+			can :read, Comment
+			cannot :show, Comment
+		end
+	 	
+
+	end 
 end
