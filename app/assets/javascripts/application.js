@@ -13,3 +13,35 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function () {
+  $("#comments_table th a, #comments_table .pagination a").live("click", function () {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#comments_search input").keyup(function() {
+  	$.get($("#comments_search").attr("action"), $("#comments_search").serialize(), null, "script");
+  	return false;
+  });
+});
+
+$(function () {
+  $("#quotes_table th a, #quotes_table .pagination a").live("click", function () {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#quotes_search input").keyup(function() {
+  	$.get($("#quotes_search").attr("action"), $("#quotes_search").serialize(), null, "script");
+  	return false;
+  });
+});
+
+$(function () {
+  $("#users_table th a, #users_table .pagination a").live("click", function () {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#users_search input").keyup(function() {
+  	$.get($("#users_search").attr("action"), $("#users_search").serialize(), null, "script");
+  	return false;
+  });
+});

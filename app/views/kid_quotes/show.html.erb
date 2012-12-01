@@ -1,0 +1,21 @@
+<p>
+  <b>Quote:</b>
+  <%= @kid_quote.quote %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @kid_quote.name %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @kid_quote.age %>
+</p>
+<p>
+  <b>Date Created:</b>
+  <%= @kid_quote.created_at.strftime("%b %e,%Y (%l:%M %p )") %>
+</p>
+
+<%= link_to 'Edit', edit_kid_quote_path(@kid_quote) %> |
+<%= link_to 'Back', kid_quotes_path %>

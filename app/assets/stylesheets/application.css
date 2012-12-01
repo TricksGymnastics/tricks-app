@@ -15,3 +15,50 @@
 #container {
 	align:center;
 }
+
+
+.comments th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.comments th .asc {
+  background-image: url(/images/up_arrow.gif);
+}
+
+.comments th .desc {
+  background-image: url(/images/down_arrow.gif);
+}
+
+
+
+.quotes th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.quotes th .asc {
+  background-image: url(/images/up_arrow.gif);
+}
+
+.quotes th .desc {
+  background-image: url(/images/down_arrow.gif);
+}
+
+
+
+.users th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.users th .asc {
+  background-image: url(/images/up_arrow.gif);
+}
+
+.users th .desc {
+  background-image: url(/images/down_arrow.gif);
+}

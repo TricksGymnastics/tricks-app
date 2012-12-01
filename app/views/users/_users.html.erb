@@ -1,0 +1,29 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table class="users">
+  <tr>
+    <th><%= sortable "email", "E-mail" %></th>
+    <th><%= sortable "role" %></th>
+    <th><%= sortable "created_at", "Date Created" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>      
+      <td><%= user.created_at.strftime("%b %e,%Y (%l:%M %p )") %></td>
+      <td style="padding: 0px 5px 0px 5px; border: 0"><%= link_to 'Show', user %></td>
+      <td style="padding: 0px 5px 0px 5px; border: 0"><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td style="padding: 0px 5px 0px 5px; border: 0"><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+  <% end %>
+</table>
+<br />
+<div style="text-align:center">
+  <%= will_paginate @users%>
+</div>
+
