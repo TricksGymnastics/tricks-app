@@ -1,14 +1,14 @@
 <h1 style="text-align:center">Users</h1>
 <h3 style="text-align:center">There are <%= pluralize(User.count, "user") %> in this database.</h3>
-<h3 style="font-size: 22px;"><%= link_to 'New User', signup_path %></h3>
-<div>
-  <%= form_tag users_path, :method => 'get', :id => "users_search" do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :user => nil %>
-    </p>
-
-    <div id="users_table"><%= render 'users' %></div>
-
-  <% end %>
+<div style="margin-left: 50px; margin-bottom: 30px; float:left; width: 90%; margin: 0 5%">
+	<h3 style="font-size: 22px; float:left;"><%= link_to 'New User', signup_path %></h3>
+	<div style="float:right;">
+	  <%= form_tag users_path, :method => 'get', :id => "users_search" do %>
+	    <p>
+	      <%= text_field_tag :search, params[:search] %>
+	      <%= submit_tag "Search", :user => nil %>
+	    </p>
+	  <% end %>
+	</div>
 </div>
+<div id="users_table"><%= render 'users' %></div>

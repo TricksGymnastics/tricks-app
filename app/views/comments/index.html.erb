@@ -2,27 +2,26 @@
 
   <h1 style="text-align:center">Parent Comments</h1>
   <h3 style="text-align:center">There are <%= pluralize(Comment.count, "comment") %> in this database.</h3>
-  <h3 style="font-size: 20px;"><%= link_to 'New Comment', new_comment_path %></h3>
-  <div>
-    <%= form_tag comments_path, :method => 'get', :id => "comments_search" do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :comment => nil %>
-      </p>
+  <div style="margin-left: 50px; margin-bottom: 30px;">
+    <h3 style="font-size: 22px; float: left;"><%= link_to 'New Comment', new_comment_path %></h3>
+    <div style="float:right; margin-right: 50px;">
+      <%= form_tag comments_path, :method => 'get', :id => "comments_search" do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :comment => nil %>
+        </p>
 
-      <div id="comments_table"><%= render 'comments' %></div>
-
-    <% end %>
+      <% end %>
+    </div>
   </div>
-  <br />
-
+  <div id="comments_table"><%= render 'comments' %></div>
 
   <% elsif can? :create, Comment %>
   
     <h1 style="text-align:center">Parent Comments</h1>
-    <div>
-      <p>Your comments are greatly appreciated! Let us know how we are doing, and what we can do better.</p>
+    <div style="margin: 50px 0; text-align: center;">
+      <p style="font-size: 18px;">Your comments are greatly appreciated! Let us know how we are doing, and what we can do better.</p>
     </div>
-    <h3 style="font-size: 20px;"><%= link_to 'New Comment', new_comment_path %></h3>
+    <h3 style="font-size: 22px; text-align: center"><%= link_to 'New Comment', new_comment_path %></h3>
 
 <% end %>

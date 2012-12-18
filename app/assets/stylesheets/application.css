@@ -16,6 +16,41 @@
 	align:center;
 }
 
+#headergreen {
+  background-image: url(/assets/app_header_green.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  height: 49px;
+  width: 100%;
+}
+
+#footergreen {
+  background-image: url(/assets/app_footer_green.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  height: 22px;
+  width: 100%;
+}
+
+#bodygreen {
+  background-image: url(/assets/app_body_green.png);
+  background-position: center;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  width: 100%;
+  background-repeat: repeat-y;
+}
+
 
 .comments th .current {
   padding-right: 12px;

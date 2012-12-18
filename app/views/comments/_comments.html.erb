@@ -7,7 +7,7 @@
     <th><%= sortable "comment" %></th>
     <th><%= sortable "name" %></th>    
     <th><%= sortable "activity" %></th>
-    <th><%= sortable "email", "E-mail" %></th>
+    <th><%= sortable "created_at", "Date Created" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,16 +16,16 @@
   <% @comments.each do |comment| %>
     <tr>
       <td style="text-align: center; width: 3px;"><b><%= comment.score %></b></td>
-      <td>
-        <%= truncate(comment.comment, :length => 50, :seperator => " " ) %>
+      <td style="width: 380px; height: 30px;">
+        <%= truncate(comment.comment, :length => 55, :separator => " " ) %>
       </td>
       <td><%= comment.name %></td>
       <td><%= comment.activity %></td>
-      <td><%= comment.email %></td>
-      <td style="padding: 0px 5px 0px 5px; border: 0"><%= link_to 'Show', comment %></td>
-      <td style="padding: 0px 5px 0px 5px; border: 0"><%= link_to 'Edit', edit_comment_path(comment) %></td>
+      <td><%= comment.created_at.strftime("%b %e,%Y)") %></td>
+      <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Show', comment %></td>
+      <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_comment_path(comment) %></td>
       <% if can? :destroy, Comment %>
-        <td style="padding: 0px 5px 0px 5px; border: 0"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
+        <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
       <% end %>
     </tr>
   <% end %>
