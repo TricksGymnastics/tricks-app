@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   #before_filter :authorize
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :random_comment
   helper_method :sort_column, :sort_direction 
   
   # GET /comments
@@ -73,6 +73,15 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comments_url }
       format.json { head :no_content }
+    end
+  end
+
+  def random_comment
+    @comment = Comment.where(score: 7..10).sample
+    @comment.to_json(only: [:comment, :name])    
+    respond_to do |format|
+      format.html # random_comment.html.erb
+      format.json { render json: @comment, only: [:comment, :name]}
     end
   end
 

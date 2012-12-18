@@ -13,13 +13,13 @@
 
 <% @kid_quotes.each do |kid_quote| %>
   <tr>
-    <td><%= kid_quote.quote %></td>
-    <td><%= kid_quote.name %></td>
-    <td><%= kid_quote.age %></td>
-    <td><%= link_to 'Show', kid_quote %></td>
-    <td><%= link_to 'Edit', edit_kid_quote_path(kid_quote) %></td>
-    <% if can? :destroy, KidQuote %>
-    <td><%= link_to 'Destroy', kid_quote, confirm: 'Are you sure?', method: :delete %></td>
+    <td style="width: 605px; height: 30px; text-align: justify;"><%= truncate(kid_quote.quote, :length => 55, :separator => " " )%></td>
+    <td style="width: 100px;"><%= kid_quote.name %></td>
+    <td style="width: 20px;"><%= kid_quote.age %></td>
+    <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Show', kid_quote %></td>
+    <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_kid_quote_path(kid_quote) %></td>
+      <% if can? :destroy, KidQuote %>
+    <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Destroy', kid_quote, confirm: 'Are you sure?', method: :delete %></td>
     <% end %>
   </tr>
 <% end %>

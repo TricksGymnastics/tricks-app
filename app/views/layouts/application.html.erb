@@ -7,30 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="headergreen"></div>
+	<div id="bodygreen">
+		<div id="container">
+			<div id="user_header">
+				<div style="float:left"><%= link_to "Home", root_path %></div>
 
-	<div id="container">
-		<div id="user_header">
-			<div style="float:left"><%= link_to "Home", root_path %></div>
+				<% if can? :read, User %>
+					<div style="float:left"> | <%= link_to "Users", users_path(@users) %></div>
+				<% end %>
 
-			<% if can? :read, User %>
-				<div style="float:left"> | <%= link_to "Users", users_path(@users) %></div>
+				<% if current_user %>
+					Logged in as <%= current_user.email %> (<%= current_user.role %>) 
+					<%= link_to "Log Out", logout_path %> 
+				<% else %>
+					<%= link_to "Login", login_path  %>
+				<% end %>
+
+			</div>
+			<% flash.each do |name, msg| %>
+				<%= content_tag :div, msg, id: "flash_#{name}" %>
 			<% end %>
 
-			<% if current_user %>
-				Logged in as <%= current_user.email %> (<%= current_user.role %>) 
-				<%= link_to "Log Out", logout_path %> 
-			<% else %>
-				<%= link_to "Sign Up", signup_path %> /
-				<%= link_to "Login", login_path  %>
-			<% end %>
+			<%= yield %>
 
 		</div>
-		<% flash.each do |name, msg| %>
-			<%= content_tag :div, msg, id: "flash_#{name}" %>
-		<% end %>
-
-		<%= yield %>
-
 	</div>
+	<div id="footergreen"></div>
 </body>
 </html>
