@@ -15,28 +15,37 @@ class Ability
 		# :destroy		
 		# :manage
 
-		if user.role == "superadmin"
+		## Object ##
+		#Comment
+		#KidQuote
+		#User
+		#Schedule
+		#Level
+
+		if user.role == "superadmin" #Jordan
 		   	can :manage, :all
 		end
 
-		if user.role == "admin" 
+		if user.role == "admin" #Barbara Jo, Vern, Managers
 	 		can :manage, Comment
 	 		can :manage, KidQuote
 	 		can :manage, Schedule
 	 		can :manage, Level
        	end
 
-       	if user.role == "moderator"
+       	if user.role == "moderator" #Office Staff
        		can :manage, Comment
 	 		can :manage, KidQuote
 	 		can :manage, Schedule
+	 		can :manage, Level
          	cannot :destroy, :all
         end 
 
-    	if user.role == "author"
-			can :create, Comment
-			can :read, Comment
-			cannot :show, Comment
+    	if user.role == "author" #Coaches
+			can :manage, Comment
+	 		can :manage, KidQuote
+         	cannot :destroy, :all
+         	cannot :edit, :all
 		end
 	 	
 
