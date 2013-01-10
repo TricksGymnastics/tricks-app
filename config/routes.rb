@@ -8,10 +8,16 @@ Comments::Application.routes.draw do
     end
   end
 
+  resources :kid_quotes do
+    collection do
+      get '/random_quote'
+    end
+  end
+  
+  resources :schedules
   resources :users
-  resources :sessions 
-  resources :kid_quotes
-
+  resources :sessions
+  resources :levels
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

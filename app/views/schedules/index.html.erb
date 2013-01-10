@@ -1,0 +1,11 @@
+
+  <h1 style="text-align:center">Class Schedules</h1>
+  <% if can? :manage, Schedule%>
+  <h3 style="font-size: 18px; text-align:center;"><%= link_to 'New Schedule', new_schedule_path %></h3>
+  <% else %>
+  <% end %>
+  <br />
+  <div id="schedules_table"><%= render 'schedules' %></div>
+
+
+</table>

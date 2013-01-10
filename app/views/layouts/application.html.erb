@@ -14,7 +14,11 @@
 				<div style="float:left"><%= link_to "Home", root_path %></div>
 
 				<% if can? :read, User %>
-					<div style="float:left"> | <%= link_to "Users", users_path(@users) %></div>
+					<div style="float:left"> | <%= link_to "Users", users_path %></div>
+				<% end %>
+
+				<% if can? :manage, Level %>
+					<div style="float:left"> | <%= link_to "List of Levels", levels_path %></div>
 				<% end %>
 
 				<% if current_user %>

@@ -1,0 +1,31 @@
+<h1>Listing levels</h1>
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Level</th>
+    <th>Length</th>
+    <th>Price</th>
+    <th>Age</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @levels.each do |level| %>
+  <tr>
+    <td style="width: 30px"><%= level.order %></td>
+    <td style="width: 130px"><%= level.levelname %></td>
+    <td style="width: 80px"><%= level.length %> mins</td>
+    <td style="width: 50px"><%= level.price %> $</td>
+    <td style="width: 50px"><%= level.age %></td>
+    <td style="border: 0; padding: 2px; padding-left: 10px"><%= link_to 'Show', level %></td>
+    <td style="border: 0; padding: 2px"><%= link_to 'Edit', edit_level_path(level) %></td>
+    <td style="border: 0; padding: 2px"><%= link_to 'Destroy', level, confirm: 'If you delete this Level, all Scheduled classes that use this level will also be deleted. Are you sure you want to delete it?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Level', new_level_path %>
