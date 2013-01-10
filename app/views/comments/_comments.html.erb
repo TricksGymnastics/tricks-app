@@ -23,7 +23,9 @@
       <td><%= comment.activity %></td>
       <td><%= comment.created_at.strftime("%b %e,%Y)") %></td>
       <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Show', comment %></td>
-      <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_comment_path(comment) %></td>
+      <% if can? :edit, Comment %>
+        <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_comment_path(comment) %></td>
+      <% end %>
       <% if can? :destroy, Comment %>
         <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
       <% end %>
