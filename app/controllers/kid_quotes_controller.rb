@@ -1,6 +1,6 @@
 class KidQuotesController < ApplicationController
-  before_filter :authorize
-  load_and_authorize_resource
+  #before_filter :authorize
+  load_and_authorize_resource :except => :random_quote
   helper_method :sort_column, :sort_direction 
 
   # GET /kid_quotes
@@ -72,6 +72,23 @@ class KidQuotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to kid_quotes_url }
       format.json { head :no_content }
+    end
+  end
+
+   def random_quote
+    @kid_quote = KidQuote.find(:all).sample(n=3)
+    @kid_quote.to_json(only: [:quote, :name])
+
+    
+
+    respond_to do |format|
+      format.html {if current_user.nil?
+          render :layout => "random_quote"
+        else
+         render :layout => "application"
+        end}
+        
+      format.json { render json: @kid_quote, only: [:quote, :name]}
     end
   end
 

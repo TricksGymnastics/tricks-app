@@ -6,6 +6,7 @@ class Ability
 			can :read, Comment
 			can :create, Comment
 			cannot :show, Comment
+			can :read, Schedule
 		## List of Actions ##
 		# :read
 		# :create
@@ -21,13 +22,14 @@ class Ability
 		if user.role == "admin" 
 	 		can :manage, Comment
 	 		can :manage, KidQuote
-	 		#can :manage, Schedule
+	 		can :manage, Schedule
+	 		can :manage, Level
        	end
 
        	if user.role == "moderator"
        		can :manage, Comment
 	 		can :manage, KidQuote
-	 		#can :manage, Schedule
+	 		can :manage, Schedule
          	cannot :destroy, :all
         end 
 

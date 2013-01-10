@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  level: MyString
+  day: MyString
+  time: MyString
+  teacher: MyString
+  price: 1
+  length: 1
+  age: 1
+  gender: MyString
+
+two:
+  level: MyString
+  day: MyString
+  time: MyString
+  teacher: MyString
+  price: 1
+  length: 1
+  age: 1
+  gender: MyString

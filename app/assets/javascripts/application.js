@@ -45,3 +45,14 @@ $(function () {
   	return false;
   });
 });
+
+$(function () {
+  $("#schedules_table th a, #schedules_table .pagination a").live("click", function () {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#schedules_search input").keyup(function() {
+    $.get($("#schedules_search").attr("action"), $("#schedules_search").serialize(), null, "script");
+    return false;
+  });
+});

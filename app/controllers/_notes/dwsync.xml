@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="application_controller.rb" server="tricksgymcom.siteprotect.net//" local="129975889363403175" remote="129978564000000000" Dst="1" />
-<file name="comments_controller.rb" server="tricksgymcom.siteprotect.net//" local="129975889340631873" remote="129978564000000000" Dst="1" />
+<file name="application_controller.rb" server="tricksgymcom.siteprotect.net//" local="129988137422610680" remote="130022609400000000" Dst="1" />
+<file name="comments_controller.rb" server="tricksgymcom.siteprotect.net//" local="130004299889581767" remote="130022609400000000" Dst="1" />
 <file name="home_controller.rb" server="tricksgymcom.siteprotect.net//" local="129974959138501628" remote="129978564000000000" Dst="1" />
 <file name="sessions_controller.rb" server="tricksgymcom.siteprotect.net//" local="129975187616009794" remote="129978564000000000" Dst="1" />
-<file name="users_controller.rb" server="tricksgymcom.siteprotect.net//" local="129975879445305893" remote="129978564000000000" Dst="1" />
+<file name="users_controller.rb" server="tricksgymcom.siteprotect.net//" local="129988203530391828" remote="130022609400000000" Dst="1" />
+<file name="kid_quotes_controller.rb" server="tricksgymcom.siteprotect.net//" local="130018288261805782" remote="130022599200000000" Dst="1" />
+<file name="levels_controller.rb" server="tricksgymcom.siteprotect.net//" local="130021809313768435" remote="130022599200000000" Dst="1" />
+<file name="schedules_controller.rb" server="tricksgymcom.siteprotect.net//" local="130021808471520261" remote="130022599200000000" Dst="1" />
 </dwsync>

@@ -1,0 +1,43 @@
+<div id="form">
+  <%= form_for(@schedule) do |f| %>
+    <% if @schedule.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+
+        <ul>
+        <% @schedule.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div style="float:left; width: 90px; line-height: 26px">
+      <%= f.label :location %>:<br />
+      <%= f.label :class_type, "Class Type" %>:
+      <%= f.label :level %>:<br />
+      <%= f.label :day %>:<br />
+      <%= f.label :time %>:<br />
+      <%= f.label :teacher %>:<br />
+      <%= f.label :gender %>:<br />
+    </div>
+
+    <div class="field" style="float:left; width: 820px; line-height: 26px">
+      <%= f.select :location, ['Folsom', 'Granite Bay', 'Sacramento'], :prompt => "Select a Location"  %><br />
+      <%= f.select :class_type, ['Gymnastics', 'Tumblebunnies', 'Dance', 'Swim'] %><br />
+      <%= f.collection_select :level_id, Level.all, :id, :levelname, :prompt => "Select a Level", :required => true %><br />
+      <%#= f.collection_select :level, Level.all, :levelname, :levelname, :prompt => "Select a Level" %>
+      <%= f.select :day, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %><br />
+      <%= f.text_field :time, :placeholder => 'Include AM or PM', :style=>'width: 120px;' %><br />
+      <%= f.text_field :teacher, :placeholder => 'Include Mr. Ms. or Mrs.', :style=>'width: 140px;'  %><br />
+      <%= f.select :gender, ['Girls', 'Boys', 'Both'] %><br />
+    </div>
+
+    
+    <div class="actions" style="width: 900px; float: left;">
+      <%= f.submit %>
+    </div>
+    <div style="width: 3px; float: left;">
+      <br />
+    </div>
+  <% end %>
+</div>
