@@ -3,10 +3,7 @@ class Ability
 
 	def initialize(user) 
 		user ||= User.new
-			can :read, Comment
-			can :create, Comment
-			cannot :show, Comment
-			can :read, Schedule
+			
 		## List of Actions ##
 		# :read
 		# :create
@@ -20,32 +17,31 @@ class Ability
 		#KidQuote
 		#User
 		#Schedule
-		#Level
 
 		if user.role == "superadmin" #Jordan
 		   	can :manage, :all
 		end
 
-		if user.role == "admin" #Barbara Jo, Vern, Managers
+		if user.role == "admin" #Barbara Jo, Vern, Managers, Office Staff
 	 		can :manage, Comment
 	 		can :manage, KidQuote
 	 		can :manage, Schedule
 	 		can :manage, Level
        	end
 
-       	if user.role == "moderator" #Office Staff
+       	if user.role == "moderator" #Coaches
        		can :manage, Comment
 	 		can :manage, KidQuote
-	 		can :manage, Schedule
-	 		can :manage, Level
-         	cannot :destroy, :all
-        end 
-
-    	if user.role == "author" #Coaches
-			can :manage, Comment
-	 		can :manage, KidQuote
+	 		can :read, Schedule
          	cannot :destroy, :all
          	cannot :edit, :all
+        end 
+
+    	if user.role == "author" #Not logged in
+			can :read, Comment
+			can :create, Comment
+			cannot :show, Comment
+			can :read, Schedule
 		end
 	 	
 
