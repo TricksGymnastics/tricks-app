@@ -17,9 +17,11 @@
     <td style="width: 100px;"><%= kid_quote.name %></td>
     <td style="width: 20px;"><%= kid_quote.age %></td>
     <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Show', kid_quote %></td>
-    <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_kid_quote_path(kid_quote) %></td>
-      <% if can? :destroy, KidQuote %>
-    <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Destroy', kid_quote, confirm: 'Are you sure?', method: :delete %></td>
+    <% if can? :update, KidQuote %>
+      <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_kid_quote_path(kid_quote) %></td>
+    <% end %>
+    <% if can? :destroy, KidQuote %>
+      <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Destroy', kid_quote, confirm: 'Are you sure?', method: :delete %></td>
     <% end %>
   </tr>
 <% end %>

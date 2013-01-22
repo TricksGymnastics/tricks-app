@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109041944) do
+ActiveRecord::Schema.define(:version => 20130122035731) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -35,10 +35,11 @@ ActiveRecord::Schema.define(:version => 20130109041944) do
     t.string   "levelname"
     t.integer  "length"
     t.integer  "price"
-    t.integer  "age"
+    t.string   "age"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "order"
+    t.string   "class_type"
   end
 
   create_table "schedules", :force => true do |t|
@@ -49,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20130109041944) do
     t.string   "gender"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "class_type"
     t.string   "location"
     t.integer  "level_id"
   end
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20130109041944) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "role",            :default => "author"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
 end

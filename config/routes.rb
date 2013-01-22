@@ -14,10 +14,11 @@ Comments::Application.routes.draw do
     end
   end
   
-  resources :schedules
+  resources :schedules  
   resources :users
   resources :sessions
   resources :levels
+
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

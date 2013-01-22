@@ -3,35 +3,50 @@
 
 <table class="schedules">
   <tr>
-    <th><%= sortable "level" %></th>
+    <th>Level</th>
     <th><%= sortable "day" %></th>
     <th><%= sortable "time" %></th>
     <th><%= sortable "teacher" %></th>
-    <th><%= sortable "price" %></th>
-    <th><%= sortable "length" %></th>
-    <th><%= sortable "age" %></th>
-    <th><%= sortable "gender" %></th>
-    <th></th>
+    <th><%= sortable "location" %></th>
+    <th>Price</th>
+    <th>Length</th>
+    <th>Age</th>
+    <th>Gender</th>
     <th></th>
     <th></th>
   </tr>
 
-<% @schedules.each do |schedule| %>
-  <tr>
-    <td style="width: 160px;"><%= schedule.level.levelname %></td>
-    <td style="width: 60px;"><%= schedule.day %></td>
-    <td style="width: 80px;"><%= schedule.time %></td>
-    <td style="width: 120px;"><%= schedule.teacher %></td>
-    <td style="width: 40px;"><%= schedule.level.price %>$</td>
-    <td style="width: 60px;"><%= schedule.level.length %> min</td>
-    <td style="width: 30px;"><%= schedule.level.age %></td>
-    <td style="width: 60px;"><%= schedule.gender %></td>
-    <% if can? :manage, Schedule %>
-        <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Show', schedule %></td>
+<% if can? :manage, Schedule %>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td style="width: 180px;"><%= schedule.level.levelname %></td>
+        <td><%= schedule.day %></td>
+        <td><%= schedule.time %></td>
+        <td style="width: 120px;"><%= schedule.teacher %></td>
+        <td style="width: 80px;"><%= schedule.location %></td>
+        <td><%= schedule.level.price %>$</td>
+        <td><%= schedule.level.length %> min</td>
+        <td><%= schedule.level.age %></td>
+        <td><%= schedule.gender %></td>
         <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
         <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Destroy', schedule, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
     <% end %>
-  </tr>
+<% else %>
+    <% @schedules.each do |schedule| %>
+    
+      <tr>
+        <td style="width: 180px;"><%= schedule.level.levelname %></td>
+        <td><%= schedule.day %></td>
+        <td><%= schedule.time %></td>
+        <td style="width: 120px;"><%= schedule.teacher %></td>
+        <td style="width: 80px;"><%= schedule.location %></td>
+        <td><%= schedule.level.price %>$</td>
+        <td><%= schedule.level.length %> min</td>
+        <td><%= schedule.level.age %></td>
+        <td><%= schedule.gender %></td>
+      </tr>
+    <% end %>
 <% end %>
 </table>
 

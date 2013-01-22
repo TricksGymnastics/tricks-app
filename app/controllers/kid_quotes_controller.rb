@@ -41,7 +41,7 @@ class KidQuotesController < ApplicationController
   def create
     respond_to do |format|
       if @kid_quote.save
-        format.html { redirect_to @kid_quote, notice: 'Kid quote was successfully created.' }
+        format.html { redirect_to kid_quotes_path, notice: 'Kid quote was successfully created.' }
         format.json { render json: @kid_quote, status: :created, location: @kid_quote }
       else
         format.html { render action: "new" }
@@ -55,7 +55,7 @@ class KidQuotesController < ApplicationController
   def update
     respond_to do |format|
       if @kid_quote.update_attributes(params[:kid_quote])
-        format.html { redirect_to @kid_quote, notice: 'Kid quote was successfully updated.' }
+        format.html { redirect_to kid_quotes_path, notice: 'Kid quote was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SchedulesControllerTest < ActionController::TestCase
+schedule SchedulesControllerTest < ActionController::TestCase
   setup do
     @schedule = schedules(:one)
   end
@@ -17,7 +17,7 @@ class SchedulesControllerTest < ActionController::TestCase
   end
 
   test "should create schedule" do
-    assert_difference('Schedule.count') do
+    assert_difference('schedule.count') do
       post :create, schedule: @schedule.attributes
     end
 
@@ -40,7 +40,7 @@ class SchedulesControllerTest < ActionController::TestCase
   end
 
   test "should destroy schedule" do
-    assert_difference('Schedule.count', -1) do
+    assert_difference('schedule.count', -1) do
       delete :destroy, id: @schedule
     end
 

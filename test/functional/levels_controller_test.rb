@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LevelsControllerTest < ActionController::TestCase
+schedule LevelsControllerTest < ActionController::TestCase
   setup do
     @level = levels(:one)
   end

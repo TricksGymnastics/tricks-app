@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class CommentsHelperTest < ActionView::TestCase
+schedule CommentsHelperTest < ActionView::TestCase
 end
