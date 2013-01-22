@@ -1,7 +1,7 @@
 class RemoveClasstypeFromSchedulesAndAddClasstypeToLevels < ActiveRecord::Migration
   def up
-    remove_column :schedules, :class_type
-    add_column :levels, :class_type, :string
+    remove_column :schedules, :class_type, :force => true
+    add_column :levels, :class_type, :string, :force => true
   end
 
   def down
