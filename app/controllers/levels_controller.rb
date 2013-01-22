@@ -61,7 +61,7 @@ load_and_authorize_resource
 
     respond_to do |format|
       if @level.update_attributes(params[:level])
-        format.html { redirect_to @level, notice: 'Level was successfully updated.' }
+        format.html { redirect_to levels_path, notice: 'Level was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

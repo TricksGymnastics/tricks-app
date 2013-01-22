@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class SessionsHelperTest < ActionView::TestCase
+schedule SessionsHelperTest < ActionView::TestCase
 end

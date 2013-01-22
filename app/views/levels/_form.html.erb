@@ -17,26 +17,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :levelname, "Level", :required => true  %><br />
-    <%= f.text_field :levelname %>
+  <div style="float:left; width: 120px; line-height: 34px;">
+    <%= f.label :class_type, "Schedule Type" %>:<br />
+    <%= f.label :levelname, "Level" %>:<br />
+    <%= f.label :length %>:<br />
+    <%= f.label :price %>:<br />
+    <%= f.label :age %>:<br />
+    <%= f.label :order %>:<br />
   </div>
-  <div class="field">
-    <%= f.label :length, :required => true  %><br />
-    <%= f.number_field :length %>
-  </div>
-  <div class="field">
-    <%= f.label :price, :required => true  %><br />
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :age, :required => true  %><br />
-    <%= f.number_field :age %>
-  </div>
-  <br />
-  <div class="field">
-    <%= f.label :order, :required => true  %><br />
-    <%= f.number_field :order %>
+  <div class="field" style="float:left; width: 820px; line-height: 34px;">
+    <%= f.select :class_type, ['Gymnastics', 'Tumblebunnies', 'Dance', 'Swim'], :prompt => "Select a Schedule Type" %><br />
+    <%= f.text_field :levelname %><br />
+    <%= f.number_field :length %><br />
+    <%= f.number_field :price %><br />
+    <%= f.text_field :age %><br />
+    <%= f.number_field :order %><br />
   </div>
   <br />
   <br />

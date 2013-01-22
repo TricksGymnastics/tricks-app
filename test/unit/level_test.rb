@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LevelTest < ActiveSupport::TestCase
+schedule LevelTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

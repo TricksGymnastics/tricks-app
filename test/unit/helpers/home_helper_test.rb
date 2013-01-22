@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class HomeHelperTest < ActionView::TestCase
+schedule HomeHelperTest < ActionView::TestCase
 end

@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class KidQuotesHelperTest < ActionView::TestCase
+schedule KidQuotesHelperTest < ActionView::TestCase
 end

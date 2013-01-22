@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ScheduleTest < ActiveSupport::TestCase
+schedule ScheduleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

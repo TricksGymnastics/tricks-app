@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 	def create
 		if @user.save
 			session[:user_id] = @user.id
-			redirect_to root_url, notice: "You are now signed up, and logged in!"
+			redirect_to users_path, notice: "User succesfully created!"
 		else
 			render "new"
 		end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

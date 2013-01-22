@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class KidQuotesControllerTest < ActionController::TestCase
+schedule KidQuotesControllerTest < ActionController::TestCase
   setup do
     @kid_quote = kid_quotes(:one)
   end
