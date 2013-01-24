@@ -20,11 +20,11 @@
 
 <% @levels.each do |level| %>
   <tr>
-    <td style="width: 30px"><%= level.order %></td>
-    <td style="width: 220px"><%= level.levelname %></td>
-    <td style="width: 80px"><%= level.length %> mins</td>
-    <td style="width: 50px"><%= level.price %> $</td>
-    <td style="width: 50px"><%= level.age %></td>
+    <td><%= level.order %></td>
+    <td><%= level.levelname %></td>
+    <td><%= level.length %> mins</td>
+    <td><%= level.price %> $</td>
+    <td><%= level.age %></td>
     <td><%= level.class_type %></td>    
     <td style="border: 0; padding: 2px; padding-left: 10px"><%= link_to 'Show', level %></td>
     <td style="border: 0; padding: 2px"><%= link_to 'Edit', edit_level_path(level) %></td>
