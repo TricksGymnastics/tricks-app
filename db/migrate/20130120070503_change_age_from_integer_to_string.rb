@@ -6,7 +6,7 @@ class ChangeAgeFromIntegerToString < ActiveRecord::Migration
   end
 
   def down
-  	change_table :levels do |t|
+  	change_table :levels, :force => true do |t|
   		t.change :age, :integer
   	end
   end
