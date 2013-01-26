@@ -11,13 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126134709) do
-
-  create_table "classtypes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130106013418) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -29,6 +23,12 @@ ActiveRecord::Schema.define(:version => 20130126134709) do
     t.string   "email"
   end
 
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "kid_quotes", :force => true do |t|
     t.text     "quote"
     t.string   "name"
@@ -37,15 +37,12 @@ ActiveRecord::Schema.define(:version => 20130126134709) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "levels", :force => true do |t|
-    t.string   "levelname"
-    t.integer  "length"
-    t.integer  "price"
-    t.string   "age"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "order"
-    t.integer  "classtype_id"
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.integer  "state_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "schedules", :force => true do |t|
@@ -54,11 +51,17 @@ ActiveRecord::Schema.define(:version => 20130126134709) do
     t.string   "time"
     t.string   "teacher"
     t.string   "gender"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "location"
-    t.integer  "level_id"
-    t.integer  "classtype_id"
+    t.string   "class_type"
+  end
+
+  create_table "states", :force => true do |t|
+    t.integer  "country_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
