@@ -25,7 +25,7 @@
     <td><%= level.length %> mins</td>
     <td><%= level.price %> $</td>
     <td><%= level.age %></td>
-    <td><%= level.class_type %></td>    
+    <td><%= level.classtype.name %></td>    
     <td style="border: 0; padding: 2px; padding-left: 10px"><%= link_to 'Show', level %></td>
     <td style="border: 0; padding: 2px"><%= link_to 'Edit', edit_level_path(level) %></td>
     <td style="border: 0; padding: 2px"><%= link_to 'Destroy', level, confirm: 'If you delete this Level, all Scheduled schedules that use this level will also be deleted. Are you sure you want to delete it?', method: :delete %></td>

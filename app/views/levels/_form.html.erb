@@ -7,7 +7,7 @@
 
 
       <% @level.errors.full_messages.each do |msg| %>
-        <%# msg => "Level" if msg = "levelname" else%>
+        <%# msg => "Level" if msg = "name" else%>
         <li><%= msg %></li>
         <% end %>
       <%# end %>
@@ -18,7 +18,7 @@
   <% end %>
 
   <div style="float:left; width: 120px; line-height: 34px;">
-    <%= f.label :class_type, "Schedule Type" %>:<br />
+    <%= f.label :classtype, "Schedule Type" %>:<br />
     <%= f.label :levelname, "Level" %>:<br />
     <%= f.label :length %>:<br />
     <%= f.label :price %>:<br />
@@ -26,7 +26,8 @@
     <%= f.label :order %>:<br />
   </div>
   <div class="field" style="float:left; width: 820px; line-height: 34px;">
-    <%= f.select :class_type, ['Gymnastics', 'Tumblebunnies', 'Dance', 'Swim'], :prompt => "Select a Schedule Type" %><br />
+    <%= f.collection_select :classtype_id, Classtype.all, :id, :name, :prompt => "Select a Class Type" %>
+    <%#= f.select :class_type, ['Gymnastics', 'Tumblebunnies', 'Dance', 'Swim'], :prompt => "Select a Schedule Type" %><br />
     <%= f.text_field :levelname %><br />
     <%= f.number_field :length %><br />
     <%= f.number_field :price %><br />

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122035731) do
+ActiveRecord::Schema.define(:version => 20130126134709) do
+
+  create_table "classtypes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -36,10 +42,10 @@ ActiveRecord::Schema.define(:version => 20130122035731) do
     t.integer  "length"
     t.integer  "price"
     t.string   "age"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "order"
-    t.string   "class_type"
+    t.integer  "classtype_id"
   end
 
   create_table "schedules", :force => true do |t|
@@ -48,10 +54,11 @@ ActiveRecord::Schema.define(:version => 20130122035731) do
     t.string   "time"
     t.string   "teacher"
     t.string   "gender"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "location"
     t.integer  "level_id"
+    t.integer  "classtype_id"
   end
 
   create_table "users", :force => true do |t|

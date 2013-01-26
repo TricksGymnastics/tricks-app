@@ -1,5 +1,7 @@
 <div id="form">
   <%= form_for(@schedule) do |f| %>
+
+
     <% if @schedule.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
@@ -11,31 +13,41 @@
         </ul>
       </div>
     <% end %>
-    <div style="float:left; width: 90px; line-height: 34px">
-      <%= f.label :location %>:<br />
-      <%= f.label :level_id %>:<br />
-      <%= f.label :day %>:<br />
-      <%= f.label :time %>:<br />
-      <%= f.label :teacher %>:<br />
-      <%= f.label :gender %>:<br />
-    </div>
-
-    <div class="field" style="float:left; width: 820px; line-height: 34px">
-      <%= f.select :location, ['Folsom', 'Granite Bay', 'Sacramento'], :prompt => "Select a Location" %><br />
-      <%= f.collection_select :level_id, Level.all, :id, :levelname, :prompt => "Select a Level" %><br />
-      <%#= f.collection_select :level, Level.all, :levelname, :levelname, :prompt => "Select a Level" %>
-      <%= f.select :day, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], :prompt => "Select a Day" %><br />
-      <%= f.text_field :time, :placeholder => 'Include AM or PM', :style=>'width: 120px;' %><br />
-      <%= f.text_field :teacher, :placeholder => 'Include Mr. Ms. or Mrs.', :style=>'width: 140px;'  %><br />
-      <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender" %><br />
-    </div>
-
     
-    <div class="actions" style="width: 900px; float: left;">
-      <%= f.submit %>
+    <div class="field" style="float:left; width: 100%; line-height: 34px; margin-bottom: 0; padding: 0 8px">
+      <div style="float:left; width: 90px;">
+        <%= f.label :classtype_id, "Class Type:" %>
+      </div>
+      <%= f.collection_select :classtype_id, Classtype.all, :id, :name, :prompt => "Select a Class Type" %>
+    </div> 
+   
+    <div class="field" style="float:left; width: auto; line-height: 34px; margin-bottom: 0; border: 2px dotted grey; padding: 0 8px">
+      <div style="float:left; width: 88px">
+        <%= f.label :level_id, "Level:" %>
+      </div>
+      <%= f.grouped_collection_select :level_id, Classtype.all, :levels, :name, :id, :levelname%>
+    </div> 
+
+    <div style="width: 880px; float: left; line-height: 34px; padding: 0 8px">
+      <div class="field" style="float:left; width: 90px">
+        <%= f.label :location %>:<br />
+        <%= f.label :day %>:<br />
+        <%= f.label :time %>:<br />
+        <%= f.label :teacher %>:<br />
+        <%= f.label :gender %>:<br />
+      </div>
+
+      <div class="field" style="float:left; width: 790px">
+        <%= f.select :location, ['Folsom', 'Granite Bay', 'Sacramento'], :prompt => "Select a Location" %><br />
+        <%= f.select :day, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], :prompt => "Select a Day" %><br />
+        <%= f.text_field :time, :placeholder => 'Include AM or PM', :style=>'width: 120px;' %><br />
+        <%= f.text_field :teacher, :placeholder => 'Include Mr. Ms. or Mrs.', :style=>'width: 140px;'  %><br />
+        <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender" %><br />
+      </div>
     </div>
-    <div style="width: 3px; float: left;">
-      <br />
+
+    <div class="actions" style="width: 880px; float: left;">
+      <%= f.submit %>
     </div>
   <% end %>
 </div>

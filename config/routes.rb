@@ -15,6 +15,7 @@ Comments::Application.routes.draw do
   end
   
   resources :schedules  
+
   resources :users
   resources :sessions
   resources :levels
