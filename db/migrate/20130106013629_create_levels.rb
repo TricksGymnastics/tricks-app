@@ -7,6 +7,6 @@ class CreateLevels < ActiveRecord::Migration
      # t.integer :age
 
      # t.timestamps
-    end
+   # end
   end
 end
