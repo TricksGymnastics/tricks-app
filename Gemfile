@@ -39,3 +39,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'thin'
 gem 'cancan'
 gem 'will_paginate'
+group :development do
+	gem 'better_errors'
+	gem 'binding_of_caller'
+end

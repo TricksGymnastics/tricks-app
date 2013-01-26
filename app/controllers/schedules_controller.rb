@@ -76,6 +76,7 @@ class SchedulesController < ApplicationController
     end
   end
 
+
 private
 
   def sort_column

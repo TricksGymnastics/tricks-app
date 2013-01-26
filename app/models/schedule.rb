@@ -1,7 +1,9 @@
 class Schedule < ActiveRecord::Base
+	belongs_to :classtype
 	belongs_to :level
+	
 
-	validates_presence_of :level_id, :day, :time, :teacher, :gender, :location
+	validates_presence_of :classtype_id, :level_id, :day, :time, :teacher, :gender, :location
 
 	def self.location_search(location_search)
   		if location_search
@@ -14,7 +16,7 @@ class Schedule < ActiveRecord::Base
 	def self.level_search(level_search)
   		if level_search
 
-    		where('levelname ILIKE ?', "%#{level_search}%")
+    		where('name ILIKE ?', "%#{level_search}%")
  		else
  			scoped
  		end
@@ -60,6 +62,7 @@ class Schedule < ActiveRecord::Base
  			scoped
  		end
 	end
+
 
 
 end
