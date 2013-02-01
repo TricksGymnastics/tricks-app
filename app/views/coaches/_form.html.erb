@@ -1,0 +1,131 @@
+<%= form_for @coach, :html => {:multipart => true} do |f| %>
+  <% if @coach.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coach.errors.count, "error") %> prohibited this coach from being saved:</h2>
+
+      <ul>
+      <% @coach.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :firstname, "First Name:" %><br />
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname, "Last Name:" %><br />
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.radio_button :gender, "Girl", checked: true %>
+    <%= label_tag(:gender , "Girl") %><br />
+    <%= f.radio_button :gender, "Boy" %>
+    <%= label_tag(:gender, "Boy") %><br />
+  </div>
+  <div class="field">
+    <%= f.label :image, "Picture of Coach:" %><br />
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :birthdate, "Birthday:" %><br />
+    <%= date_select("coach", "birthdate", :default => Date.today, 
+    :order => [:month, :day, :year], :start_year => 1950, 
+    :end_year => Date.today.year + 3) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location, "Gym where Coach works:" %><br />
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :startdate, "Start Date at Tricks:" %><br />
+    <%= date_select("coach", "startdate", :default => Date.today, 
+    :order => [:month, :day, :year], :start_year => 1990, 
+    :end_year => Date.today.year + 3) %>
+  </div>
+
+    <br />
+
+    <%= f.label :levels, "Levels Coach is trained to teach:" %>
+  <div class="field">
+    <!--Gymnastics-->
+    <div style="float:left;border: 1px solid #666; width: 200px; padding: 5px 15px; margin: 3px">
+      <h3 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Gymnastics</h3>
+      <%= hidden_field_tag "coach[level_ids][]", nil %>
+      <% Level.where(:classtype_id => "1").each do |level| %>
+        <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
+        <%= label_tag dom_id(level), level.levelname %><br />
+      <% end %>  
+    </div>
+
+    <!--Tumblebunnies-->
+    <div style="float:left;border: 1px solid #666; width: 200px; padding: 5px 15px; margin: 3px">
+      <h3 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Tumblebunnies</h3>
+      <%= hidden_field_tag "coach[level_ids][]", nil %>
+      <% Level.where(:classtype_id => "2").each do |level| %>
+        <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
+        <%= label_tag dom_id(level), level.levelname %><br />
+      <% end %>  
+    </div>
+
+    <!--Dance-->
+    <div style="float:left;border: 1px solid #666; width: 200px; padding: 5px 15px; margin: 3px">
+      <h3 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Dance</h3>
+      <%= hidden_field_tag "coach[level_ids][]", nil %>
+      <% Level.where(:classtype_id => "3").each do |level| %>
+        <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
+        <%= label_tag dom_id(level), level.levelname %><br />
+      <% end %>  
+    </div>
+
+    <!--Swim-->
+    <div style="float:left;border: 1px solid #666; width: 200px; padding: 5px 15px; margin: 3px; margin-right:1px;">
+      <h3 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Swim</h3>
+      <%= hidden_field_tag "coach[level_ids][]", nil %>
+      <% Level.where(:classtype_id => "4").each do |level| %>
+        <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
+        <%= label_tag dom_id(level), level.levelname %><br />
+      <% end %>  
+    </div>
+    <br />
+    <br />
+    <br />
+
+
+
+  </div>
+
+
+  <div class="field">
+    <%= f.label :experience, "Experience with Gymnastics:" %><br />
+    <%= f.text_area :experience, :size => "50x5" %>
+  </div>
+  <div class="field">
+    <%= f.label :fav_event, "Favorite Event and Why:" %><br />
+    <%= f.text_field :fav_event %>
+  </div>
+  <div class="field">
+    <%= f.label :fav_skill, "Favorite Skill and Why:" %><br />
+    <%= f.text_field :fav_skill %>
+  </div>
+  <div class="field">
+    <%= f.label :fav_food, "Favorite Food:" %><br />
+    <%= f.text_field :fav_food %>
+  </div>
+  <div class="field">
+    <%= f.label :disney_char, "If you could be a Disney Character, who would you be?" %><br />
+    <%= f.text_field :disney_char %>
+  </div>
+  <div class="field">
+    <%= f.label :advice, "Advice for Students:" %><br />
+    <%= f.text_area :advice, :size => "50x5" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,12 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126134709) do
+ActiveRecord::Schema.define(:version => 20130129062451) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "classtypes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "coach_levels", :force => true do |t|
+    t.integer  "level_id"
+    t.integer  "coach_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "coaches", :force => true do |t|
+    t.string   "image"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "gender"
+    t.date     "birthdate"
+    t.string   "location"
+    t.date     "startdate"
+    t.integer  "level_id"
+    t.text     "experience"
+    t.string   "fav_event"
+    t.string   "fav_skill"
+    t.string   "fav_food"
+    t.text     "advice"
+    t.string   "disney_char"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -48,6 +81,13 @@ ActiveRecord::Schema.define(:version => 20130126134709) do
     t.integer  "classtype_id"
   end
 
+  create_table "questions", :force => true do |t|
+    t.integer  "survey_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "schedules", :force => true do |t|
     t.string   "level"
     t.string   "day"
@@ -59,6 +99,12 @@ ActiveRecord::Schema.define(:version => 20130126134709) do
     t.string   "location"
     t.integer  "level_id"
     t.integer  "classtype_id"
+  end
+
+  create_table "surveys", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
