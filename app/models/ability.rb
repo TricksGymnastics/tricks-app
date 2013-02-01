@@ -17,6 +17,8 @@ class Ability
 		#KidQuote
 		#User
 		#Schedule
+		#Level
+		#Coach
 
 		if user.role == "superadmin" #Jordan
 		   	can :manage, :all
@@ -27,6 +29,7 @@ class Ability
 	 		can :manage, KidQuote
 	 		can :manage, Schedule
 	 		can :manage, Level
+	 		can :manage, Coach
        	end
 
        	if user.role == "moderator" #Coaches

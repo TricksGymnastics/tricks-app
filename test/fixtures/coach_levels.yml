@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  level_id: 1
+  coach_id: 1
+
+two:
+  level_id: 1
+  coach_id: 1

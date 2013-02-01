@@ -1,0 +1,29 @@
+// Place all the styles related to the Coaches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+p {
+  margin: 10px 0;
+  line-height: 20px;
+  #border: 1px solid black;
+  text-align: justify;
+}
+
+ul {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+a img {
+  display:block;
+  border: 3px solid transparent;
+	&:hover {
+	background-image: url(/assets/structure/rails_links_on_hover.png);
+	border: 3px solid #111;
+	}
+}
+
+
+
+
+

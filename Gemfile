@@ -1,10 +1,6 @@
 	source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 gem 'yaml_db'
 
@@ -25,22 +21,14 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
 gem 'thin'
 gem 'cancan'
 gem 'will_paginate'
+
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
 end
+
+gem "mini_magick", "~> 3.4"
+gem "carrierwave"

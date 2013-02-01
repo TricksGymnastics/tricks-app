@@ -1,6 +1,7 @@
 class Schedule < ActiveRecord::Base
 	belongs_to :classtype
 	belongs_to :level
+	belongs_to :coach
 	
 
 	validates_presence_of :classtype_id, :level_id, :day, :time, :teacher, :gender, :location

@@ -1,5 +1,8 @@
 Comments::Application.routes.draw do
 
+  
+
+
   root :to => 'home#index'
 
   resources :comments do
@@ -15,7 +18,7 @@ Comments::Application.routes.draw do
   end
   
   resources :schedules  
-
+  resources :coaches
   resources :users
   resources :sessions
   resources :levels
