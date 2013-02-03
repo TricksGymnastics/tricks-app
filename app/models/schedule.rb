@@ -17,7 +17,7 @@ class Schedule < ActiveRecord::Base
 	def self.level_search(level_search)
   		if level_search
 
-    		where('name ILIKE ?', "%#{level_search}%")
+    		where('levelname ILIKE ?', "%#{level_search}%")
  		else
  			scoped
  		end
