@@ -49,10 +49,11 @@
     :end_year => Date.today.year + 3) %>
   </div>
 
-    <br />
+  <br />
 
-    <%= f.label :levels, "Levels Coach is trained to teach:" %>
-  <div class="field">
+  <%= f.label :levels, "Levels Coach is trained to teach:" %>
+
+  <div class="field" style="float:left; margin-bottom: 20px;">
     <!--Gymnastics-->
     <div style="float:left;border: 1px solid #666; width: 200px; padding: 5px 15px; margin: 3px">
       <h3 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Gymnastics</h3>
@@ -92,12 +93,6 @@
         <%= label_tag dom_id(level), level.levelname %><br />
       <% end %>  
     </div>
-    <br />
-    <br />
-    <br />
-
-
-
   </div>
 
 
