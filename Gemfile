@@ -32,3 +32,4 @@ end
 
 gem "mini_magick", "~> 3.4"
 gem "carrierwave"
+gem "fog"

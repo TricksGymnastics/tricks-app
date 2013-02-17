@@ -45,6 +45,7 @@ class Ability
 			can :create, Comment
 			cannot :show, Comment
 			can :read, Schedule
+			can :read, Coach
 		end
 	 	
 
