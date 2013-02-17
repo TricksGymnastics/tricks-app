@@ -1,14 +1,12 @@
 <%= stylesheet_link_tag "coaches", :media => "all" %>
 
-<h1>Coaches</h1>
-
+<h1>Meet the Coaches</h1>
 
 <h3 style="text-align:center"><%= link_to 'New Coach', new_coach_path %></h3>
 
 <% @coaches.each do |coach| %>
-  <div style="float:left; margin: 10px">
+  <div style="float:left; margin: 10px;">
     <h2 style="font-size: 18px; margin-bottom: 5px"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
-    <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>
+    <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>       
   </div>
 <% end %>
-
