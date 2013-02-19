@@ -9,7 +9,8 @@
   <div style="float:left; margin-right: 20px;">
     <%= form_tag schedules_path, :method => 'get', :id => "schedules_search" do %>
       <%= select_tag "location", options_for_select(@schedules.pluck(:location).uniq.sort, params[:location]), :onchange => "this.form.submit();", :prompt => "Location" %>
-      <%= select_tag "level", options_from_collection_for_select(@levels, 'levelname', 'levelname', params[:level]), :onchange => "this.form.submit();", :prompt => "Level" %>
+      <%#= select_tag "level", options_from_collection_for_select(@levels, 'levelname', 'levelname', params[:level]), :onchange => "this.form.submit();", :prompt => "Level" %> <!-- This shows all the levels, not just the ones available -->
+      <%= select_tag "level", options_for_select(@schedules.pluck(:levelname).uniq.sort, params[:levelname]), :onchange => "this.form.submit();", :prompt => "Level" %>
       <%= select_tag "day", options_for_select(@schedules.pluck(:day).uniq, params[:day]), :onchange => "this.form.submit();", :prompt => "Day" %>
       <%= select_tag "time", options_for_select(@schedules.pluck(:time).uniq.sort, params[:time]), :onchange => "this.form.submit();", :prompt => "Time" %>
       <%= select_tag "teacher", options_for_select(@schedules.pluck(:teacher).uniq.sort, params[:teacher]), :onchange => "this.form.submit();", :prompt => "Teacher" %>
