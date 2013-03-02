@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129062451) do
+ActiveRecord::Schema.define(:version => 20130302011642) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -33,13 +33,19 @@ ActiveRecord::Schema.define(:version => 20130129062451) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "coach_locations", :force => true do |t|
+    t.integer  "coach_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "coaches", :force => true do |t|
     t.string   "image"
     t.string   "firstname"
     t.string   "lastname"
     t.string   "gender"
     t.date     "birthdate"
-    t.string   "location"
     t.date     "startdate"
     t.integer  "level_id"
     t.text     "experience"
@@ -50,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130129062451) do
     t.string   "disney_char"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "location_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -79,6 +86,12 @@ ActiveRecord::Schema.define(:version => 20130129062451) do
     t.datetime "updated_at",   :null => false
     t.integer  "order"
     t.integer  "classtype_id"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "questions", :force => true do |t|

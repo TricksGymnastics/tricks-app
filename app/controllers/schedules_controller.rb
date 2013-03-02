@@ -76,6 +76,22 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def by_gym
+    @levels = Level.all
+    @schedules_level_a_by_day = Schedule.where(level_id: Level.find_by_levelname("Level A (Beg)").id).group_by(&:day)
+    @schedules_level_1_by_day = Schedule.where(level_id: Level.find_by_levelname("Level 1").id).group_by(&:day)
+    @schedules_level_2_by_day = Schedule.where(level_id: Level.find_by_levelname("Level 2").id).group_by(&:day)
+    @schedules_level_3_by_day = Schedule.where(level_id: Level.find_by_levelname("Level 3").id).group_by(&:day)
+    @schedules_level_4_by_day = Schedule.where(level_id: Level.find_by_levelname("Level 4").id).group_by(&:day)
+    @schedules_level_5_by_day = Schedule.where(level_id: Level.find_by_levelname("Level 5").id).group_by(&:day)
+    @schedules_level_a_boys_by_day = Schedule.where(level_id: Level.find_by_levelname("Level A (Beg) - Boys").id).group_by(&:day)
+    @schedules_level_1_boys_by_day = Schedule.where(level_id: Level.find_by_levelname("Level 1 - Boys").id).group_by(&:day)
+    @schedules_level_2_boys_by_day = Schedule.where(level_id: Level.find_by_levelname("Level 2 - Boys").id).group_by(&:day)
+    @schedules_tumble_12_by_day = Schedule.where(level_id: Level.find_by_levelname("Tramp & Tumble 1-2 (Beg)").id).group_by(&:day)
+    @schedules_tumble_34_by_day = Schedule.where(level_id: Level.find_by_levelname("Tramp & Tumble 3-4").id).group_by(&:day)
+    @schedules_tumble_56_by_day = Schedule.where(level_id: Level.find_by_levelname("Tramp & Tumble 5-6").id).group_by(&:day)
+  end 
+
 
 private
 

@@ -4,8 +4,8 @@ class Level < ActiveRecord::Base
 	has_many :coaches, through: :coach_levels
 	belongs_to :classtype
 	validates_uniqueness_of :levelname
-	validates_presence_of :levelname, :length, :price, :age, :classtype_id
-
+	validates_presence_of :classtype_id, :levelname, :length, :price, :age
+	
 	default_scope :order => 'levels.order' # assuming the column name is order
 
 end

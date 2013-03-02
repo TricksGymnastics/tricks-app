@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "coaches", :media => "all" %>
+
 <%= form_for @coach, :html => {:multipart => true} do |f| %>
   <% if @coach.errors.any? %>
     <div id="error_explanation">
@@ -19,27 +21,38 @@
     <%= f.label :lastname, "Last Name:" %><br />
     <%= f.text_field :lastname %>
   </div>
-  <div class="field">
+  <div class="field" id="coach_field">
     <%= f.label :gender %><br />
     <%= f.radio_button :gender, "Girl", checked: true %>
     <%= label_tag(:gender , "Girl") %><br />
     <%= f.radio_button :gender, "Boy" %>
     <%= label_tag(:gender, "Boy") %><br />
   </div>
-  <div class="field">
+  <div class="field" id="coach_field">
     <%= f.label :image, "Picture of Coach:" %><br />
-    <%= f.file_field :image %>
+    <%= f.file_field :image %><br />
+    <p style="margin-top: 10px;">
+      <%= f.check_box :remove_image %>
+      Remove Picture
+    </p>
+
   </div>
-  <div class="field">
+  <div class="field" id="coach_field">
     <%= f.label :birthdate, "Birthday:" %><br />
     <%= date_select("coach", "birthdate", :default => Date.today, 
-    :order => [:month, :day, :year], :start_year => 1950, 
+    :order => [:month, :day, :year], :start_year => 1930, 
     :end_year => Date.today.year + 3) %>
   </div>
 
-  <div class="field">
-    <%= f.label :location, "Gym where Coach works:" %><br />
-    <%= f.text_field :location %>
+  <div class="field" id="coach_field">
+    <%= f.label :location_ids, "Gyms where Coach works:" %><br />
+    <%= hidden_field_tag "coach[location_ids][]", nil %>
+    <% Location.all.each do |location| %>
+      <div style="float:left; margin: 5px 30px 0px 0px;">
+      <%= check_box_tag "coach[location_ids][]", location.id, @coach.location_ids.include?(location.id), id: dom_id(location) %>
+      <%= label_tag dom_id(location), location.name %></div>
+    <% end %> 
+    <br />
   </div>
 
   <div class="field">

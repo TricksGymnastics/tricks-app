@@ -2,4 +2,27 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      coach:
+        firstname: "First Name"
+        lastname: "Last Name"
+        location_ids: "Location"
+        level_ids: ""
+      level:
+        levelname: "Level"
+        classtype_id: "Class Type"
+      schedule:
+        classtype_id: "Class Type"
+      user:
+        password_digest: "Password Confirmation"
+    errors:
+      models:
+        coach:
+          attributes:
+            firstname:
+              invalid: "cannot contain spaces."
+            lastname:
+              invalid: "cannot contain spaces."
+            level_ids:
+              blank: "You must select at least one Level"

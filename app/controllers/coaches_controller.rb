@@ -2,10 +2,11 @@ class CoachesController < ApplicationController
 
   load_and_authorize_resource
 
+  helper "errors"
+
   # GET /coaches
   # GET /coaches.json
   def index
-    @levels = Level.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @coaches }
@@ -15,6 +16,8 @@ class CoachesController < ApplicationController
   # GET /coaches/1
   # GET /coaches/1.json
   def show
+    @coach_levels = Coach.includes(:levels).find(params[:id]).levels.group_by(&:classtype_id)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @coach }
@@ -66,7 +69,6 @@ class CoachesController < ApplicationController
   # DELETE /coaches/1.json
   def destroy
     @coach.destroy
-
     respond_to do |format|
       format.html { redirect_to coaches_url }
       format.json { head :no_content }

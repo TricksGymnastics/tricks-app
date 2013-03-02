@@ -17,7 +17,8 @@ Comments::Application.routes.draw do
     end
   end
   
-  resources :schedules  
+  match 'schedules/by_gym'
+  resources :schedules
   resources :coaches
   resources :users
   resources :sessions
