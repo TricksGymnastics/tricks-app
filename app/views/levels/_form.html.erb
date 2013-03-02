@@ -2,23 +2,16 @@
   <% if @level.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@level.errors.count, "error") %> prohibited this level from being saved:</h2>
-
       <ul>
-
-
-      <% @level.errors.full_messages.each do |msg| %>
-        <%# msg => "Level" if msg = "name" else%>
-        <li><%= msg %></li>
+        <% @level.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
-      <%# end %>
-
-
       </ul>
     </div>
   <% end %>
 
   <div style="float:left; width: 120px; line-height: 34px;">
-    <%= f.label :classtype, "Schedule Type" %>:<br />
+    <%= f.label :classtype_id, "Class Type" %>:<br />
     <%= f.label :levelname, "Level" %>:<br />
     <%= f.label :length %>:<br />
     <%= f.label :price %>:<br />
@@ -26,8 +19,7 @@
     <%= f.label :order %>:<br />
   </div>
   <div class="field" style="float:left; width: 820px; line-height: 34px;">
-    <%= f.collection_select :classtype_id, Classtype.all, :id, :name, :prompt => "Select a Class Type" %>
-    <%#= f.select :class_type, ['Gymnastics', 'Tumblebunnies', 'Dance', 'Swim'], :prompt => "Select a Schedule Type" %><br />
+    <%= f.collection_select :classtype_id, Classtype.all, :id, :name, :prompt => "Select a Class Type" %><br />
     <%= f.text_field :levelname %><br />
     <%= f.number_field :length %><br />
     <%= f.number_field :price %><br />

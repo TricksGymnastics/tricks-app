@@ -10,3 +10,7 @@ Classtype.create(name: 'Gymnastics')
 Classtype.create(name: 'Tumblebunnies')
 Classtype.create(name: 'Dance')
 Classtype.create(name: 'Swim')
+
+Location.create(name: 'Granite Bay')
+Location.create(name: 'Folsom')
+Location.create(name: 'Sacramento')

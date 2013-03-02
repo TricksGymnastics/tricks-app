@@ -6,7 +6,7 @@
 
 <% @coaches.each do |coach| %>
   <div style="float:left; margin: 10px;">
-    <h2 style="font-size: 18px; margin-bottom: 5px"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
+    <h2 style="font-size: 14px; margin-bottom: 5px"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
     <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>       
   </div>
 <% end %>

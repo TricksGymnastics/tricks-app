@@ -27,7 +27,13 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    "/images/rails.png"
+    if model.gender == "Girl" then
+      "/images/girl_default.jpg"
+    else
+      "/images/boy_default.jpg"
+    end
+      # "/images/rails.png"
+    
   end
 
   # Process files as they are uploaded:
@@ -38,12 +44,13 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+
   version :thumb do
-    process :resize_to_limit => [250, 250]
+    process :resize_to_fill => [210, 290]
   end
 
-  version :small_thumb do 
-    process :resize_to_limit => [200, 200]
+  version :small_thumb, :from_version => :thumb do 
+    process :resize_to_limit => [150, 150]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

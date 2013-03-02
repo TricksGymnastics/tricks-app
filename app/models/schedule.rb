@@ -4,7 +4,7 @@ class Schedule < ActiveRecord::Base
 	belongs_to :coach
 	
 
-	validates_presence_of :classtype_id, :level_id, :day, :time, :teacher, :gender, :location
+	validates_presence_of :classtype_id, :location, :level_id, :day, :time, :teacher, :gender
 
 	def self.location_search(location_search)
   		if location_search

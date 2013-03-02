@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "coaches", :media => "all" %>
 
 <div style="text-align: center; float: left; width: 250px; margin: 10px 10px 20px 0px">
-  <div style="float:center; height: 250px">
+  <div style="float:center; height: 295px">
     <%= image_tag @coach.image_url(:thumb).to_s, :border => "4px solid;" %>
   </div>  
   <div style="margin-top: 10px">
@@ -37,20 +37,30 @@
     <% end %>
   <% end %>
 
-  <% if @coach.location == "" %>
-  <% else %>
-    <p><b>Works at:</b>
-    <%= @coach.location %></p>
-  <% end %>
+    <div style="font-size: 14px;">
+      <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%>
+    </div>
 
-  <div style="font-size: 14px">
-    <b>Levels <% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> teaches:</b>
-    <ul style="margin: 0px 0px 0px 50px">
-      <% @coach.levels.each do |level| %>
-        <li><%= level.levelname %></li>
-      <% end %>
-    </ul>
-  </div>
+
+
+
+  <% if can? :manage, Coach %>
+    <div style="width: 100%; float:left; margin-bottom: -10px;">
+      <p style="margin-bottom: 0px;"><b>Levels <% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> teaches:</b></p>
+      <div>
+        <% @coach_levels.each do |classtype, levels| %>
+          <div style="float:left; margin: 0px 35px 30px 10px;">
+            <h3 style="margin:3px 0px; text-decoration:underline; font-size: 14px;"><% if(classtype == 1) %>Gymnastics<% elsif(classtype == 2) %>Tumblebunnies<% elsif(classtype == 3) %>Dance<% elsif(classtype == 4) %>Swim<% end %></h3>
+            <ul style="margin: 0px 0px 0px 20px">
+              <% levels.each do |level| %>
+                <li><%= level.levelname %></li>
+              <% end %>
+            </ul>      
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>    
 
   <% if @coach.experience == "" %>
   <% else %>
