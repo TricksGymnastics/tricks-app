@@ -2,11 +2,14 @@
 
 <h1>Meet the Coaches</h1>
 
-<h3 style="text-align:center"><%= link_to 'New Coach', new_coach_path %></h3>
+<h3 style="text-align:center;"><%= link_to 'New Coach', new_coach_path %></h3>
 
 <% @coaches.each do |coach| %>
-  <div style="float:left; margin: 10px;">
-    <h2 style="font-size: 14px; margin-bottom: 5px"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
-    <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>       
+  <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
+    <h2 style="font-size: 13px; padding: 3px;"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
+    <div style="width: 115px; margin: 0 auto">
+      <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>       
+	</div>
   </div>
 <% end %>
+

@@ -7,6 +7,7 @@ class CoachesController < ApplicationController
   # GET /coaches
   # GET /coaches.json
   def index
+   # @gb_coaches = Coach.includes(:locations).first.locations.group_by(&:name)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @coaches }
