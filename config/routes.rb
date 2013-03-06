@@ -17,7 +17,26 @@ Comments::Application.routes.draw do
     end
   end
   
+  match 'schedules/gb_gym'
+  match 'schedules/gb_tb'
+  match 'schedules/gb_dance'
+
+  match 'schedules/fol_gym'
+  match 'schedules/fol_tb'
+  match 'schedules/fol_dance'
+  match 'schedules/fol_swim'
+
+  match 'schedules/sac_gym'
+  match 'schedules/sac_tb'
+  match 'schedules/sac_dance'
+
   match 'schedules/by_gym'
+
+
+  match 'coaches/gb'
+  match 'coaches/fol'
+  match 'coaches/sac'
+
   resources :schedules
   resources :coaches
   resources :users

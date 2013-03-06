@@ -6,6 +6,10 @@ class Schedule < ActiveRecord::Base
 
 	validates_presence_of :classtype_id, :location, :level_id, :day, :time, :teacher, :gender
 
+
+	DAYS = [['Monday', 0], ['Tuesday', 1], ['Wednesday', 2], ['Thursday', 3], ['Friday', 4], ['Saturday', 5]]
+	LOCATIONS = ['Granite Bay', 'Folsom', 'Sacramento']
+
 	def self.location_search(location_search)
   		if location_search
     		where('location ILIKE ?', "%#{location_search}%")

@@ -16,11 +16,13 @@
     <th></th>
   </tr>
 
+<% days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %>
+
 <% if can? :manage, Schedule %>
     <% @schedules.each do |schedule| %>
       <tr>
         <td style="width: 180px;"><%= schedule.level.levelname %></td>
-        <td><%= schedule.day %></td>
+        <td><%= days[schedule.day.to_i] %></td>
         <td><%= schedule.time %></td>
         <td style="width: 120px;"><%= schedule.teacher %></td>
         <td style="width: 80px;"><%= schedule.location %></td>
@@ -52,6 +54,8 @@
 
 
 <br />
+
 <div style="text-align:center">
-  <%= will_paginate @schedules%>
+    <!-- Add Pagination -->
+  <%#= will_paginate @schedules%>
 </div>
