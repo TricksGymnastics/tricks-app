@@ -1,13 +1,12 @@
 class CoachesController < ApplicationController
 
   load_and_authorize_resource
-
   helper "errors"
 
   # GET /coaches
   # GET /coaches.json
   def index
-   # @gb_coaches = Coach.includes(:locations).first.locations.group_by(&:name)
+    @coaches = Coach.joins(:locations).location_search(params[:location]).uniq.sort_by(&:firstname)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @coaches }

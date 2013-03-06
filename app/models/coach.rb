@@ -16,4 +16,13 @@ class Coach < ActiveRecord::Base
 
 	default_scope :order => 'coaches.id'
 
+
+	def self.location_search(location_search)
+  		if location_search
+    		where('name ILIKE ?', "%#{location_search}%")
+ 		else
+ 			scoped
+ 		end
+	end
+
 end
