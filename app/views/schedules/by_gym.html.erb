@@ -12,21 +12,21 @@
             <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %>/Month</h4>
 
             <% @schedules_by_day.each do |day, schedules| %>
-                <% if schedules == "Monday" %>
-                <% else %>
+                <%=  %>
+                <%# else %>
                 <div class="day">                    
                     <div class="day_name"><h3><%= days[day.to_i][0..2] %></h3></div>
                     <div class="classes_box">
                         <% schedules.each do |schedule| %>
                             <% if schedule.level.levelname == level.levelname %>
-                                <span style="margin-right: 30px;"><%= schedule.time %></span>
+                                <div style="float: left; width: 90px; margin-right: 10px;"><% if schedule.actual_time != nil %><%= schedule.actual_time.strftime("%l:%M %p") %><% end %></div>
                                 <%= schedule.teacher %>
                                 <br />
                             <% end %>
                         <% end %>
                     </div>
                 </div>
-                <% end %>
+                <%# end %>
             <% end %>
         </div>
     <% end %>

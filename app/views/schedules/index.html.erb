@@ -7,7 +7,7 @@
 
 
 
-<div style="width: 900 px; margin: 40px 50px">
+<div style="width: 900 px; margin: 40px 20px">
   <div style="float:left; margin-right: 20px;">
     <%= form_tag schedules_path, :method => 'get', :id => "schedules_search" do %>
       <%= select_tag "location", options_for_select(Schedule::LOCATIONS, params[:location]), :onchange => "this.form.submit();", :prompt => "Location" %>

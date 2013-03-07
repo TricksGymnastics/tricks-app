@@ -78,11 +78,12 @@ class SchedulesController < ApplicationController
   end
 
   def by_gym
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics"))
-    @schedules_by_day = Schedule.find(:all , :order => 'day').group_by(&:day)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    @schedules_by_day = Schedule.all(:order => 'day, actual_time').group_by(&:day)
+    #@schedules_by_day = Schedule.where(level_id: Level.find_by_levelname( "don't want to hard code here" ).id).group_by(&:day)
 
 
-    @schedules_level_a_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level A (Beg)").id).group_by(&:day)
+    @schedules_level_3_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level 3").id).group_by(&:day)
   end 
 
   def gb_gym
