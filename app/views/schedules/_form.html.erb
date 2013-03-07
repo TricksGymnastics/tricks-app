@@ -33,6 +33,7 @@
         <%= f.label :location %>:<br />
         <%= f.label :day %>:<br />
         <%= f.label :time %>:<br />
+        <%= f.label :actual_time %>:<br />
         <%= f.label :teacher %>:<br />
         <%= f.label :gender %>:<br />
       </div>
@@ -41,6 +42,7 @@
         <%= f.select :location, ['Folsom', 'Granite Bay', 'Sacramento'], :prompt => "Select a Location" %><br />
         <%= f.select :day, [['Monday', 0], ['Tuesday', 1], ['Wednesday', 2], ['Thursday', 3], ['Friday', 4], ['Saturday', 5]], :prompt => "Select a Day" %><br />
         <%= f.text_field :time, :placeholder => 'Include AM or PM', :style=>'width: 120px;' %><br />
+        <%= f.time_select :actual_time, {:minute_step => 5, :ampm => true, :include_blank => false} %><br />
         <%= f.text_field :teacher, :placeholder => 'Include Mr. Ms. or Mrs.', :style=>'width: 140px;'  %><br />
         <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender" %><br />
       </div>

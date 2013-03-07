@@ -21,11 +21,11 @@
 <% if can? :manage, Schedule %>
     <% @schedules.each do |schedule| %>
       <tr>
-        <td style="width: 180px;"><%= schedule.level.levelname %></td>
+        <td><%= schedule.level.levelname %></td>
         <td><%= days[schedule.day.to_i] %></td>
-        <td><%= schedule.time %></td>
-        <td style="width: 120px;"><%= schedule.teacher %></td>
-        <td style="width: 80px;"><%= schedule.location %></td>
+        <td><% if schedule.actual_time != nil %><%= schedule.actual_time.strftime("%l:%M %p") %><% end %></td>
+        <td><%= schedule.teacher %></td>
+        <td><%= schedule.location %></td>
         <td><%= schedule.level.price %>$</td>
         <td><%= schedule.level.length %> min</td>
         <td><%= schedule.level.age %></td>
@@ -38,11 +38,11 @@
     <% @schedules.each do |schedule| %>
     
       <tr>
-        <td style="width: 180px;"><%= schedule.level.levelname %></td>
-        <td><%= schedule.day %></td>
+        <td><%= schedule.level.levelname %></td>
+        <td><%= days[schedule.day.to_i] %></td>
         <td><%= schedule.time %></td>
-        <td style="width: 120px;"><%= schedule.teacher %></td>
-        <td style="width: 80px;"><%= schedule.location %></td>
+        <td><%= schedule.teacher %></td>
+        <td><%= schedule.location %></td>
         <td><%= schedule.level.price %>$</td>
         <td><%= schedule.level.length %> min</td>
         <td><%= schedule.level.age %></td>
