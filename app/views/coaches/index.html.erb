@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "coaches", :media => "all" %>
 
-<h1>Meet the Coaches</h1>
+<h1>Our Tricks Family</h1>
 
 <h3 style="text-align:center;"><%= link_to 'New Coach', new_coach_path %></h3>
 <br />
@@ -18,7 +18,7 @@
 
 
 <div>
-  <div style="width: 948px; border: 2px #444 solid; background-color: #ccc; overflow: auto;"><h1>Granite Bay</h1></div>
+  <div style="width: 948px; border: 2px #444 solid; background-color: #ccc; overflow: auto; float: left;"><h1>Granite Bay</h1></div>
   <div>
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
@@ -37,7 +37,7 @@
 
 
 <div>
-  <div style="width: 948px; border: 2px #444 solid; background-color: #ccc; overflow: auto;"><h1>Folsom</h1></div>
+  <div style="width: 948px; border: 2px #444 solid; background-color: #ccc; overflow: auto; float: left;"><h1>Folsom</h1></div>
   <div>
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
@@ -55,7 +55,7 @@
 </div>
 
 <div>
-  <div style="width: 948px; border: 2px #444 solid; background-color: #ccc; overflow: auto;"><h1>Sacramento</h1></div>
+  <div style="width: 948px; border: 2px #444 solid; background-color: #ccc; overflow: auto; float: left;"><h1>Sacramento</h1></div>
   <div>
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
