@@ -1,32 +1,73 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script src="/assets/jquery.isotope.min.js"></script>
+
 <%= stylesheet_link_tag "schedules_by_gym", :media => "all" %>
 
 <% days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %>
 
+<script>
+    $(function(){
+        var $container = $('#masonry_container');
 
-<div style="border: blue solid 3px; width: 945px; min-height: 400px; overflow: auto">
+        $container.isotope({
+            itemSelector: '#levelname',
+            layoutMode: 'fitColumns',
+            fitColumns : {
+                rowHeight : 1
+            }
+        });
 
-           
+        $container.isotope('reLayout');
+    });
+
+    
+
+
+</script>
+
+<!-- 
+<div id="header">
+    <h2> School Age Gymnastics Schedule</h2>
+</div>
+<div id="info">
+        This is where info about schedules will go :D
+    </div>
+
+<div id="girls_container">
+    <div id="girls_header">
+        <h1> GIRLS </h1>
+    </div>
+    
+</div> -->
+
+
+
+
+<div id="masonry_container">
+    
     <% @levels_by_type.each do |level| %>
+        <% next if @schedules_by_level[level.id].nil? %>
         <div id="levelname"> 
             <h3 class="leveltitle"><%= level.levelname %></h3>
             <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %>/Month</h4>
-
-            <% @schedules_by_day.each do |day, schedules| %>
-                <%=  %>
-                <%# else %>
+                
+            <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
+            <% schedules.each do |day, schedules| %>
                 <div class="day">                    
                     <div class="day_name"><h3><%= days[day.to_i][0..2] %></h3></div>
                     <div class="classes_box">
                         <% schedules.each do |schedule| %>
-                            <% if schedule.level.levelname == level.levelname %>
-                                <div style="float: left; width: 90px; margin-right: 10px;"><% if schedule.actual_time != nil %><%= schedule.actual_time.strftime("%l:%M %p") %><% end %></div>
-                                <%= schedule.teacher %>
-                                <br />
-                            <% end %>
+                            <div style="float: left; width: 80px; margin-right: 10px;">
+                                <%= schedule.time %>
+                                <%# if schedule.actual_time != nil %>
+                                    <%#= schedule.actual_time.strftime("%l:%M %p") %>
+                                <%# end %>
+                            </div>
+                            <%= schedule.teacher %>
+                            <br />
                         <% end %>
                     </div>
                 </div>
-                <%# end %>
             <% end %>
         </div>
     <% end %>

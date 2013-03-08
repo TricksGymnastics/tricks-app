@@ -19,7 +19,7 @@
       <%= select_tag "time", options_for_select(@schedules.pluck(:time).uniq.sort, params[:time]), :onchange => "this.form.submit();", :prompt => "Time" %>
       <%= select_tag "teacher", options_for_select(@schedules.pluck(:teacher).uniq.sort, params[:teacher]), :onchange => "this.form.submit();", :prompt => "Teacher" %>
       <%= select_tag "age", options_for_select(@schedules.pluck(:age).uniq.sort, params[:age]), :onchange => "this.form.submit();", :prompt => "Age" %>
-      <%= select_tag "gender", options_for_select(@schedules.pluck(:gender).uniq, params[:gender]), :onchange => "this.form.submit();", :prompt => "Gender" %>
+      <%#= select_tag "gender", options_for_select(@schedules.pluck(:gender).uniq, params[:gender]), :onchange => "this.form.submit();", :prompt => "Gender" %>
     <% end %>
   </div>
   <div style="float:right">
