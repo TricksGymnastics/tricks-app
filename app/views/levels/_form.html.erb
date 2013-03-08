@@ -16,6 +16,7 @@
     <%= f.label :length %>:<br />
     <%= f.label :price %>:<br />
     <%= f.label :age %>:<br />
+    <%= f.label :gender %>:<br />
     <%= f.label :order %>:<br />
   </div>
   <div class="field" style="float:left; width: 820px; line-height: 34px;">
@@ -24,7 +25,8 @@
     <%= f.number_field :length %><br />
     <%= f.number_field :price %><br />
     <%= f.text_field :age %><br />
-    <%= f.number_field :order %><br />
+    <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender" %><br />
+    <%= f.number_field :sort_order %><br />
   </div>
   <br />
   <br />

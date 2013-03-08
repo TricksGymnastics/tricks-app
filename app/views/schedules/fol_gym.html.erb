@@ -4,6 +4,9 @@
     <h2> School Age Gymnastics Schedule</h2>
 </div>
 
+<% days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %>
+
+
 <div id="girls_container">
     <div id="girls_header">
         <h1> GIRLS </h1>
@@ -18,7 +21,7 @@
             <% end %>
             <% @schedules_level_a_by_day.each do |day, schedules| %>
                 <div class="day">
-                    <div class="day_name"><h3><%= day[0..2] %></h3></div>
+                    <div class="day_name"><h3><%= days[day.to_i][0..2] %></h3></div>
                     <div class="classes_box">
                         <% schedules.each do |schedule| %>
                             <span style="margin-right: 30px;"><%= schedule.time %></span>
