@@ -4,11 +4,12 @@ class Schedule < ActiveRecord::Base
 	belongs_to :coach
 	
 
-	validates_presence_of :classtype_id, :location, :level_id, :day, :time, :teacher, :gender
+	validates_presence_of :classtype_id, :location, :level_id, :day, :time, :teacher
 
 
 	DAYS = [['Monday', 0], ['Tuesday', 1], ['Wednesday', 2], ['Thursday', 3], ['Friday', 4], ['Saturday', 5]]
 	LOCATIONS = ['Granite Bay', 'Folsom', 'Sacramento']
+	HUMAN_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 	def self.location_search(location_search)
   		if location_search
@@ -37,9 +38,9 @@ class Schedule < ActiveRecord::Base
 
 	def self.time_search(time_search)
   		if time_search
-    		where('time ILIKE ?', "%#{time_search}%")
+    		# where('time >= to_timestamp(?)', "%#{time_search}%")
  		else
- 			scoped
+ 			# scoped
  		end
 	end
 

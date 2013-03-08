@@ -1,0 +1,52 @@
+<style>
+	td{border: 0; padding: 10px 70px; font-size: 22px;}
+	th{font-size: 30px;padding-bottom: 15px;}
+
+</style>
+
+<h1>Schedules</h1>
+
+<% if can? :manage, Schedule %>
+    <h3 style="font-size: 18px; text-align:center;"><%= link_to 'New schedule', new_schedule_path %></h3>
+	<br />
+	<br />
+<% end %>
+
+
+<table style="margin: 50px auto; border: 3px dotted #555; padding: 20px;">
+  <tr>
+    <th>Granite Bay</th>
+    <th>Folsom</th>
+    <th>Sacramento</th>
+  </tr>
+
+  <tr>
+    <td><%= link_to "Gymnastics", schedules_gb_gym_path %></td>
+    <td><%= link_to "Gymnastics", schedules_fol_gym_path %></td>
+    <td><%= link_to "Gymnastics", schedules_sac_gym_path %></td>
+  </tr>
+
+  <tr>
+    <td><%= link_to "Tumblebunnies", schedules_gb_tb_path %></td>
+    <td><%= link_to "Tumblebunnies", schedules_fol_tb_path %></td>
+    <td><%= link_to "Tumblebunnies", schedules_sac_tb_path %></td>
+  </tr>
+
+  <tr>
+    <td><%= link_to "Dance", schedules_gb_dance_path %></td>
+    <td><%= link_to "Dance", schedules_fol_dance_path %></td>
+    <td><%= link_to "Dance", schedules_sac_dance_path %></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td><%= link_to "Swim", schedules_fol_swim_path %></td>
+    <td></td>
+  </tr>
+
+</table>
+<h3><%= link_to "View All Schedules", schedules_path %></h3>
+
+	<br />
+
+<h3><%= link_to "Layout Tester", schedules_by_gym_path %></h3>

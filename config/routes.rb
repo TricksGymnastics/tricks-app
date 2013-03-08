@@ -16,6 +16,8 @@ Comments::Application.routes.draw do
       get '/random_quote'
     end
   end
+
+  match 'schedules/choose'
   
   match 'schedules/gb_gym'
   match 'schedules/gb_tb'

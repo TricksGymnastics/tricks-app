@@ -5,7 +5,7 @@
   <h3 style="font-size: 18px; text-align:center;"><%= link_to 'New schedule', new_schedule_path %></h3>
 <% end %>
 
-
+<h4 style="margin-top: 10px;"><%= link_to "Go Back to Choose Location", schedules_choose_path %></h4>
 
 <div style="width: 900 px; margin: 40px 20px">
   <div style="float:left; margin-right: 20px;">
@@ -16,10 +16,10 @@
       <%#= select_tag "levels", grouped_options_for_select(@schedules.pluck(:levelname), params[:level]), :onchange => "this.form.submit();", :prompt => "Levels" %> 
       <%= select_tag "level", options_for_select(@schedules.pluck(:levelname).uniq.sort, params[:level]), :onchange => "this.form.submit();", :prompt => "Level" %>
       <%= select_tag "day", options_for_select(Schedule::DAYS, params[:day]), :onchange => "this.form.submit();", :prompt => "Day" %>
-      <%= select_tag "time", options_for_select(@schedules.pluck(:time).uniq.sort, params[:time]), :onchange => "this.form.submit();", :prompt => "Time" %>
+      <%#= select_tag "time", options_for_select(@schedules.pluck(:time).uniq.sort, params[:time]), :onchange => "this.form.submit();", :prompt => "Time" %>
       <%= select_tag "teacher", options_for_select(@schedules.pluck(:teacher).uniq.sort, params[:teacher]), :onchange => "this.form.submit();", :prompt => "Teacher" %>
       <%= select_tag "age", options_for_select(@schedules.pluck(:age).uniq.sort, params[:age]), :onchange => "this.form.submit();", :prompt => "Age" %>
-      <%#= select_tag "gender", options_for_select(@schedules.pluck(:gender).uniq, params[:gender]), :onchange => "this.form.submit();", :prompt => "Gender" %>
+      <%= select_tag "gender", options_for_select(@schedules.pluck(:gender).uniq, params[:gender]), :onchange => "this.form.submit();", :prompt => "Gender" %>
     <% end %>
   </div>
   <div style="float:right">
