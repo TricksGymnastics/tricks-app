@@ -65,9 +65,10 @@
                                 <div class="classes_box">
                                     <% schedules.each do |schedule| %>
                                         <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <% if schedule.time != nil %>
-                                                <%= schedule.time.strftime("%l:%M %p") %>
-                                            <% end %>
+                                            <% schedule.time %>
+                                            <%# if schedule.time != nil %>
+                                                <%#= schedule.time.strftime("%l:%M %p") %>
+                                            <%# end %>
                                         </div>
                                         <%= schedule.teacher %>
                                         <br />
@@ -100,9 +101,10 @@
                                 <div class="classes_box">
                                     <% schedules.each do |schedule| %>
                                         <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <% if schedule.time != nil %>
-                                                <%= schedule.time.strftime("%l:%M %p") %>
-                                            <% end %>
+                                            <% schedule.time %>
+                                            <%# if schedule.time != nil %>
+                                                <%#= schedule.time.strftime("%l:%M %p") %>
+                                            <%# end %>
                                         </div>
                                         <%= schedule.teacher %>
                                         <br />
@@ -135,9 +137,10 @@
                                 <div class="classes_box">
                                     <% schedules.each do |schedule| %>
                                         <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <% if schedule.time != nil %>
-                                                <%= schedule.time.strftime("%l:%M %p") %>
-                                            <% end %>
+                                            <% schedule.time %>
+                                            <%# if schedule.time != nil %>
+                                                <%#= schedule.time.strftime("%l:%M %p") %>
+                                            <%# end %>
                                         </div>
                                         <%= schedule.teacher %>
                                         <br />
