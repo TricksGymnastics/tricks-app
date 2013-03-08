@@ -23,8 +23,7 @@
       <tr>
         <td><%= schedule.level.levelname %></td>
         <td><%= days[schedule.day.to_i] %></td>
-        <!-- <td><%# if schedule.time != nil %><%#= schedule.time.strftime("%l:%M %p") %><%# end %></td> -->
-        <td><% if schedule.time != nil %><%= schedule.time %><% end %></td>
+        <td><%= schedule.time.strftime("%l:%M %p") %></td>
         <td><%= schedule.teacher %></td>
         <td><%= schedule.location %></td>
         <td><%= schedule.level.price %>$</td>

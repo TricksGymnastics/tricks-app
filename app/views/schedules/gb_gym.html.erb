@@ -38,10 +38,9 @@
         </div>
         <div id="info">
             <h3>Important Information</h3>
-            <p>We offer a Free Trial Class to all new students.</p>
-            <p>No Membership Fee is required.</p>
-            <p style="font-size: 11px;">*Schedules are subject to change*</p>
-            <p style="font-size: 11px;">*Prices quoted for 1 class per week*</p>
+            <p style="font-size: 15px;">No Membership Fee is required.</p>
+            <p style="font-size: 12px;">*Schedules are subject to change*</p>
+            <p style="font-size: 12px;">*Prices quoted for 1 class per week*</p>
             <p><b>Call to schedule your FIRST CLASS today!</b></p>
         </div>
     </div>
@@ -56,7 +55,7 @@
                 <% if  level.gender == "Boys" %>
                     <div id="boys_levels"> 
                         <h3 class="leveltitle"><%= level.levelname %></h3>
-                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %>/Month</h4>
+                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>
                             
                         <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
                         <% schedules.each do |day, schedules| %>
@@ -65,10 +64,7 @@
                                 <div class="classes_box">
                                     <% schedules.each do |schedule| %>
                                         <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <% schedule.time %>
-                                            <%# if schedule.time != nil %>
-                                                <%#= schedule.time.strftime("%l:%M %p") %>
-                                            <%# end %>
+                                            <%= schedule.time.strftime("%l:%M %p") %>
                                         </div>
                                         <%= schedule.teacher %>
                                         <br />
@@ -92,7 +88,7 @@
                 <% if  level.gender == "Girls" %>
                     <div id="girls_levels"> 
                         <h3 class="leveltitle"><%= level.levelname %></h3>
-                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %>/Month</h4>
+                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>
                             
                         <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
                         <% schedules.each do |day, schedules| %>
@@ -101,10 +97,7 @@
                                 <div class="classes_box">
                                     <% schedules.each do |schedule| %>
                                         <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <% schedule.time %>
-                                            <%# if schedule.time != nil %>
-                                                <%#= schedule.time.strftime("%l:%M %p") %>
-                                            <%# end %>
+                                            <%= schedule.time.strftime("%l:%M %p") %>
                                         </div>
                                         <%= schedule.teacher %>
                                         <br />
@@ -128,7 +121,7 @@
                 <% if  level.gender == "Both" %>
                     <div id="tumble_levels"> 
                         <h3 class="leveltitle"><%= level.levelname %></h3>
-                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %>/Month</h4>
+                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>
                             
                         <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
                         <% schedules.each do |day, schedules| %>
@@ -137,10 +130,7 @@
                                 <div class="classes_box">
                                     <% schedules.each do |schedule| %>
                                         <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <% schedule.time %>
-                                            <%# if schedule.time != nil %>
-                                                <%#= schedule.time.strftime("%l:%M %p") %>
-                                            <%# end %>
+                                            <%= schedule.time.strftime("%l:%M %p") %>
                                         </div>
                                         <%= schedule.teacher %>
                                         <br />
