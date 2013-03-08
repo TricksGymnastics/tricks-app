@@ -5,6 +5,5 @@ class RemoveClasstypeFromSchedules < ActiveRecord::Migration
 
   def down
     add_column :schedules, :class_type, :string
-
   end
 end

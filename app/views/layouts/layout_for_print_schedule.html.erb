@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tricks App</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "print_friendly", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="headergreen"></div>
+	<div id="bodygreen">
+		<div id="container">
+			
+
+			<%= yield %>
+
+		</div>
+	</div>
+	<div id="footergreen"></div>
+</body>
+</html>

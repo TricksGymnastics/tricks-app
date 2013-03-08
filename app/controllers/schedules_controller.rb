@@ -5,9 +5,12 @@ class SchedulesController < ApplicationController
 
   # GET /schedules
   # GET /schedules.json
-  def index
-    @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).time_search(params[:time]).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order(sort_column + " " + sort_direction)
+   def index
+    @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order(sort_column + " " + sort_direction)
+    #add this after day_search to re-enable searching by time ".time_search(params[:time])"
+
     #add this to the end of the above line to enable pagination ".paginate(:per_page => 15, :page => params[:page])"
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @schedules }
@@ -72,64 +75,47 @@ class SchedulesController < ApplicationController
     @schedule.destroy
 
     respond_to do |format|
-      format.html { redirect_to schedules_url }
+      format.html { redirect_to schedules_path }
       format.json { head :no_content }
     end
   end
 
+  
+
   def by_gym
-    @schedules_by_level = Schedule.all(:order => 'day, actual_time').group_by(&:level_id)
+    @schedules_by_level = Schedule.all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
-    # @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id).group_by(&:gender)
+    render :layout => "layout_for_print_schedule"
   end 
+
+
 
   def gb_gym
-    @levels = Level.all
-    @schedules_level_a_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level A (Beg)").id).group_by(&:day)
-    @schedules_level_1_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level 1").id).group_by(&:day)
-    @schedules_level_2_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level 2").id).group_by(&:day)
-    @schedules_level_3_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level 3").id).group_by(&:day)
-    @schedules_level_4_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level 4").id).group_by(&:day)
-    @schedules_level_5_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level 5").id).group_by(&:day)
-    @schedules_level_a_boys_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level A (Beg) - Boys").id).group_by(&:day)
-    @schedules_level_1_boys_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level 1 - Boys").id).group_by(&:day)
-    @schedules_level_2_boys_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Level 2 - Boys").id).group_by(&:day)
-    @schedules_tumble_12_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Tramp & Tumble 1-2 (Beg)").id).group_by(&:day)
-    @schedules_tumble_34_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Tramp & Tumble 3-4").id).group_by(&:day)
-    @schedules_tumble_56_by_day = Schedule.where(:location => "Granite Bay").where(level_id: Level.find_by_levelname("Tramp & Tumble 5-6").id).group_by(&:day)
-  end 
+    @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    render :layout => "layout_for_print_schedule"
+  end  
 
   def fol_gym
-    @levels = Level.all
-    @schedules_level_a_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level A (Beg)").id).group_by(&:day)
-    @schedules_level_1_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level 1").id).group_by(&:day)
-    @schedules_level_2_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level 2").id).group_by(&:day)
-    @schedules_level_3_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level 3").id).group_by(&:day)
-    @schedules_level_4_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level 4").id).group_by(&:day)
-    @schedules_level_5_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level 5").id).group_by(&:day)
-    @schedules_level_a_boys_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level A (Beg) - Boys").id).group_by(&:day)
-    @schedules_level_1_boys_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level 1 - Boys").id).group_by(&:day)
-    @schedules_level_2_boys_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Level 2 - Boys").id).group_by(&:day)
-    @schedules_tumble_12_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Tramp & Tumble 1-2 (Beg)").id).group_by(&:day)
-    @schedules_tumble_34_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Tramp & Tumble 3-4").id).group_by(&:day)
-    @schedules_tumble_56_by_day = Schedule.where(:location => "Folsom").where(level_id: Level.find_by_levelname("Tramp & Tumble 5-6").id).group_by(&:day)
-  end 
+    @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    render :layout => "layout_for_print_schedule"
+  end  
+
+  def fol_swim
+    @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Swim").id)
+    render :layout => "layout_for_print_schedule"
+  end  
 
   def sac_gym
-    @levels = Level.all
-    @schedules_level_a_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level A (Beg)").id).group_by(&:day)
-    @schedules_level_1_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level 1").id).group_by(&:day)
-    @schedules_level_2_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level 2").id).group_by(&:day)
-    @schedules_level_3_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level 3").id).group_by(&:day)
-    @schedules_level_4_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level 4").id).group_by(&:day)
-    @schedules_level_5_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level 5").id).group_by(&:day)
-    @schedules_level_a_boys_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level A (Beg) - Boys").id).group_by(&:day)
-    @schedules_level_1_boys_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level 1 - Boys").id).group_by(&:day)
-    @schedules_level_2_boys_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Level 2 - Boys").id).group_by(&:day)
-    @schedules_tumble_12_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Tramp & Tumble 1-2 (Beg)").id).group_by(&:day)
-    @schedules_tumble_34_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Tramp & Tumble 3-4").id).group_by(&:day)
-    @schedules_tumble_56_by_day = Schedule.where(:location => "Sacramento").where(level_id: Level.find_by_levelname("Tramp & Tumble 5-6").id).group_by(&:day)
+    @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    render :layout => "layout_for_print_schedule"
   end 
+ 
+
+
 
 private
 

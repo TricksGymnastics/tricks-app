@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308061343) do
+ActiveRecord::Schema.define(:version => 20130308150149) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -105,15 +105,13 @@ ActiveRecord::Schema.define(:version => 20130308061343) do
   create_table "schedules", :force => true do |t|
     t.string   "level"
     t.string   "day"
-    t.string   "time"
     t.string   "teacher"
-    t.string   "gender"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "location"
     t.integer  "level_id"
     t.integer  "classtype_id"
-    t.time     "actual_time"
+    t.time     "time"
   end
 
   create_table "surveys", :force => true do |t|
