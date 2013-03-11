@@ -1,12 +1,18 @@
 class SchedulesController < ApplicationController
   
-  load_and_authorize_resource
-  helper_method :sort_column, :sort_direction 
+  load_and_authorize_resource :except => [:choose, :fol_gym, :fol_tb, :fol_dance, :fol_swim, :gb_gym, :gb_tb, :gb_dance, :sac_gym, :sac_tb, :sac_dance]
+  helper_method :sort_column, :sort_direction
 
   # GET /schedules
   # GET /schedules.json
    def index
     @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order(sort_column + " " + sort_direction)
+   
+    #@schedules_time = Schedule.all.each.time.strftime("%l:%M %p") do |schedule|
+      #schedule
+    #end
+
+
     #add this after day_search to re-enable searching by time ".time_search(params[:time])"
 
     #add this to the end of the above line to enable pagination ".paginate(:per_page => 15, :page => params[:page])"
@@ -80,7 +86,6 @@ class SchedulesController < ApplicationController
     end
   end
 
-  
 
   def by_gym
     @schedules_by_level = Schedule.all(:order => 'day, time').group_by(&:level_id)
@@ -99,6 +104,18 @@ class SchedulesController < ApplicationController
   def fol_gym
     @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    render :layout => "layout_for_print_schedule"
+  end  
+
+  def fol_tb
+    @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Tumblebunnies").id)
+    render :layout => "layout_for_print_schedule"
+  end  
+
+  def fol_dance
+    @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Dance").id)
     render :layout => "layout_for_print_schedule"
   end  
 

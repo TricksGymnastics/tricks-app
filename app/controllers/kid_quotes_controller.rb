@@ -77,19 +77,7 @@ class KidQuotesController < ApplicationController
 
    def random_quote
     @kid_quote = KidQuote.find(:all).sample(n=3)
-    @kid_quote.to_json(only: [:quote, :name])
-
-    
-
-    respond_to do |format|
-      format.html {if current_user.nil?
-          render :layout => "random_quote"
-        else
-         render :layout => "application"
-        end}
-        
-      format.json { render json: @kid_quote, only: [:quote, :name]}
-    end
+    render :layout => "random_quote"
   end
 
 private

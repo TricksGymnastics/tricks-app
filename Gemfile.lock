@@ -47,7 +47,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    columnize (0.3.6)
     daemons (1.1.9)
+    debugger (1.4.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.2.0)
+    debugger-linecache (1.1.2)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.2.0)
     erubis (2.7.0)
     eventmachine (1.0.0-x86-mingw32)
     excon (0.13.4)
@@ -85,6 +93,8 @@ GEM
     nokogiri (1.5.6-x86-mingw32)
     pg (0.13.1-x86-mingw32)
     polyglot (0.3.3)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.4.3)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -148,10 +158,12 @@ DEPENDENCIES
   cancan
   carrierwave
   coffee-rails (~> 3.2.1)
+  debugger
   fog
-  jquery-rails (~> 2.2.1)
+  jquery-rails
   mini_magick (~> 3.4)
   pg
+  quiet_assets
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   thin

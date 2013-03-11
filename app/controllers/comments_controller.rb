@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  #before_filter :authorize
   load_and_authorize_resource :except => :random_comment
   helper_method :sort_column, :sort_direction 
   
@@ -82,19 +81,7 @@ class CommentsController < ApplicationController
 
   def random_comment
     @comment = Comment.where(score: 7..10).sample(n=6)
-    @comment.to_json(only: [:comment, :name])
-
-    
-
-    respond_to do |format|
-      format.html {if current_user.nil?
-          render :layout => "random_comment"
-        else
-         render :layout => "application"
-        end}
-        
-      format.json { render json: @comment, only: [:comment, :name]}
-    end
+    render :layout => "random_comment"
   end
 
   private
