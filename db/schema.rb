@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308150149) do
+ActiveRecord::Schema.define(:version => 20130310032342) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20130308150149) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "coach_classtypes", :force => true do |t|
+    t.integer  "classtype_id"
+    t.integer  "coach_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "coach_levels", :force => true do |t|
@@ -54,9 +61,10 @@ ActiveRecord::Schema.define(:version => 20130308150149) do
     t.string   "fav_food"
     t.text     "advice"
     t.string   "disney_char"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "location_id"
+    t.integer  "classtype_id"
   end
 
   create_table "comments", :force => true do |t|

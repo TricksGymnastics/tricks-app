@@ -5,7 +5,7 @@
   <tr>
     <th>Level</th>
     <th><%= sortable "day" %></th>
-    <th><%= sortable "actual_time", "Time" %></th>
+    <th><%= sortable "time" %></th>
     <th><%= sortable "teacher" %></th>
     <th><%= sortable "location" %></th>
     <th>Price</th>
@@ -16,13 +16,11 @@
     <th></th>
   </tr>
 
-<% days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %>
-
 <% if can? :manage, Schedule %>
     <% @schedules.each do |schedule| %>
       <tr>
         <td><%= schedule.level.levelname %></td>
-        <td><%= days[schedule.day.to_i] %></td>
+        <td><%= Schedule::HUMAN_DAYS[schedule.day.to_i] %></td>
         <td><%= schedule.time.strftime("%l:%M %p") %></td>
         <td><%= schedule.teacher %></td>
         <td><%= schedule.location %></td>
@@ -39,14 +37,14 @@
     
       <tr>
         <td><%= schedule.level.levelname %></td>
-        <td><%= days[schedule.day.to_i] %></td>
-        <td><%= schedule.time %></td>
+        <td><%= Schedule::HUMAN_DAYS[schedule.day.to_i] %></td>
+        <td><%= schedule.time.strftime("%l:%M %p") %></td>
         <td><%= schedule.teacher %></td>
         <td><%= schedule.location %></td>
         <td><%= schedule.level.price %>$</td>
         <td><%= schedule.level.length %> min</td>
         <td><%= schedule.level.age %></td>
-        <td><%= schedule.gender %></td>
+        <td><%= schedule.level.gender %></td>
       </tr>
     <% end %>
 <% end %>

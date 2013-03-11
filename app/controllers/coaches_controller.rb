@@ -1,6 +1,6 @@
 class CoachesController < ApplicationController
 
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:type]
   helper "errors"
 
   # GET /coaches
@@ -75,7 +75,11 @@ class CoachesController < ApplicationController
     end
   end
 
-  
+  def type
+    #@coaches = Coach.all.group_by(&:classtype_ids)
+    @coaches = Classtype.includes(:coaches).find_by_name(params[:name]).coaches
+    #@coaches = Coach.joins(:classtype).all
+  end
 
 
 end

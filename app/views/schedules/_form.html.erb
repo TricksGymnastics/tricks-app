@@ -18,7 +18,7 @@
       <div style="float:left; width: 90px;">
         <%= f.label :classtype_id, "Class Type:" %>
       </div>
-      <%= f.collection_select :classtype_id, Classtype.all, :id, :name, :prompt => "Select a Class Type" %>
+      <%= f.collection_select :classtype_id, Classtype.where(:id => 1..4), :id, :name, :prompt => "Select a Class Type" %>
     </div> 
    
     <div class="field" style="float:left; width: auto; line-height: 34px; margin-bottom: 0; border: 2px dotted grey; padding: 0 8px">

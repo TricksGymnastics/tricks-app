@@ -38,7 +38,7 @@
   <% end %>
 
     <div style="font-size: 14px;">
-      <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%>
+      <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%>, teaching <%= @coach.classtypes.map(&:name).join(' and ') %>
     </div>
 
 

@@ -39,6 +39,12 @@ Comments::Application.routes.draw do
   match 'coaches/fol'
   match 'coaches/sac'
 
+  match 'coaches/type/:name' => "coaches#type"
+
+  # match 'coaches/gym'
+  # match 'coaches/dance'
+  # match 'coaches/swim'
+
   resources :schedules
   resources :coaches
   resources :users
