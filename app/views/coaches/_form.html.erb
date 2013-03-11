@@ -63,7 +63,7 @@
   </div>
 
   <div class="field" id="coach_field">
-    <%= f.label :classtype_ids, "Fields Employess work in:" %><br />
+    <%= f.label :classtype_ids, "Fields Employee works in:" %><br />
     <%= hidden_field_tag "coach[classtype_ids][]", nil %>
     <% Classtype.all.each do |classtype| %>
       <div style="float:left; margin: 5px 30px 0px 0px;">
