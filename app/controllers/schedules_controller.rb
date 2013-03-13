@@ -87,6 +87,8 @@ class SchedulesController < ApplicationController
   end
 
 
+
+
   def by_gym
     @schedules_by_level = Schedule.all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
@@ -95,11 +97,27 @@ class SchedulesController < ApplicationController
 
 
 
+
+
   def gb_gym
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
     render :layout => "layout_for_print_schedule"
   end  
+
+  def gb_tb
+    @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Tumblebunnies").id)
+    render :layout => "layout_for_print_schedule"
+  end 
+
+  def gb_dance
+    @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Dance").id)
+    render :layout => "layout_for_print_schedule"
+  end 
+
+
 
   def fol_gym
     @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
@@ -125,9 +143,24 @@ class SchedulesController < ApplicationController
     render :layout => "layout_for_print_schedule"
   end  
 
+
+
+
   def sac_gym
     @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    render :layout => "layout_for_print_schedule"
+  end 
+ 
+  def sac_tb
+    @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Tumblebunnies").id)
+    render :layout => "layout_for_print_schedule"
+  end 
+ 
+  def sac_dance
+    @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Dance").id)
     render :layout => "layout_for_print_schedule"
   end 
  

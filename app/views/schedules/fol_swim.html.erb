@@ -8,17 +8,14 @@
 <script>
     $(window).load(function(){
 
-        var $girls_container = $('#girls_levels_container');
-        var $boys_container = $('#boys_levels_container');
-        var $tumble_container = $('#tumble_levels_container');
-
-        $girls_container.masonry({
-            itemSelector: '#girls_levels',
+        var $swim_container = $('#swim_levels_container');
+        $swim_container.masonry({
+            itemSelector: '#swim_levels',
             // layoutMode : 'masonry'
         });
     });
 </script>
-<div id="master_container">
+<div id="master_swim_container">
     <div id="header">
         <div style="width: 100px; height: 30px; float:left"></div>
         <div style="width: 100px; float:right; margin-top:7px;"><a href="#" onClick=" window.print(); return false">Print this page</a></div>
@@ -36,17 +33,57 @@
             <p><b>Call to schedule your FIRST CLASS today!</b></p>
         </div>
     </div>
+    <div id="gym_info">
+        <h2>Folsom</h2>
+        <h3>370 Plaza Dr.<br />Folsom, CA 95630</h3>
+        <h3>(916) 351-0024</h3>
+        <h3>www.tricksgym.com</h3>
+    </div>
 
 
-    <div id="girls_container">
-        <div id="girls_header">
-            <h1> School-Aged </h1>
+    <div id="swim_container">
+        <div id="swim_header">
+            <h1> Pre-school Aged </h1>
         </div>
-        <div id="girls_levels_container">
+        <div id="swim_levels_container">
             <% @levels_by_type.each do |level| %>
                 <% next if @schedules_by_level[level.id].nil? %>
-                <% if  level.gender == "Both" %>
-                    <div id="girls_levels"> 
+                <% if level.sort_order.between?(501, 506) %>
+                    <div id="swim_levels"> 
+                        <h3 class="leveltitle"><%= level.levelname %></h3>
+                        <h4 style="margin:0px;">Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %>/Month</h4>
+                        <% if level.sort_order.between?(501, 501) %>
+                            <h4 style="text-decoration:underline; font-size: 11px;">Adult Participation Required</h4>
+                        <% end %>
+
+                        <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
+                        <% schedules.each do |day, schedules| %>
+                            <div class="day">                    
+                                <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
+                                <div class="classes_box">
+                                    <% schedules.each do |schedule| %>
+                                        <div style="float: left; width: 80px; margin-right: 10px;">
+                                            <% schedule.time.strftime("%l:%M %p") %>
+                                        </div>
+                                        <%= schedule.teacher %>
+                                        <br />
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>      
+            <% end %>
+        </div>
+
+        <div id="swim_header">
+            <h1> School-Aged </h1>
+        </div>
+        <div id="swim_levels_container">
+            <% @levels_by_type.each do |level| %>
+                <% next if @schedules_by_level[level.id].nil? %>
+                <% if level.sort_order.between?(601, 604) %>
+                    <div id="swim_levels"> 
                         <h3 class="leveltitle"><%= level.levelname %></h3>
                         <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %>/Month</h4>
                             
@@ -57,10 +94,7 @@
                                 <div class="classes_box">
                                     <% schedules.each do |schedule| %>
                                         <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <% schedule.time %>
-                                            <%# if schedule.time != nil %>
-                                                <%#= schedule.time.strftime("%l:%M %p") %>
-                                            <%# end %>
+                                            <% schedule.time.strftime("%l:%M %p") %>
                                         </div>
                                         <%= schedule.teacher %>
                                         <br />
@@ -69,7 +103,7 @@
                             </div>
                         <% end %>
                     </div>
-                <% end %>            
+                <% end %>      
             <% end %>
         </div>
     </div>

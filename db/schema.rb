@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310032342) do
+ActiveRecord::Schema.define(:version => 20130311225535) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -54,17 +54,14 @@ ActiveRecord::Schema.define(:version => 20130310032342) do
     t.string   "gender"
     t.date     "birthdate"
     t.date     "startdate"
-    t.integer  "level_id"
     t.text     "experience"
     t.string   "fav_event"
     t.string   "fav_skill"
     t.string   "fav_food"
     t.text     "advice"
     t.string   "disney_char"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "location_id"
-    t.integer  "classtype_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -93,8 +90,8 @@ ActiveRecord::Schema.define(:version => 20130310032342) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "sort_order"
-    t.integer  "classtype_id"
     t.string   "gender"
+    t.integer  "classtype_id"
   end
 
   create_table "locations", :force => true do |t|
@@ -117,9 +114,9 @@ ActiveRecord::Schema.define(:version => 20130310032342) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "location"
+    t.time     "time"
     t.integer  "level_id"
     t.integer  "classtype_id"
-    t.time     "time"
   end
 
   create_table "surveys", :force => true do |t|
