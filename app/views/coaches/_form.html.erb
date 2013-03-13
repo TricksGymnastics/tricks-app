@@ -68,9 +68,19 @@
     <% Classtype.all.each do |classtype| %>
       <div style="float:left; margin: 5px 30px 0px 0px;">
       <%= check_box_tag "coach[classtype_ids][]", classtype.id, @coach.classtype_ids.include?(classtype.id), id: dom_id(classtype) %>
-      <%= label_tag dom_id(classtype), classtype.name %></div>
+      <%= label_tag dom_id(classtype), classtype.name %>
+      </div>
     <% end %> 
+      
     <br />
+  </div>
+
+  <div>
+    If Office, please select one of these:  <%= hidden_field_tag "coach[level_ids][]", nil %>
+    <% Level.where(:classtype_id => "9").each do |level| %>
+      <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
+      <%= label_tag dom_id(level), level.levelname %>
+    <% end %>
   </div>
 
   <br />
