@@ -20,7 +20,7 @@
     <%= f.label :order %>:<br />
   </div>
   <div class="field" style="float:left; width: 820px; line-height: 34px;">
-    <%= f.collection_select :classtype_id, Classtype.where(:id => 1..5), :id, :name, :prompt => "Select a Class Type" %><br />
+    <%= f.collection_select :classtype_id, Classtype.where(:id => 1..9), :id, :name, :prompt => "Select a Class Type" %><br />
     <%= f.text_field :levelname %><br />
     <%= f.number_field :length %><br />
     <%= f.number_field :price %><br />
