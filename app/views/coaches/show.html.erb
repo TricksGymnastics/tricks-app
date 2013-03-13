@@ -38,7 +38,7 @@
   <% end %>
 
     <div style="font-size: 14px;">
-      <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%>, teaching <%= @coach.classtypes.map(&:name).join(' and ') %>
+      <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%>, teaching <%= @coach.classtypes.where(:id => 1..4).map(&:name).join(' and ') %>
     </div>
 
 
@@ -52,8 +52,10 @@
           <div style="float:left; margin: 0px 35px 30px 10px;">
             <h3 style="margin:3px 0px; text-decoration:underline; font-size: 14px;"><% if(classtype == 1) %>Gymnastics<% elsif(classtype == 2) %>Tumblebunnies<% elsif(classtype == 3) %>Dance<% elsif(classtype == 4) %>Swim<% end %></h3>
             <ul style="margin: 0px 0px 0px 20px">
-              <% levels.each do |level| %>
-                <li><%= level.levelname %></li>
+              <% unless classtype == 9 %>
+                <% levels.each do |level| %>
+                  <li><%= level.levelname %></li>
+                <% end %>
               <% end %>
             </ul>      
           </div>
