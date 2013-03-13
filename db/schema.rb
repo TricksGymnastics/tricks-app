@@ -60,8 +60,9 @@ ActiveRecord::Schema.define(:version => 20130311225535) do
     t.string   "fav_food"
     t.text     "advice"
     t.string   "disney_char"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "classtype_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -90,8 +91,8 @@ ActiveRecord::Schema.define(:version => 20130311225535) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "sort_order"
-    t.string   "gender"
     t.integer  "classtype_id"
+    t.string   "gender"
   end
 
   create_table "locations", :force => true do |t|
@@ -114,9 +115,9 @@ ActiveRecord::Schema.define(:version => 20130311225535) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "location"
-    t.time     "time"
     t.integer  "level_id"
     t.integer  "classtype_id"
+    t.time     "time"
   end
 
   create_table "surveys", :force => true do |t|
