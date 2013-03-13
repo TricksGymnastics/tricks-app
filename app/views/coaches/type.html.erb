@@ -20,7 +20,7 @@ h2{
 <% elsif params[:name] == "Swim" %>
   <h3>Swim Teachers</h3>
 <% elsif params[:name] == "Office" %>
-  <h3>Office Staff</h3>
+  <h3>Customer Service Specialists</h3>
 <% end %>
 
 
@@ -50,6 +50,18 @@ h2{
     </div>
   </div>
 
+<% elsif params[:name] == "Dance" %>
+  <div>
+    <% @coaches.each do |coach| %>
+      <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
+        <h2 style="font-size: 13px; padding: 3px;"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
+        <div style="width: 115px; margin: 0 auto">
+          <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
 <% else %>
 
   <div>
