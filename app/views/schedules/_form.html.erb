@@ -34,13 +34,17 @@
         <%= f.label :day %>:<br />
         <%= f.label :time %>:<br />
         <%= f.label :teacher %>:<br />
+        <%= f.label :future_class, "Future Class" %>:<br />
+        <%= f.label :recital_class, "Recital Class" %>:<br />
       </div>
 
       <div class="field" style="float:left; width: 790px">
         <%= f.select :location, ['Folsom', 'Granite Bay', 'Sacramento'], :prompt => "Select a Location" %><br />
         <%= f.select :day, Schedule::DAYS, :prompt => "Select a Day" %><br />
         <%= f.time_select :time, {:minute_step => 5, :ampm => true, :include_blank => false} %><br />
-        <%= f.text_field :teacher, :placeholder => 'Include Mr. Ms. or Mrs.', :style=>'width: 140px;'  %><br />
+        <%= f.text_field :teacher, :style=>'width: 140px;'  %><br />
+        <%= f.radio_button :future_class, "0", checked: true %><span style="margin: 0px 20px 0px 3px">No</span><%= f.radio_button :future_class, "1" %>Yes<br />
+        <%= f.radio_button :recital_class, "0", checked: true %><span style="margin: 0px 20px 0px 3px">No</span><%= f.radio_button :recital_class, "1" %>Yes
       </div>
     </div>
 
