@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311225535) do
+ActiveRecord::Schema.define(:version => 20130314034601) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -112,12 +112,14 @@ ActiveRecord::Schema.define(:version => 20130311225535) do
     t.string   "level"
     t.string   "day"
     t.string   "teacher"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "location"
     t.integer  "level_id"
     t.integer  "classtype_id"
     t.time     "time"
+    t.boolean  "future_class",  :default => false
+    t.boolean  "recital_class", :default => false
   end
 
   create_table "surveys", :force => true do |t|
