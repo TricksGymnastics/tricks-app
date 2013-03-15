@@ -65,7 +65,14 @@
                                         <div style="float: left; width: 70px; margin-right: 10px;">
                                             <%= schedule.time.strftime("%l:%M %p") %>
                                         </div>
-                                        <div style="float: left;"><%= schedule.teacher %></div><% if schedule.future_class %><div style="font-size: 11px; float: right"> *Future Class*</div><% end %>
+                                        <div style="float: left;">
+                                            <%= schedule.teacher %>
+                                        </div>
+                                        <% if schedule.future_class? %>
+                                            <div style="font-size: 11px; float: right">
+                                                *Future Class*
+                                            </div>
+                                        <% end %>
                                         <br />
                                     <% end %>
                                 </div>
@@ -96,7 +103,14 @@
                                         <div style="float: left; width: 70px; margin-right: 10px;">
                                             <%= schedule.time.strftime("%l:%M %p") %>
                                         </div>
-                                        <div style="float: left;"><%= schedule.teacher %></div><% if schedule.future_class %><div style="font-size: 11px; float: right"> *Future Class*</div><% end %>
+                                        <div style="float: left;">
+                                            <%= schedule.teacher %>
+                                        </div>
+                                        <% if schedule.future_class? %>
+                                            <div style="font-size: 11px; float: right">
+                                                *Future Class*
+                                            </div>
+                                        <% end %>
                                         <br />
                                     <% end %>
                                 </div>

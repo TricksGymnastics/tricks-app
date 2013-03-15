@@ -12,7 +12,7 @@
       <%= link_to 'Destroy', @coach, method: :delete, data: { confirm: 'Are you sure?' } %> |
     <% end %>
     <%= link_to 'Back', coaches_path %>
-    <h2 style="margin-top: 15px"><%= @coach.firstname %> <%= @coach.lastname %></h2>
+    <h2 style="margin-top: 15px"><% if can? :manage, Coach %><%= @coach.firstname %> <%= @coach.lastname %><% else %><%= @coach.firstname %><% end %></h2>
     
     <% if @coach.birthdate.nil? %>
     <% else %>
