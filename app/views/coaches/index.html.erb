@@ -35,7 +35,7 @@ h2{
       <% coach.locations.each do |location| %>
         <% if location.name == "Granite Bay" %>
           <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
-            <h2 style="font-size: 13px; padding: 3px;"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
+            <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
             <div style="width: 115px; margin: 0 auto">
               <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
             </div>
@@ -54,7 +54,7 @@ h2{
       <% coach.locations.each do |location| %>
         <% if location.name == "Folsom" %>
           <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
-            <h2 style="font-size: 13px; padding: 3px;"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
+            <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
             <div style="width: 115px; margin: 0 auto">
               <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
             </div>
@@ -72,7 +72,7 @@ h2{
       <% coach.locations.each do |location| %>
         <% if location.name == "Sacramento" %>
           <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
-            <h2 style="font-size: 13px; padding: 3px;"><%= link_to coach.firstname+" "+coach.lastname, coach %></h2>
+            <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
             <div style="width: 115px; margin: 0 auto">
               <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
             </div>
