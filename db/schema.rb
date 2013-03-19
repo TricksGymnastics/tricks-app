@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314034601) do
+ActiveRecord::Schema.define(:version => 20130317002620) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -106,6 +106,33 @@ ActiveRecord::Schema.define(:version => 20130314034601) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "recital_ad_fields", :force => true do |t|
+    t.string   "name"
+    t.string   "field_type"
+    t.boolean  "required"
+    t.integer  "recital_ad_type_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "recital_ad_fields", ["recital_ad_type_id"], :name => "index_recital_ad_fields_on_recital_ad_type_id"
+
+  create_table "recital_ad_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "recital_ads", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
+    t.integer  "recital_ad_type_id"
+    t.text     "properties"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "schedules", :force => true do |t|

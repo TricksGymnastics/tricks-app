@@ -3,6 +3,12 @@ Comments::Application.routes.draw do
   
 
 
+  resources :recital_ads
+
+
+  resources :recital_ad_types
+
+
   root :to => 'home#index'
 
   resources :comments do

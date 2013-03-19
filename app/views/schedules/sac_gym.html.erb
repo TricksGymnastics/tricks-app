@@ -173,7 +173,7 @@
                         <div id="tag_levels_container">
                             <% @levels_by_type.each do |level| %>
                                 <% next if @schedules_by_level[level.id].nil? %>
-                                <%if level.sort_order.between?(213, 214) %>
+                                <%if level.sort_order.between?(213, 216) %>
                                     <div id="tag_levels"> 
                                         <h3 class="leveltitle"><%= level.levelname %></h3>
                                         <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>

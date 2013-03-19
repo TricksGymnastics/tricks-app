@@ -6,6 +6,7 @@ class Schedule < ActiveRecord::Base
 
 	validates_presence_of :classtype_id, :location, :level_id, :day, :time, :teacher
 
+	default_scope :order => 'schedules.updated_at DESC'
 
 	DAYS = [['Monday', 0], ['Tuesday', 1], ['Wednesday', 2], ['Thursday', 3], ['Friday', 4], ['Saturday', 5]]
 	TIMES = ['9:00 AM', '9:30 AM', '10:00 AM', '11:00 AM', '12:00 PM', '12:30 PM', '3:30 PM', '3:45 PM', '4:00 PM', '5:05 PM', '5:15 PM', '5:30 PM', '6:30 PM', '6:35 PM']

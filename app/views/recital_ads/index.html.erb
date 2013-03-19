@@ -1,0 +1,14 @@
+<h1>Recital Ad Orders</h1>
+<h2><%= link_to 'Create an Order', new_recital_ad_path %></h2>
+
+
+<% @recital_ads.each do |recital_ad| %>
+  <div>
+    <h2><%= recital_ad.name %></h2><%= link_to 'Show', recital_ad %>
+    Type: <%= recital_ad.recital_ad_type.name %>
+  </div>
+<% end %>
+
+<br />
+
+
