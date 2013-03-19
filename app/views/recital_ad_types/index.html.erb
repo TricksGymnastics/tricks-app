@@ -1,0 +1,23 @@
+<h1>Listing recital_ad_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @recital_ad_types.each do |recital_ad_type| %>
+  <tr>
+    <td><%= recital_ad_type.name %></td>
+    <td><%= link_to 'Show', recital_ad_type %></td>
+    <td><%= link_to 'Edit', edit_recital_ad_type_path(recital_ad_type) %></td>
+    <td><%= link_to 'Destroy', recital_ad_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recital ad type', new_recital_ad_type_path %>
