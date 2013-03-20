@@ -1,3 +1,45 @@
 // Place all the styles related to the RecitalAds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#select_box{
+	width: 848px;
+	/*border: blue solid 3px;*/
+	min-height: 600px;
+	padding: 30px 50px 0px 50px;
+}
+
+#ad_box{
+	border: 1px solid black;
+  margin: 3px 0px;
+	width: 400px;
+	float: left;
+	min-height: 60px;
+  padding: 10px;
+  text-align:center;
+  #blank{}
+  h2{
+    font-size: 25px;
+  }
+  h3{
+    font-size: 18px;
+    font-weight: normal;
+  }
+    
+  #ad_name{
+    float: left;
+    width: 80px;
+    /*border: 2px solid yellow;*/
+  }
+  #ad_info{
+    float: right;
+    width: 300px;
+  }
+}
+
+
+
+#image_box{
+	float:right;
+}

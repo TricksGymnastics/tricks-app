@@ -121,8 +121,12 @@ ActiveRecord::Schema.define(:version => 20130317002620) do
 
   create_table "recital_ad_types", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "price"
+    t.integer  "word_max"
+    t.string   "actual_size"
+    t.boolean  "picture"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "recital_ads", :force => true do |t|

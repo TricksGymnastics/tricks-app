@@ -1,9 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <b>Name:</b>
   <%= @recital_ad_type.name %>
 </p>
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@recital_ad_type.price) %>
+</p>
+<p>
+  <b>Maximum number of words:</b>
+  <%= @recital_ad_type.word_max %>
+</p>
+<p>
+  <b>Actual Size:</b>
+  <%= @recital_ad_type.actual_size %>
+</p>
+<p>
+  <b>Is there a picture included?:</b>
+  <% if @recital_ad_type.picture == false %>No<% else %>Yes<% end %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_recital_ad_type_path(@recital_ad_type) %> |
