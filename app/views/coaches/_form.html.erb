@@ -43,6 +43,11 @@
     :order => [:month, :day]) %>
   </div>
 
+  <div class="feild" id="coach_field">
+    <%= f.label :strengths %><br />
+    <%= f.text_field :strengths, size: 70 %>
+  </div>
+
   <div class="field" id="coach_field">
     <%= f.label :location_ids, "Gyms where they work:" %><br />
     <%= hidden_field_tag "coach[location_ids][]", nil %>
