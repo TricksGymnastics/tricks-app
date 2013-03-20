@@ -1,5 +1,6 @@
 class Coach < ActiveRecord::Base
-	attr_accessible :image, :firstname, :lastname, :gender, :location_ids, :level_ids, :classtype_ids, :experience, :fav_event, :fav_skill, :fav_food, :disney_char, :advice, :birthdate, :startdate, :remove_image
+	attr_accessible :image, :firstname, :lastname, :gender, :location_ids, :level_ids, :classtype_ids, :experience, :fav_event, 
+	:fav_skill, :fav_food, :disney_char, :advice, :birthdate, :startdate, :remove_image, :strengths
 	has_many :schedules
 
 	has_many :coach_levels
