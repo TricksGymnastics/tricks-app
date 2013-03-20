@@ -40,8 +40,7 @@
   <div class="field" id="coach_field">
     <%= f.label :birthdate, "Birthday:" %><br />
     <%= date_select("coach", "birthdate", :default => Date.today, 
-    :order => [:month, :day, :year], :start_year => 1930, 
-    :end_year => Date.today.year + 3) %>
+    :order => [:month, :day]) %>
   </div>
 
   <div class="field" id="coach_field">

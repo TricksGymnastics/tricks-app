@@ -18,10 +18,6 @@
     <% else %>
       <b>Birthday:</b>
       <%= @coach.birthdate.strftime("%B %e") %><br style="line-height: 25px" />
-      <% if can? :manage, Coach %>
-        <b>Age:</b>
-        <%= ((Date.today - @coach.birthdate)/365.2422).to_i %>
-      <% end %>
     <% end %>
   </div>
 </div>

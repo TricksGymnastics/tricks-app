@@ -1,0 +1,44 @@
+
+<%= form_tag new_recital_ad_path, method: :get do %>
+
+
+  <h1>Recital Ad Order Form</h1>
+  <br />
+
+  <%= select_tag :recital_ad_type_id, options_from_collection_for_select(RecitalAdType.all(order: "price"), :id, :name) %>
+
+	<div id="select_box">
+		<div id="image_box">
+			<img src="/images/recital_ad_select.jpg">
+		</div>
+		<% @recital_ad_types.each do |ad| %>
+			  
+
+      <div id="ad_box">
+        <div id="ad_name">
+          <h2><%= ad.name %></h2>
+        </div>
+        <div id="ad_info">
+          <h3>Price: <%= number_to_currency(ad.price) %></h3>
+          <h3>Up to <b style="text-decoration:underline;"><%= ad.word_max %></b> words</h3>
+          <h3>Actual Ad size is <%= ad.actual_size %></h3>
+          <% if ad.name == "Ad 2" %>
+            This Ad includes a Graphic<br>(See image on the right for example)
+          <% end %>
+          <% unless ad.picture == false %>
+            This Ad includes a photo.
+            You will be asked to upload the photo on the next page.
+
+          <% end %>
+          <% ad.fields.each do |af| %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+		
+
+	</div>
+  
+  <%= submit_tag "  Continue  ", name: nil %>
+<% end %>

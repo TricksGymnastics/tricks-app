@@ -13,32 +13,35 @@
 
   <%= f.hidden_field :recital_ad_type_id %>
 
-<div style="margin-left: 40px;">
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
-  </div>
+  <div style="margin-left: 40px;">
+    <div class="field">
+      <%= f.label :firstname, "First Name" %><br />
+      <%= f.text_field :firstname %>
+    </div>
 
-  <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
-  </div>
+    <div class="field">
+      <%= f.label :lastname, "Last Name" %><br />
+      <%= f.text_field :lastname %>
+    </div>
 
-  <div class="field">
-     <%= f.label :email %><br />
-     <%= f.email_field :email %>
-  </div>
+    <div class="field">
+       <%= f.label :email %><br />
+       <%= f.email_field :email %>
+    </div>
 
-  <%= f.fields_for :properties do %>
-    <%= @recital_ad.recital_ad_type.fields.each do |field| %>
-      <%= render "recital_ads/fields/#{field.field_type}", field: field, f: builder %>
+
+
+    <%= f.fields_for :properties do |builder| %>
+      <% @recital_ad.recital_ad_type.fields.each do |field| %>
+        <%= render "recital_ads/fields/#{field.field_type}", field: field, f: builder %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <br />
-  <br />
-  <div class="actions">
-    <%= f.submit "  Submit Order  " %>
+    <br />
+    <br />
+    <div class="actions">
+      <%= f.submit "  Submit Order  " %>
+    </div>
+
   </div>
 <% end %>
-</div>

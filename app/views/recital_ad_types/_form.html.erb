@@ -16,6 +16,26 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :word_max %><br />
+    <%= f.number_field :word_max %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actual_size %><br />
+    <%= f.text_field :actual_size %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :picture %>
+    <%= f.label :picture %>
+  </div>
+
   <%= f.fields_for :fields do |builder| %>
     <%= render 'field_fields', f: builder %>
   <% end %>

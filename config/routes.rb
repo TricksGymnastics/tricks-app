@@ -1,14 +1,5 @@
 Comments::Application.routes.draw do
 
-  
-
-
-  resources :recital_ads
-
-
-  resources :recital_ad_types
-
-
   root :to => 'home#index'
 
   resources :comments do
@@ -47,15 +38,15 @@ Comments::Application.routes.draw do
 
   match 'coaches/type/:name' => "coaches#type"
 
-  # match 'coaches/gym'
-  # match 'coaches/dance'
-  # match 'coaches/swim'
+  match 'recital_ads/ad_select'
 
   resources :schedules
   resources :coaches
   resources :users
   resources :sessions
   resources :levels
+  resources :recital_ads
+  resources :recital_ad_types
 
 
   get 'signup', to: 'users#new', as: 'signup'
