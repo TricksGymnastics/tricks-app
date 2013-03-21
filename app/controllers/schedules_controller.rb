@@ -6,7 +6,7 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
    def index
-    @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order(sort_column + " " + sort_direction)
+    @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order("schedules.updated_at DESC").order(sort_column + " " + sort_direction)
    
     #@schedules_time = Schedule.all.each.time.strftime("%l:%M %p") do |schedule|
       #schedule

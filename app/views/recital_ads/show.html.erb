@@ -1,8 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= link_to 'Edit', edit_recital_ad_path(@recital_ad) %> |
-<%= link_to 'Destroy', @recital_ad, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<p>
+  <b>Name:</b>
+  <%= @recital_ad.firstname+" "+@recital_ad.lastname %>
+</p>
+<p>
+  <b>Email:</b>
+  <%= @recital_ad.email %>
+</p>
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@recital_ad.recital_ad_type.price) %>
+</p>
+<p>
+  <b>Your Message:</b>
+  <%= @recital_ad.properties %>
+</p>
+
+<% if can? :manage, RecitalAd %>
+  <%= link_to 'Edit', edit_recital_ad_path(@recital_ad) %> |
+  <%= link_to 'Destroy', @recital_ad, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', recital_ads_path %>
 
     

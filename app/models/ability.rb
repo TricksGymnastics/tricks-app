@@ -19,6 +19,7 @@ class Ability
 		#Schedule
 		#Level
 		#Coach
+		#RecitalAd
 
 		if user.role == "superadmin" #Jordan
 		   	can :manage, :all
@@ -30,6 +31,7 @@ class Ability
 	 		can :manage, Schedule
 	 		can :manage, Level
 	 		can :manage, Coach
+	 		can :manage, RecitalAd
        	end
 
        	if user.role == "moderator" #Coaches

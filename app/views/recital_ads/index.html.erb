@@ -1,13 +1,33 @@
 <h1>Recital Ad Orders</h1>
-<h2><%= link_to 'Create an Order', new_recital_ad_path %></h2>
+<h2><%= link_to "New Order", recital_ads_ad_select_path %></h2>
+<div  style="width: 750px; margin:0 auto;">
+  <table>
+    <tr>
+      <th>Ad Type</th>
+      <th>Name</th>
+      <th>Date Created</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
 
-
-<% @recital_ads.each do |recital_ad| %>
-  <div>
-    <h2><%= recital_ad.name %></h2><%= link_to 'Show', recital_ad %>
-    Type: <%= recital_ad.recital_ad_type.name %>
-  </div>
-<% end %>
+    <% @recital_ads.each do |ad| %>
+      <tr style="padding:0; margin:0;">
+        <td style="width: 100px; padding:0; margin:0;"><%= ad.recital_ad_type.name %></td>
+        <td style="width: 300px;"><%= link_to ad.firstname+" "+ad.lastname, ad %></td>
+        <td style="width: 150px;"><%= ad.created_at.strftime("%b %e, %Y") %></td>
+        <td style="width: 100px;"><%= number_to_currency(ad.recital_ad_type.price) %></td>
+        <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_recital_ad_path(ad) %></td>
+      </tr> 
+    <% end %>
+  </table>
+  <table>
+    <tr>
+      <td style="width: 396px;">Total Orders: <%= @recital_ads.count %></td>
+      <td style="width: 270px;">Total Cost: <b><%= number_to_currency(RecitalAd.joins(:recital_ad_type).sum("price")) %></b></td>
+      <td style="padding: 0px 3px 0px 3px; border: 0"></td>
+    </tr>
+  </table>
+</div>
 
 <br />
 
