@@ -1,6 +1,6 @@
 class CoachesController < ApplicationController
 
-  load_and_authorize_resource :except => [:type]
+  load_and_authorize_resource :except => [:type, :loc]
   helper "errors"
 
   # GET /coaches
