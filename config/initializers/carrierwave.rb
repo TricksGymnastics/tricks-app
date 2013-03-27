@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider                         => 'Google',
-    :google_storage_access_key_id     => 'GOOGWKH5VTB6P4UGHIIT',
-    :google_storage_secret_access_key => 'CAeaI1kEVIhqPWk+IGJDoGPPQt6FAEiijKn8yWte'
+    :google_storage_access_key_id     => ENV['GOOGLE_KEY_ID'],  
+    :google_storage_secret_access_key => ENV['GOOGLE_ACCESS_KEY']
   }
-  config.fog_directory = 'coach-pics'
+  #config.fog_directory = @fog_directory
 end

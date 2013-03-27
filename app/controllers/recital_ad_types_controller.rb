@@ -1,9 +1,8 @@
 class RecitalAdTypesController < ApplicationController
+  load_and_authorize_resource
   # GET /recital_ad_types
   # GET /recital_ad_types.json
   def index
-    @recital_ad_types = RecitalAdType.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recital_ad_types }
@@ -13,8 +12,6 @@ class RecitalAdTypesController < ApplicationController
   # GET /recital_ad_types/1
   # GET /recital_ad_types/1.json
   def show
-    @recital_ad_type = RecitalAdType.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @recital_ad_type }
@@ -24,8 +21,6 @@ class RecitalAdTypesController < ApplicationController
   # GET /recital_ad_types/new
   # GET /recital_ad_types/new.json
   def new
-    @recital_ad_type = RecitalAdType.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @recital_ad_type }
@@ -34,14 +29,11 @@ class RecitalAdTypesController < ApplicationController
 
   # GET /recital_ad_types/1/edit
   def edit
-    @recital_ad_type = RecitalAdType.find(params[:id])
   end
 
   # POST /recital_ad_types
   # POST /recital_ad_types.json
   def create
-    @recital_ad_type = RecitalAdType.new(params[:recital_ad_type])
-
     respond_to do |format|
       if @recital_ad_type.save
         format.html { redirect_to @recital_ad_type, notice: 'Recital ad type was successfully created.' }
@@ -56,8 +48,6 @@ class RecitalAdTypesController < ApplicationController
   # PUT /recital_ad_types/1
   # PUT /recital_ad_types/1.json
   def update
-    @recital_ad_type = RecitalAdType.find(params[:id])
-
     respond_to do |format|
       if @recital_ad_type.update_attributes(params[:recital_ad_type])
         format.html { redirect_to @recital_ad_type, notice: 'Recital ad type was successfully updated.' }
@@ -72,7 +62,6 @@ class RecitalAdTypesController < ApplicationController
   # DELETE /recital_ad_types/1
   # DELETE /recital_ad_types/1.json
   def destroy
-    @recital_ad_type = RecitalAdType.find(params[:id])
     @recital_ad_type.destroy
 
     respond_to do |format|

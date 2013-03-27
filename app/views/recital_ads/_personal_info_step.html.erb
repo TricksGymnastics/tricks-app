@@ -1,0 +1,74 @@
+<div id="personal_errors">
+  <% if @recital_ad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recital_ad.errors.count, "error") %> prohibited this Recital Ad Order from being saved:</h2>
+
+      <ul>
+      <% @recital_ad.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<div id="personal_info">
+  <h2 style="margin-right: 150px;">Personal Information</h2><br>
+  <div class="field">
+    <%= f.label :firstname, "First Name" %><br />
+    <%= f.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname, "Last Name" %><br />
+    <%= f.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <% unless @recital_ad.recital_ad_type.pdf_file? %> 
+    <%= javascript_tag do %>
+      window.word_max = "<%= @recital_ad.recital_ad_type.word_max %>";
+    <% end %>
+    <%= f.label :message %>
+    (<span id="count_number_words">0</span>/<%= @recital_ad.recital_ad_type.word_max %>)<br>
+    <%= f.text_area :message, :size => "40x6", :onkeypress =>"return check_length(this, document.getElementById('count_number_words'));"%><br>
+  <% end %>
+
+  <% if @recital_ad.recital_ad_type.image? %>
+    <% if @recital_ad.image? %>
+      <p>
+        <b>Uploaded Image:</b><br>
+        <%= image_tag(@recital_ad.image_url(:thumb).to_s, :border => "4px solid;") %>
+      </p>
+    <% end %>
+    <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+  <% end %>
+
+  <% if @recital_ad.recital_ad_type.pdf_file? %>
+    <% if @recital_ad.pdf_file? %>
+      <p>
+        <b>Uploaded File:</b><br>
+        <%= @recital_ad.image_url().to_s %>
+      </p>
+    <% end %>
+    <div class="field">
+    <%= f.label :pdf_file %><br />
+    <%= f.file_field :pdf_file %>
+  </div>
+  <% end %>
+
+
+
+  <%#= f.fields_for :properties, OpenStruct.new(@recital_ad.properties) do |builder| %>
+    <%# @recital_ad.recital_ad_type.fields.each do |field| %>
+      <%#= render "recital_ads/fields/#{field.field_type}", field: field, f: builder %>
+    <%# end %>
+  <%# end %> 
+</div>

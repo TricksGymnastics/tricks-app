@@ -1,0 +1,103 @@
+<%= stylesheet_link_tag "coaches", :media => "all" %>
+<style>
+
+#type{width: 948px; border: 2px #444 solid; background-color: #FFFA5E; float: left; color: #222;}
+h2{
+  padding: 4px;
+  font-size: 20px;
+}
+
+</style>
+
+<h1>The Tricks Family</h1>
+
+<% if params[:name] == "Granite Bay" %>
+  <h3>Granite Bay (est. 1990)</h3>
+<% elsif params[:name] == "Folsom" %>
+  <h3>Folsom (est. 1993)</h3>
+<% elsif params[:name] == "Sacramento" %>
+  <h3>Sacramento (est. 1997)</h3>
+<% end %>
+
+
+<% if can? :manage, Coach %>
+  <br />
+  <h3 style="text-align:center;"><%= link_to 'Add New Employee', new_coach_path %></h3>
+  <br />
+  <% end %>
+<br />
+
+
+<div>
+  <div id="type"><h2>Gymnastics</h2></div>
+  <div>
+    <% @coaches_by_location.each do |coach| %>    
+      <% coach.classtypes.each do |classtype| %>
+        <% if classtype.name == "Gymnastics" %>
+          <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
+            <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+            <div style="width: 115px; margin: 0 auto">
+              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <div id="type"><h2>Dance</h2></div>
+  <div>
+    <% @coaches_by_location.each do |coach| %>    
+      <% coach.classtypes.each do |classtype| %>
+        <% if classtype.name == "Dance" %>
+          <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
+            <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+            <div style="width: 115px; margin: 0 auto">
+              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<% if params[:name] == "Folsom" %>
+  <div>
+    <div id="type"><h2>Swim</h2></div>
+    <div>
+      <% @coaches_by_location.each do |coach| %>    
+        <% coach.classtypes.each do |classtype| %>
+          <% if classtype.name == "Swim" %>
+            <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
+              <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+              <div style="width: 115px; margin: 0 auto">
+                <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div>
+  <div id="type"><h2>Office</h2></div>
+  <div>
+    <% @coaches_by_location.each do |coach| %>    
+      <% coach.classtypes.each do |classtype| %>
+        <% if classtype.name == "Office" %>
+          <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
+            <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+            <div style="width: 115px; margin: 0 auto">
+              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

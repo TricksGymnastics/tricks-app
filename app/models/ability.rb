@@ -48,6 +48,7 @@ class Ability
 			cannot :show, Comment
 			can :read, Schedule
 			can :read, Coach
+			can :create, RecitalAd
 		end
 	 	
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317002620) do
+ActiveRecord::Schema.define(:version => 20130327012236) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -60,9 +60,8 @@ ActiveRecord::Schema.define(:version => 20130317002620) do
     t.string   "fav_food"
     t.text     "advice"
     t.string   "disney_char"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "classtype_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "strengths"
   end
 
@@ -109,23 +108,13 @@ ActiveRecord::Schema.define(:version => 20130317002620) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "recital_ad_fields", :force => true do |t|
-    t.string   "name"
-    t.string   "field_type"
-    t.boolean  "required"
-    t.integer  "recital_ad_type_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
-  add_index "recital_ad_fields", ["recital_ad_type_id"], :name => "index_recital_ad_fields_on_recital_ad_type_id"
-
   create_table "recital_ad_types", :force => true do |t|
     t.string   "name"
     t.integer  "price"
     t.integer  "word_max"
     t.string   "actual_size"
-    t.boolean  "picture"
+    t.boolean  "image"
+    t.boolean  "pdf_file"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -134,8 +123,10 @@ ActiveRecord::Schema.define(:version => 20130317002620) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "email"
+    t.text     "message"
+    t.string   "image"
+    t.string   "pdf_file"
     t.integer  "recital_ad_type_id"
-    t.text     "properties"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end

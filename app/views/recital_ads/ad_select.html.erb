@@ -4,8 +4,9 @@
 
   <h1>Recital Ad Order Form</h1>
   <br />
+  <h2>Please select the Ad Type that you would like to purchase.</h2>
 
-  <%#= select_tag :recital_ad_type_id, options_from_collection_for_select(RecitalAdType.all(order: "price"), :id, :name) %>
+
 
 	<div id="select_box">
 		<div id="image_box">
@@ -16,24 +17,36 @@
 
       <div class="block" id="ad_box">
         <div class="centered" id="ad_name">
-          <h2><%= radio_button_tag :recital_ad_type_id, ad.id %> <%= ad.name %></h2>
+          <% if ad.name == "Ad 1" %>
+            <h2><%= radio_button_tag(:recital_ad_type_id, ad.id, :checked => true) %><%#= label_tag(":recital_ad_type_id_#{ad.name}", ad.name) %> <%=ad.name%></h2>
+          <% else %>
+            <h2><%= radio_button_tag(:recital_ad_type_id, ad.id) %><%#= label_tag(":recital_ad_type_id_#{ad.name}", ad.name) %> <%=ad.name%></h2>
+          <% end %>
         </div>
         <div id="ad_info">
           <h3>Price: <%= number_to_currency(ad.price) %></h3>
-          <h3>Up to <b style="text-decoration:underline;"><%= ad.word_max %></b> words</h3>
-          <h3>Actual Ad size is <%= ad.actual_size %></h3>
+          <% if ad.word_max != nil %>
+            <h3>Up to <b style="text-decoration:underline;"><%= ad.word_max %></b> words</h3>
+          <% end %>
+          <% if ad.actual_size != "" %>
+            <h3>Actual Ad size is <%= ad.actual_size %></h3>
+          <% end %>
           <% if ad.name == "Ad 2" %>
             This Ad includes a Graphic<br>(See image on the right for example)
           <% end %>
-          <% unless ad.picture == false %>
+          <% unless ad.image == false %>
             This Ad includes a photo.
             You will be asked to upload the photo on the next page.
-
+          <% end %>
+          <% if ad.pdf_file? %>
+            You will be required to upload a <br>300 dpi .pdf file containing<br> your full page design
           <% end %>
         </div>
       </div>
     <% end %> 
 	</div>
   
-  <div style="text-align:center; margin: 20px auto; width: 120px;"><%= submit_tag "  Continue  ", name: nil %></div>
+  <div style="text-align:center; margin: 20px auto; width: 120px;">
+    <%= submit_tag "Continue", name: nil, :style => "padding: 5px 17px;", id:"ad_select_continue_button" %>
+  </div>
 <% end %>

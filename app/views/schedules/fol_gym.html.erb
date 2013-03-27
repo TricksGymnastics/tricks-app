@@ -68,7 +68,7 @@
                         <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
                         <% schedules.each do |day, schedules| %>
                             <div class="day">                    
-                                <div class="day_name"><h3><%#= Schedule::HUMAN_DAYS[day.to_i][0..2] %><%= day %></h3></div>
+                                <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
                                 <div class="classes_box">
                                     <% schedules.each do |schedule| %>
                                         <div style="float: left; width: 70px; margin-right: 10px;">

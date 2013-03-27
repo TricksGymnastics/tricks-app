@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-
+<div style="margin: 30px 50px;">
 <p>
   <b>Name:</b>
   <%= @recital_ad.firstname+" "+@recital_ad.lastname %>
@@ -13,15 +11,29 @@
   <b>Price:</b>
   <%= number_to_currency(@recital_ad.recital_ad_type.price) %>
 </p>
-<p>
-  <b>Your Message:</b>
-  <%= @recital_ad.properties %>
-</p>
-
-<% if can? :manage, RecitalAd %>
-  <%= link_to 'Edit', edit_recital_ad_path(@recital_ad) %> |
-  <%= link_to 'Destroy', @recital_ad, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% if @recital_ad.message != nil %>
+  <p>
+    <b>Message:</b>
+    <%= @recital_ad.message %>
+  </p>
 <% end %>
+<% if @recital_ad.image? %>
+  <p>
+    <b>Uploaded Image:</b><br>
+    <%= image_tag(@recital_ad.image_url(:thumb).to_s, :border => "4px solid;") %>
+  </p>
+<% end %>
+
+<% if @recital_ad.pdf_file? %>
+  <p>
+    <b>Uploaded file: </b>
+    "<%= File.basename(@recital_ad.pdf_file.url) %>"
+  </p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_recital_ad_path(@recital_ad) %> |
+<%= link_to 'Destroy', @recital_ad, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', recital_ads_path %>
 
     

@@ -1,9 +1,9 @@
 class RecitalAdsController < ApplicationController
+  load_and_authorize_resource :except => [:ad_select]
+
   # GET /recital_ads
   # GET /recital_ads.json
   def index
-    @recital_ads = RecitalAd.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recital_ads }
@@ -13,8 +13,6 @@ class RecitalAdsController < ApplicationController
   # GET /recital_ads/1
   # GET /recital_ads/1.json
   def show
-    @recital_ad = RecitalAd.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @recital_ad }
@@ -34,30 +32,21 @@ class RecitalAdsController < ApplicationController
 
   # GET /recital_ads/1/edit
   def edit
-    @recital_ad = RecitalAd.find(params[:id])
   end
 
   # POST /recital_ads
   # POST /recital_ads.json
   def create
-    @recital_ad = RecitalAd.new(params[:recital_ad])
-
-    respond_to do |format|
-      if @recital_ad.save
-        format.html { redirect_to @recital_ad, notice: 'Recital ad was successfully created.' }
-        format.json { render json: @recital_ad, status: :created, location: @recital_ad }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @recital_ad.errors, status: :unprocessable_entity }
-      end
+    if @recital_ad.save_with_payment
+      redirect_to 'http://www.tricksgym.com/recital_ad_order_thank_you.html'
+    else
+      render :new
     end
   end
 
   # PUT /recital_ads/1
   # PUT /recital_ads/1.json
   def update
-    @recital_ad = RecitalAd.find(params[:id])
-
     respond_to do |format|
       if @recital_ad.update_attributes(params[:recital_ad])
         format.html { redirect_to @recital_ad, notice: 'Recital ad was successfully updated.' }
@@ -72,7 +61,6 @@ class RecitalAdsController < ApplicationController
   # DELETE /recital_ads/1
   # DELETE /recital_ads/1.json
   def destroy
-    @recital_ad = RecitalAd.find(params[:id])
     @recital_ad.destroy
 
     respond_to do |format|
@@ -80,9 +68,6 @@ class RecitalAdsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
-
 
   def ad_select
     @recital_ad_types = RecitalAdType.all(:order => 'price')

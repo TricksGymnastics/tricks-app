@@ -1,6 +1,17 @@
-<h1>Editing recital_ad</h1>
+<h1>Editing Recital Ad Order</h1>
 
-<%= render 'form' %>
+<%= form_for @recital_ad, :html => {:multipart => true} do |f| %>
+  
+  <%= f.hidden_field :recital_ad_type_id %>
 
+  <%= render 'personal_info_step', :f => f %>
+ 
+  <div class="actions">
+    <%= f.submit "Submit Changes", :style => "padding: 3px 8px; margin: 20px 50px" %>
+  </div>
+         
+<% end %>
+
+<br>
 <%= link_to 'Show', @recital_ad %> |
-<%= link_to 'Back', recital_ads_ad_select_path %>
+<%= link_to 'Back', recital_ads_path %>

@@ -37,6 +37,7 @@ Comments::Application.routes.draw do
   match 'coaches/sac'
 
   match 'coaches/type/:name' => "coaches#type"
+  match 'coaches/loc/:name' => "coaches#loc"
 
   match 'recital_ads/ad_select'
 
