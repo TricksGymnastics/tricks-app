@@ -5,7 +5,9 @@ class CreateRecitalAdTypes < ActiveRecord::Migration
       t.integer :price
       t.integer :word_max
       t.string :actual_size
-      t.boolean :picture
+      t.boolean :image
+      t.boolean :pdf_file
+
 
       t.timestamps
     end

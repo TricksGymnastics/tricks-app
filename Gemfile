@@ -35,3 +35,6 @@ end
 gem "mini_magick", "~> 3.4"
 gem "carrierwave"
 gem "fog"
+
+gem "stripe"
+# gem "client_side_validations"

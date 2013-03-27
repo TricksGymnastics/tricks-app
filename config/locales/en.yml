@@ -16,6 +16,9 @@ en:
         classtype_id: "Class Type"
       user:
         password_digest: "Password Confirmation"
+      recital_ad:
+        firstname: "First Name"
+        lastname: "Last Name"
     errors:
       models:
         coach:
@@ -26,3 +29,9 @@ en:
               invalid: "cannot contain spaces."
             level_ids:
               blank: "You must select at least one Level"
+        recital_ad:
+          attributes:
+            firstname:
+              invalid: "cannot contain spaces."
+            lastname:
+              invalid: "cannot contain spaces."

@@ -1,5 +1,19 @@
 <h1>New Order</h1>
+<h4><%= link_to 'Return to Ad Select Page', recital_ads_ad_select_path %></h4>
 
-<%= render 'form' %>
+<%= form_for @recital_ad, :validate => true, :html => {:multipart => true} do |f| %>
+  
+  <%= f.hidden_field :recital_ad_type_id %>
+  <%= f.hidden_field :stripe_card_token %>
 
-<%= link_to 'Back', recital_ads_ad_select_path %>
+  <%= render 'personal_info_step', :f => f %>
+
+  <button type="button" style="padding: 3px 8px; margin: 20px 50px" id="continue_button" disabled="disabled" >Continue</button>
+
+  <%= render 'payment_info_step', :f => f %>
+
+  
+
+<% end %>
+
+

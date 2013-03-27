@@ -16,4 +16,3 @@ jQuery ->
     else
       $('#schedule_level_id').empty()
       $('#schedule_level_id').parent().hide()
-

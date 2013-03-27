@@ -37,12 +37,13 @@
     <% end %>
   <% end %>
 
-    <div style="font-size: 14px;">
-      <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%>, teaching <%= @coach.classtypes.where(:id => 1..4).map(&:name).join(' and ') %>
-    </div>
-
-
-
+  <!-- For people who work outside the office -->
+  <%# unless @coach.classtypes.pluck(:name).include? "Office" %>
+    
+  <div style="font-size: 14px;">       
+    <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b>
+    <%= @coach.locations.map(&:name).join(' and ')%>, teaching <%= @coach.classtypes.where(:id => 1..4).map(&:name).join(' and ') %>
+  </div>
 
   <% if can? :manage, Coach %>
     <div style="width: 100%; float:left; margin-bottom: -10px;">
@@ -63,6 +64,13 @@
       </div>
     </div>
   <% end %>    
+
+  <!-- for people inside the office -->
+  <!-- <%# else %>        
+    <b><%# if @coach.gender == "Girl" %> Miss <%# else %> Mr. <%# end %><%#= @coach.firstname %> works in: </b>
+    <%#= @coach.locations.map(&:name).join(' and ')%>,  <%#= @coach.classtypes.where(:id => 1..4).map(&:name).join(' and ') %>
+  <%# end %> -->
+  
 
   <% if @coach.experience == "" %>
   <% else %>
