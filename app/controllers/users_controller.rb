@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :authorize
   load_and_authorize_resource
   helper_method :sort_column, :sort_direction 
 
@@ -16,9 +15,9 @@ class UsersController < ApplicationController
 	# GET /users/new.json
 	def new
 		respond_to do |format|
-      	  format.html # new.html.erb
-      	  format.json { render json: @user }
-      	end
+  	  format.html # new.html.erb
+  	  format.json { render json: @user }
+  	end
 	end
 
 	def create

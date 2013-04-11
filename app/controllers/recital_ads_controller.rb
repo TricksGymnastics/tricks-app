@@ -1,5 +1,8 @@
 class RecitalAdsController < ApplicationController
+  
   load_and_authorize_resource :except => [:ad_select]
+
+  before_filter :set_variables
 
   # GET /recital_ads
   # GET /recital_ads.json
@@ -72,5 +75,9 @@ class RecitalAdsController < ApplicationController
   def ad_select
     @recital_ad_types = RecitalAdType.all(:order => 'price')
     @recital_ad = RecitalAd.new(params[:recital_ad])
+  end
+
+  def set_variables
+    @needs_stripe = true
   end
 end

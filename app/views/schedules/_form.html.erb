@@ -1,7 +1,6 @@
 <div id="form">
   <%= form_for(@schedule) do |f| %>
 
-
     <% if @schedule.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
@@ -13,10 +12,6 @@
         </ul>
       </div>
     <% end %>
-
-
-
-
     
     <div class="field" style="float:left; width: 100%; line-height: 34px; margin-bottom: 0; padding: 0 8px">
       <div style="float:left; width: 90px;">
@@ -32,27 +27,27 @@
       <%= f.grouped_collection_select :level_id, Classtype.all, :levels, :name, :id, :levelname%>
     </div> 
 
-    <div style="width: 880px; float: left; line-height: 34px; padding: 0 8px">
+    <div style="width: 1000px; float: left; line-height: 34px; padding: 0 8px">
       <div class="field" style="float:left; width: 90px">
-        <%= f.label :location %>:<br />
-        <%= f.label :day %>:<br />
-        <%= f.label :time %>:<br />
-        <%= f.label :teacher %>:<br />
-        <%= f.label :future_class, "Future Class" %>:<br />
-        <%= f.label :recital_class, "Recital Class" %>:<br />
+        <%= f.label :location %>:<br>
+        <%= f.label :day %>:<br>
+        <%= f.label :time %>:<br>
+        <%= f.label :teacher %>:<br>
+        <%= f.label :future_class, "Future Class" %>:<br>
+        <%= f.label :recital_class, "Recital Class" %>:<br>
       </div>
 
       <div class="field" style="float:left; width: 790px">
-        <%= f.select :location, ['Folsom', 'Granite Bay', 'Sacramento'], :prompt => "Select a Location" %><br />
-        <%= f.select :day, Schedule::DAYS, :prompt => "Select a Day" %><br />
-        <%= f.time_select :time, {:minute_step => 5, :ampm => true, :include_blank => false} %><br />
-        <%= f.text_field :teacher, :style=>'width: 140px;'  %><br />
+        <%= f.select :location, ['Folsom', 'Granite Bay', 'Sacramento'], :prompt => "Select a Location" %><br>
+        <%= f.select :day, Schedule::DAYS, :prompt => "Select a Day" %><br>
+        <%= f.time_select :time, {:minute_step => 5, :ampm => true, :include_blank => false} %><br>
+        <%= f.text_field :teacher, :style=>'width: 140px;'  %><br>
 
         <% if @schedule.future_class == true %>
           <%= f.radio_button :future_class, "0" %><span style="margin: 0px 20px 0px 3px">No</span><%= f.radio_button :future_class, "1", checked: true %>Yes
         <% else %>
           <%= f.radio_button :future_class, "0", checked: true %><span style="margin: 0px 20px 0px 3px">No</span><%= f.radio_button :future_class, "1" %>Yes
-        <% end %><br />
+        <% end %><br>
 
         <% if @schedule.recital_class == true %>
           <%= f.radio_button :recital_class, "0" %><span style="margin: 0px 20px 0px 3px">No</span><%= f.radio_button :recital_class, "1", checked: true %>Yes
@@ -62,7 +57,7 @@
       </div>
     </div>
 
-    <div class="actions" style="width: 880px; float: left;">
+    <div class="actions" style="width: 980px; float: left;">
       <%= f.submit %>
     </div>
   <% end %>

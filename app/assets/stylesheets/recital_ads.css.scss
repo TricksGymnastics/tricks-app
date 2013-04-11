@@ -6,7 +6,7 @@
 #select_box{
 	width: 848px;
 	/*border: blue solid 3px;*/
-	min-height: 600px;
+	/*height: 520px;*/
 	padding: 30px 50px 0px 50px;
 }
 
@@ -15,17 +15,22 @@
   margin: 3px 0px;
 	width: 420px;
 	/*float: left;*/
-  padding: 7px;
+  padding: 5px;
   text-align:center;
   #blank{}
   h2{
     font-size: 24px;
   }
-  h3{
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 14px;
+  #ad_info{
+    h3{
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 14px;
+        padding: 3px;
+        margin:0;
+    }
   }
+  
     
   #ad_name{
     /*float: left;*/
@@ -65,12 +70,12 @@
 }
 
 #personal_info{
-  width: 500px;
+  width: 600px;
   margin-left: 50px;
 }
 
 #payment_info{
   display:none;
-  width: 500px;
+  width: 600px;
   margin-left: 50px;
 }

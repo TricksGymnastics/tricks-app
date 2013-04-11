@@ -1,0 +1,170 @@
+/*Gender Header*/
+h1{padding: 12px; margin-bottom: 0; font-size: 28px;}
+/*Page Header*/
+h2{padding: 8px; margin-bottom: 0px; font-size: 18px;}
+/*Level Title Headers*/
+h3{text-align: center; margin: 5px 0px 2px 0px; font-size: 18px;}
+/*Level Info*/
+h4{text-align: center; font-size: 13px; margin-bottom: 6px;}
+
+.day{
+  float: left;
+  width: 100%;
+  h3{
+    text-align: left;
+    font-size: 14px;
+  }
+}
+
+.day_name{
+  float: left;
+  margin: 0px 10px 0px 10px;
+  padding: 0px;
+  width: 30px;
+}
+
+.classes_box{
+  border: none;
+  float: left;
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+#master_container{
+  /*border: 2px orange solid;*/
+  overflow: auto;
+  width: 950px;
+
+    /*min-height: 980px;*/
+}
+
+#schedule_header {
+  border: 1px solid black;
+  background-color: #ccc;
+  width: 948px;
+}
+
+#info_container{
+  border: 2px #333 solid;
+  width: 612px;
+  height: 120px;
+  margin-top: 6px;
+  padding: 7px;
+  float:left;
+
+  #info{
+    border: 1px #888 solid;
+    width: 320px;
+    height: 118px;
+    float:left;
+    h3{
+      text-decoration: underline;
+      margin-bottom:5px;
+    }
+    p{
+      text-align: center;
+      font-size: 14px;
+      margin:0;
+      line-height: 22px;
+    }
+  }
+
+  #logo{
+    width: 290px;
+    float:right;
+    height: 118px;
+    text-align: center;
+  }
+}
+
+
+
+#girls_container{
+  float:left;
+  /*border: solid purple 1px;*/
+  width: 636px;
+}
+
+#girls_header{
+  border: 1px solid black; 
+    background-color: #e587ed;
+    margin: 6px 0px;
+    width: 628px;
+    height: auto;
+}
+
+#girls_levels_container {
+  /*border: blue solid 3px;*/
+  /*height: 980px;*/
+}
+
+#girls_levels{
+  border: 1px solid black; 
+  margin: 0px 6px 6px 0px;
+  width: 310px;
+  padding-bottom: 10px;
+  float: left;
+}
+
+
+
+#boys_container{
+  float: right;
+  /*border: blue solid 1px;*/
+  width: 312px;
+}
+
+#boys_header{
+  border: 1px solid black; 
+    background-color:#ccc;
+    margin: 6px 0px;
+    width: 310px;
+    height: auto;
+}
+
+#boys_levels_container {
+  /*border: blue solid 3px;*/
+  /*min-height: 480px;*/
+}
+
+#boys_levels{
+  border: 1px solid black; 
+  margin-bottom: 6px;
+  width: 310px;
+  padding-bottom: 10px;
+  float: left;
+}
+
+
+
+
+
+
+#tumble_container{
+  float: right;
+  /*border: blue solid 1px;*/
+  width: 312px;
+}
+
+#tumble_header{
+  border: 1px solid black; 
+    background-color:#ccc;
+    margin: 6px 0px;
+    width: 310px;
+}
+
+#tumble_levels_container {
+  /*border: blue solid 3px;*/
+  /*min-height: 480px;*/
+}
+
+#tumble_levels{
+  border: 1px solid black; 
+  margin-bottom: 6px;
+  width: 310px;
+  padding-bottom: 10px;
+  float: left;
+}
+
+
+  

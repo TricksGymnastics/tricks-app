@@ -3,7 +3,7 @@
 <!-- <script src="/assets/jquery.isotope.min.js"></script> -->
 <!-- <script src="/assets/jquery.masonry.ordered.js"></script> -->
 
-<%= stylesheet_link_tag "schedules_by_gym", :media => "all" %>
+<%= stylesheet_link_tag "static/schedules_formatted", :media => "all" %>
 
 <script>
     $(window).load(function(){
@@ -17,7 +17,7 @@
     });
 </script>
 <div id="master_tb_container">
-    <div id="header">
+    <div id="schedule_header">
         <div style="width: 100px; height: 30px; float:left"></div>
         <div style="width: 100px; float:right; margin-top:7px;"><a href="#" onClick=" window.print(); return false">Print this page</a></div>
         <h2> Sacramento Tumblebunnies Schedule (Pre-School Gymnastics) </h2>    
@@ -36,7 +36,7 @@
     </div>
     <div id="gym_info">
         <h2>Sacramento</h2>
-        <h3>4440 Marconi Ave<br />Sacramento, CA 95821</h3>
+        <h3>4440 Marconi Ave<br>Sacramento, CA 95821</h3>
         <h3>(916) 481-4496</h3>
         <h3>www.tricksgym.com</h3>
     </div>
@@ -46,7 +46,7 @@
             <% next if @schedules_by_level[level.id].nil? %>
             <div id="tb_levels"> 
                 <h3 class="leveltitle"><%= level.levelname %></h3>
-                <h4 style="margin:0px;">Age: <%= level.age %><br />Length: <%= level.length %> min. &nbsp; $<%= level.price %> / (4 Weeks)</h4>
+                <h4 style="margin:0px;">Age: <%= level.age %><br>Length: <%= level.length %> min. &nbsp; $<%= level.price %> / (4 Weeks)</h4>
                 
                 <% if level.sort_order.between?(101, 103) %>
                     <h4 style="text-decoration:underline; font-size: 11px;">Adult Participation Required</h4>
@@ -69,7 +69,7 @@
                                         *Future Class*
                                     </div>
                                 <% end %>
-                                <br />
+                                <br>
                             <% end %>
                         </div>
                     </div>

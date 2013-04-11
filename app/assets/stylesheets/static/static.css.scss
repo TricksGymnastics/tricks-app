@@ -1,0 +1,730 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/***************************************************************************************************************
+  * GLOBAL SETTING*
+***************************************************************************************************************/
+
+img {
+  border-style: none;
+}
+
+#page {
+  width: 1000px;
+  margin: 0 auto;
+  height: auto;
+  padding: 0px;
+}
+
+#header {
+  height: 250px;
+  margin: 0 auto;
+  width: 1000px;
+  margin-top: -10px;
+}
+
+.button {
+  background-image: url(/assets/structure/go.jpg);
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  border: none;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+h1 {
+  font-family: "grilled_cheese", Trebuchet MS;
+  font-size: 50px;
+  margin: 0px 0px 20px 0px;
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: normal;
+  color: #222;
+}
+
+h2 {
+  font-size: 19px;
+  margin: 0px 0px 10px 0px;
+}
+
+h3 {
+  font-size: 15px;
+  margin: 8px 0px 0px 0px;
+}
+
+p {
+  text-align: justify;
+  margin: 0px 0px 15px 0px;
+}
+
+#empty_space {
+  float: left;
+  height: 10px;
+  width: 100%;
+}
+
+
+/************************************************
+            *Fonts*
+************************************************/
+
+@font-face {
+    font: {
+      family: 'grilled_cheese';
+      weight: 'normal';
+      style: 'normal';
+    }
+    src: asset-url('grilcbc_.eot', font);
+    src: asset-url('grilcbc_.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('grilcbc_.woff', font) format('woff'),
+         asset-url('grilcbc_.ttf', font) format('truetype'),
+         asset-url('grilcbc_.svg#grilled_cheese', font) format('svg')
+}
+
+@font-face {
+    font: {
+      family: 'evilgenius_bbreg';
+      weight: normal;
+      style: normal;
+  }     
+    src: asset-url('evilgeniusbb_reg-webfont.eot', font);
+    src: asset-url('evilgeniusbb_reg-webfont.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('evilgeniusbb_reg-webfont.woff', font) format('woff'),
+         asset-url('evilgeniusbb_reg-webfont.ttf', font) format('truetype'),
+         asset-url('evilgeniusbb_reg-webfont.svg#evilgenius_bbregular', font) format('svg');    
+}
+
+@font-face {
+    font: {
+      family: 'evilgenius_bbbold';
+      weight: normal;
+      style: normal;
+  }     
+    src: asset-url('evilgeniusbb_bld-webfont.eot', font);
+    src: asset-url('evilgeniusbb_bld-webfont.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('evilgeniusbb_bld-webfont.woff', font) format('woff'),
+         asset-url('evilgeniusbb_bld-webfont.ttf', font) format('truetype'),
+         asset-url('evilgeniusbb_bld-webfont.svg#evilgenius_bbregular', font) format('svg');    
+}
+
+
+
+/************************************************
+    *Settings*
+************************************************/
+
+
+#tricks_logo {
+  margin: 2px auto;
+  width: 227px;
+  float: center;
+}
+
+#twenty_years {
+  float: left;
+  margin-left: 25px;
+  margin-top: 40px;
+}
+
+#jr_login_button {
+  float: right;
+  text-align: right;
+  margin-right: 15px;
+  margin-top: 125px;
+}
+
+.content {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  height: auto;
+  float: left;
+  width: 1000px;
+  margin: 0px 0px 0px 0px;
+}
+
+.content #link {
+  color: #06F;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.content #inactive_link {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+#infobox {
+  float: left;
+  margin-left: 19px;
+  margin-bottom: 25px;
+  width: 670px;
+  text-align: justify;
+}
+
+#specialevent {
+  float:left;
+  width: 900px;
+  margin: 15px 35px;
+  border: 5px #999 solid
+}
+
+.content #gymnastics_sidelogos {
+  width: 260px;
+  text-align: center;
+  font-weight: bold;
+  float: left;
+  margin: 10px 0px 0px -10px;
+}
+
+.content #gymnastics_text {
+  float: left;
+}
+
+.content #tbclasses {
+  margin: 3px 15px 0px 120px;
+  line-height: 1.5;
+}
+
+.content #dance_sidelogos {
+  width: 260px;
+  text-align: center;
+  font-weight: bold;
+  float: left;
+  margin: 0px 0px 0px 0px;
+}
+
+.content #dance_text {
+  float: left;
+}
+
+.content #tricksu_category {
+  float: left;
+  width: 319px;
+  height: 350px;
+  text-align: center;
+  line-height: 40px;
+  margin-bottom: 30px;
+  border: solid 3px #777;
+}
+
+#tricksu_category #link {
+  color: #06F;
+  text-decoration: underline;
+  font-size: 18px;
+  
+  margin: 15px 0px;
+}
+
+#tricksu_category #inactive_link {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 15px 0px;
+}
+
+.location_container{
+  width: 850px;
+  margin: 20px 50px;
+  padding: 25px;
+  height: 250px;
+  border: 2px #777 dotted;
+}
+
+.location{
+  float:left;
+}
+
+.map{
+  float:right;
+}
+
+
+/***************************************************************************************************************
+  * menu
+  ***************************************************************************************************************/
+
+
+
+#menu {
+  position: relative;
+  background-image: url(/assets/structure/background_menu.png);
+  background-repeat: no-repeat;
+  float: left;
+  width: 1000px;
+  height: 75px;
+}
+
+#menu_container {
+  margin: 7px 0px 0px -15px;
+}
+
+#menu a {
+  font: 20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color: #FFF;
+  display: block;
+  width: auto;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 50px;
+  padding-top: 3px;
+}
+
+#menu .submenu_link a {
+  font: 15px "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: left;
+  color: #222;
+  display: block;
+  width: 190px;
+  text-decoration: none;
+  line-height: 30px;
+  white-space: nowrap;
+  margin-top: -3px;
+  padding-left: 30px;
+}
+
+#menu ul {
+  list-style-type: none;
+}
+
+#menu li {
+  float: left;
+  position: relative;
+  text-align: center;
+  width: auto;
+  margin: 0px 26px 0px 25px;
+}
+
+/* Setting for the position of the hidden submenu box */
+
+#menu ul.submenu {
+  display: none;
+  position: absolute;
+  padding: 3px;
+  z-index: 90;
+}
+
+/* Helps make the submenu directly under the menu 
+  Settings for the individual submenu boxes*/
+
+#menu ul.submenu li {
+  text-align: center;
+  background-color: #FFF;
+  border: 1px solid #333;
+  height: 30px;
+  margin: 0px;
+}
+
+/* Makes the submenus box visable on hover 
+    Settings for the overall submenu box*/
+
+#menu li:hover ul.submenu {
+  display: block;
+  border: 1px solid #333;
+  background-color: #F91;
+}
+
+#menu a:hover {
+  background-image: url(/assets/structure/menu_hover_image.png);
+  background-size: 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  background-position-y: 10px;
+}
+
+#menu .submenu_link a:hover {
+  background-image: url(/assets/structure/menu_hover_image.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-position-y: 8px;
+  background-position-x: 5px;
+  white-space: nowrap;
+  color: #333;
+  
+}
+
+/**********************************************
+
+Bottom Menu
+
+**********************************************/
+
+
+#menu_bottom {
+  position: relative;
+  background-color: none;
+  width: 715px;
+  height: 30px;
+  margin: 0px auto;
+  /*border: solid 2px red;*/
+  padding: 0px;
+}
+
+#menu_bottom a {
+  font: 17px "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color: #333;
+  display: block;
+  width: auto;
+  text-decoration: none;
+  line-height: 30px;
+  padding-top: 3px;
+}
+
+#menu_bottom a:hover {
+  background-image: url(/assets/structure/menu_hover_image.png);
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: none;
+  color: #333;
+  background-position-y: 8px;
+}
+
+#menu_bottom ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+#menu_bottom li {
+  float: left;
+  position: relative;
+  text-align: center;
+  width: auto;
+  padding: 2px 12px;
+}
+
+/*****************************************************************************************************************
+  *end menu
+  ***************************************************************************************************************/
+
+
+
+
+
+/***************************************************************************************************************
+  * Clear SETTING*
+***************************************************************************************************************/
+
+#headclear {
+  background-image: url(/assets/structure/cleartop.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  height: 15px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#footclear {
+  background-image: url(/assets/structure/clearfoot.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  height: 55px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#holdclear {
+  background-image: url(/assets/structure/clearhold.png);
+  background-position: center;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  width: 100%;
+  background-repeat: repeat-y;
+}
+
+
+
+/***************************************************************************************************************
+              Random Comment
+***************************************************************************************************************/
+
+
+#Comments {
+  /*border: solid 2px #888; */
+  float: left;
+  margin: 20px 0px 30px 15px;
+  width: 665px;
+}
+
+#Random_Comment_Container {
+  font-family: trebuchet ms;
+  color: #444; 
+  text-align: justify; 
+  float:left; 
+  width: 650px; 
+  margin: 0px 7px 0px 7px; 
+  padding: 4px;
+}
+#Random_Comment_Container #Comment {
+  font-color: #222; 
+  font-size: 14px;
+
+  margin: -7px 26px 20px 14px;
+}
+
+#Random_Comment_Container #Name{
+  float:right; 
+  font-size: 16px; 
+  color: #444; 
+  margin: 0px 30px 0px 0px;
+  padding-bottom: 20px;
+  margin-top: -15px;
+}
+
+#commentheadergreen {
+  background-image: url(/assets/structure/comment_header_green.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  float: left;
+  height: 19px;
+  width: 650px;
+}
+
+#commentbodygreen {
+  background-image: url(/assets/structure/comment_body_green.png);
+  background-position: center;
+  background-repeat: repeat-y;
+  margin: 0;
+  float: left;
+  width: 650px;  
+}
+
+#commentfootergreen {
+  background-image: url(/assets/structure/comment_footer_green.png);
+  background-position: center;  
+  background-repeat: no-repeat;
+  margin: 0;
+  float: left;
+  height: 27px;
+  width: 650px;
+}
+
+#commentheaderpink {
+  background-image: url(/assets/structure/comment_header_pink.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  float: left;
+  height: 19px;
+  width: 650px;
+}
+
+#commentbodypink {
+  background-image: url(/assets/structure/comment_body_pink.png);
+  background-position: center;
+  background-repeat: repeat-y;
+  margin: 0;
+  float: left;
+  width: 650px;  
+}
+
+#commentfooterpink {
+  background-image: url(/assets/structure/comment_footer_pink.png);
+  background-position: center;  
+  background-repeat: no-repeat;
+  margin: 0;
+  float: left;
+  height: 27px;
+  width: 650px;
+}
+
+#commentheaderblue {
+  background-image: url(/assets/structure/comment_header_blue.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  float: left;
+  height: 19px;
+  width: 650px;
+}
+
+#commentbodyblue {
+  background-image: url(/assets/structure/comment_body_blue.png);
+  background-position: center;
+  background-repeat: repeat-y;
+  margin: 0;
+  float: left;
+  width: 650px;  
+}
+
+#commentfooterblue {
+  background-image: url(/assets/structure/comment_footer_blue.png);
+  background-position: center;  
+  background-repeat: no-repeat;
+  margin: 0;
+  float: left;
+  height: 27px;
+  width: 650px;
+}
+
+
+/***************************************************************************************************************
+              Random Comment
+***************************************************************************************************************/
+
+#Quotebox {
+  width: 1000px;
+  /*border: solid 2px #888; */
+  /*height: 250px;*/
+  float: left;
+  margin: -20px 0px 30px 21px;
+}
+
+#Random_Quote_Container {
+  font-family: trebuchet ms;
+  color: #444; 
+  text-align: justify; 
+  float:left;
+  width: 300px;  
+  margin: 0px 11px;
+  /* border: solid 2px #888; */
+}
+
+#Random_Quote_Container #Quote {
+  font-size: 14px; 
+  float: left;
+  width: auto;
+  /*border: solid 2px #888;*/
+  margin: -10px 26px 12px 14px;
+}
+
+#Random_Quote_Container #Name{
+  font-size: 16px; 
+  float: right; 
+  margin: 2px 30px 0px 0px;
+  padding-bottom: 20px;
+  margin-top: -13px;
+}
+
+#quoteheaderyellow {
+  background-image: url(/assets/structure/quote_header_yellow.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  float: left;
+  height: 20px;
+  width: 300px;
+}
+
+#quotebodyyellow {
+  background-image: url(/assets/structure/quote_body_yellow.png);
+  background-position: center;
+  background-repeat: repeat-y;
+  margin: 0;
+  float: left;
+  width: 300px;  
+}
+
+#quotefooteryellow {
+  background-image: url(/assets/structure/quote_footer_yellow.png);
+  background-position: center;  
+  background-repeat: no-repeat;
+  margin: 0;
+  float: left;
+  height: 29px;
+  width: 300px;
+}
+
+
+
+/***************************************************************************************************************
+  * Promo Box
+  ***************************************************************************************************************/
+
+#promoboxholder {
+  float: left;
+  background-image: url(/assets/structure/PromoBox_3smallbuttons.png);
+  background-repeat: no-repeat;
+  height: 589px;
+  width: 710px;
+  font-size: 12px;
+}
+
+#promo-frame {
+  float: left;
+  width: 695px;
+  height: 310px;
+  margin-left: 15px;
+}
+
+#promo-header {
+  height: 24px;
+  color: #FF0;
+  width: 250px;
+  margin: 7px 0px 0px 27px;
+}
+
+#promo-tabs {
+  float: left;
+  margin-left: 15px;
+  margin-top: 10px;
+  height: auto;
+  border-bottom: 0px;
+  width: 280px;
+  cursor: pointer;
+}
+
+#promo-img {
+  float: right;
+  width: 367px;
+  height: 248px;
+  margin-right: 28px;
+}
+
+.promo_image {
+  display: none;
+}
+
+.promo-tab {
+  background-image: url(/assets/structure/tab-color.jpg);
+  color: #fff;
+  width: 275px;
+  height: 22px;
+  float: left;
+  height: 26px;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+#promo-tabs .current {
+  background-image: url(/assets/structure/tab-color-selected.png);
+}
+
+.promo-hover {
+}
+
+.block {
+  margin: 0px 0px 20px 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+#ribbon-content .block {
+  margin: 0px;
+}

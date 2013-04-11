@@ -1,36 +1,38 @@
-<%= form_for(@level) do |f| %>
-  <% if @level.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@level.errors.count, "error") %> prohibited this level from being saved:</h2>
-      <ul>
-        <% @level.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+<div id="form">
+  <%= form_for(@level) do |f| %>
+    <% if @level.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@level.errors.count, "error") %> prohibited this level from being saved:</h2>
+        <ul>
+          <% @level.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div style="float:left; width: 120px; line-height: 34px;">
+      <%= f.label :classtype_id, "Class Type" %>:<br>
+      <%= f.label :levelname, "Level" %>:<br>
+      <%= f.label :length %>:<br>
+      <%= f.label :price %>:<br>
+      <%= f.label :age %>:<br>
+      <%= f.label :gender %>:<br>
+      <%= f.label :order %>:<br>
+    </div>
+    <div class="field" style="float:left; width: 820px; line-height: 34px;">
+      <%= f.collection_select :classtype_id, Classtype.where(:id => 1..9), :id, :name, :prompt => "Select a Class Type" %><br>
+      <%= f.text_field :levelname %><br>
+      <%= f.number_field :length %><br>
+      <%= f.number_field :price %><br>
+      <%= f.text_field :age %><br>
+      <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender" %><br>
+      <%= f.number_field :sort_order %><br>
+    </div>
+    <br>
+    <br>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div style="float:left; width: 120px; line-height: 34px;">
-    <%= f.label :classtype_id, "Class Type" %>:<br />
-    <%= f.label :levelname, "Level" %>:<br />
-    <%= f.label :length %>:<br />
-    <%= f.label :price %>:<br />
-    <%= f.label :age %>:<br />
-    <%= f.label :gender %>:<br />
-    <%= f.label :order %>:<br />
-  </div>
-  <div class="field" style="float:left; width: 820px; line-height: 34px;">
-    <%= f.collection_select :classtype_id, Classtype.where(:id => 1..9), :id, :name, :prompt => "Select a Class Type" %><br />
-    <%= f.text_field :levelname %><br />
-    <%= f.number_field :length %><br />
-    <%= f.number_field :price %><br />
-    <%= f.text_field :age %><br />
-    <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender" %><br />
-    <%= f.number_field :sort_order %><br />
-  </div>
-  <br />
-  <br />
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

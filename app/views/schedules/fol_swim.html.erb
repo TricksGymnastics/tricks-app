@@ -3,7 +3,7 @@
 <!-- <script src="/assets/jquery.isotope.min.js"></script> -->
 <!-- <script src="/assets/jquery.masonry.ordered.js"></script> -->
 
-<%= stylesheet_link_tag "schedules_by_gym", :media => "all" %>
+<%= stylesheet_link_tag "static/schedules_formatted", :media => "all" %>
 
 <script>
     $(window).load(function(){
@@ -16,7 +16,7 @@
     });
 </script>
 <div id="master_swim_container">
-    <div id="header">
+    <div id="schedule_header">
         <div style="width: 100px; height: 30px; float:left"></div>
         <div style="width: 100px; float:right; margin-top:7px;"><a href="#" onClick=" window.print(); return false">Print this page</a></div>
         <h2> Folsom Swim Schedule</h2>    
@@ -35,7 +35,7 @@
     </div>
     <div id="gym_info">
         <h2>Folsom</h2>
-        <h3>370 Plaza Dr.<br />Folsom, CA 95630</h3>
+        <h3>370 Plaza Dr.<br>Folsom, CA 95630</h3>
         <h3>(916) 351-0024</h3>
         <h3>www.tricksgym.com</h3>
     </div>
@@ -73,7 +73,7 @@
                                                 *Future Class*
                                             </div>
                                         <% end %>
-                                        <br />
+                                        <br>
                                     <% end %>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                                                 *Future Class*
                                             </div>
                                         <% end %>
-                                        <br />
+                                        <br>
                                     <% end %>
                                 </div>
                             </div>

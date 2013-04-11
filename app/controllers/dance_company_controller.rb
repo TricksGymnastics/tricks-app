@@ -1,0 +1,2 @@
+class DanceCompanyController < StaticController
+end

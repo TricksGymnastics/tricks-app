@@ -77,13 +77,13 @@ class CoachesController < ApplicationController
 
   def type
     #@coaches = Coach.all.group_by(&:classtype_ids)
-    @coaches_by_type = Classtype.includes(:coaches).find_by_name(params[:name]).coaches
+    @coaches = Classtype.includes(:coaches).find_by_name(params[:name]).coaches.sort_by(&:firstname)
     #@coaches = Coach.joins(:classtype).all
   end
 
   def loc
     # Gives an array full of all coaches that work at the location specified in the url
-    @coaches_by_location = Location.includes(:coaches).find_by_name(params[:name]).coaches
+    @coaches_by_location = Location.includes(:coaches).find_by_name(params[:name]).coaches.sort_by(&:firstname)
   end
 
 

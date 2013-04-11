@@ -3,7 +3,7 @@
 <!-- <script src="/assets/jquery.isotope.min.js"></script> -->
 <!-- <script src="/assets/jquery.masonry.ordered.js"></script> -->
 
-<%= stylesheet_link_tag "schedules_by_gym", :media => "all" %>
+<%= stylesheet_link_tag "static/schedules_formatted", :media => "all" %>
 
 <script>
     $(window).load(function(){
@@ -27,7 +27,7 @@
     });
 </script>
 <div id="master_container">
-    <div id="header">
+    <div id="schedule_header">
         <div style="width: 100px; height: 30px; float:left"></div>
         <div style="width: 100px; float:right; margin-top:7px;"><a href="#" onClick=" window.print(); return false">Print this page</a></div>
         <h2> School Age Gymnastics Schedule</h2>    
@@ -67,7 +67,7 @@
                                             <%= schedule.time.strftime("%l:%M %p") %>
                                         </div>
                                         <%= schedule.teacher %>
-                                        <br />
+                                        <br>
                                     <% end %>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                             <%= schedule.time.strftime("%l:%M %p") %>
                                         </div>
                                         <%= schedule.teacher %>
-                                        <br />
+                                        <br>
                                     <% end %>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                                             <%= schedule.time.strftime("%l:%M %p") %>
                                         </div>
                                         <%= schedule.teacher %>
-                                        <br />
+                                        <br>
                                     <% end %>
                                 </div>
                             </div>

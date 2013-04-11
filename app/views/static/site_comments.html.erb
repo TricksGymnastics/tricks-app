@@ -1,0 +1,71 @@
+<%= stylesheet_link_tag "random_comment", :media => "all" %>
+<% @title = "Tricks Comments" %>
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_yellow %>;}
+<% end %>
+
+<div class="content" style="float: left; text-align: center;">
+  <div style="float: left; margin-left: 305px; width: 360px;">
+    <h1 style="margin-bottom: 0; font-size:70px">Comments</h1>
+    <h3 style="margin-top: -10px; margin-bottom: 10px;">Reload page for more comments</h3>
+  </div>
+  
+  <div id="Comments">
+    <% @comment.each do |t| %>
+      <div id="Random_Comment_Container">
+        <% if t.activity == "Gymnastics" then %>
+          <div id="commentheadergreen"></div>
+          <div id="commentbodygreen">
+            <div id="Comment">
+              <%= t.comment %><br/>
+            </div>
+          </div>
+          <div id="commentfootergreen">
+            <div>
+              <h3 id="Name">-<%= t.name %></h3>
+            </div>
+          </div>
+
+        <% elsif t.activity == "Dance" then %>
+          <div id="commentheaderpink"></div>
+          <div id="commentbodypink">
+            <div id="Comment">
+              <%= t.comment %><br/>
+            </div>
+          </div>
+          <div id="commentfooterpink">
+            <div>
+              <h3 id="Name">-<%= t.name %></h3>
+            </div>
+          </div>
+
+        <% elsif t.activity == "Swim" then %>
+          <div id="commentheaderblue"></div>
+          <div id="commentbodyblue">
+            <div id="Comment">
+              <%= t.comment %><br/>
+            </div>
+          </div>
+          <div id="commentfooterblue">
+            <div>
+              <h3 id="Name">-<%= t.name %></h3>
+            </div>
+          </div>
+
+        <% end %>
+      </div>    
+    <% end %>
+  </div>
+  
+  <div style="float: right; margin: 25px 25px 0px 0px;">
+    <%= link_to image_tag('/assets/structure/comment_button.png'), new_comment_path, alt: "Leave a comment" %>
+  </div>
+  
+  <div style="float:right; width: 240px; margin: 30px 35px 0px 0px; font-size: 16px;">
+    <p>Please feel free to leave us a comment about our Staff, Facilities, Website, or anything else you would like. Simply click on the button above to leave your comment.
+    </p>
+    <p>Comments on this page are randomly chosen from all of the comments that have been submitted in the past by both Parents and Children. Each time you come to visit the comments page you will be able to see 6 new comments! The comments with the <b style="color: #009700; font-size: 17px;">Green</b> border are <b style="color: #009700; font-size: 17px;">Gymnastics</b> based, <b style="color:#E80068; font-size: 17px;">Pink</b> border are <b style="color: #E80068; font-size: 17px;">Dance</b>, and the ones with the <b style="color:#03C; font-size: 17px;">Blue</b> border are from <b style="color: #03C; font-size: 17px;">Swimmers</b>.</p>
+    
+  </div>
+  
+</div>

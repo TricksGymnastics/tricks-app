@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  
   load_and_authorize_resource :except => :random_comment
   helper_method :sort_column, :sort_direction 
   
