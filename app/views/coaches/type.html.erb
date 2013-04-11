@@ -1,45 +1,35 @@
-<%= stylesheet_link_tag "coaches", :media => "all" %>
-<style>
-
-#location{width: 948px; border: 2px #444 solid; background-color: #FFFA5E; float: left; color: #222;}
-h2{
-  padding: 4px;
-  font-size: 20px;
-}
-
-</style>
+<%= stylesheet_link_tag "static/coaches", :media => "all" %>
 
 <h1>The Tricks Family</h1>
 
 <% if params[:name] == "Gymnastics" %>
-  <h3>Gymnastics Coaches</h3>
+  <h2>Gymnastics Coaches</h2>
 <% elsif params[:name] == "Tumblebunnies" %>
-  <h3>Tumblebunny Coaches</h3>
+  <h2>Tumblebunny Coaches</h2>
 <% elsif params[:name] == "Dance" %>
-  <h3>Dance Teachers</h3>
+  <h2>Dance Teachers</h2>
 <% elsif params[:name] == "Swim" %>
-  <h3>Swim Teachers</h3>
+  <h2>Swim Teachers</h2>
 <% elsif params[:name] == "Office" %>
-  <h3>Customer Service Specialists</h3>
+  <h2>Customer Service Specialists</h2>
 <% end %>
 
 
 <% if can? :manage, Coach %>
-  <br />
-  <h3 style="text-align:center;"><%= link_to 'Add New Employee', new_coach_path %></h3>
-  <br />
-  <% end %>
-<br />
+  <br><h2><%= link_to 'Add New Employee', new_coach_path %></h2><br>
+<% else %>
+  <br><br>
+<% end %>
 
 <% if params[:name] == "Swim" %>
   <div>
-    <div id="location"><h2>Folsom</h2></div>
+    <div id="coach_section_header"><h3>Folsom</h3></div>
     <div>
       <% @coaches.each do |coach| %>
         <% coach.locations.each do |location| %>
           <% if location.name == "Folsom" %>
-            <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
-              <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+            <div id="coach_container">
+              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
               <div style="width: 115px; margin: 0 auto">
                 <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
               </div>
@@ -53,8 +43,8 @@ h2{
 <% elsif params[:name] == "Dance" %>
   <div>
     <% @coaches.each do |coach| %>
-      <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
-        <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+      <div id="coach_container">
+        <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
         <div style="width: 115px; margin: 0 auto">
           <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
         </div>
@@ -65,13 +55,13 @@ h2{
 <% else %>
 
   <div>
-    <div id="location"><h2>Granite Bay</h2></div>
+    <div id="coach_section_header"><h3>Granite Bay</h3></div>
     <div>
       <% @coaches.each do |coach| %>
         <% coach.locations.each do |location| %>
           <% if location.name == "Granite Bay" %>
-            <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
-              <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+            <div id="coach_container">
+              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
               <div style="width: 115px; margin: 0 auto">
                 <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
               </div>
@@ -84,13 +74,13 @@ h2{
 
 
   <div>
-    <div id="location"><h2>Folsom</h2></div>
+    <div id="coach_section_header" style="margin-top: 30px"><h3>Folsom</h3></div>
     <div>
       <% @coaches.each do |coach| %>
         <% coach.locations.each do |location| %>
           <% if location.name == "Folsom" %>
-            <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
-              <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+            <div id="coach_container">
+              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
               <div style="width: 115px; margin: 0 auto">
                 <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
               </div>
@@ -102,13 +92,13 @@ h2{
   </div>
 
   <div>
-    <div id="location"><h2>Sacramento</h2></div>
+    <div id="coach_section_header" style="margin-top: 30px"><h3>Sacramento</h3></div>
     <div>
       <% @coaches.each do |coach| %>
         <% coach.locations.each do |location| %>
           <% if location.name == "Sacramento" %>
-            <div style="float:left; width: 158px; text-align: center;  margin-bottom: 15px;">
-              <h2 style="font-size: 13px; padding: 3px;"><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h2>
+            <div id="coach_container">
+              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
               <div style="width: 115px; margin: 0 auto">
                 <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
               </div>

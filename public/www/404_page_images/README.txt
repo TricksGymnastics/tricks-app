@@ -1,0 +1,1 @@
+This folder is for images that are being used by 404 Page. Therefore, please dont delete this folder.

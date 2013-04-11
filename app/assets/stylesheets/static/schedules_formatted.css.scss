@@ -1,0 +1,288 @@
+/*Gender Header*/
+h1{margin-bottom: 0;	font-size: 28px; line-height: 36px}
+/*Page Header*/
+h2{padding: 3px; margin-bottom: 0px; font-size: 18px;}
+/*Level Title Headers*/
+h3{text-align: center; margin: 5px 0px 2px 0px;	font-size: 18px; padding: 0;}
+/*Level Info*/
+h4{text-align: center; font-size: 13px; margin-bottom: 6px;}
+
+#headclear {
+  background-image: url(/assets/structure/cleartop.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  height: 15px;
+  width: 100%;
+  margin-top: -10px;
+}
+
+#footclear {
+  background-image: url(/assets/structure/clearfoot.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  height: 55px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#holdclear {
+  background-image: url(/assets/structure/clearhold.png);
+  background-position: center;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  float: left;
+  width: 100%;
+  background-repeat: repeat-y;
+}
+
+.day{
+	float: left;
+	width: 100%;
+	h3{
+		text-align: left;
+		font-size: 14px;
+	}
+}
+.day_name{
+	float: left;
+	margin: 0px 10px 0px 10px;
+	padding: 0px;
+	width: 30px;
+}
+.classes_box{
+	float: left;
+	margin-top: 5px;
+	padding-left: 20px;
+	width: 73%;
+}
+
+#master_container{
+	overflow: auto;
+	width: 950px;
+  margin: 0 auto;
+}
+#schedule_header {
+	border: 1px solid black;
+	background-color: #ccc;
+	width: 908px;
+	padding: 0px 20px;
+}
+#info_container{
+	border: 2px #333 solid;
+	width: 612px;
+	height: 120px;
+	margin-top: 6px;
+	padding: 7px;
+	float:left;
+
+	#info{
+		border: 1px #888 solid;
+		width: 320px;
+		height: 118px;
+		float:left;
+		h3{
+			text-decoration: underline;
+			margin-bottom:5px;
+      margin-top: 2px;
+		}
+		p{
+			text-align: center;
+			font-size: 14px;
+			margin:0;
+			line-height: 22px;
+		}
+	}
+
+	#logo{
+		width: 290px;
+		float:right;
+		height: 118px;
+		text-align: center;
+	}
+}
+#gym_info{
+	h2{font-size: 22px;}
+	h3{font-size: 16px;}
+	padding: 8px;
+}
+
+/*************************************************************/
+/*************************** GIRLS ***************************/
+/*************************************************************/
+#girls_container{
+	float:left;
+	/*border: solid purple 1px;*/
+	width: 636px;
+}
+#girls_header{
+	border: 1px solid black; 
+    background-color: #ccc;
+    margin: 6px 0px;
+    width: 628px;
+    height: auto;
+}
+#column{
+	width: 310px;
+	margin-right: 8px;
+}
+#girls_levels_container {
+	/* ID I use in masorny to sort out all the levels */
+	/*border: blue solid 3px;*/
+}
+#girls_levels{
+	border: 1px solid black; 
+	margin: 0px 6px 6px 0px;
+	width: 310px;
+	padding-bottom: 10px;
+	float: left;
+}
+
+/************************************************************/
+/*************************** BOYS ***************************/
+/************************************************************/
+
+#boys_container{
+	float: right;
+	/*border: blue solid 1px;*/
+	width: 312px;
+}
+#boys_header{
+	border: 1px solid black; 
+    background-color:#ccc;
+    margin: 6px 0px;
+    width: 310px;
+    height: auto;
+}
+#boys_levels_container {
+	/* ID I use in masorny to sort out all the levels */
+	/*border: blue solid 3px;*/
+}
+#boys_levels{
+	border: 1px solid black; 
+	margin-bottom: 6px;
+	width: 310px;
+	padding-bottom: 10px;
+	float: left;
+}
+
+/**************************************************************/
+/*************************** TUMBLE ***************************/
+/**************************************************************/
+
+#tumble_container{
+	float: right;
+	/*border: blue solid 1px;*/
+	width: 312px;
+}
+#tumble_header{
+	border: 1px solid black; 
+    background-color:#ccc;
+    margin: 6px 0px;
+    width: 310px;
+}
+#tumble_levels_container {
+	/* ID I use in masorny to sort out all the levels */
+	/*border: blue solid 3px;*/
+}
+#tumble_levels{
+	border: 1px solid black; 
+	margin-bottom: 6px;
+	width: 310px;
+	padding-bottom: 10px;
+	float: left;
+}
+
+/***********************************************************/
+/*************************** TAG ***************************/
+/***********************************************************/
+
+#tag_container{
+	float: right;
+	/*border: blue solid 1px;*/
+	width: 312px;
+}
+#tag_header{
+	border: 1px solid black; 
+    background-color:#ccc;
+    margin: 6px 0px;
+    width: 310px;
+}
+#tag_levels_container {
+	/* ID I use in masorny to sort out all the levels */
+	/*border: blue solid 3px;*/
+}
+#tag_levels{
+	border: 1px solid black; 
+	margin-bottom: 6px;
+	width: 310px;
+	padding-bottom: 10px;
+	float: left;
+}
+
+/*********************************************************************/
+/*************************** TUMBLEBUNNIES ***************************/
+/*********************************************************************/
+
+#master_tb_container{
+	/*border: 2px orange solid;*/
+	overflow: auto;
+	width: 957px;
+}	
+#tb_container{
+	float: left;
+	/*border: blue solid 1px;*/
+	width: 957px;
+	margin-top: 6px;
+}
+#tb_levels{
+	border: 1px solid black; 
+	margin: 0px 7px 6px 0px;
+	width: 310px;
+	padding-bottom: 10px;
+	float: left;
+}
+
+/*************************************************************/
+/*************************** GIRLS ***************************/
+/*************************************************************/
+#master_swim_container{
+	/*border: 2px orange solid;*/
+	overflow: auto;
+	width: 957px;
+}
+
+#swim_container{
+	float:left;
+	/*border: solid purple 1px;*/
+	width: 957px;
+}
+
+#swim_header{
+	border: 1px solid black; 
+    background-color: #ccc;
+    margin: 6px 0px;
+    width: 948px;
+    h1{font-size: 22px; line-height: 7px;} 
+}
+
+#swim_levels_container {
+	/*border: blue solid 3px;*/
+	/*height: 980px;*/
+}
+
+#swim_levels{
+	border: 1px solid black; 
+	margin: 0px 7px 6px 0px;
+	width: 310px;
+	padding-bottom: 10px;
+	float: left;
+}

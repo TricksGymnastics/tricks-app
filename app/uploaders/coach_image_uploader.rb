@@ -33,9 +33,9 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
     if model.gender == "Girl" then
-      "/images/girl_default.jpg"
+      "/assets/girl_default.jpg"
     else
-      "/images/boy_default.jpg"
+      "/assets/boy_default.jpg"
     end
       # "/images/rails.png"
     

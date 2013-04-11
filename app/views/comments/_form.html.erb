@@ -13,31 +13,31 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :comment %><br />
+      <%= f.label :comment %><br>
       <%= f.text_area :comment %>
     </div>
     <div class="field">
-      <%= f.label :name %><br />
+      <%= f.label :name %><br>
       <%= f.text_field :name %>
     </div>
     <div>
-       <%= f.label :email %><br />
+       <%= f.label :email %><br>
        <%= f.email_field :email %>
     </div>
     <% if can? :update, @comment %>
     <div class="field">
-      <%= f.label :score %><br />
+      <%= f.label :score %><br>
       <%= f.number_field :score, :min => 0, :max => 10 %>
     </div>
     <% end %>
     <div class="field">
-      <%= f.label :activity %><br />
+      <%= f.label :activity %><br>
       <%= f.radio_button :activity, "Gymnastics", checked: true %>
-      <%= label_tag(:activity , "Gymnastics") %><br />
+      <%= label_tag(:activity , "Gymnastics") %><br>
       <%= f.radio_button :activity, "Dance" %>
-      <%= label_tag(:activity, "Dance") %><br />
+      <%= label_tag(:activity, "Dance") %><br>
       <%= f.radio_button :activity, "Swim" %>
-      <%= label_tag(:activity, "Swim") %><br />
+      <%= label_tag(:activity, "Swim") %><br>
     </div>
 
     <% if can? :manage, Comment %>

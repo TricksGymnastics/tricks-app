@@ -3,41 +3,94 @@
 <head>
   <title>Tricks App</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %> <!--,"rails.validations"-->
+  <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
-  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+
+  <% if @needs_stripe == true %>
+  	<%= javascript_include_tag "https://js.stripe.com/v1/", "jquery.validate" %>
+  	<%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+  <% end %>
+
 </head>
 <body>
-	<div id="headergreen"></div>
-	<div id="bodygreen">
-		<div id="container">
-			<div id="user_header">
-				<div style="float:left"><%= link_to "Home", root_path %></div>
+	<div id="headclear"></div>
+	<div id="holdclear">
+		<div id="user_header">
+			<div id="tricks_tiny"><%= link_to image_tag('/assets/tricks-tiny.png'), root_path %></div>
+			<div id="app_menu">
+        <ul>
+          <li><%= link_to "Home", database_path %></li>
 
-				<% if can? :read, User %>
-					<div style="float:left"> | <%= link_to "Users", users_path %></div>
-				<% end %>
+          <% if can? :read, User %>
+          	<li><%= link_to "Users", users_path %></li>
+          <% end %>
 
-				<% if can? :manage, Level %>
-					<div style="float:left"> | <%= link_to "List of Levels", levels_path %></div>
-				<% end %>
+					<li><%= link_to "Comments", comments_path %></li>
 
+					<% if can? :manage, KidQuote %>
+						<li><%= link_to "Kid Quotes", kid_quotes_path %></li>
+					<% end %>
+
+          <li><%= link_to "Schedules", schedules_choose_path %>
+          	<% if can? :manage, Level %>
+	            <ul class="app_submenu">
+	              <li class="app_submenu_link"><%= link_to "List of Levels", levels_path %></li>
+	            </ul>
+	          <% end %>
+          </li>
+
+          <li><%= link_to "Staff", coaches_path %>
+          	<ul class="app_submenu">
+              <li class="app_submenu_link">
+                <%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %>
+              </li>
+              <li class="app_submenu_link">
+                <%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %>
+              </li>
+              <li class="app_submenu_link">
+                <%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %>
+              </li>
+            </ul>
+          </li>   
+
+          <% if can? :manage, RecitalAd %>
+	          <li><%= link_to "Recital Ads", recital_ads_path %>
+	          	<% if can? :manage, RecitalAdType %>
+		            <ul class="app_submenu">
+		              <li class="app_submenu_link"><%= link_to "Ad Types", recital_ad_types_path %></li>
+		            </ul>
+		          <% end %>
+		        </li>
+		      <% end %>
+
+        </ul>
+    	</div>		
+
+    	
+    	<div id="session_info">
 				<% if current_user %>
-					Logged in as <%= current_user.email %> (<%= current_user.role %>) 
+					(<%= current_user.email %>)
 					<%= link_to "Log Out", logout_path %> 
 				<% else %>
 					<%= link_to "Login", login_path  %>
 				<% end %>
-
 			</div>
-			<% flash.each do |name, msg| %>
-				<%= content_tag :div, msg, id: "flash_#{name}" %>
-			<% end %>
+
+			
+
+		</div>
+			<div id="flash_container">
+	    	<% flash.each do |name, msg| %>
+					<%= content_tag :div, msg, id: "flash_#{name}" %>
+				<% end %>
+			</div>
+		<div id="container">
+			
 
 			<%= yield %>
 
 		</div>
 	</div>
-	<div id="footergreen"></div>
+	<div id="footclear"></div>
 </body>
 </html>

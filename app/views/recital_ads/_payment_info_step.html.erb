@@ -1,6 +1,6 @@
 <div id="payment_info">
-  <h2 style="margin-right: 100px;">Payment Information</h2><br>
-  <div id="stripe_error" style="color: red; border: solid 2px red; display:none; width: 250px; padding: 5px; text-align: center">
+  <h2 style="margin-right: 200px;">Payment Information</h2><br>
+  <div id="stripe_error" style="color: red; border: solid 2px red; display:none; width: 300px; padding: 5px; text-align: center">
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
   <br><div class="field">
@@ -17,10 +17,10 @@
     <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
   </div>
 
-  <br />
-  <br />
+  <br>
+  <br>
   <button type="button" style="padding: 3px 8px;" id="back_button" >Back</button>
-  <div class="actions" style="float:right; margin-right: 150px;">
+  <div class="actions" style="float:right; margin-right: 250px;">
     <%= f.submit "Submit Order", confirm: 'Once your payment has gone through successfully you will not be able to edit your order. Please check and make sure everything is accurate, especially your Message. Would you like to continue submitting payment?', :style => "padding: 3px 8px" %>
   </div>
 </div>

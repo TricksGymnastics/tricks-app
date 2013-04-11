@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %></title>
+  <%= stylesheet_link_tag    "static/static", :media => "all" %>
+  <%= javascript_include_tag   "static" %>
+  <%= csrf_meta_tags %>
+
+  <% if @tricksu_password == true %>
+    <script language="javascript">
+      var password; 
+      var pass1="tricksu"; 
+      password=prompt('Enter Password',''); 
+      if (password==pass1); 
+      else {window.location="http://www.tricksgym.com/"; }
+    </script>
+  <% end %>
+
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Tricks Gymnastics, Dance, Swim, Granite Bay, Folsom, Roseville, Sacramento, California, Gymnastics, Fun, Classes, Tumbling, Swimming, Fitness, Birthday, Cheer, Night Out, Parents, Date Night"/>
+	<meta name="description" content="Gymnastics is perhaps one of the most comprehensive lifestyle exercise programs available to children, incorporating strength, flexibility, speed, balance, coordination, power and discipline."/>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+	<style type="text/css">
+	  <%= yield :pagestyle %>
+	</style>
+
+</head>
+<body>
+	<div id="headclear"></div>
+  <div id="holdclear">
+    <div id="header">
+      <div id="twenty_years">
+        <img src="assets/logos/20years.png" style="display: <%= @twenty_years %>;" alt="Celebrating 20 Years" width="170" height="100" />
+      </div>
+      <div id="jr_login_button" style="display: <%= @jr_login %>;">
+        <a href="https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983">
+          <img src="assets/structure/login_button.png" width="242" height="32" alt="Login" />
+        </a>
+      </div>
+      <div id="tricks_logo">
+        <a href="/">
+          <img src="/assets/logos/tricks-header.png" alt="Tricks Logo" width="227" height="150" />
+        </a>
+      </div>
+      <div id="menu">
+        <ul id="menu_container">
+          <li>
+            <%= link_to "Home", root_path %>
+            <ul class="submenu">
+              <li class="submenu_link">
+                <%= link_to "Locations", locations_path %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Comments", site_comments_path %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to "Gymnastics", gymnastics_path %>
+            <ul class="submenu">
+              <li class="submenu_link">
+                <%= link_to "Competitive", competitive_path %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Teamgym", teamgym_path %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to "Dance", dance_path %>
+            <ul class="submenu">
+              <li class="submenu_link">
+                <%= link_to "Dance Company", dance_company_index_path %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Recital Ad Online Order", recital_ads_ad_select_path %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to "Swim", swim_path %>
+          </li>
+          <li>
+            <%= link_to "Class Schedules", schedules_choose_path %>
+            <ul class="submenu">
+              <li class="submenu_link">
+                <%= link_to "Granite Bay (Gymnastics)", schedules_gb_gym_path %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Granite Bay (Tumblebunny)", schedules_gb_tb_path %>
+              </li>
+              <li class="submenu_link">
+                <a href="/assets/schedules/gb-dance.pdf">
+                  Granite Bay (Dance)
+                </a>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Folsom (Gymnastics)", schedules_fol_gym_path %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Folsom (Tumblebunny)", schedules_fol_tb_path %>
+              </li>
+              <li class="submenu_link">
+                <a href="/assets/schedules/fol-dance.pdf">
+                  Folsom (Dance)
+                </a>
+              </li>
+              <li class="submenu_link">
+                <a href="/assets/schedules/fol-swim.pdf">
+                  Folsom (Swim)
+                </a>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Sacramento (Gymnastics)", schedules_sac_gym_path %>                
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Sacramento (Tumblebunny)", schedules_sac_tb_path %>
+              </li>
+              <li class="submenu_link">
+                <a href="/assets/schedules/sac-dance.pdf">
+                  Sacramento (Dance)
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to "Special Events", events_path %>
+            <ul class="submenu">
+              <li class="submenu_link">
+                <%= link_to "Birthday Parties", birthdays_path %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Princess Parties", princess_party_path %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Date Nights", datenights_path %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Camps", camps_path %>
+              </li>
+            </ul>
+            
+          </li>
+          <li>
+            <a href="Javascript:void()">
+              Staff
+            </a>
+            <ul class="submenu">
+              <li class="submenu_link">
+                <%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %>
+              </li>
+              <li class="submenu_link">
+                <%= link_to "Tricks Web App", database_path %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+    	</div>
+		</div>
+
+		<div id="page">
+			<%= yield %>
+		</div>
+
+	</div>
+	<div id="footclear">
+    <div id="menu_bottom">
+      <ul>
+        <li>
+          <%= link_to "CampUs® Pre-Kinder Program", campus_path %>
+        </li>
+        <li>
+          <a href="/assets/newsletter.pdf">
+            Newsletter
+          </a>
+        </li>
+        <li>
+          <%= link_to "Employment", employment_path %>
+        </li>
+        <li>
+          <%= link_to "Blog", "http://tricksgym.blogspot.com/" %>
+        </li>
+        <li>
+          <%= link_to "Forms", forms_path %>
+        </li>
+        <li>
+          <%= link_to "Contact Us", locations_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

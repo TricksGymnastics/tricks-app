@@ -1,5 +1,7 @@
 class RecitalAdTypesController < ApplicationController
+
   load_and_authorize_resource
+  
   # GET /recital_ad_types
   # GET /recital_ad_types.json
   def index

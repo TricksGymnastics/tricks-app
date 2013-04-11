@@ -7,10 +7,11 @@
 <h1>Schedules</h1>
 
 <% if can? :manage, Schedule %>
-    <h3 style="font-size: 18px; text-align:center;"><%= link_to 'New schedule', new_schedule_path %></h3>
-	<br />
-	<br />
+  <h3 style="font-size: 22px;"><%= link_to 'New Schedule', new_schedule_path %></h3>
+  <br>
 <% end %>
+
+<h3 style="font-size: 18px;"><%= link_to "View All Schedules", schedules_path %></h3>
 
 <table style="margin: 50px auto; border: 3px dotted #555; padding: 20px;">
   <tr>
@@ -26,9 +27,9 @@
   </tr>
 
   <tr>
-    <td><%= link_to "Tumblebunnies", schedules_gb_tb_path %><br /><h4>Pre-School Gymnastics</h4></td>
-    <td><%= link_to "Tumblebunnies", schedules_fol_tb_path %><br /><h4>Pre-School Gymnastics</h4></td>
-    <td><%= link_to "Tumblebunnies", schedules_sac_tb_path %><br /><h4>Pre-School Gymnastics</h4></td>
+    <td><%= link_to "Tumblebunnies", schedules_gb_tb_path %><br><h4>Pre-School Gymnastics</h4></td>
+    <td><%= link_to "Tumblebunnies", schedules_fol_tb_path %><br><h4>Pre-School Gymnastics</h4></td>
+    <td><%= link_to "Tumblebunnies", schedules_sac_tb_path %><br><h4>Pre-School Gymnastics</h4></td>
   </tr>
 
   <tr>
@@ -44,7 +45,3 @@
   </tr>
 
 </table>
-<h3><%= link_to "View All Schedules", schedules_path %></h3>
-
-	<br />
-

@@ -1,5 +1,5 @@
 class KidQuotesController < ApplicationController
-  #before_filter :authorize
+  
   load_and_authorize_resource :except => :random_quote
   helper_method :sort_column, :sort_direction 
 
@@ -75,7 +75,7 @@ class KidQuotesController < ApplicationController
     end
   end
 
-   def random_quote
+  def random_quote
     @kid_quote = KidQuote.find(:all).sample(n=3)
     render :layout => "random_quote"
   end

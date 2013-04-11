@@ -3,7 +3,6 @@
 <div style="width: 750px; margin:0 auto;">
   <table>
     <tr>
-      <th>Ad ID</th>
       <th>Ad Type</th>
       <th>Name</th>
       <th>Date Submitted</th>
@@ -14,9 +13,8 @@
 
     <% @recital_ads.each do |ad| %>
       <tr>
-        <td style="width: 60px;"><%= ad.id %></td>
         <td style="width: 100px;"><%= ad.recital_ad_type.name %></td>
-        <td style="width: 300px;"><%= link_to ad.firstname+" "+ad.lastname, ad %></td>
+        <td style="width: 360px;"><%= link_to ad.firstname+" "+ad.lastname, ad %></td>
         <td style="width: 150px;"><%= ad.created_at.strftime("%b %e, %Y") %></td>
         <td style="width: 100px;"><%= number_to_currency(ad.recital_ad_type.price) %></td>
         <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_recital_ad_path(ad) %></td>
@@ -33,6 +31,6 @@
   </table>
 </div>
 
-<br />
+<br>
 
 

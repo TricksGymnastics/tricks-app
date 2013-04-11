@@ -1,13 +1,13 @@
-<h1 style="text-align:center">Class Schedules</h1>
+<h1>Class Schedules</h1>
 <h3>Future Classes are Highlighted in Yellow</h3>
 <h4 style="text-align: center">Future Classes will be openned when there are at least 3 people on their waiting list.</h4>
 
 <% if can? :manage, Schedule %>
-  <br />
+  <br>
   <h3 style="font-size: 18px; text-align:center;"><%= link_to 'New schedule', new_schedule_path %></h3>
 <% end %>
 
-<h4 style="margin-top: 10px;"><%= link_to "Go Back to Choose Location", schedules_choose_path %></h4>
+<h4 style="margin-top: 10px; text-align: center"><%= link_to "Go Back to Choose Location", schedules_choose_path %></h4>
 
 <div style="width: 900 px; margin: 40px 20px">
   <div style="float:left; margin-right: 20px;">
@@ -29,7 +29,7 @@
   </div>
 </div>
  
-<br />
+<br>
 
 <% if can? :manage, Schedule %>
   <div id="schedules_table_admin"><%= render 'schedules' %></div>

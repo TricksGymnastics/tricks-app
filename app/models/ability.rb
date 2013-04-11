@@ -22,27 +22,29 @@ class Ability
 		#RecitalAd
 
 		if user.role == "superadmin" #Jordan
-		   	can :manage, :all
+			can :manage, :all
 		end
 
-		if user.role == "admin" #Barbara Jo, Vern, Managers, Office Staff
-	 		can :manage, Comment
-	 		can :manage, KidQuote
-	 		can :manage, Schedule
-	 		can :manage, Level
-	 		can :manage, Coach
-	 		can :manage, RecitalAd
-       	end
+		if user.role == "admin" #, Barbara Jo, Vern
+			can :manage, Comment
+			can :manage, KidQuote
+			can :manage, Schedule
+			can :manage, Level
+			can :manage, Coach
+			can :manage, RecitalAd
+		end
 
-       	if user.role == "moderator" #Coaches
-       		can :manage, Comment
-	 		can :manage, KidQuote
-	 		can :read, Schedule
-         	cannot :destroy, :all
-         	cannot :edit, :all
-        end 
+		if user.role == "moderator" #Managers, Office Staff
+			can :manage, Comment
+			can :manage, KidQuote
+			can :manage, Schedule
+			can :manage, Level
+			can :manage, Coach
+			can :manage, RecitalAd
+			cannot :destroy, Level
+		end 
 
-    	if user.role == "author" #Not logged in
+		if user.role == "author" #Not logged in
 			can :read, Comment
 			can :create, Comment
 			cannot :show, Comment
@@ -50,7 +52,5 @@ class Ability
 			can :read, Coach
 			can :create, RecitalAd
 		end
-	 	
-
 	end 
 end

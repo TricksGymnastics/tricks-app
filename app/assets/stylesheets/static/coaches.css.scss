@@ -1,0 +1,44 @@
+// Place all the styles related to the Coaches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1{margin:0;}
+h2{font-size: 20px; margin:0; padding: 0;}
+h3{padding: 0; font-size: 28px; margin-bottom: 0px;}
+h4{text-align: center; margin-bottom: 5px; margin-top: -3px;}
+/*Used just for the Coach Names*/
+h6{font-size: 13px; white-space:nowrap; margin-bottom: 2px;}
+
+p {
+  margin: 10px 0;
+  line-height: 20px;
+  /*border: 1px solid black;*/
+  text-align: justify;
+}
+
+
+ul {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+a img {
+  text-align: center;
+  display:block;
+  border: 3px solid transparent;
+	&:hover {
+	border: 3px solid #111;
+	}
+}
+
+#coach_field {
+  margin-bottom: 25px;
+}
+
+#coach_section_header{font-family: grilled_cheese, 'Trebuchet MS'; width: 976px; border: 2px #444 solid; background-color: #FFFA5E; float: left; color: #222; margin-bottom: 10px;}
+#coach_container{float:left; width: 140px; text-align: center;  margin-bottom: 15px;}
+/*#coach_container{float:left; width: 163px; text-align: center;  margin-bottom: 15px;}*/
+#coach_button{padding: 3px 10px; margin: -2px 7px 0px 7px; float: left}
+
+
+

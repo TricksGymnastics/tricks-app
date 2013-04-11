@@ -15,30 +15,30 @@
     <% end %>
     
 		<div class="field">
-			<%= f.label :email %><br />
+			<%= f.label :email %><br>
 			<%= f.email_field :email %>
 		</div>
 		<div class="field">
-			<%= f.label :password %><br />
+			<%= f.label :password %><br>
 			<%= f.password_field :password %>
 		</div>
 		<div class="field">
-			<%= f.label :password_digest, "Password Confirmation" %><br />
+			<%= f.label :password_digest, "Password Confirmation" %><br>
 			<%= f.password_field :password_confirmation %>
 		</div>
 
 
 		<% if can? :manage, @user %>
 			<div class="field">
-			    <%= f.label :role %><br />
+			    <%= f.label :role %><br>
 			    <%= f.radio_button :role, "superadmin" %>
-			    <%= label_tag(:role , "Superadmin") %><br />
+			    <%= label_tag(:role , "Superadmin") %><br>
 			    <%= f.radio_button :role, "admin" %>
-			    <%= label_tag(:role , "Admin") %><br />
+			    <%= label_tag(:role , "Admin") %><br>
 			    <%= f.radio_button :role, "moderator" %>
-			    <%= label_tag(:role, "Moderator") %><br />
+			    <%= label_tag(:role, "Moderator") %><br>
 			    <%= f.radio_button :role, "author" %>
-			    <%= label_tag(:role, "Author") %><br />
+			    <%= label_tag(:role, "Author") %><br>
 	  		</div>
 	  	<% end %>
 		

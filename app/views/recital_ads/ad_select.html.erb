@@ -1,26 +1,25 @@
+<style>
+  #holdclear{
+    height: 760px;
+  }
+</style>
 
 <%= form_tag new_recital_ad_path, method: :get do %>
 
-
   <h1>Recital Ad Order Form</h1>
-  <br />
-  <h2>Please select the Ad Type that you would like to purchase.</h2>
-
-
+  <h3>Please select the Ad Type that you would like to purchase.</h3>
 
 	<div id="select_box">
-		<div id="image_box">
-			<img src="/images/recital_ad_select.jpg">
-		</div>
-		<% @recital_ad_types.each do |ad| %>
-			  
-
+    <div id="image_box">
+      <img src="/assets/recital_ad_select.jpg">
+    </div>
+    <% @recital_ad_types.each do |ad| %>
       <div class="block" id="ad_box">
         <div class="centered" id="ad_name">
           <% if ad.name == "Ad 1" %>
-            <h2><%= radio_button_tag(:recital_ad_type_id, ad.id, :checked => true) %><%#= label_tag(":recital_ad_type_id_#{ad.name}", ad.name) %> <%=ad.name%></h2>
+            <h2><%= radio_button_tag(:recital_ad_type_id, ad.id, :checked => true) %><%=ad.name%></h2>
           <% else %>
-            <h2><%= radio_button_tag(:recital_ad_type_id, ad.id) %><%#= label_tag(":recital_ad_type_id_#{ad.name}", ad.name) %> <%=ad.name%></h2>
+            <h2><%= radio_button_tag(:recital_ad_type_id, ad.id) %><%=ad.name%></h2>
           <% end %>
         </div>
         <div id="ad_info">
@@ -44,9 +43,9 @@
         </div>
       </div>
     <% end %> 
-	</div>
+  </div>
   
-  <div style="text-align:center; margin: 20px auto; width: 120px;">
+  <div style="text-align:center; margin: 20px auto 0px auto; width: 120px;">
     <%= submit_tag "Continue", name: nil, :style => "padding: 5px 17px;", id:"ad_select_continue_button" %>
   </div>
 <% end %>

@@ -1,0 +1,17 @@
+<% @title = "Tricks Dance Company: Empty" %>
+<%= stylesheet_link_tag  "static/dance_company", :media => "all" %>
+
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_purple %>;}
+<% end %>
+
+<div id="content">
+	<h1>Tricks Dance Company</h1>
+
+	<%= render 'side_menu' %>
+
+	<div id="content_nexttomenu">
+		<img style="float: left; border: 3px solid #111; margin-left: 144px;" src="/assets/dance_company/dance_company_jan_2013.jpeg" width="320" height="214" alt="Dance Company" />
+	</div>
+
+</div>

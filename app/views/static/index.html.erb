@@ -1,0 +1,146 @@
+<%= stylesheet_link_tag "random_quote", :media => "all" %>
+<% @title="Tricks Gymnastics, Dance & Swim" %>
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_yellow %>;}
+<% end %>
+<% @twenty_years = "block" %>
+<% @jr_login = "block" %>
+
+
+<div id="promoboxholder">
+	<div id="promo-frame">
+		<div id="promo-header">
+			<h1 style="font-size: 30px; margin: 0px 0px 0px 0px; font-variant: small-caps;">Current Events</h1>
+		</div>
+		<div id="promo-tabs">
+			<div id="slide_0" class="promo-tab">Vote For Us!</div>
+			<div id="slide_0" class="promo-tab">The Tricks Family!</div>
+			<div id="slide_1" class="promo-tab">Comments Page</div>
+			<div id="slide_2" class="promo-tab">License Plate Winners</div>					
+      <div id="slide_3" class="promo-tab">Tricks Group Dance</div>
+			<!--<div id="slide_4" class="promo-tab">Polka Dots Deal of the Week</div>-->
+		</div>
+
+		<!--				Promo Images Here        -->
+		<div id="promo-img">
+		
+			<div class="promo_image" style="padding: 20px;">
+				<h1 style=" font-size: 35px;">Please click on this button to vote for Tricks on the <br>
+KCRA 3 "A-List"</h1>
+				<div style="width: 130px; margin: 0 auto; padding-left: 10px;">
+				<!-- Place this HTML where you want the badge to go -->
+					<div class="cv-widget" data-type="button" data-variant="voteforus" data-eid="584054" data-bid="77524">
+					    <a href="http://kcra.cityvoter.com/wbiz/77524" class="cv-button" target="_top"></a>
+					</div>
+
+					<!-- Place this script somewhere after the tag above. If you have multiple badges, only include the script once. -->
+					<script type='text/javascript'>
+					(function() {
+					window.___cityvoter = { basePath: ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.cityvoterinc.com/s' };
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.src = window.___cityvoter.basePath +  '/widget.js';
+					s.async = true;
+					var ph = document.getElementsByTagName('script')[0];
+					ph.parentNode.insertBefore(s, ph);
+					})();
+					</script>
+				</div>
+			</div>
+		
+			<object class="promo_image">
+				<img src="/assets/promos/the_tricks_family.png" width="367" height="248" alt="The Tricks Family" />
+			</object>			
+		
+			<object class="promo_image">
+				<a style="display:block; margin-left:1px" href="site_comments">
+					<img src="/assets/promos/comments.png" width="367" height="248" alt="Comments" />
+					<button style="cursor: pointer; background:none; border: none;">
+					</button>
+				</a>
+			</object>						
+			
+			<object class="promo_image">
+				<img src="/assets/promos/winning_license_plates_2013.png" width="367" height="248" alt="License Plate Winners" />
+			</object>				
+			
+			<object class="promo_image">
+				<a style="display:block" href="http://www.youtube.com/watch?v=RPa8Cuj5NIo">
+					<img src="/assets/promos/tricksgroupdance.png" width="367" height="248" alt="Tricks Group Dance" />
+					<button style="cursor: pointer; background:none; border: none;">
+					</button>
+				</a>
+			</object>
+			<!--
+			<object class="promo_image">
+				<a style="display:block" href="polkadots.html">
+					<img src="/assets/dealoftheweek/dealoftheweek.png" width="367" height="248" alt="Polka Dots Deal of the Week" />
+					<button style="cursor: pointer; background:none; border:none;">
+					</button>
+				</a>
+			</object>
+			-->
+		</div>
+	</div>
+	<a style="display:block" href="http://www.usagym.org">
+		<button style="cursor: pointer; background:none; border: none; margin-top: 24px; margin-right: 196px; float: right; width: 70px; height: 70px;">
+		</button>
+	</a>
+</div>
+<div style="float: right; width: 250px; height: 600px; margin-right: 10px;">
+	<a href="gymnastics">
+		<img style="margin-top:1px; margin-bottom: 15px;"  src="/assets/structure/gymnastics_button.png" width="250" height="95" alt="Gymnastics" />
+	</a>
+	<a href="swim">
+		<img style="margin-bottom: 15px;" src="/assets/structure/swim_button.png" width="250" height="95" alt="Swim Instruction" />
+	</a>
+	<a href="dance">
+		<img src="/assets/structure/dance_button.png" width="250" height="95" alt="Dance" />
+	</a>
+
+	<!-- Currently Disabled mailing list subscription form
+	<div align="center" style="margin: 30px 0px 5px -12px; text-align:center; font-size:11px"> Join our email club for coupons and special offers. </div>
+	<form method="post" action="/assets/email.php" style="float:left; margin-left: 5px;">
+		<input name="email" type="text" value="enter your email address here" style="float:left; width:190px; margin-top:2px;" onfocus="clearText(this);"/>
+		<input value="" type="submit" class="button" style="float:right; margin-left:5px;"/>
+	</form>
+	-->
+
+	<a href="polkadots">
+		<img style="margin-top: 15px;" src="/assets/structure/polkadots_button.png" width="242" height="87" alt="Polka Dots" />
+	</a>
+	<div style="text-align: left;">
+			<a style="text-decoration: none;" href="http://www.facebook.com/pages/Tricks-Gymnastics/101697380325">
+				<img src="/assets/structure/facebook.jpg" width="46" height="41" alt="Facebook" />
+			</a>
+			<a style="text-decoration: none;" href="http://twitter.com/TricksGymnastic">
+				<img src="/assets/structure/twitter.jpg" width="44" height="45" alt="Twitter" />
+			</a>
+			<a style="text-decoration: none;" href="http://tricksgym.blogspot.com/">
+				<img src="/assets/structure/blogger.jpg" width="46" height="41" alt="Blogger" />
+			</a>
+			<a style="text-decoration: none;" href="http://www.youtube.com/user/TricksGymChannel">
+				<img src="/assets/structure/youtube.jpg" width="79" height="43" alt="Youtube" />
+			</a>
+	</div>
+</div>
+		
+
+<div id="Quotebox">
+	<h1 style="font-size: 40px; margin: 0px 0px -5px -42px; text-decoration: underline;">Funny Things Kids Say</h1>
+	<% @kid_quote.each do |t| %>
+			<div id="Random_Quote_Container">
+				<div id="quoteheaderyellow"></div>
+				<div id="quotebodyyellow">
+					<div id="Quote">
+						<%= t.quote %><br/>
+					</div>
+				</div>
+				<div id="quotefooteryellow">
+					<div>
+						<h3 id="Name">-<%= t.name %> (Age <%= t.age %>)</h3>
+					</div>
+				</div>
+			</div>
+	<% end %>
+</div>

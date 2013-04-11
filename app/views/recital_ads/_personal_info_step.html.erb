@@ -13,19 +13,19 @@
 </div>
 
 <div id="personal_info">
-  <h2 style="margin-right: 150px;">Personal Information</h2><br>
+  <h2 style="margin-right: 250px;">Personal Information</h2><br>
   <div class="field">
-    <%= f.label :firstname, "First Name" %><br />
+    <%= f.label :firstname, "First Name" %><br>
     <%= f.text_field :firstname %>
   </div>
 
   <div class="field">
-    <%= f.label :lastname, "Last Name" %><br />
+    <%= f.label :lastname, "Last Name" %><br>
     <%= f.text_field :lastname %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %><br>
     <%= f.email_field :email %>
   </div>
 
@@ -46,7 +46,7 @@
       </p>
     <% end %>
     <div class="field">
-    <%= f.label :image %><br />
+    <%= f.label :image %><br>
     <%= f.file_field :image %>
   </div>
   <% end %>
@@ -59,16 +59,8 @@
       </p>
     <% end %>
     <div class="field">
-    <%= f.label :pdf_file %><br />
+    <%= f.label :pdf_file %><br>
     <%= f.file_field :pdf_file %>
   </div>
   <% end %>
-
-
-
-  <%#= f.fields_for :properties, OpenStruct.new(@recital_ad.properties) do |builder| %>
-    <%# @recital_ad.recital_ad_type.fields.each do |field| %>
-      <%#= render "recital_ads/fields/#{field.field_type}", field: field, f: builder %>
-    <%# end %>
-  <%# end %> 
 </div>

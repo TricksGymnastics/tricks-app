@@ -2,7 +2,7 @@
 
 <h2 style="font-size: 20px;"><%= link_to 'New Level', new_level_path %></h2>
 
-<br />
+<br>
 
 <table style="margin-left: 50px; margin-bottom: 50px">
   <tr>
@@ -29,7 +29,9 @@
     <td><%= level.classtype.name %></td>    
     <td style="border: 0; padding: 2px; padding-left: 10px"><%= link_to 'Show', level %></td>
     <td style="border: 0; padding: 2px"><%= link_to 'Edit', edit_level_path(level) %></td>
-    <td style="border: 0; padding: 2px"><%= link_to 'Destroy', level, confirm: 'If you delete this Level, all Scheduled schedules that use this level will also be deleted. Are you sure you want to delete it?', method: :delete %></td>
+    <% if can? :destroy, Level %>
+        <td style="border: 0; padding: 2px"><%= link_to 'Destroy', level, confirm: 'If you delete this Level, all Scheduled schedules that use this level will also be deleted. Are you sure you want to delete it?', method: :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

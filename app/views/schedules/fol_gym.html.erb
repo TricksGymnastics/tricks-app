@@ -1,9 +1,10 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script src="/assets/jquery.masonry.min.js"></script>
+<!-- <script src="/assets/jquery.masonry.min.js"></script> -->
 <!-- <script src="/assets/jquery.isotope.min.js"></script> -->
 <!-- <script src="/assets/jquery.masonry.ordered.js"></script> -->
 
-<%= stylesheet_link_tag "schedules_by_gym", :media => "all" %>
+<%= stylesheet_link_tag "static/schedules_formatted", :media => "all" %>
+<%= javascript_include_tag "jquery.masonry.min" %>
 
 <script>
     $(window).load(function(){
@@ -35,7 +36,7 @@
     });
 </script>
 <div id="master_container">
-    <div id="header">
+    <div id="schedule_header">
         <div style="width: 100px; height: 30px; float:left"></div>
         <div style="width: 100px; float:right; margin-top:7px;"><a href="#" onClick=" window.print(); return false">Print this page</a></div>
         <h2> School Age Gymnastics Schedule</h2>    
@@ -82,7 +83,7 @@
                                                 *Future Class*
                                             </div>
                                         <% end %>
-                                        <br />
+                                        <br>
                                     <% end %>
                                 </div>
                             </div>
@@ -123,7 +124,7 @@
                                                     *Future Class*
                                                 </div>
                                             <% end %>
-                                            <br />
+                                            <br>
                                         <% end %>
                                     </div>
                                 </div>
@@ -157,7 +158,7 @@
                                                     *Future Class*
                                                 </div>
                                             <% end %>
-                                            <br />
+                                            <br>
                                         <% end %>
                                     </div>
                                 </div>
@@ -198,7 +199,7 @@
                                                                 *Future Class*
                                                             </div>
                                                         <%# end %>
-                                                        <br />
+                                                        <br>
                                                     <%# end %>
                                                 </div>
                                             </div>
@@ -247,7 +248,7 @@
                                                 *Future Class*
                                             </div>
                                         <% end %>
-                                        <br />
+                                        <br>
                                     <% end %>
                                 </div>
                             </div>

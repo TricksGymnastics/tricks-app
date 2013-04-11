@@ -1,7 +1,7 @@
 <h1>Funny Things Kids Say</h1>
 <h3 style="text-align:center">There are <%= pluralize(KidQuote.count, "quote") %> in this database.</h3>
 <div style="margin-left: 50px; margin-bottom: 30px;">
-	<h3 style="font-size: 22px; float: left;"><%= link_to 'New Kid Quote', new_kid_quote_path %></h3>
+	<h3 style="float: left;"><%= link_to 'New Kid Quote', new_kid_quote_path %></h3>
 	<div style="float:right; margin-right: 50px;">
 	  <%= form_tag kid_quotes_path, :method => 'get', :id => "quotes_search" do %>
 	    <p>

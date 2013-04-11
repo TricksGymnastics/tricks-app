@@ -1,0 +1,22 @@
+<% @title = "Tricks Dance Company: Empty" %>
+<%= stylesheet_link_tag "static/dance_company", :media => "all" %>
+
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_purple %>; font-size: 14px;}
+  ul li {text-align: left;}
+<% end %>
+
+
+<div id="content">
+	<h1>Events</h1>
+	<%= render 'side_menu' %>
+	<div id="content_nexttomenu">
+		<ul style="font-size: 16px; line-height: 35px;">
+		<li>Art & Wine Affair  May 11th  Time TBA</li>
+		<li>El Dorado County Fair June 15th Time TBA</li>
+		<li>Placer County Fair  June 22nd 4:00</li>
+		<li>Tricks Dance Recital  June 24th -29th  Studio Specific Times</li></ul>
+	</div>
+	<div id="content_bottom">
+	</div>
+</div>
