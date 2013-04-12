@@ -6,6 +6,11 @@
   * GLOBAL SETTING*
 ***************************************************************************************************************/
 
+*{
+  padding:0;
+  margin:0;
+}
+
 img {
   border-style: none;
 }
@@ -40,6 +45,7 @@ img {
 body {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: 15px;
+  width: 100%;
 }
 
 h1 {
@@ -77,6 +83,19 @@ p {
 /************************************************
             *Fonts*
 ************************************************/
+
+@font-face {
+    font:{
+      family: 'TrebuchetMSRegular';
+      weight: 'normal';
+      style: 'normal';
+    }
+    src: asset-url('trebuc.eot', font);
+    src: asset-url('trebuc.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('trebuc.woff', font) format('woff'),
+         asset-url('trebuc.ttf', font) format('truetype'),
+         asset-url('trebuc.svg#TrebuchetMSRegular', font) format('svg');
+}
 
 @font-face {
     font: {
@@ -268,7 +287,7 @@ p {
 }
 
 #menu_container {
-  margin: 7px 0px 0px -15px;
+  margin: 7px 0px 0px 20px;
 }
 
 #menu a {
@@ -367,7 +386,7 @@ Bottom Menu
 #menu_bottom {
   position: relative;
   background-color: none;
-  width: 715px;
+  width: 730px;
   height: 30px;
   margin: 0px auto;
   /*border: solid 2px red;*/
@@ -419,40 +438,45 @@ Bottom Menu
   * Clear SETTING*
 ***************************************************************************************************************/
 
+#background_center{
+  width: 1030px;
+  margin: 0 auto;
+}
+
 #headclear {
   background-image: url(/assets/structure/cleartop.png);
   background-position: center;
   background-repeat: no-repeat;
-  padding: 0;
+  float: left;
+  padding: 0px 15px;
   margin: 0;
   border: 0;
-  float: left;
   height: 15px;
-  width: 100%;
+  width: 1000px;
   margin-top: 20px;
 }
 
 #footclear {
   background-image: url(/assets/structure/clearfoot.png);
   background-position: center;
-  background-repeat: no-repeat;
-  padding: 0;
+  background-repeat: no-repeat;  
+  float: left;
+  padding: 0px 15px;
   margin: 0;
   border: 0;
-  float: left;
   height: 55px;
-  width: 100%;
+  width: 1000px;
   margin-bottom: 30px;
 }
 
 #holdclear {
   background-image: url(/assets/structure/clearhold.png);
   background-position: center;
-  padding: 0;
+  float: left;
+  padding: 0px 15px;
   margin: 0;
   border: 0;
-  float: left;
-  width: 100%;
+  width: 1000px;
   background-repeat: repeat-y;
 }
 
@@ -471,7 +495,7 @@ Bottom Menu
 }
 
 #Random_Comment_Container {
-  font-family: trebuchet ms;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   color: #444; 
   text-align: justify; 
   float:left; 
@@ -596,7 +620,7 @@ Bottom Menu
 }
 
 #Random_Quote_Container {
-  font-family: trebuchet ms;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   color: #444; 
   text-align: justify; 
   float:left;
