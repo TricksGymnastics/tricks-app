@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @promo_slide.title %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%= @promo_slide.link %>
+</p>
+
+<p>
+  <b>Live:</b>
+  <%= @promo_slide.live %>
+</p>
+
+<p>
+  <b>Data type:</b>
+  <%= @promo_slide.data_type %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @promo_slide.image %>
+</p>
+
+<p>
+  <b>Html code:</b>
+  <%= @promo_slide.html_code %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @promo_slide.order %>
+</p>
+
+
+<%= link_to 'Edit', edit_promo_slide_path(@promo_slide) %> |
+<%= link_to 'Back', promo_slides_path %>
