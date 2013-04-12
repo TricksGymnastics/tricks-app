@@ -21,10 +21,10 @@ Comments::Application.configure do
   config.assets.digest = true
 
   # Add the fonts path
-  #config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
   # Precompile additional assets
-  #config.assets.precompile += %w( .svg .eot .woff .tff )
+  config.assets.precompile += %w( .svg .eot .woff .tff )
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
