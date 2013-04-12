@@ -1,5 +1,8 @@
 Comments::Application.routes.draw do
 
+  resources :promo_slides
+
+
   root :to => 'static#index'
 
   match 'schedules/choose'  
