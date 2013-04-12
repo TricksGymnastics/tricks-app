@@ -1,6 +1,6 @@
 class KidQuote < ActiveRecord::Base
 
-	validates_presence_of :quote, :name
+	validates_presence_of :quote
 
 	def self.search(search)
   		if search
