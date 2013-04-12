@@ -15,11 +15,37 @@
       weight: 'normal';
       style: 'normal';
     }
+    src: url(asset-path('grilcbc_.eot', font));
+    src: url(asset-path('grilcbc_.eot'+'?#iefix', font)) format('embedded-opentype'),
+         url(asset-path('grilcbc_.woff', font)) format('woff'),
+         url(asset-path('grilcbc_.ttf', font)) format('truetype'),
+         url(asset-path('grilcbc_.svg'+'#grilled_cheese', font)) format('svg')
+}
+
+@font-face {
+    font: {
+      family: 'grilled_cheese';
+      weight: 'normal';
+      style: 'normal';
+    }
     src: font-url('grilcbc_.eot');
-    src: font-url('grilcbc_.eot?#iefix') format('embedded-opentype'),
+    src: font-url('grilcbc_.eot'+'?#iefix') format('embedded-opentype'),
          font-url('grilcbc_.woff') format('woff'),
          font-url('grilcbc_.ttf') format('truetype'),
-         font-url('grilcbc_.svg#grilled_cheese') format('svg')
+         font-url('grilcbc_.svg'+'#grilled_cheese') format('svg')
+}
+
+@font-face {
+    font: {
+      family: 'grilled_cheese';
+      weight: 'normal';
+      style: 'normal';
+    }
+    src: asset-url('grilcbc_.eot', font);
+    src: asset-url('grilcbc_.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('grilcbc_.woff', font) format('woff'),
+         asset-url('grilcbc_.ttf', font) format('truetype'),
+         asset-url('grilcbc_.svg#grilled_cheese', font) format('svg')
 }
 
 @font-face {
@@ -28,11 +54,11 @@
       weight: normal;
       style: normal;
   }     
-    src: font-url('evilgeniusbb_reg-webfont.eot');
-    src: font-url('evilgeniusbb_reg-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('evilgeniusbb_reg-webfont.woff') format('woff'),
-         font-url('evilgeniusbb_reg-webfont.ttf') format('truetype'),
-         font-url('evilgeniusbb_reg-webfont.svg#evilgenius_bbregular') format('svg');    
+    src: url(font-path('evilgeniusbb_reg-webfont.eot'));
+    src: url(font-path('evilgeniusbb_reg-webfont.eot')+'?#iefix') format('embedded-opentype'),
+         url(font-path('evilgeniusbb_reg-webfont.woff')) format('woff'),
+         url(font-path('evilgeniusbb_reg-webfont.ttf')) format('truetype'),
+         url(font-path('evilgeniusbb_reg-webfont.svg')+'#evilgenius_bbregular') format('svg');    
 }
 
 @font-face {

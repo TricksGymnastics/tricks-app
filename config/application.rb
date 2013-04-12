@@ -56,6 +56,9 @@ module Comments
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    # this gets rid of the error when pushing to heroku
+    config.assets.initialize_on_precompile = false
+
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
