@@ -39,4 +39,6 @@ gem "fog"
 gem "fancybox2-rails"
 
 gem "stripe"
+
+gem 'google-analytics-rails'
 # gem "client_side_validations"

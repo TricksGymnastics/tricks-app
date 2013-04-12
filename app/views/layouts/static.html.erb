@@ -6,6 +6,8 @@
   <%= javascript_include_tag   "static" %>
   <%= csrf_meta_tags %>
 
+  <%= analytics_init if Rails.env.production? %>
+
   <% if @tricksu_password == true %>
     <script language="javascript">
       var password; 
