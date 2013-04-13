@@ -114,6 +114,8 @@ class SchedulesController < ApplicationController
   def gb_dance
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Dance").id)
+
+    
     render :layout => "layout_for_print_schedule"
   end 
 
