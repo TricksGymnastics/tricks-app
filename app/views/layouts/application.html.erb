@@ -28,6 +28,10 @@
             	<li><%= link_to "Users", users_path %></li>
             <% end %>
 
+            <% if can? :read, PromoSlide %>
+              <li><%= link_to "Promos", promo_slides_path %></li>
+            <% end %>
+
   					<li><%= link_to "Comments", comments_path %></li>
 
   					<% if can? :manage, KidQuote %>

@@ -1,45 +1,80 @@
-<%= form_for(@promo_slide) do |f| %>
-  <% if @promo_slide.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@promo_slide.errors.count, "error") %> prohibited this promo_slide from being saved:</h2>
+<div id="form" style="width: 950px;">
+  <%= form_for(@promo_slide) do |f| %>
+    <% if @promo_slide.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@promo_slide.errors.count, "error") %> prohibited this promo_slide from being saved:</h2>
 
-      <ul>
-      <% @promo_slide.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @promo_slide.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field" style="float:left; line-height: 40px; width: 50px;">
+      <b><%= f.label :title %>:</b><br>
+         
     </div>
-  <% end %>
+    <div class="field" style="float:left; line-height: 40px; width: 900px;">
+      <%= f.text_field :title %><br>
+      
+    </div>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :link %><br />
-    <%= f.check_box :link %>
-  </div>
-  <div class="field">
-    <%= f.label :live %><br />
-    <%= f.check_box :live %>
-  </div>
-  <div class="field">
-    <%= f.label :data_type %><br />
-    <%= f.text_field :data_type %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :html_code %><br />
-    <%= f.text_area :html_code %>
-  </div>
-  <div class="field">
-    <%= f.label :order %><br />
-    <%= f.number_field :order %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div style=" margin: 10px 0px; width: 350px; float:left; line-height: 20px; margin-right: 600px"> 
+      <div class="field" style="width: 270px; float:left; text-align: center">
+        <b><%= f.label :live %></b>
+        <%= f.check_box :live, id: "live_check_box" %><br>
+      </div>
+      <div class="field" id="order_input" style="width: 270px;">
+        <b><%= f.label :order, "Order: " %></b>
+        <% (1..6).each do |i| %>
+          <%= f.label :"order_#{i}" do %>
+            <%= f.radio_button :order, i, style: "margin-left: 10px", class: "order_radio_buttons" %> <%= i %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div style=" margin: 20px 600px 30px 0px; width: 350px; float:left; line-height: 20px;"> 
+      <div class="field" style="width: 270px; float:left; text-align: center">
+        <b><%= f.label :link %></b>
+        <%= f.check_box :link, id: "link_check_box" %>
+      </div>
+      <div class="field" id="link_path_input">
+        <b><%= f.label :link_path, "Link Path:" %></b>
+        <%= f.text_field :link_path %><br><br>
+        (ie. www.tricksgym.com/'path goes here')<br>
+        Full http paths work as well: http://www.google.com
+      </div>
+    </div>
+
+    <div style="float:left; width: 1000px; line-height: 20px; margin: 10px 0px 40px 0px">
+      <div class="field">
+        <b><%= f.label :data_type, "Data Type: " %></b>
+        <%= f.label :data_type_image do %>
+          <%= f.radio_button :data_type, "image", checked: true, id: "image_radio_button" %> Image 
+        <% end %>
+        <%= f.label :data_type_html do %>
+          <%= f.radio_button :data_type, "html", id: "html_radio_button" %> HTML 
+        <% end %>
+      </div>
+      <div class="field" id="image_select_field" style="display:none">
+        <b><%= f.label :image, "Picture for Promo:" %></b>
+        <% if @promo_slide.image_url == nil %>
+          <%= f.file_field :image %><br>
+        <% else %>
+          ( <%= File.basename(@promo_slide.image.to_s) %> )
+        <% end %>
+      </div>
+      <div class="field" id="html_input_field" style="display:none">
+        <b><%= f.label :html_code %><br></b>
+        <%= f.text_area :html_code %>
+      </div>
+    </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end %>
+</div>

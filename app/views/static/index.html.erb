@@ -12,73 +12,34 @@
 			<h1 style="font-size: 30px; margin: 0px 0px 0px 0px; font-variant: small-caps;">Current Events</h1>
 		</div>
 		<div id="promo-tabs">
-			<div id="slide_0" class="promo-tab">Vote For Us!</div>
-			<div id="slide_0" class="promo-tab">The Tricks Family!</div>
-			<div id="slide_1" class="promo-tab">Comments Page</div>
-			<div id="slide_2" class="promo-tab">License Plate Winners</div>					
-      <div id="slide_3" class="promo-tab">Tricks Group Dance</div>
-			<!--<div id="slide_4" class="promo-tab">Polka Dots Deal of the Week</div>-->
+			<% @live_promos.each do |promo| %>
+				<div id="slide_<%= promo.order %>" class="promo-tab"><%= promo.title %></div>
+			<% end %>
 		</div>
 
 		<!--				Promo Images Here        -->
 		<div id="promo-img">
 		
-			<div class="promo_image" style="padding: 20px;">
-				<h1 style=" font-size: 35px;">Please click on this button to vote for Tricks on the <br>
-KCRA 3 "A-List"</h1>
-				<div style="width: 130px; margin: 0 auto; padding-left: 10px;">
-				<!-- Place this HTML where you want the badge to go -->
-					<div class="cv-widget" data-type="button" data-variant="voteforus" data-eid="584054" data-bid="77524">
-					    <a href="http://kcra.cityvoter.com/wbiz/77524" class="cv-button" target="_top"></a>
-					</div>
+			<% @live_promos.each do |promo| %>
+				<% if promo.data_type == "html" %>
+					<object class="promo_image">
+						<%= render :inline => promo.html_code %>
+					</object>
+				<% else %>
+					<% if promo.link == true %>
+						<object class="promo_image">
+							<%# promo.link_path %>
+							<%= link_to image_tag(promo.image_url, width: "367", height: "248", alt: promo.title), promo.link_path, style: "display:block; margin-left: 1px; cursor: pointer" %>
+						</object>
+						
+					<% else %>
+						<object class="promo_image">
+							<%= image_tag promo.image_url, width: "367", height: "248", alt: promo.title %>
+						</object>
+					<% end %>
+				<% end %>
+			<% end %>
 
-					<!-- Place this script somewhere after the tag above. If you have multiple badges, only include the script once. -->
-					<script type='text/javascript'>
-					(function() {
-					window.___cityvoter = { basePath: ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.cityvoterinc.com/s' };
-					var s = document.createElement('script');
-					s.type = 'text/javascript';
-					s.src = window.___cityvoter.basePath +  '/widget.js';
-					s.async = true;
-					var ph = document.getElementsByTagName('script')[0];
-					ph.parentNode.insertBefore(s, ph);
-					})();
-					</script>
-				</div>
-			</div>
-		
-			<object class="promo_image">
-				<img src="/assets/promos/the_tricks_family.png" width="367" height="248" alt="The Tricks Family" />
-			</object>			
-		
-			<object class="promo_image">
-				<a style="display:block; margin-left:1px" href="site_comments">
-					<img src="/assets/promos/comments.png" width="367" height="248" alt="Comments" />
-					<button style="cursor: pointer; background:none; border: none;">
-					</button>
-				</a>
-			</object>						
-			
-			<object class="promo_image">
-				<img src="/assets/promos/winning_license_plates_2013.png" width="367" height="248" alt="License Plate Winners" />
-			</object>				
-			
-			<object class="promo_image">
-				<a style="display:block" href="http://www.youtube.com/watch?v=RPa8Cuj5NIo">
-					<img src="/assets/promos/tricksgroupdance.png" width="367" height="248" alt="Tricks Group Dance" />
-					<button style="cursor: pointer; background:none; border: none;">
-					</button>
-				</a>
-			</object>
-			<!--
-			<object class="promo_image">
-				<a style="display:block" href="polkadots.html">
-					<img src="/assets/dealoftheweek/dealoftheweek.png" width="367" height="248" alt="Polka Dots Deal of the Week" />
-					<button style="cursor: pointer; background:none; border:none;">
-					</button>
-				</a>
-			</object>
-			-->
 		</div>
 	</div>
 	<a style="display:block" href="http://www.usagym.org">

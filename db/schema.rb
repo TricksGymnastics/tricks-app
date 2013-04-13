@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412223149) do
+ActiveRecord::Schema.define(:version => 20130413015629) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20130412223149) do
     t.integer  "order"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.string   "link_path"
   end
 
   create_table "questions", :force => true do |t|
