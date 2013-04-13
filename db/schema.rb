@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413015629) do
-
-  create_table "answers", :force => true do |t|
-    t.integer  "question_id"
-    t.text     "content"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130413045551) do
 
   create_table "classtypes", :force => true do |t|
     t.string   "name"
@@ -114,13 +107,6 @@ ActiveRecord::Schema.define(:version => 20130413015629) do
     t.string   "link_path"
   end
 
-  create_table "questions", :force => true do |t|
-    t.integer  "survey_id"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "recital_ad_types", :force => true do |t|
     t.string   "name"
     t.integer  "price"
@@ -156,12 +142,6 @@ ActiveRecord::Schema.define(:version => 20130413015629) do
     t.time     "time"
     t.boolean  "future_class",  :default => false
     t.boolean  "recital_class", :default => false
-  end
-
-  create_table "surveys", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

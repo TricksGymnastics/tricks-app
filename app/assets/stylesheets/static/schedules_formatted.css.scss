@@ -286,3 +286,52 @@ h4{text-align: center; font-size: 13px; margin-bottom: 6px;}
 	padding-bottom: 10px;
 	float: left;
 }
+
+/*************************************************************/
+/*************************** DANCE ***************************/
+/*************************************************************/
+
+#master_dance_container{
+  /*border: 2px orange solid;*/
+  overflow: auto;
+  width: 957px;
+} 
+#school_age_dance_header {
+  border: 1px solid black;
+  background-color: #ccc;
+  width: 908px;
+  padding: 0px 20px;
+  overflow: auto;
+}
+#pre_school_age_dance_header {
+  border: 1px solid black;
+  background-color: #ccc;
+  width: 908px;
+  padding: 0px 20px;
+}
+#dance_container{
+  float: left;
+  /*border: blue solid 1px;*/
+  width: 957px;
+  margin-top: 6px;
+}
+#dance_levels{
+  border: 1px solid black; 
+  margin: 0px 7px 6px 0px;
+  width: 310px;
+  padding-bottom: 10px;
+  float: left;
+}
+#sa_dance_container{
+  float: left;
+  /*border: blue solid 1px;*/
+  width: 957px;
+  margin-top: 6px;
+}
+#sa_dance_levels{
+  border: 1px solid black; 
+  margin: 0px 7px 6px 0px;
+  width: 310px;
+  padding-bottom: 10px;
+  float: left;
+}

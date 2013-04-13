@@ -8,33 +8,30 @@
 <script>
     $(window).load(function(){
 
-        var $girls_container = $('#girls_levels_container');
-        var $boys_container = $('#boys_levels_container');
-        var $tumble_container = $('#tumble_levels_container');
-
-        $girls_container.masonry({
-            itemSelector: '#girls_levels',
-            // layoutMode : 'masonry'
-        });
-        $boys_container.masonry({
-            itemSelector: '#boys_levels',
+        var $dance_container = $('#dance_container');
+        var $sa_dance_container = $('#sa_dance_container');
+      
+        $dance_container.masonry({
+            itemSelector: '#dance_levels',
             // layoutMode: 'masonry'
         });
-        $tumble_container.masonry({
-            itemSelector: '#tumble_levels',
+        $sa_dance_container.masonry({
+            itemSelector: '#sa_dance_levels',
             // layoutMode: 'masonry'
         });
     });
 </script>
-<div id="master_container">
+<div id="master_dance_container">
     <div id="schedule_header">
         <div style="width: 100px; height: 30px; float:left"></div>
         <div style="width: 100px; float:right; margin-top:7px;"><a href="#" onClick=" window.print(); return false">Print this page</a></div>
-        <h2> School Age Gymnastics Schedule</h2>    
+        <h2> Dance Schedule</h2>    
     </div>
     <div id="info_container">
         <div id="logo">
-            <img src="/assets/tricks-header.png" height="118px"/>
+            <a href="/">
+                <img src="/assets/tricks-header.png" height="118px"/>
+            </a>
         </div>
         <div id="info">
             <h3>Important Information</h3>
@@ -44,104 +41,97 @@
             <p><b>Call to schedule your FIRST CLASS today!</b></p>
         </div>
     </div>
-
-    <div id="boys_container">
-        <div id="boys_header">
-            <h1> BOYS </h1>
-        </div>
-        <div id="boys_levels_container">
-            <% @levels_by_type.each do |level| %>
-                <% next if @schedules_by_level[level.id].nil? %>
-                <% if  level.gender == "Boys" %>
-                    <div id="boys_levels"> 
-                        <h3 class="leveltitle"><%= level.levelname %></h3>
-                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>
-                            
-                        <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
-                        <% schedules.each do |day, schedules| %>
-                            <div class="day">                    
-                                <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
-                                <div class="classes_box">
-                                    <% schedules.each do |schedule| %>
-                                        <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <%= schedule.time.strftime("%l:%M %p") %>
-                                        </div>
-                                        <%= schedule.teacher %>
-                                        <br>
-                                    <% end %>
-                                </div>
-                            </div>
-                        <% end %>
-                    </div>                
-                <% end %>            
-            <% end %>
-        </div>
+    <div id="gym_info">
+        <h2>Granite Bay</h2>
+        <h3>4070 Cavitt-Stallman Rd.<br>Granite Bay, CA 95746</h3>
+        <h3>(916) 791-4496</h3>
+        <h3>www.tricksgym.com</h3>
     </div>
 
-    <div id="girls_container">
-        <div id="girls_header">
-            <h1> GIRLS </h1>
-        </div>
-        <div id="girls_levels_container">
-            <% @levels_by_type.each do |level| %>
+    <div id="pre_school_age_dance_header">
+        <h2>Pre-School Dance</h2>    
+    </div>
+    <div id="dance_container">
+        <% @levels_by_type.each do |level| %>
+            <% if level.sort_order.between?(300, 399) %>
                 <% next if @schedules_by_level[level.id].nil? %>
-                <% if  level.gender == "Girls" %>
-                    <div id="girls_levels"> 
-                        <h3 class="leveltitle"><%= level.levelname %></h3>
-                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>
-                            
-                        <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
-                        <% schedules.each do |day, schedules| %>
-                            <div class="day">                    
-                                <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
-                                <div class="classes_box">
-                                    <% schedules.each do |schedule| %>
-                                        <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <%= schedule.time.strftime("%l:%M %p") %>
-                                        </div>
+                <div id="dance_levels"> 
+                    <h3 class="leveltitle"><%= level.levelname %></h3>
+                    <h4 style="margin:0px;">Age: <%= level.age %><br>Length: <%= level.length %> min. &nbsp; $<%= level.price %> / (4 Weeks)</h4>
+                    
+                    <% if level.sort_order.between?(301, 301) %>
+                        <h4 style="text-decoration:underline; font-size: 11px;">Adult Participation Required</h4>
+                    <% end %>
+
+                    
+                    <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
+                    <% schedules.each do |day, schedules| %>
+                        <div class="day">                    
+                            <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
+                            <div class="classes_box">
+                                <% schedules.each do |schedule| %>
+                                    <div style="float: left; width: 70px; margin-right: 10px;">
+                                        <%= schedule.time.strftime("%l:%M %p") %>
+                                    </div>
+                                    <div style="float: left;">
                                         <%= schedule.teacher %>
-                                        <br>
+                                    </div>
+                                    <% if schedule.future_class? %>
+                                        <div style="font-size: 11px; float: right">
+                                            *Future Class*
+                                        </div>
                                     <% end %>
-                                </div>
+                                    <br>
+                                <% end %>
                             </div>
-                        <% end %>
-                    </div>
-                <% end %>            
-            <% end %>
-        </div>
+                        </div>
+                    <% end %>
+                </div>  
+            <% end %>        
+        <% end %>
     </div>
 
-    <div id="tumble_container">
-        <div id="tumble_header">
-            <h1> TRAMP & TUMBLE </h1>
-        </div>
-        <div id="tumble_levels_container">
-            <% @levels_by_type.each do |level| %>
+    <div id="school_age_dance_header">
+        <h2>School Aged Dance</h2>    
+    </div>
+
+    <div id="sa_dance_container">        
+        <% @levels_by_type.each do |level| %>
+            <% if level.sort_order.between?(400, 499) %>
                 <% next if @schedules_by_level[level.id].nil? %>
-                <% if  level.gender == "Both" %>
-                    <div id="tumble_levels"> 
-                        <h3 class="leveltitle"><%= level.levelname %></h3>
-                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>
-                            
-                        <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
-                        <% schedules.each do |day, schedules| %>
-                            <div class="day">                    
-                                <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
-                                <div class="classes_box">
-                                    <% schedules.each do |schedule| %>
-                                        <div style="float: left; width: 80px; margin-right: 10px;">
-                                            <%= schedule.time.strftime("%l:%M %p") %>
-                                        </div>
+                <div id="sa_dance_levels"> 
+                    <h3 class="leveltitle"><%= level.levelname %></h3>
+                    <h4 style="margin:0px;">Age: <%= level.age %><br>Length: <%= level.length %> min. &nbsp; $<%= level.price %> / (4 Weeks)</h4>
+                    
+                    <% if level.sort_order.between?(301, 301) %>
+                        <h4 style="text-decoration:underline; font-size: 11px;">Adult Participation Required</h4>
+                    <% end %>
+
+                    <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
+                    <% schedules.each do |day, schedules| %>
+                        <div class="day">                    
+                            <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
+                            <div class="classes_box">
+                                <% schedules.each do |schedule| %>
+                                    <div style="float: left; width: 70px; margin-right: 10px;">
+                                        <%= schedule.time.strftime("%l:%M %p") %>
+                                    </div>
+                                    <div style="float: left;">
                                         <%= schedule.teacher %>
-                                        <br>
+                                    </div>
+                                    <% if schedule.future_class? %>
+                                        <div style="font-size: 11px; float: right">
+                                            *Future Class*
+                                        </div>
                                     <% end %>
-                                </div>
+                                    <br>
+                                <% end %>
                             </div>
-                        <% end %>
-                    </div>
-                <% end %>            
-            <% end %>
-        </div>
+                        </div>
+                    <% end %>
+                </div>   
+            <% end %>       
+        <% end %>
     </div>
 
 </div>
