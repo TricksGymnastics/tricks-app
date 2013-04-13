@@ -20,6 +20,7 @@ class Ability
 		#Level
 		#Coach
 		#RecitalAd
+		#PromoSlide
 
 		if user.role == "superadmin" #Jordan
 			can :manage, :all

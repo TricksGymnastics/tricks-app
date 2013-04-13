@@ -1,40 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div style="float:left; width: 450px; line-height: 25px; margin: 15px 0px 0px 30px;">
 
-<p>
   <b>Title:</b>
-  <%= @promo_slide.title %>
-</p>
+  <%= @promo_slide.title %><br>
 
-<p>
   <b>Link:</b>
-  <%= @promo_slide.link %>
-</p>
+  <% if @promo_slide.link == true %>Yes (<%= @promo_slide.link_path %>)
+  <% else %>No
+  <% end %><br>
 
-<p>
   <b>Live:</b>
-  <%= @promo_slide.live %>
-</p>
+  <% if @promo_slide.live == true %>Yes (Order: <%= @promo_slide.order %>)
+  <% else %>No
+  <% end %><br>
 
-<p>
   <b>Data type:</b>
-  <%= @promo_slide.data_type %>
-</p>
+  <%= @promo_slide.data_type %><br>
 
-<p>
-  <b>Image:</b>
-  <%= @promo_slide.image %>
-</p>
+  <% unless @promo_slide.image_url == nil %>
+    <b>Image:</b>
+    <%= File.basename(@promo_slide.image.to_s) %><br>
+  <% end %>
 
-<p>
-  <b>Html code:</b>
-  <%= @promo_slide.html_code %>
-</p>
+  <% unless @promo_slide.html_code == "" %>
+    <b>Html code:</b>
+    <div style="border: solid 1px #444; padding: 8px; margin: 4px; line-height: auto">
+      <%= @promo_slide.html_code %>
+    </div>
+  <% end %>
 
-<p>
-  <b>Order:</b>
-  <%= @promo_slide.order %>
-</p>
+  <%= link_to 'Edit', edit_promo_slide_path(@promo_slide) %> |
+  <%= link_to 'Back', promo_slides_path %>
 
-
-<%= link_to 'Edit', edit_promo_slide_path(@promo_slide) %> |
-<%= link_to 'Back', promo_slides_path %>
+</div>
+<% unless @promo_slide.html_code == "" %>
+  <div id="html_inline_show">
+    <h2 style="border: dotted 2px #555">Preview</h2>
+    <%= render :inline =>@promo_slide.html_code %>
+  </div>
+<% end %>
+<% unless @promo_slide.image_url == nil %>
+  <div id="image_show">
+    <h2 style="border: dotted 2px #555">Preview</h2>
+    <%= image_tag @promo_slide.image_url %>
+  </div>
+<% end %>
