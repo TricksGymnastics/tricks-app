@@ -1,11 +1,12 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 
-<table class="quotes">
+<table class="quotes" style="margin: 0px auto;">
   <tr>
     <th><%= sortable "quote" %></th>
     <th><%= sortable "name" %></th>
     <th><%= sortable "age" %></th>
+    <th><%= sortable "created_at", "Date Created" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,9 +14,10 @@
 
 <% @kid_quotes.each do |kid_quote| %>
   <tr>
-    <td style="width: 605px; height: 30px; text-align: justify;"><%= truncate(kid_quote.quote, :length => 90, :separator => " " )%></td>
+    <td style="width: 500px; height: 30px; text-align: justify;"><%= truncate(kid_quote.quote, :length => 80, :separator => " " )%></td>
     <td style="width: 100px;"><%= kid_quote.name %></td>
     <td style="width: 20px;"><%= kid_quote.age %></td>
+    <td style="width: 100px;"><%= kid_quote.created_at.strftime("%b %e, %Y") %></td>
     <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Show', kid_quote %></td>
     <% if can? :update, KidQuote %>
       <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_kid_quote_path(kid_quote) %></td>
