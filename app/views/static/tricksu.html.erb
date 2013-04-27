@@ -3,7 +3,16 @@
   body {background-color: <%= @bgc_yellow %>;}
   h1 {font-size: 30px;}
 <% end %>
-<% @tricksu_password = true %>
+
+<% if current_user %>
+	<% @tricksu_password = false %>
+	<div style="float:right; margin: -20px 15px 10px 0px">
+		(<%= current_user.email %>)
+	  <%= link_to "Log Out", logout_path %> 
+	</div>
+<% else %>
+	<% @tricksu_password = true %>
+<% end %>
 
 <div class="content">
 	<div id="tricksu_category">
