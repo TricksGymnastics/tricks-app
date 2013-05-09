@@ -9,12 +9,9 @@
     <div id="dance_sidelogos" style="height: 480px;">
       <p><img style="margin-top: 50px; "src="/assets/logos/danceblack.jpg" width="246" height="172" alt="Dance Studio" /> <br>
       <h2>Class Schedules & Pricing:</h2>
-      <%#= link_to "Granite Bay", schedules_gb_dance_path %>
-      <%#= link_to "Folsom", schedules_fol_dance_path %>
-      <%#= link_to "Sacramento", schedules_sac_dance_path %>
-      <h2><a href="/assets/schedules/gb-dance.pdf" style="color:#223d99;">Granite Bay</a></h2>
-      <h2><a href="/assets/schedules/fol-dance.pdf" style="color:#ec1e79;">Folsom</a></h2>
-      <h2><a href="/assets/schedules/sac-dance.pdf" style="color:#79c843;">Sacramento</a></h2>
+      <h2><%= link_to "Granite Bay", schedules_gb_dance_path, style: "color:#223d99;" %></h2>
+      <h2><%= link_to "Folsom", schedules_fol_dance_path, style: "color:#ec1e79;" %></h2>
+      <h2><%= link_to "Sacramento", schedules_sac_dance_path, style: "color:#79c843;" %></h2>
     </div>
     <h2>A little about us.</h2>
     <p>Our goal is to instill a love for the art of dance that will remain with our students long after their recital days are over. We provide professional dance training while ensuring our students have a positive dance experience.</p>

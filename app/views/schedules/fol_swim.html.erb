@@ -1,16 +1,20 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script src="/assets/jquery.masonry.min.js"></script>
 <!-- <script src="/assets/jquery.isotope.min.js"></script> -->
 <!-- <script src="/assets/jquery.masonry.ordered.js"></script> -->
 
+<%= javascript_include_tag "schedule/jquery.masonry.min" %>
 <%= stylesheet_link_tag "static/schedules_formatted", :media => "all" %>
 
 <script>
     $(window).load(function(){
 
         var $swim_container = $('#swim_levels_container');
+        var $sa_swim_container = $('#sa_swim_levels_container');
         $swim_container.masonry({
             itemSelector: '#swim_levels',
+            // layoutMode : 'masonry'
+        });
+        $sa_swim_container.masonry({
+            itemSelector: '#sa_swim_levels',
             // layoutMode : 'masonry'
         });
     });
@@ -85,14 +89,14 @@
             <% end %>
         </div>
 
-        <div id="swim_header">
+        <div id="sa_swim_header">
             <h1> School-Aged </h1>
         </div>
-        <div id="swim_levels_container">
+        <div id="sa_swim_levels_container">
             <% @levels_by_type.each do |level| %>
                 <% next if @schedules_by_level[level.id].nil? %>
                 <% if level.sort_order.between?(601, 604) %>
-                    <div id="swim_levels"> 
+                    <div id="sa_swim_levels"> 
                         <h3 class="leveltitle"><%= level.levelname %></h3>
                         <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %>/Month</h4>
                             

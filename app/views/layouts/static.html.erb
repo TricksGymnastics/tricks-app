@@ -3,7 +3,7 @@
 <head>
   <title><%= @title %></title>
   <%= stylesheet_link_tag    "fonts", "static/static", :media => "all" %>
-  <%= javascript_include_tag   "static" %>
+  <%= javascript_include_tag   "static/loader" %>
   <%= csrf_meta_tags %>
 
   <%= analytics_init if Rails.env.production? %>
@@ -108,9 +108,7 @@
                   <%= link_to "Folsom Dance", schedules_fol_dance_path %>
                 </li>
                 <li class="submenu_link">
-                  <a href="/assets/schedules/fol-swim.pdf">
-                    Folsom (Swim)
-                  </a>
+                  <%= link_to "Folsom Swim", schedules_fol_swim_path %>
                 </li>
                 <li class="submenu_link">
                   <%= link_to "Sacramento (Gymnastics)", schedules_sac_gym_path %>                
