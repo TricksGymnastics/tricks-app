@@ -1,0 +1,18 @@
+<h1><%= @survey.name %></h1>
+
+<div style="margin: 10px; padding: 0px 20px; border: dashed 1px #444">
+  <ol class="questions">
+  <% @survey.questions.each do |question| %>
+    <li>
+      <%= question.content %>
+      <ol class="answers">
+        <% question.answers.each do |answer| %>
+          <li><%= answer.content %></li>
+        <% end %>
+      </ol>
+    </li>
+  <% end %>
+  </ol>
+</div>
+<%= link_to 'Edit', edit_survey_path(@survey) %> |
+<%= link_to 'Back to Surveys', surveys_path %>

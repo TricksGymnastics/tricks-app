@@ -1,5 +1,8 @@
 Comments::Application.routes.draw do
 
+  resources :surveys_takens
+
+
   resources :promo_slides
 
 
@@ -32,6 +35,7 @@ Comments::Application.routes.draw do
   resources :levels
   resources :recital_ads
   resources :recital_ad_types
+  resources :surveys
 
   %w[gymnastics dance swim events locations site_comments competitive teamgym birthdays princess_party datenights camps dancecamps campus employment 
     forms gymnastics25 missing nutcracker polkadots recital_ad_order_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
@@ -47,5 +51,8 @@ Comments::Application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  get 'quiz/:name', to: 'surveys#take_the_quiz', as: 'quiz'
+  match 'survey/:id/start' => 'surveys_takens#new'
 
 end

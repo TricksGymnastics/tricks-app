@@ -11,9 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require fancybox
 //= require jquery_ujs
-//= require_tree .
+//= require_directory .
 
 $(function () {
   $("#comments_table th a, #comments_table .pagination a").live("click", function () {
