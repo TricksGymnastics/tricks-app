@@ -2,31 +2,55 @@
 
 <div style="margin: 10px; padding: 0px 20px; border: dashed 1px #444">
   <ol class="questions">
-  <% i = 0 %>
-  <% score = 0 %>
-  <% @survey_taken.questions.each do |question| %>
-    <% i += 1 %>
-    <li>
-      <%= question.content %>
-      <ol class="answers">
-        <% question.answers.each do |answer| %>
-          <% if @the_results[i-1] %>
-            <% if i == @the_results[i-1][:question_number] && answer.content == @the_results[i-1][:answer] %>
-              <li><span id="chosen_answer"> <%= answer.content %> </span></li>
-              <% unless @the_results[i-1][:weight] == nil %>
-                <% score = score + @the_results[i-1][:weight] %>
+    <% i = 0 %>
+    <% score = 0 %>    
+
+    <% @survey_taken.questions.each do |question| %>  
+      <% answer_count = 0 %>
+      <% incorrect_answer_count = 0 %> 
+      <li>
+        <% if @the_results[i] %>          
+
+          <% question.answers.each do |answer| %>
+            <% answer_count += 1 %>
+            <% if i+1 == @the_results[i][:question_number] && answer.content != @the_results[i][:answer] %>
+              <% incorrect_answer_count += 1 %>
+            <% end %>
+          <% end %>
+          <% if answer_count == incorrect_answer_count %>
+            <%= question.content %><span style="color: red; font-size: 12px;"> (Question was not present when survey was taken)</span>
+            <ol class="answers">
+              <% question.answers.each do |answer| %>
+                <li><%= answer.content %></li>
               <% end %>
-            <% else %>
+            </ol>  
+          <% else %>
+            <%= question.content %>
+            <ol class="answers">
+              <% question.answers.each do |answer| %>
+                <% if i+1 == @the_results[i][:question_number] && answer.content == @the_results[i][:answer] %>
+                  <li><span id="chosen_answer"> <%= answer.content %> </span></li>
+                  <% unless @the_results[i][:weight] == nil %>
+                    <% score = score + @the_results[i][:weight] %>
+                  <% end %>
+                <% else %>
+                  <li><%= answer.content %></li>
+                <% end %>         
+              <% end %>
+            </ol>
+          <% end %>
+          
+        <% else %>          
+          <%= question.content %><span style="color: red; font-size: 12px;"> (Question was not present when survey was taken)</span>
+          <ol class="answers">
+            <% question.answers.each do |answer| %>
               <li><%= answer.content %></li>
             <% end %>
-          <% else %>
-<li><%= answer.content %></li>
-          
-          <% end %>
+          </ol>          
         <% end %>
-      </ol>
-    </li>
-  <% end %>
+      </li>
+      <% i += 1 %>
+    <% end %>
   </ol>
   <% if @survey_taken.scoreable == true %>
     <h4 style="text-align:center">Total Score: <%= score %></h4><br>
