@@ -1,0 +1,25 @@
+<style>
+  #image_background{
+    display: block;
+    background: url('<%= @survey_taken.image_url().to_s %>') no-repeat; 
+    width: 300px; height: 70px;
+    font-size: 35px;
+    color: #fff; 
+    text-decoration: none;
+    text-align: center;
+    padding-top: 160px;
+    margin:10px auto;
+  }
+</style>
+
+<a id="image_background">
+  <%= @score %>
+</a>
+
+<!-- <a id="image_background">
+  <%# if @score.between?(0, 10) %>
+    Oh No...WAAAAAA<br>Sorry :(
+  <%# elsif @score.between?(11, 15) %>
+    Congratulations!<br>You made it
+  <%# end %>
+</a> -->

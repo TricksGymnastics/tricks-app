@@ -20,6 +20,14 @@
   }
 }
 
+#chosen_answer {
+  font-weight: bold;
+  border: 1px #333 solid;
+  background-color: #87E3E8;
+  padding: 0px 8px;
+  width: auto;
+}
+
 form > fieldset {
   border: none;
   border: solid 1px #CCC;

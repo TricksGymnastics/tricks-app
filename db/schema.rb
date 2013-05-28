@@ -159,15 +159,21 @@ ActiveRecord::Schema.define(:version => 20130508013720) do
     t.boolean  "recital_class", :default => false
   end
 
-  create_table "surveys", :force => true do |t|
-    t.string   "name"
+  create_table "survey_results", :force => true do |t|
+    t.text     "result"
+    t.integer  "survey_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "surveys_takens", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "surveys", :force => true do |t|
+    t.string   "name"
+    t.boolean  "live"
+    t.boolean  "scoreable"
+    t.boolean  "image_result"
+    t.string   "image"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

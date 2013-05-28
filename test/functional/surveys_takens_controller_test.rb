@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class SurveysTakensControllerTest < ActionController::TestCase
+class SurveyResultsControllerTest < ActionController::TestCase
   setup do
-    @surveys_taken = surveys_takens(:one)
+    @survey_result = survey_results(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:surveys_takens)
+    assert_not_nil assigns(:survey_results)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class SurveysTakensControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create surveys_taken" do
+  test "should create survey_result" do
     assert_difference('SurveysTaken.count') do
-      post :create, surveys_taken: {  }
+      post :create, survey_result: {  }
     end
 
-    assert_redirected_to surveys_taken_path(assigns(:surveys_taken))
+    assert_redirected_to survey_result_path(assigns(:survey_result))
   end
 
-  test "should show surveys_taken" do
-    get :show, id: @surveys_taken
+  test "should show survey_result" do
+    get :show, id: @survey_result
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @surveys_taken
+    get :edit, id: @survey_result
     assert_response :success
   end
 
-  test "should update surveys_taken" do
-    put :update, id: @surveys_taken, surveys_taken: {  }
-    assert_redirected_to surveys_taken_path(assigns(:surveys_taken))
+  test "should update survey_result" do
+    put :update, id: @survey_result, survey_result: {  }
+    assert_redirected_to survey_result_path(assigns(:survey_result))
   end
 
-  test "should destroy surveys_taken" do
+  test "should destroy survey_result" do
     assert_difference('SurveysTaken.count', -1) do
-      delete :destroy, id: @surveys_taken
+      delete :destroy, id: @survey_result
     end
 
-    assert_redirected_to surveys_takens_path
+    assert_redirected_to survey_results_path
   end
 end

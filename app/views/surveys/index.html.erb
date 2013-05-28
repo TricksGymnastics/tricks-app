@@ -1,10 +1,42 @@
 <h1>Surveys</h1>
+<% if can? :manage, Survey %>
+  <h3><%= link_to 'Create a New Survey', new_survey_path %></h3>
+<% end %>
+<h3> Please click on a survey to take it</h3>
 
-<h3><%= link_to 'Create a new Survey', new_survey_path %></h3>
 
-<% @surveys.each do |survey| %>
-  <div style="font-size: 18px; padding: 10px 30px; width: 300px; float: left">
-    <b style="font-size: 24px;"><%= link_to survey.name, survey %></b>
-     (<%= pluralize(survey.questions.size, "Question") %>)
-  </div>
+<% if can? :manage, Survey %>
+  <table style="margin: 0 auto">
+    <tr>
+      <th>Live</th>
+      <th>Name</th>
+      <th>Number of Questions</th>
+      <th>Scored?</th>
+      <th>Date Created</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @surveys.each do |survey| %>
+    <tr>
+      <td><% if survey.live == true %>Yes<% else %>No<% end %></td>
+      <td style="font-size: 18px; width: 250px; padding: 5px 0px; spacing: 5px 0px"><%= link_to survey.name, survey, style: "text-decoration:none; color: #333" %></td>
+      <td style="width: 150px"><%= pluralize(survey.questions.size, "Question") %></td>
+      <td style="width: 80px;"><% if survey.scoreable == true %>Yes<% else %>No<% end %></td>
+      <td style="width: 100px;"><%= survey.created_at.strftime("%b %e, %Y") %></td>
+      <td style="border:none"><%= link_to 'Edit', edit_survey_path(survey) %></td>
+      <td style="border:none; padding: 0;"><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure? If you delete this survey, you will also delete all results for this survey.' } %></td>
+    </tr>
+    <% end %>
+
+  </table>
+<% else %>
+  <% @surveys.each do |survey| %>
+    <% if survey.live == true %>
+      <div style="font-size: 18px; margin: 15px 10px; padding: 5px 10px; width: 282px; min-height: 70px; float: left; text-align:center;  border: solid 2px #999">
+        <b style="font-size: 24px; "><%= link_to survey.name, start_survey_path(survey), style: "text-decoration:none; color: #333" %></b>
+        <br>(<%= pluralize(survey.questions.size, "Question") %>)
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
