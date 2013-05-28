@@ -1,6 +1,6 @@
 Comments::Application.routes.draw do
 
-  resources :surveys_takens
+  resources :survey_results
 
 
   resources :promo_slides
@@ -38,7 +38,7 @@ Comments::Application.routes.draw do
   resources :surveys
 
   %w[gymnastics dance swim events locations site_comments competitive teamgym birthdays princess_party datenights camps dancecamps campus employment 
-    forms gymnastics25 missing nutcracker polkadots recital_ad_order_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
+    forms gymnastics25 missing nutcracker polkadots recital_ad_order_thank_you survey_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
     get page, controller: "static", action: page
   end
 
@@ -53,6 +53,8 @@ Comments::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   get 'quiz/:name', to: 'surveys#take_the_quiz', as: 'quiz'
-  match 'survey/:id/start' => 'surveys_takens#new'
+  match 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
+  match 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
+
 
 end

@@ -1,6 +1,6 @@
 <h1><%= @survey.name %></h1>
 
-<div style="margin: 10px; padding: 0px 20px; border: dashed 1px #444">
+<div style="margin: 10px; padding: 0px 20px; border: dashed 1px #444; float:left; min-width: 610px;">
   <ol class="questions">
   <% @survey.questions.each do |question| %>
     <li>
@@ -14,5 +14,12 @@
   <% end %>
   </ol>
 </div>
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back to Surveys', surveys_path %>
+<div style="float: right; max-width: 350px; margin: 10px 0px">
+  <% if @survey.image_result == true %>
+    <%= image_tag @survey.image_url().to_s %>
+  <% end %>
+</div> 
+<div style="float:left; width: 800px;">
+  <%= link_to 'Edit', edit_survey_path(@survey) %> |
+  <%= link_to 'Back to Surveys', surveys_path %>
+</div>

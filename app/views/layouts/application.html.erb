@@ -22,16 +22,14 @@
   			<div id="tricks_tiny"><%= link_to image_tag('/assets/tricks-tiny.png'), root_path %></div>
   			<div id="app_menu">
           <ul>
-            <li><%= link_to "Home", database_path %></li>
-
-            <% if can? :manage, User %>
-            	<li><a href="Javascript:void()">Admin</a>
+            <li><%= link_to "Home", database_path %>
+              <% if can? :manage, User %>
                 <ul class="app_submenu">
                   <li class="app_submenu_link"><%= link_to "Users", users_path %></li>
                   <li class="app_submenu_link"><%= link_to "Promos", promo_slides_path %></li>
                 </ul>
-              </li>
-            <% end %>
+              <% end %>
+            </li>            
 
   					<li><%= link_to "Comments", comments_path %></li>
 
@@ -70,6 +68,14 @@
   		          <% end %>
   		        </li>
   		      <% end %>
+
+            <li><%= link_to "Surveys", surveys_path %>
+              <% if can? :manage, User %>
+                <ul class="app_submenu">
+                  <li class="app_submenu_link"><%= link_to "Results", survey_results_path %></li>
+                </ul>
+              <% end %>
+            </li>
 
           </ul>
       	</div>		

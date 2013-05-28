@@ -20,11 +20,11 @@
       <%= f.collection_select :classtype_id, Classtype.where(:id => 1..4), :id, :name, :prompt => "Select a Class Type" %>
     </div> 
    
-    <div class="field" style="float:left; width: auto; line-height: 34px; margin-bottom: 0; border: 2px dotted grey; padding: 0 8px" id="level_select">
+    <div class="field" style="float:left; width: auto; line-height: 34px; margin-bottom: 0; border: 2px dotted grey; padding: 0 8px">
       <div style="float:left; width: 88px">
         <%= f.label :level_id, "Level:" %>
       </div>
-      <%= f.grouped_collection_select :level_id, Classtype.all, :levels, :name, :id, :levelname %>
+      <%= f.grouped_collection_select :level_id, Classtype.all, :levels, :name, :id, :levelname%>
     </div> 
 
     <div style="width: 1000px; float: left; line-height: 34px; padding: 0 8px">
