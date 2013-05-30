@@ -25,7 +25,9 @@
       <td style="width: 80px;"><% if survey.scoreable == true %>Yes<% else %>No<% end %></td>
       <td style="width: 100px;"><%= survey.created_at.strftime("%b %e, %Y") %></td>
       <td style="border:none"><%= link_to 'Edit', edit_survey_path(survey) %></td>
-      <td style="border:none; padding: 0;"><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure? If you delete this survey, you will also delete all results for this survey.' } %></td>
+      <% if can? :destroy, Survey %>
+        <td style="border:none; padding: 0;"><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure? If you delete this survey, you will also delete all results for this survey.' } %></td>
+      <% end %>
     </tr>
     <% end %>
 

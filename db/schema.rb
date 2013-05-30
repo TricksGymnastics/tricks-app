@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508013720) do
+ActiveRecord::Schema.define(:version => 20130529233701) do
 
   create_table "answers", :force => true do |t|
     t.string   "content"
@@ -61,9 +61,10 @@ ActiveRecord::Schema.define(:version => 20130508013720) do
     t.string   "fav_food"
     t.text     "advice"
     t.string   "disney_char"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "strengths"
+    t.boolean  "current_employee", :default => true
   end
 
   create_table "comments", :force => true do |t|

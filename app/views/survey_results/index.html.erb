@@ -23,7 +23,9 @@
     <td style="width: 250px;"><%= Survey.find(survey_result.survey_id).name %></td>
     <td style="width: 150px;"><%= survey_result.created_at.strftime("%b %e, %Y") %></td>
     <td><%= link_to 'Show', survey_result %></td>
-    <td><%= link_to 'Destroy', survey_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if can? :destroy, SurveyResult %>
+      <td><%= link_to 'Destroy', survey_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

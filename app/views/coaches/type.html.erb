@@ -28,12 +28,7 @@
       <% @coaches.each do |coach| %>
         <% coach.locations.each do |location| %>
           <% if location.name == "Folsom" %>
-            <div id="coach_container">
-              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-              <div style="width: 115px; margin: 0 auto">
-                <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
-              </div>
-            </div>
+          <%= render 'coach_container', :coach => coach  %>
           <% end %>
         <% end %>
       <% end %>
@@ -43,16 +38,9 @@
 <% elsif params[:name] == "Dance" %>
   <div>
     <% @coaches.each do |coach| %>
-      <div id="coach_container">
-        <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-        <div style="width: 115px; margin: 0 auto">
-          <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
-        </div>
-      </div>
+      <%= render 'coach_container', :coach => coach  %>
     <% end %>
   </div>
-  
-<% else %>
 
   <div>
     <div id="coach_section_header"><h3>Granite Bay</h3></div>
@@ -60,12 +48,7 @@
       <% @coaches.each do |coach| %>
         <% coach.locations.each do |location| %>
           <% if location.name == "Granite Bay" %>
-            <div id="coach_container">
-              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-              <div style="width: 115px; margin: 0 auto">
-                <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
-              </div>
-            </div>
+            <%= render 'coach_container', :coach => coach  %>
           <% end %>
         <% end %>
       <% end %>
@@ -79,12 +62,7 @@
       <% @coaches.each do |coach| %>
         <% coach.locations.each do |location| %>
           <% if location.name == "Folsom" %>
-            <div id="coach_container">
-              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-              <div style="width: 115px; margin: 0 auto">
-                <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
-              </div>
-            </div>
+            <%= render 'coach_container', :coach => coach  %>
           <% end %>
         <% end %>
       <% end %>
@@ -97,12 +75,7 @@
       <% @coaches.each do |coach| %>
         <% coach.locations.each do |location| %>
           <% if location.name == "Sacramento" %>
-            <div id="coach_container">
-              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-              <div style="width: 115px; margin: 0 auto">
-                <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
-              </div>
-            </div>
+            <%= render 'coach_container', :coach => coach  %>
           <% end %>
         <% end %>
       <% end %>

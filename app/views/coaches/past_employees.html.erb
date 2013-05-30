@@ -1,0 +1,8 @@
+<%= stylesheet_link_tag "static/coaches", :media => "all" %>
+
+<h1>Past Tricks Employees</h1>
+<br>
+
+  <% @past_employees.each do |coach| %>
+    <%= render 'coach_container', :coach => coach  %>
+  <% end %>

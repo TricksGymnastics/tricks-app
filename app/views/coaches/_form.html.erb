@@ -21,21 +21,30 @@
     <div class="field">
       <%= f.label :lastname, "Last Name:" %><br>
       <%= f.text_field :lastname %> (Not Displayed unless logged in)
+    </div>    
+    <div class="field" id="coach_field">
+      <%= f.check_box :current_employee %>
+      <%= f.label :current_employee, "Current Employee" %>
     </div>
     <div class="field" id="coach_field">
       <%= f.label :gender %><br>
       <%= f.radio_button :gender, "Girl", checked: true %>
-      <%= label_tag(:gender , "Girl") %><br>
+      <%= label_tag(:gender , "Girl", style: "margin-right: 20px;") %>
       <%= f.radio_button :gender, "Boy" %>
       <%= label_tag(:gender, "Boy") %><br>
     </div>
     <div class="field" id="coach_field">
-      <%= f.label :image, "Picture of Coach:" %><br>
-      <%= f.file_field :image %><br>
-      <p style="margin-top: 10px;">
-        <%= f.check_box :remove_image %>
-        Remove Picture
-      </p>
+
+      <% if @coach.image_url == nil %>
+        <%= f.label :image, "Picture of Coach:" %><br>
+        <%= f.file_field :image %><br>
+      <% else %>        
+        <%= f.label :image, "Current Picture:" %>( <%= File.basename(@coach.image.to_s) %> )<br>
+        <%= f.label :image, "Choose New Picture: " %><%= f.file_field :image %><br>
+        <%= f.check_box :remove_image %> Remove Picture
+      <% end %>  
+
+
 
     </div>
     <div class="field" id="coach_field">
@@ -137,27 +146,27 @@
 
     <div class="field">
       <%= f.label :experience, "Experience:" %><br>
-      <%= f.text_area :experience, :size => "50x5" %>
+      <%= f.text_area :experience, style: "height: 90px; width: 500px;" %>
     </div>
     <div class="field">
       <%= f.label :fav_event, "Favorite Activity and Why:" %><br>
-      <%= f.text_field :fav_event %>
+      <%= f.text_field :fav_event, size: 70 %>
     </div>
     <div class="field">
       <%= f.label :fav_skill, "Favorite Skill and Why:" %><br>
-      <%= f.text_field :fav_skill %>
+      <%= f.text_field :fav_skill, size: 70 %>
     </div>
     <div class="field">
       <%= f.label :fav_food, "Favorite Food:" %><br>
-      <%= f.text_field :fav_food %>
+      <%= f.text_field :fav_food, size: 70 %>
     </div>
     <div class="field">
       <%= f.label :disney_char, "If you could be a Disney Character, who would you be?" %><br>
-      <%= f.text_field :disney_char %>
+      <%= f.text_field :disney_char, size: 70 %>
     </div>
     <div class="field">
       <%= f.label :advice, "Advice for Students:" %><br>
-      <%= f.text_area :advice, :size => "50x5" %>
+      <%= f.text_area :advice, style: "height: 90px; width: 500px;" %>
     </div>
     <div class="actions">
       <%= f.submit %>
