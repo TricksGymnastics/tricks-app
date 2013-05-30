@@ -3,8 +3,6 @@ class CoachesController < ApplicationController
   load_and_authorize_resource :except => [:type, :loc]
   helper "errors"
 
-  # GET /coaches
-  # GET /coaches.json
   def index
     @coaches = Coach.joins(:locations).location_search(params[:location]).uniq.sort_by(&:firstname)
     respond_to do |format|
@@ -13,8 +11,6 @@ class CoachesController < ApplicationController
     end
   end
 
-  # GET /coaches/1
-  # GET /coaches/1.json
   def show
     @coach_levels = Coach.includes(:levels).find(params[:id]).levels.group_by(&:classtype_id)
 
@@ -24,8 +20,6 @@ class CoachesController < ApplicationController
     end
   end
 
-  # GET /coaches/new
-  # GET /coaches/new.json
   def new
     respond_to do |format|
       format.html # new.html.erb
@@ -33,12 +27,9 @@ class CoachesController < ApplicationController
     end
   end
 
-  # GET /coaches/1/edit
   def edit
   end
 
-  # POST /coaches
-  # POST /coaches.json
   def create
     respond_to do |format|
       if @coach.save
@@ -51,8 +42,6 @@ class CoachesController < ApplicationController
     end
   end
 
-  # PUT /coaches/1
-  # PUT /coaches/1.json
   def update
     respond_to do |format|
       if @coach.update_attributes(params[:coach])
@@ -65,8 +54,6 @@ class CoachesController < ApplicationController
     end
   end
 
-  # DELETE /coaches/1
-  # DELETE /coaches/1.json
   def destroy
     @coach.destroy
     respond_to do |format|
@@ -76,9 +63,7 @@ class CoachesController < ApplicationController
   end
 
   def type
-    #@coaches = Coach.all.group_by(&:classtype_ids)
     @coaches = Classtype.includes(:coaches).find_by_name(params[:name]).coaches.sort_by(&:firstname)
-    #@coaches = Coach.joins(:classtype).all
   end
 
   def loc
@@ -86,5 +71,8 @@ class CoachesController < ApplicationController
     @coaches_by_location = Location.includes(:coaches).find_by_name(params[:name]).coaches.sort_by(&:firstname)
   end
 
+  def past_employees
+    @past_employees = Coach.where(:current_employee => false).all
+  end
 
 end

@@ -22,13 +22,8 @@
   <div>
     <% @coaches_by_location.each do |coach| %>    
       <% coach.classtypes.each do |classtype| %>
-        <% if classtype.name == "Gymnastics" %>
-          <div id="coach_container">
-            <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-            <div style="width: 115px; margin: 0 auto">
-              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
-            </div>
-          </div>
+        <% if classtype.name == "Gymnastics" %>          
+          <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
     <% end %>
@@ -40,13 +35,8 @@
   <div>
     <% @coaches_by_location.each do |coach| %>    
       <% coach.classtypes.each do |classtype| %>
-        <% if classtype.name == "Dance" %>
-          <div id="coach_container">
-            <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-            <div style="width: 115px; margin: 0 auto">
-              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
-            </div>
-          </div>
+        <% if classtype.name == "Dance" %>          
+          <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
     <% end %>
@@ -60,12 +50,7 @@
       <% @coaches_by_location.each do |coach| %>    
         <% coach.classtypes.each do |classtype| %>
           <% if classtype.name == "Swim" %>
-            <div id="coach_container">
-              <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-              <div style="width: 115px; margin: 0 auto">
-                <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
-              </div>
-            </div>
+            <%= render 'coach_container', :coach => coach  %>
           <% end %>
         <% end %>
       <% end %>
@@ -79,12 +64,7 @@
     <% @coaches_by_location.each do |coach| %>    
       <% coach.classtypes.each do |classtype| %>
         <% if classtype.name == "Office" %>
-          <div id="coach_container">
-            <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-            <div style="width: 115px; margin: 0 auto">
-              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
-            </div>
-          </div>
+          <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
     <% end %>

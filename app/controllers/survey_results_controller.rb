@@ -1,5 +1,7 @@
 class SurveyResultsController < ApplicationController
 
+  load_and_authorize_resource :except => :results_page
+
   def index
     @survey_results = SurveyResult.all
   end

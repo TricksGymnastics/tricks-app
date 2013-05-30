@@ -56,6 +56,11 @@
                 <li class="app_submenu_link">
                   <%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %>
                 </li>
+                <% if can? :manage, Coach %>
+                  <li class="app_submenu_link">
+                    <%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"} %>
+                  </li>
+                <% end %>
               </ul>
             </li>   
 

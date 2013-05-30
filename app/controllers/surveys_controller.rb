@@ -1,4 +1,7 @@
 class SurveysController < ApplicationController
+
+  load_and_authorize_resource
+
   def index
     @surveys = Survey.all
   end
@@ -14,7 +17,7 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(params[:survey])
     if @survey.save
-      redirect_to @survey, notice: "Successfully created survey."
+      redirect_to @survey, notice: "Successfully created Survey."
     else
       render :new
     end
@@ -27,7 +30,7 @@ class SurveysController < ApplicationController
   def update
     @survey = Survey.find(params[:id])
     if @survey.update_attributes(params[:survey])
-      redirect_to @survey, notice: "Successfully updated survey."
+      redirect_to @survey, notice: "Successfully updated Survey."
     else
       render :edit
     end
@@ -36,10 +39,6 @@ class SurveysController < ApplicationController
   def destroy
     @survey = Survey.find(params[:id])
     @survey.destroy
-    redirect_to surveys_url, notice: "Successfully destroyed survey."
-  end
-
-  def take_the_quiz
-    @survey = Survey.find_by_name(params[:name])
+    redirect_to surveys_url, notice: "Successfully destroyed Survey."
   end
 end

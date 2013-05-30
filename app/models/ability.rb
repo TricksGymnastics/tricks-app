@@ -5,12 +5,12 @@ class Ability
 		user ||= User.new
 			
 		## List of Actions ##
-		# :read
-		# :create
-		# :show
-		# :update
-		# :destroy		
-		# :manage
+		# :read (index)
+		# :create (create)
+		# :show (show)
+		# :update (update)
+		# :destroy (destroy)
+		# :manage (all)
 
 		## Object ##
 		#Comment
@@ -21,6 +21,8 @@ class Ability
 		#Coach
 		#RecitalAd
 		#PromoSlide
+		#Survey
+		#SurveyResult
 
 		if user.role == "superadmin" #Jordan
 			can :manage, :all
@@ -42,6 +44,10 @@ class Ability
 			can :manage, Level
 			can :manage, Coach
 			can :manage, RecitalAd
+			can :manage, Survey
+			can :manage, SurveyResult
+			cannot :destroy, Survey
+			cannot :destroy, SurveyResult
 			cannot :destroy, Level
 		end 
 
@@ -52,6 +58,8 @@ class Ability
 			can :read, Schedule
 			can :read, Coach
 			can :create, RecitalAd
+			can :create, SurveyResult
+			can :read, Survey
 		end
 	end 
 end

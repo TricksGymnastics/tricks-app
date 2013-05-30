@@ -7,21 +7,23 @@
 <% else %>
   <br>
 <% end %>
-  
-<div style="padding: 6px; height: 50px; margin: 0 auto; width: 296px; border: dashed 1px #444; margin-bottom: 10px;">
-  <h4 style="font-size: 18px;">Coaches by Location:</h4>
-  <%= button_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, id: "coach_button" %>
-  <%= button_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, id: "coach_button"  %>
-  <%= button_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, id: "coach_button"  %>
-</div>
 
-<div style="padding: 6px; height: 50px; margin: 0 auto; width: 450px; border: dashed 1px #444; margin-bottom: 10px;">
-  <h4 style="font-size: 18px;">Coaches by Activity:</h4>
-  <%= button_to "Gymnastics", {:controller => "coaches", :action => "type", :name => "Gymnastics"}, id: "coach_button" %>
-  <%= button_to "Tumblebunnies", {:controller => "coaches", :action => "type", :name => "Tumblebunnies"}, id: "coach_button"  %>
-  <%= button_to "Dance", {:controller => "coaches", :action => "type", :name => "Dance"}, id: "coach_button"  %>
-  <%= button_to "Swim", {:controller => "coaches", :action => "type", :name => "Swim"}, id: "coach_button"  %>
-  <%= button_to "Office", {:controller => "coaches", :action => "type", :name => "Office"}, id: "coach_button"  %>
+<div style="margin: 0px auto 10px auto; height:65px; width: 794px;">
+  <div style="padding: 6px; height: 50px; float:left; width: 296px; border: dashed 1px #444; margin: 0 5px;">
+    <h4 style="font-size: 18px;">Coaches by Location:</h4>
+    <%= button_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, id: "coach_button" %>
+    <%= button_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, id: "coach_button"  %>
+    <%= button_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, id: "coach_button"  %>
+  </div>
+
+  <div style="padding: 6px; height: 50px; float:left; width: 450px; border: dashed 1px #444; margin: 0 5px;">
+    <h4 style="font-size: 18px;">Coaches by Activity:</h4>
+    <%= button_to "Gymnastics", {:controller => "coaches", :action => "type", :name => "Gymnastics"}, id: "coach_button" %>
+    <%= button_to "Tumblebunnies", {:controller => "coaches", :action => "type", :name => "Tumblebunnies"}, id: "coach_button"  %>
+    <%= button_to "Dance", {:controller => "coaches", :action => "type", :name => "Dance"}, id: "coach_button"  %>
+    <%= button_to "Swim", {:controller => "coaches", :action => "type", :name => "Swim"}, id: "coach_button"  %>
+    <%= button_to "Office", {:controller => "coaches", :action => "type", :name => "Office"}, id: "coach_button"  %>
+  </div>
 </div>
 
 <div>
@@ -30,18 +32,12 @@
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
         <% if location.name == "Granite Bay" %>
-          <div id="coach_container">
-            <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-            <div style="width: 115px; margin: 0 auto">
-              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
-            </div>
-          </div>
+          <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
     <% end %>
   </div>
 </div>
-
 
 <div>
   <div id="coach_section_header" style="margin-top: 30px"><h3>Folsom</h3></div>
@@ -49,12 +45,7 @@
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
         <% if location.name == "Folsom" %>
-          <div id="coach_container">
-            <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-            <div style="width: 115px; margin: 0 auto">
-              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
-            </div>
-          </div>
+          <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
     <% end %>
@@ -67,12 +58,7 @@
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
         <% if location.name == "Sacramento" %>
-          <div id="coach_container">
-            <h6><% if can? :manage, Coach %><%= link_to coach.firstname+" "+coach.lastname, coach %><% else %><%= link_to coach.firstname, coach %><% end %></h6>
-            <div style="width: 115px; margin: 0 auto">
-              <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
-            </div>
-          </div>
+          <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
     <% end %>
