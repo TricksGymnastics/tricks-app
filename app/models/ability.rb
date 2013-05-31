@@ -35,6 +35,8 @@ class Ability
 			can :manage, Level
 			can :manage, Coach
 			can :manage, RecitalAd
+			can :manage, Survey
+			can :manage, SurveyResult
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
