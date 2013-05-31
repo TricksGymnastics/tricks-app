@@ -18,7 +18,9 @@ class SurveyResultsController < ApplicationController
     @the_results = JSON.parse(@survey_result.result, :symbolize_names => true)
     @score = 0
     @the_results.each do |r|
-      @score = @score + r[:weight]
+      unless r[:weight] == nil
+        @score = @score + r[:weight]
+      end
     end
   end
 

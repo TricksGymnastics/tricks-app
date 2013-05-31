@@ -5,7 +5,7 @@ class Survey < ActiveRecord::Base
   accepts_nested_attributes_for :questions, allow_destroy: true
   validates_presence_of :name
 
-  mount_uploader :image, PromoImageUploader
+  mount_uploader :image, SurveyImageUploader
 
   # def to_param
   #   name

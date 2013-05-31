@@ -1,11 +1,5 @@
 Comments::Application.routes.draw do
 
-  resources :survey_results
-
-
-  resources :promo_slides
-
-
   root :to => 'static#index'
 
   match 'schedules/choose'  
@@ -36,7 +30,9 @@ Comments::Application.routes.draw do
   resources :levels
   resources :recital_ads
   resources :recital_ad_types
+  resources :promo_slides
   resources :surveys
+  resources :survey_results
 
   %w[gymnastics dance swim events locations site_comments competitive teamgym birthdays princess_party datenights camps dancecamps campus employment 
     forms gymnastics25 missing nutcracker polkadots recital_ad_order_thank_you survey_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
@@ -53,7 +49,6 @@ Comments::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  get 'quiz/:name', to: 'surveys#take_the_quiz', as: 'quiz'
   match 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
   match 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
 
