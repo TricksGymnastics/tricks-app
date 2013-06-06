@@ -23,7 +23,7 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-      "uploads/#{model.firstname+'_'+model.lastname}"
+      "uploads/#{model.firstname+'_'+model.lastname}".tr(" ", "_")
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -67,7 +67,7 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "#{model.firstname+'_'+model.lastname}.#{file.extension}" if original_filename
+    "#{model.firstname+'_'+model.lastname}.#{file.extension}".tr(" ", "_") if original_filename
   end
 
 end
