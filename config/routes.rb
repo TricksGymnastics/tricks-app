@@ -35,7 +35,7 @@ Comments::Application.routes.draw do
   resources :survey_results
 
   %w[gymnastics dance swim events locations site_comments competitive teamgym birthdays princess_party datenights camps dancecamps campus employment 
-    forms gymnastics25 missing nutcracker polkadots recital_ad_order_thank_you survey_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
+    forms gymnastics25 missing nutcracker polkadots recitals recital_ad_order_thank_you survey_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
     get page, controller: "static", action: page
   end
 
