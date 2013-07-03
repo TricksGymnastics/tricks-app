@@ -13,11 +13,13 @@
 
     <div class="field" style="margin-top: 40px;">
       <%= f.label :name %>: 
-      <%= f.text_field :name, style: "margin-right: 20px" %>
+      <%= f.text_field :name, style: "width: 500px;" %><br><br>
       <%= f.check_box :live %>
-      <%= f.label :live, style: "margin-right: 20px" %> 
+      <%= f.label :live, style: "margin-right: 10px" %>       
+      <%= f.check_box :feedback_check %>
+      <%= f.label :feedback_check, "Feedback", style: "margin-right: 10px" %> 
       <%= f.check_box :scoreable %>
-      <%= f.label :scoreable, style: "margin-right: 20px" %> 
+      <%= f.label :scoreable, style: "margin-right: 10px" %> 
       <span id="image_result_box">
         <%= f.check_box :image_result %>
         <%= f.label :image_result %>

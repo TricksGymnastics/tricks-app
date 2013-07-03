@@ -33,6 +33,14 @@
       <% end %>
     </ol>
   </div>
+  <div style="margin: 15px 10px;">
+    <% if @survey_given.feedback_check == true %>
+      
+      <%= f.label :feedback, "Feedback: " %><br>
+      <%= f.text_area :feedback, style: "width: 400px; height: 90px;" %>
+
+    <% end %>
+  </div>
   <h4 style="text-align:center">There are <%= @question_count %> questions in this survey.</h4>
 
   <%= hidden_field_tag 'question_count', @question_count %> 
