@@ -1,5 +1,5 @@
 class SurveyResult < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :feedback
 
   has_many :questions
   belongs_to :survey

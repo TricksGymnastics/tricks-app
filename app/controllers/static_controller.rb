@@ -3,8 +3,8 @@ class StaticController < ApplicationController
   before_filter :set_variables
 
   def set_variables
-    @bgc_yellow = "#fbed20"
-    @bgc_green = "#79c843"
+    @bgc_yellow = "#F2E300"
+    @bgc_green = "#5FC916"
     @bgc_orange = "#ff9933"
     @bgc_pink = "#ec1e79"
     @bgc_blue = "#223d99"
