@@ -13,7 +13,7 @@
 		</div>
 		<div id="promo-tabs">
 			<% @live_promos.each do |promo| %>
-				<div id="slide_<%= promo.order %>" class="promo-tab"><%= promo.title %></div>
+				<div id="slide_<%= promo.sort_order %>" class="promo-tab"><%= promo.title %></div>
 			<% end %>
 		</div>
 
@@ -28,10 +28,8 @@
 				<% else %>
 					<% if promo.link == true %>
 						<object class="promo_image">
-							<%# promo.link_path %>
 							<%= link_to image_tag(promo.image_url, width: "367", height: "248", alt: promo.title), promo.link_path, style: "display:block; margin-left: 1px; cursor: pointer" %>
-						</object>
-						
+						</object>						
 					<% else %>
 						<object class="promo_image">
 							<%= image_tag promo.image_url, width: "367", height: "248", alt: promo.title %>
