@@ -5,8 +5,8 @@ class PromoSlidesController < ApplicationController
   # GET /promo_slides
   # GET /promo_slides.json
   def index
-    @live_promo_slides = PromoSlide.where(live: true)
-    @promo_slides = PromoSlide.where(live: false)
+    @live_promo_slides = PromoSlide.where(live: true).all(order: 'sort_order')
+    @promo_slides = PromoSlide.where(live: false).all(:order => 'created_at')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -55,7 +55,7 @@ class PromoSlidesController < ApplicationController
   def update
     respond_to do |format|
       if @promo_slide.update_attributes(params[:promo_slide])
-        format.html { redirect_to promo_slides_path, notice: 'Promo slide was successfully updated.' }
+        format.html { redirect_to @promo_slide, notice: 'Promo slide was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

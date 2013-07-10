@@ -6,6 +6,7 @@
     <th>Title</th>
     <th>Live</th>
     <th>Data Type</th>
+    <th>Date Created</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +14,11 @@
 
 <% @live_promo_slides.each do |promo_slide| %>
   <tr>
-    <td style="width: 50px;"><%= promo_slide.order %></td>
+    <td style="width: 50px;"><%= promo_slide.sort_order %></td>
     <td style="width: 200px;"><%= promo_slide.title %></td>
     <td style="width: 50px;"><%= promo_slide.live %></td>
     <td style="width: 80px;"><%= promo_slide.data_type %></td>
+    <td><%= promo_slide.created_at.strftime("%b %e, %Y") %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Show', promo_slide %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Edit', edit_promo_slide_path(promo_slide) %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Destroy', promo_slide, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,6 +31,7 @@
     <td><%= promo_slide.title %></td>
     <td><%= promo_slide.live %></td>
     <td><%= promo_slide.data_type %></td>
+    <td><%= promo_slide.created_at.strftime("%b %e, %Y") %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Show', promo_slide %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Edit', edit_promo_slide_path(promo_slide) %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Destroy', promo_slide, method: :delete, data: { confirm: 'Are you sure?' } %></td>
