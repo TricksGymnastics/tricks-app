@@ -6,14 +6,23 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
    def index
-    @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order("schedules.updated_at DESC").order(sort_column + " " + sort_direction)
-   
-    #@schedules_time = Schedule.all.each.time.strftime("%l:%M %p") do |schedule|
-      #schedule
-    #end
+    if  params[:sort] == nil
+      if params[:time] == nil or params[:time] == ""
+        @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order("schedules.updated_at DESC")
+      else
+        @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).time_search(Time.strptime("01-01-2000 "+ params[:time] +" UTC",'%m-%d-%Y %l:%M %p %Z')).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order("schedules.updated_at DESC")
+      end
+    else
+      @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).day_search(params[:day]).teacher_search(params[:teacher]).age_search(params[:age]).gender_search(params[:gender]).order(sort_column + " " + sort_direction)
+    end
 
+    
 
-    #add this after day_search to re-enable searching by time ".time_search(params[:time])"
+    @schedules_time = []
+    Schedule.find(:all, :order => "time ASC").each do |s|
+      time = s.time.strftime("%l:%M %p")
+      @schedules_time << time
+    end
 
     #add this to the end of the above line to enable pagination ".paginate(:per_page => 15, :page => params[:page])"
 

@@ -7,7 +7,6 @@ class Schedule < ActiveRecord::Base
 	validates_presence_of :classtype_id, :location, :level_id, :day, :time, :teacher
 
 	DAYS = [['Monday', 0], ['Tuesday', 1], ['Wednesday', 2], ['Thursday', 3], ['Friday', 4], ['Saturday', 5]]
-	TIMES = ['9:00 AM', '9:30 AM', '10:00 AM', '11:00 AM', '12:00 PM', '12:30 PM', '3:30 PM', '3:45 PM', '4:00 PM', '5:05 PM', '5:15 PM', '5:30 PM', '6:30 PM', '6:35 PM']
 	LOCATIONS = ['Granite Bay', 'Folsom', 'Sacramento']
 	HUMAN_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -37,7 +36,7 @@ class Schedule < ActiveRecord::Base
 
 	def self.time_search(time_search)
   		if time_search
-    		where('time ILIKE ?', "%#{time_search}%")
+    		where("time = ?", time_search)
  		else
  			scoped
  		end

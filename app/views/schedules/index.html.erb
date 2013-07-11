@@ -18,7 +18,7 @@
       <%#= select_tag "levels", grouped_options_for_select(@schedules.pluck(:levelname), params[:level]), :onchange => "this.form.submit();", :prompt => "Levels" %> 
       <%= select_tag "level", options_for_select(@schedules.pluck(:levelname).uniq.sort, params[:level]), :onchange => "this.form.submit();", :prompt => "All Levels" %>
       <%= select_tag "day", options_for_select(Schedule::DAYS, params[:day]), :onchange => "this.form.submit();", :prompt => "All Days" %>
-      <%#= select_tag "time", options_for_select(@schedules.pluck(:time).uniq.sort, params[:time]), :onchange => "this.form.submit();", :prompt => "Time" %>
+      <%= select_tag "time", options_for_select(@schedules_time.uniq, params[:time]), :onchange => "this.form.submit();", :prompt => "Time" %>
       <%= select_tag "teacher", options_for_select(@schedules.pluck(:teacher).uniq.sort, params[:teacher]), :onchange => "this.form.submit();", :prompt => "All Teachers" %>
       <%= select_tag "age", options_for_select(@schedules.pluck(:age).uniq.sort, params[:age]), :onchange => "this.form.submit();", :prompt => "All Ages" %>
       <%= select_tag "gender", options_for_select(@schedules.pluck(:gender).uniq, params[:gender]), :onchange => "this.form.submit();", :prompt => "All Genders" %>
