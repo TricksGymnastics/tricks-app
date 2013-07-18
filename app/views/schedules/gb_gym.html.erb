@@ -42,17 +42,24 @@
         <h2> School Age Gymnastics Schedule</h2>    
     </div>
     <div id="info_container">
-        <div id="logo">
-            <a href="/">
-                <img src="/assets/tricks-header.png" height="118px"/>
-            </a>
-        </div>
         <div id="info">
             <h3>Important Information</h3>
             <p style="font-size: 15px;">No Membership Fee is required.</p>
             <p style="font-size: 12px;">*Schedules are subject to change*</p>
             <p style="font-size: 12px;">*Prices quoted for 1 class per week*</p>
             <p><b>Call to schedule your FIRST CLASS today!</b></p>
+        </div>
+        <div id="logo">
+            <a href="/">
+                <img src="/assets/tricks-header.png" height="118px"/>
+            </a>
+        </div>
+
+        <div id="gym_info">
+            <h2>Granite Bay</h2>
+            <h3>4070 Cavitt-Stallman Rd.<br>Granite Bay, CA 95746</h3>
+            <h3>(916) 791-4496</h3>
+            <h3>www.tricksgym.com</h3>
         </div>
     </div>
 
@@ -81,7 +88,7 @@
                                             <%= schedule.teacher %>
                                         </div>
                                         <% if schedule.future_class? %>
-                                            <div style="font-size: 11px; float: right">
+                                            <div class="future_class">
                                                 *Future Class*
                                             </div>
                                         <% end %>
@@ -168,7 +175,7 @@
                         </div>
                     <% end %>
                 <% end %>
-                <div id="girls_levels" style="border:none; width:312px;">
+                <div id="girls_levels" style="border:none; width:322px;">
                     <div id="tag_container">
                         <div id="tag_header">
                             <h1> TAG </h1>
@@ -241,7 +248,7 @@
                                             <%= schedule.teacher %>
                                         </div>
                                         <% if schedule.future_class? %>
-                                            <div style="font-size: 11px; float: right">
+                                            <div class="future_class">
                                                 *Future Class*
                                             </div>
                                         <% end %>

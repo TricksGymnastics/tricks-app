@@ -20,18 +20,13 @@
         });
     });
 </script>
-<div id="master_dance_container">
+<div id="master_container">
     <div id="schedule_header">
         <div style="width: 100px; height: 30px; float:left"></div>
         <div style="width: 100px; float:right; margin-top:7px;"><a href="#" onClick=" window.print(); return false">Print this page</a></div>
         <h2> Dance Schedule</h2>    
     </div>
     <div id="info_container">
-        <div id="logo">
-            <a href="/">
-                <img src="/assets/tricks-header.png" height="118px"/>
-            </a>
-        </div>
         <div id="info">
             <h3>Important Information</h3>
             <p style="font-size: 15px;">No Membership Fee is required.</p>
@@ -39,18 +34,19 @@
             <p style="font-size: 12px;">*Prices quoted for 1 class per week*</p>
             <p><b>Call to schedule your FIRST CLASS today!</b></p>
         </div>
+        <div id="logo">
+            <a href="/">
+                <img src="/assets/tricks-header.png" height="118px"/>
+            </a>
+        </div>
+        <div id="gym_info">
+            <h2>Folsom</h2>
+            <h3>370 Plaza Dr.<br>Folsom, CA 95630</h3>
+            <h3>(916) 351-0024</h3>
+            <h3>www.tricksgym.com</h3>
+        </div>
     </div>
-    <div id="gym_info">
-        <h2>Folsom</h2>
-        <h3>370 Plaza Dr.<br>Folsom, CA 95630</h3>
-        <h3>(916) 351-0024</h3>
-        <h3>www.tricksgym.com</h3>
-    </div>
-
-    <div style="background-color: #D61313; border: solid 2px #555; width: 946px; height: 60px; margin-bottom: 4px;">
-        <h3 style="color: white">We are experiencing some technical glitches and some schedules may be missing or incorrect.<br>For correct schedules please pick one up at your Tricks location.</h3>
-    </div>
-    <%= image_tag("structure/dance_class_grid.png", size: '948x314', style: "border: solid #666 1px;") %>
+    <%= image_tag("structure/dance_class_grid.png", size: '978x324', style: "border: solid #666 1px;") %>
     <div id="pre_school_age_dance_header">
         <h2>Pre-School Dance</h2>    
     </div>
@@ -80,7 +76,7 @@
                                         <%= schedule.teacher %>
                                     </div>
                                     <% if schedule.future_class? %>
-                                        <div style="font-size: 11px; float: right">
+                                        <div class="future_class">
                                             *Future Class*
                                         </div>
                                     <% end %>
@@ -94,6 +90,8 @@
         <% end %>
     </div>
 
+    <div class="pagebreak"></div>
+
     <div id="school_age_dance_header">
         <h2>School Aged Dance</h2>    
     </div>
@@ -104,7 +102,7 @@
                 <% next if @schedules_by_level[level.id].nil? %>
                 <div id="sa_dance_levels"> 
                     <h3 class="leveltitle"><%= level.levelname %></h3>
-                    <h4 style="margin:0px;">Age: <%= level.age %><br>Length: <%= level.length %> min. &nbsp; $<%= level.price %> / (4 Weeks)</h4>
+                    <h4 style="margin:0px 0 5px 0;">Length: <%= level.length %> min. &nbsp; $<%= level.price %> / (4 Weeks)</h4>
                     
                     <% if level.sort_order.between?(301, 301) %>
                         <h4 style="text-decoration:underline; font-size: 11px;">Adult Participation Required</h4>
@@ -123,7 +121,7 @@
                                         <%= schedule.teacher %>
                                     </div>
                                     <% if schedule.future_class? %>
-                                        <div style="font-size: 11px; float: right">
+                                        <div class="future_class">
                                             *Future Class*
                                         </div>
                                     <% end %>
