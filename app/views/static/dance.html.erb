@@ -1,67 +1,78 @@
 <% @title = "Tricks Dance" %>
 <% content_for :pagestyle do %>
   body {background-color: <%= @bgc_pink %>;}
+  #infobox{float: left; margin: 0 30px 25px 20px; text-align: justify;}
+  h2{font-size: 23px; line-height: 20px;}
 <% end %>
 
 <div class="content">
-  <div style="float: right; margin-right: 5px; margin-top: 30px;"> <img src="/assets/structure/danceside.jpg" width="268" height="1308" alt="Gymnastics Teams"> </div>
+  <!-- <div style="float: right; margin-right: 5px; margin-top: 30px;"> <img src="/assets/structure/danceside.jpg" width="268" height="1308" alt="Gymnastics Teams"> </div> -->
+  <div style="margin: 0 auto; width: 330px;"><img style="margin-left: -15px;" src="/assets/logos/danceblack_horizontal.png" width="330" height="74" alt="Dance Studio" /></div>
   <div id="infobox">
-    <div id="dance_sidelogos" style="height: 480px;">
-      <p><img style="margin-top: 50px; "src="/assets/logos/danceblack.jpg" width="246" height="172" alt="Dance Studio" /> <br>
-      <h2>Class Schedules & Pricing:</h2>
-      <h2><%= link_to "Granite Bay", schedules_gb_dance_path, style: "color:#223d99;" %></h2>
-      <h2><%= link_to "Folsom", schedules_fol_dance_path, style: "color:#ec1e79;" %></h2>
-      <h2><%= link_to "Sacramento", schedules_sac_dance_path, style: "color:#79c843;" %></h2>
+    <div style="margin: 10px 50px 30px 50px;">
+      <h2>A Little About Us:</h2>
+      <p>Our goal is to instill a love for the art of dance that will remain with our students long after their recital days are over. We provide professional dance training while ensuring our students have a positive dance experience.</p>
+      <p>Every class includes dance technique, expressive movement, musical and rhythmic awareness and life skills all while building artistic confidence and strong self esteem.</p>
     </div>
-    <h2>A little about us.</h2>
-    <p>Our goal is to instill a love for the art of dance that will remain with our students long after their recital days are over. We provide professional dance training while ensuring our students have a positive dance experience.</p>
-    <p>Every class includes dance technique, expressive movement, musical and rhythmic awareness and life skills all while building artistic confidence and strong self esteem.</p>
+    
+    <div style="margin: 10px 25px; padding: 20px; float:right; border: solid #999 2px; text-align:center; border-radius: 10px; box-shadow: 0 0 15px #777">
+      <h2 style="margin-bottom: 20px; font-size: 24px;">Class Schedules:</h2>
+      <h2><%= link_to "Granite Bay", schedules_gb_dance_path, style: "color:#223d99; text-decoration: none" %></h2>
+      <h2><%= link_to "Folsom", schedules_fol_dance_path, style: "color:#ec1e79; text-decoration: none" %></h2>
+      <h2><%= link_to "Sacramento", schedules_sac_dance_path, style: "color:#79c843; text-decoration: none" %></h2>
+    </div>
     <h3>Class Structure</h3>
     <p>Each week new dance steps are introduced in a fun way based on ideas which correspond with our theme weeks. Take home skill posters will help the dancer chart their progress. Once a month we encourage parents to come in and be our audience for the last few minutes of class.</p>
     <h3>Performances</h3>
     <p>Our dancers may participate in two performances a year. These shows are held in an off-site auditorium so dancers can experience what it's like to perform on a big stage. In December we perform our adorable version of the Nutcracker Ballet, &quot;The Littlest Nutcracker&quot; and in the summer hold our annual Grand Performance.</p>
   </div>
   <div id="infobox">
-    <div id="dance_sidelogos" style="margin-top:-10px;"> <img src="/assets/logos/tbdance.jpg" width="222" height="178" alt="Tumblebunny" /> </div>
-    <h2>Bunny Ballet Program (Ages 2-6)</h2>
-    <h3>Tiny Tutu</h3>
-    <h3>Fairytale Ballet</h3>
-    <p>This 45 minute class is designed for our 3 year old dancers. Our young dancers love exploring the magic of movement in this fun and imaginative class. Focusing on pre-ballet and creative movement, we use our storybook chest full of costumes and wondrous surprises!!!</p>
-    <h3>Combo Class</h3>
-    <p>This 45 minute class is designed for the more energetic 3 year old dancers. While learning pre-ballet, pre-tap, and basic tumbling, our dancers will explore movement, rhythm and sequencing in this fun, fast paced class.</p>
-    <h3>Bunny Ballet / Tap Class</h3>
-    <p>This 45 minute class is for 4-5 year old dancers who are ready for a little more class structure and movement. Fundamentals of pre-ballet and beginning tap are taught while using imagination and fun props that correspond with our theme weeks.</p>
-    <h3>Bunny Ballet (Beginning & Intermediate)</h3>
-    <p></p>
-    <h3>Hippity Hop / Pre-Jazz (Beginning & Intermediate)</h3>
-    <p></p>
-    <h3>Bunny Tap (Beginning & Intermediate)</h3>
-    <p></p>
-    <h3>Bunny Ballet / Tap / Pre-Jazz</h3>
-    <p></p>
-  </div>
-  <div id="infobox">
-    <div id="dance_sidelogos"> <img src="/assets/logos/lovedance.jpg" width="190" height="176" alt="Tumblebunny" /> </div>
-    <h2>School Age Dancers (Ages 6-8)</h2>
-    <!-- <h3>Ballet/Tap Class</h3>
-    <p>This 60 minute class is designed for our school aged dancers. We have beginning, intermediate and advanced classes for each age group. After the age of six our dancers graduate from pre-ballet to beginning ballet. Dancers focus more on dance technique and body alignment while also learning new tap steps each week.</p> -->
-    <h3>Ballet / Tap / Jazz Class</h3>
-    <p>This 60 minute class combines three fantastic dance styles into one terrific class! Our dancers will be learning the graceful art of ballet, the rhythmic sounds of tap and have some funky fun with jazz!</p>
-    <h3>Ballet (Beginning, Intermediate & Advanced)</h3>
-    <p></p>
-    <h3>Hip Hop Class / Jazz (Beginning, Intermediate & Advanced)</h3>
-    <p>This fun, fast paced 60 minute class includes all of the latest dance technique. We include a combination of traditional jazz and more contemporary hip-hop moves. Our teachers use music that has clean lyrics and content while still keeping up with the latest trends in music.</p>
-    <!-- <h3>Breakdance Class</h3>
-    <p>Find your funk with this fun, energetic 60 minute class! Dancers will learn the basic moves of breakdance while having a great time. Age appropriate, "clean" music has been chosen for this class while "keepin' it real" for the kids!</p> -->
-    <h3>Tap (Beginning, Intermediate & Advanced)</h3>
-    <p></p>
-    <h3>Musical Theater</h3>
-    <p></p>
-  </div>
+    <div id="dance_sidelogos" style="margin-top:0px;"> <img src="/assets/logos/tbdance.jpg" width="222" height="178" alt="Tumblebunny" /> </div>
+    <h2 style="line-height: 20px;">Pre-School Dance Classes<br><span style="font-weight: normal; font-size: 14px; ">(Duration: 45 minutes -- Monthly Tuition: $57)</span></h2>
+    <h3>Tiny Tutu (Age 2)</h3>
+    <p>This adorable class gives our budding ballerinas an opportunity to explore movement that supports their naturally developing gross motor skills. Our tiny dancers love discovering a new world of music, movement and imagination through toddler-age-appropriate activities that build their emotional, social and physical skills all while enjoying some very special time with their very favorite person, “Mommy”. (Adult participation required. These classes do not participate in recitals.)<br><span style="font-style: italic; font-weight: normal;">-Child graduates at age 3</span></p>
 
+    <h3>Fairytale Ballet (Age 3)</h3>
+    <p>Our young dancers love exploring the magic of movement in this fun and imaginative class. Dancers use props, dress up and storytelling to help reinforce and develop basic movement and gross motor skills. Special emphasis is put on developing social skills with fellow dancers and building a teacher-student relationship.<br><span style="font-style: italic; font-weight: normal;">-Child graduates at age 4</span></p>
 
+    <h3>Combo Class (Age 3)</h3>
+    <p>This class is designed for the more energetic 3 year old dancer. This is a combination of pre-ballet, tap and basic tumbling. Our dancers will be exploring movement, rhythm, spacial awareness and sequential memory in this fun and fast paced class.<br><span style="font-style: italic; font-weight: normal;">-Child graduates at age 4</span></p>
+
+    <div id="dance_sidelogos" style="float:right;"> <img src="/assets/logos/lovedance.jpg" width="190" height="176" alt="Tumblebunny" /> </div>
+    <h3>Bunny Ballet / Tap (Age 4-5)</h3>
+
+    <p>Our pre-school aged dancers have developing coordination and attention spans which makes them ready for a little more structure and new movement patterns.  This class is pre-ballet (working from a combination of natural turn-out and parallel alignment) and beginning tap.  We will be using our imaginations, fun studio props and exciting theme weeks to help introduce new concepts and skills.<br><span style="font-style: italic; font-weight: normal;">-Child may graduate to Bunny Ballet/Tap II upon teacher approval or at age 6 to a Ballet or Tap class for 6-8 year olds</span></p> 
+
+    <h3>Hippity Hop / Pre-Jazz (Ages 4-5)</h3>
+    <p>Using games and upbeat music, this high-energy and age-appropriate class will teach your young child fun hip-hop and jazz techniques and combinations with rhythm, musicality and basic footwork.<br><span style="font-style: italic; font-weight: normal;">-Child may graduate at age 6 into a Hip Hop/Jazz class for 6-8 year olds.</span></p>
+
+    <h3>Bunny Ballet/Tap/Pre-Jazz (Ages 5-7)</h3>
+    <p>This class offers a great introduction to three different styles of dance.  Dancers will be building a solid dance foundation practicing pre-ballet each week while alternating the basics of rhythmic tap and pre-jazz every other week.<br><span style="font-style: italic; font-weight: normal;">-Child may graduate at age 6 to any beginning 6-8 year old class.</span></p>
+
+  </div>
   <div id="infobox">
     <div id="dance_sidelogos" style="width: 300px;"> <img src="/assets/logos/tds3.png" width="249" height="122" alt="Tricks Dance Studio" /> </div>
+    <h2>School-Age Dance Classes<br><span style="font-weight: normal; font-size: 14px; ">(Duration: 55 minutes -- Monthly Tuition: $61)</span></h2>
+
+    <h3>Ballet / Tap / Jazz Class (Ages 6-8)</h3>
+    <p>This popular class combines introductions of three fantastic dance styles into one terrific class!  Dancers will be building a solid dance foundation practicing ballet every week while alternating rhythmic tap and funky jazz every other week.  Each class will include warm-up exercises, barre work, across the floor sequencing, movement combinations, a cool down and reverance.<br><span style="font-style: italic; font-weight: normal;">-Child may transfer to a beginning level Ballet, Tap or Hip Hop/Jazz class at any time or intermediate with teacher approval</span></p>
+
+    <h3>Ballet (Ages 6-8 and 9-13 Beg / 9-17 Int & Adv)</h3>
+    <p>At the age of 6 of dancers graduate from pre-ballet to beginning ballet.  Our teachers will now be focusing on body alignment, body placement and ballet technique.  Special attention will be giving to teaching proper terminology, class structure and ballet etiquette.  Each class will include warm-up exercises, barre work, movement combinations, a cool down and a reverance<br><span style="font-style: italic; font-weight: normal;">-Child may graduate to Intermediate or Advanced with teacher approval</span></p>
+
+    <h3>Hip Hop/Jazz (Ages 6-8 and 9-13 Beg / 9-17 Int & Adv)</h3>
+    <p>This fun, fast paced class includes a combination of funky jazz and more contemporary hip-hop moves.  Our teachers use music that has clean lyrics and content while keeping up with the latest trends and dance styles.<br><span style="font-style: italic; font-weight: normal;">-Child may graduate to Intermediate or Advanced with teacher approval</span></p>
+
+    <h3>Tap (Ages 6-8 and 9-13 Beg / 9-17 Int & Adv)</h3>
+    <p>This class teaches traditional and contemporary styles of tap rhythm, coordination, terminology, and choreography while focusing on proper technique, producing clear tap sounds and having fun!<br><span style="font-style: italic; font-weight: normal;">-Child may graduate to Intermediate or Advanced with teacher approval</span></p>
+
+<!--     <h3>Musical Theater</h3>
+    <p><br><span style="font-style: italic; font-weight: normal;">-Child may graduate at age 6 to any beginning 6-8 year old class.</span></p> -->
+  </div>
+
+
+<!--   <div id="infobox">
+    
     <h2>School Age Dancers (Ages 8-18)</h2>
     <h3>Ballet (Beginning, Intermediate & Advanced)</h3>
     <p></p>
@@ -69,7 +80,7 @@
     <p></p>
     <h3>Tap (Beginning, Intermediate & Advanced)</h3>
     <p></p>
-  </div>
+  </div> -->
 
 
   <div id="infobox">    

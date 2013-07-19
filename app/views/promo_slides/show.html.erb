@@ -32,13 +32,13 @@
   <%= link_to 'Back', promo_slides_path %>
 
 </div>
-<% unless @promo_slide.html_code == "" %>
+<% if @promo_slide.data_type == "html" %>
   <div id="html_inline_show">
     <h2 style="border: dotted 2px #555">Preview</h2>
     <%= render :inline =>@promo_slide.html_code %>
   </div>
 <% end %>
-<% unless @promo_slide.image_url == nil %>
+<% if @promo_slide.data_type == "image" %>
   <div id="image_show">
     <h2 style="border: dotted 2px #555">Preview</h2>
     <%= image_tag @promo_slide.image_url %>

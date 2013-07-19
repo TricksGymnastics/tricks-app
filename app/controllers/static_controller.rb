@@ -18,7 +18,7 @@ class StaticController < ApplicationController
 
   def index
     @kid_quote = KidQuote.find(:all).sample(n=3)
-    @live_promos = PromoSlide.where(live: true)
+    @live_promos = PromoSlide.where(live: true).all(order: 'sort_order')
     #render :layout => "random_quote"
   end
 
