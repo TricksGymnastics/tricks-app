@@ -2,7 +2,7 @@
 
 <div style="text-align: center; float: left; width: 250px; margin: 10px 10px 20px 0px">
   <div style="float:center; height: 295px">
-    <%= image_tag @coach.image_url(:thumb).to_s, :border => "4px solid;" %>
+    <%= image_tag @coach.image_url(:thumb).to_s, style: "border: 2px solid #333; box-shadow: 0 0 15px #333;" %>
   </div>  
   <div style="margin-top: 10px">
     <% if can? :edit, Coach %>
@@ -30,7 +30,7 @@
 </div>
 
 
-<div style="float:left; margin: 10px 0px 10px 0px; width: 650px; border: 1px solid #999; padding: 3px 10px; text-align: justified;">
+<div style="float:left; margin: 10px 0px 10px 0px; width: 680px; border: 1px solid #999; padding: 3px 10px; text-align: justified;">
 
   <% if can? :manage, Coach %>
     <% if @coach.startdate.nil? %>
