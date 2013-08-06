@@ -25,9 +25,11 @@ ul {
 a img {
   text-align: center;
   display:block;
-  border: 3px solid transparent;
+  border: 1px solid #999;
+  box-shadow: 0 0 8px #666;
 	&:hover {
-	border: 3px solid #111;
+	border: 1px solid #111;  
+  box-shadow: 0 0 20px #444;
 	}
 }
 
@@ -35,10 +37,30 @@ a img {
   margin-bottom: 25px;
 }
 
-#coach_section_header{font-family: grilled_cheese, 'Trebuchet MS'; width: 976px; border: 2px #444 solid; background-color: #FFFA5E; float: left; color: #222; margin-bottom: 10px;}
-#coach_container{float:left; width: 140px; text-align: center;  margin-bottom: 15px;}
-/*#coach_container{float:left; width: 163px; text-align: center;  margin-bottom: 15px;}*/
-#coach_button{padding: 3px 10px; margin: -2px 7px 0px 7px; float: left}
+#coach_section_header{
+  font-family: grilled_cheese, 'Trebuchet MS';
+  width: 976px; 
+  border: 1px #444 solid; 
+  box-shadow: 0 0 10px #444;
+  background-color: #FFFA5E; 
+  float: left; color: #222; 
+  margin-bottom: 20px;
+  border-radius: 50px;
+  background-image: url(/assets/structure/textile.png)
+}
+
+#coach_container{
+  float:left; 
+  width: 140px; 
+  text-align: center;  
+  margin-bottom: 20px;
+}
+
+#coach_button{
+  padding: 3px 10px; 
+  margin: -2px 7px 0px 7px; 
+  float: left;
+}
 
 
 

@@ -49,7 +49,6 @@ body {
   font-size: 14px;
   font-family: "Trebuchet MS";
   text-align: left;
-  margin-top: 20px;
 }
 
 @font-face {
@@ -91,6 +90,7 @@ div .actions input{
   width: 980px;
   margin: 0 auto;
   padding: 0px 10px;
+  min-height: 500px;
 }
 
 #user_header {
@@ -124,11 +124,11 @@ div .actions input{
 
 #tricks_tiny img{
   border: none;
+  box-shadow: none;
 }
 
 #tricks_tiny a:hover{
   background-color: transparent;
-  /*border: 3px solid transparent;*/
 }
 
 #app_menu {
@@ -241,45 +241,44 @@ div .actions input{
 /************************************/
 
 #background_center{
-  width: 1030px;
+  width: 1000px;
   margin: 0 auto;
 }
 
-#headclear {
-  background-image: url(/assets/structure/cleartop.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  float: left;
-  padding: 0px 15px;
-  margin: 0px auto;
-  border: 0;
-  height: 15px;
+#page_wrapper{
+  margin: 20px 15px 30px 15px;
+  padding: 15px 0px 30px 0px;
+  background-color:white;
   width: 1000px;
+  float: left;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #333;
 }
 
-#footclear {
-  background-image: url(/assets/structure/clearfoot.png);
-  background-position: center;
-  background-repeat: no-repeat;  
-  float: left;
-  padding: 0px 15px;
-  margin: 0;
-  border: 0;
-  height: 55px;
-  width: 1000px;
-  margin-bottom: 40px;
+
+#flash_container{
+  margin: 0 auto;
 }
 
-#holdclear {
-  background-image: url(/assets/structure/clearhold.png);
-  background-position: center;
-  float: left;
-  padding: 0px 15px;
-  margin: 0;
-  border: 0;
-  width: 1000px;
-  background-repeat: repeat-y;
+#flash_notice, #flash_error, #flash_alert {
+  text-align: center;
+  width: 400px;
+  padding: 5px 8px;
+  margin: -25px auto 25px auto;
+  font-size: 14px;
+  
 }
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 2px #6C6;
+}
+
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 2px #C66;
+}
+
 
 .comments th .current {
   padding-right: 12px;

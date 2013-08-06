@@ -14,10 +14,9 @@
   <% end %>
 
 </head>
-<body>
+<body style="background-image: url(/assets/structure/textile.png)">
   <div id="background_center">
-  	<div id="headclear"></div>
-  	<div id="holdclear">
+    <div id="page_wrapper">
   		<div id="user_header">
   			<div id="tricks_tiny"><%= link_to image_tag('/assets/tricks-tiny.png'), root_path %></div>
   			<div id="app_menu">
@@ -98,11 +97,11 @@
   			
 
   		</div>
-  			<div id="flash_container">
-  	    	<% flash.each do |name, msg| %>
-  					<%= content_tag :div, msg, id: "flash_#{name}" %>
-  				<% end %>
-  			</div>
+			<div id="flash_container">
+	    	<% flash.each do |name, msg| %>
+					<%= content_tag :div, msg, id: "flash_#{name}" %>
+				<% end %>
+			</div>
   		<div id="container">
   			
 
@@ -110,7 +109,6 @@
 
   		</div>
   	</div>
-  	<div id="footclear"></div>
   </div>
 </body>
 </html>
