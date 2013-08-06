@@ -21,7 +21,7 @@
     <%= File.basename(@promo_slide.image.to_s) %><br>
   <% end %>
 
-  <% unless @promo_slide.html_code == "" %>
+  <% if @promo_slide.data_type == "html" %>
     <b>Html code:</b>
     <div style="border: solid 1px #444; padding: 8px; margin: 4px; line-height: auto">
       <%= @promo_slide.html_code %>

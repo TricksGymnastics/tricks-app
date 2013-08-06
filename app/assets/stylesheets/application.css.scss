@@ -87,29 +87,6 @@ div .actions input{
   margin-left: 20px;
 }
 
-#flash_container{
-  margin: 0 auto;
-}
-
-#flash_notice, #flash_error, #flash_alert {
-  text-align: center;
-  width: 400px;
-  padding: 5px 8px;
-  margin: -25px auto 25px auto;
-  font-size: 14px;
-  
-}
-
-#flash_notice {
-  background-color: #CFC;
-  border: solid 2px #6C6;
-}
-
-#flash_error, #flash_alert {
-  background-color: #FCC;
-  border: solid 2px #C66;
-}
-
 #container {
   width: 980px;
   margin: 0 auto;

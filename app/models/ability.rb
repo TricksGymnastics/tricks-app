@@ -37,6 +37,8 @@ class Ability
 			can :manage, RecitalAd
 			can :manage, Survey
 			can :manage, SurveyResult
+			can :manage, PromoSlide
+			can :manage, User
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
