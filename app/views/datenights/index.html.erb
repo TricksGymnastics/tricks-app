@@ -44,7 +44,7 @@
   <div style="width: 100%; margin: 0 auto; text-align: center;">
     <h2>Upcoming Date Night!</h2>
     <% unless @datenight.image == nil %>
-      <%= image_tag(@datenight.image.url, style:"box-shadow: 0 0 20px #222; width: 650px;") %>
+      <%= image_tag(@datenight.image, style:"box-shadow: 0 0 20px #222; width: 650px;") %>
     <% end %>
     
     <!-- Current Slide for Date Night goes here -->
