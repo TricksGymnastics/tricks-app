@@ -30,4 +30,8 @@ class StaticController < ApplicationController
     render :layout => "application"
   end
 
+  def datenight
+    @datenight = Datenight.first
+  end
+
 end

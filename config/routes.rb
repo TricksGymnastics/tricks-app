@@ -21,6 +21,8 @@ Comments::Application.routes.draw do
 
   match 'recital_ads/ad_select'
 
+  match 'datenights/edit' => 'datenights#edit'
+
   resources :comments
   resources :kid_quotes
   resources :schedules
@@ -33,11 +35,13 @@ Comments::Application.routes.draw do
   resources :promo_slides
   resources :surveys
   resources :survey_results
+  resources :datenights
 
-  %w[gymnastics dance swim events locations site_comments competitive teamgym birthdays princess_party datenights camps dancecamps campus employment 
+  %w[gymnastics dance swim events locations site_comments competitive teamgym birthdays princess_party camps dancecamps campus employment 
     forms gymnastics25 missing nutcracker polkadots recitals recital_ad_order_thank_you survey_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
     get page, controller: "static", action: page
   end
+
 
   match 'dance_company' => 'dance_company#index'
   %w[index about auditions empty_page events gallery].each do |page|

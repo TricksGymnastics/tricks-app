@@ -1,0 +1,54 @@
+<% @title = "Tricks Date Nights" %>
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_green %>;}
+  p{font-size: 14px;}
+  #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
+<% end %>
+
+<div class="content">
+  <h1>Date Nights</h1>
+  <div style="float:left; width: 250px; margin-left: 20px; padding: 4px; border:solid 2px #333;">
+    <div>
+      <div style="float: left; padding: 0px 10px; ">
+        <h3 style="margin-top: 0px; ">Time:</h3>
+        <p><%= @datenight.when_time %></p>
+      </div>
+      <div style="float: right; padding: 0px 10px;">
+        <h3 style="margin-top: 0px;">Price:</h3>
+        <p>$<%= @datenight.single_price %> for first child<br>
+          $<%= @datenight.sibling_price %> for siblings</p>
+      </div>
+    </div>
+    <div style="margin-bottom: 5px; float: left; padding: 0 6px 0 4px;">
+      <h2><%= @datenight.schedule_title %> Date Night Schedule:</h2>
+
+      <% @datenight.datenight_events.each do |d| %>
+        <h3 style="text-decoration: underline"><%= d.title %></h3>
+          <p><i><%= d.description %></i><br>
+            Sacramento - <%= d.sac_date.strftime("%A, %B %e") %><br>
+            Granite Bay - <%= d.gb_date.strftime("%A, %B %e") %><br>
+            Folsom - <%= d.fol_date.strftime("%A, %B %e") %>
+          </p> 
+      <% end %>
+    </div>
+
+    <% if can? :manage, Datenight %>
+      <div style="text-align:center; margin: 0 0 5px 0;">
+        <%= button_to "Edit Page", {controller: 'datenights', action: 'edit'}, style:"padding: 5px 50px;" %>
+      </div>
+    <% end %>
+  </div>
+  <div id="infobox" style="height: auto; margin-bottom: 20px;">
+    <p style="font-size: 16px;"><%= @datenight.about %></p>
+  </div>
+  <div style="width: 100%; margin: 0 auto; text-align: center;">
+    <h2>Upcoming Date Night!</h2>
+    <% unless @datenight.image == nil %>
+      <%= image_tag(@datenight.image.url, style:"box-shadow: 0 0 20px #222; width: 650px;") %>
+    <% end %>
+    
+    <!-- Current Slide for Date Night goes here -->
+  </div>
+
+  <br><br><br>
+</div>

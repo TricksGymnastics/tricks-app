@@ -1,0 +1,21 @@
+<fieldset style="width: 242px; padding: 0 5px; margin-bottom: 10px;">
+	<h3><%= f.label :title, "Title" %>:<%= f.text_field :title, style:"font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; width: 187px; margin-left: 5px; padding: 1px 3px;" %></h3>
+	<i><%= f.text_area :description, style: "width: 230px; margin-top: 5px; padding: 4px; height: 80px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-style: italic; font-size: 14px;" %></i><br>
+	<div style="width: 30px; float:left; line-height: 26px; padding-left: 5px;">
+		Sac:<br>
+		GB:<br>
+		Fol:
+	</div>
+	<div style="float:right; line-height: 26px; margin-right: 2px;">
+		<%= f.date_select :sac_date, order: [:month, :day, :year] %><br>
+		<%= f.date_select :gb_date, order: [:month, :day, :year] %><br>
+		<%= f.date_select :fol_date, order: [:month, :day, :year] %>
+	</div>
+	<div style="float:left; width: 100%">
+		<div style="margin-top:15px; height: 40px; text-align:center">
+			<%= f.hidden_field :_destroy %>
+			<%= link_to "Remove this Datenight", nil, class: "remove_datenight", style: 'padding: 2px; display: block; border: solid #222 2px; cursor: pointer; 
+			background-color: #C41212; color: #eee; text-decoration: none; width: 180px; border-radius: 10px; box-shadow: 0 0 7px #666; margin: 0 auto;' %><br>
+		</div>
+	</div>
+</fieldset>
