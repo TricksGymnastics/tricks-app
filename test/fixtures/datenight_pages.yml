@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  image: MyString
+  about: MyText
+  when_time: MyString
+  price: 1
+  schedule_title: MyString
+
+two:
+  image: MyString
+  about: MyText
+  when_time: MyString
+  price: 1
+  schedule_title: MyString

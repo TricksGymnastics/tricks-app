@@ -15,7 +15,7 @@
 //= require_directory .
 
 $(function () {
-  $("#comments_table th a, #comments_table .pagination a").live("click", function () {
+  $("#comments_table th a, #comments_table .pagination a").on("click", function () {
     $.getScript(this.href);
     return false;
   });
@@ -26,7 +26,7 @@ $(function () {
 });
 
 $(function () {
-  $("#quotes_table th a, #quotes_table .pagination a").live("click", function () {
+  $("#quotes_table th a, #quotes_table .pagination a").on("click", function () {
     $.getScript(this.href);
     return false;
   });
@@ -37,7 +37,7 @@ $(function () {
 });
 
 $(function () {
-  $("#users_table th a, #users_table .pagination a").live("click", function () {
+  $("#users_table th a, #users_table .pagination a").on("click", function () {
     $.getScript(this.href);
     return false;
   });
@@ -48,7 +48,7 @@ $(function () {
 });
 
 $(function () {
-  $("#schedules_table th a, #schedules_table .pagination a").live("click", function () {
+  $("#schedules_table th a, #schedules_table .pagination a").on("click", function () {
     $.getScript(this.href);
     return false;
   });

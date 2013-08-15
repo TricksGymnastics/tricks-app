@@ -35,11 +35,11 @@
     <div id="page_wrapper">
       <div id="header">
         <div id="twenty_years">
-          <img src="assets/logos/20years.png" style="display: <%= @twenty_years %>;" alt="Celebrating 20 Years" width="170" height="100" />
+          <%= image_tag('logos/20years.png', style: 'display: '+ @twenty_years, width: 170, height: 100, alt: 'Celebrating 20 Years') %>
         </div>
         <div id="jr_login_button" style="display: <%= @jr_login %>;">
           <a href="https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983">
-            <img src="assets/structure/login_button.png" width="242" height="32" alt="Login" />
+            <%= image_tag('structure/login_button.png', width: 242, height: 32) %>
           </a>
         </div>
         <div id="tricks_logo">

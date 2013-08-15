@@ -1,0 +1,54 @@
+<%= javascript_include_tag   "application" %>
+
+<%= form_for(@datenight) do |f| %>
+  <div class="content">
+    <h1>Editting Date Nights</h1>
+    <div style="float:left; width: 255px; margin-left: 15px; padding: 4px; border:solid 2px #333;">
+      <div>
+        <div style="float: left; padding: 0 0 0 5px; ">
+          <h3 style="margin-top: 0px; "><%= f.label :when_time, "Time:" %></h3>
+          <p><%= f.text_field :when_time, size: 11 %></p>
+        </div>
+        <div style="float: right; padding: 0px 10px;">
+          <h3 style="margin-top: 0px;">Price:</h3>
+          <p style="margin-bottom: 4px;"><%= f.number_field :single_price, style: 'width: 40px; padding: 2px 0;' %> for first child</p>
+          <p style="margin-bottom: 14px;"><%= f.number_field :sibling_price, style: 'width: 40px; padding: 2px 0;' %> for siblings</p>
+        </div>
+      </div>
+      <div style="margin-bottom: 5px; float: left; width: 251px;">
+        <h2><%= f.text_field :schedule_title, placeholder: "2013", style: "width: 50px; height: 22px; font-size: 19px; text-align:center" %> Date Night Schedule</h2>
+                   
+        <%= f.fields_for :datenight_events do |builder| %>
+          <%= render 'datenight_event_fields', f: builder %>      
+        <% end %>
+
+        <div style="text-align:center">
+          <%= link_to_add_datenights "Add Datenight", f, :datenight_events %>
+        </div>
+
+      </div>
+    </div>
+    <div id="infobox" style="height: 120px; margin-bottom: 20px;">
+      <p style="font-size: 16px;">
+        <%= f.text_area :about, style:"width: 670px; height: 120px; padding: 3px 5px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 16px;" %>
+      </p>
+    </div>
+    <div style="width: 715px; margin: 0 auto; text-align: center; float:right;">
+      <h2>Upcoming Date Night!</h2>
+      <div style="border: 1px solid #777; width: 420px; margin: 0 auto 15px auto; padding: 8px; box-shadow: 0 0 8px #444">
+        <%= f.label :image, "Choose image to upload: " %>
+        <%= f.file_field :image %>
+      </div>
+      <% unless @datenight.image == nil %>
+        <%= image_tag(@datenight.image.url, style:"box-shadow: 0 0 20px #222; width: 650px;") %>
+      <% end %>
+      
+      <!-- Current Slide for Date Night goes here -->
+    </div>
+
+    <br><br><br>
+  </div>
+  <div style="width: 100%; float:left; text-align:center; margin: 30px auto;">
+    <%= f.submit "Submit", style: "padding: 10px 50px; margin: 0 auto;"  %>
+  </div>
+<% end %>

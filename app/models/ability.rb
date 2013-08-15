@@ -23,6 +23,7 @@ class Ability
 		#PromoSlide
 		#Survey
 		#SurveyResult
+		#Datenight
 
 		if user.role == "superadmin" #Jordan
 			can :manage, :all
@@ -39,6 +40,7 @@ class Ability
 			can :manage, SurveyResult
 			can :manage, PromoSlide
 			can :manage, User
+			can :manage, Datenight
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -50,6 +52,7 @@ class Ability
 			can :manage, RecitalAd
 			can :manage, Survey
 			can :manage, SurveyResult
+			can :manage, Datenight
 			cannot :destroy, Survey
 			cannot :destroy, SurveyResult
 			cannot :destroy, Level

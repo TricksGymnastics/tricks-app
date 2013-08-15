@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705013548) do
+ActiveRecord::Schema.define(:version => 20130814173914) do
 
   create_table "answers", :force => true do |t|
     t.string   "content"
@@ -75,6 +75,28 @@ ActiveRecord::Schema.define(:version => 20130705013548) do
     t.datetime "updated_at", :null => false
     t.string   "activity"
     t.string   "email"
+  end
+
+  create_table "datenight_events", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "datenight_id"
+    t.date     "sac_date"
+    t.date     "gb_date"
+    t.date     "fol_date"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "datenights", :force => true do |t|
+    t.string   "image"
+    t.text     "about"
+    t.string   "when_time"
+    t.integer  "single_price"
+    t.integer  "sibling_price"
+    t.string   "schedule_title"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "kid_quotes", :force => true do |t|
