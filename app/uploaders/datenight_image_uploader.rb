@@ -39,7 +39,7 @@ class DatenightImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :resize_to_limit => [650, 0]
+  # process :resize_to_limit => [650, 0]
   # version :thumb do
   #   process :scale => [50, 50]
   # end
