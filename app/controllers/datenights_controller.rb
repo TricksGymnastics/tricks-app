@@ -1,6 +1,7 @@
 class DatenightsController < ApplicationController
   layout 'static'
   before_filter :set_variables
+  load_and_authorize_resource :except => :index
 
   def set_variables
     @bgc_yellow = "#F2E300"

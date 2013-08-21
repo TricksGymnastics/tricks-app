@@ -6,7 +6,7 @@
 <% @jr_login = "block" %>
 
 
-<div id="promoboxholder">
+<div id="promoboxholder">	
 	<div id="promo-frame">
 		<div id="promo-header">
 			<h1 style="font-size: 30px; margin: 0px 0px 0px 0px; font-variant: small-caps;">Current Events</h1>
@@ -16,35 +16,36 @@
 				<div id="slide_<%= promo.sort_order %>" class="promo-tab"><%= promo.title %></div>
 			<% end %>
 		</div>
+	</div>
+	<%= image_tag("structure/Test_PromoBox_Master.png", style:"position: absolute; z-index: 1") %>
 
-		<!--				Promo Images Here        -->
-		<div id="promo-img">
-		
-			<% @live_promos.each do |promo| %>
-				<% if promo.data_type == "html" %>
+	<!--				Promo Images Here        -->
+	<div id="promo-img">
+		<% @live_promos.each do |promo| %>
+			<% if promo.data_type == "html" %>
+				<object class="promo_image">
+					<%= render :inline => promo.html_code %>
+				</object>
+			<% else %>
+				<% if promo.link == true %>
 					<object class="promo_image">
-						<%= render :inline => promo.html_code %>
-					</object>
+						<%= link_to image_tag(promo.image_url, width: "363", height: "245", alt: promo.title), promo.link_path, style: "display:block; cursor: pointer" %>
+					</object>						
 				<% else %>
-					<% if promo.link == true %>
-						<object class="promo_image">
-							<%= link_to image_tag(promo.image_url, width: "367", height: "248", alt: promo.title), promo.link_path, style: "display:block; margin-left: 1px; cursor: pointer" %>
-						</object>						
-					<% else %>
-						<object class="promo_image">
-							<%= image_tag promo.image_url, width: "367", height: "248", alt: promo.title %>
-						</object>
-					<% end %>
+					<object class="promo_image">
+						<%= image_tag promo.image_url, width: "363", height: "245", alt: promo.title %>
+					</object>
 				<% end %>
 			<% end %>
-
-		</div>
+		<% end %>
 	</div>
-	<a style="display:block" href="http://www.usagym.org">
-		<button style="cursor: pointer; background:none; border: none; margin-top: 24px; margin-right: 196px; float: right; width: 70px; height: 70px;">
+
+	<a style="display:block; position: absolute; z-index: 3;margin: 328px 0 0 439px; width: 80px; height: 80px;" href="http://www.usagym.org">
+		<button style="cursor: pointer; background:none; border: none;">
 		</button>
 	</a>
 </div>
+
 <div style="float: right; width: 250px; height: 600px; margin-right: 10px;">
 	<a href="gymnastics">
 		<img style="margin-top:1px; margin-bottom: 15px;"  src="/assets/structure/gymnastics_button.png" width="250" height="95" alt="Gymnastics" />

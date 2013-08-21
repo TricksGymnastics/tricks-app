@@ -595,18 +595,14 @@ Bottom Menu
 
 #promoboxholder {
   float: left;
-  background-image: url(/assets/structure/PromoBox_3smallbuttons.png);
-  background-repeat: no-repeat;
   height: 589px;
   width: 710px;
-  font-size: 12px;
 }
 
 #promo-frame {
-  float: left;
-  width: 695px;
-  height: 310px;
   margin-left: 15px;
+  position: absolute;
+  z-index: 2;
 }
 
 #promo-header {
@@ -627,10 +623,15 @@ Bottom Menu
 }
 
 #promo-img {
-  float: right;
-  width: 367px;
-  height: 248px;
-  margin-right: 28px;
+  position: absolute;
+  margin-left: 318px;
+  margin-top: 33px;
+  z-index: 4;
+  overflow: hidden;
+  width: 362px; 
+  height: 244px;
+  border-radius: 20px;
+  // border: solid 1px blue;
 }
 
 .promo_image {

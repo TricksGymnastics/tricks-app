@@ -1,24 +1,21 @@
-#promo-img {
-  float: right;
-  width: 367px;
-  height: 248px;
-  margin-right: 28px;
-}
-
 #html_inline_show{
   float:right;
-  width: 367px;
-  height: 282px;
+  width: 362px;
+  height: 244px;
   margin: 5px 60px;
-  border: solid 1px #888;
+  border: solid 2px #222;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 #image_show{
   float:right;
-  width: 367px;
-  height: 282px;
+  width: 362px;
+  height: 244px;
   margin: 5px 60px;
-  border: solid 1px #888;
+  border: solid 2px #555;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 #link_path_input{
@@ -29,4 +26,20 @@
 #order_input{
   display:none;
   float: left;
+}
+
+.promo_image {
+  position: absolute;
+  border-radius: 20px;
+  z-index: 0;
+  overflow: hidden;
+  width: 362px; 
+  height: 244px;
+}
+
+#preview_header{
+  border: dotted 2px #555;
+  float: right;
+  width: 362px;
+  margin: 5px 60px;
 }
