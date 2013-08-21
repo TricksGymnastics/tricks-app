@@ -23,6 +23,10 @@ Comments::Application.routes.draw do
 
   match 'datenights/edit' => 'datenights#edit'
 
+  match 'choose_survey' => 'survey_results#choose_survey' 
+  match 'survey_result_for/:name' => 'survey_results#survey_results_for' 
+  match 'survey_results/:id' => 'survey_results#show' 
+
   resources :comments
   resources :kid_quotes
   resources :schedules

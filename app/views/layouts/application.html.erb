@@ -76,7 +76,7 @@
             <li><%= link_to "Surveys", surveys_path %>
               <% if can? :manage, User %>
                 <ul class="app_submenu">
-                  <li class="app_submenu_link"><%= link_to "Results", survey_results_path %></li>
+                  <li class="app_submenu_link"><%= link_to "Results", choose_survey_path %></li>
                 </ul>
               <% end %>
             </li>

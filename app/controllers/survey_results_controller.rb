@@ -2,10 +2,6 @@ class SurveyResultsController < ApplicationController
 
   load_and_authorize_resource :except => :results_page
 
-  def index
-    @survey_results = SurveyResult.all
-  end
-
   def show
     @survey_result = SurveyResult.find(params[:id])
     @survey_taken = Survey.find(@survey_result.survey_id)
@@ -66,6 +62,17 @@ class SurveyResultsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to survey_results_url }
     end
+  end
+
+  def choose_survey
+    # Gives an array full of all coaches that work at the location specified in the url
+    # @surveys_by_id = Location.includes(:coaches).find_by_name(params[:name]).coaches
+    @surveys = Survey.all
+  end
+
+  def survey_results_for
+    @survey_taken = Survey.find_by_name(params[:name])
+    @survey_results_by_survey = SurveyResult.where(:survey_id => Survey.find_by_name(params[:name]).id).all(:order => 'created_at')
   end
 
 end
