@@ -5,6 +5,8 @@ class SurveyResult < ActiveRecord::Base
   belongs_to :survey
   accepts_nested_attributes_for :questions, allow_destroy: true
 
+  default_scope :order => 'survey_results.created_at'
+
   #validates_presence_of :answer
 
   # def to_param
