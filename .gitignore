@@ -16,3 +16,6 @@
 
 *.psd
 *.ai
+
+
+/config/initializers/carrierwave_development.rb
