@@ -7,6 +7,7 @@
     <th>Live</th>
     <th>Data Type</th>
     <th>Date Created</th>
+    <th>Date Updated</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,7 @@
     <td style="width: 50px;"><%= promo_slide.live %></td>
     <td style="width: 80px;"><%= promo_slide.data_type %></td>
     <td><%= promo_slide.created_at.strftime("%b %e, %Y") %></td>
+    <td><%= promo_slide.updated_at.strftime("%b %e, %Y") %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Show', promo_slide %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Edit', edit_promo_slide_path(promo_slide) %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Destroy', promo_slide, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -32,6 +34,7 @@
     <td><%= promo_slide.live %></td>
     <td><%= promo_slide.data_type %></td>
     <td><%= promo_slide.created_at.strftime("%b %e, %Y") %></td>
+    <td><%= promo_slide.updated_at.strftime("%b %e, %Y") %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Show', promo_slide %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Edit', edit_promo_slide_path(promo_slide) %></td>
     <td style="border: none; padding: 3px;"><%= link_to 'Destroy', promo_slide, method: :delete, data: { confirm: 'Are you sure?' } %></td>
