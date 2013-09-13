@@ -7,29 +7,38 @@
 
 <div class="content">
   <!-- <div style="float: right; margin-right: 5px; margin-top: 30px;"> <img src="/assets/structure/danceside.jpg" width="268" height="1308" alt="Gymnastics Teams"> </div> -->
-  <div style="margin: 0 auto; width: 330px;"><img style="margin-left: -15px;" src="/assets/logos/danceblack_horizontal.png" width="330" height="74" alt="Dance Studio" /></div>
+  <div style="margin: 0 auto 30px auto; width: 330px;"><img style="margin-left: -15px;" src="/assets/logos/danceblack_horizontal.png" width="330" height="74" alt="Dance Studio" /></div>
   <div id="infobox">
-    <div style="margin: 10px 50px 30px 50px;">
+    <div style="margin: 5px 30px 10px 0px; padding: 10px; float:left; border: solid #999 2px; text-align:center; border-radius: 10px; box-shadow: 0 0 15px #777">
+      <h2 style="margin-bottom: 20px; font-size: 22px;">Class Schedules:</h2>
+      <h2><%= link_to "Granite Bay", schedules_gb_dance_path, style: "color:#223d99; text-decoration: none; font-size: 20px;" %></h2>
+      <h2><%= link_to "Folsom", schedules_fol_dance_path, style: "color:#ec1e79; text-decoration: none; font-size: 20px;" %></h2>
+      <h2><%= link_to "Sacramento", schedules_sac_dance_path, style: "color:#79c843; text-decoration: none; font-size: 20px;" %></h2>
+    </div>
+    <div style="margin: 10px 0px 30px 0px;">
       <h2>A Little About Us:</h2>
       <p>Our goal is to instill a love for the art of dance that will remain with our students long after their recital days are over. We provide professional dance training while ensuring our students have a positive dance experience.</p>
       <p>Every class includes dance technique, expressive movement, musical and rhythmic awareness and life skills all while building artistic confidence and strong self esteem.</p>
     </div>
+    <iframe style="float:right; padding: 0px 0px 5px 25px" width="367" height="248" src="//www.youtube.com/embed/YaHyUUfJhIE" frameborder="0"></iframe>
     
-    <div style="margin: 10px 25px; padding: 20px; float:right; border: solid #999 2px; text-align:center; border-radius: 10px; box-shadow: 0 0 15px #777">
-      <h2 style="margin-bottom: 20px; font-size: 24px;">Class Schedules:</h2>
-      <h2><%= link_to "Granite Bay", schedules_gb_dance_path, style: "color:#223d99; text-decoration: none" %></h2>
-      <h2><%= link_to "Folsom", schedules_fol_dance_path, style: "color:#ec1e79; text-decoration: none" %></h2>
-      <h2><%= link_to "Sacramento", schedules_sac_dance_path, style: "color:#79c843; text-decoration: none" %></h2>
-    </div>
     <h3>Class Structure</h3>
     <p>Each week new dance steps are introduced in a fun way based on ideas which correspond with our theme weeks. Take home skill posters will help the dancer chart their progress. Once a month we encourage parents to come in and be our audience for the last few minutes of class.</p>
+    
     <h3>Performances</h3>
     <p>Our dancers may participate in two performances a year. These shows are held in an off-site auditorium so dancers can experience what it's like to perform on a big stage. In December we perform our adorable version of the Nutcracker Ballet, &quot;The Littlest Nutcracker&quot; and in the summer hold our annual Grand Performance.</p>
   </div>
   <div id="infobox">
     <div id="dance_sidelogos" style="margin-top:0px;"> <img src="/assets/logos/tbdance.jpg" width="222" height="178" alt="Tumblebunny" /> </div>
-    <h2 style="line-height: 20px;">Pre-School Dance Classes<br><span style="font-weight: normal; font-size: 14px; ">(Duration: 45 minutes -- Monthly Tuition: $57)</span></h2>
-    <h3>Tiny Tutu (Age 2)</h3>
+    <div style="height: 45px;">
+      <div style="float: left;">
+        <h2 style="line-height: 20px;">Pre-School Dance Classes<br><span style="font-weight: normal; font-size: 14px; ">(Duration: 45 minutes -- Monthly Tuition: $57)</span></h2>
+      </div>
+      <div style="float: right; margin-right: 15px; border: solid 1px #ec1e79; border-radius: 50px; padding: 5px 15px; box-shadow: inset 0 0 5px #ec1e79;">
+        <p style="margin:0"> If the name of the class is <span style="color:#ec1e79; font-weight:bold;">Pink</span>, you can click<br> on it and watch a small preview of the class!<br></p>
+      </div>
+    </div>
+    <h3><%= link_to "Tiny Tutu (Age 2)", 'https://www.facebook.com/photo.php?v=10151637519383742&set=vb.101697380325&type=2&theater', id: 'link', style: 'color: #ec1e79;' %></h3>
     <p>This adorable class gives our budding ballerinas an opportunity to explore movement that supports their naturally developing gross motor skills. Our tiny dancers love discovering a new world of music, movement and imagination through toddler-age-appropriate activities that build their emotional, social and physical skills all while enjoying some very special time with their very favorite person, “Mommy”. (Adult participation required. These classes do not participate in recitals.)<br><span style="font-style: italic; font-weight: normal;">-Child graduates at age 3</span></p>
 
     <h3>Fairytale Ballet (Age 3)</h3>
