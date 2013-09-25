@@ -20,10 +20,14 @@
 <div>
   <div id="coach_section_header"><h3>Gymnastics</h3></div>
   <div>
-    <% @coaches_by_location.each do |coach| %>    
-      <% coach.classtypes.each do |classtype| %>
-        <% if classtype.name == "Gymnastics" || classtype.name == "Tumblebunnies" %>          
-          <%= render 'coach_container', :coach => coach  %>
+    <% @coaches_by_location.each do |coach| %>  
+      <% shown = false %>  
+      <% coach.classtypes.each do |classtype| %>        
+        <% if shown == false %>
+          <% if classtype.name == "Gymnastics" || classtype.name == "Tumblebunnies" %>          
+            <%= render 'coach_container', :coach => coach  %>
+          <% end %>
+          <% shown = true %>
         <% end %>
       <% end %>
     <% end %>
