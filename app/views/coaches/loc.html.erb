@@ -22,7 +22,7 @@
   <div>
     <% @coaches_by_location.each do |coach| %>    
       <% coach.classtypes.each do |classtype| %>
-        <% if classtype.name == "Gymnastics" %>          
+        <% if classtype.name == "Gymnastics" || classtype.name == "Tumblebunny" %>          
           <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
