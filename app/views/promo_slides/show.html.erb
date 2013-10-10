@@ -33,24 +33,25 @@
 
 </div>
 
-
-<h2 id="preview_header">Preview</h2>
-<% if @promo_slide.data_type == "html" %>
-  <div id="html_inline_show">
-    <object class="promo_image">
-      <%= render :inline => @promo_slide.html_code %>
-    </object>
-  </div>
-<% else %>
-  <div id="image_show">
-    <% if @promo_slide.link == true %>
+<div style="float: right; margin: 20px 50px 0 0; width: 420px;">
+  <h2 id="preview_header">Preview</h2>
+  <% if @promo_slide.data_type == "html" %>
+    <div id="html_inline_show">
       <object class="promo_image">
-        <%= link_to image_tag(@promo_slide.image_url, width: "363", height: "245", alt: @promo_slide.title), @promo_slide.link_path, style: "display:block; cursor: pointer" %>
-      </object>           
-    <% else %>
-      <object class="promo_image">
-        <%= image_tag @promo_slide.image_url, width: "363", height: "245", alt: @promo_slide.title %>
+        <%= render :inline => @promo_slide.html_code %>
       </object>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% else %>
+    <div id="image_show">
+      <% if @promo_slide.link == true %>
+        <object class="promo_image">
+          <%= link_to image_tag(@promo_slide.image_url, alt: @promo_slide.title), @promo_slide.link_path, style: "display:block; cursor: pointer" %>
+        </object>           
+      <% else %>
+        <object class="promo_image">
+          <%= image_tag @promo_slide.image_url, alt: @promo_slide.title %>
+        </object>
+      <% end %>
+    </div>
+  <% end %>
+</div>

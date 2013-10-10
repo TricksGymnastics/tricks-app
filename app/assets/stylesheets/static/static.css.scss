@@ -595,43 +595,47 @@ Bottom Menu
 
 #promoboxholder {
   float: left;
-  height: 589px;
-  width: 710px;
+  height: 550px;
+  width: 730px;
 }
 
 #promo-frame {
   margin-left: 15px;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
 }
 
 #promo-header {
-  height: 24px;
+  height: 25px;
   color: #FF0;
   width: 250px;
-  margin: 7px 0px 0px 27px;
+  margin: 8px 0px 0px 20px;
+  // border: solid 1px black;
+  line-height: 25px;
 }
 
 #promo-tabs {
   float: left;
-  margin-left: 15px;
-  margin-top: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
   height: auto;
   border-bottom: 0px;
-  width: 280px;
+  width: 275px;
   cursor: pointer;
+  // border: solid 1px black;
 }
 
 #promo-img {
   position: absolute;
-  margin-left: 318px;
-  margin-top: 33px;
-  z-index: 4;
+  margin-left: 305px;
+  margin-top: 17px;
+  z-index: 1;
   overflow: hidden;
-  width: 362px; 
-  height: 244px;
-  border-radius: 20px;
+  width: 400px; 
+  height: 225px;
+  // border-radius: 20px;
   // border: solid 1px blue;
+  text-align:center;
 }
 
 .promo_image {
@@ -666,3 +670,78 @@ Bottom Menu
 #ribbon-content .block {
   margin: 0px;
 }
+
+
+// #promoboxholder {
+//   float: left;
+//   height: 589px;
+//   width: 710px;
+// }
+
+// #promo-frame {
+//   margin-left: 15px;
+//   position: absolute;
+//   z-index: 2;
+// }
+
+// #promo-header {
+//   height: 24px;
+//   color: #FF0;
+//   width: 250px;
+//   margin: 7px 0px 0px 27px;
+// }
+
+// #promo-tabs {
+//   float: left;
+//   margin-left: 15px;
+//   margin-top: 10px;
+//   height: auto;
+//   border-bottom: 0px;
+//   width: 280px;
+//   cursor: pointer;
+// }
+
+// #promo-img {
+//   position: absolute;
+//   margin-left: 318px;
+//   margin-top: 33px;
+//   z-index: 4;
+//   overflow: hidden;
+//   width: 362px; 
+//   height: 244px;
+//   border-radius: 20px;
+//   // border: solid 1px blue;
+// }
+
+// .promo_image {
+//   display: none;
+// }
+
+// .promo-tab {
+//   background-image: url(/assets/structure/tab-color.jpg);
+//   color: #fff;
+//   width: 275px;
+//   height: 22px;
+//   float: left;
+//   height: 26px;
+//   font-size: 16px;
+//   text-align: center;
+//   padding-top: 5px;
+// }
+
+// #promo-tabs .current {
+//   background-image: url(/assets/structure/tab-color-selected.png);
+// }
+
+// .promo-hover {
+// }
+
+// .block {
+//   margin: 0px 0px 20px 0px;
+//   padding: 0px;
+//   width: 100%;
+// }
+
+// #ribbon-content .block {
+//   margin: 0px;
+// }
