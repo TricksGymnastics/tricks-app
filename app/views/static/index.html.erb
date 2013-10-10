@@ -9,7 +9,7 @@
 <div id="promoboxholder">	
 	<div id="promo-frame">
 		<div id="promo-header">
-			<h1 style="font-size: 30px; margin: 0px 0px 0px 0px; font-variant: small-caps;">Current Events</h1>
+			<h1 style="font-size: 26px; margin: 0px 0px 0px 0px; font-variant: small-caps;">Current Events</h1>
 		</div>
 		<div id="promo-tabs">
 			<% @live_promos.each do |promo| %>
@@ -17,7 +17,7 @@
 			<% end %>
 		</div>
 	</div>
-	<%= image_tag("structure/Transparent_PromoBox_Master.png", style:"position: absolute; z-index: 1") %>
+	<%= image_tag("structure/New_Transparent_PromoBox_Master.png", style:"position: absolute; z-index: 2") %>
 
 	<!--				Promo Images Here        -->
 	<div id="promo-img">
@@ -29,18 +29,18 @@
 			<% else %>
 				<% if promo.link == true %>
 					<object class="promo_image">
-						<%= link_to image_tag(promo.image_url, width: "363", height: "245", alt: promo.title), promo.link_path, style: "display:block; cursor: pointer" %>
+						<%= link_to image_tag(promo.image_url, alt: promo.title), promo.link_path, style: "display:block; cursor: pointer" %>
 					</object>						
 				<% else %>
 					<object class="promo_image">
-						<%= image_tag promo.image_url, width: "363", height: "245", alt: promo.title %>
+						<%= image_tag promo.image_url, alt: promo.title %>
 					</object>
 				<% end %>
 			<% end %>
 		<% end %>
 	</div>
 
-	<a style="display:block; position: absolute; z-index: 3;margin: 328px 0 0 439px; width: 80px; height: 80px;" href="http://www.usagym.org">
+	<a style="display:block; position: absolute; z-index: 10;margin: 293px 0 0 450px; width: 97px; height: 98px; border-radius: 100px;" href="http://www.usagym.org">
 		<button style="cursor: pointer; background:none; border: none;">
 		</button>
 	</a>
