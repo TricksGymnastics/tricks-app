@@ -18,6 +18,31 @@
     </script>
   <% end %>
 
+  <script>
+    function iecontent() {      
+      if (Function('/*@cc_on return document.documentMode===10@*/')()){
+        var div = document.getElementById("ieDiv");
+        div.style.display = "block";
+        alert("test test");
+      }
+    }
+    function addLoadEvent(func) {
+      var oldonload = window.onload;
+      if (typeof window.onload != 'function') {
+        window.onload = func;
+      } else {
+        window.onload = function() {
+          if (oldonload) {
+            oldonload();
+          }
+          func();
+        }
+      }
+    }
+    addLoadEvent(iecontent);
+  </script>
+  <%= yield :iescript %>
+
 	<meta http-equiv="pragma" content="no-cache"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Tricks Gymnastics, Dance, Swim, Granite Bay, Folsom, Roseville, Sacramento, California, Gymnastics, Fun, Classes, Tumbling, Swimming, Fitness, Birthday, Cheer, Night Out, Parents, Date Night"/>
@@ -31,6 +56,10 @@
 
 </head>
 <body style="background-image: url(/assets/structure/textile.png)">
+
+  <div id="ieDiv" style="width: 700px; margin: 0 auto; border-radius: 10px; margin-top: -20px; padding: 23px 10px 5px 10px; background-color: white; box-shadow: 0 0 10px #444; text-align:center; display: none;"> 
+    This website is not optimized for Internet Explorer, some features may not work properly
+  </div>
   <div id="background_center">
     <div id="page_wrapper">
       <div id="header">

@@ -2,8 +2,21 @@
 <% content_for :pagestyle do %>
   body {background-color: <%= @bgc_yellow %>;}
 <% end %>
+<% content_for :iescript do %>
+	<script>
+	  function iePromo() {      
+	    if (Function('/*@cc_on return document.documentMode===10@*/')()){
+	      var promo = document.getElementById("promo-img");
+	      promo.style.zIndex = "5";	      
+	      promo.style.borderRadius = "15px";
+	    }
+	  }
+	  addLoadEvent(iePromo);
+	</script>
+<% end %>
 <% @twenty_years = "block" %>
 <% @jr_login = "block" %>
+
 
 
 <div id="promoboxholder">	
@@ -17,7 +30,7 @@
 			<% end %>
 		</div>
 	</div>
-	<%= image_tag("structure/New_Transparent_PromoBox_Master.png", style:"position: absolute; z-index: 2") %>
+	<%= image_tag("structure/New_Transparent_PromoBox_Master.png", style:"position: absolute; z-index: 2; pointer-events:none;") %>
 
 	<!--				Promo Images Here        -->
 	<div id="promo-img">
@@ -29,7 +42,7 @@
 			<% else %>
 				<% if promo.link == true %>
 					<object class="promo_image">
-						<%= link_to image_tag(promo.image_url, alt: promo.title), promo.link_path, style: "display:block; cursor: pointer" %>
+						<%= link_to image_tag(promo.image_url, alt: promo.title), promo.link_path, style: "display:block; cursor: pointer;" %>
 					</object>						
 				<% else %>
 					<object class="promo_image">
@@ -40,7 +53,7 @@
 		<% end %>
 	</div>
 
-	<a style="display:block; position: absolute; z-index: 10;margin: 293px 0 0 450px; width: 97px; height: 98px; border-radius: 100px;" href="http://www.usagym.org">
+	<a style="display:block; position: absolute; z-index: 10;margin: 293px 0 0 450px; width: 97px; height: 98px; border-radius: 49px;" href="http://www.usagym.org">
 		<button style="cursor: pointer; background:none; border: none;">
 		</button>
 	</a>
