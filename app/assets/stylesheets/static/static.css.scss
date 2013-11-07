@@ -319,7 +319,7 @@ Bottom Menu
 
 #menu_bottom {
   position: relative;
-  background-color: none;
+  background-color: transparent;
   width: 730px;
   height: 30px;
   margin: 0px auto;
@@ -342,7 +342,7 @@ Bottom Menu
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: none;
+  background-color: transparent;
   color: #333;
   background-position-y: 8px;
 }
@@ -417,7 +417,7 @@ Bottom Menu
   padding: 4px;
 }
 #Random_Comment_Container #Comment {
-  font-color: #222; 
+  color: #222; 
   font-size: 14px;
 
   margin: -7px 26px 20px 14px;
