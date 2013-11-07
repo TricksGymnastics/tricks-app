@@ -60,6 +60,6 @@ module Comments
     config.assets.initialize_on_precompile = false
 
 
-    #config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
