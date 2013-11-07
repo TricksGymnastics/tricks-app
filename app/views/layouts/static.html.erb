@@ -146,7 +146,7 @@
               </ul>
             </li>
             <li>
-              <%= link_to "Special Events", events_path %>
+              <%= link_to "Special Events", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
                   <%= link_to "Birthday Parties", birthdays_path %>
@@ -164,9 +164,7 @@
               
             </li>
             <li>
-              <a href="Javascript:void()">
-                Staff
-              </a>
+              <%= link_to "Staff", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
                   <%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %>
