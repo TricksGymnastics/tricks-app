@@ -12,11 +12,9 @@
 }
 
 @font-face {
-  font: {
-    family: 'grilled_cheese';
-    //weight: 'normal';
-    //style: 'normal';
-  }
+  font-family: 'grilled_cheese';
+  //font-weight: 'normal';
+  //font-style: 'normal';
   src: asset-url('grilcbc_.eot', font);
   src: asset-url('grilcbc_.eot?#iefix', font) format('embedded-opentype'),
        asset-url('grilcbc_.woff', font) format('woff'),
