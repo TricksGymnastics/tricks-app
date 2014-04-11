@@ -36,3 +36,6 @@ gem "stripe"
 
 gem 'google-analytics-rails'
 # gem "client_side_validations"
+
+gem 'premailer-rails'
+gem 'nokogiri'

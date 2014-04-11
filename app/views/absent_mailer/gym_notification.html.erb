@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+</head>
+<body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
+  <div>
+    <h3>Notification of Upcoming Absence</h3>
+
+    <p><b><%= @absent.student_name %></b> will be absent from class this week.</p>
+
+    <table style="margin: 10px; border-spacing: 0px; border: 1px #444 solid;">
+      <tr>
+        <td style="padding: 5px 15px; border: solid #444 1px;">Location: </td>
+        <td style="padding: 5px 15px; border: solid #444 1px;"><%= Absent::HUMAN_LOCATIONS[@absent.location.to_i] %></td>
+      </tr>
+      <tr>
+        <td style="padding: 5px 15px; border: solid #444 1px;">Class Type: </td>
+        <td style="padding: 5px 15px; border: solid #444 1px;"><%= @absent.classtype.name %></td>
+      </tr>
+      <tr>
+        <td style="padding: 5px 15px; border: solid #444 1px;">Level: </td>
+        <td style="padding: 5px 15px; border: solid #444 1px;"><%= @absent.level.levelname %></td>
+      </tr>
+      <tr>
+        <td style="padding: 5px 15px; border: solid #444 1px;">Day: </td>
+        <td style="padding: 5px 15px; border: solid #444 1px;"><%= Absent::HUMAN_DAYS[@absent.day.to_i] %></td>
+      </tr>
+      <tr>
+        <td style="padding: 5px 15px; border: solid #444 1px;">Time: </td>
+        <td style="padding: 5px 15px; border: solid #444 1px;"><%= @absent.time.strftime("%l:%M %p") %></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

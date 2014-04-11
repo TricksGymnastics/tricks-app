@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  student_name: MyString
+  location_id: 1
+  day: MyString
+  time: 2014-04-09 21:33:45
+  level_id: 1
+
+two:
+  student_name: MyString
+  location_id: 1
+  day: MyString
+  time: 2014-04-09 21:33:45
+  level_id: 1

@@ -1,0 +1,31 @@
+<h1>Listing absents</h1>
+
+<table>
+  <tr>
+    <th>Student name</th>
+    <th>Location</th>
+    <th>Day</th>
+    <th>Time</th>
+    <th>Level</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @absents.each do |absent| %>
+  <tr>
+    <td><%= absent.student_name %></td>
+    <td><%= absent.location %></td>
+    <td><%= absent.day %></td>
+    <td><%= absent.time.strftime("%l:%M %p") %></td>
+    <td><%= absent.level_id %></td>
+    <td><%= link_to 'Show', absent %></td>
+    <td><%= link_to 'Edit', edit_absent_path(absent) %></td>
+    <td><%= link_to 'Destroy', absent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Absent', new_absent_path %>
