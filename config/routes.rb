@@ -1,5 +1,7 @@
 Comments::Application.routes.draw do
 
+
+
   root :to => 'static#index'
 
   match 'schedules/choose'  
@@ -40,6 +42,7 @@ Comments::Application.routes.draw do
   resources :surveys
   resources :survey_results
   resources :datenights
+  resources :absents
 
   %w[gymnastics dance swim events locations site_comments hosting competitive teamgym birthdays princess_party camps dancecamps campus employment 
     forms gymnastics25 missing nutcracker polkadots recitals recital_ad_order_thank_you survey_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
