@@ -65,10 +65,13 @@
         <div id="twenty_years">
           <%= image_tag('logos/20years.png', style: 'display: '+ @twenty_years, width: 170, height: 100, alt: 'Celebrating 20 Years') %>
         </div>
-        <div id="jr_login_button" style="display: <%= @jr_login %>;">
+        <div id="right_buttons" style="display: <%= @jr_login%>;">  
           <a href="https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983">
             <%= image_tag('structure/login_button.png', width: 242, height: 32) %>
-          </a>
+          </a>           
+          <a href="absents/new">
+            <%= image_tag('structure/absence_button_top.png', width: 250, height: 69, style: "margin: 5px 0 -20px 0") %>
+          </a> 
         </div>
         <div id="tricks_logo">
           <a href="/">
