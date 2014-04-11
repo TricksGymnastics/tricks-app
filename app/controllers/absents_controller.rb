@@ -30,7 +30,7 @@ class AbsentsController < ApplicationController
     respond_to do |format|
       if @absent.save
         AbsentMailer.gym_notification(@absent).deliver
-        format.html { redirect_to root_path, notice: 'Your absent notification has been submitted.' }
+        format.html { redirect_to thankyou_path, notice: 'Your absent notification has been submitted.' }
         format.json { render json: absents_path, status: :created, location: @absent }
       else
         format.html { render action: "new" }
