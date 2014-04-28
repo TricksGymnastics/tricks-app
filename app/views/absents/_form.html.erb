@@ -13,13 +13,13 @@
 
     <div style="float: left; width: 100%; line-height: 34px; margin:0;">
       <div class="field" style="float: left; width: 90px; margin:0 15px 0 0; text-align:right;">
-        <%= f.label :student_name, "First Name:" %><br>
+        <%= f.label :first_name, "First Name:" %><br>
         <%= f.label :last_name, "Last Name:" %><br>
         <%= f.label :location, "Location:" %><br>
       </div>
 
       <div class="field" style="float: left; margin:0;">
-        <%= f.text_field :student_name, size: 20 %><br>
+        <%= f.text_field :first_name, size: 20 %><br>
         <%= f.text_field :last_name, size: 20 %><br>
         <%= f.select :location, Absent::LOCATIONS, :prompt => "Select a Location" %><br>
       </div>
