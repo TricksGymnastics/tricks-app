@@ -6,7 +6,7 @@
   <div>
     <h3>Notification of Upcoming Absence</h3>
 
-    <p><b><%= @absent.student_name + " " + @absent.last_name %></b> will be absent from class on: <b><%= @absent.date.strftime("%b %e, %Y") %></b></p>
+    <p><b><%= @absent.first_name + " " + @absent.last_name %></b> will be absent from class on: <b><%= @absent.date.strftime("%b %e, %Y") %></b></p>
 
     <table style="margin: 10px; border-spacing: 0px; border: 1px #444 solid;">
       <tr>

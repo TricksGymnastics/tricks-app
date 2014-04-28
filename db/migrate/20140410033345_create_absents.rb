@@ -1,11 +1,12 @@
 class CreateAbsents < ActiveRecord::Migration
   def change
     create_table :absents do |t|
-      t.string :student_name
+      t.string :first_name
+      t.string :last_name
       t.integer :location
       t.integer :classtype_id
       t.integer :level_id
-      t.string :day
+      t.date :date
       t.time :time
 
       t.timestamps
