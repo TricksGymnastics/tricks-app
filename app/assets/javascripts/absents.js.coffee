@@ -1,5 +1,5 @@
 jQuery ->
-  $('#level_select').hide()
+  $('#absent_level_id').prop("disabled", true)
   levels = $('#absent_level_id').html()
   console.log(levels)
   $('#absent_classtype_id').change ->
@@ -8,12 +8,12 @@ jQuery ->
     console.log(options)
     if options
       $('#absent_level_id').html(options)
-      $('#level_select').show()
+      $('#absent_level_id').prop("disabled", false)
     else
       $('#absent_level_id').empty()
-      $('#level_select').hide()
+      $('#absent_level_id').prop("disabled", true)
 
-  $('#absent_date').datepicker()
+  $('#absent_date').datepicker({dateFormat: 'MM d, yy'})
 
   ###
   #current the locations model does not have corret relations to have this capability

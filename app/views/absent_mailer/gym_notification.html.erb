@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td style="padding: 5px 15px; border: solid #444 1px;">Day: </td>
-        <td style="padding: 5px 15px; border: solid #444 1px;"><%= Absent::HUMAN_DAYS[@absent.day.to_i] %></td>
+        <td style="padding: 5px 15px; border: solid #444 1px;"><%= @absent.date.strftime("%A") %></td>
       </tr>
       <tr>
         <td style="padding: 5px 15px; border: solid #444 1px;">Time: </td>
