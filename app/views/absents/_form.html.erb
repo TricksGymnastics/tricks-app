@@ -13,17 +13,21 @@
 
     <div style="float: left; width: 100%; line-height: 34px; margin:0;">
       <div class="field" style="float: left; width: 90px; margin:0 15px 0 0; text-align:right;">
-        <%= f.label :student_name, "Student Name:" %><br>
+        <%= f.label :student_name, "First Name:" %><br>
+        <%= f.label :student_name, "Last Name:" %><br>
+        <%= f.label :date, "Date:" %><br>
         <%= f.label :location, "Location:" %><br>
       </div>
 
       <div class="field" style="float: left; margin:0;">
-        <%= f.text_field :student_name %><br>
+        <%= f.text_field :student_name, size: 25 %><br>
+        <%= f.text_field :last_name, size: 25 %><br>
+        <%= f.text_field :date, id:'absent_date', size: 25 %><br>
         <%= f.select :location, Absent::LOCATIONS, :prompt => "Select a Location" %><br>
       </div>
     </div>
 
-    <div class="field" style="float:left; width: 100%; line-height: 34px; margin:0;">
+    <div class="field" style="float:left; width: 100%; line-height: 34px; margin:0;" id="classtype_select">
       <div style="float:left; width: 90px; text-align: right; margin: 0 15px 0 0;">
         <%= f.label :classtype_id, "Class Type:" %>
       </div>
@@ -48,6 +52,16 @@
         <%= f.time_select :time, {:minute_step => 5, :ampm => true, :include_blank => false} %><br>
       </div>
     </div>
+
+
+<!--     <div class="field" style="float:left; width: auto; line-height: 34px; margin:0;" id="level_select">
+      <div style="float:left; width: 90px; text-align: right; margin: 0 15px 0 0;">
+        <%#= f.label :schedule_id, "Class:" %>
+      </div>
+      <%#= f.grouped_collection_select :schedule_id, Schedule.all, :schedules, :name, :id, :levelname %>
+    </div>  -->
+
+
     <div class="actions" style="width: 100%; float: left; text-align:center;">
       <%= f.submit "Submit Absence" %>
     </div>
