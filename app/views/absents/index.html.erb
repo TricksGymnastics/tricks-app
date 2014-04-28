@@ -4,6 +4,7 @@
   <tr>
     <th>Student name</th>
     <th>Location</th>
+    <th>Date</th>
     <th>Day</th>
     <th>Time</th>
     <th>Level</th>
@@ -14,9 +15,14 @@
 
 <% @absents.each do |absent| %>
   <tr>
-    <td><%= absent.student_name %></td>
+    <% if absent.last_name %>
+        <td><%= absent.student_name + " " + absent.last_name %></td>
+    <% else %>
+        <td><%= absent.student_name %></td>
+    <% end %>
     <td><%= absent.location %></td>
-    <td><%= absent.day %></td>
+    <td><% if absent.date %><%= absent.date.strftime("%b %e, %Y") %><% end %></td>
+    <td><% if absent.date %><%= absent.date.strftime("%A") %><% end %></td>
     <td><%= absent.time.strftime("%l:%M %p") %></td>
     <td><%= absent.level_id %></td>
     <td><%= link_to 'Show', absent %></td>

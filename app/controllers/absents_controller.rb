@@ -3,7 +3,7 @@ class AbsentsController < ApplicationController
   # GET /absents
   # GET /absents.json
   def index
-    @absents = Absent.joins(:level).joins(:classtype)
+    @absents = Absent.joins(:level).joins(:classtype).order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb

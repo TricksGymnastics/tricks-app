@@ -11,19 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140428154633) do
+ActiveRecord::Schema.define(:version => 20140428195255) do
 
   create_table "absents", :force => true do |t|
     t.string   "student_name"
     t.integer  "location"
     t.integer  "classtype_id"
     t.integer  "level_id"
-    t.string   "day"
     t.time     "time"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "last_name"
-    t.datetime "date"
+    t.date     "date"
   end
 
   create_table "answers", :force => true do |t|
