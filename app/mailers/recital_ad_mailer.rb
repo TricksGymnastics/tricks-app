@@ -1,9 +1,9 @@
 class RecitalAdMailer < ActionMailer::Base
   default from: "tricksgym@gmail.com"
 
-  def order_confirmation(order)
-    @order = order
-    mail to: @order.email, subject: "Recital Ad Order Confirmation"
+  def order_confirmation(recital_ad)
+    @recital_ad = recital_ad
+    mail to: @recital_ad.email, subject: "Recital Ad Order Confirmation"
 
   end
 end
