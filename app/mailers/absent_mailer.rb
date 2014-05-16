@@ -1,5 +1,10 @@
 class AbsentMailer < ActionMailer::Base
-  default from: "tricksgym@gmail.com"
+  require 'mail'
+  address = Mail::Address.new "tricksgym@gmail.com"
+  address.display_name = "Tricks Gymnastics, Dance & Swim"
+  address.format
+
+  default from: address
 
   def gym_notification(absent)
     @absent = absent

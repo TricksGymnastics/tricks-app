@@ -1,11 +1,8 @@
 class RecitalAdMailer < ActionMailer::Base
-require 'mail'
-email = "tricksgym@gmail.com"
-address = Mail::Address.new email # ex: "john@example.com"
-name = "Tricks Gymnastics, Dance & Swim"
-address.display_name = name # ex: "John Doe"
-# Set the From or Reply-To header to the following:
-address.format # returns "John Doe <john@example.com>"
+  require 'mail'
+  address = Mail::Address.new "tricksgym@gmail.com"
+  address.display_name = "Tricks Gymnastics, Dance & Swim"
+  address.format
 
   default from: address
 
