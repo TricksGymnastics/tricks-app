@@ -1,5 +1,5 @@
 class RecitalAdMailer < ActionMailer::Base
-  default from: "tricksgym@gmail.com"
+  default from: "Tricks Gymnastics, Dance & Swim <tricksgym@gmail.com>"
 
   def order_confirmation(recital_ad)
     @recital_ad = recital_ad
