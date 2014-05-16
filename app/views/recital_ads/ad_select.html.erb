@@ -8,21 +8,22 @@
 
   <h1>Recital Ad Order Form</h1>
   <h3>Please select the Ad Type that you would like to purchase.</h3>
+  <!-- <h4>If you have an adblocker, please disable it for the duration of the order process</h4> -->
 
 	<div id="select_box">
     <div id="image_box">
       <img src="/assets/recital_ad_select.jpg">
     </div>
     <% @recital_ad_types.each do |ad| %>
-      <div class="block" id="ad_box">
-        <div class="centered" id="ad_name">
+      <div class="block" id="plan_box">
+        <div class="centered" id="plan_name">
           <% if ad.name == "Ad 1" %>
             <h2><%= radio_button_tag(:recital_ad_type_id, ad.id, :checked => true) %><%=ad.name%></h2>
           <% else %>
             <h2><%= radio_button_tag(:recital_ad_type_id, ad.id) %><%=ad.name%></h2>
           <% end %>
         </div>
-        <div id="ad_info">
+        <div id="plan_info">
           <h3>Price: <%= number_to_currency(ad.price) %></h3>
           <% if ad.word_max != nil %>
             <h3>Up to <b style="text-decoration:underline;"><%= ad.word_max %></b> words</h3>
