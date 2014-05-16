@@ -7,6 +7,7 @@ class RecitalAdsController < ApplicationController
   # GET /recital_ads
   # GET /recital_ads.json
   def index
+    @recital_ads = RecitalAd.all(order: 'created_at desc')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recital_ads }
