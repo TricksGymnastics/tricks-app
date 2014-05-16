@@ -41,6 +41,7 @@ class RecitalAdsController < ApplicationController
   # POST /recital_ads.json
   def create
     if @recital_ad.save_with_payment
+      RecitalAdMailer.order_confirmation(@recital_ad).deliver
       redirect_to 'http://www.tricksgym.com/recital_ad_order_thank_you.html'
     else
       render :new
@@ -79,5 +80,9 @@ class RecitalAdsController < ApplicationController
 
   def set_variables
     @needs_stripe = true
+  end
+
+  def order_confirmation
+    @recital_ad = RecitalAd.find(params[:id])
   end
 end

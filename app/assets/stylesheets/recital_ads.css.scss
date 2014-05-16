@@ -10,7 +10,7 @@
 	padding: 30px 50px 0px 50px;
 }
 
-#ad_box{
+#plan_box{
 	border: 1px solid black;
   margin: 3px 0px;
 	width: 420px;
@@ -20,8 +20,18 @@
   #blank{}
   h2{
     font-size: 24px;
+  }    
+  #plan_name{
+    /*float: left;*/
+    width: 140px;
+    /*border: 2px solid yellow;*/
   }
-  #ad_info{
+  #plan_info{
+    float: right;
+    width: 260px;
+    /*border: 1px solid purple;*/
+    padding-bottom: 3px;
+    margin-right: 5px;
     h3{
         font-size: 16px;
         font-weight: normal;
@@ -29,20 +39,6 @@
         padding: 3px;
         margin:0;
     }
-  }
-  
-    
-  #ad_name{
-    /*float: left;*/
-    width: 140px;
-    /*border: 2px solid yellow;*/
-  }
-  #ad_info{
-    float: right;
-    width: 260px;
-    /*border: 1px solid purple;*/
-    padding-bottom: 3px;
-    margin-right: 5px;
   }
 }
 

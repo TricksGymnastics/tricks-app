@@ -22,6 +22,7 @@ Comments::Application.routes.draw do
   match 'coaches/past_employees' => "coaches#past_employees"
 
   match 'recital_ads/ad_select'
+  match 'recital_ad_mailer/:id' => 'recital_ads#order_confirmation'
 
   match 'datenights/edit' => 'datenights#edit'
 
