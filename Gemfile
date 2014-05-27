@@ -40,3 +40,5 @@ gem 'google-analytics-rails'
 
 gem 'premailer-rails'
 gem 'nokogiri'
+
+gem 'rails_12factor', group: :production
