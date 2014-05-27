@@ -5,7 +5,7 @@ gem 'pg'
 gem 'yaml_db'
 
 group :assets do
-  gem 'sass-rails'
+  gem 'sass-rails',   '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-ui-rails'
@@ -41,4 +41,6 @@ gem 'google-analytics-rails'
 gem 'premailer-rails'
 gem 'nokogiri'
 
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
+
+# gem 'rails4_upgrade'
