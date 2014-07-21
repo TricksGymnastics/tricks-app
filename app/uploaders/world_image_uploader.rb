@@ -23,7 +23,7 @@ class WorldImageUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "#{model.firstname+'_'+model.lastname}".tr(" ", "_")
+    "#{model.first_name+'_'+model.last_name}".tr(" ", "_")
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
