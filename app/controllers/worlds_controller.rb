@@ -46,8 +46,7 @@ class WorldsController < ApplicationController
 
     respond_to do |format|
       if @world.save
-        redirect_to 'http://www.tricksgym.com/thankyou'
-        #format.html { redirect_to @world, notice: 'World was successfully created.' }
+        format.html { redirect_to 'http://www.tricksgym.com/thankyou' }
         format.json { render json: @world, status: :created, location: @world }
       else
         format.html { render action: "new" }
