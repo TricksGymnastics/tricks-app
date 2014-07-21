@@ -1,5 +1,5 @@
 class WorldsController < ApplicationController
-  
+
   load_and_authorize_resource :except => [:new, :create]
   # GET /worlds
   # GET /worlds.json
@@ -46,7 +46,8 @@ class WorldsController < ApplicationController
 
     respond_to do |format|
       if @world.save
-        format.html { redirect_to @world, notice: 'World was successfully created.' }
+        redirect_to 'http://www.tricksgym.com/thankyou'
+        #format.html { redirect_to @world, notice: 'World was successfully created.' }
         format.json { render json: @world, status: :created, location: @world }
       else
         format.html { render action: "new" }
