@@ -2,6 +2,9 @@ Comments::Application.routes.draw do
 
 
 
+  resources :worlds
+
+
   root :to => 'static#index'
 
   match 'schedules/choose'  
@@ -60,6 +63,7 @@ Comments::Application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'whereintheworld', to: 'worlds#new'
 
   match 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
   match 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'

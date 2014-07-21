@@ -41,6 +41,7 @@ class Ability
 			can :manage, PromoSlide
 			can :manage, User
 			can :manage, Datenight
+			can :manage, World
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -53,9 +54,12 @@ class Ability
 			can :manage, Survey
 			can :manage, SurveyResult
 			can :manage, Datenight
+			can :read, World
+			can :create, World
 			cannot :destroy, Survey
 			cannot :destroy, SurveyResult
 			cannot :destroy, Level
+
 		end 
 
 		if user.role == "author" #Not logged in
@@ -67,6 +71,7 @@ class Ability
 			can :create, RecitalAd
 			can :create, SurveyResult
 			can :read, Survey
+			can :create, World
 		end
 	end 
 end

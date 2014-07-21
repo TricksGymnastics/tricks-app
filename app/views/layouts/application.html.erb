@@ -81,6 +81,10 @@
               <% end %>
             </li>
 
+            <% if can? :manage, World %>
+              <li><%= link_to "Worlds", worlds_path %></li>
+            <% end %>
+
           </ul>
       	</div>		
 
