@@ -3,7 +3,8 @@
 <p>
   <b>Image:</b>
   <%= image_tag @world.image_url(:thumb).to_s, style: "border: 2px solid #333; box-shadow: 0 0 15px #333;" %>
-  <%= link_to 'Full Image', @world.image_url.to_s $>
+  <%= link_to 'Full Image', @world.image_url.to_s %>
+  <%#= link_to 'Full Image', @world.image_url.to_s %>
 </p>
 
 <p>
