@@ -1,10 +1,4 @@
 Comments::Application.routes.draw do
-
-
-
-  resources :worlds
-
-
   root :to => 'static#index'
 
   match 'schedules/choose'  
@@ -47,9 +41,13 @@ Comments::Application.routes.draw do
   resources :survey_results
   resources :datenights
   resources :absents
+  resources :worlds
+  resources :tricks_u_categories
+  resources :tricks_u_videos
+  # resources :training_videos
 
   %w[gymnastics dance swim events locations site_comments hosting competitive teamgym birthdays princess_party camps dancecamps campus employment 
-    forms gymnastics25 missing nutcracker polkadots recitals recital_ad_order_thank_you survey_thank_you summer thankyou tricksu turkeycamp underconstruction].each do |page|
+    forms gymnastics25 missing nutcracker polkadots recitals recital_ad_order_thank_you survey_thank_you summer thankyou tricksu_old turkeycamp underconstruction].each do |page|
     get page, controller: "static", action: page
   end
 
@@ -64,6 +62,7 @@ Comments::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'whereintheworld', to: 'worlds#new'
+  get 'tricksu', to: 'tricks_u_videos#index', as: 'tricksu'
 
   match 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
   match 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'

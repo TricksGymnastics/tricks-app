@@ -42,6 +42,8 @@ class Ability
 			can :manage, User
 			can :manage, Datenight
 			can :manage, World
+			can :manage, TricksUCategory
+			can :manage, TricksUVideo
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
