@@ -1,0 +1,28 @@
+<h1>TricksU Videos</h1>
+
+<% if can? :manage, TricksUVideo %><h3><%= link_to 'Add New Video', new_tricks_u_video_path %></h3><% end %>
+
+<div>
+<!-- <div class="tricksu-categories">
+  <%# @categories.each do |category| %>
+    <div class="tricksu-category">
+      <h3><%#= category.title %></h3>
+    </div>
+  <%# end %>
+</div> -->
+
+<div class="tricksu-videos">
+  <% @videos.each do |video| %>
+    <div class="preview-box">
+      <h3 style="font-size: 15px;"><%= video.title %></h3>
+      <%= link_to image_tag("http://img.youtube.com/vi/" + video.url.split("/").last + "/0.jpg"), video %>
+      <%= link_to 'Edit', edit_tricks_u_video_path(video) %>
+      <% if can? :manage, TricksUVideo %>
+        <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+</div>
+
+

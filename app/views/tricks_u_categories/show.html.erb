@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @category.title %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @category.weight %>
+</p>
+
+<p>
+  <b>Hidden:</b>
+  <%= @category.hidden %>
+</p>
+
+
+<%= link_to 'Edit', edit_tricks_u_category_path(@category) %> |
+<%= link_to 'Back', tricks_u_categories_path %>

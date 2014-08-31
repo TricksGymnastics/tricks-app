@@ -1,0 +1,27 @@
+<h1>TricksU Categories</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Weight</th>
+    <th>Hidden</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.title %></td>
+    <td><%= category.weight %></td>
+    <td><%= category.hidden %></td>
+    <td><%= link_to 'Show', category %></td>
+    <td><%= link_to 'Edit', edit_tricks_u_category_path(category) %></td>
+    <% if can? :manage, TricksUCategory %><td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category', new_tricks_u_category_path %>
