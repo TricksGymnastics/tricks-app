@@ -58,11 +58,19 @@ class Ability
 			can :manage, Datenight
 			can :read, World
 			can :create, World
+			can :read, TricksUVideo
+			can :show, TricksUCategory
 			cannot :destroy, Survey
 			cannot :destroy, SurveyResult
 			cannot :destroy, Level
 
 		end 
+
+		if user.role == "coach"
+			can :read, TricksUVideo
+			can :show, TricksUCategory
+
+		end
 
 		if user.role == "author" #Not logged in
 			can :read, Comment
