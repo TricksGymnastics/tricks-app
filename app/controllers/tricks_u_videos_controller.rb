@@ -4,6 +4,13 @@ class TricksUVideosController < ApplicationController
   def index
     @videos = TricksUVideo.all
     @categories = TricksUCategory.where(hidden: false).all(order: 'weight')
+    @category = TricksUCategory.where(title: params[:category]).first
+    if (@category.nil?) then
+      @videos_by_category = @videos
+    else
+      @videos_by_category = TricksUVideo.find_all_by_category_id(@category.id, order: "weight")
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,7 +45,7 @@ class TricksUVideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to tricks_u_videos_path }
+        format.html { redirect_to tricksu_path }
         format.json { render json: @video, status: :created, location: @video }
       else
         format.html { render action: "new" }
