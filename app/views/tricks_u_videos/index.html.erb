@@ -1,18 +1,27 @@
 <h1>TricksU Videos</h1>
+<div class="row" style="margin-top: -20px;">
+  <h3 style="text-align:center; margin: 0 0 10px 0;">
+    <% if !@category.nil? %><%= params[:category] %><% end %>
+  </h3>
 
+</div>
 <% if can? :manage, TricksUVideo %><h3><%= link_to 'Add New Video', new_tricks_u_video_path %></h3><% end %>
 
 <div>
-  <!-- <div class="tricksu-categories">
-    <%# @categories.each do |category| %>
-      <div class="tricksu-category">
-        <h3><%#= category.title %></h3>
+  <div class="tricksu-categories">
+    <% @categories.each do |category| %>
+      <div class="tricksu-category" <% if params[:category] == category.title %>id="tab-active"<% end %>>
+        <% if params[:category].nil? %>
+          <%= link_to category.title, "tricksu/"+category.title, class: "video-category-button" %>
+        <% else %>
+          <%= link_to category.title, category.title, class: "video-category-button" %>
+        <% end %>
       </div>
-    <%# end %>
-  </div> -->
+    <% end %>
+  </div>
 
   <div class="tricksu-videos">
-    <% @videos.each do |video| %>
+    <% @videos_by_category.each do |video| %>
       <div class="preview-box">
         <h3 style="font-size: 15px;"><%= video.title %></h3>
         <%= link_to image_tag("http://img.youtube.com/vi/" + video.url.split("/").last + "/0.jpg"), video %>

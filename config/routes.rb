@@ -64,6 +64,8 @@ Comments::Application.routes.draw do
   get 'whereintheworld', to: 'worlds#new'
   get 'tricksu', to: 'tricks_u_videos#index', as: 'tricksu'
 
+  match 'tricksu/:category' => "tricks_u_videos#index"
+
   match 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
   match 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
 
