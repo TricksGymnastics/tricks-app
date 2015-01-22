@@ -18,4 +18,5 @@
 *.ai
 
 
-/config/initializers/carrierwave_development.rb
+/config/initializers/1dev_vars.rb
+/environments/development.rb
