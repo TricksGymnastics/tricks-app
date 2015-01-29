@@ -30,7 +30,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.6)
     arel (3.0.3)
-    bcrypt-ruby (3.0.1-x86-mingw32)
+    bcrypt-ruby (3.1.2-x86-mingw32)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -63,6 +63,7 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.5)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     excon (0.33.0)
     execjs (2.1.0)
@@ -183,7 +184,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bcrypt-ruby (~> 3.0.0)
+  bcrypt-ruby (= 3.1.2)
   better_errors
   binding_of_caller
   cancan

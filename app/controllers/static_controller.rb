@@ -34,4 +34,8 @@ class StaticController < ApplicationController
     @datenight = Datenight.first
   end
 
+  def registration
+    @levels = Level.all
+  end
+
 end

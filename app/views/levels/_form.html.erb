@@ -14,20 +14,24 @@
     <div style="float:left; width: 120px; line-height: 34px;">
       <%= f.label :classtype_id, "Class Type" %>:<br>
       <%= f.label :levelname, "Level" %>:<br>
+      <%= f.label :jack_rabbit_name, "Jackrabbit Name" %>:<br>
       <%= f.label :length %>:<br>
       <%= f.label :price %>:<br>
       <%= f.label :age %>:<br>
       <%= f.label :gender %>:<br>
       <%= f.label :order %>:<br>
+      <%= f.label :color %>:<br>
     </div>
     <div class="field" style="float:left; width: 820px; line-height: 34px;">
       <%= f.collection_select :classtype_id, Classtype.where(:id => 1..9), :id, :name, :prompt => "Select a Class Type" %><br>
       <%= f.text_field :levelname %><br>
+      <%= f.text_field :jack_rabbit_name %><br>
       <%= f.number_field :length %><br>
       <%= f.number_field :price %><br>
       <%= f.text_field :age %><br>
       <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender" %><br>
       <%= f.number_field :sort_order %><br>
+      <%= f.text_field :color %><br>
     </div>
     <br>
     <br>

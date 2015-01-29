@@ -13,6 +13,7 @@
     <th>Age</th>
     <th>Gender</th>
     <th>Activity</th>
+    <th>JR</th>
     <th></th>
     <th></th>
     <th></th>
@@ -27,6 +28,7 @@
     <td><%= level.age %></td>
     <td><%= level.gender %></td>
     <td><%= level.classtype.name %></td>    
+    <td><% if !level.jack_rabbit_name.nil? %> <span style="color: green;">&#x2714;</span> <% else %> <span style="color: red;">&#x2717;</span> <% end %></td>
     <td style="border: 0; padding: 2px; padding-left: 10px"><%= link_to 'Show', level %></td>
     <td style="border: 0; padding: 2px"><%= link_to 'Edit', edit_level_path(level) %></td>
     <% if can? :destroy, Level %>
