@@ -20,7 +20,12 @@
   </tr>
 
 <% @levels.each do |level| %>
-  <tr>
+  <% if level.color.nil? %>
+    <% color = "none" %>
+  <% else %>
+    <% color = level.color %>
+  <% end %>
+  <tr style="background-color: <%= color %>;">
     <td><%= level.sort_order %></td>
     <td><%= level.levelname %></td>
     <td><%= level.length %> mins</td>
@@ -28,11 +33,11 @@
     <td><%= level.age %></td>
     <td><%= level.gender %></td>
     <td><%= level.classtype.name %></td>    
-    <td><% if !level.jack_rabbit_name.nil? %> <span style="color: green;">&#x2714;</span> <% else %> <span style="color: red;">&#x2717;</span> <% end %></td>
-    <td style="border: 0; padding: 2px; padding-left: 10px"><%= link_to 'Show', level %></td>
-    <td style="border: 0; padding: 2px"><%= link_to 'Edit', edit_level_path(level) %></td>
+    <td style="background-color: white;"><% if !level.jack_rabbit_name.nil? %> <span style="color: green;">&#x2714;</span> <% else %> <span style="color: red;">&#x2717;</span> <% end %></td>
+    <td style="border: 0; padding: 2px; padding-left: 10px; background-color: white;"><%= link_to 'Show', level %></td>
+    <td style="border: 0; padding: 2px; background-color: white;"><%= link_to 'Edit', edit_level_path(level) %></td>
     <% if can? :destroy, Level %>
-        <td style="border: 0; padding: 2px"><%= link_to 'Destroy', level, confirm: 'If you delete this Level, all Scheduled schedules that use this level will also be deleted. Are you sure you want to delete it?', method: :delete %></td>
+        <td style="border: 0; padding: 2px; background-color: white;"><%= link_to 'Destroy', level, confirm: 'If you delete this Level, all Scheduled schedules that use this level will also be deleted. Are you sure you want to delete it?', method: :delete %></td>
     <% end %>
   </tr>
 <% end %>
