@@ -42,6 +42,8 @@
   </script>
   <%= yield :iescript %>
 
+  <%= yield :jsforpage %>
+
 	<meta http-equiv="pragma" content="no-cache"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Tricks Gymnastics, Dance, Swim, Granite Bay, Folsom, Roseville, Sacramento, California, Gymnastics, Fun, Classes, Tumbling, Swimming, Fitness, Birthday, Cheer, Night Out, Parents, Date Night"/>
@@ -81,11 +83,14 @@
         <div id="menu">
           <ul id="menu_container">
             <li>
-              <%= link_to "Home", root_path %>
+              <%= link_to "Home", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
-                  <%= link_to "Hosting", underconstruction_path %>
+                  <%= link_to "Home Page", root_path %>
                 </li>
+               <!--  <li class="submenu_link">
+                  <%#= link_to "Hosting", underconstruction_path %>
+                </li> -->
                 <li class="submenu_link">
                   <%= link_to "Locations", locations_path %>
                 </li>
@@ -95,8 +100,25 @@
               </ul>
             </li>
             <li>
-              <%= link_to "Gymnastics", gymnastics_path %>
+              <%= link_to "Register", "Javascript:void()" %>
               <ul class="submenu">
+                <li class="submenu_link">
+                  <%= link_to "Granite Bay", registration_path(location: 'GB', classtype: '') %>
+                </li>
+                <li class="submenu_link">
+                  <%= link_to "Folsom", registration_path(location: 'FOL', classtype: '') %>
+                </li>
+                <li class="submenu_link">
+                  <%= link_to "Sacramento", registration_path(location: 'SAC', classtype: '') %>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <%= link_to "Gymnastics", "Javascript:void()" %>
+              <ul class="submenu">
+                <li class="submenu_link">
+                  <%= link_to "Gymnastics", gymnastics_path %>
+                </li>
                 <li class="submenu_link">
                   <%= link_to "Competitive", competitive_path %>
                 </li>
@@ -106,21 +128,29 @@
               </ul>
             </li>
             <li>
-              <%= link_to "Dance", dance_path %>
+              <%= link_to "Dance", "Javascript:void()" %>
               <ul class="submenu">
+                <li class="submenu_link">
+                  <%= link_to "Dance", dance_path %>
+                </li>
                 <li class="submenu_link">
                   <%= link_to "Dance Company", dance_company_index_path %>
                 </li>
+                <!-- <li class="submenu_link">
+                  <%#= link_to "Dance Recital Survey", "http://www.tricksgym.com/survey/3/start" %>
+                </li> -->
+              </ul>
+            </li>
+            <li>
+              <%= link_to "Swim", "Javascript:void()" %>
+              <ul class="submenu">
                 <li class="submenu_link">
-                  <%= link_to "Dance Recital Survey", "http://www.tricksgym.com/survey/3/start" %>
+                  <%= link_to "Swim", swim_path %>
                 </li>
               </ul>
             </li>
             <li>
-              <%= link_to "Swim", swim_path %>
-            </li>
-            <li>
-              <%= link_to "Class Schedules", schedules_choose_path %>
+              <%= link_to "Class Schedules", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
                   <%= link_to "Granite Bay (Gymnastics)", schedules_gb_gym_path %>
@@ -152,10 +182,13 @@
                 <li class="submenu_link">
                   <%= link_to "Sacramento Dance", schedules_sac_dance_path %>
                 </li>
+                <li class="submenu_link">
+                  <%= link_to "See All", schedules_path %>
+                </li>
               </ul>
             </li>
             <li>
-              <%= link_to "Special Events", "Javascript:void()" %>
+              <%= link_to "Events", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
                   <%= link_to "Birthday Parties", birthdays_path %>

@@ -1,40 +1,36 @@
-<% @title = "Registration Placeholder" %>
+<% @title = "Registration" %>
 <% content_for :pagestyle do %>
   body {background-color: <%= @bgc_yellow %>;}
+<% end %>
+<% content_for :jsforpage do %>
+  <script type="text/javascript">
+    jQuery(document).ready(RemoveEmptyTables);
+    function RemoveEmptyTables() {
+      // $("div.registration_level_container").has("table").css("display", "none");
+      $("div.registration_level_container").filter(function(){
+        return $(this).find('table').length
+      }).show();
+    }
+  </script>
 <% end %>
 
 <div class="content">
 
-  <a href="http://app.jackrabbitclass.com/eventcalendar.asp?orgid=313983" target="_blank">View Our Events Calendar</a><br><br>
+  <div style="margin: 20px;">
 
-  <a href="https://app.jackrabbitclass.com/reg.asp?id=313983" target="_blank">Click Here to Register</a><br><br>
+    <% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacrament" => "SAC"} %>
 
-  <!-- <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=GB&hidecols=Description,Ages,Gender,StartDate,EndDate,Session&Cat2=Level"></script>
-  <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=GB&hidecols=Description,Ages,Gender,StartDate,EndDate,Session&Cat2=Level"></script> -->
-  <% locations = {"GB" => "Granite Bay", "FOL" => "Folsom", "SAC" => "Sacramento"} %>
-  <% locations.each do |loc, value| %>
-    <div style="margin: 15px;">
-      <h1><%= value %></h1>
-      <% @levels.each do |level| %>
-        <% if level.jack_rabbit_name.nil? %>
-          <!-- <h3>Sorry, no classes</h3> -->
-        <% else %>
-          <h2><%= level.levelname %></h2>
-          <% if level.color.nil? %>
-            <% color = "none" %>
-          <% else %>
-            <% color = level.color %>
-          <% end %>
-          <div class="jr_class_table_container" style="background-color: <%= color %>;">
-            <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%= loc %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= level.jack_rabbit_name %>"></script>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+    <%= form_tag registration_path, :method => 'get', :id => "schedules_search" do %>
+      <%#= select_tag "location", options_for_select(locations, params[:location]), :onchange => "this.form.submit();", :prompt => "Choose Location" %>
+      <%#= select_tag "age", options_for_select(Level.pluck(:age).uniq.sort, params[:age]), :onchange => "this.form.submit();", :prompt => "All Ages" %>
+      <% class_types = Classtype.pluck(:name).uniq.sort %>
+      <% class_types.delete("Office") %>
+      <% class_types.delete("Swim") %>
+      <%= select_tag "classtype", options_for_select(class_types, params[:classtype]), :onchange => "this.form.submit();", :prompt => "Programs", :style => "float: right; margin: 0px 0px 0px -115px" %>
+      <%#= select_tag "level", options_for_select(Level.where("levels.jack_rabbit_name IS NOT NULL").order('sort_order ASC').pluck(:levelname).uniq, params[:level]), :onchange => "this.form.submit();", :prompt => "All Levels" %>
+    <% end %>
 
-  <!--<script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=FOL&hidecols=Description,Ages,Gender,StartDate,EndDate,Session"></script>
-
-  <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=SAC&hidecols=Description,Ages,Gender,StartDate,EndDate,Session"></script>-->
+    <%= render 'register' %>
+  </div>
 
 </div>
