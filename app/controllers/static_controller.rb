@@ -35,7 +35,7 @@ class StaticController < ApplicationController
   end
 
   def registration
-    @levels = Level.all
+    @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).age_search(params[:age])
   end
 
 end
