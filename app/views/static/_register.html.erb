@@ -37,7 +37,7 @@
       <% else %> 
         <!-- We display none here so that we can programatically show the ones that actually have a table -->
         <div class="registration_level_container" style="display:none">
-          <h2><%= level.levelname + " (" + level.age + ")" %></h2>
+          <h2><%= level.levelname + " (Ages: " + level.age + ")" %></h2>
           <% if level.color.nil? %>
             <% color = "none" %>
           <% else %>
