@@ -26,7 +26,7 @@
       <% class_types = Classtype.pluck(:name).uniq.sort %>
       <% class_types.delete("Office") %>
       <% class_types.delete("Swim") %>
-      <%= select_tag "classtype", options_for_select(class_types, params[:classtype]), :onchange => "this.form.submit();", :prompt => "Programs", :style => "float: right; margin: 0px 0px 0px -115px" %>
+      <%#= select_tag "classtype", options_for_select(class_types, params[:classtype]), :onchange => "this.form.submit();", :prompt => "Programs", :style => "float: right; margin: 0px 0px 0px -115px" %>
       <%#= select_tag "level", options_for_select(Level.where("levels.jack_rabbit_name IS NOT NULL").order('sort_order ASC').pluck(:levelname).uniq, params[:level]), :onchange => "this.form.submit();", :prompt => "All Levels" %>
     <% end %>
 
