@@ -62,6 +62,7 @@ class CoachesController < ApplicationController
     end
   end
 
+  # this is bugged because of the name "Classtype"... no longer used anywhere
   def type
     @coaches = Classtype.includes(:coaches).find_by_name(params[:name]).coaches.sort_by(&:firstname)
   end
