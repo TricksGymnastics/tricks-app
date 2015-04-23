@@ -38,4 +38,8 @@ class StaticController < ApplicationController
     @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).age_search(params[:age])
   end
 
+  def gymnastics
+    @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'")
+  end
+
 end

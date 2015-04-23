@@ -1,3 +1,10 @@
+<% @title = "Tricks Levels" %>
+<%= stylesheet_link_tag  "scaffolds", :media => "all" %>
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_yellow %>;}
+<% end %>
+
+
 <h1>Listing levels</h1>
 
 <h2 style="font-size: 20px;"><%= link_to 'New Level', new_level_path %></h2>
