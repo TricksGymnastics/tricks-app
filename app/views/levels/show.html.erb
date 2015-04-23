@@ -1,43 +1,68 @@
-<p>
-  <b>Schedule Type:</b>
-  <%= @level.classtype.name %>
-</p>
+<% @title = @level.levelname %>
+<%#= stylesheet_link_tag  "scaffolds", :media => "all" %>
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_yellow %>;}
+<% end %>
+<% content_for :jsforpage do %>
+  <script type="text/javascript">
+    jQuery(document).ready(RemoveEmptyTables);
+    function RemoveEmptyTables() {
+      // $("div.registration_level_container").has("table").css("display", "none");
+      $("div.registration_level_container").filter(function(){
+        return $(this).find('table').length
+      }).show();
+      if ($("div.registration_level_container:visible").length == 0){
+        $("#no_registration").show();
+        $("#registration_container").hide();
+      }
+    }
+  </script>
+<% end %>
 
-<p>
-  <b>Level:</b>
-  <%= @level.levelname %>
-</p>
+<div id="content" style="padding: 20px;">
+  <h1 style="margin-bottom:0;"><%= @level.levelname %></h1>
 
-<p>
-  <b>Jackrabbit Name:</b>
-  <%= @level.jack_rabbit_name %>
-</p>
+  <div style="width: 100%; text-align:center; font-size: 16px;">
+    <b>Age: </b><%= @level.age %>  /  <b>Length: </b><%= @level.length %>  /  <b>Price: </b><%= @level.price %>  /  <b>Gender: </b><%= @level.gender %>
 
-<p>
-  <b>Length:</b>
-  <%= @level.length %>
-</p>
+  <% if can? :manage, Level %>
+    <br><%= link_to 'Edit', edit_level_path(@level), style: "font-size: 20px; color: #{@bgc_blue}" %>
+  <% end %>
+  </div>
 
-<p>
-  <b>Price:</b>
-  <%= @level.price %>
-</p>
+  <div style="width: auto; float:left; margin: 30px 0 40px 0;">    
+    <% if !@level.video_url.nil? && !@level.video_url.empty? %>
+        <iframe style="float: right; padding: 5px 0px 15px 15px" width="367" height="248" src="<%= @level.video_url %>" frameborder="0"></iframe>
+    <% end %>
+    <p style="font-size: 16px;"><%= @level.description %></p>
+  </div>
 
-<p>
-  <b>Age:</b>
-  <%= @level.age %>
-</p>
-
-<p>
-  <b>Gender:</b>
-  <%= @level.gender %>
-</p>
-
-<p>
-  <b>Color:</b>
-  <div style="width: 50px; height: 25px; background-color: <%= @level.color %>;"></div>
-</p>
-
-
-<%= link_to 'Edit', edit_level_path(@level) %> |
-<%= link_to 'Back', levels_path %>
+  <% if !@level.jack_rabbit_name.nil? %>
+    <div id="registration_container">
+      <% has_registration = "none" %>
+      <h1 style="font-size: 35px; margin: 0;">Registration</h1>
+      <div style="margin-top: -15px;">
+        <% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %>
+        <% locations.each do |loc, value| %>
+          <div>
+            <h3 style="margin-bottom: 0; color: <%= @bgc_blue %>; font-size: 20px;"><%= loc %></h1>
+              <%# We display none here so that we can programatically show the ones that actually have a table %>
+              <div class="registration_level_container" style="display:none">
+                <% if @level.color.nil? %>
+                  <% color = "none" %>
+                <% else %>
+                  <%# color = @level.color %>
+                <% end %>
+                <div class="jr_class_table_container" style="background-color: <%= color %>;">
+                  <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%= value %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= @level.jack_rabbit_name %>"></script>
+                </div>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <% has_registration = "block" %>
+  <% end %>
+  <h2 id="no_registration" style="text-align:center; margin: 100px; display: <%= has_registration %>">Sorry, Online registration is unavailable for this level</h2>
+</div>

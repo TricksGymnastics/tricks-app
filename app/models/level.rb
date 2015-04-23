@@ -9,4 +9,8 @@ class Level < ActiveRecord::Base
 	
 	default_scope :order => 'levels.sort_order' # assuming the column name is order
 
+  # def to_param
+  #   self.levelname
+  # end
+
 end

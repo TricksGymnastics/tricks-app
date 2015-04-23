@@ -100,6 +100,15 @@
       <br>
       <br>
     </div>
+
+    <% if can? :manage, Level %>
+      <h1 style="margin:0; font-size:25px;">This section is in testing and can only be viewed when logged in, the public cannot see it</h1>
+      <% @school_aged.each do |level| %>
+        <h3><%= link_to level.levelname + " - Age: " + level.age, level %>:</h3>
+        <%= level.short_description %><br>
+      <% end %>
+    <% end %>
+
   </div>
   <div id="infobox">
     <div id="gymnastics_sidelogos" style="margin-top:0px;">
