@@ -6,14 +6,25 @@
 <% content_for :jsforpage do %>
   <script type="text/javascript">
     jQuery(document).ready(RemoveEmptyTables);
+
+    function queryParameters () {
+        var result = {};
+        var params = window.location.search.split(/\?|\&/);
+        params.forEach( function(it) {
+            if (it) {
+                var param = it.split("=");
+                result[param[0]] = param[1];
+            }
+        });
+        return result;
+    }
+
     function RemoveEmptyTables() {
-      // $("div.registration_level_container").has("table").css("display", "none");
       $("div.registration_level_container").filter(function(){
         return $(this).find('table').length
       }).show();
-      if ($("div.registration_level_container:visible").length == 0){
+      if (queryParameters().location.length > 0 && $("div.registration_level_container:visible").length == 0){
         $("#no_registration").show();
-        $("#registration_container").hide();
       }
     }
   </script>
@@ -22,12 +33,12 @@
 <div id="content" style="padding: 20px;">
   <h1 style="margin-bottom:0;"><%= @level.levelname %></h1>
 
+  <% if can? :manage, Level %>
+    <br><h1 style="text-align: right; margin: -80px 0 0 0; font-size: 40px;"><%= link_to 'Edit', edit_level_path(@level), style: "color: #{@bgc_blue};" %></h1>
+  <% end %>
   <div style="width: 100%; text-align:center; font-size: 16px;">
     <b>Age: </b><%= @level.age %>  /  <b>Length: </b><%= @level.length %>  /  <b>Price: </b><%= @level.price %>  /  <b>Gender: </b><%= @level.gender %>
 
-  <% if can? :manage, Level %>
-    <br><%= link_to 'Edit', edit_level_path(@level), style: "font-size: 20px; color: #{@bgc_blue}" %>
-  <% end %>
   </div>
 
   <div style="width: auto; float:left; margin: 30px 0 40px 0;">    
@@ -39,22 +50,25 @@
 
   <% if !@level.jack_rabbit_name.nil? %>
     <div id="registration_container">
-      <% has_registration = "none" %>
       <h1 style="font-size: 35px; margin: 0;">Registration</h1>
-      <div style="margin-top: -15px;">
-        <% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %>
-        <% locations.each do |loc, value| %>
+      <div style="margin-top: -10px;">
+        <% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
+        <%= form_tag @level, :method => 'get' do %>
+          <%= select_tag "location", options_for_select(locations, params[:location]), :onchange => "this.form.submit();", :prompt => "Choose Location", style: "margin: 10px 43%; width: 14%;"%>
+        <% end %>
+        <%# locations.each do |loc, value| %>
+        <% if !params[:location].nil? && !params[:location].empty? %>
           <div>
-            <h3 style="margin-bottom: 0; color: <%= @bgc_blue %>; font-size: 20px;"><%= loc %></h1>
               <%# We display none here so that we can programatically show the ones that actually have a table %>
               <div class="registration_level_container" style="display:none">
-                <% if @level.color.nil? %>
-                  <% color = "none" %>
-                <% else %>
+                <h1 style="text-align: left; margin: -60px 0 0 0;"><%= locations.key(params[:location]) %></h1>
+                <%# if @level.color.nil? %>
+                  <%# color = "none" %>
+                <%# else %>
                   <%# color = @level.color %>
-                <% end %>
-                <div class="jr_class_table_container" style="background-color: <%= color %>;">
-                  <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%= value %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= @level.jack_rabbit_name %>"></script>
+                <%# end %>
+                <div class="jr_class_table_container" style="background-color: <%#= color %>;">
+                  <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%= params[:location] %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= @level.jack_rabbit_name %>"></script>
                 </div>
               </div>
           </div>
@@ -62,7 +76,8 @@
       </div>
     </div>
   <% else %>
-    <% has_registration = "block" %>
+    <h2 style="text-align:center; margin: 100px;">Sorry, Online registration is unavailable for this level</h2>
   <% end %>
-  <h2 id="no_registration" style="text-align:center; margin: 100px; display: <%= has_registration %>">Sorry, Online registration is unavailable for this level</h2>
+  <h2 id="no_registration" style="text-align:center; margin: 100px; display: none">No classes for this level at this location</h2>
+  
 </div>
