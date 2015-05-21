@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150423214256) do
+ActiveRecord::Schema.define(:version => 20150521201415) do
 
   create_table "absents", :force => true do |t|
     t.string   "first_name"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20150423214256) do
     t.text     "description"
     t.text     "short_description"
     t.string   "video_url"
+    t.string   "image"
   end
 
   create_table "locations", :force => true do |t|

@@ -1,33 +1,36 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.14'
 gem 'pg'
 gem 'yaml_db'
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-minicolors-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-ui-rails'
 end
-
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '3.1.2' #for local
-  gem 'bcrypt-ruby', '~> 3.0.1' #for live
-
-gem 'thin'
-gem 'cancan'
-gem 'will_paginate'
 
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	gem 'quiet_assets'
 	gem 'debugger'
+  # gem 'bcrypt-ruby', '3.1.2' #for local
 end
+
+
+
+# To use ActiveModel has_secure_password
+gem 'bcrypt-ruby'
+
+gem 'thin'
+gem 'cancan'
+gem 'will_paginate'
 
 gem 'mini_magick'
 gem "carrierwave"
@@ -39,6 +42,7 @@ gem "stripe"
 
 gem 'google-analytics-rails'
 # gem "client_side_validations"
+
 
 gem 'premailer-rails'
 gem 'nokogiri'
