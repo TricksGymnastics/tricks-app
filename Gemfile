@@ -26,7 +26,7 @@ end
 
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~> 3.0.1'
 
 gem 'thin'
 gem 'cancan'
