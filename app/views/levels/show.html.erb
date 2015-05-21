@@ -45,6 +45,9 @@
     <% if !@level.video_url.nil? && !@level.video_url.empty? %>
         <iframe style="float: right; padding: 5px 0px 15px 15px" width="367" height="248" src="<%= @level.video_url %>" frameborder="0"></iframe>
     <% end %>
+    <% if !@level.image.nil? && !@level.image.empty? %>
+      <%= image_tag @level.image_url(:thumb).to_s, style: "border: 2px solid #333; box-shadow: 0 0 15px #333; width: 300px; height: auto; float: left;" %>
+    <% end %>
     <p style="font-size: 16px;"><%= @level.description %></p>
   </div>
 
@@ -62,12 +65,12 @@
               <%# We display none here so that we can programatically show the ones that actually have a table %>
               <div class="registration_level_container" style="display:none">
                 <h1 style="text-align: left; margin: -60px 0 0 0;"><%= locations.key(params[:location]) %></h1>
-                <%# if @level.color.nil? %>
-                  <%# color = "none" %>
-                <%# else %>
-                  <%# color = @level.color %>
-                <%# end %>
-                <div class="jr_class_table_container" style="background-color: <%#= color %>;">
+                <% if @level.color.nil? %>
+                  <% color = "none" %>
+                <% else %>
+                  <% color = @level.color %>
+                <% end %>
+                <div class="jr_class_table_container" style="background-color: <%= color %>;">
                   <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%= params[:location] %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= @level.jack_rabbit_name %>"></script>
                 </div>
               </div>

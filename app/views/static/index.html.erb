@@ -16,42 +16,42 @@
 <% end %>
 <% @twenty_years = "block" %>
 <% @jr_login = "block" %>
-
-
-
+<!-- <script src="http://cdn.jquerytools.org/1.2.6/tiny/jquery.tools.min.js"></script> -->
 <div id="promoboxholder">	
 	<div id="promo-frame">
 		<div id="promo-header">
 			<h1 style="font-size: 26px; margin: 0px 0px 0px 0px; font-variant: small-caps;">Current Events</h1>
 		</div>
 		<div id="promo-tabs">
+			<ul>
+				<% i = 0 %>
+				<% @live_promos.each do |promo| %>
+					<% i = i+1 %>
+					<li id="slide_<%= promo.sort_order %>" class="promo-tab"><a href='#tab-<%= i %>'><%= promo.title %></a></li>
+				<% end %>
+			</ul>
+			<% i = 0 %>
 			<% @live_promos.each do |promo| %>
-				<div id="slide_<%= promo.sort_order %>" class="promo-tab"><%= promo.title %></div>
+			<% i = i+1 %>
+			<div class="promo-image" id="tab-<%= i %>">
+				<% if promo.data_type == "html" %>
+					<%= render :inline => promo.html_code %>
+				<% else %>
+					<% if promo.link == true %>
+							<%= link_to image_tag(promo.image_url, alt: promo.title), promo.link_path, style: "display:block; cursor: pointer;" %>				
+					<% else %>
+							<%= image_tag promo.image_url, alt: promo.title %>
+					<% end %>
+				<% end %>
+			</div>
 			<% end %>
 		</div>
 	</div>
+		
 	<%= image_tag("structure/New_Transparent_PromoBox_Master.png", style:"position: absolute; z-index: 2; pointer-events:none;") %>
 
 	<!--				Promo Images Here        -->
-	<div id="promo-img">
-		<% @live_promos.each do |promo| %>
-			<% if promo.data_type == "html" %>
-				<object class="promo_image">
-					<%= render :inline => promo.html_code %>
-				</object>
-			<% else %>
-				<% if promo.link == true %>
-					<object class="promo_image">
-						<%= link_to image_tag(promo.image_url, alt: promo.title), promo.link_path, style: "display:block; cursor: pointer;" %>
-					</object>						
-				<% else %>
-					<object class="promo_image">
-						<%= image_tag promo.image_url, alt: promo.title %>
-					</object>
-				<% end %>
-			<% end %>
-		<% end %>
-	</div>
+	
 
 	<a style="display:block; position: absolute; z-index: 10;margin: 310px 0 0 450px; width: 97px; height: 98px; border-radius: 49px;" href="http://www.usagym.org">
 		<button style="cursor: pointer; background:none; border: none;">

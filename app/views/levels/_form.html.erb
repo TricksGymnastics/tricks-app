@@ -1,4 +1,8 @@
-<div id="form">
+<%= javascript_include_tag "jquery.minicolors"%>
+<%= javascript_include_tag "levels"%>
+<%= stylesheet_link_tag "jquery.minicolors" %>
+
+<div id="levelform">
   <%= form_for(@level) do |f| %>
     <% if @level.errors.any? %>
       <div id="error_explanation">
@@ -12,44 +16,47 @@
     <% end %>
 
     <div style="float:left; width: 100%; line-height: 35px;">
-      <%= f.label :classtype_id, "Class Type" %>: 
+      <%= f.label :classtype_id, "Class Type" %>
       <%= f.collection_select :classtype_id, Classtype.where(:id => 1..9), :id, :name, :prompt => "Select a Class Type" %><br>
 
-      <%= f.label :levelname, "Level" %>: 
+      <%= f.label :levelname, "Level" %>
       <%= f.text_field :levelname %><br>
 
-      <%= f.label :jack_rabbit_name, "Jackrabbit Name" %>: 
+      <%= f.label :jack_rabbit_name, "Jackrabbit Name" %>
       <%= f.text_field :jack_rabbit_name %><br>
 
-      <%= f.label :length %>:
+      <%= f.label :length %>
       <%= f.number_field :length %><br>
 
-      <%= f.label :price %>:
+      <%= f.label :price %>
       <%= f.number_field :price %><br>
 
-      <%= f.label :age %>:
+      <%= f.label :age %>
       <%= f.text_field :age %><br>
 
-      <%= f.label :gender %>:
+      <%= f.label :gender %>
       <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender" %><br>
 
-      <%= f.label :order %>:
+      <%= f.label :order %>
       <%= f.number_field :sort_order %><br>
 
-      <%= f.label :color %>:
-      <%= f.text_field :color %><br>
+      <%= f.label :color %>
+      <%= f.text_field :color, type: 'minicolors' %><br>
 
-      <%= f.label :description %>:<br>
-      <%= f.text_area :description %><br>
+      <%= f.label :description %>
+      <%= f.text_area :description, size: '80x6' %><br>
 
-      <%= f.label :short_description %>:<br>
-      <%= f.text_area :short_description %><br>
+      <%= f.label :short_description %>
+      <%= f.text_area :short_description, size: '80x6' %><br>
 
-      <%= f.label :video_url %>:
-      <%= f.text_field :video_url %><br>
+      <%= f.label :video_url %>
+      <%= f.text_field :video_url, size: 60 %><br>
+
+      <%= f.label :image %>
+      <%= f.file_field :image %><br>
     </div>
-    <div class="actions">
-      <%= f.submit %>
+    <div class="actions" style="float:left; width: 100%; text-align: center;">
+      <%= f.submit "Submit", style: "width: 130px; height: 30px; margin: 30px auto 100px auto;" %>
     </div>
   <% end %>
 </div>
