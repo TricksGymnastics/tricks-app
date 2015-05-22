@@ -661,7 +661,6 @@ Bottom Menu
 
   :focus{
     outline: none;
-    background-image: url(/assets/structure/tab-color-selected.png); 
   }
 
   a {
@@ -676,6 +675,10 @@ Bottom Menu
     padding-top: 5px;
     text-decoration: none;
   }
+}
+
+.ui-tabs-active a{
+  background-image: url(/assets/structure/tab-color-selected.png);
 }
 
 /*#promoboxholder {

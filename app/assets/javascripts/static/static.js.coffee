@@ -1,19 +1,14 @@
-jQuery ->
-  $('#promo-tabs').tabs();
-  # $('#promo-tabs').tabs($('.promo_image'),
-  #   effect: 'fade'
-  #   fadeInSpeed: 'slow'
-  #   rotate: true
-  #   onBeforeClick: (event, tabIndex) ->
-  #     alert('test')
-  #     i = 0
-  #     while i <= 4
-  #       pt = '#slide_' + i
-  #       if i == tabIndex
-  #         $(pt).addClass 'current'
-  #       else
-  #         $(pt).removeClass 'current'
-  #       i++
-  #     return
-  # )
-  # return
+# https://api.jqueryui.com/tabs/
+jQuery ->  
+  $('#promo-tabs').tabs(
+    hide: 
+      effect: 'fadeOut'
+      duration: 300
+    show: 
+      effect: 'fadeIn' 
+      duration: 300
+  )
+  window.setInterval (->
+    selected = $('#promo-tabs').tabs('option', 'active')
+    $('#promo-tabs').tabs 'option', 'active', selected + 1
+  ), 6000
