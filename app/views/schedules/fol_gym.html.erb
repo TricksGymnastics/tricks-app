@@ -176,49 +176,48 @@
                 <% end %>
 
                 <!-- ONLY NEEDED FOR TAG CLASSES -->
-                <!--
+                
                 <div id="girls_levels" style="border:none; width:312px;">
                     <div id="tag_container">
                         <div id="tag_header">
                             <h1> TAG </h1>
                         </div>
                         <div id="tag_levels_container">
-                            <%# @levels_by_type.each do |level| %>
-                                <%# next if @schedules_by_level[level.id].nil? %>
-                                <%# if level.sort_order.between?(213, 214) %>
+                            <% @levels_by_type.each do |level| %>
+                                <% next if @schedules_by_level[level.id].nil? %>
+                                <% if level.sort_order.between?(213, 217) %>
                                     <div id="tag_levels"> 
-                                        <h3 class="leveltitle"><%#= level.levelname %></h3>
-                                        <h4>Length: <%#= level.length %> min. &nbsp;&nbsp; Ages <%#= level.age %> &nbsp;&nbsp; $<%#= level.price %> / (4 Weeks)</h4>
+                                        <h3 class="leveltitle"><%= level.levelname %></h3>
+                                        <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>
                                             
-                                        <%# schedules = @schedules_by_level[level.id].group_by(&:day)  %>
-                                        <%# schedules.each do |day, schedules| %>
+                                        <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
+                                        <% schedules.each do |day, schedules| %>
                                             <div class="day">                    
-                                                <div class="day_name"><h3><%#= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
+                                                <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
                                                 <div class="classes_box">
-                                                    <%# schedules.each do |schedule| %>
+                                                    <% schedules.each do |schedule| %>
                                                         <div style="float: left; width: 70px; margin-right: 10px;">
-                                                            <%#= schedule.time.strftime("%l:%M %p") %>
+                                                            <%= schedule.time.strftime("%l:%M %p") %>
                                                         </div>
                                                         <div style="float: left;">
-                                                            <%#= schedule.teacher %>
+                                                            <%= schedule.teacher %>
                                                         </div>
-                                                        <%# if schedule.future_class? %>
+                                                        <% if schedule.future_class? %>
                                                             <div style="font-size: 11px; float: right">
                                                                 *Future Class*
                                                             </div>
-                                                        <%# end %>
+                                                        <% end %>
                                                         <br>
-                                                    <%# end %>
+                                                    <% end %>
                                                 </div>
                                             </div>
-                                        <%# end %>
+                                        <% end %>
                                     </div>
-                                <%# end %> 
-                            <%# end %> 
+                                <% end %> 
+                            <% end %> 
                         </div>
                     </div>
                 </div>
-                -->
 
             </div>
 
