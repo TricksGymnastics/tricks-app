@@ -69,7 +69,7 @@
         <%= date_select("coach", "startdate", :default => Date.today, :order => [:month, :day, :year], :start_year => 1990, :end_year => Date.today.year + 3) %>
         <br>        
         <%= hidden_field_tag "coach[classtype_ids][]", nil %>
-        <% Classtype.all.each do |classtype| %>
+        <% Classtype.order(:id).each do |classtype| %>
           <div style="float:left; margin: 2px 30px 0px 0px; height: 28px;">
           <%= check_box_tag "coach[classtype_ids][]", classtype.id, @coach.classtype_ids.include?(classtype.id), id: dom_id(classtype) %>
           <%= label_tag dom_id(classtype), classtype.name %>
@@ -92,13 +92,13 @@
 
         <b><%= f.label :levels, "Levels Coach is trained to teach:" %></b><br>
         <!--Gymnastics-->
-        <div style="float:left;border: 1px solid #666; width: 200px; padding: 5px 15px; margin: 3px">
+        <div style="float:left; margin: 3px; border: 1px solid #666; width: 200px; padding: 5px 15px;">
           <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Gymnastics</h2>
           <%= hidden_field_tag "coach[level_ids][]", nil %>
           <% Level.where(:classtype_id => "1").each do |level| %>
             <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
             <%= label_tag dom_id(level), level.levelname %><br>
-          <% end %>  
+          <% end %> 
         </div>
 
         <!--Tumblebunnies-->
@@ -112,18 +112,29 @@
         </div>
 
         <!--Swim-->
-        <div style="float:left;border: 1px solid #666; width: 181px; padding: 5px 15px; margin: 3px; margin-right:1px;">
-          <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Swim</h2>
-          <%= hidden_field_tag "coach[level_ids][]", nil %>
-          <% Level.where(:classtype_id => "4").each do |level| %>
-            <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
-            <%= label_tag dom_id(level), level.levelname %><br>
-          <% end %>  
+        <div style="float:left; margin: 3px; margin-right:1px;">
+
+          <div style="border: 1px solid #666; width: 181px; padding: 5px 15px; margin-bottom: 6px;">
+            <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">TAG</h2>
+            <%= hidden_field_tag "coach[level_ids][]", nil %>
+            <% Level.where(:classtype_id => "5").each do |level| %>
+              <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
+              <%= label_tag dom_id(level), level.levelname %><br>
+            <% end %> 
+          </div>
+          <div style="border: 1px solid #666; width: 181px; padding: 5px 15px;">
+            <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Swim</h2>
+            <%= hidden_field_tag "coach[level_ids][]", nil %>
+            <% Level.where(:classtype_id => "4").each do |level| %>
+              <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
+              <%= label_tag dom_id(level), level.levelname %><br>
+            <% end %>  
+          </div>
         </div>
 
       </div>
         <!--Dance-->
-      <div style="float:right; border: 1px solid #666; width: 230px; padding: 5px 15px; margin-top: 51px">
+      <div style="float:right; border: 1px solid #666; width: 230px; padding: 5px 15px; margin-top: 48px">
         <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Dance</h2>
         <%= hidden_field_tag "coach[level_ids][]", nil %>
         <% Level.where(:classtype_id => "3").each do |level| %>

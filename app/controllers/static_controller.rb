@@ -42,4 +42,20 @@ class StaticController < ApplicationController
     @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'")
   end
 
+  def tumblebunnies
+    @tumblebunnies = Level.joins(:classtype).where("classtypes.name = 'Tumblebunnies'")
+  end
+
+  def tag
+    @tag = Level.joins(:classtype).where("classtypes.name = 'TAG'")
+  end
+
+  def dance
+    @dance = Level.joins(:classtype).where("classtypes.name = 'Dance'")
+  end
+
+  def swim
+    @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'")
+  end
+
 end

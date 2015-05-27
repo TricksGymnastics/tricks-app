@@ -58,7 +58,7 @@
       <div>
         <% @coach_levels.each do |classtype, levels| %>
           <div style="float:left; margin: 0px 35px 30px 10px;">
-            <h3 style="margin:3px 0px; text-decoration:underline; font-size: 14px;"><% if(classtype == 1) %>Gymnastics<% elsif(classtype == 2) %>Tumblebunnies<% elsif(classtype == 3) %>Dance<% elsif(classtype == 4) %>Swim<% end %></h3>
+            <h3 style="margin:3px 0px; text-decoration:underline; font-size: 14px;"><% if(classtype == 1) %>Gymnastics<% elsif(classtype == 2) %>Tumblebunnies<% elsif(classtype == 3) %>Dance<% elsif(classtype == 4) %>Swim<% elsif(classtype == 5) %>TAG<% end %></h3>
             <ul style="margin: 0px 0px 0px 20px">
               <% unless classtype == 9 %>
                 <% levels.each do |level| %>

@@ -111,6 +111,7 @@ class SchedulesController < ApplicationController
   def gb_gym
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    @tag_levels = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
     render :layout => "layout_for_print_schedule"
   end  
 
@@ -133,6 +134,7 @@ class SchedulesController < ApplicationController
   def fol_gym
     @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    @tag_levels = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
     render :layout => "layout_for_print_schedule"
   end  
 
@@ -160,6 +162,7 @@ class SchedulesController < ApplicationController
   def sac_gym
     @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    @tag_levels = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
     render :layout => "layout_for_print_schedule"
   end 
  

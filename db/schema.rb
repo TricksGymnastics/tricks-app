@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150521201415) do
+ActiveRecord::Schema.define(:version => 20150527022259) do
 
   create_table "absents", :force => true do |t|
     t.string   "first_name"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20150521201415) do
     t.text     "short_description"
     t.string   "video_url"
     t.string   "image"
+    t.boolean  "show_registration"
   end
 
   create_table "locations", :force => true do |t|

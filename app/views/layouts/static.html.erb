@@ -99,25 +99,28 @@
                 </li>
               </ul>
             </li>
-            <li>
-              <%= link_to "Register", "Javascript:void()" %>
+            <!-- <li>
+              <%#= link_to "Register", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
-                  <%= link_to "Granite Bay", registration_path(location: 'GB', classtype: '') %>
+                  <%#= link_to "Granite Bay", registration_path(location: 'GB', classtype: '') %>
                 </li>
                 <li class="submenu_link">
-                  <%= link_to "Folsom", registration_path(location: 'FOL', classtype: '') %>
+                  <%#= link_to "Folsom", registration_path(location: 'FOL', classtype: '') %>
                 </li>
                 <li class="submenu_link">
-                  <%= link_to "Sacramento", registration_path(location: 'SAC', classtype: '') %>
+                  <%#= link_to "Sacramento", registration_path(location: 'SAC', classtype: '') %>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <li>
               <%= link_to "Gymnastics", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
-                  <%= link_to "Gymnastics", gymnastics_path %>
+                  <%= link_to "Preschool", tumblebunnies_path %>
+                </li>
+                <li class="submenu_link">
+                  <%= link_to "School Aged", gymnastics_path %>
                 </li>
                 <li class="submenu_link">
                   <%= link_to "Competitive", competitive_path %>
@@ -128,10 +131,18 @@
               </ul>
             </li>
             <li>
+              <%= link_to "TAG", "Javascript:void()" %>
+              <ul class="submenu">
+                <li class="submenu_link">
+                  <%= link_to "Classes", tag_path %>
+                </li>
+              </ul>
+            </li>
+            <li>
               <%= link_to "Dance", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
-                  <%= link_to "Dance", dance_path %>
+                  <%= link_to "Classes", dance_path %>
                 </li>
                 <li class="submenu_link">
                   <%= link_to "Dance Company", dance_company_index_path %>
@@ -145,7 +156,7 @@
               <%= link_to "Swim", "Javascript:void()" %>
               <ul class="submenu">
                 <li class="submenu_link">
-                  <%= link_to "Swim", swim_path %>
+                  <%= link_to "Classes", swim_path %>
                 </li>
               </ul>
             </li>
