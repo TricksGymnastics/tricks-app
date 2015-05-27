@@ -46,42 +46,43 @@
         <%# 367 x 248 %>
         <iframe style="float: right; padding: 5px 0px 15px 15px" width="300" height="203" src="<%= @level.video_url %>" frameborder="0"></iframe>
     <% end %>
-    <% if !@level.image.nil? %>
+    <% if !@level.image.nil? && !@level.image_url(:thumb).to_s.empty? %>
       <%= image_tag @level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 250px; height: auto; float: left; margin-right: 10px;" %>
     <% end %>
-    <p style="font-size: 16px;"><%= @level.description %></p>
+    <p style="font-size: 16px; min-width: 300px;"><%= @level.description %></p>
   </div>
 
-  <% if !@level.jack_rabbit_name.nil? %>
-    <div id="registration_container">
-      <h1 style="font-size: 35px; margin: 0;">Registration</h1>
-      <div style="margin-top: -10px;">
-        <% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
-        <%= form_tag @level, :method => 'get' do %>
-          <%= select_tag "location", options_for_select(locations, params[:location]), :onchange => "this.form.submit();", :prompt => "Choose Location", style: "margin: 10px 43%; width: 14%;"%>
-        <% end %>
-        <%# locations.each do |loc, value| %>
-        <% if !params[:location].nil? && !params[:location].empty? %>
-          <div>
-              <%# We display none here so that we can programatically show the ones that actually have a table %>
-              <div class="registration_level_container" style="display:none">
-                <h1 style="text-align: left; margin: -60px 0 0 0;"><%= locations.key(params[:location]) %></h1>
-                <% if @level.color.nil? %>
-                  <% color = "none" %>
-                <% else %>
-                  <% color = @level.color %>
-                <% end %>
-                <div class="jr_class_table_container" style="background-color: <%= color %>;">
-                  <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%= params[:location] %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= @level.jack_rabbit_name %>"></script>
+  <% if @level.show_registration %>
+    <% if !@level.jack_rabbit_name.nil? %>
+      <div id="registration_container">
+        <h1 style="font-size: 35px; margin: 0;">Registration</h1>
+        <div style="margin-top: -10px;">
+          <% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
+          <%= form_tag @level, :method => 'get' do %>
+            <%= select_tag "location", options_for_select(locations, params[:location]), :onchange => "this.form.submit();", :prompt => "Choose Location", style: "margin: 10px 43%; width: 14%;"%>
+          <% end %>
+          <%# locations.each do |loc, value| %>
+          <% if !params[:location].nil? && !params[:location].empty? %>
+            <div>
+                <%# We display none here so that we can programatically show the ones that actually have a table %>
+                <div class="registration_level_container" style="display:none">
+                  <h1 style="text-align: left; margin: -60px 0 0 0;"><%= locations.key(params[:location]) %></h1>
+                  <% if @level.color.nil? %>
+                    <% color = "none" %>
+                  <% else %>
+                    <% color = @level.color %>
+                  <% end %>
+                  <div class="jr_class_table_container" style="background-color: <%= color %>;">
+                    <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%= params[:location] %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= @level.jack_rabbit_name %>"></script>
+                  </div>
                 </div>
-              </div>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% else %>
-    <h2 style="text-align:center; margin: 100px;">Sorry, Online registration is unavailable for this level</h2>
+    <% else %>
+      <h2 style="text-align:center; margin: 100px;">Sorry, Online registration is unavailable for this level</h2>
+    <% end %>
+    <h2 id="no_registration" style="text-align:center; margin: 100px; display: none">No classes for this level at this location</h2>
   <% end %>
-  <h2 id="no_registration" style="text-align:center; margin: 100px; display: none">No classes for this level at this location</h2>
-  
 </div>

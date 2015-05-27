@@ -183,7 +183,7 @@
                             <h1> TAG </h1>
                         </div>
                         <div id="tag_levels_container">
-                            <% @levels_by_type.each do |level| %>
+                            <% @tag_levels.each do |level| %>
                                 <% next if @schedules_by_level[level.id].nil? %>
                                 <% if level.sort_order.between?(213, 217) %>
                                     <div id="tag_levels"> 

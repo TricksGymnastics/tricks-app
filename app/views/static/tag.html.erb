@@ -1,0 +1,21 @@
+<% @title = "Tricks Gymnastics" %>
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_yellow %>;}
+  #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
+<% end %>
+
+<div class="content">
+  <h1>Tricks Agility Gymnastics</h1>
+  <div id="infobox" style="width: 945px;">
+    <iframe style="float:right; padding: 5px 0px 15px 15px" width="367" height="248" src="http://www.youtube.com/embed/kT9zqO6XxQ8?rel=0" frameborder="0"></iframe>
+  
+    <p>With pediatric obesity at an epidemic level of 13% of children and adolescents in the United States, getting children away from the television or computer games and into the gym is a terrific first step toward a healthy lifestyle. Gymnastics is perhaps one of the most comprehensive &quot;lifestyle exercise programs&quot; available to children, incorporating strength, flexibility, speed, balance, coordination, power and discipline. </p>
+    <p> Studies show that children learn cognitive skills more effectively in an environment that includes the body as well as the mind (Barrett, 1998). Gymnastics and early childhood movement education is directly attributed to developing neurological pathways in students and promoting reading readiness. Children who have participated in movement education activities have longer attention spans, increased communication skills, general problem solving skills and improved self-esteem. </p>
+  </div>
+  <div id="infobox">
+    <% @tag.each do |level| %>
+      <h3><%= link_to level.levelname + " - Age: " + level.age, level, id: 'link' %>:</h3>
+      <%= level.short_description %><br>
+    <% end %>
+  </div>
+</div>
