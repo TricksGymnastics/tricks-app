@@ -80,6 +80,7 @@ class Ability
 			can :create, SurveyResult
 			can :read, Survey
 			can :create, World
+			can :read, Level
 		end
 	end 
 end
