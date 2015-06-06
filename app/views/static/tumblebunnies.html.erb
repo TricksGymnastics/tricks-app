@@ -10,11 +10,14 @@
     <!-- <iframe style="float:right; padding: 5px 0px 15px 15px" width="367" height="248" src="http://www.youtube.com/embed/kT9zqO6XxQ8?rel=0" frameborder="0"></iframe> -->
     <p> We have developed an exciting and highly successful approach to pre-school child development using gymnastics as a learning environment. Our 45 minute Tumblebunny classes are jam-packed with music, movement, fun and physical challenges. The Tumblebunnies have their own gym separate from the school- age children. The children climb, roll, jump, swing, bounce, hang, balance, and most importantly, never stop moving! </p>
     <p> Our wonderful coaches have a true love and enthusiasm for children. We provide a positive environment with lots of opportunities to succeed and grow. As soon as your child becomes mobile, a whole new world opens up including motor development activities at TRICKS.®  This is a critical brain development age. Children need to have many, many varied experiences from 0-5 years old. </p>
-  </div>
-  <div id="infobox">
+
+    <br>
+    <h2 style="text-align:center;font-size: 22px;">Click on a Class Name To Register</h2>
+    
+    <% i = 0 %>
     <% @tumblebunnies.each do |level| %>
-      <h3><%= link_to level.levelname + " - Age: " + level.age, level, id: 'link' %>:</h3>
-      <%= level.short_description %><br>
+      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true} %>
+      <% i += 1 %>
     <% end %>
   </div>
   </div>
