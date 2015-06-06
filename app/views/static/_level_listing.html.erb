@@ -1,13 +1,14 @@
-<% if i > 0 || show_first_picture %>
-  <% if i.to_i.even? %>
-    <% if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
-      <%= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: left; margin-right: 10px;" %>
-    <% end %>
-  <% else %>
-    <% if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
-      <%= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: right; margin-left: 10px;" %>
+
+  <% if i > 0 || show_first_picture %>
+    <% if i.to_i.even? %>
+      <% if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
+        <%= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: left; clear: right; margin-right: 10px;" %>
+      <% end %>
+    <% else %>
+      <% if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
+        <%= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: right; margin-left: 10px; clear: left;" %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
-<h3><%= link_to level.levelname + " - Age: " + level.age, level, id: 'link' %>:</h3>
-<p><%= level.short_description %></p>
+  <h3><%= link_to level.levelname + " - Age: " + level.age, level, id: 'link' %>:</h3>
+  <p><%= level.short_description %></p>
