@@ -1,6 +1,6 @@
 
   <% if i > 0 || show_first_picture %>
-    <% if i.to_i.even? %>
+    <% if i%3 == 0 %>
       <% if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
         <%= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: left; clear: right; margin-right: 10px;" %>
       <% end %>
