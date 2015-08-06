@@ -56,6 +56,7 @@ class StaticController < ApplicationController
 
   def swim
     @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'")
+    @swim.delete_if   {|level| level.levelname == "Open By Request"}
   end
 
 end

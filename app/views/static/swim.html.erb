@@ -3,7 +3,7 @@
   body {background-color: <%= @bgc_blue %>;}
 <% end %>
 
-<div id="content">
+<div class="content">
 	<h1 style="margin-bottom: 0px; font-size: 40px">TRICKS Swim Program</h1>
 	<h2 style="text-align: center;">(Ages 0-10)</h2>
 	<div style="float:left; width:262px; text-align:center; margin-right: 20px">
@@ -14,15 +14,23 @@
 		</h2>
 		<img src="/assets/structure/swimgirl.png" style="margin-top: 250px" />
 	</div>
-	<div style="float: left; width: 433px; margin-bottom: 0px; height: 1050px;">
+	<div id="infobox" style="float: left; width: 433px; margin-bottom: 0px; height: 1050px;">
 		<p>Your child will splash his/her way through 45 minutes over flowing with music, motion and swim challenges. This nurturing environment combines physical activity with positive reinforcement and recognition of effort, which helps transform tiny people into confident youth and later into contributing adults. Try out our risk free first class and you'll agree that TRICKS Splash is the best place to learn swimming – AND THE WATER IS 89 degrees!</p>
 		<p>Who says you can't swim all year long! Unlike most swim programs, Tricks Splash is an ongoing swim program, so you can join at any time. When your child is ready for the next level, so
 are we! The students progress at their own pace and our program is flexible enough to fit your schedule.
 		</p>
 		<h3>Technique &amp; Safety</h3>
 		<p>All of the swim classes offered by the Splash Program help your child learn proper swim technique as well as life saving water safety. Every class includes training on breath, strokes, kicks and floating. </p>
-		<h2>Which Class is right for my child?</h2>
-		<h3>Tadpole Tots (Ages 1-2)</h3>
+		<h2>Which Class is right for my child? Click on a Class for more information and to Register</h2>
+
+    <% i = 0 %>
+    <% @swim.each do |level| %>
+      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true} %>
+      <% i += 1 %>
+    <% end %>
+
+
+<!-- 		<h3>Tadpole Tots (Ages 1-2)</h3>
 		Any swim level. All 1 to 2 year old students start in the Tots class.
 		<h3>Minnows (Age 3)</h3>
 		Any swim level. All 3 year old students start in the Minnows class.
@@ -37,8 +45,7 @@ are we! The students progress at their own pace and our program is flexible enou
 		<h3>Basic (Ages 6-10)</h3>
 		If your child will dunk her head with no issues and can swim on her own at least 5 feet
 		<h3>Intermediate (Ages 6-10)</h3>
-		<p>If your child already swims freestyle at least 10 feet and can
-			float on his back 10 sec. </p>
+		<p>If your child already swims freestyle at least 10 feet and can	float on his back 10 sec. </p> -->
 	</div>
 	<div style="float:right; margin: 10px 10px 0px 0px;">
 		<img src="assets/structure/swimside.png" />
