@@ -60,15 +60,17 @@
 </div>
 
 <div style="float: right; width: 250px; height: 600px; margin-right: 10px;">
-	<a href="gymnastics">
-		<img style="margin-top:1px; margin-bottom: 15px;"  src="/assets/structure/gymnastics_button.png" width="250" height="95" alt="Gymnastics" />
-	</a>
-	<a href="swim">
-		<img style="margin-bottom: 15px;" src="/assets/structure/swim_button.png" width="250" height="95" alt="Swim Instruction" />
-	</a>
-	<a href="dance">
-		<img src="/assets/structure/dance_button.png" width="250" height="95" alt="Dance" />
-	</a>
+	<% types = {'gymnastics' => ['WebButton-Gym', 'Gymnastics', @bgc_green], 'dance' => ['WebButton-Dance', 'Dance', @bgc_pink], 'swim' => ['WebButton-Swim','Swim', @bgc_blue], 'tag' => ['WebButton-TAG', 'TAG', @bgc_orange]} %>
+	
+	<% types.each do |key, info| %>
+		<div style=" background-color: <%= info[2] %>;margin-bottom: 15px; padding: 8px 8px 6px 8px; border-radius: 15px; box-shadow: 4px 4px 5px #888; width: 225px;">
+			<a href="<%= key %>">
+				<img style="padding: 5px; background-color: white; border-radius: 8px; margin: 0 auto; width: 214px; box-shadow: 0px 0px 5px #fff;" src="/assets/structure/<%= info[0] %>.png" alt="<%= info[1] %>" />
+			</a>
+		</div>
+	<% end %>
+
+
 
 	<!-- Currently Disabled mailing list subscription form
 	<div align="center" style="margin: 30px 0px 5px -12px; text-align:center; font-size:11px"> Join our email club for coupons and special offers. </div>
@@ -78,9 +80,9 @@
 	</form>
 	-->
 
-	<a href="polkadots">
+<!-- 	<a href="polkadots">
 		<img style="margin-top: 15px;" src="/assets/structure/polkadots_button.png" width="250" height="87" alt="Polka Dots" />
-	</a>
+	</a> -->
 	<div style="text-align: left;">
 			<a style="text-decoration: none;" href="http://www.facebook.com/pages/Tricks-Gymnastics/101697380325">
 				<img src="/assets/structure/facebook.jpg" width="46" height="41" alt="Facebook" />

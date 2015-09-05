@@ -28,21 +28,21 @@ development:
   encoding: unicode
   database: tricks_development
   pool: 5
-  username: postgres
-  password: password
+  username: tensai
+  password: tricks
 
 production:
   adapter: postgresql
   encoding: unicode
   database: tricks_production
   pool: 5
-  username: postgres
-  password: password
+  username: tensai
+  password: tricks
 
 test:
   adapter: postgresql
   encoding: unicode
   database: tricks_test
   pool: 5
-  username: postgres
-  password: password
+  username: tensai
+  password: tricks
