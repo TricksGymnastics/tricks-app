@@ -218,23 +218,14 @@ body {
 /***********************************************************/
 
 #tag_container{
-	float: right;
+	float: left;
 	/*border: blue solid 1px;*/
-	width: 322px;
-}
-#tag_header{
-	border: 1px solid black; 
-    background-color:#ccc;
-    margin: 6px 0px;
-    width: 320px;
-}
-#tag_levels_container {
-	/* ID I use in masorny to sort out all the levels */
-	/*border: blue solid 3px;*/
+	width: 987px;
+	margin-top: 6px;
 }
 #tag_levels{
 	border: 1px solid black; 
-	margin-bottom: 6px;
+	margin: 0px 7px 6px 0px;
 	width: 320px;
 	padding-bottom: 10px;
 	float: left;

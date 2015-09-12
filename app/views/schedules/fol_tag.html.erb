@@ -1,0 +1,98 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<!--  -->
+<!-- <script src="/assets/jquery.isotope.min.js"></script> -->
+<!-- <script src="/assets/jquery.masonry.ordered.js"></script> -->
+
+<%= javascript_include_tag "schedule/jquery.masonry.min" %>
+<%= stylesheet_link_tag "static/schedules_formatted", :media => "all" %>
+
+<script>
+    $(window).load(function(){
+
+        var $girls_container = $('#girls_levels_container');
+        var $boys_container = $('#boys_levels_container');
+        var $tumble_container = $('#tumble_levels_container');
+        var $tag_container = $('#tag_levels_container');
+
+        $girls_container.masonry({
+            itemSelector: '#column',
+            // layoutMode : 'masonry'
+        });
+        $('#column').masonry({
+            itemSelector: '#girls_levels'
+        })
+        $boys_container.masonry({
+            itemSelector: '#boys_levels',
+            // layoutMode: 'masonry'
+        });
+        $tumble_container.masonry({
+            itemSelector: '#tumble_levels',
+            // layoutMode: 'masonry'
+        });
+        $tag_container.masonry({
+            itemSelector: '#tag_levels'
+
+        })
+    });
+</script>
+<div id="master_container">
+    <div id="schedule_header">
+        <div style="width: 100px; height: 30px; float:left"></div>
+        <div style="width: 100px; float:right; margin-top:7px;"><a href="#" onClick=" window.print(); return false">Print this page</a></div>
+        <h2> School Age Gymnastics Schedule</h2>    
+    </div>
+    <div id="info_container">
+        <div id="info">
+            <h3>Important Information</h3>
+            <p style="font-size: 15px;">No Membership Fee is required.</p>
+            <p style="font-size: 12px;">*Schedules are subject to change*</p>
+            <p style="font-size: 12px;">*Prices quoted for 1 class per week*</p>
+            <p><b>Call to schedule your FIRST CLASS today!</b></p>
+        </div>
+        <div id="logo">
+            <a href="/">
+                <img src="/assets/tricks-header.png" height="118px"/>
+            </a>
+        </div>
+        <div id="gym_info">
+            <h2>Folsom</h2>
+            <h3>370 Plaza Dr.<br>Folsom, CA 95630</h3>
+            <h3>(916) 351-0024</h3>
+            <h3>www.tricksgym.com</h3>
+        </div>
+    </div>
+
+    <div id="tag_container">
+        <% @levels_by_type.each do |level| %>
+            <% next if @schedules_by_level[level.id].nil? %>
+            <div id="tag_levels"> 
+                <h3 class="leveltitle"><%= level.levelname %></h3>
+                <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price %> / (4 Weeks)</h4>
+                    
+                <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
+                <% schedules.each do |day, schedules| %>
+                    <div class="day">                    
+                        <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
+                        <div class="classes_box">
+                            <% schedules.each do |schedule| %>
+                                <div style="float: left; width: 70px; margin-right: 10px;">
+                                    <%= schedule.time.strftime("%l:%M %p") %>
+                                </div>
+                                <div style="float: left;">
+                                    <%= schedule.teacher %>
+                                </div>
+                                <% if schedule.future_class? %>
+                                    <div style="font-size: 11px; float: right">
+                                        *Future Class*
+                                    </div>
+                                <% end %>
+                                <br>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% end %> 
+    </div>
+
+</div>

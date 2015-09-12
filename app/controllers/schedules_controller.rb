@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
   
-  load_and_authorize_resource :except => [:choose, :fol_gym, :fol_tb, :fol_dance, :fol_swim, :gb_gym, :gb_tb, :gb_dance, :sac_gym, :sac_tb, :sac_dance]
+  load_and_authorize_resource :except => [:choose, :fol_gym, :fol_tb, :fol_dance, :fol_swim, :fol_tag, :gb_gym, :gb_tb, :gb_dance, :gb_tag, :sac_gym, :sac_tb, :sac_dance]
   helper_method :sort_column, :sort_direction
 
   # GET /schedules
@@ -111,7 +111,6 @@ class SchedulesController < ApplicationController
   def gb_gym
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
-    @tag_levels = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
     render :layout => "layout_for_print_schedule"
   end  
 
@@ -124,10 +123,14 @@ class SchedulesController < ApplicationController
   def gb_dance
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Dance").id)
-
-    
     render :layout => "layout_for_print_schedule"
   end 
+
+  def gb_tag
+    @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
+    render :layout => "layout_for_print_schedule"
+  end
 
 
 
@@ -155,6 +158,13 @@ class SchedulesController < ApplicationController
     @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Swim").id)
     render :layout => "layout_for_print_schedule"
   end  
+
+  def fol_tag
+    @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
+    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
+    render :layout => "layout_for_print_schedule"
+  end
+
 
 
 
