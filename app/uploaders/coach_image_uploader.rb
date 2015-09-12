@@ -50,11 +50,19 @@ class CoachImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
 
+  def auto_orient
+    manipulate! do |img|
+      img = img.auto_orient
+    end
+  end
+
   version :thumb do
+    process :auto_orient
     process :resize_to_fill => [210, 290]
   end
 
   version :small_thumb, :from_version => :thumb do 
+    process :auto_orient
     process :resize_to_limit => [150, 150]
   end
 
