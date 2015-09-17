@@ -14,6 +14,7 @@ Comments::Application.routes.draw do
   match 'schedules/sac_gym'
   match 'schedules/sac_tb'
   match 'schedules/sac_dance'
+  match 'schedules/sac_tag'
   match 'schedules/by_gym'
 
   match 'coaches/type/:name' => "coaches#type"
