@@ -9,32 +9,15 @@
 <script>
     $(window).load(function(){
 
-        var $girls_container = $('#girls_levels_container');
-        var $boys_container = $('#boys_levels_container');
-        var $tumble_container = $('#tumble_levels_container');
-        var $tag_container = $('#tag_levels_container');
-
-        $girls_container.masonry({
-            itemSelector: '#column',
-            // layoutMode : 'masonry'
-        });
-        $('#column').masonry({
-            itemSelector: '#girls_levels'
-        })
-        $boys_container.masonry({
-            itemSelector: '#boys_levels',
-            // layoutMode: 'masonry'
-        });
-        $tumble_container.masonry({
-            itemSelector: '#tumble_levels',
-            // layoutMode: 'masonry'
-        });
+        var $tag_container = $('#tag_container');
+      
         $tag_container.masonry({
-            itemSelector: '#tag_levels'
-
-        })
+            itemSelector: '#tag_levels',
+            // layoutMode: 'masonry'
+        });
     });
 </script>
+
 <div id="master_container">
     <div id="schedule_header">
         <div style="width: 100px; height: 30px; float:left"></div>
