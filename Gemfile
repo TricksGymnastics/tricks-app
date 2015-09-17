@@ -5,6 +5,7 @@ gem 'rails', '3.2.14'
 gem 'pg'
 gem 'yaml_db'
 gem 'therubyracer'
+gem 'rails_12factor'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
