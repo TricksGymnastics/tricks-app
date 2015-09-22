@@ -10,7 +10,6 @@
         var $girls_container = $('#girls_levels_container');
         var $boys_container = $('#boys_levels_container');
         var $tumble_container = $('#tumble_levels_container');
-        var $tag_container = $('#tag_levels_container');
 
         $girls_container.masonry({
             itemSelector: '#column',
@@ -27,10 +26,6 @@
             itemSelector: '#tumble_levels',
             // layoutMode: 'masonry'
         });
-        $tag_container.masonry({
-            itemSelector: '#tag_levels'
-
-        })
     });
 </script>
 <div id="master_container">
@@ -172,45 +167,6 @@
                         </div>
                     <% end %>
                 <% end %>
-                <div id="girls_levels" style="border:none; width:322px;">
-                    <div id="tag_container">
-                        <div id="tag_header">
-                            <h1> TAG </h1>
-                        </div>
-                        <div id="tag_levels_container">
-                            <% @tag_levels.each do |level| %>
-                                <% next if @schedules_by_level[level.id].nil? %>
-                                <div id="tag_levels"> 
-                                    <h3 class="leveltitle"><%= level.levelname %></h3>
-                                    <h4>Length: <%= level.length %> min. &nbsp;&nbsp; Ages <%= level.age %> &nbsp;&nbsp; $<%= level.price - 4 %> / (4 Weeks)</h4>
-                                        
-                                    <% schedules = @schedules_by_level[level.id].group_by(&:day)  %>
-                                    <% schedules.each do |day, schedules| %>
-                                        <div class="day">                    
-                                            <div class="day_name"><h3><%= Schedule::HUMAN_DAYS[day.to_i][0..2] %></h3></div>
-                                            <div class="classes_box">
-                                                <% schedules.each do |schedule| %>
-                                                    <div style="float: left; width: 70px; margin-right: 10px;">
-                                                        <%= schedule.time.strftime("%l:%M %p") %>
-                                                    </div>
-                                                    <div style="float: left;">
-                                                        <%= schedule.teacher %>
-                                                    </div>
-                                                    <% if schedule.future_class? %>
-                                                        <div style="font-size: 11px; float: right">
-                                                            *Future Class*
-                                                        </div>
-                                                    <% end %>
-                                                    <br>
-                                                <% end %>
-                                            </div>
-                                        </div>
-                                    <% end %>
-                                </div>
-                            <% end %> 
-                        </div>
-                    </div>
-                </div>
             </div>
 
             
