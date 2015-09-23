@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
   
-  load_and_authorize_resource :except => [:choose, :fol_gym, :fol_tb, :fol_dance, :fol_swim, :fol_tag, :gb_gym, :gb_tb, :gb_dance, :gb_tag, :sac_gym, :sac_tb, :sac_dance]
+  load_and_authorize_resource :except => [:choose, :fol_gym, :fol_tb, :fol_dance, :fol_swim, :fol_tag, :gb_gym, :gb_tb, :gb_dance, :gb_tag, :sac_gym, :sac_tb, :sac_dance, :sac_tag]
   helper_method :sort_column, :sort_direction
 
   # GET /schedules
