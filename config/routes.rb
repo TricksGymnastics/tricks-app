@@ -1,4 +1,7 @@
 Comments::Application.routes.draw do
+  resources :discontinue_notices
+
+
   root :to => 'static#index'
 
   match 'schedules/choose'  

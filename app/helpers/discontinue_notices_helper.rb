@@ -1,0 +1,2 @@
+module DiscontinueNoticesHelper
+end

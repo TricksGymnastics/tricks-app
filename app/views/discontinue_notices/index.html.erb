@@ -1,0 +1,33 @@
+<h1>Listing Notices to Discontinue</h1>
+
+<table>
+  <tr>
+    <th>Reason</th>
+    <th>Student name</th>
+    <th>Class day</th>
+    <th>Class time</th>
+    <th>Last day</th>
+    <th>Parent name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @discontinue_notices.each do |discontinue_notice| %>
+  <tr>
+    <td><%= discontinue_notice.reason %></td>
+    <td><%= discontinue_notice.student_first_name + " " + discontinue_notice.student_last_name %></td>
+    <td><%= DiscontinueNotice::DAYS[discontinue_notice.class_day][0] %></td>
+    <td><%= discontinue_notice.class_time.strftime("%l:%M %p") %></td>
+    <td><%= discontinue_notice.last_day %></td>
+    <td><%= discontinue_notice.parent_name %></td>
+    <td><%= link_to 'Show', discontinue_notice %></td>
+    <td><%= link_to 'Edit', edit_discontinue_notice_path(discontinue_notice) %></td>
+    <td><%= link_to 'Destroy', discontinue_notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Discontinue notice', new_discontinue_notice_path %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reason:</b>
+  <%= @discontinue_notice.reason %>
+</p>
+
+<p>
+  <b>Student name:</b>
+  <%= @discontinue_notice.student_first_name + " " + @discontinue_notice.student_last_name %>
+</p>
+
+<p>
+  <b>Class day:</b>
+  <%= DiscontinueNotice::DAYS[@discontinue_notice.class_day][0] %>
+</p>
+
+<p>
+  <b>Class time:</b>
+  <%= @discontinue_notice.class_time.strftime("%l:%M %p") %>
+</p>
+
+<p>
+  <b>Last day:</b>
+  <%= @discontinue_notice.last_day %>
+</p>
+
+<p>
+  <b>Parent name:</b>
+  <%= @discontinue_notice.parent_name %>
+</p>
+
+<p>
+  <b>Understood:</b>
+  <%= @discontinue_notice.understood %>
+</p>
+
+
+<%= link_to 'Edit', edit_discontinue_notice_path(@discontinue_notice) %> |
+<%= link_to 'Back', discontinue_notices_path %>

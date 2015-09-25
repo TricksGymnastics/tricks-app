@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'TrebuchetMSRegular';
+  src: url(/assets/trebuc.eot);
+  src: url(/assets/trebuc.eot?#iefix) format("embedded-opentype"), url(/assets/trebuc.woff) format("woff"), url(/assets/trebuc.ttf) format("truetype"), url(/assets/trebuc.svg#TrebuchetMSRegular) format("svg");
+}
+@font-face {
+  font-family: 'grilled_cheese';
+  src: url(/assets/grilcbc_.eot);
+  src: url(/assets/grilcbc_.eot?#iefix) format("embedded-opentype"), url(/assets/grilcbc_.woff) format("woff"), url(/assets/grilcbc_.ttf) format("truetype"), url(/assets/grilcbc_.svg#grilled_cheese) format("svg");
+}
+@font-face {
+  font-family: 'evilgenius_bbreg';
+  src: url(/assets/evilgeniusbb_reg-webfont.eot);
+  src: url(/assets/evilgeniusbb_reg-webfont.eot?#iefix) format("embedded-opentype"), url(/assets/evilgeniusbb_reg-webfont.woff) format("woff"), url(/assets/evilgeniusbb_reg-webfont.ttf) format("truetype"), url(/assets/evilgeniusbb_reg-webfont.svg#evilgenius_bbregular) format("svg");
+}
+@font-face {
+  font-family: 'evilgenius_bbbold';
+  src: url(/assets/evilgeniusbb_bld-webfont.eot);
+  src: url(/assets/evilgeniusbb_bld-webfont.eot?#iefix) format("embedded-opentype"), url(/assets/evilgeniusbb_bld-webfont.woff) format("woff"), url(/assets/evilgeniusbb_bld-webfont.ttf) format("truetype"), url(/assets/evilgeniusbb_bld-webfont.svg#evilgenius_bbregular) format("svg");
+}

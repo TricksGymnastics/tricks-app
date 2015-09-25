@@ -1,20 +1,19 @@
-@charset "utf-8";
-
 /* CSS Document */
-
 /***************************************************************************************************************
   * GLOBAL SETTING*
 ***************************************************************************************************************/
-*{
-  padding:0;
-  margin:0;
+/* line 8, ../../../app/assets/stylesheets/static/static.css.scss */
+* {
+  padding: 0;
+  margin: 0;
 }
 
+/* line 13, ../../../app/assets/stylesheets/static/static.css.scss */
 img {
   border-style: none;
 }
 
-
+/* line 18, ../../../app/assets/stylesheets/static/static.css.scss */
 #page {
   width: 1000px;
   margin: 0 auto;
@@ -22,6 +21,7 @@ img {
   padding: 0px;
 }
 
+/* line 25, ../../../app/assets/stylesheets/static/static.css.scss */
 #header {
   height: 250px;
   margin: 0 auto;
@@ -29,6 +29,7 @@ img {
   margin-top: -10px;
 }
 
+/* line 32, ../../../app/assets/stylesheets/static/static.css.scss */
 .button {
   background-image: url(/assets/structure/go.jpg);
   width: 28px;
@@ -42,12 +43,14 @@ img {
   text-decoration: none;
 }
 
+/* line 45, ../../../app/assets/stylesheets/static/static.css.scss */
 body {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: 15px;
   width: 100%;
 }
 
+/* line 51, ../../../app/assets/stylesheets/static/static.css.scss */
 h1 {
   font-family: "grilled_cheese", Trebuchet MS;
   font-size: 50px;
@@ -58,21 +61,25 @@ h1 {
   color: #222;
 }
 
+/* line 61, ../../../app/assets/stylesheets/static/static.css.scss */
 h2 {
   font-size: 19px;
   margin: 0px 0px 10px 0px;
 }
 
+/* line 66, ../../../app/assets/stylesheets/static/static.css.scss */
 h3 {
   font-size: 15px;
   margin: 8px 0px 0px 0px;
 }
 
+/* line 71, ../../../app/assets/stylesheets/static/static.css.scss */
 p {
   text-align: justify;
   margin: 0px 0px 15px 0px;
 }
 
+/* line 76, ../../../app/assets/stylesheets/static/static.css.scss */
 #empty_space {
   float: left;
   height: 10px;
@@ -82,20 +89,21 @@ p {
 /************************************************
     *Settings*
 ************************************************/
-
-
+/* line 87, ../../../app/assets/stylesheets/static/static.css.scss */
 #tricks_logo {
   margin: 2px auto;
   width: 227px;
   float: center;
 }
 
+/* line 93, ../../../app/assets/stylesheets/static/static.css.scss */
 #twenty_years {
   float: left;
   margin-left: 60px;
   margin-top: 40px;
 }
 
+/* line 99, ../../../app/assets/stylesheets/static/static.css.scss */
 #right_buttons {
   float: right;
   margin-right: 10px;
@@ -103,6 +111,7 @@ p {
   width: 250px;
 }
 
+/* line 106, ../../../app/assets/stylesheets/static/static.css.scss */
 .content {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   height: auto;
@@ -111,6 +120,7 @@ p {
   margin: 0px 0px 0px 0px;
 }
 
+/* line 114, ../../../app/assets/stylesheets/static/static.css.scss */
 .content #link {
   color: #06F;
   font-weight: bold;
@@ -118,6 +128,7 @@ p {
   font-size: 18px;
 }
 
+/* line 121, ../../../app/assets/stylesheets/static/static.css.scss */
 .content #inactive_link {
   color: #000;
   font-weight: bold;
@@ -125,13 +136,15 @@ p {
   font-size: 18px;
 }
 
+/* line 128, ../../../app/assets/stylesheets/static/static.css.scss */
 #specialevent {
-  float:left;
+  float: left;
   width: 900px;
   margin: 15px 35px;
-  border: 5px #999 solid
+  border: 5px #999 solid;
 }
 
+/* line 135, ../../../app/assets/stylesheets/static/static.css.scss */
 .content #gymnastics_sidelogos {
   width: 260px;
   text-align: center;
@@ -140,15 +153,18 @@ p {
   margin: 10px 0px 0px -10px;
 }
 
+/* line 143, ../../../app/assets/stylesheets/static/static.css.scss */
 .content #gymnastics_text {
   float: left;
 }
 
+/* line 147, ../../../app/assets/stylesheets/static/static.css.scss */
 .content #tbclasses {
   margin: 3px 15px 0px 120px;
   line-height: 1.5;
 }
 
+/* line 152, ../../../app/assets/stylesheets/static/static.css.scss */
 .content #dance_sidelogos {
   width: 260px;
   text-align: center;
@@ -157,10 +173,12 @@ p {
   margin: 0px 0px 0px 0px;
 }
 
+/* line 160, ../../../app/assets/stylesheets/static/static.css.scss */
 .content #dance_text {
   float: left;
 }
 
+/* line 164, ../../../app/assets/stylesheets/static/static.css.scss */
 .content #tricksu_category {
   float: left;
   width: 329px;
@@ -171,14 +189,15 @@ p {
   border: solid 3px #777;
 }
 
+/* line 174, ../../../app/assets/stylesheets/static/static.css.scss */
 #tricksu_category #link {
   color: #06F;
   text-decoration: underline;
   font-size: 18px;
-  
   margin: 15px 0px;
 }
 
+/* line 182, ../../../app/assets/stylesheets/static/static.css.scss */
 #tricksu_category #inactive_link {
   color: #000;
   font-weight: bold;
@@ -187,7 +206,8 @@ p {
   margin: 15px 0px;
 }
 
-.location_container{
+/* line 190, ../../../app/assets/stylesheets/static/static.css.scss */
+.location_container {
   width: 850px;
   margin: 20px 50px;
   padding: 25px;
@@ -195,25 +215,25 @@ p {
   border: 2px #777 dotted;
 }
 
-.location{
-  float:left;
+/* line 198, ../../../app/assets/stylesheets/static/static.css.scss */
+.location {
+  float: left;
 }
 
-.map{
-  float:right;
+/* line 202, ../../../app/assets/stylesheets/static/static.css.scss */
+.map {
+  float: right;
 }
 
-#dress_code_button:hover{
+/* line 206, ../../../app/assets/stylesheets/static/static.css.scss */
+#dress_code_button:hover {
   background-color: #F5D7E4;
 }
-
 
 /***************************************************************************************************************
   * menu
   ***************************************************************************************************************/
-
-
-
+/* line 217, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu {
   position: relative;
   background-image: url(/assets/structure/background_menu.png);
@@ -222,7 +242,6 @@ p {
   width: 1000px;
   height: 75px;
   text-align: center;
-  
   /*box-shadow: inset 0 0 25px #222;*/
   /*margin: 9px 13px;*/
   /*width: 860px;*/
@@ -230,6 +249,7 @@ p {
   /*border-radius: 11px;*/
 }
 
+/* line 233, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu_container {
   /*margin: 7px 0px 0px 20px;*/
   display: inline-block;
@@ -237,6 +257,7 @@ p {
   padding: 0;
 }
 
+/* line 240, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu a {
   font: 20px "Trebuchet MS", Arial, Helvetica, sans-serif;
   color: #FFF;
@@ -248,6 +269,7 @@ p {
   padding-top: 3px;
 }
 
+/* line 251, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu .submenu_link a {
   font: 15px "Trebuchet MS", Arial, Helvetica, sans-serif;
   text-align: left;
@@ -261,10 +283,12 @@ p {
   padding-left: 29px;
 }
 
+/* line 264, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu ul {
   list-style-type: none;
 }
 
+/* line 268, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu li {
   float: left;
   position: relative;
@@ -274,7 +298,7 @@ p {
 }
 
 /* Setting for the position of the hidden submenu box */
-
+/* line 278, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu ul.submenu {
   display: block;
   display: none;
@@ -285,7 +309,7 @@ p {
 
 /* Helps make the submenu directly under the menu 
   Settings for the individual submenu boxes*/
-
+/* line 289, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu ul.submenu li {
   text-align: center;
   background-color: #FFF;
@@ -296,13 +320,14 @@ p {
 
 /* Makes the submenus box visable on hover 
     Settings for the overall submenu box*/
-
+/* line 300, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu li:hover ul.submenu {
   display: block;
   border: 1px solid #333;
   background-color: #F91;
 }
 
+/* line 306, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu a:hover {
   background-image: url(/assets/structure/menu_hover_image.png);
   background-size: 35px;
@@ -312,6 +337,7 @@ p {
   background-position-y: 10px;
 }
 
+/* line 315, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu .submenu_link a:hover {
   background-image: url(/assets/structure/menu_hover_image.png);
   background-size: 20px;
@@ -321,7 +347,6 @@ p {
   background-position-x: 5px;
   white-space: nowrap;
   color: #333;
-  
 }
 
 /**********************************************
@@ -329,8 +354,7 @@ p {
 Bottom Menu
 
 **********************************************/
-
-
+/* line 334, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu_bottom {
   position: relative;
   background-color: transparent;
@@ -341,6 +365,7 @@ Bottom Menu
   padding: 0px;
 }
 
+/* line 344, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu_bottom a {
   font: 17px "Trebuchet MS", Arial, Helvetica, sans-serif;
   color: #333;
@@ -351,6 +376,7 @@ Bottom Menu
   padding-top: 3px;
 }
 
+/* line 354, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu_bottom a:hover {
   background-image: url(/assets/structure/menu_hover_image.png);
   background-size: 25px;
@@ -361,11 +387,13 @@ Bottom Menu
   background-position-y: 8px;
 }
 
+/* line 364, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu_bottom ul {
   list-style-type: none;
   padding-left: 0px;
 }
 
+/* line 369, ../../../app/assets/stylesheets/static/static.css.scss */
 #menu_bottom li {
   float: left;
   position: relative;
@@ -377,43 +405,37 @@ Bottom Menu
 /*****************************************************************************************************************
   *end menu
   ***************************************************************************************************************/
-
-
-
-
-
 /***************************************************************************************************************
   * Clear SETTING*
 ***************************************************************************************************************/
-
-#background_center{
+/* line 389, ../../../app/assets/stylesheets/static/static.css.scss */
+#background_center {
   width: 1000px;
   margin: 0 auto;
 }
 
-#page_wrapper{
+/* line 394, ../../../app/assets/stylesheets/static/static.css.scss */
+#page_wrapper {
   margin: 20px 15px 30px 15px;
   padding: 15px 0px 0px 0px;
-  background-color:white;
+  background-color: white;
   width: 1000px;
   float: left;
   border-radius: 15px;
   box-shadow: 0 0 20px #333;
 }
 
-#page_footer{
+/* line 404, ../../../app/assets/stylesheets/static/static.css.scss */
+#page_footer {
   float: left;
   height: 45px;
   width: 1000px;
 }
 
-
-
 /***************************************************************************************************************
               Random Comment
 ***************************************************************************************************************/
-
-
+/* line 417, ../../../app/assets/stylesheets/static/static.css.scss */
 #Comments {
   /*border: solid 2px #888; */
   float: left;
@@ -421,31 +443,35 @@ Bottom Menu
   width: 665px;
 }
 
+/* line 424, ../../../app/assets/stylesheets/static/static.css.scss */
 #Random_Comment_Container {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  color: #444; 
-  text-align: justify; 
-  float:left; 
-  width: 650px; 
-  margin: 0px 7px 0px 7px; 
+  color: #444;
+  text-align: justify;
+  float: left;
+  width: 650px;
+  margin: 0px 7px 0px 7px;
   padding: 4px;
 }
-#Random_Comment_Container #Comment {
-  color: #222; 
-  font-size: 14px;
 
+/* line 433, ../../../app/assets/stylesheets/static/static.css.scss */
+#Random_Comment_Container #Comment {
+  color: #222;
+  font-size: 14px;
   margin: -7px 26px 20px 14px;
 }
 
-#Random_Comment_Container #Name{
-  float:right; 
-  font-size: 16px; 
-  color: #444; 
+/* line 440, ../../../app/assets/stylesheets/static/static.css.scss */
+#Random_Comment_Container #Name {
+  float: right;
+  font-size: 16px;
+  color: #444;
   margin: 0px 30px 0px 0px;
   padding-bottom: 20px;
   margin-top: -15px;
 }
 
+/* line 449, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentheadergreen {
   background-image: url(/assets/structure/comment_header_green.png);
   background-position: center;
@@ -456,18 +482,20 @@ Bottom Menu
   width: 650px;
 }
 
+/* line 459, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentbodygreen {
   background-image: url(/assets/structure/comment_body_green.png);
   background-position: center;
   background-repeat: repeat-y;
   margin: 0;
   float: left;
-  width: 650px;  
+  width: 650px;
 }
 
+/* line 468, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentfootergreen {
   background-image: url(/assets/structure/comment_footer_green.png);
-  background-position: center;  
+  background-position: center;
   background-repeat: no-repeat;
   margin: 0;
   float: left;
@@ -475,6 +503,7 @@ Bottom Menu
   width: 650px;
 }
 
+/* line 478, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentheaderpink {
   background-image: url(/assets/structure/comment_header_pink.png);
   background-position: center;
@@ -485,18 +514,20 @@ Bottom Menu
   width: 650px;
 }
 
+/* line 488, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentbodypink {
   background-image: url(/assets/structure/comment_body_pink.png);
   background-position: center;
   background-repeat: repeat-y;
   margin: 0;
   float: left;
-  width: 650px;  
+  width: 650px;
 }
 
+/* line 497, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentfooterpink {
   background-image: url(/assets/structure/comment_footer_pink.png);
-  background-position: center;  
+  background-position: center;
   background-repeat: no-repeat;
   margin: 0;
   float: left;
@@ -504,6 +535,7 @@ Bottom Menu
   width: 650px;
 }
 
+/* line 507, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentheaderblue {
   background-image: url(/assets/structure/comment_header_blue.png);
   background-position: center;
@@ -514,18 +546,20 @@ Bottom Menu
   width: 650px;
 }
 
+/* line 517, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentbodyblue {
   background-image: url(/assets/structure/comment_body_blue.png);
   background-position: center;
   background-repeat: repeat-y;
   margin: 0;
   float: left;
-  width: 650px;  
+  width: 650px;
 }
 
+/* line 526, ../../../app/assets/stylesheets/static/static.css.scss */
 #commentfooterblue {
   background-image: url(/assets/structure/comment_footer_blue.png);
-  background-position: center;  
+  background-position: center;
   background-repeat: no-repeat;
   margin: 0;
   float: left;
@@ -533,11 +567,10 @@ Bottom Menu
   width: 650px;
 }
 
-
 /***************************************************************************************************************
               Random Comment
 ***************************************************************************************************************/
-
+/* line 541, ../../../app/assets/stylesheets/static/static.css.scss */
 #Quotebox {
   width: 1000px;
   /*border: solid 2px #888; */
@@ -546,32 +579,36 @@ Bottom Menu
   margin: -20px 0px 30px 21px;
 }
 
+/* line 549, ../../../app/assets/stylesheets/static/static.css.scss */
 #Random_Quote_Container {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  color: #444; 
-  text-align: justify; 
-  float:left;
-  width: 300px;  
+  color: #444;
+  text-align: justify;
+  float: left;
+  width: 300px;
   margin: 0px 11px;
   /* border: solid 2px #888; */
 }
 
+/* line 559, ../../../app/assets/stylesheets/static/static.css.scss */
 #Random_Quote_Container #Quote {
-  font-size: 14px; 
+  font-size: 14px;
   float: left;
   width: auto;
   /*border: solid 2px #888;*/
   margin: -10px 26px 12px 14px;
 }
 
-#Random_Quote_Container #Name{
-  font-size: 16px; 
-  float: right; 
+/* line 567, ../../../app/assets/stylesheets/static/static.css.scss */
+#Random_Quote_Container #Name {
+  font-size: 16px;
+  float: right;
   margin: 2px 30px 0px 0px;
   padding-bottom: 20px;
   margin-top: -13px;
 }
 
+/* line 575, ../../../app/assets/stylesheets/static/static.css.scss */
 #quoteheaderyellow {
   background-image: url(/assets/structure/quote_header_yellow.png);
   background-position: center;
@@ -582,18 +619,20 @@ Bottom Menu
   width: 300px;
 }
 
+/* line 585, ../../../app/assets/stylesheets/static/static.css.scss */
 #quotebodyyellow {
   background-image: url(/assets/structure/quote_body_yellow.png);
   background-position: center;
   background-repeat: repeat-y;
   margin: 0;
   float: left;
-  width: 300px;  
+  width: 300px;
 }
 
+/* line 594, ../../../app/assets/stylesheets/static/static.css.scss */
 #quotefooteryellow {
   background-image: url(/assets/structure/quote_footer_yellow.png);
-  background-position: center;  
+  background-position: center;
   background-repeat: no-repeat;
   margin: 0;
   float: left;
@@ -601,33 +640,33 @@ Bottom Menu
   width: 300px;
 }
 
-
-
 /***************************************************************************************************************
   * Promo Box
   ***************************************************************************************************************/
-
+/* line 610, ../../../app/assets/stylesheets/static/static.css.scss */
 #promoboxholder {
   float: left;
   height: 570px;
   width: 730px;
 }
 
+/* line 616, ../../../app/assets/stylesheets/static/static.css.scss */
 #promo-frame {
   margin-left: 15px;
   position: absolute;
   z-index: 3;
 }
 
+/* line 622, ../../../app/assets/stylesheets/static/static.css.scss */
 #promo-header {
   height: 25px;
   color: #FF0;
   width: 250px;
   margin: 8px 0px 0px 20px;
-  // border: solid 1px black;
   line-height: 25px;
 }
 
+/* line 631, ../../../app/assets/stylesheets/static/static.css.scss */
 #promo-tabs {
   float: left;
   margin-left: 5px;
@@ -636,12 +675,9 @@ Bottom Menu
   border-bottom: 0px;
   width: 275px;
   cursor: pointer;
-  // border: solid 1px black;
 }
 
-#promo-images {
-}
-
+/* line 645, ../../../app/assets/stylesheets/static/static.css.scss */
 .promo-image {
   display: none;
   position: absolute;
@@ -649,35 +685,36 @@ Bottom Menu
   margin-top: -21px;
   z-index: 1;
   overflow: hidden;
-  width: 400px; 
+  width: 400px;
   height: 225px;
   border-radius: 15px;
-  // border: solid 1px blue;
-  text-align:center;
+  text-align: center;
 }
 
-.promo-tab{
+/* line 659, ../../../app/assets/stylesheets/static/static.css.scss */
+.promo-tab {
   list-style: none;
-
-  :focus{
-    outline: none;
-  }
-
-  a {
-    /*background-image: url(/assets/structure/tab-color.jpg);*/
-    color: #fff;
-    width: 275px;
-    height: 22px;
-    float: left;
-    height: 26px;
-    font-size: 16px;
-    text-align: center;
-    padding-top: 5px;
-    text-decoration: none;
-  }
+}
+/* line 662, ../../../app/assets/stylesheets/static/static.css.scss */
+.promo-tab :focus {
+  outline: none;
+}
+/* line 666, ../../../app/assets/stylesheets/static/static.css.scss */
+.promo-tab a {
+  /*background-image: url(/assets/structure/tab-color.jpg);*/
+  color: #fff;
+  width: 275px;
+  height: 22px;
+  float: left;
+  height: 26px;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 5px;
+  text-decoration: none;
 }
 
-.ui-tabs-active a{
+/* line 680, ../../../app/assets/stylesheets/static/static.css.scss */
+.ui-tabs-active a {
   background-image: url(/assets/structure/tab-color-selected.png);
 }
 
@@ -754,18 +791,16 @@ Bottom Menu
 #ribbon-content .block {
   margin: 0px;
 }*/
-
-
-
-
 /***************************************************************************************************************
   * JackRabbit Tables
   ***************************************************************************************************************/
-.jr_class_table_container{
+/* line 764, ../../../app/assets/stylesheets/static/static.css.scss */
+.jr_class_table_container {
   margin-bottom: 20px;
 }
 
-.jr_class_table_container td{
+/* line 768, ../../../app/assets/stylesheets/static/static.css.scss */
+.jr_class_table_container td {
   padding: 4px;
   text-align: center;
 }
@@ -773,43 +808,46 @@ Bottom Menu
 /**
   * Form
   */
-
-#levelform{
+/* line 777, ../../../app/assets/stylesheets/static/static.css.scss */
+#levelform {
   padding: 10px 20px;
 }
 
-#levelform label{
+/* line 781, ../../../app/assets/stylesheets/static/static.css.scss */
+#levelform label {
   width: 200px;
   text-align: right;
   display: inline-block;
   margin-right: 15px;
 }
 
-#levelform input{
+/* line 788, ../../../app/assets/stylesheets/static/static.css.scss */
+#levelform input {
   max-width: 600px;
   display: inline-block;
 }
 
-
-
-#flash_container{
+/* line 795, ../../../app/assets/stylesheets/static/static.css.scss */
+#flash_container {
   margin: 0 auto;
 }
 
+/* line 799, ../../../app/assets/stylesheets/static/static.css.scss */
 #flash_notice, #flash_error, #flash_alert {
   text-align: center;
   width: 400px;
   padding: 5px 8px;
   margin: -10px auto 25px auto;
   font-size: 14px;
-  
 }
 
+/* line 808, ../../../app/assets/stylesheets/static/static.css.scss */
 #flash_notice {
   background-color: #CFC;
   border: solid 2px #6C6;
 }
 
+/* line 813, ../../../app/assets/stylesheets/static/static.css.scss */
 #flash_error, #flash_alert {
   background-color: #FCC;
   border: solid 2px #C66;
