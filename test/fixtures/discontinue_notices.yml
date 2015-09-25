@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reason: MyString
+  student_name: MyString
+  class_day: MyString
+  class_time: 2015-09-25 11:12:22
+  last_day: 2015-09-25
+  parent_name: MyString
+  understood: false
+
+two:
+  reason: MyString
+  student_name: MyString
+  class_day: MyString
+  class_time: 2015-09-25 11:12:22
+  last_day: 2015-09-25
+  parent_name: MyString
+  understood: false

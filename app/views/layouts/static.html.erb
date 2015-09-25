@@ -60,7 +60,7 @@
 
   <div id="ieDiv" style="width: 700px; margin: 0 auto; border-radius: 10px; margin-top: -20px; padding: 23px 10px 5px 10px; background-color: white; box-shadow: 0 0 10px #444; text-align:center; display: none;"> 
     This website is not optimized for Internet Explorer, some features may not work properly
-  </div>
+  </div>  
   <div id="background_center">
     <div id="page_wrapper">
       <div id="header">
@@ -248,6 +248,12 @@
           </ul>
       	</div>
   		</div>
+
+      <div id="flash_container">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <% end %>
+      </div>
 
   		<div id="page">
   			<%= yield %>

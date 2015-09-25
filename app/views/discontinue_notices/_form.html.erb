@@ -1,0 +1,54 @@
+<style>
+textarea{  
+  height: 80px;
+  width: 400px;
+  margin-top: 8px;
+}
+
+</style>
+
+
+<%= form_for(@discontinue_notice) do |f| %>
+  <% if @discontinue_notice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discontinue_notice.errors.count, "error") %> prohibited this discontinue_notice from being saved:</h2>
+
+      <ul>
+      <% @discontinue_notice.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p style="font-size: 18px;">It is my intent to discontinue enrollment of my child at TRICKS. Please discontinue charging my credit card for payment of future tuition.</p>
+  <br>
+  <div style="float: left; width: 100%; line-height: 34px; margin:0;">
+    <div class="field" style="float: left; width: 190px; margin:0 15px 0 0; text-align:right;">
+      <%= f.label :reason, "Reason for Discontinuing", style:"line-height:20px" %>:<br><br><br>
+      <%= f.label :student_first_name, "Student" %>:<br>
+      <%= f.label :location %>:<br>
+      <%= f.label :class_day, "Class Day" %>:<br>
+      <%= f.label :class_time, "Class Time" %>:<br>
+      <%= f.label :last_day, "Last Day of Class" %>:<br>
+      <%= f.label :parent_name, "Name of Parent" %>:<br>
+    </div>
+    <div class="field" style="float: left; margin:0;">
+      <%= f.text_area :reason, required: true, placeholder: "Please be helpful" %><br>
+      <%= f.text_field :student_first_name, required: true, size: 12, placeholder: "First Name" %> <%= f.text_field :student_last_name, required: true, size: 12, placeholder: "Last Name" %><br>
+      <%= f.select :location, DiscontinueNotice::LOCATIONS, :prompt => "Select a Location", required: true %><br>
+      <%= f.select :class_day, DiscontinueNotice::DAYS, :prompt => "Select a Day", required: true %><br>
+      <%= f.time_select :class_time, {:minute_step => 5, :ampm => true, :include_blank => false}, required: true %><br>
+      <%= f.date_select :last_day, required: true %><br>
+      <%= f.text_field :parent_name, required: true %><br>
+    </div>
+  </div>
+  <div style="float:left; margin: 20px 0;">
+    <%= f.check_box :understood, required: true %>
+    <%= f.label :understood, "I understand that my account must be at a zero (0) balance and that make-ups can only be used on an enrolled family member." %>
+  </div>
+  
+  <div class="actions" style="text-align:center;">
+    <%= f.submit "Submit Notice" %>
+  </div>
+<% end %>

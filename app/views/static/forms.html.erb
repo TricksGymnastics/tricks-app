@@ -4,34 +4,35 @@
   #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
 <% end %>
 
-
 <div class="content">
 	<div id="infobox" style="margin-left: 50px; width: 600px">
 		<b>Forms</b><br>
 		<p>Please click on the appropriate form below. The forms are in a .pdf file format. Please click on &quot;Get Adobe Reader&quot; below if you need the software to open the files.</p>
 		<p>
-			<a href="assets/Registration Form 2014.pdf">
+			<a href="assets/Registration Form 2014.pdf" id="link">
 				TRICKS Registration Form
 			</a>
 		</p>
 		<p>
-			<a href="assets/Release 2014.pdf">
+			<a href="assets/Release 2014.pdf" id="link">
 				Release Form
 			</a><br>
 
 			(Waiver for all gymnastics, dance and swim classes, date night and birthday parties)</p>
 		<p>
-			<a href="assets/FamilyRules2015.pdf">
+			<a href="assets/FamilyRules2015.pdf" id="link">
 				Welcome to Tricks! Family Rules
 			</a>
 		</p>
 		<p>
-			<a href="assets/NoticeToDiscontinue.pdf">
-				Notice to Discontinue
-			</a>
+			<%= link_to "Notice to Discontinue", new_discontinue_notice_path, id: 'link' %> - 
+			<%= link_to "(PDF)", "assets/NoticeToDiscontinue.pdf", id: 'link', style: 'font-size: 12px;' %>
+			<% if can? :manage, DiscontinueNotice %>
+				<br><%= link_to "Notices of Discontinuation (Not visible to public)", discontinue_notices_path, id: 'link', style: 'font-size: 14px;' %>
+			<% end %>
 		</p>
 		<p>
-			<a href="assets/2015 Billing Cycle.pdf">
+			<a href="assets/2015 Billing Cycle.pdf" id="link">
 				2015 Billing Cycle<br>
 			</a>
 		</p>

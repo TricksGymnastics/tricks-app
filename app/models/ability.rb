@@ -44,6 +44,7 @@ class Ability
 			can :manage, World
 			can :manage, TricksUCategory
 			can :manage, TricksUVideo
+			can :manage, DiscontinueNotice
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -56,6 +57,7 @@ class Ability
 			can :manage, Survey
 			can :manage, SurveyResult
 			can :manage, Datenight
+			can :manage, DiscontinueNotice
 			can :read, World
 			can :create, World
 			can :read, TricksUVideo
@@ -81,6 +83,7 @@ class Ability
 			can :read, Survey
 			can :create, World
 			can :read, Level
+			can :create, DiscontinueNotice
 		end
 	end 
 end

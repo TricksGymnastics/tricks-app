@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150527022259) do
+ActiveRecord::Schema.define(:version => 20150925171222) do
 
   create_table "absents", :force => true do |t|
     t.string   "first_name"
@@ -109,6 +109,20 @@ ActiveRecord::Schema.define(:version => 20150527022259) do
     t.string   "schedule_title"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "discontinue_notices", :force => true do |t|
+    t.string   "reason"
+    t.string   "student_first_name"
+    t.string   "student_last_name"
+    t.integer  "location"
+    t.integer  "class_day"
+    t.time     "class_time"
+    t.date     "last_day"
+    t.string   "parent_name"
+    t.boolean  "understood"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "kid_quotes", :force => true do |t|
