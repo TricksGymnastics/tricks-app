@@ -4,6 +4,11 @@
   <b>Reason:</b>
   <%= @discontinue_notice.reason %>
 </p>
+  
+<p>
+  <b>Location:</b>
+  <%= DiscontinueNotice::LOCATIONS[@discontinue_notice.location][0] %>
+</p>
 
 <p>
   <b>Student name:</b>

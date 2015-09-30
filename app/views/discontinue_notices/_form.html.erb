@@ -34,7 +34,7 @@ textarea{
       <%= f.label :parent_name, "Name of Parent" %>:<br>
     </div>
     <div class="field" style="float: left; margin:0;">
-      <%= f.text_area :reason, required: true, placeholder: "Please be helpful" %><br>
+      <%= f.text_area :reason, required: true, placeholder: "Please be helpful", maxlength: 255 %><br>
       <%= f.text_field :student_first_name, required: true, size: 12, placeholder: "First Name" %> <%= f.text_field :student_last_name, required: true, size: 12, placeholder: "Last Name" %><br>
       <%= f.select :location, DiscontinueNotice::LOCATIONS, :prompt => "Select a Location", required: true %><br>
       <%= f.select :class_day, DiscontinueNotice::DAYS, :prompt => "Select a Day", required: true %><br>
