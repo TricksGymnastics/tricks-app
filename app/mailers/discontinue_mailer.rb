@@ -20,6 +20,3 @@ class DiscontinueMailer < ActionMailer::Base
     # mail to: "football80@gmail.com", subject: "This better work " + @notification.student_first_name
   end
 end
-
-
-http://www.tricksgym.com/discontinue_notices
