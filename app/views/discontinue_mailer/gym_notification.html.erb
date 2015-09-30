@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+</head>
+<body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
+  <div>
+    <h3>Notice of Discontinuation</h3>
+
+    <p>Last day of class for <b><%= @notification.student_first_name + " " + @notification.student_last_name %></b> will be: <b><%= @notification.last_day.strftime("%b %e, %Y") %></b></p>
+
+    <p><b>Reason: </b><%= @notification.reason %></p>
+
+    <table style="margin: 10px 0px; border-collapse:collapse; border: 1px #444 solid;">
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Parent Name: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= @notification.parent_name %></td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Class Day: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= DiscontinueNotice::DAYS[@notification.class_day][0] %></td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Class Time: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= @notification.class_time.strftime("%l:%M %p") %></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

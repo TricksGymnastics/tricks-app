@@ -45,6 +45,7 @@ class DiscontinueNoticesController < ApplicationController
 
     respond_to do |format|
       if @discontinue_notice.save
+        DiscontinueMailer.gym_notification(@discontinue_notice).deliver
         format.html { redirect_to forms_path, notice: 'Notice to Discontinue was successfully submitted.' }
         format.json { render json: @discontinue_notice, status: :created, location: @discontinue_notice }
       else
