@@ -8,12 +8,12 @@ class DiscontinueMailer < ActionMailer::Base
 
   def gym_notification(notification)
     @notification = notification
-    
-    if (DiscontinueNotice::LOCATIONS[@notification.location.to_i] == "Granite Bay")
+
+    if (DiscontinueNotice::LOCATIONS[@notification.location][0] == "Granite Bay")
       mail to: "tricksgb@gmail.com", subject: "Notice of Discontinuation for: " + @notification.student_first_name + " " + @notification.student_last_name
-    elsif (DiscontinueNotice::LOCATIONS[@notification.location.to_i] == "Folsom")
+    elsif (DiscontinueNotice::LOCATIONS[@notification.location][1] == "Folsom")
       mail to: "tricksfol@gmail.com", subject: "Notice of Discontinuation for: " + @notification.student_first_name + " " + @notification.student_last_name
-    elsif (DiscontinueNotice::LOCATIONS[@notification.location.to_i] == "Sacramento")
+    elsif (DiscontinueNotice::LOCATIONS[@notification.location][2] == "Sacramento")
       mail to: "trickssac@gmail.com", subject: "Notice of Discontinuation for: " + @notification.student_first_name + " " + @notification.student_last_name
     end
 
