@@ -3,7 +3,7 @@ class DiscontinueNoticesController < ApplicationController
   # GET /discontinue_notices
   # GET /discontinue_notices.json
   def index
-    @discontinue_notices = DiscontinueNotice.all
+    @discontinue_notices = DiscontinueNotice.order("discontinue_notices.created_at DESC").all
 
     respond_to do |format|
       format.html # index.html.erb
