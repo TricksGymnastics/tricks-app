@@ -14,11 +14,11 @@
   <div style="margin: 20px 50px">
     <div class="field">
       <%= f.label :title, "Title" %><br />
-      <%= f.text_field :title %>
+      <%= f.text_field :title, required: true %>
     </div>
     <div class="field">
       <%= f.label :url %><br />
-      <%= f.text_field :url %>
+      <%= f.text_field :url, required: true %>
     </div>
     <div class="field">
       <%= f.label :category_id, "Category" %><br />
