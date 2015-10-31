@@ -1,0 +1,8 @@
+<% @title = @website_pdf.file_name.tr("_"," ") %>
+
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_orange %>;}
+<% end %>
+
+<h1 style="margin-bottom: 0"><%= @website_pdf.file_name.tr("_"," ") %></h1>
+<iframe src="<%= @website_pdf.file.url %>" style="margin: 0 2.5% 40px;width:95%;height: 800px;border:solid #444 2px;" frameborder="0"></iframe>

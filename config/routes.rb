@@ -1,4 +1,7 @@
 Comments::Application.routes.draw do
+  resources :website_pdfs
+
+
   resources :discontinue_notices
 
 
@@ -58,7 +61,6 @@ Comments::Application.routes.draw do
     summer thankyou tricksu_old turkeycamp underconstruction registration].each do |page|
     get page, controller: "static", action: page
   end
-
 
   match 'dance_company' => 'dance_company#index'
   %w[index about auditions empty_page events gallery].each do |page|

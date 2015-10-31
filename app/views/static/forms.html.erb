@@ -8,40 +8,46 @@
 	<div id="infobox" style="margin-left: 50px; width: 600px">
 		<b>Forms</b><br>
 		<p>Please click on the appropriate form below. The forms are in a .pdf file format. Please click on &quot;Get Adobe Reader&quot; below if you need the software to open the files.</p>
-		<p>
-			<a href="assets/Registration Form 2014.pdf" id="link">
-				TRICKS Registration Form
-			</a>
-		</p>
-		<p>
-			<a href="assets/Release 2014.pdf" id="link">
-				Release Form
-			</a><br>
 
-			(Waiver for all gymnastics, dance and swim classes, date night and birthday parties)</p>
-		<p>
+		<% if !@reg_form.nil? %>
+			<h2><%= link_to @reg_form.file_name.tr("_"," "), @reg_form, id:"link" %></h2>
+		<% end %>
+
+		<% if !@release_form.nil? %>
+			<h2><%= link_to @release_form.file_name.tr("_"," "), @release_form, id:"link" %></h2>
+			<br>
+			(Waiver for all gymnastics, dance and swim classes, date night and birthday parties)
+		<% end %>
+
+
+		<% if !@family_rules.nil? %>
+			<h2><%= link_to @family_rules.file_name.tr("_"," "), @family_rules, id:"link" %></h2>
+		<% end %>
+		<!-- <p>
 			<a href="assets/FamilyRules2015.pdf" id="link">
 				Welcome to Tricks! Family Rules
 			</a>
-		</p>
-		<p>
-			<%= link_to "Notice to Discontinue", new_discontinue_notice_path, id: 'link' %> - 
-			<%= link_to "(PDF)", "assets/NoticeToDiscontinue.pdf", id: 'link', style: 'font-size: 12px;' %>
-			<% if can? :manage, DiscontinueNotice %>
-				<br><%= link_to "Notices of Discontinuation (Not visible to public)", discontinue_notices_path, id: 'link', style: 'font-size: 14px;' %>
-			<% end %>
-		</p>
-		<p>
-			<a href="assets/2016_Class_Sessions.pdf" id="link">
-				2016 Class Sessions<br>
-			</a>
-		</p>
+		</p> -->
+
+		<h2><%= link_to "Notice to Discontinue", new_discontinue_notice_path, id: 'link' %></h2>
+
+
+		<% if !@fclass_sessions.nil? %>
+			<h2><%= link_to @class_sessions.file_name.tr("_"," "), @class_sessions, id:"link" %></h2>
+		<% end %>
+
 		<br>
-		<div align="center" style="text-align:center;">
+		<br>
+		<br>
+		<div align="center" style="text-align:center; margin-bottom: 50px">
 			<a href="http://get.adobe.com/reader/">
 				<img src="/assets/structure/getadobe.jpg" width="158" height="39" alt="Get Adobe Reader" />
 			</a>
 		</div>
+
+		<% if can? :manage, DiscontinueNotice %>
+			<%= link_to "Notices of Discontinuation (Not visible to public)", discontinue_notices_path, id: 'link', style: 'font-size: 16px;' %>
+		<% end %>
 	</div>
 	<div style="float:right; margin-right:30px; width:250px;">
 		<img src="/assets/structure/formsside.jpg" width="240" height="157" alt="Forms" />

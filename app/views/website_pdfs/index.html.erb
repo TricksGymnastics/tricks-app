@@ -1,0 +1,22 @@
+<% @title = "Website PDFs" %>
+
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_orange %>;}
+<% end %>
+
+<div class="content" style="margin-bottom: 150px;">
+  <h1>Website PDFs</h1>
+
+  <h2 style="text-align:center;"><%= link_to 'New Website PDF', new_website_pdf_path, id:'link', style: 'font-size: 26px;' %></h2>
+  <br>
+  <ul style="text-align:center;">
+  <% @website_pdfs.each do |website_pdf| %>
+    <li>
+      <%= link_to website_pdf.file_name.tr("_"," "), website_pdf, id: 'link' %>
+      <%#= Both Edit and Destroy are broken while using the file_name in the URL. This is a bit of a non issue because I overwrite existing files if another one of the same name is uploaded. And files really shouldn't be deleted.%>
+      <!-- <td><%#= link_to 'Edit', edit_website_pdf_path(website_pdf.id) %></td> -->
+      <!-- <td><%#= link_to 'Destroy', website_pdf, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+    </li>
+  <% end %>
+  </ul>
+</div>

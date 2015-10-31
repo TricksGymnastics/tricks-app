@@ -14,6 +14,12 @@ class StaticController < ApplicationController
     @jr_login = "none"
 
     @tricksu_password = false
+    
+    @newsletter = WebsitePdf.find_by_file_name("Tricks_Newsletter")
+    @reg_form = WebsitePdf.find_by_file_name("Tricks_Registration_Form")
+    @release_form = WebsitePdf.find_by_file_name("Tricks_Release_Form")
+    @family_rules = WebsitePdf.find_by_file_name("Tricks_Family_Rules")
+    @class_sessions = WebsitePdf.find_by_file_name("Tricks_Class_Sessions")
   end
 
   def index

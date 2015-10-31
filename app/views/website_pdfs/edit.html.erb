@@ -1,0 +1,12 @@
+<% @title = "Editting " + @website_pdf.file_name %>
+
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_orange %>;}
+<% end %>
+
+<h1>Editing website_pdf</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @website_pdf %> |
+<%= link_to 'Back', website_pdfs_path %>
