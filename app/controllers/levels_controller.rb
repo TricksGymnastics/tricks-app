@@ -1,22 +1,7 @@
 class LevelsController < ApplicationController
   
   layout "static"
-  before_filter :set_variables
   load_and_authorize_resource
-
-  def set_variables
-    @bgc_yellow = "#F2E300"
-    @bgc_green = "#5FC916"
-    @bgc_orange = "#ff9933"
-    @bgc_pink = "#ec1e79"
-    @bgc_blue = "#223d99"
-    @bgc_purple = "#8a09db"
-
-    @twenty_years = "none"
-    @jr_login = "none"
-
-    @tricksu_password = false
-  end
   
   # GET /levels
   # GET /levels.json

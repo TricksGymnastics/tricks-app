@@ -6,8 +6,26 @@ class ApplicationController < ActionController::Base
   before_filter :set_variables
 
   def set_variables
+    @bgc_yellow = "#F2E300"
+    @bgc_green = "#5FC916"
+    @bgc_orange = "#ff9933"
+    @bgc_pink = "#ec1e79"
+    @bgc_blue = "#223d99"
+    @bgc_purple = "#8a09db"
+
+    @twenty_years = "none"
+    @jr_login = "none"
+
     @needs_stripe = false
+    @tricksu_password = false
+    
+    @newsletter = WebsitePdf.find_by_file_name("Tricks_Newsletter")
+    @reg_form = WebsitePdf.find_by_file_name("Tricks_Registration_Form")
+    @release_form = WebsitePdf.find_by_file_name("Tricks_Release_Form")
+    @family_rules = WebsitePdf.find_by_file_name("Tricks_Family_Rules")
+    @class_sessions = WebsitePdf.find_by_file_name("Tricks_Class_Sessions")
   end
+  
 
   rescue_from CanCan::AccessDenied do |exception|
   	flash[:error] = "You are not authorized to view this page. Please Log In"
