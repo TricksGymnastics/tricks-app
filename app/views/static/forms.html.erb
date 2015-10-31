@@ -14,9 +14,8 @@
 		<% end %>
 
 		<% if !@release_form.nil? %>
-			<h2><%= link_to @release_form.file_name.tr("_"," "), @release_form, id:"link" %></h2>
-			<br>
-			(Waiver for all gymnastics, dance and swim classes, date night and birthday parties)
+			<h2 style="margin-bottom: 0;"><%= link_to @release_form.file_name.tr("_"," "), @release_form, id:"link" %></h2>
+			(Waiver for all gymnastics, dance and swim classes, date night and birthday parties)<br>
 		<% end %>
 
 
@@ -32,7 +31,7 @@
 		<h2><%= link_to "Notice to Discontinue", new_discontinue_notice_path, id: 'link' %></h2>
 
 
-		<% if !@fclass_sessions.nil? %>
+		<% if !@class_sessions.nil? %>
 			<h2><%= link_to @class_sessions.file_name.tr("_"," "), @class_sessions, id:"link" %></h2>
 		<% end %>
 
