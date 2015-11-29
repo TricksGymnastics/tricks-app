@@ -45,6 +45,7 @@ class Ability
 			can :manage, TricksUCategory
 			can :manage, TricksUVideo
 			can :manage, DiscontinueNotice
+			can :manage, WebsitePdf
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -58,6 +59,8 @@ class Ability
 			can :manage, SurveyResult
 			can :manage, Datenight
 			can :manage, DiscontinueNotice
+			can :read, WebsitePdf
+			can :create, WebsitePdf
 			can :read, World
 			can :create, World
 			can :read, TricksUVideo
