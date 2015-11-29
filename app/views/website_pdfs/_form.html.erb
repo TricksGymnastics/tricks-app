@@ -11,16 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :file_name %><br />
-    <%= f.select :file_name, WebsitePdf::FILENAMES, :prompt => "Select a File Name" %><br>
-  </div>
-  <div class="field">
-    <%= f.label :file %><br />
+  <div class="field" style="text-align:center; margin-bottom: 100px;">
+    <%= f.label :file_name, "PDF Being Updated: " %>
+    <%= f.select :file_name, WebsitePdf::FILENAMES, :prompt => "Select a File Name" %>
+
+    <br>
+    <br>
+    
     <%= f.file_field :file %>
+
+    <div class="actions" style="margin-top: 50px;">
+      <%= f.submit "Submit" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
 <% end %>
