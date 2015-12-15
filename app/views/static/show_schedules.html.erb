@@ -1,0 +1,14 @@
+<% @title = "Tricks Camps" %>
+<% content_for :pagestyle do %>
+  body {background-color: <%= @bgc_green %>;}
+  #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
+<% end %>
+
+<div class="content">
+  <h1>Show Schedules!</h1>
+  <div id="infobox" style="float: none; width: 878px; margin: 30px auto;">
+    <h1 style="font-size: 30px; margin:0"><%= link_to "Sacramento Tumblebunnies", "/assets/Show_Schedules/TumbleBunnyShows_Sac2015Dec.pdf", id: 'link', style: "font-size: 35px;" %></h1>
+    <h1 style="font-size: 30px; margin:0"><%= link_to "Sacramento School Age", "/assets/Show_Schedules/SchoolAgeShows_Sac2015Dec.pdf", id: 'link', style: "font-size: 35px;" %></h1>
+      <br>
+  </div>     
+</div>
