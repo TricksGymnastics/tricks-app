@@ -8,7 +8,7 @@ class ErrorMailer < ActionMailer::Base
 
   def error_details(error)
     @error = error
-    mail to: "trickswebmaster@gmail.com", subject: "Website Error"
+    mail to: "trickswebmaster@gmail.com", subject: "Website Error: " + error.message
   end
 
 end
