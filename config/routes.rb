@@ -1,11 +1,8 @@
 Comments::Application.routes.draw do
-  resources :website_pdfs
-
-
-  resources :discontinue_notices
-
 
   root :to => 'static#index'
+
+  match '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}  
 
   match 'schedules/choose'  
   match 'schedules/gb_gym'
@@ -53,6 +50,8 @@ Comments::Application.routes.draw do
   resources :worlds
   resources :tricks_u_categories
   resources :tricks_u_videos
+  resources :website_pdfs
+  resources :discontinue_notices
   # resources :training_videos
 
   %w[gymnastics tumblebunnies tag dance swim events locations site_comments hosting competitive teamgym 
@@ -78,6 +77,4 @@ Comments::Application.routes.draw do
 
   match 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
   match 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
-
-
 end

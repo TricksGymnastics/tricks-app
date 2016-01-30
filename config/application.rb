@@ -61,5 +61,7 @@ module Comments
 
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    config.exceptions_app = self.routes
   end
 end
