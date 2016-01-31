@@ -8,7 +8,7 @@ class AbsentMailer < ActionMailer::Base
 
   def gym_notification(absent)
     @absent = absent
-    blah
+    
     if (Absent::HUMAN_LOCATIONS[absent.location.to_i] == "Granite Bay")
       mail to: "tricksgb@gmail.com", subject: "Absence for: " + @absent.first_name + " " + @absent.last_name
     elsif (Absent::HUMAN_LOCATIONS[absent.location.to_i] == "Folsom")
