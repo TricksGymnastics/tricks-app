@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.3.0'
 
 gem 'rails', '3.2.14'
 gem 'pg'
@@ -21,7 +21,7 @@ group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	gem 'quiet_assets'
-	gem 'debugger'
+	gem 'byebug'
   # gem 'bcrypt-ruby', '3.1.2' #for local
 end
 
