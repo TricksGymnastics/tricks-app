@@ -13,8 +13,8 @@ gem 'jquery-minicolors-rails'
 
 group :assets do
   gem 'sass-rails'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 group :development do
