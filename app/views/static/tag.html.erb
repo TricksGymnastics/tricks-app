@@ -3,19 +3,22 @@
   body {background-color: <%= @bgc_yellow %>;}
   #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
 <% end %>
+<% content_for :header_image do %>
+  http://placehold.it/3000x700/FFA200/333?text=Placeholder
+<% end %>
 
-<div class="content">
-  <h1>Tricks Agility Gymnastics</h1>
-  <div id="infobox" style="width: 945px;">
-    <iframe style="float:right; padding: 5px 0px 15px 15px" width="367" height="248" src="https://www.youtube.com/embed/OpUNA7QzqYw" frameborder="0"></iframe>
-  
-    <p>A gym is the perfect place for boys!  It's built to give them a chance to run, climb, hang, swing, conquer obstacles burn energy and get stronger.  When you add a coach, a "Code of Honor" and a headband, you're all set for one of the most exciting and current classes ever offered for boys.</p>
-    <br>
-    <h2 style="text-align:center;font-size: 22px;">Click on a Class Name To Register</h2>
-    <% i = 0 %>
-    <% @tag.each do |level| %>
-      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: false} %>
-      <% i += 1 %>
-    <% end %>
-  </div>
+
+
+<h1>Tricks Agility Gymnastics</h1>
+<div class="column medium-12">
+  <iframe style="float:right; padding: 5px 0px 15px 15px" width="367" height="248" src="https://www.youtube.com/embed/OpUNA7QzqYw" frameborder="0"></iframe>
+
+  <p>A gym is the perfect place for boys!  It's built to give them a chance to run, climb, hang, swing, conquer obstacles burn energy and get stronger.  When you add a coach, a "Code of Honor" and a headband, you're all set for one of the most exciting and current classes ever offered for boys.</p>
+  <br>
+  <h2 style="text-align:center;font-size: 22px;">Click on a Class Name To Register</h2>
+  <% i = 0 %>
+  <% @tag.each do |level| %>
+    <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: false} %>
+    <% i += 1 %>
+  <% end %>
 </div>

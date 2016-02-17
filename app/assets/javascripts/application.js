@@ -11,10 +11,13 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require foundation
 //= require jquery.minicolors
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require_directory .
+
+$(function(){ $(document).foundation(); });
 
 $(function () {
   $("#comments_table th a, #comments_table .pagination a").on("click", function () {

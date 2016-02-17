@@ -49,4 +49,4 @@ gem 'google-analytics-rails'
 gem 'premailer-rails'
 gem 'nokogiri'
 
-# gem 'rails4_upgrade'
+gem 'foundation-rails'
