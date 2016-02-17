@@ -1,0 +1,343 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery.ui.datepicker
+ *= require jquery.minicolors
+ *= require_directory .
+ */
+
+*{
+  padding:0;
+  margin:0;
+}
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 45px;
+  font-family: "grilled_cheese", "Trebuchet MS";
+  font-variant: small-caps;
+  line-height: 45px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 13px;
+}
+
+body {
+  background-color: #223d99;
+  color: #222;
+  font-size: 14px;
+  font-family: "Trebuchet MS";
+  text-align: left;
+}
+
+@font-face {
+    font:{
+      family: 'TrebuchetMSRegular';
+      weight: 'normal';
+      style: 'normal';
+    }
+    src: asset-url('trebuc.eot', font);
+    src: asset-url('trebuc.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('trebuc.woff', font) format('woff'),
+         asset-url('trebuc.ttf', font) format('truetype'),
+         asset-url('trebuc.svg#TrebuchetMSRegular', font) format('svg');
+}
+
+@font-face {
+  font: {
+    family: 'grilled_cheese';
+    weight: 'normal';
+    style: 'normal';
+  }
+  src: asset-url('grilcbc_.eot', font);
+  src: asset-url('grilcbc_.eot?#iefix', font) format('embedded-opentype'),
+       asset-url('grilcbc_.woff', font) format('woff'),
+       asset-url('grilcbc_.ttf', font) format('truetype'),
+       asset-url('grilcbc_.svg#grilled_cheese', font) format('svg')
+}
+
+div .actions input{
+  padding: 4px 15px;
+  margin: 5px 0px;
+}
+
+#form {
+  margin-left: 20px;
+}
+
+#container {
+  width: 980px;
+  margin: 0 auto;
+  padding: 0px 10px;
+  min-height: 500px;
+}
+
+#user_header {
+  padding: 0px;
+  margin: 0 auto;
+  margin-top: -15px;
+  width: 1000px;
+  height: 90px;
+  background-image: url(/assets/structure/background_menu_app.png);
+  background-repeat: no-repeat;
+}
+
+#session_info{
+  float: right;
+  font-size: 15px;
+  margin-top: 8px;
+  margin-right: 15px;
+}
+
+
+/***************************************************************************************************************
+  * menu
+  ***************************************************************************************************************/
+
+#tricks_tiny{
+  float:left;
+  margin-left: 13px;
+  margin-top: 12px;
+  border: 3px solid transparent;
+}
+
+#tricks_tiny img{
+  border: none;
+  box-shadow: none;
+}
+
+#tricks_tiny a:hover{
+  background-color: transparent;
+}
+
+#app_menu {
+  position: relative;
+  float: left;
+  /*border: solid black 1px;*/
+  width: 906px;
+}
+
+
+#app_menu a {
+  font: 18px "Trebuchet MS", Arial, Helvetica, sans-serif;
+  float:left;
+  color: #f8f8f8;
+  display: block;
+  width: auto;
+  text-decoration: none;
+  /*font-weight: bold;*/
+  line-height: 35px;
+  padding-top: 5px;
+
+  padding-left: 22px;
+}
+
+#app_menu a:hover {
+  background-image: url(/assets/structure/menu_hover_image.png);
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-color: transparent;
+  background-position-y: 13px;
+  color: #222;
+}
+
+
+
+
+#app_menu ul {
+  list-style-type: none;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+
+#app_menu li {
+  float: left;
+  position: relative;
+  text-align: center;
+  width: auto;
+  margin: 0px 10px 0px 10px;
+}
+
+
+
+/* Setting for the position of the hidden submenu box */
+
+#app_menu ul.app_submenu {
+  display: none;
+  position: absolute;
+  padding: 2px;
+  z-index: 90;
+  margin-top: 35px;
+  margin-left: 10px;
+}
+
+/* Helps make the submenu directly under the menu 
+  Settings for the individual submenu boxes*/
+
+#app_menu ul.app_submenu li {
+  text-align: center;
+  background-color: #FFF;
+  border: 1px solid #333;
+  height: 25px;
+  margin: 0px;
+}
+
+/* Makes the submenus box visable on hover 
+    Settings for the overall submenu box*/
+
+#app_menu li:hover ul.app_submenu {
+  display: block;
+  border: 1px solid #333;
+  background-color: #F91;
+}
+
+#app_menu .app_submenu_link a {
+  font: 15px "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: left;
+  color: #222;
+  display: block;
+  width: 120px;
+  text-decoration: none;
+  line-height: 25px;
+  white-space: nowrap;
+  margin-top: -6px;
+  padding-left: 24px;
+}
+
+#app_menu .app_submenu_link a:hover {
+  background-image: url(/assets/structure/menu_hover_image.png);
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-position-y: 10px;
+  background-position-x: 5px;
+  white-space: nowrap;
+  color: #333;
+  
+}
+
+/************************************/
+
+#background_center{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+#page_wrapper{
+  margin: 20px 15px 30px 15px;
+  padding: 15px 0px 30px 0px;
+  background-color:white;
+  width: 1000px;
+  float: left;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #333;
+}
+
+
+#flash_container{
+  margin: 0 auto;
+}
+
+#flash_notice, #flash_error, #flash_alert {
+  text-align: center;
+  width: 400px;
+  padding: 5px 8px;
+  margin: -25px auto 25px auto;
+  font-size: 14px;
+  
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 2px #6C6;
+}
+
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 2px #C66;
+}
+
+
+.comments th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.comments th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.comments th .desc {
+  background-image: url(/assets/down_arrow.gif);
+}
+
+
+
+.quotes th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.quotes th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.quotes th .desc {
+  background-image: url(/assets/down_arrow.gif);
+}
+
+
+
+.users th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.users th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.users th .desc {
+  background-image: url(/assets/down_arrow.gif);
+}
+
+
+.schedules th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.schedules th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.schedules th .desc {
+  background-image: url(/assets/down_arrow.gif);
+}

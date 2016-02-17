@@ -17,8 +17,11 @@
 //= require jquery.ui.datepicker
 //= require_directory .
 
+<<<<<<< HEAD
 $(function(){ $(document).foundation(); });
 
+=======
+>>>>>>> c4d2ba79434621329f13690bbf0986b5cc0e1f1d
 $(function () {
   $("#comments_table th a, #comments_table .pagination a").on("click", function () {
     $.getScript(this.href);
@@ -61,4 +64,8 @@ $(function () {
     $.get($("#schedules_search").attr("action"), $("#schedules_search").serialize(), null, "script");
     return false;
   });
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> c4d2ba79434621329f13690bbf0986b5cc0e1f1d
