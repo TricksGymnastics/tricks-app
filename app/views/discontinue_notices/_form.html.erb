@@ -38,8 +38,10 @@ textarea{
       <%= f.text_field :student_first_name, required: true, size: 12, placeholder: "First Name" %> <%= f.text_field :student_last_name, required: true, size: 12, placeholder: "Last Name" %><br>
       <%= f.select :location, DiscontinueNotice::LOCATIONS, {:prompt => "Select a Location"}, required: true %><br>
       <%= f.select :class_day, DiscontinueNotice::DAYS, {:prompt => "Select a Day"}, required: true %><br>
-      <%= f.time_select :class_time, {:minute_step => 5, :ampm => true, :include_blank => false}, required: true %><br>
-      <%= f.date_select :last_day, required: true %><br>
+      <%#= f.time_select :class_time, {:minute_step => 5, :ampm => true, :include_blank => false}, required: true %>
+      <%= f.text_field :class_time, placeholder: 'e.g. 3:30 pm', size: 20 %><br><br>
+      <%= f.text_field :last_day, id: 'last_day_date', size: 20 %>
+      <%#= f.date_select :last_day, required: true %><br>
       <%= f.text_field :parent_name, required: true %><br>
     </div>
   </div>

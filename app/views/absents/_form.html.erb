@@ -47,7 +47,7 @@
 
       <div class="field" style="float: left;">
         <%= f.text_field :date, id:'absent_date', size: 20 %><br>
-        <%= f.time_select :time, {:minute_step => 5, :ampm => true, :include_blank => false} %><br>
+        <%= f.text_field :time, placeholder: 'e.g. 3:30 pm', size: 20 %><br>
       </div>
     </div>
 
