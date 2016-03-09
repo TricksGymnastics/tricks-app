@@ -6,8 +6,8 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Tricks" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application' %><%# , media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application' %> <%# , 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
 
@@ -126,120 +126,119 @@
 
      <!-- Small Navigation -->
     <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-      <%= link_to image_tag('/assets/tricks-tiny.png'), root_path, class: "logo-small show-for-small-only" %>
+      <%= link_to image_tag('tricks-tiny.png'), root_path, class: "logo-small show-for-small-only" %>
       <button class="menu-icon" type="button" data-toggle></button>
       <div class="title-bar-title">Menu</div>
     </div>
 
-<div data-sticky-container>
-
     <!-- Medium-Up Navigation -->
-    <div class="top-bar" id="main-menu" data-sticky data-options="marginTop:0;" style="width:100%;height: 50px;">
-
-      <div class="logo-wrapper hide-for-small-only">
-        <div class="logo">
-          <%= link_to image_tag('/assets/tricks-header.png'), root_path %>
+    <div data-sticky-container style="z-index: 10;">
+      <div class="top-bar" id="main-menu" data-sticky data-options="marginTop:0;" style="width: 100%; height: 50px;">
+        <div class="logo-wrapper hide-for-small-only">
+          <div class="logo">
+            <%= link_to image_tag('tricks-header.png'), root_path %>
+          </div>
+        </div>
+  
+        <!-- Left Nav Section -->
+        <div class="top-bar-left">
+          <ul class="menu" data-responsive-menu="drilldown medium-dropdown"> 
+            
+            <li class="has-submenu">
+              <%= link_to "Programs", 'javascript:void();', class: 'main-menu-item' %></a>
+              <ul class="menu vertical">
+                <li class="has-submenu">
+                  <%= link_to "Gymnastics", "javascript:void();" %>
+                  <ul class="menu vertical">
+                    <li><%= link_to "Preschool (0-5)", tumblebunnies_path %></li>
+                    <li><%= link_to "School Age (6-18)", gymnastics_path %></li>
+                    <li><%= link_to "Compteitive", competitive_path %></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <%= link_to "Dance", "javascript:void();" %>
+                  <ul class="menu vertical">
+                    <li><%= link_to "Preschool (0-5)", dance_path %></li>
+                    <li><%= link_to "School Age (6-18)", dance_path %></li>
+                  </ul>
+                </li>
+                <li><%= link_to "TAG", tag_path %></li>
+                <li><%= link_to "Swim", swim_path %></li>
+                <li><%= link_to "CampUs", campus_path %></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <%= link_to "Events", 'javascript:void();', class: 'main-menu-item' %></a>
+              <ul class="menu vertical">
+                <li><%= link_to "Gym Birthday Parties", birthdays_path %></li>
+                <li><%= link_to "Dance Birthday Parties", princess_party_path %></li>
+                <li><%= link_to "Kids Night Out", datenights_path %></li>
+                <li><%= link_to "Camps", camps_path %></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <%= link_to "Forms", 'javascript:void();', class: 'main-menu-item' %></a>
+              <ul class="menu vertical">
+                <li><%= link_to "Notice of Absence", new_absent_path %></li>
+                <li><%= link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
+                <li><%= link_to "Recital Ad", new_recital_ad_path %></li>
+                <li><%= link_to "Surveys", surveys_path %></li>
+                <li><%= link_to "Website PDFs", website_pdfs_path %></li>
+                <li><%= link_to "Where in the World", worlds_path %></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Right Nav Section -->
+        <div class="top-bar-right">
+          <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+            <li class="has-submenu">
+              <%= link_to "About Us", 'javascript:void();', class: 'main-menu-item' %></a>
+              <ul class="menu vertical">
+                <li><%= link_to "Our Story", '#' %></li>
+                <li><%= link_to "Our Facilities", locations_path %></li>
+                <li class="has-submenu">
+                  <%= link_to "Our Staff", "javascript:void()" %>
+                  <ul class="menu vertical">
+                    <li><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %></li>
+                    <li><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %></li>
+                    <li><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %></li>
+                  </ul>
+                </li>
+                <li><%= link_to "Testimonials", comments_path %></li>
+              </ul>
+            </li>
+  
+            <li><%= link_to "FAQ", '#', class: 'main-menu-item' %></li>
+            <li><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
+            <li><%= link_to "Contact", locations_path, class: 'main-menu-item' %></li>
+  
+          </ul>
         </div>
       </div>
-
-      <!-- Left Nav Section -->
-      <div class="top-bar-left">
-        <ul class="menu" data-responsive-menu="drilldown medium-dropdown"> 
-          
-          <li class="has-submenu">
-            <%= link_to "Programs", 'javascript:void();', class: 'main-menu-item' %></a>
-            <ul class="menu vertical">
-              <li class="has-submenu">
-                <%= link_to "Gymnastics", "javascript:void();" %>
-                <ul class="menu vertical">
-                  <li><%= link_to "Preschool (0-5)", tumblebunnies_path %></li>
-                  <li><%= link_to "School Age (6-18)", gymnastics_path %></li>
-                  <li><%= link_to "Compteitive", competitive_path %></li>
-                </ul>
-              </li>
-              <li class="has-submenu">
-                <%= link_to "Dance", "javascript:void();" %>
-                <ul class="menu vertical">
-                  <li><%= link_to "Preschool (0-5)", dance_path %></li>
-                  <li><%= link_to "School Age (6-18)", dance_path %></li>
-                </ul>
-              </li>
-              <li><%= link_to "TAG", tag_path %></li>
-              <li><%= link_to "Swim", swim_path %></li>
-              <li><%= link_to "CampUs", campus_path %></li>
-            </ul>
-          </li>
-          <li class="has-submenu">
-            <%= link_to "Events", 'javascript:void();', class: 'main-menu-item' %></a>
-            <ul class="menu vertical">
-              <li><%= link_to "Date Night", datenights_path %></li>
-              <li><%= link_to "Camps", camps_path %></li>
-              <li><%= link_to "Birthday Parties", birthdays_path %></li>
-            </ul>
-          </li>
-          <li class="has-submenu">
-            <%= link_to "Forms", 'javascript:void();', class: 'main-menu-item' %></a>
-            <ul class="menu vertical">
-              <li><%= link_to "Notice of Absence", '#' %></li>
-              <li><%= link_to "Recital Ad", '#' %></li>
-              <li><%= link_to "Surveys", '#' %></li>
-              <li><%= link_to "Website PDFs", '#' %></li>
-              <li><%= link_to "Notice of Disconinuation", '#' %></li>
-              <li><%= link_to "Where in the World", worlds_path %></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      
-      <!-- Right Nav Section -->
-      <div class="top-bar-right">
-        <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
-          <li class="has-submenu">
-            <%= link_to "About Us", 'javascript:void();', class: 'main-menu-item' %></a>
-            <ul class="menu vertical">
-              <li><%= link_to "Our Story", '#' %></li>
-              <li><%= link_to "Our Facilities", locations_path %></li>
-              <li class="has-submenu">
-                <%= link_to "Our Staff", "javascript:void()" %>
-                <ul class="menu vertical">
-                  <li><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %></li>
-                  <li><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %></li>
-                  <li><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %></li>
-                </ul>
-              </li>
-              <li><%= link_to "Testimonials", '#' %></li>
-            </ul>
-          </li>
-
-          <li><%= link_to "FAQ", '#', class: 'main-menu-item' %></li>
-          <li><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
-          <li><%= link_to "Contact", '#', class: 'main-menu-item' %></li>
-
-        </ul>
-      </div>
     </div>
-</div>
-  <% if content_for?(:header_image) %>
-    <div id="header-secondary" class="row">
-      <div style="height: 400px; overflow: hidden; width: 100%; position: absolute; left: 0;z-index: -5;">
+    
+    <% if content_for?(:header_image) %>
+    <div id="header-secondary" class="row" style=" z-index: 5;">
+      <div style="height: 400px; overflow: hidden; width: 100%; position: absolute; left: 0;">
         <image width="3000" height="1000" src="<%= yield(:header_image) %>"></image>
       </div>
     </div>
-
-
-    <div style="padding-top: 400px;">
-  <% else %>
-    <div style="padding-top: 0px;">
-  <% end %>
-      <div id="main-container" class="row">        
-
-        <div class="row" id="flash_container">
-
-
+    
+    <div class="row" style="padding-top: 420px;">
+    <% else %>
+    <div class="row" style="padding-top: 80px;">
+    <% end %>    
+    
+      <div class="columns small-12" id="main-container">
+        
+      <% if flash.to_a.length > 0 %>
+        <div class="row">
           <% flash.each do |name, msg| %>
 
             <% if name.to_s == "alert" %>
-              <div class="callout warning" data-closable>   
+              <div class="callout warning columns small-12" data-closable>   
                 <%= msg %>
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                   <span aria-hidden="true">&times;</span>
@@ -248,7 +247,7 @@
             <% end %>
 
             <% if name.to_s == "notice" %>
-              <div class="callout success" data-closable>   
+              <div class="callout success columns small-12" data-closable>   
                 <%= msg %>
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                   <span aria-hidden="true">&times;</span>
@@ -257,7 +256,7 @@
             <% end %>
 
             <% if name.to_s == "error" %>
-              <div class="callout alert" data-closable>   
+              <div class="callout alert columns small-12" data-closable>   
                 <%= msg %>
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                   <span aria-hidden="true">&times;</span>
@@ -266,27 +265,45 @@
             <% end %>
           <% end %>
         </div>
-
-        <div id="page">
-          <div class="row">
-            <div class="large-12 columns"><%= yield %></div>
+      <% end %>
+      
+      
+        <% if content_for?(:side_circles) %>
+          <div class="row align-justify">
+            <div class="columns small-8">
+              <%= yield %>
+            </div>  
+            <div class="columns medium-3">
+              <%= yield(:side_circles) %>
+            </div>
           </div>
-        </div>
-
+        <% else %>
+          <div class="row">
+            <div class="columns small-12">
+              <%= yield %>
+            </div>
+          </div>
+        <% end %>
+        
       </div>
     </div>
 
 
 
 
-
-
-
-
-    <div class="row">
-      <% if !current_user %>
-        <%= link_to "Staff Login", login_path, class: "button secondary expand", style: "width: 100%; margin-top: 20px;" %>
-      <% end %>
+  <% if !content_for?(:no_margin_footer) %>
+    <div id="footer" style="margin-top: 200px;">
+  <% else %>
+    <div id="footer">
+  <% end %>
+      <div class="row" id="footer-content">
+        <div class="columns small-12">
+          <% if !current_user %>
+            <%= link_to "Staff Login", login_path, class: "button secondary expand", style: "width: 100%; margin-top: 20px;" %>
+          <% end %>
+        </div>
+      </div>
+      <image height=40 src="http://tvuk222fjqo33d6py1a3k15d.wpengine.netdna-cdn.com/wp-content/themes/goldfish-swim-school/assets/images/white-footer-overlay.png"></image>
     </div>
 
   </body>

@@ -1,6 +1,6 @@
 class LevelsController < ApplicationController
   
-  layout "static"
+  # layout "static"
   load_and_authorize_resource
   
   # GET /levels

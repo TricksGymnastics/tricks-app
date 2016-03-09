@@ -1,5 +1,4 @@
 class DatenightsController < ApplicationController
-  layout 'static'
   load_and_authorize_resource :except => :index
 
   def index

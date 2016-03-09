@@ -1,0 +1,81 @@
+@import 'globals';
+
+p {
+  margin: 10px 0;
+  line-height: 20px;
+  /*border: 1px solid black;*/
+  text-align: justify;
+}
+
+
+ul {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+
+
+#coach_field {
+  margin-bottom: 25px;
+}
+
+#classtype-container{
+  // border: 2px #444 solid;
+  color: #222; 
+  margin-bottom: 50px;
+  
+  h2{
+    font-family: grilled_cheese, 'Trebuchet MS';
+    color: #333;
+    text-decoration: underline;
+    text-shadow: #fff 0px 0px 5px;
+  }
+  &.gymnastics{
+    background-color: $tricks-very-light-yellow;
+    border: 4px $tricks-yellow solid;
+  }
+  &.dance{
+    background-color: $tricks-very-light-pink;
+    border: 4px $tricks-pink solid;
+  }
+  &.swim{
+    background-color: $tricks-very-light-blue;
+    border: 4px $tricks-blue solid;
+  }
+  &.office{
+    background-color: $tricks-very-light-green;
+    border: 4px $tricks-green solid;
+  }
+}
+
+#coach_container{
+  text-align: center;  
+  margin-bottom: 20px;
+  a img {
+    box-sizing: border-box;
+    text-align: center;
+    display:block;
+    border: 1px solid #333;
+    // box-shadow: 0 0 10px #fff;
+  	&:hover {
+  	border: 2px solid #fff;  
+    box-shadow: 0 0 25px #222;
+  	}
+  }
+}
+
+#coach-name{
+  color: #333;
+  text-decoration: none;
+  font-size: 20px;
+  text-shadow: #fff 0px 0px 3px;
+}
+
+#past-coach-name{
+  text-decoration: none;
+  color: red; 
+  font-size: 20px;
+  text-shadow: #fff 0px 0px 3px;
+}
+
+

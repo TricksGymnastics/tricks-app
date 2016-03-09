@@ -15,16 +15,16 @@ class StaticController < ApplicationController
 
     @tricksu_password = false
     
-    @newsletter = WebsitePdf.find_by_file_name("Tricks_Newsletter")
-    @reg_form = WebsitePdf.find_by_file_name("Tricks_Registration_Form")
-    @release_form = WebsitePdf.find_by_file_name("Tricks_Release_Form")
-    @family_rules = WebsitePdf.find_by_file_name("Tricks_Family_Rules")
-    @class_sessions = WebsitePdf.find_by_file_name("Tricks_Class_Sessions")
+    @newsletter = WebsitePdf.where(:file_name => "Tricks_Newsletter").first
+    @reg_form = WebsitePdf.where(:file_name => "Tricks_Registration_Form").first
+    @release_form = WebsitePdf.where(:file_name => "Tricks_Release_Form").first
+    @family_rules = WebsitePdf.where(:file_name => "Tricks_Family_Rules").first
+    @class_sessions = WebsitePdf.where(:file_name => "Tricks_Class_Sessions").first
   end
 
   def index
-    @kid_quote = KidQuote.find(:all).sample(n=3)
-    @live_promos = PromoSlide.where(live: true).all(order: 'sort_order')
+    @kid_quote = KidQuote.all.sample(n=3)
+    @live_promos = PromoSlide.where(live: true).order(:sort_order)
     #render :layout => "random_quote"
   end
 
@@ -61,8 +61,8 @@ class StaticController < ApplicationController
   end
 
   def swim
-    @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'")
-    @swim.delete_if   {|level| level.levelname == "Open By Request"}
+    @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'").where("levels.levelname != 'Open By Request'")
+    # @swim.delete_if   {|level| level.levelname == "Open By Request"}
   end
 
 end

@@ -2,36 +2,36 @@ Comments::Application.routes.draw do
 
   root :to => 'static#index'
 
-  match '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}  
+  get '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}  
 
-  match 'schedules/choose'  
-  match 'schedules/gb_gym'
-  match 'schedules/gb_tb'
-  match 'schedules/gb_dance'
-  match 'schedules/gb_tag'
-  match 'schedules/fol_gym'
-  match 'schedules/fol_tb'
-  match 'schedules/fol_dance'
-  match 'schedules/fol_swim'
-  match 'schedules/fol_tag'
-  match 'schedules/sac_gym'
-  match 'schedules/sac_tb'
-  match 'schedules/sac_dance'
-  match 'schedules/sac_tag'
-  match 'schedules/by_gym'
+  get 'schedules/choose'  
+  get 'schedules/gb_gym'
+  get 'schedules/gb_tb'
+  get 'schedules/gb_dance'
+  get 'schedules/gb_tag'
+  get 'schedules/fol_gym'
+  get 'schedules/fol_tb'
+  get 'schedules/fol_dance'
+  get 'schedules/fol_swim'
+  get 'schedules/fol_tag'
+  get 'schedules/sac_gym'
+  get 'schedules/sac_tb'
+  get 'schedules/sac_dance'
+  get 'schedules/sac_tag'
+  get 'schedules/by_gym'
 
-  match 'coaches/type/:name' => "coaches#type"
-  match 'coaches/loc/:name' => "coaches#loc"
-  match 'coaches/past_employees' => "coaches#past_employees"
+  get 'coaches/type/:name' => "coaches#type"
+  get 'coaches/loc/:name' => "coaches#loc"
+  get 'coaches/past_employees' => "coaches#past_employees"
 
-  match 'recital_ads/ad_select'
-  match 'recital_ad_mailer/:id' => 'recital_ads#order_confirmation'
+  get 'recital_ads/ad_select'
+  get 'recital_ad_mailer/:id' => 'recital_ads#order_confirmation'
 
-  match 'datenights/edit' => 'datenights#edit'
+  get 'datenights/edit' => 'datenights#edit'
 
-  match 'choose_survey' => 'survey_results#choose_survey' 
-  match 'survey_result_for/:name' => 'survey_results#survey_results_for' 
-  match 'survey_results/:id' => 'survey_results#show' 
+  get 'choose_survey' => 'survey_results#choose_survey' 
+  get 'survey_result_for/:name' => 'survey_results#survey_results_for' 
+  get 'survey_results/:id' => 'survey_results#show' 
 
   resources :comments
   resources :kid_quotes
@@ -61,7 +61,7 @@ Comments::Application.routes.draw do
     get page, controller: "static", action: page
   end
 
-  match 'dance_company' => 'dance_company#index'
+  get 'dance_company' => 'dance_company#index'
   %w[index about auditions empty_page events gallery].each do |page|
     get 'dance_company/'+page, controller: 'dance_company', action: page
   end
@@ -73,8 +73,8 @@ Comments::Application.routes.draw do
   get 'whereintheworld', to: 'worlds#new'
   get 'tricksu', to: 'tricks_u_videos#index', as: 'tricksu'
 
-  match 'tricksu/:category' => "tricks_u_videos#index"
+  get 'tricksu/:category' => "tricks_u_videos#index"
 
-  match 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
-  match 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
+  get 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
+  get 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
 end

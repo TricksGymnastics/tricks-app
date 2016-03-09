@@ -1,56 +1,59 @@
-<%= stylesheet_link_tag "static/coaches", :media => "all" %>
+<%= stylesheet_link_tag "FileSpecificCSS/coaches", :media => "all" %>
 
 <h1>The Tricks Family</h1>
 
+<h3>
 <% if params[:name] == "Granite Bay" %>
-  <h2>Granite Bay (est. 1990)</h2>
+  Granite Bay (est. 1990)
 <% elsif params[:name] == "Folsom" %>
-  <h2>Folsom (est. 1993)</h2>
+  Folsom (est. 1993)
 <% elsif params[:name] == "Sacramento" %>
-  <h2>Sacramento (est. 1997)</h2>
+  Sacramento (est. 1997)
 <% end %>
+</h3>
 
 <% if can? :manage, Coach %>
-  <br><h2><%= link_to 'Add New Employee', new_coach_path %></h2><br>
-<% else %>
-  <br><br>
+  <h3><%= link_to 'Add New Employee', new_coach_path %></h3>
 <% end %>
 
 
-<div>
-  <div id="coach_section_header"><h3>Gymnastics</h3></div>
-  <div>
-    <% @coaches_by_location.each do |coach| %>  
+  <div class="row align-center gymnastics" id="classtype-container">
+    <div class="columns small-12">
+      <h2>Gymnastics</h2>
+    </div>
+    <% @coaches_by_location.each do |coach| %>    
       <% shown = false %>  
-      <% coach.classtypes.each do |classtype| %>        
+      <% coach.classtypes.each do |classtype| %>     
         <% if shown == false %>
-          <% if classtype.name == "Gymnastics" || classtype.name == "Tumblebunnies" %>          
-            <%= render 'coach_container', :coach => coach  %>
+          <% if classtype.name == "Gymnastics" || classtype.name == "Tumblebunnies" %>
+              <%= render 'coach_container', :coach => coach  %>
+              <% shown = true %>
           <% end %>
-          <% shown = true %>
         <% end %>
       <% end %>
     <% end %>
   </div>
-</div>
-
-<div>
-  <div id="coach_section_header" style="margin-top: 30px"><h3>Dance</h3></div>
-  <div>
+  
+  
+  <div class="row align-center dance" id="classtype-container">
+    <div class="columns small-12">
+      <h2>Dance</h2>
+    </div>
     <% @coaches_by_location.each do |coach| %>    
       <% coach.classtypes.each do |classtype| %>
-        <% if classtype.name == "Dance" %>          
+        <% if classtype.name == "Dance" %>
           <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
     <% end %>
   </div>
-</div>
 
 <% if params[:name] == "Folsom" %>
-  <div>
-    <div id="coach_section_header" style="margin-top: 30px"><h3>Swim</h3></div>
-    <div>
+  <div class="row align-center swim" id="classtype-container">
+    <div class="columns small-12">
+      <h2>Swim</h2>
+    </div>
+    <div class="row align-center">
       <% @coaches_by_location.each do |coach| %>    
         <% coach.classtypes.each do |classtype| %>
           <% if classtype.name == "Swim" %>
@@ -62,9 +65,11 @@
   </div>
 <% end %>
 
-<div>
-  <div id="coach_section_header" style="margin-top: 30px"><h3>Office</h3></div>
-  <div>
+<div class="row align-center office" id="classtype-container">
+  <div class="columns small-12">
+    <h2>Office</h2>
+  </div>
+  <div class="row align-center">
     <% @coaches_by_location.each do |coach| %>    
       <% coach.classtypes.each do |classtype| %>
         <% if classtype.name == "Office" %>

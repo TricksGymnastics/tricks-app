@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
   		if search
     		where('comment ILIKE ?', "%#{search}%")
  		else
-   			scoped
+ 		    Comment.all
  		end
 	end
 end

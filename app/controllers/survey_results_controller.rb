@@ -5,13 +5,13 @@ class SurveyResultsController < ApplicationController
   def show
     @survey_result = SurveyResult.find(params[:id])
     @survey_taken = Survey.find(@survey_result.survey_id)
-    @the_results = JSON.parse(@survey_result.result, :symbolize_names => true)
+    # @the_results = JSON.parse(@survey_result.result, :symbolize_names => true)
   end
 
   def results_page
     @survey_result = SurveyResult.find(params[:id])
     @survey_taken = Survey.find(@survey_result.survey_id)
-    @the_results = JSON.parse(@survey_result.result, :symbolize_names => true)
+    # @the_results = JSON.parse(@survey_result.result, :symbolize_names => true)
     @score = 0
     @the_results.each do |r|
       unless r[:weight] == nil
@@ -66,13 +66,13 @@ class SurveyResultsController < ApplicationController
 
   def choose_survey
     # Gives an array full of all coaches that work at the location specified in the url
-    # @surveys_by_id = Location.includes(:coaches).find_by_name(params[:name]).coaches
+    # @surveys_by_id = Location.includes(:coaches).where(:name => params[:name]).coaches
     @surveys = Survey.all
   end
 
   def survey_results_for
-    @survey_taken = Survey.find_by_name(params[:name])
-    @survey_results_by_survey = SurveyResult.where(:survey_id => Survey.find_by_name(params[:name]).id).all(:order => 'created_at')
+    @survey_taken = Survey.where(:name => params[:name])
+    @survey_results_by_survey = SurveyResult.where(:survey_id => Survey.where(:name => params[:name]).id).all(:order => 'created_at')
   end
 
 end

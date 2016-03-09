@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag "static/coaches", :media => "all" %>
+<%= stylesheet_link_tag "FileSpecificCSS/coaches", :media => "all" %>
 
 <h1>The Tricks Family</h1>
 
@@ -8,28 +8,28 @@
   <br>
 <% end %>
 
-<div style="margin: 0px auto 10px auto; height:65px; width: 800px;">
-  <div style="padding: 6px; height: 50px; float:left; width: 296px; border: dashed 1px #444; margin: 0 5px;">
-    <h4 style="font-size: 18px;">Staff by Location:</h4>
-    <%= button_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, id: "coach_button" %>
-    <%= button_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, id: "coach_button"  %>
-    <%= button_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, id: "coach_button"  %>
-  </div>
-
+<div class="row" style="border: dashed 1px #444; padding-top: 1rem;">
+  <div class="columns medium-3"><h3>Staff by Location:</h3></div>
+  <div class="columns medium-3"><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, class: "button expanded" %></div>
+  <div class="columns medium-3"><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, class: "button expanded"  %></div>
+  <div class="columns medium-3"><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, class: "button expanded"  %></div>
+</div>
   <%# This contains a bug in coaches_controller type because the name of the class is Classtype, yeah i was a newb when i did that... Too lazy to go through and change to "Program" so i'm just cutting this section out, no one uses it anyways %>
-  <<!-- div style="padding: 6px; height: 50px; float:left; width: 455px; border: dashed 1px #444; margin: 0 5px;">
+  <!-- div style="padding: 6px; height: 50px; float:left; width: 455px; border: dashed 1px #444; margin: 0 5px;">
     <h4 style="font-size: 18px;">Staff by Program:</h4>
-    <%#= button_to "Gymnastics", {:controller => "coaches", :action => "type", :name => "Gymnastics"}, id: "coach_button" %>
-    <%#= button_to "Tumblebunnies", {:controller => "coaches", :action => "type", :name => "Tumblebunnies"}, id: "coach_button"  %>
-    <%#= button_to "Dance", {:controller => "coaches", :action => "type", :name => "Dance"}, id: "coach_button"  %>
-    <%#= button_to "Swim", {:controller => "coaches", :action => "type", :name => "Swim"}, id: "coach_button"  %>
-    <%#= button_to "Office", {:controller => "coaches", :action => "type", :name => "Office"}, id: "coach_button"  %>
+    <%#= button_to "Gymnastics", {:controller => "coaches", :action => "type", :name => "Gymnastics"} %>
+    <%#= button_to "Tumblebunnies", {:controller => "coaches", :action => "type", :name => "Tumblebunnies"}  %>
+    <%#= button_to "Dance", {:controller => "coaches", :action => "type", :name => "Dance"}  %>
+    <%#= button_to "Swim", {:controller => "coaches", :action => "type", :name => "Swim"}  %>
+    <%#= button_to "Office", {:controller => "coaches", :action => "type", :name => "Office"}  %>
   </div>
 </div> -->
 
-<div>
-  <div id="coach_section_header"><h3>Granite Bay</h3></div>
-  <div>
+<div class="row align-center" id="classtype-container">
+  <div class="columns small-12">
+    <h2>Granite Bay</h2>
+  </div>
+  <div class="row align-center">
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
         <% if location.name == "Granite Bay" %>
@@ -40,9 +40,11 @@
   </div>
 </div>
 
-<div>
-  <div id="coach_section_header" style="margin-top: 30px"><h3>Folsom</h3></div>
-  <div>
+<div class="row align-center" id="classtype-container">
+  <div class="columns small-12">
+    <h2>Folsom</h2>
+  </div>
+  <div class="row align-center">
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
         <% if location.name == "Folsom" %>
@@ -53,9 +55,11 @@
   </div>
 </div>
 
-<div>
-  <div id="coach_section_header" style="margin-top: 30px"><h3>Sacramento</h3></div>
-  <div>
+<div class="row align-center" id="classtype-container">
+  <div class="columns small-12">
+    <h2>Sacramento</h2>
+  </div>
+  <div class="row align-center">
     <% @coaches.each do |coach| %>
       <% coach.locations.each do |location| %>
         <% if location.name == "Sacramento" %>

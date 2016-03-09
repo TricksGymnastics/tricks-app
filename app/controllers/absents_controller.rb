@@ -25,11 +25,11 @@ class AbsentsController < ApplicationController
   # POST /absents
   # POST /absents.json
   def create
-    @absent = Absent.new(params[:absent])
-
+    @absent = Absent.new(params[:absent].permit(:first_name, :last_name, :location, :classtype_id, :level_id, :date, :time))
+    @absent.time = Time.parse(params[:absent][:time])
     respond_to do |format|
       if @absent.save
-        AbsentMailer.gym_notification(@absent).deliver
+        AbsentMailer.gym_notification(@absent).deliver_now
         format.html { redirect_to thankyou_path, notice: 'Your absent notification has been submitted.' }
         format.json { render json: absents_path, status: :created, location: @absent }
       else

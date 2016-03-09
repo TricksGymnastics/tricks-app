@@ -24,7 +24,7 @@
     
     <% i = 0 %>
     <% @tumblebunnies.each do |level| %>
-      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true} %>
+      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true, color: @bgc_green} %>
       <% i += 1 %>
     <% end %>
   </div>

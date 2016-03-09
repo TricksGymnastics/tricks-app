@@ -14,7 +14,7 @@ class Schedule < ActiveRecord::Base
   		if location_search
     		where('location ILIKE ?', "%#{location_search}%")
  		else
- 			scoped
+ 			Schedule.all
  		end
 	end
 
@@ -22,7 +22,7 @@ class Schedule < ActiveRecord::Base
   		if level_search
     		where('levelname ILIKE ?', "%#{level_search}%")
  		else
- 			scoped
+ 			Schedule.all
  		end
 	end
 
@@ -30,7 +30,7 @@ class Schedule < ActiveRecord::Base
   		if day_search
     		where('day ILIKE ?', "%#{day_search}%")
  		else
- 			scoped
+ 			Schedule.all
  		end
 	end
 
@@ -38,7 +38,7 @@ class Schedule < ActiveRecord::Base
   		if time_search
     		where("time = ?", time_search)
  		else
- 			scoped
+ 			Schedule.all
  		end
 	end
 
@@ -46,7 +46,7 @@ class Schedule < ActiveRecord::Base
   		if teacher_search
     		where('teacher ILIKE ?', "%#{teacher_search}%")
  		else
- 			scoped
+ 			Schedule.all
  		end
 	end
 
@@ -55,7 +55,7 @@ class Schedule < ActiveRecord::Base
   			@age.to_s
   			where('age ILIKE ?', "%#{age_search}%")
  		else
- 			scoped
+ 			Schedule.all
  		end
 	end
 
@@ -63,7 +63,7 @@ class Schedule < ActiveRecord::Base
   		if gender_search
     		where('gender ILIKE ?', "%#{gender_search}%")
  		else
- 			scoped
+ 			Schedule.all
  		end
 	end
 

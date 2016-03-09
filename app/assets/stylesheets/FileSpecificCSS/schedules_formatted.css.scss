@@ -17,29 +17,23 @@ body {
 }
 
 @font-face {
-    font:{
-      family: 'TrebuchetMSRegular';
-      weight: 'normal';
-      style: 'normal';
-    }
-    src: asset-url('trebuc.eot', font);
-    src: asset-url('trebuc.eot?#iefix', font) format('embedded-opentype'),
-         asset-url('trebuc.woff', font) format('woff'),
-         asset-url('trebuc.ttf', font) format('truetype'),
-         asset-url('trebuc.svg#TrebuchetMSRegular', font) format('svg');
+    font-family: 'TrebuchetMSRegular';
+    
+    src: asset-url('trebuc.eot');
+    src: asset-url('trebuc.eot?#iefix') format('embedded-opentype'),
+         asset-url('trebuc.woff') format('woff'),
+         asset-url('trebuc.ttf') format('truetype'),
+         asset-url('trebuc.svg#TrebuchetMSRegular') format('svg');
 }
 
 @font-face {
-  font: {
-    family: 'grilled_cheese';
-    weight: 'normal';
-    style: 'normal';
-  }
-  src: asset-url('grilcbc_.eot', font);
-  src: asset-url('grilcbc_.eot?#iefix', font) format('embedded-opentype'),
-       asset-url('grilcbc_.woff', font) format('woff'),
-       asset-url('grilcbc_.ttf', font) format('truetype'),
-       asset-url('grilcbc_.svg#grilled_cheese', font) format('svg');
+  font-family: 'grilled_cheese';
+ 
+  src: asset-url('grilcbc_.eot');
+  src: asset-url('grilcbc_.eot?#iefix') format('embedded-opentype'),
+       asset-url('grilcbc_.woff') format('woff'),
+       asset-url('grilcbc_.ttf') format('truetype'),
+       asset-url('grilcbc_.svg#grilled_cheese') format('svg');
 }
 
 .day{

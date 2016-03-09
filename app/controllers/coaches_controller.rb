@@ -2,6 +2,7 @@ class CoachesController < ApplicationController
 
   load_and_authorize_resource :except => [:type, :loc]
   helper "errors"
+  
 
   def index
     @coaches = Coach.joins(:locations).location_search(params[:location]).uniq.sort_by(&:firstname)
@@ -44,7 +45,7 @@ class CoachesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @coach.update_attributes(params[:coach])
+      if @coach.update_attributes(params[:coach].permit(:image, :firstname, :lastname, :gender, :location_ids, :level_ids, :classtype_ids, :experience, :fav_event, :fav_skill, :fav_food, :disney_char, :advice, :birthdate, :startdate, :remove_image, :strengths, :current_employee))
         format.html { redirect_to @coach, notice: 'Coach was successfully updated.' }
         format.json { head :no_content }
       else
@@ -64,12 +65,12 @@ class CoachesController < ApplicationController
 
   # this is bugged because of the name "Classtype"... no longer used anywhere
   def type
-    @coaches = Classtype.includes(:coaches).find_by_name(params[:name]).coaches.sort_by(&:firstname)
+    @coaches = Coach.includes(:classtypes).where(classtypes: {name: params[:name]}).sort_by(&:firstname)
   end
 
   def loc
     # Gives an array full of all coaches that work at the location specified in the url
-    @coaches_by_location = Location.includes(:coaches).find_by_name(params[:name]).coaches.sort_by(&:firstname)
+    @coaches_by_location = Coach.includes(:locations).where(locations: {name: params[:name]}).sort_by(&:firstname)
   end
 
   def past_employees

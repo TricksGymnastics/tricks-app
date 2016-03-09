@@ -7,7 +7,7 @@ class RecitalAdsController < ApplicationController
   # GET /recital_ads
   # GET /recital_ads.json
   def index
-    @recital_ads = RecitalAd.all(order: 'created_at desc')
+    @recital_ads = RecitalAd.all.order('created_at desc')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recital_ads }
@@ -42,7 +42,7 @@ class RecitalAdsController < ApplicationController
   # POST /recital_ads.json
   def create
     if @recital_ad.save_with_payment
-      RecitalAdMailer.order_confirmation(@recital_ad).deliver
+      RecitalAdMailer.order_confirmation(@recital_ad).deliver_now
       redirect_to 'http://www.tricksgym.com/recital_ad_order_thank_you.html'
     else
       render :new

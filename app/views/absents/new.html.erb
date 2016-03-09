@@ -1,12 +1,19 @@
-<h1>Notification of Absence</h1>
+<%= stylesheet_link_tag "FileSpecificCSS/absents", :media => "all" %>
 
-<div style="float: left; padding: 20px; margin: 40px 10px; width: 420px;">
-  <p style="font-size: 22px; text-align: justify; line-height: 35px;">
-    If you know your child will be absent from class, please let us know. By filling out the form on the right, you make it easier for us to schedule make up classes by freeing up some class space. Thank you so much for your cooperation!
-  </p>
+<div class="row align-center columns small-12">
+  <h1>Notification of Absence</h1>
 </div>
 
-<div style="float: left; width: 380px; border: solid 2px #888; box-shadow: 0 0 8px #aaa; padding: 20px; margin: 40px 30px; border-radius: 5px;">
-  <%= render 'form' %>
+<div class="row align-center">
+  <div class="columns small-12 medium-8">
+    <p style="font-size: 22px; text-align: justify; line-height: 35px;">
+      If you know your child will be absent from class, please let us know. By filling out this form, you make it easier for us to schedule make up classes by freeing up some class space. Thank you so much for your cooperation!
+    </p>
+  </div>
+</div>
 
+<div class="row align-center">
+  <div class="columns small-12 medium-8">
+    <%= render 'form' %>
+  </div>
 </div>

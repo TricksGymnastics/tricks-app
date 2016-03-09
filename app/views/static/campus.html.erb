@@ -3,6 +3,9 @@
   body {background-color: <%= @bgc_orange %>;}
   h3{margin: 10px 0px 0px 0px;}
 <% end %>
+<% content_for :no_margin_footer do %>
+  true
+<% end %>
 
 <div id="content">
  <!--  <h1 style="margin-bottom: 0">CampUs<sup style="font-size: 20px">®</sup></h1>

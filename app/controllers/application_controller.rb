@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  
-  protect_from_forgery
+ 
+  protect_from_forgery with: :exception
   helper_method :current_user
 
   before_filter :set_variables
@@ -19,11 +19,11 @@ class ApplicationController < ActionController::Base
     @needs_stripe = false
     @tricksu_password = false
     
-    @newsletter = WebsitePdf.find_by_file_name("Tricks_Newsletter")
-    @reg_form = WebsitePdf.find_by_file_name("Tricks_Registration_Form")
-    @release_form = WebsitePdf.find_by_file_name("Tricks_Release_Form")
-    @family_rules = WebsitePdf.find_by_file_name("Tricks_Family_Rules")
-    @class_sessions = WebsitePdf.find_by_file_name("Tricks_Class_Sessions")
+    @newsletter = WebsitePdf.where(:file_name => "Tricks_Newsletter").first
+    @reg_form = WebsitePdf.where(:file_name => "Tricks_Registration_Form").first
+    @release_form = WebsitePdf.where(:file_name => "Tricks_Release_Form").first
+    @family_rules = WebsitePdf.where(:file_name => "Tricks_Family_Rules").first
+    @class_sessions = WebsitePdf.where(:file_name => "Tricks_Class_Sessions").first
   end
   
 

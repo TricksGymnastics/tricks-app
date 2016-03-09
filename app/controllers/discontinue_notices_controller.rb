@@ -41,12 +41,12 @@ class DiscontinueNoticesController < ApplicationController
   # POST /discontinue_notices
   # POST /discontinue_notices.json
   def create
-    @discontinue_notice = DiscontinueNotice.new(params[:discontinue_notice])
+    @discontinue_notice = DiscontinueNotice.new(params[:discontinue_notice].permit(:class_day, :class_time, :last_day, :location, :parent_name, :reason, :student_first_name, :student_last_name, :understood))
 
     respond_to do |format|
       if @discontinue_notice.save
-        DiscontinueMailer.gym_notification(@discontinue_notice).deliver
-        format.html { redirect_to forms_path, notice: 'Notice to Discontinue was successfully submitted.' }
+        DiscontinueMailer.gym_notification(@discontinue_notice).deliver_now
+        format.html { redirect_to root_path, notice: 'Notice to Discontinue was successfully submitted. Sorry to see you go :(' }
         format.json { render json: @discontinue_notice, status: :created, location: @discontinue_notice }
       else
         format.html { render action: "new" }

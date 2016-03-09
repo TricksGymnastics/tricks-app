@@ -24,7 +24,7 @@
 
     <% i = 0 %>
     <% @school_aged.each do |level| %>
-      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true} %>
+      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true, color: @bgc_yellow} %>
       <% i += 1 %>
     <% end %>  
 <!--   <div style="float: right; margin-right: 10px; margin-top: 30px;">

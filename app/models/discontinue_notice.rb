@@ -1,5 +1,5 @@
 class DiscontinueNotice < ActiveRecord::Base
-	attr_accessible :class_day, :class_time, :last_day, :location, :parent_name, :reason, :student_first_name, :student_last_name, :understood
+	#attr_accessible :class_day, :class_time, :last_day, :location, :parent_name, :reason, :student_first_name, :student_last_name, :understood
 
     validates_presence_of :class_day, :class_time, :last_day, :location, :parent_name, :reason, :student_last_name, :student_first_name, :understood
 

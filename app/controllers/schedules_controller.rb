@@ -100,7 +100,7 @@ class SchedulesController < ApplicationController
 
   def by_gym
     @schedules_by_level = Schedule.all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Gymnastics").first.id)
     render :layout => "layout_for_print_schedule"
   end 
 
@@ -110,25 +110,25 @@ class SchedulesController < ApplicationController
 
   def gb_gym
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Gymnastics").first.id)
     render :layout => "layout_for_print_schedule"
   end  
 
   def gb_tb
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Tumblebunnies").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Tumblebunnies").first.id)
     render :layout => "layout_for_print_schedule"
   end 
 
   def gb_dance
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Dance").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Dance").first.id)
     render :layout => "layout_for_print_schedule"
   end 
 
   def gb_tag
     @schedules_by_level = Schedule.where(location: "Granite Bay").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "TAG").first.id)
     render :layout => "layout_for_print_schedule"
   end
 
@@ -136,32 +136,32 @@ class SchedulesController < ApplicationController
 
   def fol_gym
     @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
-    @tag_levels = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Gymnastics").first.id)
+    @tag_levels = Level.where(classtype_id: Classtype.where(:name => "TAG").first.id)
     render :layout => "layout_for_print_schedule"
   end  
 
   def fol_tb
     @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Tumblebunnies").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Tumblebunnies").first.id)
     render :layout => "layout_for_print_schedule"
   end  
 
   def fol_dance
     @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Dance").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Dance").first.id)
     render :layout => "layout_for_print_schedule"
   end  
 
   def fol_swim
     @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Swim").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Swim").first.id)
     render :layout => "layout_for_print_schedule"
   end  
 
   def fol_tag
     @schedules_by_level = Schedule.where(location: "Folsom").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "TAG").first.id)
     render :layout => "layout_for_print_schedule"
   end
 
@@ -171,25 +171,25 @@ class SchedulesController < ApplicationController
 
   def sac_gym
     @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Gymnastics").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Gymnastics").first.id)
     render :layout => "layout_for_print_schedule"
   end 
  
   def sac_tb
     @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Tumblebunnies").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Tumblebunnies").first.id)
     render :layout => "layout_for_print_schedule"
   end 
  
   def sac_dance
     @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("Dance").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "Dance").first.id)
     render :layout => "layout_for_print_schedule"
   end 
 
   def sac_tag
     @schedules_by_level = Schedule.where(location: "Sacramento").all(:order => 'day, time').group_by(&:level_id)
-    @levels_by_type = Level.where(classtype_id: Classtype.find_by_name("TAG").id)
+    @levels_by_type = Level.where(classtype_id: Classtype.where(:name => "TAG").first.id)
     render :layout => "layout_for_print_schedule"
   end
  

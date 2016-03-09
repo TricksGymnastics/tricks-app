@@ -3,10 +3,12 @@
   body {background-color: <%= @bgc_blue %>;}
 <% end %>
 
-<div class="content">
-	<h1 style="margin-bottom: 0px; font-size: 40px">TRICKS Swim Program</h1>
-	<h2 style="text-align: center;">(Ages 0-10)</h2>
-	<div style="float:left; width:262px; text-align:center; margin-right: 20px">
+<div class="row" style="margin-bottom: 50px;">
+	<div class="columns medium-12">
+		<h1>TRICKS Swim Program</h1>
+		<h2>(Ages 0-10)</h2>
+	</div>
+	<div class="columns medium-3">
 		<img src="/assets/logos/swim.jpg" style="margin-left:20px" width="235" height="249" alt="Swim Program" />
 		<h2>Class Schedules & Pricing</h2>
 		<h2>
@@ -14,7 +16,10 @@
 		</h2>
 		<img src="/assets/structure/swimgirl.png" style="margin-top: 450px" />
 	</div>
-	<div id="infobox" style="float: left; width: 433px; margin-bottom: 0px;">
+	<!--<div style="float:left; width:262px; text-align:center; margin-right: 20px">-->
+
+	<!--</div>-->
+	<div class="columns medium-6">
 		<p>Your child will splash his/her way through 45 minutes over flowing with music, motion and swim challenges. This nurturing environment combines physical activity with positive reinforcement and recognition of effort, which helps transform tiny people into confident youth and later into contributing adults. Try out our risk free first class and you'll agree that TRICKS Splash is the best place to learn swimming – AND THE WATER IS 89 degrees!</p>
 		<p>Who says you can't swim all year long! Unlike most swim programs, Tricks Splash is an ongoing swim program, so you can join at any time. When your child is ready for the next level, so
 are we! The students progress at their own pace and our program is flexible enough to fit your schedule.
@@ -25,29 +30,9 @@ are we! The students progress at their own pace and our program is flexible enou
 
     <% i = 0 %>
     <% @swim.each do |level| %>
-      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true} %>
+      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true, color: @bgc_blue} %>
       <% i += 1 %>
     <% end %>
 
-
-<!-- 		<h3>Tadpole Tots (Ages 1-2)</h3>
-		Any swim level. All 1 to 2 year old students start in the Tots class.
-		<h3>Minnows (Age 3)</h3>
-		Any swim level. All 3 year old students start in the Minnows class.
-		<h3>Otters (Ages 4-5)</h3>
-		If your child is a non-swimmer or only swims with a floatation device
-		<h3>Dolphins (Ages 4-5</h3>
-		If your child will dunk her head with no issues and can swim on her own at least 5 feet
-		<h3>Sharks (Ages 4-5)</h3>
-		If your child already swims freestyle at least 10 feet and can float on his back 10 sec.
-		<h3>Introductory (Ages 6-10)</h3>
-		If your child is a non-swimmer or only swims with a floatation device
-		<h3>Basic (Ages 6-10)</h3>
-		If your child will dunk her head with no issues and can swim on her own at least 5 feet
-		<h3>Intermediate (Ages 6-10)</h3>
-		<p>If your child already swims freestyle at least 10 feet and can	float on his back 10 sec. </p> -->
-	</div>
-	<div style="float:right; margin: 10px 10px 0px 0px;">
-		<img src="assets/structure/swimside.png" />
 	</div>
 </div>

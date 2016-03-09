@@ -1,16 +1,40 @@
+<style>
+  .accordion-title{
+  	background-color: <%= color %>;
+  }
+  .accordion-title:hover{
+  	/*border: 3px solid <%#= color %>;*/
+  	/*padding: 17px 16px;*/
+  	color: #fff;
+  }
+</style>
 
-  <% if i > 0 || show_first_picture %>
-    <% if i%3 == 0 %>
-      <% if i.to_i.even? %>
-        <% if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
-          <%= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: left; clear: right; margin-right: 10px;" %>
+
+    <li class="accordion-navigation">
+      <a href="#" role="tab" class="accordion-title" id="panel_<%= level.id %>-heading" aria-controls="panel_<%= level.id %>" id="link"><h3 style="padding:0; margin:0; text-align:center;"><%= level.levelname + " - Age: " + level.age %></h3></a>
+      <div id="panel_<%= level.id %>" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel_<%= level.id %>-heading">
+            
+        <% if !level.video_url.nil? && !level.video_url.empty? %>
+            <%# 367 x 248 %>
+            <div class="flex-video">
+              <iframe src="<%= level.video_url %>" frameborder="0" allowfullscreen></iframe>
+            </div>
         <% end %>
-      <% else %>
-        <% if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
-          <%= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: right; margin-left: 10px; clear: left;" %>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
-  <h3><%= link_to level.levelname + " - Age: " + level.age, level, id: 'link' %>:</h3>
-  <p><%= level.short_description %></p>
+        <h3><%= link_to level.levelname + " - Age: " + level.age, level, id: 'link' %>:</h3>
+        <%= level.short_description %>
+      </div>
+    </li>
+    
+  <%# if i > 0 || show_first_picture %>
+    <%# if i%3 == 0 %>
+      <%# if i.to_i.even? %>
+        <%# if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
+          <%#= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: left; clear: right; margin-right: 10px;" %>
+        <%# end %>
+      <%# else %>
+        <%# if !level.image.nil? && !level.image_url(:thumb).to_s.empty? %>
+          <%#= image_tag level.image_url(:thumb).to_s, style: "border: 1px solid #333; box-shadow: 0 0 10px #444; width: 200px; height: auto; float: right; margin-left: 10px; clear: left;" %>
+        <%# end %>
+      <%# end %>
+    <%# end %>
+  <%# end %>

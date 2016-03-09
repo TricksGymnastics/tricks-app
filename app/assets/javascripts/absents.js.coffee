@@ -1,7 +1,7 @@
 jQuery ->
   $('#absent_level_id').prop("disabled", true)
   levels = $('#absent_level_id').html()
-  console.log(levels)
+  # console.log(levels)
   $('#absent_classtype_id').change ->
     classtype = $('#absent_classtype_id :selected').text()
     options = $(levels).filter("optgroup[label=#{classtype}]").html()
@@ -14,6 +14,14 @@ jQuery ->
       $('#absent_level_id').prop("disabled", true)
 
   $('#absent_date').datepicker({dateFormat: 'MM d, yy'})
+  
+
+
+
+
+
+
+
 
   ###
   #current the locations model does not have corret relations to have this capability

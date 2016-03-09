@@ -6,7 +6,7 @@ class KidQuote < ActiveRecord::Base
   		if search
     		where('quote ILIKE ?', "%#{search}%")
  		else
-   			scoped
+   			KidQuote.all
  		end
 	end
 end

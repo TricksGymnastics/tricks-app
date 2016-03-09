@@ -5,8 +5,8 @@ class PromoSlidesController < ApplicationController
   # GET /promo_slides
   # GET /promo_slides.json
   def index
-    @live_promo_slides = PromoSlide.where(live: true).all(order: 'sort_order')
-    @promo_slides = PromoSlide.where(live: false).all(order: 'updated_at desc')
+    @live_promo_slides = PromoSlide.where(live: true).order('sort_order')
+    @promo_slides = PromoSlide.where(live: false).order('updated_at desc')
 
     respond_to do |format|
       format.html # index.html.erb

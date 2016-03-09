@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_secure_password
-	attr_accessible :email, :password, :password_confirmation, :role
+	#attr_accessible :email, :password, :password_confirmation, :role
 
 	validates_presence_of :email
   validates :password, :presence => true, :confirmation => true, :on => :create
@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   		if search
     		where('email ILIKE ?', "%#{search}%")
  		else
-   			scoped
+   			User.all
  		end
 	end
 end

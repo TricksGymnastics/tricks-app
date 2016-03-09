@@ -11,7 +11,7 @@
   </tr>
 
 <% @survey_results.each do |survey_result| %> 
-  <% @the_results = JSON.parse(survey_result.result, :symbolize_names => true) %>
+  <%# @the_results = JSON.parse(survey_result.result, :symbolize_names => true) %>
   <tr>
 
     <% score = 0 %>

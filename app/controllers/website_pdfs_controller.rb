@@ -1,5 +1,4 @@
 class WebsitePdfsController < ApplicationController  
-  layout 'static'
   load_and_authorize_resource :except => :show
 
   # GET /website_pdfs
@@ -16,7 +15,7 @@ class WebsitePdfsController < ApplicationController
   # GET /website_pdfs/1
   # GET /website_pdfs/1.json
   def show
-    @website_pdf = WebsitePdf.find_by_file_name(params[:id])
+    @website_pdf = WebsitePdf.where(:file_name => params[:id]).first
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +43,7 @@ class WebsitePdfsController < ApplicationController
   # POST /website_pdfs.json
   def create
     params[:website_pdf][:file_name] = params[:website_pdf][:file_name].tr(" ","_")
-    @file = WebsitePdf.find_by_file_name(params[:website_pdf][:file_name])
+    @file = WebsitePdf.where(:file_name => params[:website_pdf][:file_name]).first
     if (@file.nil?)
       @website_pdf = WebsitePdf.new(params[:website_pdf])
 

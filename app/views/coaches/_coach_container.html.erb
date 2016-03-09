@@ -1,21 +1,16 @@
 <% if can? :manage, Coach %>
-  <div id="coach_container">
-    <% if coach.current_employee? %>
-      <h6><%= link_to coach.firstname+" "+coach.lastname, coach, style: "text-decoration: none;" %></h6>
-    <% else %>
-      <h6><%= link_to coach.firstname+" "+coach.lastname, coach, style: "color: red; text-decoration: none;" %></h6>
-    <% end %>
-    <div style="width: 111px; margin: 0 auto">
-      <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>  
+  <% if coach.current_employee? %>
+    <div class="columns medium-2 small-6" id="coach_container">
+      <%= link_to coach.firstname+" "+coach.lastname, coach, id: "coach-name" %>
+      <%#= link_to coach.firstname+" "+coach.lastname, coach, id: "past-coach-name" %>
+      <%= link_to image_tag(coach.image_url(:thumb).to_s), coach %>  
     </div>
-  </div>
+  <% end %>
 <% else %>
   <% if coach.current_employee? %>
-    <div id="coach_container">
-      <h6><%= link_to coach.firstname, coach, style: "text-decoration: none;" %></h6>
-      <div style="width: 111px; margin: 0 auto">
-        <%= link_to image_tag(coach.image_url(:small_thumb).to_s), coach %>      
-      </div>    
+    <div class="columns medium-2 small-6" id="coach_container">
+      <%= link_to coach.firstname, coach, id: "coach-name" %>
+      <%= link_to image_tag(coach.image_url(:thumb).to_s), coach %>   
     </div>
   <% end %>
 <% end %>

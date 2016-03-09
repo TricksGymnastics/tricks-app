@@ -1,5 +1,5 @@
 class WebsitePdf < ActiveRecord::Base
-  attr_accessible :file, :file_name
+  #attr_accessible :file, :file_name
 
   validates_presence_of :file, :file_name
   mount_uploader :file, WebsitePdfUploader
