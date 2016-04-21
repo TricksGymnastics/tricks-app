@@ -8,16 +8,15 @@
   <br>
 <% end %>
 
-<div style="margin: 0px auto 10px auto; height:65px; width: 800px;">
-  <div style="padding: 6px; height: 50px; float:left; width: 296px; border: dashed 1px #444; margin: 0 5px;">
-    <h4 style="font-size: 18px;">Staff by Location:</h4>
-    <%= button_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, id: "coach_button" %>
-    <%= button_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, id: "coach_button"  %>
-    <%= button_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, id: "coach_button"  %>
-  </div>
+<div style="padding: 6px; height: 50px; float:left; width: 296px; border: dashed 1px #444; margin: 0 5px;">
+  <h4 style="font-size: 18px;">Staff by Location:</h4>
+  <%= button_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, id: "coach_button" %>
+  <%= button_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, id: "coach_button"  %>
+  <%= button_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, id: "coach_button"  %>
+</div>
 
   <%# This contains a bug in coaches_controller type because the name of the class is Classtype, yeah i was a newb when i did that... Too lazy to go through and change to "Program" so i'm just cutting this section out, no one uses it anyways %>
-  <<!-- div style="padding: 6px; height: 50px; float:left; width: 455px; border: dashed 1px #444; margin: 0 5px;">
+  <!-- div style="padding: 6px; height: 50px; float:left; width: 455px; border: dashed 1px #444; margin: 0 5px;">
     <h4 style="font-size: 18px;">Staff by Program:</h4>
     <%#= button_to "Gymnastics", {:controller => "coaches", :action => "type", :name => "Gymnastics"}, id: "coach_button" %>
     <%#= button_to "Tumblebunnies", {:controller => "coaches", :action => "type", :name => "Tumblebunnies"}, id: "coach_button"  %>

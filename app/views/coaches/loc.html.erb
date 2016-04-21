@@ -35,6 +35,19 @@
 </div>
 
 <div>
+  <div id="coach_section_header" style="margin-top: 30px"><h3>TAG</h3></div>
+  <div>
+    <% @coaches_by_location.each do |coach| %>  
+      <% coach.classtypes.each do |classtype| %>    
+        <% if classtype.name == "TAG" %>          
+          <%= render 'coach_container', :coach => coach  %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div>
   <div id="coach_section_header" style="margin-top: 30px"><h3>Dance</h3></div>
   <div>
     <% @coaches_by_location.each do |coach| %>    

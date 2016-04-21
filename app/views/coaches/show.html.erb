@@ -49,7 +49,7 @@
     
   <div style="font-size: 14px;">       
     <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b>
-    <%= @coach.locations.map(&:name).join(' and ')%>, teaching <%= @coach.classtypes.where(:id => 1..4).map(&:name).join(' and ') %>
+    <%= @coach.locations.map(&:name).join(' and ')%>, teaching <%= @coach.classtypes.where(:id => 1..5).map(&:name).join(' and ') %>
   </div>
 
   <% if can? :manage, Coach %>
