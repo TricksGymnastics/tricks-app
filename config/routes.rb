@@ -25,6 +25,7 @@ Comments::Application.routes.draw do
   get 'coaches/past_employees' => "coaches#past_employees"
 
   get 'recital_ads/ad_select'
+  get 'recital_ads_by_year/:year' => "recital_ads#by_year"
   get 'recital_ad_mailer/:id' => 'recital_ads#order_confirmation'
 
   get 'datenights/edit' => 'datenights#edit'

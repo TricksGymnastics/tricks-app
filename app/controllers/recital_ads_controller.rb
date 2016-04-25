@@ -7,7 +7,7 @@ class RecitalAdsController < ApplicationController
   # GET /recital_ads
   # GET /recital_ads.json
   def index
-    @recital_ads = RecitalAd.all.order('created_at desc')
+    @recital_ads = RecitalAd.all.order('created_at')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @recital_ads }
@@ -42,7 +42,7 @@ class RecitalAdsController < ApplicationController
   # POST /recital_ads.json
   def create
     if @recital_ad.save_with_payment
-      RecitalAdMailer.order_confirmation(@recital_ad).deliver_now
+      RecitalAdMailer.order_confirmation(@recital_ad).deliver
       redirect_to 'http://www.tricksgym.com/recital_ad_order_thank_you.html'
     else
       render :new
@@ -75,7 +75,7 @@ class RecitalAdsController < ApplicationController
   end
 
   def ad_select
-    @recital_ad_types = RecitalAdType.all(:order => 'price')
+    @recital_ad_types = RecitalAdType.all.order('price')
     @recital_ad = RecitalAd.new(params[:recital_ad])
   end
 
@@ -85,5 +85,10 @@ class RecitalAdsController < ApplicationController
 
   def order_confirmation
     @recital_ad = RecitalAd.find(params[:id])
+  end
+  
+  def by_year
+    @recital_ads = RecitalAd.where('extract(year from created_at) = ?', params[:year])
+    @total_sales = RecitalAd.joins(:recital_ad_type).where('extract(year from recital_ads.created_at) = ?', params[:year]).sum("price")
   end
 end

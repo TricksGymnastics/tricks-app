@@ -1,0 +1,58 @@
+<h1>Recital Ad Orders</h1>
+<div style="width: 750px; margin:0 auto;">
+  <div style="width: 100%; text-align:center;">
+    <% (2013..Time.now.year).to_a.reverse.each do |year| %>
+      <% size = 18 %>
+      <% if year.to_s == params[:year] %>
+        <% size = 26 %>
+      <% end %>
+      <h3 style="display: inline; margin: 0 10px; font-size: <%= size %>px;"><%= link_to(year, "/recital_ads_by_year/"+year.to_s) %></h3>
+    <% end %>
+  </div>
+  <table style="margin: 30px; 0">
+    <tr>
+      <td style="width: 396px;">Total Orders: <%= @recital_ads.count %></td>
+      <td style="width: 270px;">Total Sales: <b><%= number_to_currency(@total_sales) %></b></td>
+      <td style="padding: 0px 3px 0px 3px; border: 0"></td>
+    </tr>
+  </table>
+  
+<h2><%= link_to "New Order", recital_ads_ad_select_path %></h2>
+  <table style="margin: 10px 0">
+    <tr>
+      <th>Ad Type</th>
+      <th>Name</th>
+      <th>Date Submitted</th>
+      <th>Price</th>
+      <th></th>
+      <!-- <th></th> -->
+    </tr>
+
+    <% @recital_ads.each do |ad| %>
+      <tr>
+        <td style="width: 100px;">
+          <% puts case ad.recital_ad_type.name %>
+          <% when "Ad 1" %>
+            Old Ad 1
+          <% when "Ad 2" %>
+            Ad 1
+          <% when "Ad 3" %>
+            Ad 2
+          <% when "Ad 4" %>
+            Ad 3
+          <% when "Ad 5" %>
+            Ad 4
+          <% else %>
+          <% end %>
+        </td>
+        <td style="width: 360px;"><%= link_to ad.firstname+" "+ad.lastname, ad %></td>
+        <td style="width: 150px;"><%= ad.created_at.strftime("%b %e, %Y") %></td>
+        <td style="width: 100px;"><%= number_to_currency(ad.recital_ad_type.price) %></td>
+        <td style="padding: 0px 3px 0px 3px; border: 0"><%= link_to 'Edit', edit_recital_ad_path(ad) %></td>
+        <!-- <td style="padding: 0px 3px; border: 0;"><%#= link_to 'Destroy', ad, method: :delete %></td> -->
+      </tr> 
+    <% end %>
+  </table>
+</div>
+
+<br>

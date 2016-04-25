@@ -3,63 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-#select_box{
-	width: 848px;
-	/*border: blue solid 3px;*/
-	/*height: 520px;*/
-	padding: 30px 50px 0px 50px;
-}
 
-#plan_box{
-	border: 1px solid black;
-  margin: 3px 0px;
-	width: 420px;
-	/*float: left;*/
-  padding: 5px;
-  text-align:center;
-  #blank{}
-  h2{
-    font-size: 24px;
-  }    
-  #plan_name{
-    /*float: left;*/
-    width: 140px;
-    /*border: 2px solid yellow;*/
-  }
-  #plan_info{
-    float: right;
-    width: 260px;
-    /*border: 1px solid purple;*/
-    padding-bottom: 3px;
-    margin-right: 5px;
-    h3{
-        font-size: 16px;
-        font-weight: normal;
-        line-height: 14px;
-        padding: 3px;
-        margin:0;
-    }
+
+.plan_info{
+  // float: right;
+  // width: 300px;
+  /*border: 1px solid purple;*/
+  padding: 10px 0;
+  // margin-right: 5px;
+  h3{
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 14px;
+      padding: 3px;
+      margin:0;
   }
 }
 
-
-
-#image_box{
-	float:right;  margin-top: 5px;
-  height: 700px;
+.recital_ad_type_container{
+  outline: 1px solid #222;
+  td{
+    border: none;
+  }
 }
 
-.block {
-  display: table;
-} 
- 
-.centered {
-  display: table-cell;
-  text-align: justify;
-  vertical-align: middle;
-  /*border: #a0a0a0 solid 1px;*/
-  /*background: #f5f5f5;*/
+.radio_button_container{
+  padding: 0 0 0 15px;
 }
+.image_container{
+  padding: 15px 0; 
+}
+
 
 #personal_errors{
   margin: 30px 33px;
