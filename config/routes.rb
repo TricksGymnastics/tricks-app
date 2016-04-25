@@ -66,7 +66,6 @@ Comments::Application.routes.draw do
     get 'dance_company/'+page, controller: 'dance_company', action: page
   end
 
-  get 'database', to: 'static#app_landing'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'

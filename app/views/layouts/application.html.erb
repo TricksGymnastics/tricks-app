@@ -73,44 +73,45 @@
       <div class="top-bar logged-in">
         <div class="top-bar-left">
           <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">Logged In Menu</li>
+            <li class="menu-text">Staff Menu</li>
           </ul>
         </div>
         <div class="top-bar-right">
           <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
-            <li class="has-submenu"><%= link_to "Home", database_path %>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><%= link_to "Users", users_path %></li>
-                <li><%= link_to "Promos", promo_slides_path %></li>
-              </ul>
-            </li>            
+            <li><%= link_to "Users", users_path %></li>
+            
+            <li><%= link_to "Promos", promo_slides_path %></li>
 
             <li><%= link_to "Comments", comments_path %></li>
 
             <li><%= link_to "Kid Quotes", kid_quotes_path %></li>
 
-            <li class="has-submenu"><%= link_to "Schedules", schedules_choose_path %>
+            <li class="has-submenu"><%= link_to "Schedules", 'javascript:void();' %>
               <ul class="submenu menu vertical" data-submenu>
+                <li><%= link_to "View All", schedules_choose_path %></li>
                 <li><%= link_to "List of Levels", levels_path %></li>
               </ul>
             </li>
 
-            <li class="has-submenu"><%= link_to "Staff", coaches_path %>
+            <li class="has-submenu"><%= link_to "Staff", 'javascript:void();' %>
               <ul class="submenu menu vertical" data-submenu>
+                <li><%= link_to "All Coaches", coaches_path %></li>
                 <li><%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"} %></li>
               </ul>
             </li>   
 
             <li class="has-submenu">
-              <%= link_to "Recital Ads", recital_ads_path %>
+              <%= link_to "Recital Ads", 'javascript:void();' %>
               <ul class="submenu menu vertical" data-submenu>
+                <li><%= link_to "View Orders", recital_ads_path %></li>
                 <li><%= link_to "Ad Types", recital_ad_types_path %></li>
               </ul>
             </li>
 
             <li class="has-submenu">
-              <%= link_to "Surveys", surveys_path %>
+              <%= link_to "Surveys", 'javascript:void();' %>
               <ul class="submenu menu vertical" data-submenu>
+                <li><%= link_to "View All Surveys", surveys_path %></li>
                 <li><%= link_to "Results", choose_survey_path %></li>
               </ul>
             </li>
