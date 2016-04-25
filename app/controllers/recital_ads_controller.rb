@@ -86,4 +86,9 @@ class RecitalAdsController < ApplicationController
   def order_confirmation
     @recital_ad = RecitalAd.find(params[:id])
   end
+  
+  def by_year
+    @recital_ads = RecitalAd.where('extract(year from created_at) = ?', params[:year])
+    @total_sales = RecitalAd.joins(:recital_ad_type).where('extract(year from recital_ads.created_at) = ?', params[:year]).sum("price")
+  end
 end

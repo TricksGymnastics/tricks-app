@@ -64,7 +64,7 @@
             </li>   
 
             <% if can? :manage, RecitalAd %>
-  	          <li><%= link_to "Recital Ads", recital_ads_path %>
+  	          <li><%= link_to "Recital Ads", "/recital_ads_by_year/"+Time.now.year.to_s %>
   	          	<% if can? :manage, RecitalAdType %>
   		            <ul class="app_submenu">
   		              <li class="app_submenu_link"><%= link_to "Ad Types", recital_ad_types_path %></li>
