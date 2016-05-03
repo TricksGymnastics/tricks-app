@@ -1,22 +1,15 @@
-<% @title = "Tricks Date Nights" %>
-<% content_for :pagestyle do %>
-  body {background-color: <%= @bgc_green %>;}
-  p{font-size: 14px;}
-  #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
-  #datenight_register_button{text-decoration: none;font-size: 18px;font-weight: bold;color: #444;
-    display: block;padding: 8px;margin: 0px 0px 10px 5%;text-align: center;border-radius: 25px;
-    box-shadow: 0 0 10px #444;border: 2px solid #555;width: 90%;
-  }
-  #datenight_register_button:hover{box-shadow: 0 0 20px #222;border: 2px solid #111;color: #222;}
+<% content_for :title do %>
+  Tricks Kids Night Out
 <% end %>
 
 <div class="content">
-  <h1>Date Nights</h1>
+  <h1>Kids Night Out</h1>
   <div style="float:left; margin-left: 20px;">
     <h2 style="text-align:center; font-size: 25px;">Register Here!</h2>
-    <a id="datenight_register_button" style="background-color: <%= @bgc_yellow %>; box-sizing: border-box;" href="http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=GB&orgid=313983" target="_blank">Granite Bay</a>
-    <a id="datenight_register_button" style="background-color: <%= @bgc_green %>; box-sizing: border-box;" href="http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=FOL&orgid=313983" target="_blank">Folsom</a>
-    <a id="datenight_register_button" style="background-color: <%= @bgc_orange %>; box-sizing: border-box;" href="http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=SAC&orgid=313983" target="_blank">Sacramento</a><br>
+    <%= link_to "Granite Bay", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=GB&orgid=313983", class: "button" %>
+    <%= link_to "Folsom", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=FOL&orgid=313983", class: "button" %>
+    <%= link_to "Sacramento", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=SAC&orgid=313983", class: "button" %>
+    
     <div style="width: 250px; padding: 4px; border:solid 2px #333;">
       <div>
         <div style="float: left; padding: 0px 10px; ">

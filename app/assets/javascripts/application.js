@@ -18,7 +18,84 @@
 // require turbolinks
 //= require_directory .
 
+/*global $*/
+
 $(function(){ $(document).foundation(); });
+
+
+$(window).bind("load", function () {
+    var footer = $("#footer");
+    var pos = footer.position();
+    var height = $(window).height();
+    height = height - pos.top;
+    height = height - footer.height();
+    if (height > 0) {
+        footer.css({
+            'margin-top': height + 'px'
+        });
+    }
+});
+
+$(function(){
+  resetLocationButtons();
+  
+  // update info based on session variable for location
+  updateLocation(sessionStorage.getItem('location'));
+  
+  // when a location button is clicked
+  $('.location-button').on('click', function(event) {
+    event.preventDefault();
+    resetLocationButtons();
+    updateLocation(event.target.text);
+  });
+});
+
+function resetLocationButtons(){
+    $('.location-button').each(function(i,obj){
+      $(obj).removeClass('active');
+    });
+    
+    $('.location-information').each(function(i, obj) {
+      $(obj).hide();
+    });
+}
+
+function updateLocation(loc){
+  if (loc == "null"){
+    $('.location-information#NONE').show();
+    return;
+  }
+  var loc = convertToShortName(loc);
+  
+  sessionStorage.setItem('location', loc);
+
+  $('.location-button#'+loc).addClass('active');
+  $('.location-information#'+loc).show();
+}
+
+function convertToShortName(loc){  
+  switch(loc){
+    case "Granite Bay":
+      return "GB";
+    case "Folsom":
+      return "FOL";
+    case "Sacramento":
+      return "SAC";
+  }
+  return loc;
+}
+
+function convertToFullName(loc){  
+  switch(loc){
+    case "GB":
+      return "Granite Bay";
+    case "FOL":
+      return "Folsom";
+    case "SAC":
+      return "Sacramento";
+  }
+  return loc;
+}
 
 $(function () {
   $("#comments_table th a, #comments_table .pagination a").on("click", function () {
@@ -63,3 +140,4 @@ $(function () {
     return false;
   });
 });
+

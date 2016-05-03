@@ -26,4 +26,8 @@ module ApplicationHelper
       color: #333; background-color: #eee")
   end
 
+
+  def update_bubbles(bubbles)
+    @bubbles = bubbles
+  end
 end

@@ -54,3 +54,5 @@ gem 'premailer-rails'
 gem 'nokogiri'
 
 gem 'foundation-rails'
+
+gem 'httparty' #needed to get json info from jackrabbit

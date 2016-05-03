@@ -1,0 +1,45 @@
+<%= form_for(@bubble_content) do |f| %>
+  <% if @bubble_content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bubble_content.errors.count, "error") %> prohibited this bubble_content from being saved:</h2>
+
+      <ul>
+      <% @bubble_content.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :color %><br>
+    <%= f.text_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br>
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :text_color %><br>
+    <%= f.text_field :text_color %>
+  </div>
+  <div class="field">
+    <%= f.label :show_button %><br>
+    <%= f.check_box :show_button %>
+  </div>
+  <div class="field">
+    <%= f.label :sort_order, "Position ID" %><br>
+    <%= f.number_field :sort_order %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

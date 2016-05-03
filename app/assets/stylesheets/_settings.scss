@@ -188,7 +188,7 @@ $input-error-font-weight: $global-weight-bold;
 // ------------
 
 $accordion-background: $white;
-$accordion-plusminus: true;
+$accordion-plusminus: false;
 $accordion-item-color: foreground($accordion-background, $white);
 $accordion-item-background-hover: $dark-gray;
 $accordion-item-padding: 10px 8px;
@@ -302,7 +302,7 @@ $dropdown-sizes: (
 
 $dropdownmenu-arrows: true;
 $dropdownmenu-arrow-color: $anchor-color;
-$dropdownmenu-min-width: 200px;
+$dropdownmenu-min-width: 225px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
 
@@ -397,8 +397,8 @@ $orbit-bullet-diameter: 1.2rem;
 $orbit-bullet-margin: 0.1rem;
 $orbit-bullet-margin-top: 0.8rem;
 $orbit-bullet-margin-bottom: 0.8rem;
-$orbit-caption-background: rgba($black, 0.5);
-$orbit-caption-padding: 1rem;
+$orbit-caption-background: $primary-color;
+$orbit-caption-padding: 7px 20px;
 $orbit-control-background-hover: rgba($black, 0.5);
 $orbit-control-padding: 1rem;
 $orbit-control-zindex: 10;

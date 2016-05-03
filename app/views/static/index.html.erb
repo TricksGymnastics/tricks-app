@@ -1,122 +1,122 @@
-<%= stylesheet_link_tag "FileSpecificCSS/static", :media => "all" %>
-<%= javascript_include_tag "static/loader", :media => "all" %>
-<% @title="Tricks Gymnastics, Dance & Swim" %>
-<% content_for :pagestyle do %>
-  body {background-color: <%= @bgc_yellow %>;}
+<div style="width: 2000px; position: fixed; top: 0; left: 50%; margin-left: -1000px; z-index: -100;">
+	<%= image_tag('site_header_images/IMG_6567.JPG', style: "display: block; margin: 0px auto;") %>
+	<!--<image src="http://tvuk222fjqo33d6py1a3k15d.wpengine.netdna-cdn.com/wp-content/themes/goldfish-swim-school/assets/images/header-secondary-bg.png"></image>-->
+</div>
+
+
+<% if !current_user %>
+	<% top_buffer = 130 %>
+<% else %>
+	<% top_buffer = 176 %>
 <% end %>
-<% content_for :iescript do %>
-	<script>
-	  function iePromo() {      
-	    if (Function('/*@cc_on return document.documentMode===10@*/')()){
-	      var promo = document.getElementById("promo-img");
-	      promo.style.zIndex = "5";	      
-	      promo.style.borderRadius = "15px";
-	    }
-	  }
-	  addLoadEvent(iePromo);
-	</script>
-<% end %>
-<% @twenty_years = "block" %>
-<% @jr_login = "block" %>
-<!-- <script src="http://cdn.jquerytools.org/1.2.6/tiny/jquery.tools.min.js"></script> -->
-<div id="promoboxholder">	
-	<div id="promo-frame">
-		<div id="promo-header">
-			<h1 style="font-size: 26px; margin: 0px 0px 0px 0px; font-variant: small-caps;">Current Events</h1>
+
+<% main_picture_height = 500 %>
+<div class="row" style="height: <%= main_picture_height %>px;">
+	<div class="columns small-8 medium-4">
+		<div class="columns small-10" style="position: relative;">
+			<% main_bubble = 0 %>
+	        <% if BubbleContent.exists?(sort_order: main_bubble) %>
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: main_bubble).first} %>
+			<% end %>
+			<div style="position: absolute; bottom: -60px; right: -60px; width: 60%; height: 60%;">
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 1).first} %>
+			</div>
 		</div>
-		<div id="promo-tabs">
-			<ul>
-				<% i = 0 %>
+	</div>
+</div>
+
+
+
+
+<% buffer_height = 170 %>
+<div style="position: absolute; top: <%= main_picture_height + top_buffer %>px; left: 0; width: 100%; height: <%= buffer_height %>px; background: rgba(5,130,197,.7); z-index: -75;"></div>
+
+<div class="row align-right align-middle" style="height: 150px; margin: 10px 0;">
+	<div class="column medium-4">
+		<div class="row align-right align-middle">
+			<div class="column medium-5">
+				<%= image_tag("structure/5star_transparent.png") %>
+			</div>
+			<div class="column medium-5">
+				<%= image_tag("logos/25years.png") %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% content_height = 500 %>
+<% bottom_white_padding = 150 %>
+<div style="position: absolute; top: <%= main_picture_height + top_buffer + buffer_height %>px; left: 0; width: 100%; height: <%= content_height + bottom_white_padding %>px; background: #fff; z-index: -50;"></div>
+
+
+
+
+<div class="row align-justify" style="height: <%= content_height %>px; padding-top: 50px;">
+	<%# "http://tvuk222fjqo33d6py1a3k15d.wpengine.netdna-cdn.com/wp-content/themes/goldfish-swim-school/assets/images/hp-why-goldfish-3.png" %>
+	<div class="column small-12 medium-3">
+		<% first_bubble = 2 %>
+        <% if BubbleContent.exists?(sort_order: first_bubble) %>
+			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: first_bubble).first} %>
+		<% end %>
+	</div>
+	<div class="column small-12 medium-6">
+		<div class="orbit" role="region" aria-label="Promo Slides" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+			<ul class="orbit-container">
+			    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+			    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+
+			    <% i = 0 %>
 				<% @live_promos.each do |promo| %>
+					<%# orbit is being stupid and apparently cannot dynamically set its own height, so we just hard code it to 321 for the height of a promo image %>
+				    <li class="orbit-slide">
+						<% if promo.data_type == "html" %>
+							<%= render :inline => promo.html_code %>
+						<% else %>
+							<% if promo.link == true %>
+									<%= link_to image_tag(promo.image_url, alt: promo.title, class: "orbit-image"), promo.link_path, style: "cursor: pointer;" %>				
+							<% else %>
+									<%= image_tag promo.image_url, alt: promo.title, class: "orbit-image" %>
+							<% end %>
+							<figcaption class="orbit-caption"><%= promo.title %></figcaption>
+						<% end %>
+				    </li>
 					<% i = i+1 %>
-					<li id="slide_<%= promo.sort_order %>" class="promo-tab"><a href='#tab-<%= i %>'><%= promo.title %></a></li>
 				<% end %>
 			</ul>
-			<% i = 0 %>
-			<% @live_promos.each do |promo| %>
-			<% i = i+1 %>
-			<div class="promo-image" id="tab-<%= i %>">
-				<% if promo.data_type == "html" %>
-					<%= render :inline => promo.html_code %>
-				<% else %>
-					<% if promo.link == true %>
-							<%= link_to image_tag(promo.image_url, alt: promo.title), promo.link_path, style: "display:block; cursor: pointer;" %>				
-					<% else %>
-							<%= image_tag promo.image_url, alt: promo.title %>
+				<% j = 0 %>
+				<nav class="orbit-bullets">
+					<% @live_promos.each do |promo| %>
+						<% active = j == 0 ? 'class=is-active ' : '' %>
+						<button <%= active %> data-slide="<%= j %>"></button>
+						<% j = j + 1 %>
 					<% end %>
-				<% end %>
-			</div>
-			<% end %>
+				</nav>
 		</div>
 	</div>
-		
-	<%= image_tag("structure/New_Transparent_PromoBox_Master.png", style:"position: absolute; z-index: 2; pointer-events:none;") %>
-
-	<!--				Promo Images Here        -->
-	
-
-	<a style="display:block; position: absolute; z-index: 10;margin: 310px 0 0 450px; width: 97px; height: 98px; border-radius: 49px;" href="http://www.usagym.org">
-		<button style="cursor: pointer; background:none; border: none;">
-		</button>
-	</a>
-</div>
-
-<div style="float: right; width: 250px; height: 600px; margin-right: 10px;">
-	<% types = {'gymnastics' => ['WebButton-Gym', 'Gymnastics', @bgc_green], 'dance' => ['WebButton-Dance', 'Dance', @bgc_pink], 'swim' => ['WebButton-SwimGoggles','Swim', @bgc_blue], 'tag' => ['WebButton-TAG', 'TAG', @bgc_orange]} %>
-	
-	<% types.each do |key, info| %>
-		<div style=" background-color: <%= info[2] %>;margin-bottom: 15px; padding: 8px 8px 6px 8px; border-radius: 15px; box-shadow: 4px 4px 5px #888; width: 225px;">
-			<a href="<%= key %>">
-				<img style="padding: 5px; background-color: white; border-radius: 8px; margin: 0 auto; width: 214px; box-shadow: 0px 0px 5px #fff;" src="/assets/structure/<%= info[0] %>.png" alt="<%= info[1] %>" />
-			</a>
-		</div>
-	<% end %>
-
-
-
-	<!-- Currently Disabled mailing list subscription form
-	<div align="center" style="margin: 30px 0px 5px -12px; text-align:center; font-size:11px"> Join our email club for coupons and special offers. </div>
-	<form method="post" action="/assets/email.php" style="float:left; margin-left: 5px;">
-		<input name="email" type="text" value="enter your email address here" style="float:left; width:190px; margin-top:2px;" onfocus="clearText(this);"/>
-		<input value="" type="submit" class="button" style="float:right; margin-left:5px;"/>
-	</form>
-	-->
-
-<!-- 	<a href="polkadots">
-		<img style="margin-top: 15px;" src="/assets/structure/polkadots_button.png" width="250" height="87" alt="Polka Dots" />
-	</a> -->
-	<div style="text-align: left;">
-			<a style="text-decoration: none;" href="http://www.facebook.com/pages/Tricks-Gymnastics/101697380325">
-				<img src="/assets/structure/facebook.jpg" width="46" height="41" alt="Facebook" />
-			</a>
-			<a style="text-decoration: none;" href="http://twitter.com/TricksGymnastic">
-				<img src="/assets/structure/twitter.jpg" width="44" height="45" alt="Twitter" />
-			</a>
-			<a style="text-decoration: none;" href="http://tricksgym.blogspot.com/">
-				<img src="/assets/structure/blogger.jpg" width="46" height="41" alt="Blogger" />
-			</a>
-			<a style="text-decoration: none;" href="http://www.youtube.com/user/TricksGymChannel">
-				<img src="/assets/structure/youtube.jpg" width="79" height="43" alt="Youtube" />
-			</a>
+	<div class="column small-12 medium-3">
+		<% second_bubble = 3 %>
+        <% if BubbleContent.exists?(sort_order: second_bubble) %>
+			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: second_bubble).first} %>
+		<% end %>
 	</div>
 </div>
-		
 
-<div id="Quotebox">
-	<h1 style="font-size: 40px; margin: 0px 0px -5px -42px; text-decoration: underline;">Funny Things Kids Say</h1>
-	<% @kid_quote.each do |t| %>
-			<div id="Random_Quote_Container">
-				<div id="quoteheaderyellow"></div>
-				<div id="quotebodyyellow">
-					<div id="Quote">
-						<%= t.quote %><br/>
-					</div>
-				</div>
-				<div id="quotefooteryellow">
-					<div>
-						<h3 id="Name">-<%= t.name %> (Age <%= t.age %>)</h3>
-					</div>
-				</div>
-			</div>
-	<% end %>
-</div>
+<!-- <div class="row align-justify">
+	<div class="column small-12">
+		<h1 style="font-size: 40px; margin: 0px 0px -5px -42px; text-decoration: underline;">Funny Things Kids Say</h1>
+	</div>
+	<%# @kid_quote.each do |t| %>
+		<div class="column medium-4">
+			<%#= t.quote %><br/>
+			<h3 id="Name">-<%#= t.name %> (Age <%#= t.age %>)</h3>
+		</div>
+	<%# end %>
+</div> -->
+
+
+<div style="height: <%= bottom_white_padding %>px; width: 100%;"></div>
+	
+
+
+
+			

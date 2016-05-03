@@ -1,27 +1,4 @@
 class StaticController < ApplicationController
-
-  before_filter :set_variables
-
-  def set_variables
-    @bgc_yellow = "#F2E300"
-    @bgc_green = "#5FC916"
-    @bgc_orange = "#ff9933"
-    @bgc_pink = "#ec1e79"
-    @bgc_blue = "#223d99"
-    @bgc_purple = "#8a09db"
-
-    @twenty_years = "none"
-    @jr_login = "none"
-
-    @tricksu_password = false
-    
-    @newsletter = WebsitePdf.where(:file_name => "Tricks_Newsletter").first
-    @reg_form = WebsitePdf.where(:file_name => "Tricks_Registration_Form").first
-    @release_form = WebsitePdf.where(:file_name => "Tricks_Release_Form").first
-    @family_rules = WebsitePdf.where(:file_name => "Tricks_Family_Rules").first
-    @class_sessions = WebsitePdf.where(:file_name => "Tricks_Class_Sessions").first
-  end
-
   def index
     @kid_quote = KidQuote.all.sample(n=3)
     @live_promos = PromoSlide.where(live: true).order(:sort_order)

@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row align-justify">
+  <div class="columns medium-8">
+    <p>
+      <strong>Link:</strong>
+      <%= @bubble_content.link %>
+    </p>
+    
+    <p>
+      <strong>Image:</strong>
+      <%= @bubble_content.image %>
+    </p>
+    
+    <p>
+      <strong>Color:</strong>
+      <%= @bubble_content.color %>
+    </p>
+    
+    <p>
+      <strong>Text:</strong>
+      <%= @bubble_content.text %>
+    </p>
+    
+    <p>
+      <strong>Text color:</strong>
+      <%= @bubble_content.text_color %>
+    </p>
+    
+    <p>
+      <strong>Show button:</strong>
+      <%= @bubble_content.show_button %>
+    </p>
+    
+    <p>
+      <strong>Sort order:</strong>
+      <%= @bubble_content.sort_order %>
+    </p>
+  </div>
+  <div class="columns medium-3">
+    <%= render "bubble" %>
+  </div>
+</div>
+
+
+<%= link_to 'Edit', edit_bubble_content_path(@bubble_content) %> |
+<%= link_to 'Back', bubble_contents_path %>

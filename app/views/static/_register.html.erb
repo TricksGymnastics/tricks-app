@@ -44,7 +44,7 @@
             <% color = level.color %>
           <% end %>
           <div class="jr_class_table_container" style="background-color: <%= color %>;">
-            <!-- <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%#= value %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= level.jack_rabbit_name %>"></script> -->
+            <!-- <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%#= value %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%#= level.jack_rabbit_name %>"></script> -->
             <script type="text/javascript" src="http://app.jackrabbitclass.com/Openings.asp?id=313983&Loc=<%= params[:location] %>&hidecols=Class,Description,Ages,Gender,StartDate,EndDate,Session&showcols=Instructors,Duration&sort=Days,StartTime&Closed=full&Cat2=<%= level.jack_rabbit_name %>"></script>
           </div>
         </div>

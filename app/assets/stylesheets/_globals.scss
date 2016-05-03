@@ -1,23 +1,23 @@
-$tricks-yellow: #F2E300;
+$tricks-yellow: #FFF55E;
 $tricks-light-yellow: scale-color($tricks-yellow, $lightness: 30%);
 $tricks-very-light-yellow: scale-color($tricks-yellow, $lightness: 80%);
 
-$tricks-green: #5FC916;
+$tricks-green: #9CE568;
 $tricks-light-green: scale-color($tricks-green, $lightness: 30%);
 $tricks-very-light-green: scale-color($tricks-green, $lightness: 80%);
 
-$tricks-orange: #ff9933;
+$tricks-orange:  rgb(247, 161, 26); //#FFAB58; //#ff9933;
 $tricks-light-orange: scale-color($tricks-orange, $lightness: 30%);
 $tricks-very-light-orange: scale-color($tricks-orange, $lightness: 80%);
 
-$tricks-blue: #223d99;
+$tricks-blue: #6074B7;
 $tricks-light-blue: scale-color($tricks-blue, $lightness: 30%);
 $tricks-very-light-blue: scale-color($tricks-blue, $lightness: 80%);
 
-$tricks-pink: #ec1e79;
+$tricks-pink: #F473AB;
 $tricks-light-pink: scale-color($tricks-pink, $lightness: 30%);
 $tricks-very-light-pink: scale-color($tricks-pink, $lightness: 80%);
 
-$tricks-purple: #8a09db;
+$tricks-purple: #A851DF;
 $tricks-light-purple: scale-color($tricks-purple, $lightness: 30%);
 $tricks-very-light-purple: scale-color($tricks-purple, $lightness: 80%);

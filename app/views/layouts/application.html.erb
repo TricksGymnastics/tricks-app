@@ -81,19 +81,21 @@
             <li><%= link_to "Users", users_path %></li>
             
             <li><%= link_to "Promos", promo_slides_path %></li>
+            
+            <li><%= link_to "Bubbles", bubble_contents_path %></li>
 
             <li><%= link_to "Comments", comments_path %></li>
 
             <li><%= link_to "Kid Quotes", kid_quotes_path %></li>
 
-            <li class="has-submenu"><%= link_to "Schedules", 'javascript:void();' %>
+            <li class="has-submenu"><%= link_to "Schedules", 'javascript:void(0);' %>
               <ul class="submenu menu vertical" data-submenu>
                 <li><%= link_to "View All", schedules_choose_path %></li>
                 <li><%= link_to "List of Levels", levels_path %></li>
               </ul>
             </li>
 
-            <li class="has-submenu"><%= link_to "Staff", 'javascript:void();' %>
+            <li class="has-submenu"><%= link_to "Staff", 'javascript:void(0);' %>
               <ul class="submenu menu vertical" data-submenu>
                 <li><%= link_to "All Coaches", coaches_path %></li>
                 <li><%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"} %></li>
@@ -101,7 +103,7 @@
             </li>   
 
             <li class="has-submenu">
-              <%= link_to "Recital Ads", 'javascript:void();' %>
+              <%= link_to "Recital Ads", 'javascript:void(0);' %>
               <ul class="submenu menu vertical" data-submenu>
                 <li><%= link_to "View Orders", "recital_ads_by_year/"+Time.now.year.to_s %></li>
                 <li><%= link_to "Ad Types", recital_ad_types_path %></li>
@@ -109,7 +111,7 @@
             </li>
 
             <li class="has-submenu">
-              <%= link_to "Surveys", 'javascript:void();' %>
+              <%= link_to "Surveys", 'javascript:void(0);' %>
               <ul class="submenu menu vertical" data-submenu>
                 <li><%= link_to "View All Surveys", surveys_path %></li>
                 <li><%= link_to "Results", choose_survey_path %></li>
@@ -143,24 +145,27 @@
   
         <!-- Left Nav Section -->
         <div class="top-bar-left">
-          <ul class="menu" data-responsive-menu="drilldown medium-dropdown"> 
-            
-            <li class="has-submenu">
-              <%= link_to "Programs", 'javascript:void();', class: 'main-menu-item' %></a>
+          <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+            <li><%= link_to "Register Now", "#", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style:"margin-right: 20px;" %></li>
+            <li class="has-submenu" style="padding-right: 20px;">
+              <%= link_to "Programs", 'javascript:void(0);', class: 'main-menu-item'  %>
               <ul class="menu vertical">
                 <li class="has-submenu">
-                  <%= link_to "Gymnastics", "javascript:void();" %>
+                  <%= link_to "Gymnastics", "javascript:void(0);" %>
                   <ul class="menu vertical">
-                    <li><%= link_to "Preschool (0-5)", tumblebunnies_path %></li>
-                    <li><%= link_to "School Age (6-18)", gymnastics_path %></li>
-                    <li><%= link_to "Compteitive", competitive_path %></li>
+                    <li><%= tb_link = link_to "Preschool (0-5)", tumblebunnies_path %></li>
+                    <li><%= gym_link = link_to "School Age (6-18)", gymnastics_path %></li>
+                    <li><%= comp_link = link_to "Competitive", competitive_path %></li>
                   </ul>
                 </li>
                 <li class="has-submenu">
-                  <%= link_to "Dance", "javascript:void();" %>
+                  <%= link_to "Dance", "javascript:void(0);" %>
                   <ul class="menu vertical">
-                    <li><%= link_to "Preschool (0-5)", dance_path %></li>
-                    <li><%= link_to "School Age (6-18)", dance_path %></li>
+                    <li><%= pre_dance_link = link_to "Preschool (0-5)", dance_path %></li>
+                    <li><%= school_dance_link = link_to "School Age (6-18)", dance_path %></li>
+                    <li><%= link_to "Dance Team", dance_path %></li>
+                    <li><%= link_to "Summer Recital", dance_path %></li>
+                    <li><%= link_to "Winter Show", dance_path %></li>
                   </ul>
                 </li>
                 <li><%= link_to "TAG", tag_path %></li>
@@ -169,25 +174,36 @@
               </ul>
             </li>
             <li class="has-submenu">
-              <%= link_to "Events", 'javascript:void();', class: 'main-menu-item' %></a>
+              <%= link_to "Events", 'javascript:void(0);', class: 'main-menu-item' %>
               <ul class="menu vertical">
-                <li><%= link_to "Gym Birthday Parties", birthdays_path %></li>
-                <li><%= link_to "Dance Birthday Parties", princess_party_path %></li>
+                <li class="has-submenu">
+                  <%= link_to "Gym Birthday Parties", birthdays_path %>
+                  <!--<ul class="menu vertical">-->
+                  <!--  <li><%#= link_to "Ulimate Fun", birthdays_path %></li>-->
+                  <!--  <li><%#= link_to "Ninja Warrior", birthdays_path %></li>-->
+                  <!--  <li><%#= link_to "Fun & Games", birthdays_path %></li>-->
+                  <!--</ul>-->
+                </li>
+                <li class="has-submenu">
+                  <%= link_to "Dance Birthday Parties", princess_party_path %>
+                  <!--<ul class="menu vertical">-->
+                  <!--  <li><%#= link_to "Fairytale", princess_party_path %></li>-->
+                  <!--  <li><%#= link_to "Ballet", princess_party_path %></li>-->
+                  <!--</ul>-->
+                </li>
                 <li><%= link_to "Kids Night Out", datenights_path %></li>
-                <li><%= link_to "Camps", camps_path %></li>
+                <li class="has-submenu">
+                  <%= link_to "Camps", camps_path %>
+                  <!--<ul class="menu vertical">
+                    <li><%#= link_to "Spring Break", camps_path %></li>
+                    <li><%#= link_to "Summer", camps_path %></li>
+                    <li><%#= link_to "Turkey", camps_path %></li>
+                    <li><%#= link_to "Holiday", camps_path %></li>
+                  </ul> -->
+                </li>
               </ul>
             </li>
-            <li class="has-submenu">
-              <%= link_to "Forms", 'javascript:void();', class: 'main-menu-item' %></a>
-              <ul class="menu vertical">
-                <li><%= link_to "Notice of Absence", new_absent_path %></li>
-                <li><%= link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
-                <li><%= link_to "Recital Ad", new_recital_ad_path %></li>
-                <li><%= link_to "Surveys", surveys_path %></li>
-                <li><%= link_to "Website PDFs", website_pdfs_path %></li>
-                <li><%= link_to "Where in the World", worlds_path %></li>
-              </ul>
-            </li>
+            
           </ul>
         </div>
         
@@ -195,7 +211,7 @@
         <div class="top-bar-right">
           <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
             <li class="has-submenu">
-              <%= link_to "About Us", 'javascript:void();', class: 'main-menu-item' %></a>
+              <%= link_to "About Us", 'javascript:void(0);', class: 'main-menu-item' %>
               <ul class="menu vertical">
                 <li><%= link_to "Our Story", '#' %></li>
                 <li><%= link_to "Our Facilities", locations_path %></li>
@@ -210,10 +226,21 @@
                 <li><%= link_to "Testimonials", comments_path %></li>
               </ul>
             </li>
-  
-            <li><%= link_to "FAQ", '#', class: 'main-menu-item' %></li>
+            <li class="has-submenu">
+              <%= link_to "Forms", 'javascript:void(0);', class: 'main-menu-item' %>
+              <ul class="menu vertical">
+                <li><%= link_to "Notice of Absence", new_absent_path %></li>
+                <li><%= link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
+                <li><%= link_to "Recital Ad", new_recital_ad_path %></li>
+                <li><%= link_to "Surveys", surveys_path %></li>
+                <li><%= link_to "Website PDFs", website_pdfs_path %></li>
+                <li><%= link_to "Where in the World", worlds_path %></li>
+              </ul>
+            </li>
+            <!-- <li><%#= link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
             <li><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
-            <li><%= link_to "Contact", locations_path, class: 'main-menu-item' %></li>
+            <!-- <li><%#= link_to "Contact", locations_path, class: 'main-menu-item' %></li> -->
+            <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button main-menu-button" %></li>
   
           </ul>
         </div>
@@ -223,7 +250,7 @@
     <% if content_for?(:header_image) %>
     <div id="header-secondary" class="row" style=" z-index: 5;">
       <div style="height: 400px; overflow: hidden; width: 100%; position: absolute; left: 0;">
-        <image width="3000" height="1000" src="<%= yield(:header_image) %>"></image>
+        <image width="3000" height="1000" src=<%= yield(:header_image) %>></image>
       </div>
     </div>
     
@@ -232,7 +259,22 @@
     <div class="row" style="padding-top: 80px;">
     <% end %>    
     
-      <div class="columns small-12" id="main-container">
+    <div class="columns small-12" id="main-container">
+        
+        
+        
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
         
       <% if flash.to_a.length > 0 %>
         <div class="row">
@@ -269,38 +311,206 @@
       <% end %>
       
       
-        <% if content_for?(:side_circles) %>
-          <div class="row align-justify">
-            <div class="columns small-8">
-              <%= yield %>
-            </div>  
-            <div class="columns medium-3">
-              <%= yield(:side_circles) %>
-            </div>
+      <% if !@bubbles.nil? %>
+        <div class="row align-justify">
+          <div class="columns small-8">
+            <%= yield %>
+          </div>  
+          <div class="columns medium-3" style="padding: 0;">
+            <% @bubbles.each do |bubble| %>
+              <% if BubbleContent.exists?(sort_order: bubble) %>
+                <br>
+                <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: bubble).first} %>
+                <br>
+              <% else %>
+                <h2 style="color: red; margin: 40px 0;">BubbleContent(<%= bubble %>) Not Found</h2>
+              <% end %>
+            <% end %>
           </div>
-        <% else %>
-          <div class="row">
-            <div class="columns small-12">
-              <%= yield %>
-            </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="columns small-12">
+            <%= yield %>
           </div>
-        <% end %>
-        
-      </div>
+        </div>
+      <% end %>
     </div>
+  </div>
 
 
 
 
-  <% if !content_for?(:no_margin_footer) %>
-    <div id="footer" style="margin-top: 200px;">
-  <% else %>
-    <div id="footer">
-  <% end %>
-      <div class="row" id="footer-content">
-        <div class="columns small-12">
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+      <div class="reveal fast" id="register_now_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+        <h1>Whoa, I'm dizzy!</h1>
+        <p class='lead'>There are many options for animating modals, check out the Motion UI library to see them all</p>
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+
+
+
+
+  <div id="footer" style="z-index: 100;">
+      <!--<div style="height: 100px; width: 100%; background-color: #fff;">-->
+        <!-- only here for a bit of padding above the footer -->
+      <!--</div>-->
+      <div class="row">
+        <div class="columns small-12" id="footer-content">
+          <div class="row" style="font-size: 13px;">
+            <div class="columns medium-8">
+              <div class="row">
+                <div class="columns medium-3 small-12">
+                  <h3 class="footer-header">Programs</h3>
+                  <ul>
+                    <li>
+                      <h3>Gymnastics</h3>
+                      <ul>
+                        <li><%= tb_link  %></li>
+                        <li><%= gym_link %></li>
+                        <li><%= comp_link %></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>Dance</h3>
+                      <ul>
+                        <li><%= link_to "Preschool (0-5)", dance_path %></li>
+                        <li><%= link_to "School Age (6-18)", dance_path %></li>
+                        <li><%= link_to "Dance Team", dance_path %></li>
+                        <li><%= link_to "Summer Recital", dance_path %></li>
+                        <li><%= link_to "Winter Show", dance_path %></li>
+                      </ul>
+                    </li>
+                    <li><%= link_to "TAG", tag_path %></li>
+                    <li><%= link_to "Swim", swim_path %></li>
+                    <li><%= link_to "CampUs", campus_path %></li>
+                  </ul>
+                </div>
+                <div class="columns medium-3 small-12">
+                  <h3 class="footer-header">Events</h3>
+                  <ul>
+                    <li><%= link_to "Gym Birthday Parties", birthdays_path %>
+                      <!--<h3>Gym Birthday Parties</h3>
+                      <ul>
+                        <li><%#= link_to "Ulimate Fun", birthdays_path %></li>
+                        <li><%#= link_to "Ninja Warrior", birthdays_path %></li>
+                        <li><%#= link_to "Fun & Games", birthdays_path %></li>
+                      </ul> -->
+                    </li>
+                    <li>
+                      <%= link_to "Dance Birthday Parties", princess_party_path %>
+                      <!-- <h3>Dance Birthday Parties</h3>
+                      <ul>
+                        <li><%#= link_to "Fairytale", princess_party_path %></li>
+                        <li><%#= link_to "Ballet", princess_party_path %></li>
+                      </ul> -->
+                    </li>
+                    <li><%= link_to "Kids Night Out", datenights_path %></li>
+                    <li>
+                      <%= link_to "Camps", camps_path %>
+                      <!-- <h3>Camps</h3>
+                      <ul>
+                        <li><%#= link_to "Spring Break", camps_path %></li>
+                        <li><%#= link_to "Summer", camps_path %></li>
+                        <li><%#= link_to "Turkey", camps_path %></li>
+                        <li><%#= link_to "Holiday", camps_path %></li>
+                      </ul> -->
+                    </li>
+                  </ul>
+                </div>
+                <div class="columns medium-3 small-12">
+                  <h3 class="footer-header">Forms</h3>
+                  <ul>
+                    <li><%= link_to "Notice of Absence", new_absent_path %></li>
+                    <li><%= link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
+                    <li><%= link_to "Recital Ad", new_recital_ad_path %></li>
+                    <li><%= link_to "Surveys", surveys_path %></li>
+                    <li><%= link_to "Website PDFs", website_pdfs_path %></li>
+                    <li><%= link_to "Where in the World", worlds_path %></li>
+                  </ul>
+                </div>
+                <div class="columns medium-3 small-12">
+                  <h3 class="footer-header">About Us</h3>
+                  <ul>
+                    <li><%= link_to "Our Story", '#' %></li>
+                    <li><%= link_to "Our Facilities", locations_path %></li>
+                    <li>
+                      <h3>Our Staff</h3>
+                      <ul>
+                        <li><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %></li>
+                        <li><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %></li>
+                        <li><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %></li>
+                      </ul>
+                    </li>
+                    <li><%= link_to "Testimonials", comments_path %></li>
+                  </ul>
+                  <h3 class="footer-header"><%= link_to "FAQ", '#', class: 'main-menu-item' %></h3>
+                  <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>
+                  <h3 class="footer-header"><%= link_to "Contact", locations_path, class: 'main-menu-item' %></h3>
+                </div>
+              </div>
+            </div>
+            
+            <div class="columns medium-4 small-12">
+              <div class="row">
+                <%= session[:location] %>
+                <div class="columns small-4">
+                  <%= link_to "Granite Bay", 'javascript:void(0);', class: "button expanded location-button", id: "GB" %>
+                </div>
+                <div class="columns small-4">
+                  <%= link_to "Folsom", 'javascript:void(0);', class: "button expanded location-button", id: "FOL" %>
+                </div>
+                <div class="columns small-4">
+                  <%= link_to "Sacramento", 'javascript:void(0);', class: "button expanded location-button", id: "SAC" %>
+                </div>
+              </div>
+              <div class="row" id="location_container">
+                <div class="columns 9-small location-information" id="GB">
+                  <p>4070 Cavitt Stallman Rd<br>
+            			Granite Bay, CA 9574</p>
+            			<p>Phone: (916) 791-4496</p>
+            			<p>Email: <%= link_to 'tricksgb@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                </div>
+                <div class="columns 9-small location-information" id="FOL">
+                 	<p>370 Plaza Drive<br>
+            			Folsom, CA 95630</p>
+            			<p>Phone: (916) 351-0024</p>
+            			<p>Email: <%= link_to 'tricksfol@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                </div>
+                <div class="columns 9-small location-information" id="SAC">
+                 	<p>4440 Marconi Avenue, Suite 100<br>
+			            Sacramento, CA 95821</p>
+            			<p>Phone: (916) 481-4496</p>
+            			<p>Email: <%= link_to 'trickssac@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                </div>
+                <div class="columns 9-small location-information" id="NONE">
+                  Click a button for more information about the location
+                </div>
+              </div>
+            </div>
+          </div>
           <% if !current_user %>
-            <%= link_to "Staff Login", login_path, class: "button secondary expand", style: "width: 100%; margin-top: 20px;" %>
+            <div class="row align-center">
+              <div class="columns small-4">
+                <%= link_to "Staff Login", login_path, class: "button secondary expanded", style: "margin-top: 50px;" %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>

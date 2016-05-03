@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   before_filter :set_variables
 
   def set_variables
-    @bgc_yellow = "#F2E300"
-    @bgc_green = "#5FC916"
-    @bgc_orange = "#ff9933"
-    @bgc_pink = "#ec1e79"
-    @bgc_blue = "#223d99"
-    @bgc_purple = "#8a09db"
+    @bgc_yellow = "#FFF55E" #"#F2E300"
+    @bgc_green = "#9CE568" #"#5FC916"
+    @bgc_orange = "#FFAB58" #"#ff9933"
+    @bgc_pink = "#F473AB" #"#ec1e79"
+    @bgc_blue = "#6074B7" #"#223d99"
+    @bgc_purple = "#A851DF" #"#8a09db"
 
     @twenty_years = "none"
     @jr_login = "none"
@@ -26,7 +26,6 @@ class ApplicationController < ActionController::Base
     @class_sessions = WebsitePdf.where(:file_name => "Tricks_Class_Sessions").first
   end
   
-
   rescue_from CanCan::AccessDenied do |exception|
   	flash[:error] = "You are not authorized to view this page. Please Log In"
   	redirect_to login_path

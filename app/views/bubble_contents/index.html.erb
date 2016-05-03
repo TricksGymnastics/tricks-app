@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bubble Contents</h1>
+
+<table style="text-align:center;">
+  <thead>
+    <tr>
+      <th style="text-align:center;">Position ID</th>
+      <th style="text-align:center;">Link</th>
+      <th style="text-align:center;">Image</th>
+      <th style="text-align:center;">Color</th>
+      <th style="text-align:center;">Text</th>
+      <th style="text-align:center;">Text color</th>
+      <th style="text-align:center;">Show button</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bubble_contents.each do |bubble_content| %>
+      <tr>
+        <td><%= bubble_content.sort_order %></td>
+        <td><%= link_to bubble_content.link %></td>
+        <td><%= bubble_content.image %></td>
+        <td style="background-color: #<%= bubble_content.color %>;"></td>
+        <td><%= bubble_content.text %></td>
+        <td><%= bubble_content.text_color %></td>
+        <td><%= bubble_content.show_button ? "Yes" : "No" %></td>
+        <td><%= link_to 'Show', bubble_content %></td>
+        <td><%= link_to 'Edit', edit_bubble_content_path(bubble_content) %></td>
+        <td><%= link_to 'Destroy', bubble_content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bubble content', new_bubble_content_path %>

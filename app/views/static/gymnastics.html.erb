@@ -1,43 +1,16 @@
-<% @title = "Tricks Gymnastics" %>
-<% content_for :pagestyle do %>
-  body {background-color: <%= @bgc_yellow %>;}
-  #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
-<% end %>
+<% 
+  given_locals = {
+    given_title: "School-Aged Gymnastics (Ages 6 and up)",
+    given_header_image: "",
+    given_bubbles: [1,3],
+    given_description: '
+      <iframe style="float:right; padding: 5px 0px 15px 15px" width="367" height="248" src="http://www.youtube.com/embed/kT9zqO6XxQ8?rel=0" frameborder="0"></iframe>
+      <p>Gymnastics is the most comprehensive "lifestyle exercise program" available to children.  This amazing and challenging sport develops strength, flexibility and speed.  You’ll see a difference within the first month of your child coming to TRICKS!  Confidence begins to grow as challenges are met and conquered, new muscles are fired up as your child begins to discover all the things they are capable of.</p>
+      <p>TRICKS has a different theme each week and all of the skills on your child’s take home skill poster are worked into the lesson plans every month. We want to add value to your experience here by teaching life skills like gratitude, courage, honesty, (to name a few).  It’s not easy to do all of this in an hour and half but our coaches are amazing.  They are excellent role models, smart, kind and happy to talk with the parent.  You are welcome to stay and watch from our comfortable viewing stands.</p>
+    '.html_safe,
+    given_levels: @school_aged,
+    given_color: @bgc_yellow
+  } 
+%>
 
-<div class="content">
-  <h1>School-Aged Gymnastics (Ages 6 and up)</h1>
-  <div id="infobox" style="width: 945px;">
-    <iframe style="float:right; padding: 5px 0px 15px 15px" width="367" height="248" src="http://www.youtube.com/embed/kT9zqO6XxQ8?rel=0" frameborder="0"></iframe>
-  
-
-    <p>Gymnastics is the most comprehensive "lifestyle exercise program" available to children.  This amazing and challenging sport develops strength, flexibility and speed.  You’ll see a difference within the first month of your child coming to TRICKS!  Confidence begins to grow as challenges are met and conquered, new muscles are fired up as your child begins to discover all the things they are capable of.</p>
-    <p>TRICKS has a different theme each week and all of the skills on your child’s take home skill poster are worked into the lesson plans every month. We want to add value to your experience here by teaching life skills like gratitude, courage, honesty, (to name a few).  It’s not easy to do all of this in an hour and half but our coaches are amazing.  They are excellent role models, smart, kind and happy to talk with the parent.  You are welcome to stay and watch from our comfortable viewing stands.</p>
-
-<!-- 
-    <p>With pediatric obesity at an epidemic level of 13% of children and adolescents in the United States, getting children away from the television or computer games and into the gym is a terrific first step toward a healthy lifestyle. Gymnastics is perhaps one of the most comprehensive &quot;lifestyle exercise programs&quot; available to children, incorporating strength, flexibility, speed, balance, coordination, power and discipline. </p>
-    <p> Studies show that children learn cognitive skills more effectively in an environment that includes the body as well as the mind (Barrett, 1998). Gymnastics and early childhood movement education is directly attributed to developing neurological pathways in students and promoting reading readiness. Children who have participated in movement education activities have longer attention spans, increased communication skills, general problem solving skills and improved self-esteem. </p>
-    <h3>Class Structure</h3>
-    <p>Each week new fundamentals are introduced in a fun way based on ideas which correspond with our theme weeks. Take home skill posters will help the gymnast chart their progress. Parents are welcome to observe all the fun from our comfortable viewing stands. </p> -->
-    <br>
-    <br>
-    <h2 style="text-align:center;font-size: 22px;">Click on a Class Name To Register</h2>
-
-    <% i = 0 %>
-    <% @school_aged.each do |level| %>
-      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true, color: @bgc_yellow} %>
-      <% i += 1 %>
-    <% end %>  
-<!--   <div style="float: right; margin-right: 10px; margin-top: 30px;">
-    <img src="/assets/structure/gymnasticsside.jpg" width="262" height="1817" alt="Gymnastics Teams"/>
-  </div> -->
-<!--   <div id="infobox">
-    <div id="gymnastics_sidelogos"><img style="/* [disabled]margin-left: 10px; */"src="/assets/logos/tumblebunny.jpg" width="210" height="166" alt="Tumblebunny" />
-      <br>
-      <br>
-      <h2>Class Schedules & Pricing:</h2>
-      <h2><%#= link_to "Granite Bay", schedules_gb_gym_path, :style => "color:#223d99;" %></h2>
-      <h2><%#= link_to "Folsom", schedules_fol_gym_path, :style => "color:#ec1e79;" %></h2>
-      <h2><%#= link_to "Sacramento", schedules_sac_gym_path, :style => "color:#79c843;" %></h2>
-    </div> -->
-  </div>
-</div>
+<%= render partial: 'classtype_page', locals: given_locals %>

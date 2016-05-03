@@ -1,0 +1,53 @@
+<% outline_width = "1" %>
+<% outline = "-"+outline_width+"px 0 #222, 0 "+outline_width+"px #222, "+outline_width+"px 0 #222, 0 -"+outline_width+"px #222" %>
+<style>
+  
+  .accordion-title, .accordion-title:focus, .accordion-title:hover, .is-active .accordion-title{
+  	background-color: <%= given_color %>;
+  	margin: 25px 0 0 0;
+  	border-radius: 20px;
+  	box-sizing: border-box;
+  	border: solid 2px <%= given_color %>;
+  	text-shadow: <%= outline %>, 0 0 5px #555;
+		color: #fff;
+  }
+  .accordion-title:hover, .is-active .accordion-title{
+  	border: solid 2px #333;
+  	text-shadow: <%= outline %>, 0 0 15px #111;
+  }
+</style>
+
+
+<% if defined? given_title %>
+  <% content_for :title do %>
+    <%= given_title %>
+  <% end %>
+<% end %>
+
+<% if defined? given_header_image %>
+  <% if !given_header_image.empty? %>
+    <% content_for :header_image do %>
+      <%= given_header_image %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if defined? given_bubbles %>
+  <% update_bubbles(given_bubbles) %>
+<% end %>
+
+<div class="row" style="margin-bottom: 150px;">
+  <div class="columns medium-12">
+    <h1><%= given_title %></h1>
+   
+    <%= given_description %>
+
+    <h2 style="text-align:center;font-size: 22px; margin-top:25px;">Click on a Class Name for more information and to Register</h2>
+    
+    <ul class="accordion" data-accordion data-allow-all-closed="true">
+      <% given_levels.each do |level| %>
+        <%= render partial: 'level_listing', locals: {level: level, color: given_color} %>
+      <% end %>
+    </ul>
+  </div>
+</div>

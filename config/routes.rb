@@ -1,5 +1,6 @@
 Comments::Application.routes.draw do
 
+  resources :bubble_contents
   root :to => 'static#index'
 
   get '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}  
@@ -66,6 +67,7 @@ Comments::Application.routes.draw do
   %w[index about auditions empty_page events gallery].each do |page|
     get 'dance_company/'+page, controller: 'dance_company', action: page
   end
+  
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

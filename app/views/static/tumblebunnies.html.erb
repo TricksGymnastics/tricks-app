@@ -1,32 +1,16 @@
-<% @title = "Tricks Gymnastics" %>
-<% content_for :pagestyle do %>
-  body {background-color: <%= @bgc_yellow %>;}
-  #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
-<% end %>
-
-<div class="content">
-  <h1>Preschool-Aged Gymnastics (Ages 0-5)</h1>
-  <div id="infobox" style="width: 945px;">
-    <!-- <iframe style="float:right; padding: 5px 0px 15px 15px" width="367" height="248" src="http://www.youtube.com/embed/kT9zqO6XxQ8?rel=0" frameborder="0"></iframe> -->
-
+<% 
+  given_locals = {
+    given_title: "Preschool-Aged Gymnastics (Ages 0-5)",
+    given_header_image: "",
+    given_bubbles: [1,3],
+    given_description: '
     <p>Gymnastics is the best work out a preschooler can get!  With every movement, your child is not only getting stronger, they’re also building strong circuits in the brain.  This will enhance their entire future.</p>
+    <p>Our action packed classes teach important life skills like listening to a teacher, following directions and sequencing by moving around a circuit of perfectly sized equipment.  This all prepares your child for academics but it’s so much fun that your preschooler won\'t want to leave after class. We know that "the work of a child is play" and we plan great play!</p>
+    <p>You\'ll see a difference in your child after just 4 Tumblebunny classes.  All little athletes are given a skill poster so that you can chart their progress at home.  Loving and highly trained teachers will help your child achieve new heights and grow in ways that only an environment like a Tumblebunny Gym can provide.</p>
+    '.html_safe,
+    given_levels: @tumblebunnies,
+    given_color: @bgc_green
+  } 
+%>
 
-    <p>Our action packed classes teach important life skills like listening to a teacher, following directions and sequencing by moving around a circuit of perfectly sized equipment.  This all prepares your child for academics but it’s so much fun that your preschooler won't want to leave after class. We know that "the work of a child is play" and we plan great play!</p>
-
-    <p>You'll see a difference in your child after just 4 Tumblebunny classes.  All little athletes are given a skill poster so that you can chart their progress at home.  Loving and highly trained teachers will help your child achieve new heights and grow in ways that only an environment like a Tumblebunny Gym can provide.</p>
-
-
-    <!-- <p> We have developed an exciting and highly successful approach to pre-school child development using gymnastics as a learning environment. Our 45 minute Tumblebunny classes are jam-packed with music, movement, fun and physical challenges. The Tumblebunnies have their own gym separate from the school- age children. The children climb, roll, jump, swing, bounce, hang, balance, and most importantly, never stop moving! </p>
-    <p> Our wonderful coaches have a true love and enthusiasm for children. We provide a positive environment with lots of opportunities to succeed and grow. As soon as your child becomes mobile, a whole new world opens up including motor development activities at TRICKS.®  This is a critical brain development age. Children need to have many, many varied experiences from 0-5 years old. </p> -->
-
-    <br>
-    <h2 style="text-align:center;font-size: 22px;">Click on a Class Name To Register</h2>
-    
-    <% i = 0 %>
-    <% @tumblebunnies.each do |level| %>
-      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: true, color: @bgc_green} %>
-      <% i += 1 %>
-    <% end %>
-  </div>
-  </div>
-</div>
+<%= render partial: 'classtype_page', locals: given_locals %>

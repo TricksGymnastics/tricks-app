@@ -1,36 +1,13 @@
-<% @title = "Tricks Gymnastics" %>
-<% content_for :pagestyle do %>
-  body {background-color: <%= @bgc_yellow %>;}
-  #infobox {float: left; margin-left: 19px; margin-bottom: 25px; width: 670px; text-align: justify;}
-<% end %>
-<% content_for :header_image do %>
-  http://placehold.it/3000x700/ffb870/333?text=Placeholder
-<% end %>
-<% content_for :side_circles do %>
-  <%= render :partial => 'side_circles/test' %>
-  <%= render :partial => 'side_circles/test2' %>
-<% end %>
+<% 
+  given_locals = {
+    given_title: "Tricks Agility Gymnastics",
+    given_header_image: "/assets/site_header_images/TAG2.png",
+    given_bubbles: [0,2],
+    given_description: '<p>A gym is the perfect place for boys!  It\'s built to give them a chance to run, climb, hang, swing, conquer obstacles burn energy and get stronger.  When you add a coach, a \"Code of Honor\" and a headband, you\'re all set for one of the most exciting and current classes ever offered for boys.</p>'.html_safe,
+    given_levels: @tag,
+    given_color: @bgc_orange
+  } 
+%>
 
+<%= render partial: 'classtype_page', locals: given_locals %>
 
-
-<div class="row">
-  <div class="columns medium-12">
-    <h1>Tricks Agility Gymnastics</h1>
-    <!--<iframe style="float:right; padding: 5px 0px 15px 15px" width="367" height="248" src="https://www.youtube.com/embed/OpUNA7QzqYw" frameborder="0"></iframe>-->
-  
-    <p>A gym is the perfect place for boys!  It's built to give them a chance to run, climb, hang, swing, conquer obstacles burn energy and get stronger.  When you add a coach, a "Code of Honor" and a headband, you're all set for one of the most exciting and current classes ever offered for boys.</p>
-    <br>
-    <h2 style="text-align:center;font-size: 22px;">Click on a Class Name To Register</h2>
-    
-    <ul class="accordion" data-accordion role=tablist>
-    <% i = 0 %>
-    <% @tag.each do |level| %>
-      <%= render partial: 'level_listing', locals: {level: level, i: i, show_first_picture: false, color: @bgc_orange} %>
-      <% i += 1 %>
-    <% end %>
-    
-    </ul>
-      
-    
-  </div>
-</div>
