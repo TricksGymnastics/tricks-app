@@ -1,9 +1,8 @@
 class CoachesController < ApplicationController
-
-  load_and_authorize_resource :except => [:type, :loc]
-  helper "errors"
+  before_action :set_coach, only: [:show, :edit, :update, :destroy]
   
-
+  load_and_authorize_resource :except => [:type, :loc]
+  
   def index
     @coaches = Coach.joins(:locations).location_search(params[:location]).uniq.sort_by(&:firstname)
     respond_to do |format|
@@ -22,6 +21,7 @@ class CoachesController < ApplicationController
   end
 
   def new
+    @coach = Coach.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @coach }
@@ -32,6 +32,7 @@ class CoachesController < ApplicationController
   end
 
   def create
+    @coach = Coach.new(coach_params)
     respond_to do |format|
       if @coach.save
         format.html { redirect_to @coach, notice: 'Coach was successfully created.' }
@@ -45,7 +46,7 @@ class CoachesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @coach.update_attributes(params[:coach].permit(:image, :firstname, :lastname, :gender, :location_ids, :level_ids, :classtype_ids, :experience, :fav_event, :fav_skill, :fav_food, :disney_char, :advice, :birthdate, :startdate, :remove_image, :strengths, :current_employee))
+      if @coach.update(coach_params)
         format.html { redirect_to @coach, notice: 'Coach was successfully updated.' }
         format.json { head :no_content }
       else
@@ -76,5 +77,15 @@ class CoachesController < ApplicationController
   def past_employees
     @past_employees = Coach.where(:current_employee => false).all
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_coach
+      @coach = Coach.find(params[:id])
+    end
 
+    # Only allow a trusted parameter "white list" through.
+    def coach_params
+      params.require(:coach).permit(:image, :firstname, :lastname, :gender, :location_ids, :level_ids, :classtype_ids, :experience, :fav_event, :fav_skill, :fav_food, :disney_char, :advice, :birthdate, :startdate, :remove_image, :strengths, :current_employee)
+    end
 end

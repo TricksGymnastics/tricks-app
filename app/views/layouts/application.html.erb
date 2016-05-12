@@ -54,15 +54,9 @@
     <meta name="description" content="Gymnastics is perhaps one of the most comprehensive lifestyle exercise programs available to children, incorporating strength, flexibility, speed, balance, coordination, power and discipline."/>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <style type="text/css">
-      <%#= yield :pagestyle %>
-    </style>
   </head>
 
-<!--   <body style="background-image: url(/assets/structure/textile.png);"> -->
   <body>
-
 
     <% if current_user %>
       <div class="title-bar" data-responsive-toggle="logged-in-menu" data-hide-for="medium">
@@ -129,7 +123,7 @@
 
      <!-- Small Navigation -->
     <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-      <%= link_to image_tag('tricks-tiny.png'), root_path, class: "logo-small show-for-small-only" %>
+      <%= link_to image_tag('tricks-tiny.png'), root_path, class: "logo-small" %>
       <button class="menu-icon" type="button" data-toggle></button>
       <div class="title-bar-title">Menu</div>
     </div>
@@ -146,7 +140,7 @@
         <!-- Left Nav Section -->
         <div class="top-bar-left">
           <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
-            <li><%= link_to "Register Now", "#", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style:"margin-right: 20px;" %></li>
+            <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style:"margin-right: 20px;" %></li>
             <li class="has-submenu" style="padding-right: 20px;">
               <%= link_to "Programs", 'javascript:void(0);', class: 'main-menu-item'  %>
               <ul class="menu vertical">
@@ -161,16 +155,16 @@
                 <li class="has-submenu">
                   <%= link_to "Dance", "javascript:void(0);" %>
                   <ul class="menu vertical">
-                    <li><%= pre_dance_link = link_to "Preschool (0-5)", dance_path %></li>
+                    <li><%= pre_dance_link = link_to "Preschool (0-5)", preschool_dance_path %></li>
                     <li><%= school_dance_link = link_to "School Age (6-18)", dance_path %></li>
-                    <li><%= link_to "Dance Team", dance_path %></li>
-                    <li><%= link_to "Summer Recital", dance_path %></li>
-                    <li><%= link_to "Winter Show", dance_path %></li>
+                    <li><%= dance_team_link = link_to "Dance Team", dance_path %></li>
+                    <li><%= summer_recital_link = link_to "Summer Recital", dance_path %></li>
+                    <li><%= winter_show_link = link_to "Winter Show", dance_path %></li>
                   </ul>
                 </li>
-                <li><%= link_to "TAG", tag_path %></li>
-                <li><%= link_to "Swim", swim_path %></li>
-                <li><%= link_to "CampUs", campus_path %></li>
+                <li><%= tag_link = link_to "TAG", tag_path %></li>
+                <li><%= swim_link = link_to "Swim", swim_path %></li>
+                <li><%= campus_link = link_to "CampUs", campus_path %></li>
               </ul>
             </li>
             <li class="has-submenu">
@@ -213,33 +207,33 @@
             <li class="has-submenu">
               <%= link_to "About Us", 'javascript:void(0);', class: 'main-menu-item' %>
               <ul class="menu vertical">
-                <li><%= link_to "Our Story", '#' %></li>
-                <li><%= link_to "Our Facilities", locations_path %></li>
+                <!--<li><%#= story_link = link_to "Our Story", '#' %></li>-->
+                <li><%= facilities_link = link_to "Our Facilities", locations_path %></li>
                 <li class="has-submenu">
                   <%= link_to "Our Staff", "javascript:void()" %>
                   <ul class="menu vertical">
-                    <li><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %></li>
-                    <li><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %></li>
-                    <li><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %></li>
+                    <li><%= gb_staff_link = link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %></li>
+                    <li><%= fol_staff_link = link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %></li>
+                    <li><%= sac_staff_link = link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %></li>
                   </ul>
                 </li>
-                <li><%= link_to "Testimonials", comments_path %></li>
+                <li><%= testimonials_link = link_to "Testimonials", site_comments_path %></li>
               </ul>
             </li>
             <li class="has-submenu">
               <%= link_to "Forms", 'javascript:void(0);', class: 'main-menu-item' %>
               <ul class="menu vertical">
-                <li><%= link_to "Notice of Absence", new_absent_path %></li>
-                <li><%= link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
-                <li><%= link_to "Recital Ad", new_recital_ad_path %></li>
-                <li><%= link_to "Surveys", surveys_path %></li>
-                <li><%= link_to "Website PDFs", website_pdfs_path %></li>
-                <li><%= link_to "Where in the World", worlds_path %></li>
+                <li><%= absence_link = link_to "Notice of Absence", new_absent_path %></li>
+                <li><%= recital_ad_link = link_to "Recital Ad Online Order", recital_ads_ad_select_path %></li>
+                <!--<li><%#= surveys_link = link_to "Surveys", surveys_path %></li>-->
+                <!--<li><%#= pdfs_link = link_to "Website PDFs", website_pdfs_path %></li>-->
+                <!--<li><%#= world_link = link_to "Where in the World", worlds_path %></li>-->
+                <li><%= discontinue_link = link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
               </ul>
             </li>
-            <!-- <li><%#= link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
-            <li><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
-            <!-- <li><%#= link_to "Contact", locations_path, class: 'main-menu-item' %></li> -->
+            <!-- <li><%#= faq_link = link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
+            <li><%= blog_link = link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
+            <!-- <li><%#= contact_link = link_to "Contact", locations_path, class: 'main-menu-item' %></li> -->
             <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button main-menu-button" %></li>
   
           </ul>
@@ -254,34 +248,18 @@
       </div>
     </div>
     
-    <div class="row" style="padding-top: 420px;">
+    <div class="row" style="padding-top: 440px;">
     <% else %>
-    <div class="row" style="padding-top: 80px;">
+    <div class="row" style="padding-top: 100px;">
     <% end %>    
     
     <div class="columns small-12" id="main-container">
-        
-        
-        
-
-
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
       <% if flash.to_a.length > 0 %>
-        <div class="row">
+        <div class="callout-container">
           <% flash.each do |name, msg| %>
 
             <% if name.to_s == "alert" %>
-              <div class="callout warning columns small-12" data-closable>   
+              <div class="callout warning" data-closable>   
                 <%= msg %>
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                   <span aria-hidden="true">&times;</span>
@@ -290,7 +268,7 @@
             <% end %>
 
             <% if name.to_s == "notice" %>
-              <div class="callout success columns small-12" data-closable>   
+              <div class="callout success" data-closable>   
                 <%= msg %>
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                   <span aria-hidden="true">&times;</span>
@@ -299,7 +277,7 @@
             <% end %>
 
             <% if name.to_s == "error" %>
-              <div class="callout alert columns small-12" data-closable>   
+              <div class="callout alert" data-closable>   
                 <%= msg %>
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                   <span aria-hidden="true">&times;</span>
@@ -338,34 +316,33 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        
-        
-      <div class="reveal fast" id="register_now_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
-        <h1>Whoa, I'm dizzy!</h1>
-        <p class='lead'>There are many options for animating modals, check out the Motion UI library to see them all</p>
-        <button class="close-button" data-close aria-label="Close reveal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="reveal fast small" id="register_now_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+    <div id="choose_location_modal">
+      <h1>Choose a Location</h1>
+      <div class="row" style="margin-top: 50px;">
+  			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
+  			<% locations.each do |loc| %>
+          <div class="columns small-4">
+            <%= link_to loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
+          </div>
+  			<% end %>
       </div>
-
-
-
-
-
+    </div>
+    <div id="choose_program_modal">
+      <h1>Choose a Program</h1>
+      <div class="row" style="margin-top: 20px;">
+  			<% programs = {"Preschool Gymnastics" => tumblebunnies_path, "School-Age Gymnastics" => gymnastics_path, "Preschool Dance" => dance_path, "School-Age Dance" => dance_path, "TAG" => tag_path, "Swim" => swim_path} %> 
+  			<% programs.each do |prog| %>
+          <div class="columns small-6">
+            <%= link_to prog[0], prog[1], class: "button expanded program-button", id: prog[0] %>
+          </div>
+  			<% end %>
+      </div>
+    </div>
+    <button class="close-button" data-close aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
   <div id="footer" style="z-index: 100;">
       <!--<div style="height: 100px; width: 100%; background-color: #fff;">-->
@@ -382,24 +359,24 @@
                     <li>
                       <h3>Gymnastics</h3>
                       <ul>
-                        <li><%= tb_link  %></li>
-                        <li><%= gym_link %></li>
-                        <li><%= comp_link %></li>
+                        <%= if defined? tb_link then ('<li>' + tb_link + '</li>').html_safe end %>
+                        <%= if defined? gym_link then ('<li>' + gym_link + '</li>').html_safe end %>
+                        <%= if defined? comp_link then ('<li>' + comp_link + '</li>').html_safe end %>
                       </ul>
                     </li>
                     <li>
                       <h3>Dance</h3>
                       <ul>
-                        <li><%= link_to "Preschool (0-5)", dance_path %></li>
-                        <li><%= link_to "School Age (6-18)", dance_path %></li>
-                        <li><%= link_to "Dance Team", dance_path %></li>
-                        <li><%= link_to "Summer Recital", dance_path %></li>
-                        <li><%= link_to "Winter Show", dance_path %></li>
+                        <%= if defined? pre_dance_link then ('<li>' + pre_dance_link + '</li>').html_safe end %>
+                        <%= if defined? school_dance_link then ('<li>' + school_dance_link + '</li>').html_safe end %>
+                        <%= if defined? dance_team_link then ('<li>' + dance_team_link + '</li>').html_safe end %>
+                        <%= if defined? summer_recital_link then ('<li>' + summer_recital_link + '</li>').html_safe end %>
+                        <%= if defined? winter_show_link then ('<li>' + winter_show_link + '</li>').html_safe end %>
                       </ul>
                     </li>
-                    <li><%= link_to "TAG", tag_path %></li>
-                    <li><%= link_to "Swim", swim_path %></li>
-                    <li><%= link_to "CampUs", campus_path %></li>
+                    <%= if defined? tag_link then ('<li>' + tag_link + '</li>').html_safe end %>
+                    <%= if defined? swim_link then ('<li>' + swim_link + '</li>').html_safe end %>
+                    <%= if defined? campus_link then ('<li>' + campus_link + '</li>').html_safe end %>
                   </ul>
                 </div>
                 <div class="columns medium-3 small-12">
@@ -437,28 +414,28 @@
                 <div class="columns medium-3 small-12">
                   <h3 class="footer-header">Forms</h3>
                   <ul>
-                    <li><%= link_to "Notice of Absence", new_absent_path %></li>
-                    <li><%= link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
-                    <li><%= link_to "Recital Ad", new_recital_ad_path %></li>
-                    <li><%= link_to "Surveys", surveys_path %></li>
-                    <li><%= link_to "Website PDFs", website_pdfs_path %></li>
-                    <li><%= link_to "Where in the World", worlds_path %></li>
+                    <%= if defined? absence_link then ('<li>' + absence_link + '</li>').html_safe end %>
+                    <%= if defined? recital_ad_link then ('<li>' + recital_ad_link + '</li>').html_safe end %>
+                    <%= if defined? surveys_link then ('<li>' + surveys_link + '</li>').html_safe end %>
+                    <%= if defined? pdfs_link then ('<li>' + pdfs_link + '</li>').html_safe end %>
+                    <%= if defined? world_link then ('<li>' + world_link + '</li>').html_safe end %>
+                    <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
                   </ul>
                 </div>
                 <div class="columns medium-3 small-12">
                   <h3 class="footer-header">About Us</h3>
                   <ul>
-                    <li><%= link_to "Our Story", '#' %></li>
-                    <li><%= link_to "Our Facilities", locations_path %></li>
+                    <%= if defined? story_link then ('<li>' + story_link + '</li>').html_safe end %>
+                    <%= if defined? facilities_link then ('<li>' + facilities_link + '</li>').html_safe end %>
                     <li>
                       <h3>Our Staff</h3>
                       <ul>
-                        <li><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %></li>
-                        <li><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %></li>
-                        <li><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %></li>
+                        <%= if defined? gb_staff_link then ('<li>' + gb_staff_link + '</li>').html_safe end %>
+                        <%= if defined? fol_staff_link then ('<li>' + fol_staff_link + '</li>').html_safe end %>
+                        <%= if defined? sac_staff_link then ('<li>' + sac_staff_link + '</li>').html_safe end %>
                       </ul>
                     </li>
-                    <li><%= link_to "Testimonials", comments_path %></li>
+                    <%= if defined? testimonials_link then ('<li>' + testimonials_link + '</li>').html_safe end %>
                   </ul>
                   <h3 class="footer-header"><%= link_to "FAQ", '#', class: 'main-menu-item' %></h3>
                   <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>
@@ -469,7 +446,6 @@
             
             <div class="columns medium-4 small-12">
               <div class="row">
-                <%= session[:location] %>
                 <div class="columns small-4">
                   <%= link_to "Granite Bay", 'javascript:void(0);', class: "button expanded location-button", id: "GB" %>
                 </div>
@@ -480,26 +456,26 @@
                   <%= link_to "Sacramento", 'javascript:void(0);', class: "button expanded location-button", id: "SAC" %>
                 </div>
               </div>
-              <div class="row" id="location_container">
-                <div class="columns 9-small location-information" id="GB">
+              <div class="row" id="footer_location_container">
+                <div class="columns 9-small footer-location-information" id="GB">
                   <p>4070 Cavitt Stallman Rd<br>
             			Granite Bay, CA 9574</p>
             			<p>Phone: (916) 791-4496</p>
             			<p>Email: <%= link_to 'tricksgb@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
                 </div>
-                <div class="columns 9-small location-information" id="FOL">
+                <div class="columns 9-small footer-location-information" id="FOL">
                  	<p>370 Plaza Drive<br>
             			Folsom, CA 95630</p>
             			<p>Phone: (916) 351-0024</p>
             			<p>Email: <%= link_to 'tricksfol@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
                 </div>
-                <div class="columns 9-small location-information" id="SAC">
+                <div class="columns 9-small footer-location-information" id="SAC">
                  	<p>4440 Marconi Avenue, Suite 100<br>
 			            Sacramento, CA 95821</p>
             			<p>Phone: (916) 481-4496</p>
             			<p>Email: <%= link_to 'trickssac@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
                 </div>
-                <div class="columns 9-small location-information" id="NONE">
+                <div class="columns 9-small footer-location-information" id="NONE">
                   Click a button for more information about the location
                 </div>
               </div>

@@ -1,5 +1,5 @@
 class PromoSlidesController < ApplicationController
-
+  before_action :set_promo_slide, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
   # GET /promo_slides
@@ -17,15 +17,12 @@ class PromoSlidesController < ApplicationController
   # GET /promo_slides/1
   # GET /promo_slides/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @promo_slide }
-    end
   end
 
   # GET /promo_slides/new
   # GET /promo_slides/new.json
   def new
+    @promo_slide = PromoSlide.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @promo_slide }
@@ -39,6 +36,7 @@ class PromoSlidesController < ApplicationController
   # POST /promo_slides
   # POST /promo_slides.json
   def create
+    @promo_slide = PromoSlide.new(promo_slide_params)
     respond_to do |format|
       if @promo_slide.save
         format.html { redirect_to @promo_slide, notice: 'Promo slide was successfully created.' }
@@ -54,7 +52,7 @@ class PromoSlidesController < ApplicationController
   # PUT /promo_slides/1.json
   def update
     respond_to do |format|
-      if @promo_slide.update_attributes(params[:promo_slide])
+      if @promo_slide.update(promo_slide_params)
         format.html { redirect_to @promo_slide, notice: 'Promo slide was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,4 +72,15 @@ class PromoSlidesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_promo_slide
+      @promo_slide = PromoSlide.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def promo_slide_params
+      params.require(:promo_slide).permit(:data_type, :html_code, :image, :link, :live, :sort_order, :title, :link_path, :remove_image)
+    end
 end

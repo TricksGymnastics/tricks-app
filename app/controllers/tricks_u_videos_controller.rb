@@ -1,4 +1,5 @@
 class TricksUVideosController < ApplicationController
+  before_action :set_video, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
   def index
@@ -10,38 +11,20 @@ class TricksUVideosController < ApplicationController
     else
       @videos_by_category = TricksUVideo.find_all_by_category_id(@category.id, order: "weight")
     end
-
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @video }
-    end
   end
 
   def show
-    @video = TricksUVideo.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @video }
-    end
   end
 
   def new
     @video = TricksUVideo.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @video }
-    end
   end
 
   def edit
-    @video = TricksUVideo.find(params[:id])
   end
 
   def create
-    @video = TricksUVideo.new(params[:tricks_u_video])
+    @video = TricksUVideo.new(video_params)
 
     respond_to do |format|
       if @video.save
@@ -55,10 +38,9 @@ class TricksUVideosController < ApplicationController
   end
 
   def update
-    @video = TricksUVideo.find(params[:id])
 
     respond_to do |format|
-      if @video.update_attributes(params[:tricks_u_video])
+      if @video.update(video_params)
         format.html { redirect_to @video, notice: 'Video was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,7 +51,6 @@ class TricksUVideosController < ApplicationController
   end
 
   def destroy
-    @video = TricksUVideo.find(params[:id])
     @video.destroy
 
     respond_to do |format|
@@ -77,4 +58,16 @@ class TricksUVideosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_video
+      @video = TricksUVideo.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def video_params
+      params.require(:tricks_u_video).permit(:title, :url, :weight, :category_id)
+    end
 end

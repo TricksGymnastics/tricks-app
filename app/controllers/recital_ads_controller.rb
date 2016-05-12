@@ -1,5 +1,5 @@
 class RecitalAdsController < ApplicationController
-  
+  before_action :set_recital_ad, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :except => [:ad_select]
 
   before_filter :set_variables
@@ -17,21 +17,12 @@ class RecitalAdsController < ApplicationController
   # GET /recital_ads/1
   # GET /recital_ads/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @recital_ad }
-    end
   end
 
   # GET /recital_ads/new
   # GET /recital_ads/new.json
   def new
     @recital_ad = RecitalAd.new(recital_ad_type_id: params[:recital_ad_type_id])
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @recital_ad }
-    end
   end
 
   # GET /recital_ads/1/edit
@@ -53,7 +44,7 @@ class RecitalAdsController < ApplicationController
   # PUT /recital_ads/1.json
   def update
     respond_to do |format|
-      if @recital_ad.update_attributes(params[:recital_ad])
+      if @recital_ad.update(recital_ad_params)
         format.html { redirect_to @recital_ad, notice: 'Recital ad was successfully updated.' }
         format.json { head :no_content }
       else
@@ -91,4 +82,15 @@ class RecitalAdsController < ApplicationController
     @recital_ads = RecitalAd.where('extract(year from created_at) = ?', params[:year])
     @total_sales = RecitalAd.joins(:recital_ad_type).where('extract(year from recital_ads.created_at) = ?', params[:year]).sum("price")
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_recital_ad
+      @recital_ad = RecitalAd.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def recital_ad_params
+      params.require(:recital_ad).permit(:title, :body, :recital_ad_type_id, :firstname, :lastname, :email, :stripe_card_token, :image, :pdf_file, :message)
+    end
 end

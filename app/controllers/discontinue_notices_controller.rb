@@ -1,47 +1,31 @@
 class DiscontinueNoticesController < ApplicationController
+  before_action :set_discontinue_notice, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :except => [:new, :create]
   # GET /discontinue_notices
   # GET /discontinue_notices.json
   def index
     @discontinue_notices = DiscontinueNotice.order("discontinue_notices.created_at DESC").all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @discontinue_notices }
-    end
   end
 
   # GET /discontinue_notices/1
   # GET /discontinue_notices/1.json
   def show
-    @discontinue_notice = DiscontinueNotice.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @discontinue_notice }
-    end
   end
 
   # GET /discontinue_notices/new
   # GET /discontinue_notices/new.json
   def new
     @discontinue_notice = DiscontinueNotice.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @discontinue_notice }
-    end
   end
 
   # GET /discontinue_notices/1/edit
   def edit
-    @discontinue_notice = DiscontinueNotice.find(params[:id])
   end
 
   # POST /discontinue_notices
   # POST /discontinue_notices.json
   def create
-    @discontinue_notice = DiscontinueNotice.new(params[:discontinue_notice].permit(:class_day, :class_time, :last_day, :location, :parent_name, :reason, :student_first_name, :student_last_name, :understood))
+    @discontinue_notice = DiscontinueNotice.new(discontinue_notice_params)
 
     respond_to do |format|
       if @discontinue_notice.save
@@ -58,10 +42,8 @@ class DiscontinueNoticesController < ApplicationController
   # PUT /discontinue_notices/1
   # PUT /discontinue_notices/1.json
   def update
-    @discontinue_notice = DiscontinueNotice.find(params[:id])
-
     respond_to do |format|
-      if @discontinue_notice.update_attributes(params[:discontinue_notice])
+      if @discontinue_notice.update(discontinue_notice_params)
         format.html { redirect_to @discontinue_notice, notice: 'Discontinue notice was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,7 +56,6 @@ class DiscontinueNoticesController < ApplicationController
   # DELETE /discontinue_notices/1
   # DELETE /discontinue_notices/1.json
   def destroy
-    @discontinue_notice = DiscontinueNotice.find(params[:id])
     @discontinue_notice.destroy
 
     respond_to do |format|
@@ -82,4 +63,15 @@ class DiscontinueNoticesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_discontinue_notice
+      @discontinue_notice = DiscontinueNotice.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def discontinue_notice_params
+      params.require(:discontinue_notice).permit(:class_day, :class_time, :last_day, :location, :parent_name, :reason, :student_first_name, :student_last_name, :understood)
+    end
 end

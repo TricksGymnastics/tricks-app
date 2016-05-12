@@ -21,6 +21,5 @@ module Comments
     # config.i18n.default_locale = :de
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.web_console.whitelisted_ips = '45.56.24.21'
   end
 end

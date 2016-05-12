@@ -37,15 +37,12 @@ $(window).bind("load", function () {
 });
 
 $(function(){
-  resetLocationButtons();
-  
   // update info based on session variable for location
   updateLocation(sessionStorage.getItem('location'));
   
   // when a location button is clicked
   $('.location-button').on('click', function(event) {
     event.preventDefault();
-    resetLocationButtons();
     updateLocation(event.target.text);
   });
 });
@@ -55,14 +52,21 @@ function resetLocationButtons(){
       $(obj).removeClass('active');
     });
     
-    $('.location-information').each(function(i, obj) {
+    $('.footer-location-information').each(function(i, obj) {
       $(obj).hide();
     });
+    
+    $('.location-classes-information').each(function(i, obj) {
+      $(obj).hide();
+    });
+    $('#choose_program_modal').hide();
+    $('.program-button#Swim').fadeOut(300);
 }
 
 function updateLocation(loc){
-  if (loc == "null"){
-    $('.location-information#NONE').show();
+  resetLocationButtons();
+  if (loc == null || loc == "null"){
+    $('.footer-location-information#NONE').show();
     return;
   }
   var loc = convertToShortName(loc);
@@ -70,7 +74,12 @@ function updateLocation(loc){
   sessionStorage.setItem('location', loc);
 
   $('.location-button#'+loc).addClass('active');
-  $('.location-information#'+loc).show();
+  $('.footer-location-information#'+loc).show();
+  $('.location-classes-information#'+loc).show();
+  $('#choose_program_modal').show();
+  if (loc == "FOL"){
+    $('.program-button#Swim').fadeIn(300);
+  }
 }
 
 function convertToShortName(loc){  

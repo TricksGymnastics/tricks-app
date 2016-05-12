@@ -2,15 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-
-.plan_info{
-  // float: right;
-  // width: 300px;
-  /*border: 1px solid purple;*/
-  padding: 10px 0;
-  // margin-right: 5px;
+#recital_ad_type_container{
+  border: 1px solid #222;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 15px;
   h3{
       font-size: 16px;
       font-weight: normal;
@@ -20,32 +16,11 @@
   }
 }
 
-.recital_ad_type_container{
-  outline: 1px solid #222;
-  td{
-    border: none;
-  }
-}
-
-.radio_button_container{
-  padding: 0 0 0 15px;
-}
-.image_container{
-  padding: 15px 0; 
-}
-
-
-#personal_errors{
-  margin: 30px 33px;
-}
-
-#personal_info{
-  width: 600px;
-  margin-left: 50px;
+#continue_button{
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 #payment_info{
   display:none;
-  width: 600px;
-  margin-left: 50px;
 }

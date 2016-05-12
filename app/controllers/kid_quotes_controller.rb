@@ -1,4 +1,5 @@
 class KidQuotesController < ApplicationController
+  before_action :set_kid_quote, only: [:show, :edit, :update, :destroy]
   
   load_and_authorize_resource :except => :random_quote
   helper_method :sort_column, :sort_direction 
@@ -26,10 +27,7 @@ class KidQuotesController < ApplicationController
   # GET /kid_quotes/new
   # GET /kid_quotes/new.json
   def new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @kid_quote }
-    end
+    @kid_quote = KidQuote.new
   end
 
   # GET /kid_quotes/1/edit
@@ -39,6 +37,7 @@ class KidQuotesController < ApplicationController
   # POST /kid_quotes
   # POST /kid_quotes.json
   def create
+    @kid_quote = KidQuote.new(kid_quote_params)
     respond_to do |format|
       if @kid_quote.save
         format.html { redirect_to kid_quotes_path, notice: 'Kid quote was successfully created.' }
@@ -54,7 +53,7 @@ class KidQuotesController < ApplicationController
   # PUT /kid_quotes/1.json
   def update
     respond_to do |format|
-      if @kid_quote.update_attributes(params[:kid_quote])
+      if @kid_quote.update(kid_quote_params)
         format.html { redirect_to kid_quotes_path, notice: 'Kid quote was successfully updated.' }
         format.json { head :no_content }
       else
@@ -81,7 +80,16 @@ class KidQuotesController < ApplicationController
   end
 
 private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_kid_quote
+    @kid_quote = KidQuote.find(params[:id])
+  end
 
+  # Only allow a trusted parameter "white list" through.
+  def kid_quote_params
+    params.require(:kid_quote).permit(:quote, :name, :age)
+  end
+    
   def sort_column
       KidQuote.column_names.include?(params[:sort]) ? params[:sort] : "age"
   end

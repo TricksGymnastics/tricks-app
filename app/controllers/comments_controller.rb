@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
   
   load_and_authorize_resource :except => :random_comment
   helper_method :sort_column, :sort_direction 
@@ -26,6 +27,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
+    @comment = Comment.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
@@ -39,6 +41,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+    @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
         #format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -59,7 +62,7 @@ class CommentsController < ApplicationController
   # PUT /comments/1.json
   def update
     respond_to do |format|
-      if @comment.update_attributes(params[:comment])
+      if @comment.update(comment_params)
         format.html { redirect_to comments_path, notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -86,12 +89,21 @@ class CommentsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
 
-  def sort_column
-      Comment.column_names.include?(params[:sort]) ? params[:sort] : "score"
-  end
-
-  def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-  end
+    # Only allow a trusted parameter "white list" through.
+    def comment_params
+      params.require(:comment).permit(:comment, :name, :score, :activity, :email)
+    end
+    
+    def sort_column
+        Comment.column_names.include?(params[:sort]) ? params[:sort] : "score"
+    end
+  
+    def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    end
 end

@@ -1,5 +1,6 @@
 class AbsentsController < ApplicationController
   load_and_authorize_resource :except => [:new, :create]
+  before_action :set_absent, only: [:show, :edit, :update, :destroy]
   # GET /absents
   # GET /absents.json
   def index
@@ -15,17 +16,12 @@ class AbsentsController < ApplicationController
   # GET /absents/new.json
   def new
     @absent = Absent.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @absent }
-    end
   end
 
   # POST /absents
   # POST /absents.json
   def create
-    @absent = Absent.new(params[:absent].permit(:first_name, :last_name, :location, :classtype_id, :level_id, :date, :time))
+    @absent = Absent.new(absent_params)
     @absent.time = Time.parse(params[:absent][:time])
     respond_to do |format|
       if @absent.save
@@ -42,7 +38,6 @@ class AbsentsController < ApplicationController
   # DELETE /absents/1
   # DELETE /absents/1.json
   def destroy
-    @absent = Absent.find(params[:id])
     @absent.destroy
 
     respond_to do |format|
@@ -50,4 +45,15 @@ class AbsentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_absent
+      @absent = Absent.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def absent_params
+      params.require(:absent).permit(:first_name, :last_name, :location, :classtype_id, :level_id, :date, :time)
+    end
 end

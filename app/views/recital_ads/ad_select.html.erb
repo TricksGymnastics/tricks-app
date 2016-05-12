@@ -4,75 +4,67 @@
   }
 </style>
 
+<%= stylesheet_link_tag "FileSpecificCSS/recital_ads.css", :media => "all" %>
 <%= form_tag new_recital_ad_path, method: :get do %>
 
   <h1>Recital Ad Order Form</h1>
   <h3>Please select the Ad Type that you would like to purchase.</h3>
   <!-- <h4>If you have an adblocker, please disable it for the duration of the order process</h4> -->
 
-	<div id="select_box">
-    <!--<div id="image_box">-->
-    <!--  <img src="/assets/recital_ad_select.jpg">-->
-    <!--</div>-->
-    
-    <table style="margin: 20px auto 0px auto; width: 700px; border-collapse: seperate; border-spacing: 0 15px;">
-    <% recital_ad_types = @recital_ad_types[1..4] %>
-    <% recital_ad_types.each do |ad| %>
-      
-      <tr class="recital_ad_type_container">
-        <td class="radio_button_container">
-          <% if ad.name == "Ad 2" %>
-            <%= radio_button_tag(:recital_ad_type_id, ad.id, :checked => true) %>
-          <% else %>
-            <%= radio_button_tag(:recital_ad_type_id, ad.id) %>
+  <div class="row align-center">
+    <div class="column medium-8 small-12">
+      <% @recital_ad_types[1..4].each do |ad| %>
+        <div class="row align-middle" id="recital_ad_type_container">
+          <div class="column small-1" style="text-align:right;">
+            <% if ad.name == "Ad 2" %>
+              <%= radio_button_tag(:recital_ad_type_id, ad.id, :checked => true) %>
+            <% else %>
+              <%= radio_button_tag(:recital_ad_type_id, ad.id) %>
           <% end %>
-        </td>
-        <td class="image_container">
-          <% if ad.name == "Ad 2" %>
-            <%= image_tag("/assets/2016_recital_ad_type_1.png") %>
-          <% elsif ad.name == "Ad 3" %>
-            <%= image_tag("/assets/2016_recital_ad_type_2.png") %>
-          <% elsif ad.name == "Ad 4" %>
-            <%= image_tag("/assets/2016_recital_ad_type_3.png") %>
-          <% elsif ad.name == "Ad 5" %>
-            <h2 style="text-align: left; margin-left: 10px;">Full Page Ad</h2>
-          <% end %>
-        </td>
-        <td class="plan_info">
-          <h3>Price: <%= number_to_currency(ad.price) %></h3>
-          <% if ad.word_max != nil %>
-            <h3>Up to <b style="text-decoration:underline;"><%= ad.word_max %></b> words</h3>
-          <% end %>
-          <% if ad.actual_size != "" %>
-            <h3>Actual Ad size is <%= ad.actual_size %></h3>
-          <% end %>
-          <% if ad.name == "Ad 2" %>
-            <br>
-            <h3>Includes Dancer Graphic</h3>
-            (As shown in image on left)
-          <% end %>
-          <% unless ad.image == false %>
-            <br>
-            <h3>Includes Photo</h3>
-            (You will be asked to upload the photo on the next page)
-          <% end %>
-          <% if ad.pdf_file? %>
-            <h3>Great for company sponsorships!</h3>
-            <br>
-            You will be required to upload a <br>300 dpi .pdf file containing<br> your full page design
-          <% end %>
-        </td>
-      </tr>
-      
-          
-        
-      </div>
-    <% end %> 
-    
-      </table>
+          </div>
+          <div class="columns shrink">
+            <% if ad.name == "Ad 2" %>
+              <%= image_tag("/assets/2016_recital_ad_type_1.png") %>
+            <% elsif ad.name == "Ad 3" %>
+              <%= image_tag("/assets/2016_recital_ad_type_2.png") %>
+            <% elsif ad.name == "Ad 4" %>
+              <%= image_tag("/assets/2016_recital_ad_type_3.png") %>
+            <% elsif ad.name == "Ad 5" %>
+              <h2 style="text-align: left; margin-left: 10px;">Full Page Ad</h2>
+            <% end %>
+          </div>
+          <div class="columns">
+            <h3>Price: <%= number_to_currency(ad.price) %></h3>
+            <% if ad.word_max != nil %>
+              <h3>Up to <b style="text-decoration:underline;"><%= ad.word_max %></b> words</h3>
+            <% end %>
+            <% if ad.actual_size != "" %>
+              <h3>Actual Ad size is <%= ad.actual_size %></h3>
+            <% end %>
+            <% if ad.name == "Ad 2" %>
+              <br>
+              <h3>Includes Dancer Graphic</h3>
+              (As shown in image on left)
+            <% end %>
+            <% unless ad.image == false %>
+              <br>
+              <h3>Includes Photo</h3>
+              (You will be asked to upload the photo on the next page)
+            <% end %>
+            <% if ad.pdf_file? %>
+              <h3>Great for company sponsorships!</h3>
+              <br>
+              You will be required to upload a 300 dpi .pdf file containing your full page design
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
   
-  <div style="text-align:center; margin: 20px auto 0px auto; width: 120px;">
-    <%= submit_tag "Continue", name: nil, :style => "padding: 5px 17px;", id:"ad_select_continue_button" %>
+  <div class="row align-center" style="margin-bottom: 100px;">
+    <div class="columns small-4">
+      <%= submit_tag "Continue", name: nil, class:"button expanded", id:"ad_select_continue_button" %>
+    </div>
   </div>
 <% end %>

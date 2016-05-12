@@ -1,18 +1,38 @@
+<% outline_width = "1" %>
+<% outline = "-"+outline_width+"px 0 #222, 0 "+outline_width+"px #222, "+outline_width+"px 0 #222, 0 -"+outline_width+"px #222" %>
+<style>
+  
+  #panel_<%= level.id %>-label.accordion-title, #panel_<%= level.id %>-label.accordion-title:focus, #panel_<%= level.id %>-label.accordion-title:hover, .is-active #panel_<%= level.id %>-label.accordion-title{
+  	background-color: <%= color %>;
+  	margin: 25px 0 0 0;
+  	border-radius: 20px;
+  	box-sizing: border-box;
+  	border: solid 2px <%= color %>;
+  	text-shadow: <%= outline %>, 0 0 5px #555;
+		color: #fff;
+  }
+  #panel_<%= level.id %>-label.accordion-title:hover, .is-active #panel_<%= level.id %>-label.accordion-title{
+  	border: solid 2px #333;
+  	text-shadow: <%= outline %>, 0 0 15px #111;
+  }
+</style>
+
+
 <li class="accordion-navigation">
-	<a href="#" class="accordion-title" id="panel_<%= level.id %>-heading" aria-controls="panel_<%= level.id %>" id="link">
-		<h3 style="padding:0; margin:0; text-align:center;"><%= level.levelname + " - Age: " + level.age %></h3>
+	<a href="#" class="accordion-title" id="panel_<%= level.sort_order %>-heading" aria-controls="panel_<%= level.id %>" id="link" data-id="<%= level.id %>">
+		<% level_title = (level.age.empty?) ? level.levelname : level.levelname + " - Age: " + level.age %>
+		<h3 data-id="<%= level.id %>" style="padding:0; margin:0; text-align:center;"><%= level_title %></h3>
 	</a>
 	<div id="panel_<%= level.id %>" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel_<%= level.id %>-heading">
-		
 		<% if !level.video_url.nil? && !level.video_url.empty? %>
-			<%# 367 x 248 %>
-			<div class="flex-video">
-				<iframe src="<%= level.video_url %>" frameborder="0" allowfullscreen></iframe>
+			<div class="row align-center">
+				<div class="column medium-8 small-12">
+					<div class="flex-video">
+						<iframe src="<%= level.video_url %>" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
 			</div>
 		<% end %>
-		<!--<div class="row">-->
-		<!--	<h3><%#= link_to level.levelname + " - Age: " + level.age, level, id: 'link' %>:</h3>-->
-		<!--</div>-->
 		<div class="row" style="margin-bottom: 40px;">
 			<%= level.short_description %>
 		</div>
@@ -28,106 +48,10 @@
 				</div>
 			<% end %>
 		</div>
-		<div class="row">        
-			<div class="columns 11-small">
-			
-				<% locations.each do |loc| %>
-					<div class="location-information" id="<%= loc[1] %>" style="display: none; width: 100%;">
-						<% url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc[1]+'&cat2='+level.jack_rabbit_name %>
-						<% response = JSON.parse(HTTParty.get(url).body) %>
-						<% if response['rows'].length > 0 %>
-							<% sorted_classes = [] %>
-							
-							<% response['rows'].each do |r| %>
-								<% entry = {} %>
-								<% day = {0 => "Unassigned"} %>
-								<% r['meeting_days'].each do |d| %>
-									<% if d[1] == true %>
-										<% case d[0] %>
-										<% when "mon" %>
-										  <% day = {1 => "Monday"} %>
-										<% when "tue" %>
-										  <% day = {2 => "Tuesday"} %>
-										<% when "wed" %>
-										  <% day = {3 => "Wednesday"} %>
-										<% when "thu" %>
-										  <% day = {4 => "Thursday"} %>
-										<% when "fri" %>
-										  <% day = {5 => "Friday"} %>
-										<% when "sat" %>
-										  <% day = {6 => "Saturday"} %>
-										<% when "sun" %>
-										  <% day = {7 => "Sunday"} %>
-										<% else %>
-										  <% day = {0 => "None"} %>
-										<% end %>
-									<% end %>
-								<% end %>
-								
-								<% instructor = "<span style='color: red;'>Staff</span>".html_safe %>
-								<% if !r['instructors'][0].nil? %>
-									<% instructor = r['instructors'][0].split.map(&:capitalize)[0] %>
-								<% else %>
-									<%#= r.to_s.gsub("=>",":") %>
-								<% end %>
-								
-								
-								<% entry['link'] = r['online_reg_link'].gsub("amp;", "") %>
-								<% entry['link_text'] = r['openings']['calculated_openings'] > 0 ? "Register" : "Get on Wait List" %>
-								<% entry['openings'] = r['openings']['calculated_openings'] > 0 ? r['openings']['calculated_openings'] : r['openings']['calculated_openings'].abs.to_s + " on Wait List"  %>
-								<% entry['time'] = Time.strptime(r['start_time'], '%H:%M').strftime('%l:%M %P') %>
-								<% entry['day'] = day %>
-								<% entry['instructor'] = instructor %>
-								
-								<% if (sorted_classes.length > 0) %>
-									<% count = 0 %>
-									<% sorted_classes.each do |c| %>
-										<% if entry['day'].keys[0] < c['day'].keys[0] #check if entry class is on a day earlier than c class %>
-											<% break %>
-										<% elsif entry['day'].keys[0] == c['day'].keys[0] #classes are on same day, check time%>
-											<% if entry['time'] < c['time'] %>
-												<% break %>
-											<% else %>
-												<% count = count + 1 %>
-											<% end %>
-										<% else #entry class comes later in the week than c%>
-											<% count = count + 1 %>
-										<% end %>
-									<% end %>
-									<% sorted_classes.insert(count, entry) %>
-								<% else %>
-									<% sorted_classes << entry %>
-								<% end %>
-								
-							<% end %>
-								
-							<table style="text-align: center;">
-								<tr>
-									<th></th>
-									<th>Openings</th>
-									<th>Day</th>
-									<th>Time</th>
-									<th>Age</th>
-									<th>Instructor</th>
-								</tr>
-								
-								<% sorted_classes.each do |c| %>
-									<tr>
-										<td><%= c['link'] == "" ? "Call to Register" : link_to(c['link_text'], c['link']) %></td>
-										<td><%= c['openings'] %></td>
-										<td><%= c['day'].values[0] %></td>
-										<td><%= c['time'] %></td>
-										<td><%= level.age %></td>
-										<td><%= c['instructor'] %></td>
-									</tr>
-								<% end %>
-							</table>
-						<% else %>
-							<h4 style="text-align:center;">No classes for this level at this location</h4>
-						<% end %>
-					</div>
-				<% end %>
-			</div>
+		<div class="row level-classes" id="<%= level.id %>">
+			<div class="column small-12" style="text-align:center;">
+				<%= image_tag("/assets/loading-spinner.gif") %>
+			</div>    
 		</div>
 	</div>
 </li>

@@ -6,7 +6,7 @@ class StaticController < ApplicationController
   end
 
   def site_comments
-    @comment = Comment.where(score: 7..10).sample(n=6)
+    @comment = Comment.where(score: 8..10).sample(n=4)
   end
 
   def app_landing
@@ -34,7 +34,11 @@ class StaticController < ApplicationController
   end
 
   def dance
-    @dance = Level.joins(:classtype).where("classtypes.name = 'Dance'")
+    @dance = Level.joins(:classtype).where("classtypes.name = 'Dance'").where(sort_order: 400..499)
+  end
+  
+  def preschool_dance
+    @preschool_dance = Level.joins(:classtype).where("classtypes.name = 'Dance'").where(sort_order: 300..399)
   end
 
   def swim

@@ -4,23 +4,16 @@ class UsersController < ApplicationController
 
   def index
     @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-      format.js # index.js.erb 
-    end
   end
 
 	# GET /users/new
 	# GET /users/new.json
 	def new
-		respond_to do |format|
-  	  format.html # new.html.erb
-  	  format.json { render json: @user }
-  	end
+	  @user = User.new
 	end
 
 	def create
+	  @user = User.new(user_params)
 		if @user.save
 			session[:user_id] = @user.id
 			redirect_to users_path, notice: "User succesfully created!"
@@ -32,10 +25,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
   end
 
   # GET /users/1/edit
@@ -46,7 +35,7 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update(user_params)
         format.html { redirect_to users_path, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -68,6 +57,15 @@ class UsersController < ApplicationController
   end
 
 private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :role)
+  end
 
   def sort_column
       User.column_names.include?(params[:sort]) ? params[:sort] : "role"

@@ -1,48 +1,31 @@
 class WorldsController < ApplicationController
-
+  before_action :set_world, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :except => [:new, :create]
   # GET /worlds
   # GET /worlds.json
   def index
     @worlds = World.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @worlds }
-    end
   end
 
   # GET /worlds/1
   # GET /worlds/1.json
   def show
-    @world = World.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @world }
-    end
   end
 
   # GET /worlds/new
   # GET /worlds/new.json
   def new
     @world = World.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @world }
-    end
   end
 
   # GET /worlds/1/edit
   def edit
-    @world = World.find(params[:id])
   end
 
   # POST /worlds
   # POST /worlds.json
   def create
-    @world = World.new(params[:world])
+    @world = World.new(world_params)
 
     respond_to do |format|
       if @world.save
@@ -58,10 +41,8 @@ class WorldsController < ApplicationController
   # PUT /worlds/1
   # PUT /worlds/1.json
   def update
-    @world = World.find(params[:id])
-
     respond_to do |format|
-      if @world.update_attributes(params[:world])
+      if @world.update(world_params)
         format.html { redirect_to @world, notice: 'World was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,7 +55,6 @@ class WorldsController < ApplicationController
   # DELETE /worlds/1
   # DELETE /worlds/1.json
   def destroy
-    @world = World.find(params[:id])
     @world.destroy
 
     respond_to do |format|
@@ -82,4 +62,15 @@ class WorldsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_world
+      @world = World.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def world_params
+      params.require(:world).permit(:date, :first_name, :image, :last_name, :location)
+    end
 end

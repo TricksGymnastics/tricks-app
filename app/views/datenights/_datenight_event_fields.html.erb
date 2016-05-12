@@ -1,21 +1,42 @@
-<fieldset style="width: 242px; padding: 0 5px; margin-bottom: 10px;">
-	<h3><%= f.label :title, "Title" %>:<%= f.text_field :title, style:"font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; width: 187px; margin-left: 5px; padding: 1px 3px;" %></h3>
-	<i><%= f.text_area :description, style: "width: 230px; margin-top: 5px; padding: 4px; height: 80px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-style: italic; font-size: 14px;" %></i><br>
-	<div style="width: 30px; float:left; line-height: 26px; padding-left: 5px;">
-		Sac:<br>
-		GB:<br>
-		Fol:
-	</div>
-	<div style="float:right; line-height: 26px; margin-right: 2px;">
-		<%= f.date_select :sac_date, order: [:month, :day, :year] %><br>
-		<%= f.date_select :gb_date, order: [:month, :day, :year] %><br>
-		<%= f.date_select :fol_date, order: [:month, :day, :year] %>
-	</div>
-	<div style="float:left; width: 100%">
-		<div style="margin-top:15px; height: 40px; text-align:center">
-			<%= f.hidden_field :_destroy %>
-			<%= link_to "Remove this Datenight", nil, class: "remove_datenight", style: 'padding: 2px; display: block; border: solid #222 2px; cursor: pointer; 
-			background-color: #C41212; color: #eee; text-decoration: none; width: 180px; border-radius: 10px; box-shadow: 0 0 7px #666; margin: 0 auto;' %><br>
+<div class="row" style="padding: 5px; margin-bottom: 20px;">
+	<div class="column small-12" style="border: solid 2px #888; padding: 15px;">
+		<div class="row">
+			<div class="column small-3">
+				<h5>Title:</h5>
+			</div>
+			<div class="column small-9">
+				<%= f.text_field :title %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column small-12">
+				<i><%= f.text_area :description, style: "height: 100px; font-style: italic;" %></i>
+			</div>
+		</div>
+		<div class="row">
+	        <div class="column small-12 input-group">
+				<%= f.label :gb_date, "Granite Bay Date", class: "input-group-label" %>
+				<%= f.text_field :gb_date, class: "input-group-field gb-date", style: "text-align: right;" %>
+	        </div>
+		</div>
+		<div class="row">
+	        <div class="column small-12 input-group">
+				<%= f.label :fol_date, "Folsom Date", class: "input-group-label" %>
+				<%= f.text_field :fol_date, class: "input-group-field fol-date", style: "text-align: right;" %>
+	        </div>
+		</div>
+		<div class="row">
+	        <div class="column small-12 input-group">
+				<%= f.label :sac_date, "Sacramento Date", class: "input-group-label" %>
+				<%= f.text_field :sac_date, class: "input-group-field sac-date", style: "text-align: right;" %>
+	        </div>
+		</div>
+		
+		<div class="row align-center">
+			<div class="column small-10">
+				<%= f.hidden_field :_destroy %>
+				<%= link_to "Remove this Datenight", nil, class: "button alert expanded remove_datenight" %>
+			</div>
 		</div>
 	</div>
-</fieldset>
+</div>

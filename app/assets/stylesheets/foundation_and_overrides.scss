@@ -93,6 +93,7 @@ $logo-margin: - ($logo-width / 2);
 
 .title-bar {
 	padding: 0 .5rem;
+	background-color: $primary-color;
 }
 
 .menu-icon,
@@ -235,9 +236,7 @@ $logo-margin: - ($logo-width / 2);
 }
 
 #main-container{
-	background-color: $white;
 	// padding: 20px 20px 20px 20px;
-	z-index: 0;
 	min-height: 650px;
 	
 	// Notifications
@@ -289,10 +288,19 @@ $logo-margin: - ($logo-width / 2);
 	}
 }
 
-#location_container{
+.location-information{
+	margin-top: 70px;
+	text-align: center;
+	p{
+		font-size: 18px;
+		margin-bottom: 8px;
+	}
+}
+
+#footer_location_container{
 	font-size: 22px;
 	text-align: center;
-	.location-information{
+	.footer-location-information{
 		display: none;
 		p{
 			font-size: 22px;
@@ -310,10 +318,12 @@ $logo-margin: - ($logo-width / 2);
 		}
 	}
 }
+.button{
+	box-shadow: 2px 2px 10px #222;
+}
 
 .location-button{
 	padding: 10px 5px; 
-	box-shadow: 2px 2px 10px #222;
 	&.active{
 		background-color: $tricks-green;
 		color: $black !important;
@@ -344,4 +354,83 @@ $curve_amount: 30px;
 
 .reveal-overlay.fade-in, .reveal-overlay.fade-out {
 	transition-duration: 0.2s;
+}
+
+#register_now_modal{
+	padding: 50px;
+	.location-button, .program-button{
+		padding: 15px;
+		font-size: 24px;
+	}
+}
+
+#choose_program_modal{
+	margin-top: 75px;
+}
+
+body.is-reveal-open{
+	overflow-y: scroll;
+}
+
+.reveal-overlay{
+	overflow-y: hidden;
+}
+.reveal { 
+   z-index:2000 !important;
+   -webkit-transform: translate3d(0,0,1px);
+   transform: translate3d(0,0,1px);
+}
+
+.callout-container{
+	position: relative;
+	width: 80%;
+	z-index: 5;
+	margin: 0 auto;
+}
+.callout{
+	margin-bottom: -42px; // makes it so it doesn't push down anything under it
+}
+
+.minicolors-theme-default{
+	&.minicolors{
+		width: 100% !important;
+	}
+} 
+.minicolors-swatch{
+		height: 30px !important;
+		width: 30px !important;
+	}
+.minicolors-input{
+	height: 40px !important;
+	width: 100% !important;
+	padding-left: 40px !important; 
+}
+
+.comment-container{
+	border-radius: 15px;
+	margin-bottom: 30px;
+	padding: 10px;
+	p{
+		margin: 0;
+	}
+	h6{
+		text-align: right;
+		margin: 0;
+	}
+	&.Gymnastics{
+		border: solid 3px $tricks-dark-green;
+		box-shadow: 0 0 20px $tricks-dark-green;
+	}
+	&.Dance{
+		border: solid 3px $tricks-pink;
+		box-shadow: 0 0 20px $tricks-dark-pink;
+	}
+	&.Swim{
+		border: solid 3px $tricks-light-blue;
+		box-shadow: 0 0 20px $tricks-dark-blue;
+	}
+}
+
+.help-text{
+	margin-top: -1rem;
 }

@@ -1,12 +1,3 @@
-<% @title = "Edit Level" %>
-<%= stylesheet_link_tag  "scaffolds", :media => "all" %>
-<% content_for :pagestyle do %>
-  body {background-color: <%= @bgc_yellow %>;}
-<% end %>
-
 <h1>Editing level</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @level %> |
-<%= link_to 'Back', levels_path %>

@@ -1,85 +1,181 @@
 class LevelsController < ApplicationController
-  
-  # layout "static"
-  load_and_authorize_resource
-  
+  before_action :set_level, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :except => [:get_jr_classes]
   # GET /levels
-  # GET /levels.json
   def index
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @levels }
-    end
+    @levels = Level.all.order(:sort_order)
   end
 
   # GET /levels/1
-  # GET /levels/1.json
   def show
-    @level = Level.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @level }
-    end
   end
 
   # GET /levels/new
-  # GET /levels/new.json
   def new
     @level = Level.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @level }
-    end
   end
 
   # GET /levels/1/edit
   def edit
-    @level = Level.find(params[:id])
   end
 
   # POST /levels
-  # POST /levels.json
   def create
-    @level = Level.new(params[:level])
+    @level = Level.new(level_params)
 
-    respond_to do |format|
-      if @level.save
-        format.html { redirect_to levels_path, notice: 'Level was successfully created.' }
-        format.json { render json: @level, status: :created, location: @level }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @level.errors, status: :unprocessable_entity }
-      end
+    if @level.save
+      redirect_to levels_path, notice: 'Level was successfully created.'
+    else
+      render :new
     end
   end
 
   # PUT /levels/1
-  # PUT /levels/1.json
   def update
-    @level = Level.find(params[:id])
-
-    respond_to do |format|
-      if @level.update_attributes(params[:level])
-        format.html { redirect_to levels_path, notice: 'Level was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @level.errors, status: :unprocessable_entity }
-      end
+    if @level.update(level_params)
+      redirect_to levels_path, notice: 'Level was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /levels/1
-  # DELETE /levels/1.json
   def destroy
-    @level = Level.find(params[:id])
     @level.destroy
-
-    respond_to do |format|
-      format.html { redirect_to levels_url }
-      format.json { head :no_content }
-    end
+    redirect_to levels_url
   end
+  
+  def get_jr_classes
+    level = Level.find(params[:level_id])
+    out = "<div class='columns 11-small'>"
+		locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"}
+		
+    locations.each do |loc|
+		  out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%;'>"
+			url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc[1]+'&cat2='+level.jack_rabbit_name
+			response = JSON.parse(HTTParty.get(url).body)
+			if response['rows'].length > 0
+			  sorted_classes = []
+							
+				response['rows'].each do |r|
+					# puts r.to_s.gsub("=>",":")
+					entry = {}
+					day = {0 => "Unassigned"}
+					r['meeting_days'].each do |d|
+            if d[1] == true
+							case d[0]
+							when "mon"
+							  day = {1 => "Monday"}
+							when "tue"
+							  day = {2 => "Tuesday"}
+							when "wed"
+							  day = {3 => "Wednesday"}
+							when "thu"
+							  day = {4 => "Thursday"}
+							when "fri"
+							  day = {5 => "Friday"}
+							when "sat"
+							  day = {6 => "Saturday"}
+							when "sun"
+							  day = {7 => "Sunday"}
+							else
+							  day = {0 => "None"}
+              end
+            end
+          end
+								
+					instructor = "<span style='color: red;'>Staff</span>".html_safe
+					if !r['instructors'][0].nil?
+						instructor = r['instructors'][0].split.map(&:capitalize)[0]
+					end
+					
+								
+  				entry['link'] = r['online_reg_link'].gsub("amp;", "")
+  				entry['link_text'] = r['openings']['calculated_openings'] > 0 ? "Register" : "Get on Wait List"
+  				entry['openings'] = r['openings']['calculated_openings'] > 0 ? r['openings']['calculated_openings'] : r['openings']['calculated_openings'].abs.to_s + " on Wait List"
+  				entry['day'] = day
+  				entry['time'] = Time.strptime(r['start_time'], '%H:%M').strftime('%l:%M %P')
+  				
+  				min_age = (r['min_age'].empty?) ? '' : r['min_age'][1..2]#, months: r['min_age'][4..5]}
+  				max_age = (r['max_age'].empty?) ? '' : r['max_age'][1..2]#, months: r['max_age'][4..5]}
+  				if min_age != '' && max_age != ''
+  					if min_age == max_age
+	  					entry['age'] = min_age.gsub(/^0/, "")
+  					else
+	  					entry['age'] = min_age.gsub(/^0/, "") + " - " + max_age.gsub(/^0/, "")
+  					end
+	  			elsif min_age != ''
+	  				entry['age'] = min_age.gsub(/^0/, "")
+	  			elsif max_age != ''
+	  				entry['age'] = max_age.gsub(/^0/, "")
+	  			else
+  					entry['age'] = '<span style="color: red">none</span>'
+	  			end
+	  			
+  				entry['instructor'] = instructor
+  				
+  				if (sorted_classes.length > 0)
+  					count = 0
+  					sorted_classes.each do |c|
+  						if entry['day'].keys[0] < c['day'].keys[0] #check if entry class is on a day earlier than c class
+  							break
+  						elsif entry['day'].keys[0] == c['day'].keys[0] #classes are on same day, check time
+  							if entry['time'] < c['time']
+  								break
+  							else
+  								count = count + 1
+  							end
+  						else #entry class comes later in the week than c
+  							count = count + 1
+  						end
+  					end
+  					sorted_classes.insert(count, entry)
+  				else
+  					sorted_classes << entry
+  				end
+  				
+  			end
+								
+				out += "<table style='text-align: center;'>
+								<tr>
+									<th></th>
+									<th>Openings</th>
+									<th>Day</th>
+									<th>Time</th>
+									<th>Age</th>
+									<th>Instructor</th>
+								</tr>"
+								
+								sorted_classes.each do |c|
+								  #view_context.link_to(c['link_text'], c['link'])
+									out += "<tr>
+										<td>" + (c['link'] == '' ? 'Call to Register' : view_context.link_to(c['link_text'], c['link'])) + "</td> 
+										<td>" + c['openings'].to_s + "</td>
+										<td>" + c['day'].values[0] + "</td>
+										<td>" + c['time'] + "</td>
+										<td>" + c['age'] + "</td>
+										<td>" + c['instructor'] + "</td>
+									</tr>"
+								end
+							out += "</table>"
+						else
+							out += "<h4 style='text-align:center;'>No classes for this level at this location</h4>"
+						end
+					out += "</div>"
+				end
+			out += "</div>"
+    render :text => out
+  end
+  
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_level
+      @level = Level.find(params[:id])
+    end
+    
+    # Only allow a trusted parameter "white list" through.
+    def level_params
+      params.require(:level).permit(:description, :short_description, :video_url, :classtype_id, :levelname, :length, :price, :age, :gender, :sort_order, :jack_rabbit_name, :color, :image, :show_registration)
+    end
 end

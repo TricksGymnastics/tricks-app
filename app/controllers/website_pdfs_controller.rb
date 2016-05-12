@@ -1,4 +1,4 @@
-class WebsitePdfsController < ApplicationController  
+class WebsitePdfsController < ApplicationController
   load_and_authorize_resource :except => :show
 
   # GET /website_pdfs
@@ -16,22 +16,12 @@ class WebsitePdfsController < ApplicationController
   # GET /website_pdfs/1.json
   def show
     @website_pdf = WebsitePdf.where(:file_name => params[:id]).first
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @website_pdf }
-    end
   end
 
   # GET /website_pdfs/new
   # GET /website_pdfs/new.json
   def new
     @website_pdf = WebsitePdf.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @website_pdf }
-    end
   end
 
   # GET /website_pdfs/1/edit
@@ -45,28 +35,20 @@ class WebsitePdfsController < ApplicationController
     params[:website_pdf][:file_name] = params[:website_pdf][:file_name].tr(" ","_")
     @file = WebsitePdf.where(:file_name => params[:website_pdf][:file_name]).first
     if (@file.nil?)
-      @website_pdf = WebsitePdf.new(params[:website_pdf])
+      @website_pdf = WebsitePdf.new(website_pdf_params)
 
-      respond_to do |format|
-        if @website_pdf.save
-          format.html { redirect_to @website_pdf, notice: 'Website pdf was successfully created.' }
-          format.json { render json: @website_pdf, status: :created, location: @website_pdf }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @website_pdf.errors, status: :unprocessable_entity }
-        end
+      if @website_pdf.save
+        redirect_to @website_pdf, notice: 'Website pdf was successfully created.'
+      else
+        render :new
       end
     else
       @website_pdf = WebsitePdf.find(@file.id)
 
-      respond_to do |format|
-        if @website_pdf.update_attributes(params[:website_pdf])
-          format.html { redirect_to @website_pdf, notice: 'Website pdf was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: "edit" }
-          format.json { render json: @website_pdf.errors, status: :unprocessable_entity }
-        end
+      if @website_pdf.update_attributes(params[:website_pdf])
+        redirect_to @website_pdf, notice: 'Website pdf was successfully updated.'
+      else
+        render :edit
       end
     end
   end
@@ -77,7 +59,7 @@ class WebsitePdfsController < ApplicationController
     @website_pdf = WebsitePdf.find(params[:id])
 
     respond_to do |format|
-      if @website_pdf.update_attributes(params[:website_pdf])
+      if @website_pdf.update(website_pdf_params)
         format.html { redirect_to @website_pdf, notice: 'Website pdf was successfully updated.' }
         format.json { head :no_content }
       else
@@ -98,4 +80,11 @@ class WebsitePdfsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+    # Only allow a trusted parameter "white list" through.
+    def website_pdf_params
+      params.require(:website_pdf).permit(:file, :file_name)
+    end
 end

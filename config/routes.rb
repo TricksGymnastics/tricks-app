@@ -56,7 +56,7 @@ Comments::Application.routes.draw do
   resources :discontinue_notices
   # resources :training_videos
 
-  %w[gymnastics tumblebunnies tag dance swim events locations site_comments hosting competitive teamgym 
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim events locations site_comments hosting competitive teamgym 
     birthdays princess_party camps dancecamps campus employment forms gymnastics25 
     missing nutcracker polkadots recitals recital_ad_order_thank_you show_schedules survey_thank_you 
     summer thankyou tricksu_old turkeycamp underconstruction registration].each do |page|
@@ -79,4 +79,6 @@ Comments::Application.routes.draw do
 
   get 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
   get 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
+  
+  get 'levels/jr_request/:level_id' => "levels#get_jr_classes"
 end

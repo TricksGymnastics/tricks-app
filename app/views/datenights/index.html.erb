@@ -2,56 +2,108 @@
   Tricks Kids Night Out
 <% end %>
 
-<div class="content">
-  <h1>Kids Night Out</h1>
-  <div style="float:left; margin-left: 20px;">
-    <h2 style="text-align:center; font-size: 25px;">Register Here!</h2>
-    <%= link_to "Granite Bay", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=GB&orgid=313983", class: "button" %>
-    <%= link_to "Folsom", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=FOL&orgid=313983", class: "button" %>
-    <%= link_to "Sacramento", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=SAC&orgid=313983", class: "button" %>
-    
-    <div style="width: 250px; padding: 4px; border:solid 2px #333;">
-      <div>
-        <div style="float: left; padding: 0px 10px; ">
-          <h3 style="margin-top: 0px; ">Time:</h3>
-          <p><%= @datenight.when_time %></p>
-        </div>
-        <div style="float: right; padding: 0px 10px;">
-          <h3 style="margin-top: 0px;">Price:</h3>
-          <p>$<%= @datenight.single_price %> for first child<br>
-            $<%= @datenight.sibling_price %> for siblings</p>
-        </div>
+<div class="row align-justify" style="margin-bottom:100px;">
+  
+  <div class="column medium-3 small-12" style="border: solid 2px #333; margin: 50px 0;">
+    <h3>Register Here!</h3>
+    <div class="row align-center">
+      <div class="column small-11">
+        <%= link_to "Granite Bay", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=GB&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
       </div>
-      <div style="margin-bottom: 5px; padding: 0 6px 0 4px;">
-        <h2><%= @datenight.schedule_title %> Date Night Schedule:</h2>
-
+      <div class="column small-11">
+        <%= link_to "Folsom", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=FOL&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+      </div>
+      <div class="column small-11">
+        <%= link_to "Sacramento", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=SAC&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="column small-3">
+        <h5>Time:</h5>
+      </div>
+      <div class="column small-9">
+        <h5 style="text-align:right;"><%= @datenight.when_time %></h5>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="column small-3">
+        <h5>Price:</h5>
+      </div>
+      <div class="column small-9">
+        <h5 style="text-align:right; margin-bottom:0;">$<%= @datenight.single_price %> for first child</h5>
+        <h5 style="text-align:right;">$<%= @datenight.sibling_price %> for siblings</h5>
+      </div>
+    </div>
+    
+    <div class="row" style="margin-top: 30px;">
+      <div class="column small-12">
+        <h3><%= @datenight.schedule_title %> Schedule:</h3>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="column small-12">
         <% @datenight.datenight_events.each do |d| %>
-          <h3 style="text-decoration: underline"><%= d.title %></h3>
-            <p><i><%= d.description %></i><br>
-              Sacramento - <%= d.sac_date.strftime("%A, %B %e") %><br>
-              Granite Bay - <%= d.gb_date.strftime("%A, %B %e") %><br>
-              Folsom - <%= d.fol_date.strftime("%A, %B %e") %>
-            </p> 
+          <div class="row align-center">
+            <div class="column small-12">
+              <h6 style="text-decoration: underline; margin: 0;"><%= d.title %></h6>
+              <p><i><%= d.description %></i></p>
+            </div>
+            <div class="column small-12">
+              <div class="row">
+                <div class="column small-5">
+                  Granite Bay:
+                </div>
+                <div class="column small-7" style="text-align:right;">
+                  <%= d.gb_date.strftime("%A, %B %e") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column small-6">
+                  Folsom:
+                </div>
+                <div class="column small-6" style="text-align:right;">
+                  <%= d.fol_date.strftime("%A, %B %e") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column small-6">
+                  Sacramento:
+                </div>
+                <div class="column small-6" style="text-align:right;">
+                  <%= d.sac_date.strftime("%A, %B %e") %>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
-
-      <% if can? :manage, Datenight %>
-        <div style="text-align:center; margin: 0 0 5px 0;">
-          <%= button_to "Edit Page", {controller: 'datenights', action: 'edit'}, style:"padding: 5px 50px;" %>
-        </div>
-      <% end %>
     </div>
-  </div>
-  <div id="infobox" style="height: auto; margin-bottom: 20px;">
-    <p style="font-size: 16px;"><%= @datenight.about %></p>
-  </div>
-  <div style="width: 100%; margin: 0 auto; text-align: center;">
-    <h2>Upcoming Date Night!</h2>
-    <!-- Current Slide for Date Night goes here -->
-    <% unless @datenight.image == nil %>
-      <%= image_tag(@datenight.image, style:"box-shadow: 0 0 20px #222; width: 650px;") %>
+
+    <% if can? :manage, Datenight %>
+      <div class="row align-center" style="margin-top: 30px;">
+        <div class="column small-10">
+          <%= link_to "Edit Page", datenights_edit_path, class: "button expanded" %>
+        </div>
+      </div>
     <% end %>
   </div>
-
-  <br><br><br>
+  
+  <div class="column medium-9 small-12" style="padding: 0 30px;">
+    <div class="row">
+      <div class="column small-12">
+        <h1>Kids Night Out</h1>
+        <p style="font-size: 16px;"><%= @datenight.about %></p>
+      </div>
+      <div class="column small-12">    
+        <h3>Upcoming Date Night!</h3>
+        <!-- Current Slide for Date Night goes here -->
+        <% unless @datenight.image == nil %>
+          <%= image_tag(@datenight.image, style:"box-shadow: 0 0 20px #222; width: 100%") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

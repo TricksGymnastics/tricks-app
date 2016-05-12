@@ -47,16 +47,16 @@ $ ->
         required: " Email is Required",
         email: " You must enter a valid email."
       },
-      "recital_ad[message]": "Please enter your message"
       "recital_ad[image]": "Please choose a photo to upload"
       "recital_ad[pdf_file]": "Please select the .pdf file to upload"
     }
   }) 
   $("#new_recital_ad").bind "change keyup mouseenter", ->
     if $(this).validate().checkForm()
-      $("#continue_button").removeClass("button_disabled").attr "disabled", false
+      $("#continue_button").attr "disabled", false
     else
-      $("#continue_button").addClass("button_disabled").attr "disabled", true
+      $("#continue_button").attr "disabled", true
+      
   $('#continue_button').click ->    
     $('#personal_info').hide(500)
     $('#continue_button').hide(500)

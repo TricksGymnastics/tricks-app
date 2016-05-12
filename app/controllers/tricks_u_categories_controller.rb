@@ -1,39 +1,23 @@
 class TricksUCategoriesController < ApplicationController
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
   def index
     @categories = TricksUCategory.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @category }
-    end
   end
 
   def show
-    @category = TricksUCategory.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @category }
-    end
   end
 
   def new
     @category = TricksUCategory.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @category }
-    end
   end
 
   def edit
-    @category = TricksUCategory.find(params[:id])
   end
 
   def create
-    @category = TricksUCategory.new(params[:tricks_u_category])
+    @category = TricksUCategory.new(category_params)
 
     respond_to do |format|
       if @category.save
@@ -47,10 +31,8 @@ class TricksUCategoriesController < ApplicationController
   end
 
   def update
-    @category = TricksUCategory.find(params[:id])
-
     respond_to do |format|
-      if @category.update_attributes(params[:tricks_u_category])
+      if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Video was successfully updated.' }
         format.json { head :no_content }
       else
@@ -61,7 +43,6 @@ class TricksUCategoriesController < ApplicationController
   end
 
   def destroy
-    @category = TricksUCategory.find(params[:id])
     @category.destroy
 
     respond_to do |format|
@@ -69,5 +50,17 @@ class TricksUCategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_category
+      @category = TricksUCategory.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def category_params
+      params.require(:tricks_u_category).permit(:title, :weight, :hidden)
+    end
 
 end

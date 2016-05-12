@@ -1,19 +1,16 @@
 class DatenightsController < ApplicationController
+  before_action :set_datenight, only: [:index, :edit, :update]
   load_and_authorize_resource :except => :index
 
   def index
-    @datenight = Datenight.first
   end
 
   def edit
-    @datenight = Datenight.first
   end
 
   def update
-    @datenight = Datenight.first
-
     respond_to do |format|
-      if @datenight.update_attributes(params[:datenight])
+      if @datenight.update(datenight_params)
         format.html { redirect_to datenights_path, notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
@@ -22,4 +19,15 @@ class DatenightsController < ApplicationController
       end
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_datenight
+      @datenight = Datenight.first
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def datenight_params
+      params.require(:datenight).permit(:about, :image, :single_price, :sibling_price, :schedule_title, :when_time, :datenight_events_attributes)
+    end
 end

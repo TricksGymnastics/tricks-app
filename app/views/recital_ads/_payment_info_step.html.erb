@@ -1,26 +1,51 @@
-<div id="payment_info">
-  <h2 style="margin-right: 200px;">Payment Information</h2><br>
+<div class="row" id="payment_info">
   <div id="stripe_error" style="color: red; border: solid 2px red; display:none; width: 300px; padding: 5px; text-align: center">
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
-  <br><div class="field">
-    <%= label_tag :card_number, "Credit Card Number" %><br>
-    <%= text_field_tag :card_number, nil, name: nil %>
-  </div>
-  <div class="field">
-    <%= label_tag :card_code, "Security Code on Card (CVV)" %><br>
-    <%= text_field_tag :card_code, nil, name: nil, size: 2 %>
-  </div>
-  <div class="field">
-    <%= label_tag :card_month, "Card Expiration" %><br>
-    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-  </div>
-
-  <br>
-  <br>
-  <button type="button" style="padding: 3px 8px;" id="back_button" >Back</button>
-  <div class="actions" style="float:right; margin-right: 250px;">
-    <%= f.submit "Submit Order", confirm: 'Once your payment has gone through successfully you will not be able to edit your order. Please check and make sure everything is accurate, especially your Message. Would you like to continue submitting payment?', :style => "padding: 3px 8px" %>
+  <div class="column small-12">
+    <h2>Payment Information</h2>
+    
+    <div class="row">
+      <div class="columns small-12">
+        <div class=" input-group">
+          <%= label_tag :card_number, "Credit Card Number", class: "input-group-label" %>
+          <%= text_field_tag :card_number, nil, name: nil, class: "input-group-field" %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="columns medium-4 small-12">
+        <div class=" input-group">
+          <%= label_tag :card_code, "Security Code (CVV)", class: "input-group-label" %>
+          <%= text_field_tag :card_code, nil, name: nil, class: "input-group-field" %>
+        </div>
+      </div>
+      <div class="columns medium-4 small-12">
+        <div class="input-group">
+          <%= label_tag :card_month, "Exp. Month", class: "input-group-label" %>
+          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "input-group-field"} %>
+        </div>
+      </div>
+      <div class="columns medium-4 small-12">
+        <div class="input-group">
+          <%= label_tag :card_month, "Exp. Year", class: "input-group-label" %>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+12}, {name: nil, id: "card_year", class: "input-group-field"} %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row align-justify" style="margin-top: 50px; margin-bottom: 100px;">
+      <div class="column small-4">
+        <button type="button" id="back_button" class="button expanded">Back</button>
+      </div>
+      <div class="column small-4">
+        <%= f.submit "Submit Order", confirm: 'Once your payment has gone through successfully you will not be able to edit your order. Please check and make sure everything is accurate, especially your Message. Would you like to continue submitting payment?', class: "button expanded" %>
+      </div>
+    </div>
+    
+    
   </div>
 </div>
+
+

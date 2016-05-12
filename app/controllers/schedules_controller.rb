@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
   
   load_and_authorize_resource :except => [:choose, :fol_gym, :fol_tb, :fol_dance, :fol_swim, :fol_tag, :gb_gym, :gb_tb, :gb_dance, :gb_tag, :sac_gym, :sac_tb, :sac_dance, :sac_tag]
   helper_method :sort_column, :sort_direction
@@ -19,7 +20,7 @@ class SchedulesController < ApplicationController
     
 
     @schedules_time = []
-    Schedule.find(:all, :order => "time ASC").each do |s|
+    Schedule.all.order("time ASC").each do |s|
       time = s.time.strftime("%l:%M %p")
       @schedules_time << time
     end
@@ -37,19 +38,12 @@ class SchedulesController < ApplicationController
   # GET /schedules/1
   # GET /schedules/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @schedule }
-    end
   end
 
   # GET /schedules/new
   # GET /schedules/new.json
   def new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @schedule }
-    end
+    @schedule = Schedule.new
   end
 
   # GET /schedules/1/edit
@@ -59,6 +53,7 @@ class SchedulesController < ApplicationController
   # POST /schedules
   # POST /schedules.json
   def create
+    @schedule = Schedule.new(schedule_params)
     respond_to do |format|
       if @schedule.save
         format.html { redirect_to schedules_path, notice: 'Schedule was successfully created.' }
@@ -74,7 +69,7 @@ class SchedulesController < ApplicationController
   # PUT /schedules/1.json
   def update
     respond_to do |format|
-      if @schedule.update_attributes(params[:schedule])
+      if @schedule.update(schedule_params)
         format.html { redirect_to schedules_path, notice: 'Schedule was successfully updated.' }
         format.json { head :no_content }
       else
@@ -197,7 +192,16 @@ class SchedulesController < ApplicationController
 
 
 private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
 
+  # Only allow a trusted parameter "white list" through.
+  def schedule_params
+    params.require(:schedule).permit(:level, :day, :teacher, :location, :level_id, :classtype_id, :time, :future_class, :recital_class)
+  end
+    
   def sort_column
       Schedule.column_names.include?(params[:sort]) ? params[:sort] : "level"
   end

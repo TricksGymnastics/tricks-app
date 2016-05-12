@@ -47,4 +47,9 @@ Comments::Application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # it was being stupid and not accepting the normal ip address of the server, so i just made it accept all of them
+  # should be ok because this only happens in development
+  config.web_console.whitelisted_ips = ['0.0.0.0/2'] 
+  config.web_console.whiny_requests = true
 end

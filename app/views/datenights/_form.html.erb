@@ -1,54 +1,89 @@
 <%= javascript_include_tag   "application" %>
 
+
 <%= form_for(@datenight) do |f| %>
-  <div class="content">
-    <h1>Editting Date Nights</h1>
-    <div style="float:left; width: 255px; margin-left: 15px; padding: 4px; border:solid 2px #333;">
-      <div>
-        <div style="float: left; padding: 0 0 0 5px; ">
-          <h3 style="margin-top: 0px; "><%= f.label :when_time, "Time:" %></h3>
-          <p><%= f.text_field :when_time, size: 11 %></p>
-        </div>
-        <div style="float: right; padding: 0px 10px;">
-          <h3 style="margin-top: 0px;">Price:</h3>
-          <p style="margin-bottom: 4px;"><%= f.number_field :single_price, style: 'width: 40px; padding: 2px 0;' %> for first child</p>
-          <p style="margin-bottom: 14px;"><%= f.number_field :sibling_price, style: 'width: 40px; padding: 2px 0;' %> for siblings</p>
-        </div>
-      </div>
-      <div style="margin-bottom: 5px; float: left; width: 251px;">
-        <h2><%= f.text_field :schedule_title, placeholder: "2013", style: "width: 50px; height: 22px; font-size: 19px; text-align:center" %> Date Night Schedule</h2>
-                   
-        <%= f.fields_for :datenight_events do |builder| %>
-          <%= render 'datenight_event_fields', f: builder %>      
-        <% end %>
 
-        <div style="text-align:center">
-          <%= link_to_add_datenights "Add Datenight", f, :datenight_events %>
-        </div>
-
-      </div>
-    </div>
-    <div id="infobox" style="height: 120px; margin-bottom: 20px;">
-      <p style="font-size: 16px;">
-        <%= f.text_area :about, style:"width: 670px; height: 120px; padding: 3px 5px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 16px;" %>
-      </p>
-    </div>
-    <div style="width: 715px; margin: 0 auto; text-align: center; float:right;">
-      <h2>Upcoming Date Night!</h2>
-      <div style="border: 1px solid #777; width: 420px; margin: 0 auto 15px auto; padding: 8px; box-shadow: 0 0 8px #444">
-        <%= f.label :image, "Choose image to upload: " %>
-        <%= f.file_field :image %>
-      </div>
-      <% unless @datenight.image == nil %>
-        <%= image_tag(@datenight.image.url, style:"box-shadow: 0 0 20px #222; width: 650px;") %>
-      <% end %>
+  
+  <div class="row align-justify" style="margin-bottom:100px;">
+    
+    <div class="column medium-3 small-12" style="border: solid 2px #333; margin: 50px 0; padding-top: 20px;">
       
-      <!-- Current Slide for Date Night goes here -->
+      <div class="row align-justify">
+        <div class="column small-3">
+          <h5>Time:</h5>
+        </div>
+        <div class="column small-6">
+          <h5 style="text-align:right;"><%= f.text_field :when_time %></h5>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="column small-3">
+          <h5>Price:</h5>
+        </div>
+        <div class="column small-9">
+          <h5 style="text-align:right; margin-bottom:0;">$<%= f.number_field :single_price, style: 'width: 50px; display: inline;' %> for first child</h5>
+          <h5 style="text-align:right;">$<%= f.number_field :sibling_price, style: 'width: 50px; display: inline;' %> for siblings</h5>
+        </div>
+      </div>
+      
+      <div class="row" style="margin-top: 10px;">
+        <div class="column small-12">
+          <h3><%= f.text_field :schedule_title, placeholder: "2013", style: "width: 80px; display: inline;" %> Schedule:</h3>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="column small-12">
+          <%= f.fields_for :datenight_events do |builder| %>
+            <%= render 'datenight_event_fields', f: builder %>      
+          <% end %>
+        </div>
+      </div>
+  
+      <div style="text-align:center">
+        <%= link_to_add_datenights "Add Datenight", f, :datenight_events %>
+      </div>
     </div>
-
-    <br><br><br>
-  </div>
-  <div style="width: 100%; float:left; text-align:center; margin: 30px auto;">
-    <%= f.submit "Submit", style: "padding: 10px 50px; margin: 0 auto;"  %>
+    
+    <div class="column medium-9 small-12" style="padding: 0 30px;">
+      <div class="row">
+        <div class="column small-12">
+          <h1>Editing Kids Night Out</h1>
+          <p style="font-size: 16px;"><%= f.text_area :about, style:"height: 200px; font-size: 16px;" %></p>
+        </div>
+        <div class="column small-12">    
+          <h3>Upcoming Date Night!</h3>
+          <!-- Current Slide for Date Night goes here -->
+          <div class="row align-center">
+            <div class="small-8">
+              <div class="row" style="border: 1px solid #777; box-shadow: 0 0 8px #444; padding: 10px;">
+                <div class="column medium-6" style="text-align:right;">
+                  Choose image to upload:  
+                </div>
+                <div class="column medium-6">
+                  <%= f.file_field :image, style: "margin: 0;" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <% unless @datenight.image == nil %>
+            <div class="row" style="margin-top: 25px;">
+              <div class="column small-12">
+                <%= image_tag(@datenight.image, style:"box-shadow: 0 0 20px #222; width: 100%") %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="column small-12" style="margin-top: 50px;">
+      <div class="row align-center">
+        <div class="column small-4">
+          <%= f.submit "Submit", class: "button expanded"  %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
