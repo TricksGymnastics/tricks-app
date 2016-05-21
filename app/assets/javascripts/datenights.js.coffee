@@ -10,7 +10,6 @@ jQuery ->
 
   $('form').on 'click', '.add_datenights', (event) ->
     event.preventDefault()
-    alert("adding date night")
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))

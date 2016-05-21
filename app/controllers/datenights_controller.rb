@@ -28,6 +28,8 @@ class DatenightsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def datenight_params
-      params.require(:datenight).permit(:about, :image, :single_price, :sibling_price, :schedule_title, :when_time, :datenight_events_attributes)
+      # I tried to get this to work the correct way using permit, but the nested attributes were too annoying to work with in the form, so I left what was already working and just permit all now
+      # params.require(:datenight).permit(:about, :image, :single_price, :sibling_price, :schedule_title, :when_time, :datenight_events_attributes)
+      params.require(:datenight).permit!
     end
 end

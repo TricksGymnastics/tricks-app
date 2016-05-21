@@ -86,6 +86,8 @@ class CoachesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def coach_params
-      params.require(:coach).permit(:image, :firstname, :lastname, :gender, :location_ids, :level_ids, :classtype_ids, :experience, :fav_event, :fav_skill, :fav_food, :disney_char, :advice, :birthdate, :startdate, :remove_image, :strengths, :current_employee)
+      # I tried to get this to work the correct way using permit, but the nested attributes were too annoying to work with in the form, so I left what was already working and just permit all now
+      # params.require(:coach).permit(:image, :firstname, :lastname, :gender, :experience, :fav_event, :fav_skill, :fav_food, :disney_char, :advice, :birthdate, :startdate, :remove_image, :strengths, :current_employee, location_ids_attributes: [:coach_id, :location_id], level_ids_attributes: [:level_id, :coach_id], classtype_ids_attributes: [:classtype_id, :coach_id])
+      params.require(:coach).permit!
     end
 end
