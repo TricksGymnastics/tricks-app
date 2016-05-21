@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+    @comments = Comment.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 30, :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @comments }
@@ -100,7 +100,7 @@ class CommentsController < ApplicationController
     end
     
     def sort_column
-        Comment.column_names.include?(params[:sort]) ? params[:sort] : "score"
+        Comment.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
     end
   
     def sort_direction

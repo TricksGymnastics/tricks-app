@@ -439,3 +439,26 @@ body.is-reveal-open{
 .help-text{
 	margin-top: -1rem;
 }
+
+#ui-datepicker-div{
+	border: solid 1px #666;
+	box-shadow: 0 0 20px #444;
+	background-color: $white;
+	padding: 10px;
+}
+
+.ui-datepicker-prev{
+	float: left;
+}
+
+.ui-datepicker-next{
+	float: right;
+}
+
+.ui-datepicker-title{
+	text-align: center;
+}
+
+.ui-datepicker-calendar{
+	margin-bottom: 0;
+}

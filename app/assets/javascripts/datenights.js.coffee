@@ -13,6 +13,9 @@ jQuery ->
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
+    $('.gb-date').datepicker({dateFormat: 'MM d, yy'})
+    $('.fol-date').datepicker({dateFormat: 'MM d, yy'})
+    $('.sac-date').datepicker({dateFormat: 'MM d, yy'})
     
     
   $('.gb-date').datepicker({dateFormat: 'MM d, yy'})
