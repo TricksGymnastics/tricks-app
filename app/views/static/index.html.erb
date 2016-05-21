@@ -71,7 +71,7 @@
 <div class="row align-center" style="height: <%= content_height %>px; padding-top: 100px;">
 	<%# "http://tvuk222fjqo33d6py1a3k15d.wpengine.netdna-cdn.com/wp-content/themes/goldfish-swim-school/assets/images/hp-why-goldfish-3.png" %>
 	<div class="column small-8 medium-3 small-order-2 medium-order-1">
-		<% first_bubble = 2 %>
+		<% first_bubble = 3 %>
         <% if BubbleContent.exists?(sort_order: first_bubble) %>
 			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: first_bubble).first} %>
 		<% end %>
@@ -111,7 +111,7 @@
 		</div>
 	</div>
 	<div class="column small-8 medium-3 small-order-3">
-		<% second_bubble = 3 %>
+		<% second_bubble = 10 %>
         <% if BubbleContent.exists?(sort_order: second_bubble) %>
 			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: second_bubble).first} %>
 		<% end %>
