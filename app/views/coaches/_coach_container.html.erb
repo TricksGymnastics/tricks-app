@@ -5,6 +5,11 @@
       <%#= link_to coach.firstname+" "+coach.lastname, coach, id: "past-coach-name" %>
       <%= link_to image_tag(coach.image_url(:thumb).to_s), coach %>  
     </div>
+  <% else %>
+    <div class="columns medium-2 small-6" id="coach_container">
+      <%= link_to coach.firstname+" "+coach.lastname, coach, id: "past-coach-name" %>
+      <%= link_to image_tag(coach.image_url(:thumb).to_s), coach %>  
+    </div>
   <% end %>
 <% else %>
   <% if coach.current_employee? %>

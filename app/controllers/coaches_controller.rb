@@ -71,11 +71,11 @@ class CoachesController < ApplicationController
 
   def loc
     # Gives an array full of all coaches that work at the location specified in the url
-    @coaches_by_location = Coach.includes(:locations).where(locations: {name: params[:name]}).sort_by(&:firstname)
+    @coaches_by_location = Coach.where(current_employee: true).includes(:locations).where(locations: {name: params[:name]}).sort_by(&:firstname)
   end
 
   def past_employees
-    @past_employees = Coach.where(:current_employee => false).all
+    @past_employees = Coach.where(current_employee: false).order(:firstname)
   end
   
   private
