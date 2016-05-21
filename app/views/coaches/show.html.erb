@@ -1,117 +1,132 @@
 <%= stylesheet_link_tag "FileSpecificCSS/coaches", :media => "all" %>
 
-<div style="text-align: center; float: left; width: 250px; margin: 10px 10px 20px 0px">
-  <div style="float:center; height: 295px">
-    <%= image_tag @coach.image_url(:thumb).to_s, style: "border: 2px solid #333; box-shadow: 0 0 15px #333;" %>
-  </div>  
-  <div style="margin-top: 10px">
-    <% if can? :edit, Coach %>
-      <%= link_to 'Edit', edit_coach_path(@coach) %> |
-    <% end %>
-    <% if can? :manage, Coach %>
-      <%= link_to 'Delete', @coach, method: :delete, data: { confirm: 'This will permanantly delete the record for this employee, if you would like to keep the record, but remove it from the publicly viewable list, just click edit, and uncheck the "Current Employee" box under their name. Do you still want to delete this record?' } %> |
-    <% end %>
-    <%= link_to 'Back', coaches_path %>
-    <h2 style="margin-top: 15px"><% if can? :manage, Coach %><%= @coach.firstname %> <%= @coach.lastname %><% else %><%= @coach.firstname %><% end %></h2>
-    
-    <% if @coach.birthdate.nil? %>
-    <% else %>
-      <b>Birthday:</b>
-      <%= @coach.birthdate.strftime("%B %e") %><br style="line-height: 25px" />
-    <% end %>
-    <% if can? :manage, Coach %>
-      <% if @coach.current_employee? %>
-        <b>Current Employee</b>
-      <% else %>
-        <b>Previously Employed</b>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-
-<div style="float:left; margin: 10px 0px 10px 0px; width: 680px; border: 1px solid #999; padding: 3px 10px; text-align: justified;">
-
-  <% if can? :manage, Coach %>
-    <% if @coach.startdate.nil? %>
-    <% else %>
-      <p style="margin-top:0;"><b>Start Date:</b>
-      <%= @coach.startdate.strftime("%B %e, %Y") %></p>
-    <% end %>
-    <% if @coach.strengths == nil %>
-    <% else %>
-      <p><b>Strengths:</b> <%= @coach.strengths %></p>
-    <% end %>
-  <% end %>
-
-  <!-- For people who work outside the office -->
-  <%# unless @coach.classtypes.pluck(:name).include? "Office" %>
-    
-  <div style="font-size: 14px;">       
-    <b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b>
-    <%= @coach.locations.map(&:name).join(' and ')%>, teaching <%= @coach.classtypes.where(:id => 1..4).map(&:name).join(' and ') %>
-  </div>
-
-  <% if can? :manage, Coach %>
-    <div style="width: 100%; float:left; margin-bottom: -10px;">
-      <p style="margin-bottom: 0px;"><b>Levels <% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> teaches:</b></p>
-      <div>
-        <% @coach_levels.each do |classtype, levels| %>
-          <div style="float:left; margin: 0px 35px 30px 10px;">
-            <h3 style="margin:3px 0px; text-decoration:underline; font-size: 14px;"><% if(classtype == 1) %>Gymnastics<% elsif(classtype == 2) %>Tumblebunnies<% elsif(classtype == 3) %>Dance<% elsif(classtype == 4) %>Swim<% elsif(classtype == 5) %>TAG<% end %></h3>
-            <ul style="margin: 0px 0px 0px 20px">
-              <% unless classtype == 9 %>
-                <% levels.each do |level| %>
-                  <li><%= level.levelname %></li>
-                <% end %>
-              <% end %>
-            </ul>      
-          </div>
+<div class="row" style="padding-top: 20px; margin-bottom: 150px;">
+  <div class="columns medium-3 small-12" style="text-align:center;">
+    <div class="row">
+      <div class="columns small-12">
+        <%= image_tag @coach.image_url(:thumb).to_s, style: "border: 2px solid #333; box-shadow: 0 0 15px #333;" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns small-12">
+        <% if can? :edit, Coach %>
+          <%= link_to 'Edit', edit_coach_path(@coach) %> |
+        <% end %>
+        <% if can? :manage, Coach %>
+          <%= link_to 'Delete', @coach, method: :delete, data: { confirm: 'This will permanantly delete the record for this employee, if you would like to keep the record, but remove it from the publicly viewable list, just click edit, and uncheck the "Current Employee" box under their name. Do you still want to delete this record?' } %> |
+        <% end %>
+        <h3><% if can? :manage, Coach %><%= @coach.firstname %> <%= @coach.lastname %><% else %><%= @coach.firstname %><% end %></h3>
+        
+        <% if @coach.birthdate.nil? %>
+        <% else %>
+          <b>Birthday:</b>
+          <%= @coach.birthdate.strftime("%B %e") %><br style="line-height: 25px" />
+        <% end %>
+        <% if can? :manage, Coach %>
+          <% if @coach.current_employee? %>
+            <b>Current Employee</b>
+          <% else %>
+            <b>Previously Employed</b>
+          <% end %>
         <% end %>
       </div>
     </div>
-  <% end %>    
+  </div>
+  <div class="columns">
+      
+    <% if can? :manage, Coach %>
+      <% if @coach.startdate.nil? %>
+      <% else %>
+        <p style="margin-top:0;"><b>Start Date:</b>
+        <%= @coach.startdate.strftime("%B %e, %Y") %></p>
+      <% end %>
+      <% if @coach.strengths == nil %>
+      <% else %>
+        <p><b>Strengths:</b> <%= @coach.strengths %></p>
+      <% end %>
+    <% end %>
+    
+    <%= console %>
+    <% 
+      teaches = false;
+      office = false;
+      @coach.classtypes.all.each do |type|
+        if type.name == "Gymnastics" || type.name == "Tumblebunnies" || type.name == "TAG" || type.name == "Dance" || type.name == "Swim"
+          teaches = true
+        end
+        if type.name == "Office"
+          office = true
+        end
+      end
+      
+      if teaches
+        doing_text = ", teaching " + @coach.classtypes.where(:id => 1..5).map(&:name).join(' and ') 
+      end
+      if office
+        doing_text += " and in the Office"
+      end
+      
+    %>
+    
+    
+    
+    
+    <p><b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%><%= doing_text %></p>
 
-  <!-- for people inside the office -->
-  <!-- <%# else %>        
-    <b><%# if @coach.gender == "Girl" %> Miss <%# else %> Mr. <%# end %><%#= @coach.firstname %> works in: </b>
-    <%#= @coach.locations.map(&:name).join(' and ')%>,  <%#= @coach.classtypes.where(:id => 1..4).map(&:name).join(' and ') %>
-  <%# end %> -->
+    <% if can? :manage, Coach %>
+      <div style="width: 100%; float:left; margin-bottom: -10px;">
+        <p style="margin-bottom: 0px;"><b>Levels <% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> teaches:</b></p>
+        <div>
+          <% @coach_levels.each do |classtype, levels| %>
+            <div style="float:left; margin: 0px 35px 30px 10px;">
+              <h3 style="margin:3px 0px; text-decoration:underline; font-size: 14px;"><% if(classtype == 1) %>Gymnastics<% elsif(classtype == 2) %>Tumblebunnies<% elsif(classtype == 3) %>Dance<% elsif(classtype == 4) %>Swim<% elsif(classtype == 5) %>TAG<% end %></h3>
+              <ul style="margin: 0px 0px 0px 20px">
+                <% unless classtype == 9 %>
+                  <% levels.each do |level| %>
+                    <li><%= level.levelname %></li>
+                  <% end %>
+                <% end %>
+              </ul>      
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>    
   
-
-  <% if @coach.experience == "" %>
-  <% else %>
-    <p><b>Experience:</b>
-    <%= @coach.experience %></p>
-  <% end %>
-
-  <% if @coach.fav_event == "" %>
-  <% else %>
-    <p><b>Favorite Activity and Why:</b>
-    <%= @coach.fav_event %></p>
-  <% end %>
-
-  <% if @coach.fav_skill == "" %>
-  <% else %>
-    <p><b>Favorite Skill and Why:</b>
-    <%= @coach.fav_skill %></p>
-  <% end %>
-
-  <% if @coach.fav_food == "" %>
-  <% else %>
-    <p><b>Favorite Food:</b>
-    <%= @coach.fav_food %></p>
-  <% end %>
-
-  <% if @coach.disney_char == "" %>
-  <% else %>
-    <p><b>If <%= @coach.firstname %> could be any Disney Character,<% if @coach.gender == "Girl" %> she <% else %> he <% end %> would be:</b>
-    <%= @coach.disney_char %></p>
-  <% end %>  
+    <% if @coach.experience == "" %>
+    <% else %>
+      <p><b>Experience:</b>
+      <%= @coach.experience %></p>
+    <% end %>
   
-  <% if @coach.advice == "" %>
-  <% else %>
-    <p style="margin-bottom:0;"><b>Advice for Students:</b>
-    <%= @coach.advice %></p>
-  <% end %>
+    <% if @coach.fav_event == "" %>
+    <% else %>
+      <p><b>Favorite Activity and Why:</b>
+      <%= @coach.fav_event %></p>
+    <% end %>
+  
+    <% if @coach.fav_skill == "" %>
+    <% else %>
+      <p><b>Favorite Skill and Why:</b>
+      <%= @coach.fav_skill %></p>
+    <% end %>
+  
+    <% if @coach.fav_food == "" %>
+    <% else %>
+      <p><b>Favorite Food:</b>
+      <%= @coach.fav_food %></p>
+    <% end %>
+  
+    <% if @coach.disney_char == "" %>
+    <% else %>
+      <p><b>If <%= @coach.firstname %> could be any Disney Character,<% if @coach.gender == "Girl" %> she <% else %> he <% end %> would be:</b>
+      <%= @coach.disney_char %></p>
+    <% end %>  
+    
+    <% if @coach.advice == "" %>
+    <% else %>
+      <p style="margin-bottom:0;"><b>Advice for Students:</b>
+      <%= @coach.advice %></p>
+    <% end %>
+  </div>
 </div>

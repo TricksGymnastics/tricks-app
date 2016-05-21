@@ -7,9 +7,11 @@ class Coach < ActiveRecord::Base
 
 	has_many :coach_locations
 	has_many :locations, through: :coach_locations
+	accepts_nested_attributes_for :coach_locations
 
 	has_many :coach_classtypes
 	has_many :classtypes, through: :coach_classtypes
+	
 	validates :firstname,:presence => {:message => "cannot be blank."}#, :format => /^[A-Za-z\d_-]+$/
 	validates :lastname,:presence => {:message => "cannot be blank."}#, :format => /^[A-Za-z\d_-]+$/
 	validates_presence_of :gender, :location_ids, :level_ids, :classtype_ids

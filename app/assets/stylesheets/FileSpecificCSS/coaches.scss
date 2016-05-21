@@ -1,20 +1,5 @@
 @import 'globals';
 
-p {
-  margin: 10px 0;
-  line-height: 20px;
-  /*border: 1px solid black;*/
-  text-align: justify;
-}
-
-
-ul {
-  font-size: 13px;
-  line-height: 18px;
-}
-
-
-
 #coach_field {
   margin-bottom: 25px;
 }
@@ -33,6 +18,10 @@ ul {
   &.gymnastics{
     background-color: $tricks-very-light-yellow;
     border: 4px $tricks-yellow solid;
+  }
+  &.tag{
+    background-color: $tricks-very-light-orange;
+    border: 4px $tricks-orange solid;
   }
   &.dance{
     background-color: $tricks-very-light-pink;

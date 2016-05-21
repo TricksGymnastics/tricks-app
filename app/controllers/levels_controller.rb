@@ -86,7 +86,7 @@ class LevelsController < ApplicationController
 								
 					instructor = "<span style='color: red;'>Staff</span>".html_safe
 					if !r['instructors'][0].nil?
-						instructor = r['instructors'][0].split.map(&:capitalize)[0]
+						instructor = r['instructors'][0].split.map(&:capitalize)[0..-2].join(" ")
 					end
 					
 								

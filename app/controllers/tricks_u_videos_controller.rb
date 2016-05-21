@@ -4,12 +4,12 @@ class TricksUVideosController < ApplicationController
 
   def index
     @videos = TricksUVideo.all
-    @categories = TricksUCategory.where(hidden: false).all(order: 'weight')
+    @categories = TricksUCategory.where(hidden: false).order(:weight)
     @category = TricksUCategory.where(title: params[:category]).first
     if (@category.nil?) then
       @videos_by_category = @videos
     else
-      @videos_by_category = TricksUVideo.find_all_by_category_id(@category.id, order: "weight")
+      @videos_by_category = TricksUVideo.where(category_id: @category.id).order(:weight)
     end
   end
 

@@ -343,6 +343,11 @@ $curve_amount: 30px;
 .orbit-slide{
 	height: 360px;
 }
+@media #{$small-only}{
+	.orbit-slide{
+		height: 261px;
+	}
+}
 
 .orbit-image{
 	border-radius: $curve_amount $curve_amount 0 0;

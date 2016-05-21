@@ -82,12 +82,15 @@
 
             <li><%= link_to "Kid Quotes", kid_quotes_path %></li>
 
-            <li class="has-submenu"><%= link_to "Schedules", 'javascript:void(0);' %>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><%= link_to "View All", schedules_choose_path %></li>
-                <li><%= link_to "List of Levels", levels_path %></li>
-              </ul>
-            </li>
+            <li><%= link_to "Levels", levels_path %></li>
+            
+            <li><%= link_to "TricksU", tricksu_path %></li>
+            
+            <!--<li class="has-submenu"><%#= link_to "Schedules", 'javascript:void(0);' %>-->
+            <!--  <ul class="submenu menu vertical" data-submenu>-->
+            <!--    <li><%#= link_to "View All", schedules_choose_path %></li>-->
+            <!--  </ul>-->
+            <!--</li>-->
 
             <li class="has-submenu"><%= link_to "Staff", 'javascript:void(0);' %>
               <ul class="submenu menu vertical" data-submenu>
@@ -104,13 +107,13 @@
               </ul>
             </li>
 
-            <li class="has-submenu">
-              <%= link_to "Surveys", 'javascript:void(0);' %>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><%= link_to "View All Surveys", surveys_path %></li>
-                <li><%= link_to "Results", choose_survey_path %></li>
-              </ul>
-            </li>
+            <!--<li class="has-submenu">-->
+            <!--  <%#= link_to "Surveys", 'javascript:void(0);' %>-->
+            <!--  <ul class="submenu menu vertical" data-submenu>-->
+            <!--    <li><%#= link_to "View All Surveys", surveys_path %></li>-->
+            <!--    <li><%#= link_to "Results", choose_survey_path %></li>-->
+            <!--  </ul>-->
+            <!--</li>-->
             <li style="padding-left:10px;"><%= link_to "Logout (" + current_user.email + ")", logout_path, class: "button alert expand" %> </li>
           </ul>
         </div>
@@ -119,17 +122,8 @@
 
 
 
-
-
-     <!-- Small Navigation -->
-    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-      <%= link_to image_tag('tricks-tiny.png'), root_path, class: "logo-small" %>
-      <button class="menu-icon" type="button" data-toggle></button>
-      <div class="title-bar-title">Menu</div>
-    </div>
-
     <!-- Medium-Up Navigation -->
-    <div data-sticky-container style="z-index: 10;">
+    <div class="hide-for-small-only" data-sticky-container style="z-index: 10;">
       <div class="top-bar" id="main-menu" data-sticky data-options="marginTop:0;" style="width: 100%; height: 50px;">
         <div class="logo-wrapper hide-for-small-only">
           <div class="logo">
@@ -140,8 +134,8 @@
         <!-- Left Nav Section -->
         <div class="top-bar-left">
           <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
-            <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style:"margin-right: 20px;" %></li>
-            <li class="has-submenu" style="padding-right: 20px;">
+            <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style: "margin-right: 20px;" %></li>
+            <li class="has-submenu">
               <%= link_to "Programs", 'javascript:void(0);', class: 'main-menu-item'  %>
               <ul class="menu vertical">
                 <li class="has-submenu">
@@ -157,9 +151,9 @@
                   <ul class="menu vertical">
                     <li><%= pre_dance_link = link_to "Preschool (0-5)", preschool_dance_path %></li>
                     <li><%= school_dance_link = link_to "School Age (6-18)", dance_path %></li>
-                    <li><%= dance_team_link = link_to "Dance Team", dance_path %></li>
-                    <li><%= summer_recital_link = link_to "Summer Recital", dance_path %></li>
-                    <li><%= winter_show_link = link_to "Winter Show", dance_path %></li>
+                    <li><%#= dance_team_link = link_to "Dance Team", dance_path %></li>
+                    <li><%#= summer_recital_link = link_to "Summer Recital", dance_path %></li>
+                    <li><%#= winter_show_link = link_to "Winter Show", dance_path %></li>
                   </ul>
                 </li>
                 <li><%= tag_link = link_to "TAG", tag_path %></li>
@@ -168,26 +162,25 @@
               </ul>
             </li>
             <li class="has-submenu">
+              <%= link_to "Parties", 'javascript:void(0);', class: 'main-menu-item'  %>
+              <ul class="menu vertical">
+                  <li><%= gym_parties_link = link_to "Gymnastics Parties", birthdays_path %></li>
+                  <li><%= dance_parties_link = link_to "Dance Parties", princess_party_path %></li>
+                
+                <!--  <li><%#= link_to "Ulimate Fun", birthdays_path %></li>-->
+                <!--  <li><%#= link_to "Ninja Warrior", birthdays_path %></li>-->
+                <!--  <li><%#= link_to "Fun & Games", birthdays_path %></li>-->
+                <!--  <li><%#= link_to "Fairytale", princess_party_path %></li>-->
+                <!--  <li><%#= link_to "Ballet", princess_party_path %></li>-->
+                </li>
+              </ul>
+            </li>
+            <li class="has-submenu">
               <%= link_to "Events", 'javascript:void(0);', class: 'main-menu-item' %>
               <ul class="menu vertical">
+                <li><%= datenight_link =  link_to "Kids Night Out", datenights_path %></li>
                 <li class="has-submenu">
-                  <%= link_to "Gym Birthday Parties", birthdays_path %>
-                  <!--<ul class="menu vertical">-->
-                  <!--  <li><%#= link_to "Ulimate Fun", birthdays_path %></li>-->
-                  <!--  <li><%#= link_to "Ninja Warrior", birthdays_path %></li>-->
-                  <!--  <li><%#= link_to "Fun & Games", birthdays_path %></li>-->
-                  <!--</ul>-->
-                </li>
-                <li class="has-submenu">
-                  <%= link_to "Dance Birthday Parties", princess_party_path %>
-                  <!--<ul class="menu vertical">-->
-                  <!--  <li><%#= link_to "Fairytale", princess_party_path %></li>-->
-                  <!--  <li><%#= link_to "Ballet", princess_party_path %></li>-->
-                  <!--</ul>-->
-                </li>
-                <li><%= link_to "Kids Night Out", datenights_path %></li>
-                <li class="has-submenu">
-                  <%= link_to "Camps", camps_path %>
+                  <%= camps_link = link_to "Camps", camps_path %>
                   <!--<ul class="menu vertical">
                     <li><%#= link_to "Spring Break", camps_path %></li>
                     <li><%#= link_to "Summer", camps_path %></li>
@@ -234,95 +227,176 @@
             <!-- <li><%#= faq_link = link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
             <li><%= blog_link = link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
             <!-- <li><%#= contact_link = link_to "Contact", locations_path, class: 'main-menu-item' %></li> -->
-            <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button main-menu-button" %></li>
+            <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button main-menu-button", style: "margin-left: 20px;" %></li>
   
           </ul>
         </div>
       </div>
     </div>
     
-    <% if content_for?(:header_image) %>
-    <div id="header-secondary" class="row" style=" z-index: 5;">
-      <div style="height: 400px; overflow: hidden; width: 100%; position: absolute; left: 0;">
-        <image width="3000" height="1000" src=<%= yield(:header_image) %>></image>
-      </div>
+
+     <!-- Small Navigation -->
+    <div class="title-bar show-for-small-only" data-sticky-container>
+      <%= link_to image_tag('tricks-tiny.png'), root_path, class: "logo-small" %>
+      <button class="menu-icon" type="button" data-toggle></button>
+      <div class="title-bar-title">Menu</div>
     </div>
     
-    <div class="row" style="padding-top: 440px;">
-    <% else %>
-    <div class="row" style="padding-top: 100px;">
-    <% end %>    
+    <!--<div class="row"  style="display: none;">-->
+    <!--  <div class="columns">-->
+        <ul class="show-for-small-only vertical menu" id="mobile_menu" data-drilldown>
+          <li><%= link_to "Register Now", "javascript:void(0);", 'data-toggle': 'register_now_modal' %></li>
+          <li>
+            <a href="#">Programs</a>
+            <ul class="vertical menu">
+              <li>
+                <a href="#">Gymnastics</a>
+                <ul class="vertical menu">
+                  <li><%= tb_link %></li>
+                  <li><%= gym_link %></li>
+                  <li><%= comp_link %></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Dance</a>
+                <ul class="vertical menu">
+                  <li><%= pre_dance_link %></li>
+                  <li><%= school_dance_link %></li>
+                </ul>
+              </li>
+              <li><%= tag_link %></li>
+              <li><%= swim_link %></li>
+              <li><%= campus_link %></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Parties</a>
+            <ul class="vertical menu">
+              <li><%= gym_parties_link %></li>
+              <li><%= dance_parties_link %></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Events</a>
+            <ul class="vertical menu">
+              <li><%= datenight_link %></li>
+              <li><%= camps_link %></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">About Us</a>
+            <ul class="vertical menu">
+              <li><%= facilities_link %></li>
+              <li>
+                <a href="#">Our Staff</a>
+                <ul class="vertical menu">
+                  <li><%= gb_staff_link %></li>
+                  <li><%= fol_staff_link %></li>
+                  <li><%= sac_staff_link %></li>
+                </ul>
+              </li>
+              <li><%= testimonials_link %></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Forms</a>
+            <ul class="vertical menu">
+              <li><%= absence_link %></li>
+              <li><%= recital_ad_link %></li>
+              <li><%= discontinue_link %></li>
+            </ul>
+          </li>
+          <li><%= blog_link %></li>
+          <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983" %></li>
+        </ul>
+    <!--  </div>-->
+    <!--</div>-->
     
-    <div class="columns small-12" id="main-container">
-      <% if flash.to_a.length > 0 %>
-        <div class="callout-container">
-          <% flash.each do |name, msg| %>
 
-            <% if name.to_s == "alert" %>
-              <div class="callout warning" data-closable>   
-                <%= msg %>
-                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            <% end %>
 
-            <% if name.to_s == "notice" %>
-              <div class="callout success" data-closable>   
-                <%= msg %>
-                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            <% end %>
-
-            <% if name.to_s == "error" %>
-              <div class="callout alert" data-closable>   
-                <%= msg %>
-                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            <% end %>
-          <% end %>
+    <% if content_for?(:header_image) %>
+      <div id="header-secondary" class="row" style=" z-index: 5;">
+        <div style="overflow: hidden; width: 100%; position: absolute; left: 0;">
+          <image width="3000" height="1000" src=<%= yield(:header_image) %>></image>
         </div>
-      <% end %>
-      
-      
-      <% if !@bubbles.nil? %>
-        <div class="row align-justify">
-          <div class="columns small-8">
-            <%= yield %>
-          </div>  
-          <div class="columns medium-3" style="padding: 0;">
-            <% @bubbles.each do |bubble| %>
-              <% if BubbleContent.exists?(sort_order: bubble) %>
-                <br>
-                <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: bubble).first} %>
-                <br>
-              <% else %>
-                <h2 style="color: red; margin: 40px 0;">BubbleContent(<%= bubble %>) Not Found</h2>
+      </div>
+    
+      <div class="row" style="padding-top: 22%;"></div>
+    <% else %>
+      <div class="row hide-for-small-only" style="padding-top: 100px;"></div>
+    <% end %>  
+    
+    <div class="row" style="padding-top: 20px;">
+      <div class="columns small-12" id="main-container">
+        <% if flash.to_a.length > 0 %>
+          <div class="callout-container">
+            <% flash.each do |name, msg| %>
+  
+              <% if name.to_s == "alert" %>
+                <div class="callout warning" data-closable>   
+                  <%= msg %>
+                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <% end %>
+  
+              <% if name.to_s == "notice" %>
+                <div class="callout success" data-closable>   
+                  <%= msg %>
+                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <% end %>
+  
+              <% if name.to_s == "error" %>
+                <div class="callout alert" data-closable>   
+                  <%= msg %>
+                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
               <% end %>
             <% end %>
           </div>
-        </div>
-      <% else %>
-        <div class="row">
-          <div class="columns small-12">
-            <%= yield %>
+        <% end %>
+        
+        
+        <% if !@bubbles.nil? %>
+          <div class="row align-center">
+            <div class="columns small-12 medium-8 ">
+              <%= yield %>
+            </div>  
+            <div class="columns medium-offset-1 medium-3 small-8" style="padding: 0;">
+              <% @bubbles.each do |bubble| %>
+                <% if BubbleContent.exists?(sort_order: bubble) %>
+                  <br>
+                  <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: bubble).first} %>
+                  <br>
+                <% else %>
+                  <h2 style="color: red; margin: 40px 0;">BubbleContent(<%= bubble %>) Not Found</h2>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% else %>
+          <div class="row">
+            <div class="columns small-12">
+              <%= yield %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
 
   <div class="reveal fast small" id="register_now_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
     <div id="choose_location_modal">
       <h1>Choose a Location</h1>
-      <div class="row" style="margin-top: 50px;">
+      <div class="row" style="margin-top: 25px;">
   			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
   			<% locations.each do |loc| %>
-          <div class="columns small-4">
+          <div class="columns small-12 medium-4">
             <%= link_to loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
           </div>
   			<% end %>
@@ -333,7 +407,7 @@
       <div class="row" style="margin-top: 20px;">
   			<% programs = {"Preschool Gymnastics" => tumblebunnies_path, "School-Age Gymnastics" => gymnastics_path, "Preschool Dance" => dance_path, "School-Age Dance" => dance_path, "TAG" => tag_path, "Swim" => swim_path} %> 
   			<% programs.each do |prog| %>
-          <div class="columns small-6">
+          <div class="columns small-12 medium-6">
             <%= link_to prog[0], prog[1], class: "button expanded program-button", id: prog[0] %>
           </div>
   			<% end %>
@@ -344,16 +418,16 @@
     </button>
   </div>
 
-  <div id="footer" style="z-index: 100;">
+  <div id="footer" style="z-index: 100; margin-top: 150px;">
       <!--<div style="height: 100px; width: 100%; background-color: #fff;">-->
         <!-- only here for a bit of padding above the footer -->
       <!--</div>-->
       <div class="row">
         <div class="columns small-12" id="footer-content">
           <div class="row" style="font-size: 13px;">
-            <div class="columns medium-8">
+            <div class="columns medium-8 small-12 small-order-2 medium-order-1">
               <div class="row">
-                <div class="columns medium-3 small-12">
+                <div class="columns medium-3 small-6">
                   <h3 class="footer-header">Programs</h3>
                   <ul>
                     <li>
@@ -379,25 +453,22 @@
                     <%= if defined? campus_link then ('<li>' + campus_link + '</li>').html_safe end %>
                   </ul>
                 </div>
-                <div class="columns medium-3 small-12">
+                <div class="columns medium-3 small-6">
+                  <h3 class="footer-header">Parties</h3>
+                  <ul>
+                      <li><%= link_to "Gymnastics Parties", birthdays_path %></li>
+                      <li><%= link_to "Dance Parties", princess_party_path %></li>
+                    
+                    <!--  <li><%#= link_to "Ulimate Fun", birthdays_path %></li>-->
+                    <!--  <li><%#= link_to "Ninja Warrior", birthdays_path %></li>-->
+                    <!--  <li><%#= link_to "Fun & Games", birthdays_path %></li>-->
+                    <!--  <li><%#= link_to "Fairytale", princess_party_path %></li>-->
+                    <!--  <li><%#= link_to "Ballet", princess_party_path %></li>-->
+                  </ul>
+                  
+                  
                   <h3 class="footer-header">Events</h3>
                   <ul>
-                    <li><%= link_to "Gym Birthday Parties", birthdays_path %>
-                      <!--<h3>Gym Birthday Parties</h3>
-                      <ul>
-                        <li><%#= link_to "Ulimate Fun", birthdays_path %></li>
-                        <li><%#= link_to "Ninja Warrior", birthdays_path %></li>
-                        <li><%#= link_to "Fun & Games", birthdays_path %></li>
-                      </ul> -->
-                    </li>
-                    <li>
-                      <%= link_to "Dance Birthday Parties", princess_party_path %>
-                      <!-- <h3>Dance Birthday Parties</h3>
-                      <ul>
-                        <li><%#= link_to "Fairytale", princess_party_path %></li>
-                        <li><%#= link_to "Ballet", princess_party_path %></li>
-                      </ul> -->
-                    </li>
                     <li><%= link_to "Kids Night Out", datenights_path %></li>
                     <li>
                       <%= link_to "Camps", camps_path %>
@@ -411,7 +482,7 @@
                     </li>
                   </ul>
                 </div>
-                <div class="columns medium-3 small-12">
+                <div class="columns medium-3 small-6">
                   <h3 class="footer-header">Forms</h3>
                   <ul>
                     <%= if defined? absence_link then ('<li>' + absence_link + '</li>').html_safe end %>
@@ -422,7 +493,7 @@
                     <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
                   </ul>
                 </div>
-                <div class="columns medium-3 small-12">
+                <div class="columns medium-3 small-6">
                   <h3 class="footer-header">About Us</h3>
                   <ul>
                     <%= if defined? story_link then ('<li>' + story_link + '</li>').html_safe end %>
@@ -437,14 +508,14 @@
                     </li>
                     <%= if defined? testimonials_link then ('<li>' + testimonials_link + '</li>').html_safe end %>
                   </ul>
-                  <h3 class="footer-header"><%= link_to "FAQ", '#', class: 'main-menu-item' %></h3>
+                  <!--<h3 class="footer-header"><%#= link_to "FAQ", '#', class: 'main-menu-item' %></h3>-->
                   <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>
                   <h3 class="footer-header"><%= link_to "Contact", locations_path, class: 'main-menu-item' %></h3>
                 </div>
               </div>
             </div>
             
-            <div class="columns medium-4 small-12">
+            <div class="columns medium-4 small-12 small-order-1 medium-order-2" style="margin-bottom: 20px;">
               <div class="row">
                 <div class="columns small-4">
                   <%= link_to "Granite Bay", 'javascript:void(0);', class: "button expanded location-button", id: "GB" %>
@@ -483,7 +554,7 @@
           </div>
           <% if !current_user %>
             <div class="row align-center">
-              <div class="columns small-4">
+              <div class="columns small-10 medium-6">
                 <%= link_to "Staff Login", login_path, class: "button secondary expanded", style: "margin-top: 50px;" %>
               </div>
             </div>

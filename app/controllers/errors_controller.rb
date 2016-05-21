@@ -1,8 +1,8 @@
 class ErrorsController < ApplicationController
 	def show
+		@exception = env["action_dispatch.exception"]
+		render action: request.path[1..-1]
 		if params[:status] != "404"
-			@exception = env["action_dispatch.exception"]
-			render action: request.path[1..-1]
 			ErrorMailer.error_details(@exception).deliver_now
 		end
 		# email = ErrorMailer.error_details(@exception).deliver_now

@@ -37,6 +37,25 @@ $(window).bind("load", function () {
 });
 
 $(function(){
+  var new_height = $("#mobile_menu").parent().height() + 10;
+  $("#mobile_menu").parent().css({"position":"fixed", "top":"48px", "left":"-100%", "z-index":"5", "width":"70%", 
+  "background-color":"#FEFEFE", "border":"solid 2px #666", "box-shadow":"0 0 25px #222", "height":new_height+"px"});
+  
+  
+  var showing_menu = false;
+  $('.menu-icon').on('click', function(event) {
+    event.preventDefault();
+    if (showing_menu){
+      $("#mobile_menu").parent().animate({"left" : "-100%"}, 500);//.slideToggle(200);
+      showing_menu = false;
+    }
+    else{
+      $("#mobile_menu").parent().animate({"left" : "0"}, 500);//.slideToggle(200);
+      showing_menu = true;
+    }
+  });
+  
+  
   // update info based on session variable for location
   updateLocation(sessionStorage.getItem('location'));
   

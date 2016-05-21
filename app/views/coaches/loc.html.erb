@@ -34,6 +34,18 @@
     <% end %>
   </div>
   
+  <div class="row align-center tag" id="classtype-container">
+    <div class="columns small-12">
+      <h2>TAG</h2>
+    </div>
+    <% @coaches_by_location.each do |coach| %>  
+      <% coach.classtypes.each do |classtype| %>    
+        <% if classtype.name == "TAG" %>          
+          <%= render 'coach_container', :coach => coach  %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
   
   <div class="row align-center dance" id="classtype-container">
     <div class="columns small-12">

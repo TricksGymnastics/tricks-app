@@ -1,17 +1,31 @@
 <div style="width: 2000px; position: fixed; top: 0; left: 50%; margin-left: -1000px; z-index: -100;">
-	<%= image_tag('site_header_images/IMG_6567.JPG', style: "display: block; margin: 0px auto;") %>
+	<%= image_tag('site_header_images/TB_GB.png', style: "display: block; margin: 0px auto;") %>
 	<!--<image src="http://tvuk222fjqo33d6py1a3k15d.wpengine.netdna-cdn.com/wp-content/themes/goldfish-swim-school/assets/images/header-secondary-bg.png"></image>-->
 </div>
 
 
 <% if !current_user %>
-	<% top_buffer = 150 %>
+	<% top_buffer = 50 + 100 + 20 %>
 <% else %>
-	<% top_buffer = 196 %>
+	<% top_buffer = 50 + 100 + 20 + 46 %>
 <% end %>
 
 <% main_picture_height = 500 %>
-<div class="row" style="height: <%= main_picture_height %>px;">
+<div class="row hide-for-small-only" style="height: <%= main_picture_height %>px;">
+	<div class="columns small-8 medium-4">
+		<div class="columns small-10" style="position: relative;">
+			<% main_bubble = 0 %>
+	        <% if BubbleContent.exists?(sort_order: main_bubble) %>
+				<%= render :partial => "bubble_contents/bubble", locals: { data_toggle: 'register_now_modal', given_bubble: BubbleContent.where(sort_order: main_bubble).first} %>
+			<% end %>
+			<div style="position: absolute; bottom: -60px; right: -60px; width: 60%; height: 60%;">
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 1).first} %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row show-for-small-only" style="height: <%= main_picture_height + 100 %>px;">
 	<div class="columns small-8 medium-4">
 		<div class="columns small-10" style="position: relative;">
 			<% main_bubble = 0 %>
@@ -32,12 +46,12 @@
 <div style="position: absolute; top: <%= main_picture_height + top_buffer %>px; left: 0; width: 100%; height: <%= buffer_height %>px; background: rgba(5,130,197,.7); z-index: -75;"></div>
 
 <div class="row align-right align-middle" style="height: 150px; margin: 10px 0;">
-	<div class="column medium-4">
+	<div class="column medium-4 small-12">
 		<div class="row align-right align-middle">
-			<div class="column medium-5">
-				<%= image_tag("structure/5star_transparent.png") %>
+			<div class="column medium-5 ">
+				<%#= image_tag("structure/5star_transparent.png") %>
 			</div>
-			<div class="column medium-5">
+			<div class="column medium-5 small-4">
 				<%= image_tag("logos/25years.png") %>
 			</div>
 		</div>
@@ -46,20 +60,23 @@
 
 <% content_height = 550 %>
 <% bottom_white_padding = 75 %>
-<div style="position: absolute; top: <%= main_picture_height + top_buffer + buffer_height %>px; left: 0; width: 100%; height: <%= content_height + bottom_white_padding %>px; background: #fff; z-index: -50;"></div>
+<% extra_bottom_padding_for_mobile = 600 %>
+<div class="hide-for-small-only" style="position: absolute; top: <%= main_picture_height + top_buffer + buffer_height %>px; left: 0; width: 100%; height: <%= content_height + bottom_white_padding %>px; background: #fff; z-index: -50;"></div>
+<div class="show-for-small-only" style="position: absolute; top: <%= main_picture_height + top_buffer + buffer_height %>px; left: 0; width: 100%; height: <%= content_height + bottom_white_padding + extra_bottom_padding_for_mobile %>px; background: #fff; z-index: -50;"></div>
 
 
 
 
-<div class="row align-justify" style="height: <%= content_height %>px; padding-top: 100px;">
+
+<div class="row align-center" style="height: <%= content_height %>px; padding-top: 100px;">
 	<%# "http://tvuk222fjqo33d6py1a3k15d.wpengine.netdna-cdn.com/wp-content/themes/goldfish-swim-school/assets/images/hp-why-goldfish-3.png" %>
-	<div class="column small-12 medium-3">
+	<div class="column small-8 medium-3 small-order-2 medium-order-1">
 		<% first_bubble = 2 %>
         <% if BubbleContent.exists?(sort_order: first_bubble) %>
 			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: first_bubble).first} %>
 		<% end %>
 	</div>
-	<div class="column small-12 medium-6">
+	<div class="column small-12 medium-6 small-order-1 medium-order-2">
 		<div class="orbit" role="region" aria-label="Promo Slides" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
 			<ul class="orbit-container">
 			    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
@@ -93,7 +110,7 @@
 				</nav>
 		</div>
 	</div>
-	<div class="column small-12 medium-3">
+	<div class="column small-8 medium-3 small-order-3">
 		<% second_bubble = 3 %>
         <% if BubbleContent.exists?(sort_order: second_bubble) %>
 			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: second_bubble).first} %>
@@ -114,7 +131,8 @@
 </div> -->
 
 
-<div style="height: <%= bottom_white_padding %>px; width: 100%;"></div>
+<div class="hide-for-small-only" style="height: <%= bottom_white_padding %>px; width: 100%; margin-bottom: -150px;"></div>
+<div class="show-for-small-only" style="height: <%= bottom_white_padding + extra_bottom_padding_for_mobile %>px; width: 100%; margin-bottom: -150px;"></div>
 	
 
 

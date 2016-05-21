@@ -1,5 +1,3 @@
-<%= stylesheet_link_tag "static/coaches", :media => "all" %>
-
 <div id="form" style="margin-top: 30px;">
   <%= form_for @coach, :html => {:multipart => true} do |f| %>
     <% if @coach.errors.any? %>
@@ -19,9 +17,9 @@
     <div class="row">
       <div class="column">
         
-        <div class="row" style="border: solid blue 1px;">
+        <div class="row">
           <div class="column medium-2 small-12">
-            <%= image_tag(@coach.image_url, style: "width: 100%; margin-bottom: 15px;") %>
+            <%= image_tag(@coach.image_url(:thumb).to_s, style: "width: 100%; margin-bottom: 15px;") %>
             
             <%= f.label :image, "Upload Image", class: "button expanded success" %>
             <%= f.file_field :image, class: "show-for-sr" %>
@@ -30,7 +28,7 @@
               <%= f.check_box :remove_image %> Remove Picture
             <% end %>
           </div>
-          <div class="column" style="border: solid red 1px;">
+          <div class="column">
             <div class="row">
               
               <div class="column medium-4">
@@ -114,11 +112,11 @@
                     <%= check_box_tag "coach[classtype_ids][]", classtype.id, @coach.classtype_ids.include?(classtype.id), id: dom_id(classtype) %>
                     <%= label_tag dom_id(classtype), classtype.name %>
                   <% end %>        
-                  <div>If Office, please select one of these:  <%= hidden_field_tag "coach[level_ids][]", nil %></div>
-                  <% Level.where(:classtype_id => "9").each do |level| %>
-                    <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
-                    <%= label_tag dom_id(level), level.levelname %>
-                  <% end %>
+                  <!--<div>If Office, please select one of these:  <%#= hidden_field_tag "coach[level_ids][]", nil %></div>-->
+                  <!--<%# Level.where(:classtype_id => "9").each do |level| %>-->
+                  <!--  <%#= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>-->
+                  <!--  <%#= label_tag dom_id(level), level.levelname %>-->
+                  <!--<%# end %>-->
               
                 </div>
               </div>
@@ -129,44 +127,47 @@
         </div>
         
         <!--This is the row after the picture has ended-->
-        <div class="row" style="border: solid 2px green; min-height: 200px;">
-          <div class="column small-12">
-            <%= f.label :levels, "Levels Coach is trained to teach:", class: "input-group-label" %>
-            <div class="input-group">
-              
-              <!--Gymnastics-->
-              <div style="float:left; margin: 3px; border: 1px solid #666; width: 200px; padding: 5px 15px;">
-                <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Gymnastics</h2>
+        <div class="row">
+          <div class="columns small-12">
+            <label class="input-group-label" style="font-size: 18px;">Levels Coach is trained to teach:</label>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+          <div class="columns medium-8">
+            <div class="row">
+               <!--Gymnastics-->
+              <div class="columns medium-4">
+                <h4 style="text-align: center;">Gymnastics</h4>
                 <%= hidden_field_tag "coach[level_ids][]", nil %>
                 <% Level.where(:classtype_id => "1").each do |level| %>
                   <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
                   <%= label_tag dom_id(level), level.levelname %><br>
                 <% end %> 
               </div>
-      
-              <!--Tumblebunnies-->
-              <div style="float:left;border: 1px solid #666; width: 200px; padding: 5px 15px; margin: 3px">
-                <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Tumblebunnies</h2>
+        
+                <!--Tumblebunnies-->
+              <div class="columns medium-4">
+                <h4 style="text-align: center;">Tumblebunnies</h4>
                 <%= hidden_field_tag "coach[level_ids][]", nil %>
                 <% Level.where(:classtype_id => "2").each do |level| %>
                   <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
                   <%= label_tag dom_id(level), level.levelname %><br>
                 <% end %>  
               </div>
-      
-              <!--Swim-->
-              <div style="float:left; margin: 3px; margin-right:1px;">
-      
-                <div style="border: 1px solid #666; width: 181px; padding: 5px 15px; margin-bottom: 6px;">
-                  <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">TAG</h2>
+              
+              
+              <!--TAG & Swim-->
+              <div class="columns medium-4">
+                <div style="margin-bottom: 15px;">
+                  <h4 style="text-align: center;">TAG</h4>
                   <%= hidden_field_tag "coach[level_ids][]", nil %>
                   <% Level.where(:classtype_id => "5").each do |level| %>
                     <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
                     <%= label_tag dom_id(level), level.levelname %><br>
                   <% end %> 
                 </div>
-                <div style="border: 1px solid #666; width: 181px; padding: 5px 15px;">
-                  <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Swim</h2>
+                <div>
+                  <h4 style="text-align: center;">Swim</h4>
                   <%= hidden_field_tag "coach[level_ids][]", nil %>
                   <% Level.where(:classtype_id => "4").each do |level| %>
                     <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
@@ -174,63 +175,77 @@
                   <% end %>  
                 </div>
               </div>
-      
-            </div>
-              <!--Dance-->
-            <div style="float:right; border: 1px solid #666; width: 230px; padding: 5px 15px; margin-top: 48px">
-              <h2 style="margin-bottom: 3px; text-align: center; text-decoration: underline">Dance</h2>
-              <%= hidden_field_tag "coach[level_ids][]", nil %>
-              <% Level.where(:classtype_id => "3").each do |level| %>
-                <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
-                <%= label_tag dom_id(level), level.levelname %><br>
-              <% end %>  
-            </div>
-                  
-                  
-            
-            
               
+              
+      
+              <div class="columns medium-12">
+                <div class="input-group">
+                  <%= f.label :fav_event, "Favorite Activity and Why:", class: "input-group-label" %>
+                  <%= f.text_field :fav_event, class: "input-group-field" %>
+                </div>
+                
+                <div class="input-group">
+                  <%= f.label :fav_skill, "Favorite Skill and Why:", class: "input-group-label" %>
+                  <%= f.text_field :fav_skill, class: "input-group-field" %>
+                </div>
+                
+                <div class="input-group">
+                  <%= f.label :fav_food, "Favorite Food:", class: "input-group-label" %>
+                  <%= f.text_field :fav_food, class: "input-group-field" %>
+                </div>
+                
+                <div class="input-group">
+                  <%= f.label :disney_char, "If you could be a Disney Character, who would you be?", class: "input-group-label" %>
+                  <%= f.text_field :disney_char, class: "input-group-field" %>
+                </div>
+                
+                <%= f.label :experience, class: "input-group-label" %>
+                <%= f.text_area :experience, style: "height: 150px" %>
+                
+                <%= f.label :advice, "Advice for Students:", class: "input-group-label" %>
+                <%= f.text_area :advice, style: "height: 150px" %>
+              </div>
+              
+              <div class="columns">
+                <div class="row align-center" style="margin-top: 50px;">
+                  <div class="columns medium-8 small-12">
+                    <%= f.submit class: "button expanded" %>
+                  </div>
+                </div>
+              </div>
+                
+          
             </div>
           </div>
-        </div>  
-        
-        
-      </div>
-    </div>
+             
     
-    
-
-       
-
-      <div style="float: left; width: 685px;">
-        <div class="field">
-          <b><%= f.label :experience, "Experience:" %></b><br>
-          <%= f.text_area :experience, style: "height: 60px; width: 661px;" %>
+            <!--Dance-->
+          <div class="columns medium-4">
+            <h4 style="text-align: center;">Dance</h4>
+            <%= hidden_field_tag "coach[level_ids][]", nil %>
+            <% Level.where(:classtype_id => "3").each do |level| %>
+              <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
+              <%= label_tag dom_id(level), level.levelname %><br>
+            <% end %>  
+          </div>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
         </div>
-        <div class="field">
-          <b><%= f.label :fav_event, "Favorite Activity and Why:" %></b><br>
-          <%= f.text_field :fav_event, size: 80 %>
-        </div>
-        <div class="field">
-          <b><%= f.label :fav_skill, "Favorite Skill and Why:" %></b><br>
-          <%= f.text_field :fav_skill, size: 80 %>
-        </div>
-        <div class="field">
-          <b><%= f.label :fav_food, "Favorite Food:" %></b><br>
-          <%= f.text_field :fav_food, size: 80 %>
-        </div>
-        <div class="field">
-          <b><%= f.label :disney_char, "If you could be a Disney Character, who would you be?" %></b><br>
-          <%= f.text_field :disney_char, size: 80 %>
-        </div>
-        <div class="field">
-          <b><%= f.label :advice, "Advice for Students:" %></b><br>
-          <%= f.text_area :advice, style: "height: 60px; width: 661px;" %>
-        </div>
+        
+          
       </div>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
     </div>
   <% end %>
 </div>
