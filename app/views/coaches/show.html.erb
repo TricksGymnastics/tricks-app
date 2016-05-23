@@ -59,11 +59,16 @@
         end
       end
       
+      doing_text = ""
       if teaches
         doing_text = ", teaching " + @coach.classtypes.where(:id => 1..5).map(&:name).join(' and ') 
       end
       if office
-        doing_text += " and in the Office"
+        if teaches
+          doing_text += " and in the Office"
+        else
+          doing_text += ", in the Office"
+        end
       end
       
     %>
