@@ -102,7 +102,7 @@
             <li class="has-submenu">
               <%= link_to "Recital Ads", 'javascript:void(0);' %>
               <ul class="submenu menu vertical" data-submenu>
-                <li><%= link_to "View Orders", "recital_ads_by_year/"+Time.now.year.to_s %></li>
+                <li><%= link_to "View Orders", "/recital_ads_by_year/"+Time.now.year.to_s %></li>
                 <li><%= link_to "Ad Types", recital_ad_types_path %></li>
               </ul>
             </li>
