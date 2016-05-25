@@ -405,7 +405,7 @@
     <div id="choose_program_modal">
       <h1>Choose a Program</h1>
       <div class="row" style="margin-top: 20px;">
-  			<% programs = {"Preschool Gymnastics" => tumblebunnies_path, "School-Age Gymnastics" => gymnastics_path, "Preschool Dance" => dance_path, "School-Age Dance" => dance_path, "TAG" => tag_path, "Swim" => swim_path} %> 
+  			<% programs = {"Preschool Gymnastics" => tumblebunnies_path, "School-Age Gymnastics" => gymnastics_path, "Preschool Dance" => preschool_dance_path, "School-Age Dance" => dance_path, "TAG" => tag_path, "Swim" => swim_path} %> 
   			<% programs.each do |prog| %>
           <div class="columns small-12 medium-6">
             <%= link_to prog[0], prog[1], class: "button expanded program-button", id: prog[0] %>
