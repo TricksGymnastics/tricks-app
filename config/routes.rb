@@ -36,7 +36,7 @@ Comments::Application.routes.draw do
 
   resources :comments
   resources :kid_quotes
-  resources :schedules
+  # resources :schedules
   resources :coaches
   resources :users
   resources :sessions
