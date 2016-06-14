@@ -23,8 +23,8 @@ class ApplicationController < ActionController::Base
     @release_form = WebsitePdf.where(:file_name => "Tricks_Release_Form").first
     @family_rules = WebsitePdf.where(:file_name => "Tricks_Family_Rules").first
     @class_sessions = WebsitePdf.where(:file_name => "Tricks_Class_Sessions").first
-  	@application = WebsitePdf.where(file_name: "Tricks Instructor Application").first
-  	@office_application = WebsitePdf.where(file_name: "Tricks Office Application").first
+  	@application = WebsitePdf.where(file_name: "Tricks_Instructor_Application").first
+  	@office_application = WebsitePdf.where(file_name: "Tricks_Office_Application").first
   end
   
   rescue_from CanCan::AccessDenied do |exception|
