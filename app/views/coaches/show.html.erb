@@ -13,7 +13,7 @@
           <%= link_to 'Edit', edit_coach_path(@coach) %> |
         <% end %>
         <% if can? :manage, Coach %>
-          <%= link_to 'Delete', @coach, method: :delete, data: { confirm: 'This will permanantly delete the record for this employee, if you would like to keep the record, but remove it from the publicly viewable list, just click edit, and uncheck the "Current Employee" box under their name. Do you still want to delete this record?' } %> |
+          <%= link_to 'Delete', @coach, method: :delete, data: { confirm: 'This will permanantly delete the record for this employee, if you would like to keep the record, but remove it from the publicly viewable list, just click edit, and uncheck the "Current Employee" box under their name. Do you still want to delete this record?' } %>
         <% end %>
         <h3><% if can? :manage, Coach %><%= @coach.firstname %> <%= @coach.lastname %><% else %><%= @coach.firstname %><% end %></h3>
         

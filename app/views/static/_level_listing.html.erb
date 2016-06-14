@@ -33,8 +33,13 @@
 				</div>
 			</div>
 		<% end %>
-		<div class="row" style="margin-bottom: 40px;">
+		<div class="row" style="margin-bottom: 10px;">
 			<%= level.short_description %>
+		</div>
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="columns small-12">
+				<h4 style="text-align: center;"><span style="margin-right: 50px;"><%= level.length %> mins</span>$<%= level.price %>/month</h4>
+			</div>
 		</div>
 		
 		<% if !level.show_registration %>

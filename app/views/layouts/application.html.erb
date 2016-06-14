@@ -106,7 +106,18 @@
                 <li><%= link_to "Ad Types", recital_ad_types_path %></li>
               </ul>
             </li>
-
+            
+		        <% if can? :create, WebsitePdf %>
+              <li><%= link_to "Website PDFs", website_pdfs_path %></li>
+            <% end %>
+            
+        		<% if can? :manage, Absent %>
+        			<li><%= link_to "Absences", absents_path %></li>
+        		<% end %>
+            
+        		<% if can? :manage, DiscontinueNotice %>
+        			<li><%= link_to "Notices of Discontinuation", discontinue_notices_path %></li>
+        		<% end %>
             <!--<li class="has-submenu">-->
             <!--  <%#= link_to "Surveys", 'javascript:void(0);' %>-->
             <!--  <ul class="submenu menu vertical" data-submenu>-->
@@ -211,17 +222,36 @@
                   </ul>
                 </li>
                 <li><%= testimonials_link = link_to "Testimonials", site_comments_path %></li>
+            
+            		<% if !@family_rules.nil? %>
+            			<li><%= family_rules_link = link_to @family_rules.file_name.sub("Tricks_","").tr("_"," "), @family_rules %></li>
+            		<% end %>
+            		
+            		<% if !@newsletter.nil? %>
+                  <li><%= newsletter_link = link_to @newsletter.file_name.sub("Tricks_","").tr("_"," "), @newsletter %></li>
+            		<% end %>
               </ul>
             </li>
             <li class="has-submenu">
               <%= link_to "Forms", 'javascript:void(0);', class: 'main-menu-item' %>
               <ul class="menu vertical">
                 <li><%= absence_link = link_to "Notice of Absence", new_absent_path %></li>
+
+            
+            		<% if !@class_sessions.nil? %>
+            			<li><%= class_sessions_link = link_to @class_sessions.file_name.sub("Tricks_","").tr("_"," "), @class_sessions %></li>
+            		<% end %>
+            		
+            		<% if !@release_form.nil? %>
+            			<li><%= release_form_link = link_to @release_form.file_name.sub("Tricks_","").tr("_"," "), @release_form %></li>
+            		<% end %>
+            		
+                <li><%= discontinue_link = link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
+            		
+                <li><%= employment_link = link_to "Employment", employment_path %></li>
                 <li><%= recital_ad_link = link_to "Recital Ad Online Order", recital_ads_ad_select_path %></li>
                 <!--<li><%#= surveys_link = link_to "Surveys", surveys_path %></li>-->
-                <!--<li><%#= pdfs_link = link_to "Website PDFs", website_pdfs_path %></li>-->
                 <!--<li><%#= world_link = link_to "Where in the World", worlds_path %></li>-->
-                <li><%= discontinue_link = link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
               </ul>
             </li>
             <!-- <li><%#= faq_link = link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
@@ -296,14 +326,26 @@
                 </ul>
               </li>
               <li><%= testimonials_link %></li>
+              <li><%= family_rules_link %></li>
+              <li><%= newsletter_link %></li>
             </ul>
           </li>
           <li>
             <a href="#">Forms</a>
             <ul class="vertical menu">
               <li><%= absence_link %></li>
-              <li><%= recital_ad_link %></li>
+              
+          		<% if !@class_sessions.nil? %>
+          			<li><%= class_sessions_link %></li>
+          		<% end %>
+          		
+          		<% if !@release_form.nil? %>
+          			<li><%= release_form_link %></li>
+          		<% end %>
+            		
               <li><%= discontinue_link %></li>
+              <li><%= employment_link %></li>
+              <li><%= recital_ad_link %></li>
             </ul>
           </li>
           <li><%= blog_link %></li>
@@ -483,17 +525,7 @@
                   </ul>
                 </div>
                 <div class="columns medium-3 small-6">
-                  <h3 class="footer-header">Forms</h3>
-                  <ul>
-                    <%= if defined? absence_link then ('<li>' + absence_link + '</li>').html_safe end %>
-                    <%= if defined? recital_ad_link then ('<li>' + recital_ad_link + '</li>').html_safe end %>
-                    <%= if defined? surveys_link then ('<li>' + surveys_link + '</li>').html_safe end %>
-                    <%= if defined? pdfs_link then ('<li>' + pdfs_link + '</li>').html_safe end %>
-                    <%= if defined? world_link then ('<li>' + world_link + '</li>').html_safe end %>
-                    <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
-                  </ul>
-                </div>
-                <div class="columns medium-3 small-6">
+                  
                   <h3 class="footer-header">About Us</h3>
                   <ul>
                     <%= if defined? story_link then ('<li>' + story_link + '</li>').html_safe end %>
@@ -507,6 +539,21 @@
                       </ul>
                     </li>
                     <%= if defined? testimonials_link then ('<li>' + testimonials_link + '</li>').html_safe end %>
+                    <%= if defined? family_rules_link then ('<li>' + family_rules_link + '</li>').html_safe end %>
+                    <%= if defined? newsletter_link then ('<li>' + newsletter_link + '</li>').html_safe end %>
+                  </ul>
+                </div>
+                <div class="columns medium-3 small-6">
+                  <h3 class="footer-header">Forms</h3>
+                  <ul>
+                    <%= if defined? absence_link then ('<li>' + absence_link + '</li>').html_safe end %>
+                    <%= if defined? class_sessions_link then ('<li>' + class_sessions_link + '</li>').html_safe end %>
+                    <%= if defined? release_form_link then ('<li>' + release_form_link + '</li>').html_safe end %>
+                    <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
+                    <%= if defined? employment_link then ('<li>' + employment_link + '</li>').html_safe end %>
+                    <%= if defined? recital_ad_link then ('<li>' + recital_ad_link + '</li>').html_safe end %>
+                    <%= if defined? surveys_link then ('<li>' + surveys_link + '</li>').html_safe end %>
+                    <%= if defined? world_link then ('<li>' + world_link + '</li>').html_safe end %>
                   </ul>
                   <!--<h3 class="footer-header"><%#= link_to "FAQ", '#', class: 'main-menu-item' %></h3>-->
                   <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>

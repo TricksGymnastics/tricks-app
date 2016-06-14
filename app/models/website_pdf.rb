@@ -6,13 +6,15 @@ class WebsitePdf < ActiveRecord::Base
 
   FILENAMES = [
   	'Tricks Newsletter',
-  	'Tricks Registration Form',
+  # 	'Tricks Registration Form',
   	'Tricks Release Form',
   	'Tricks Family Rules',
   	'Tricks Class Sessions',
-  	'Dance Schedule (GraniteBay)',
-  	'Dance Schedule (Folsom)',
-  	'Dance Schedule (Sacramento)',
+  	'Tricks Instructor Application',
+  	'Tricks Office Application',
+  # 	'Dance Schedule (GraniteBay)',
+  # 	'Dance Schedule (Folsom)',
+  # 	'Dance Schedule (Sacramento)',
   ]
   def to_param
     "#{file_name}"

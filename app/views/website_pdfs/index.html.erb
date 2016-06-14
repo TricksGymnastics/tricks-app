@@ -7,16 +7,18 @@
 <div class="content" style="margin-bottom: 150px;">
   <h1>Website PDFs</h1>
 
-  <h2 style="text-align:center;"><%= link_to 'New Website PDF', new_website_pdf_path, id:'link', style: 'font-size: 26px;' %></h2>
+  <h2 style="text-align:center;"><%= link_to 'Update a Website PDF', new_website_pdf_path, id:'link', style: 'font-size: 26px;' %></h2>
   <br>
-  <ul style="text-align:center;">
+  <div class="row">
   <% @website_pdfs.each do |website_pdf| %>
-    <li>
-      <%= link_to website_pdf.file_name.tr("_"," "), website_pdf, id: 'link' %>
+    <div class="column medium-3 small-12" style="text-align:center;">
+      <h5><%= link_to website_pdf.file_name.tr("_"," "), website_pdf, id: 'link' %></h5>
+      <iframe src="<%= website_pdf.file.url %>" style="margin-bottom: 40px; width:100%; height: 400px; border:solid #444 2px;" frameborder="0"></iframe>
+      
       <%#= Both Edit and Destroy are broken while using the file_name in the URL. This is a bit of a non issue because I overwrite existing files if another one of the same name is uploaded. And files really shouldn't be deleted.%>
       <!-- <td><%#= link_to 'Edit', edit_website_pdf_path(website_pdf.id) %></td> -->
       <!-- <td><%#= link_to 'Destroy', website_pdf, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-    </li>
+    </div>
   <% end %>
-  </ul>
+  </div>
 </div>
