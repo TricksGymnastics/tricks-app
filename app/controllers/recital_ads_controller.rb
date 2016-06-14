@@ -71,6 +71,7 @@ class RecitalAdsController < ApplicationController
   end
 
   def set_variables
+    super
     @needs_stripe = true
   end
 
