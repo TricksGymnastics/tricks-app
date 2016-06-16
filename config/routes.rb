@@ -4,22 +4,6 @@ Comments::Application.routes.draw do
 
   get '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}  
 
-  # get 'schedules/choose'  
-  # get 'schedules/gb_gym'
-  # get 'schedules/gb_tb'
-  # get 'schedules/gb_dance'
-  # get 'schedules/gb_tag'
-  # get 'schedules/fol_gym'
-  # get 'schedules/fol_tb'
-  # get 'schedules/fol_dance'
-  # get 'schedules/fol_swim'
-  # get 'schedules/fol_tag'
-  # get 'schedules/sac_gym'
-  # get 'schedules/sac_tb'
-  # get 'schedules/sac_dance'
-  # get 'schedules/sac_tag'
-  # get 'schedules/by_gym'
-
   get 'coaches/type/:name' => "coaches#type"
   get 'coaches/loc/:name' => "coaches#loc"
   get 'coaches/past_employees' => "coaches#past_employees"
@@ -56,15 +40,9 @@ Comments::Application.routes.draw do
   resources :bubble_contents
   # resources :training_videos
 
-  %w[gymnastics tumblebunnies tag dance preschool_dance swim events locations site_comments hosting competitive teamgym birthdays princess_party camps dancecamps campus employment missing nutcracker polkadots recitals recital_ad_order_thank_you show_schedules survey_thank_you summer thankyou tricksu_old turkeycamp underconstruction registration].each do |page|
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party camps campus employment recital_ad_order_thank_you survey_thank_you thankyou].each do |page|
     get page, controller: "static", action: page
   end
-
-  # get 'dance_company' => 'dance_company#index'
-  # %w[index about auditions empty_page events gallery].each do |page|
-  #   get 'dance_company/'+page, controller: 'dance_company', action: page
-  # end
-  
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

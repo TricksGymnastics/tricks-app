@@ -1,2 +1,0 @@
-class DanceCompanyController < StaticController
-end
