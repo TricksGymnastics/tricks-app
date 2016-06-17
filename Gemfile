@@ -56,3 +56,5 @@ gem 'nokogiri'
 gem 'foundation-rails'
 
 gem 'httparty' #needed to get json info from jackrabbit
+
+gem "wysiwyg-rails"

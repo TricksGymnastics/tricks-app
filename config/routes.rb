@@ -1,5 +1,6 @@
 Comments::Application.routes.draw do
 
+  resources :camps
   root :to => 'static#index'
 
   get '(errors)/:status', to: 'errors#show', constraints: {status: /\d{3}/}  
@@ -40,7 +41,7 @@ Comments::Application.routes.draw do
   resources :bubble_contents
   # resources :training_videos
 
-  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party camps campus employment recital_ad_order_thank_you survey_thank_you thankyou].each do |page|
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party camps_old campus employment recital_ad_order_thank_you survey_thank_you thankyou].each do |page|
     get page, controller: "static", action: page
   end
 

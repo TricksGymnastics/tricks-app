@@ -440,11 +440,14 @@ body.is-reveal-open{
 	margin-top: -1rem;
 }
 
+
+
 #ui-datepicker-div{
 	border: solid 1px #666;
 	box-shadow: 0 0 20px #444;
 	background-color: $white;
 	padding: 10px;
+	z-index: 10 !important;
 }
 
 .ui-datepicker-prev{

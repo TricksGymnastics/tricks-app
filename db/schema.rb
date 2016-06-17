@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426165110) do
+ActiveRecord::Schema.define(version: 20160616180636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 20160426165110) do
     t.integer  "sort_order"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "camps", force: :cascade do |t|
+    t.string   "title"
+    t.date     "registration_opens"
+    t.date     "registration_closes"
+    t.string   "image"
+    t.text     "description"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "classtypes", force: :cascade do |t|

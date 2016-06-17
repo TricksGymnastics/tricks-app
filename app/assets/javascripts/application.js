@@ -15,13 +15,11 @@
 //= require jquery_ujs
 //= require jquery.minicolors
 //= require foundation
-// require turbolinks
 //= require_directory .
 
 /*global $*/
 
 $(function(){ $(document).foundation(); });
-
 
 $(window).bind("load", function () {
     var footer = $("#footer");

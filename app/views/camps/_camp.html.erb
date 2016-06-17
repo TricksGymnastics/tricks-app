@@ -1,0 +1,12 @@
+<div class="row align-center">
+    <div class="columns small-12 large-10" style="border: solid 2px #555; box-shadow: 0 0 20px #999; margin-bottom: 50px; border-radius: 25px;">
+        <h1>
+            <%= given_camp.title %> 
+            <% if can? :manage, Camp %>
+                (<%= link_to "Edit", edit_camp_path(given_camp) %>)
+            <% end %>
+        </h1>
+        <%= given_camp.image %>
+        <%= given_camp.description.html_safe %>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  registration_opens: 2016-06-16
+  registration_closes: 2016-06-16
+  image: MyString
+  description: MyText
+
+two:
+  title: MyString
+  registration_opens: 2016-06-16
+  registration_closes: 2016-06-16
+  image: MyString
+  description: MyText

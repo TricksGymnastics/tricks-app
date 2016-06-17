@@ -180,6 +180,8 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
+    font-awesome-rails (4.6.3.0)
+      railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     foundation-rails (6.1.2.0)
       railties (>= 3.1.0)
@@ -311,6 +313,9 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     will_paginate (3.1.0)
+    wysiwyg-rails (2.3.2)
+      font-awesome-rails (~> 4.4, >= 4.4.0.0)
+      railties (>= 3.2, < 5.0)
     xml-simple (1.1.5)
     yaml_db (0.3.0)
       rails (>= 3.0, < 4.3)
@@ -345,6 +350,7 @@ DEPENDENCIES
   uglifier
   web-console (~> 2.0)
   will_paginate
+  wysiwyg-rails
   yaml_db
 
 BUNDLED WITH

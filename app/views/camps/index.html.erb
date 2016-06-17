@@ -1,0 +1,7 @@
+<% if can? :manage, Camp %>
+  <h1><%= link_to 'Add a New Camp', new_camp_path %></h1>
+<% end %>
+
+<% @camps.each do |camp| %>
+  <%= render partial: 'camp', locals: {given_camp: camp} %>
+<% end %>
