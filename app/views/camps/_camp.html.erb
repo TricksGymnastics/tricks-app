@@ -1,12 +1,18 @@
 <div class="row align-center">
-    <div class="columns small-12 large-10" style="border: solid 2px #555; box-shadow: 0 0 20px #999; margin-bottom: 50px; border-radius: 25px;">
-        <h1>
-            <%= given_camp.title %> 
-            <% if can? :manage, Camp %>
-                (<%= link_to "Edit", edit_camp_path(given_camp) %>)
-            <% end %>
-        </h1>
-        <%= image_tag given_camp.image_url %>
-        <%= given_camp.description.html_safe %>
+    <% if can? :manage, Camp %>
+        <div class="columns small-12">
+            <h1 style="margin: 0; font-size: 30px;"><%= link_to "Edit Camp", edit_camp_path(given_camp) %></h1>
+        </div>
+    <% end %>
+    <div class="columns small-12 large-10" style="border: solid 2px #555; box-shadow: 0 0 20px #999; margin-bottom: 50px; border-radius: 25px; padding: 0; overflow: hidden;">
+        <% if !given_camp.title.nil? && !given_camp.title.empty? %>
+            <h1><%= given_camp.title %></h1>
+        <% end %>
+        <% if !given_camp.image_url.nil? && !given_camp.image_url.empty? %>
+            <%= image_tag given_camp.image_url %>
+        <% end %>
+        <div style="padding: 35px;">
+            <%= given_camp.description.html_safe %>
+        </div>
     </div>
 </div>
