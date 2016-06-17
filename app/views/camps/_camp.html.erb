@@ -6,7 +6,7 @@
                 (<%= link_to "Edit", edit_camp_path(given_camp) %>)
             <% end %>
         </h1>
-        <%= given_camp.image %>
+        <%= image_tag given_camp.image_url.to_s %>
         <%= given_camp.description.html_safe %>
     </div>
 </div>
