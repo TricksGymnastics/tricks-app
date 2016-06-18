@@ -46,6 +46,8 @@ class Ability
 			can :manage, TricksUVideo
 			can :manage, DiscontinueNotice
 			can :manage, WebsitePdf
+			can :manage, Camp
+			can :manage, Party
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -68,6 +70,10 @@ class Ability
 			cannot :destroy, Survey
 			cannot :destroy, SurveyResult
 			cannot :destroy, Level
+			can :manage, Camp
+			cannot :destroy, Camp
+			can :manage, Party
+			cannot :destroy, Party
 		end 
 
 		if user.role == "coach"
