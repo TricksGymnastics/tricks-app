@@ -108,6 +108,17 @@
               </ul>
             </li>
             
+            <li class="has-sbmenu">
+              <%= link_to "New Parties", 'javascript:void(0);' %>
+              <ul class="submenu menu vertical" data-submenu>
+                <li><%= ultimate_fun_link = link_to "Ulimate Fun", Party.first %></li>
+                <li><%= ninja_warrior_link = link_to "Ninja Warrior", Party.second %></li>
+                <li><%= fun_and_games_link = link_to "Fun & Games", Party.third %></li>
+                <li><%= fairytale_link = link_to "Fairytale", Party.fourth %></li>
+                <li><%= ballet_link = link_to "Ballet", Party.fifth %></li>
+              </ul>
+            </li>
+            
 		        <% if can? :create, WebsitePdf %>
               <li><%= link_to "Website PDFs", website_pdfs_path %></li>
             <% end %>
@@ -176,15 +187,8 @@
             <li class="has-submenu">
               <%= link_to "Parties", 'javascript:void(0);', class: 'main-menu-item'  %>
               <ul class="menu vertical">
-                  <li><%= gym_parties_link = link_to "Gymnastics Parties", birthdays_path %></li>
-                  <li><%= dance_parties_link = link_to "Dance Parties", princess_party_path %></li>
-                
-                <!--  <li><%#= link_to "Ulimate Fun", birthdays_path %></li>-->
-                <!--  <li><%#= link_to "Ninja Warrior", birthdays_path %></li>-->
-                <!--  <li><%#= link_to "Fun & Games", birthdays_path %></li>-->
-                <!--  <li><%#= link_to "Fairytale", princess_party_path %></li>-->
-                <!--  <li><%#= link_to "Ballet", princess_party_path %></li>-->
-                </li>
+                <li><%= gym_parties_link = link_to "Gymnastics Parties", birthdays_path %></li>
+                <li><%= dance_parties_link = link_to "Dance Parties", princess_party_path %></li>
               </ul>
             </li>
             <li class="has-submenu">
