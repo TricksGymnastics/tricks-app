@@ -55,7 +55,7 @@ gem 'google-analytics-rails'
 gem 'premailer-rails'
 gem 'nokogiri'
 
-gem 'foundation-rails'
+gem 'foundation-rails', '6.1.2.0'
 
 gem 'httparty' #needed to get json info from jackrabbit
 
