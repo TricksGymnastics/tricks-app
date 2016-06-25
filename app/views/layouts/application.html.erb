@@ -195,15 +195,7 @@
               <%= link_to "Events", 'javascript:void(0);', class: 'main-menu-item' %>
               <ul class="menu vertical">
                 <li><%= datenight_link =  link_to "Kids Night Out", datenights_path %></li>
-                <li class="has-submenu">
-                  <%= camps_link = link_to "Camps", camps_path %>
-                  <!--<ul class="menu vertical">
-                    <li><%#= link_to "Spring Break", camps_path %></li>
-                    <li><%#= link_to "Summer", camps_path %></li>
-                    <li><%#= link_to "Turkey", camps_path %></li>
-                    <li><%#= link_to "Holiday", camps_path %></li>
-                  </ul> -->
-                </li>
+                <li><%= camps_link = link_to "Camps", camps_path %></li>
               </ul>
             </li>
             
@@ -216,7 +208,7 @@
             <li class="has-submenu">
               <%= link_to "About Us", 'javascript:void(0);', class: 'main-menu-item' %>
               <ul class="menu vertical">
-                <!--<li><%#= story_link = link_to "Our Story", '#' %></li>-->
+                <li><%= story_link = link_to "Our Story", our_story_path %></li>
                 <li><%= facilities_link = link_to "Our Facilities", locations_path %></li>
                 <li class="has-submenu">
                   <%= link_to "Our Staff", "javascript:void()" %>
@@ -254,7 +246,7 @@
                 <li><%= discontinue_link = link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
             		
                 <li><%= employment_link = link_to "Employment", employment_path %></li>
-                <li><%= recital_ad_link = link_to "Recital Ad Online Order", recital_ads_ad_select_path %></li>
+                <!--<li><%#= recital_ad_link = link_to "Recital Ad Online Order", recital_ads_ad_select_path %></li>-->
                 <!--<li><%#= surveys_link = link_to "Surveys", surveys_path %></li>-->
                 <!--<li><%#= world_link = link_to "Where in the World", worlds_path %></li>-->
               </ul>
@@ -350,7 +342,7 @@
             		
               <li><%= discontinue_link %></li>
               <li><%= employment_link %></li>
-              <li><%= recital_ad_link %></li>
+              <!--<li><%#= recital_ad_link %></li>-->
             </ul>
           </li>
           <li><%= blog_link %></li>

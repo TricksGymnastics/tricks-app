@@ -26,7 +26,7 @@
       <% coach.classtypes.each do |classtype| %>     
         <% if shown == false %>
           <% if classtype.name == "Gymnastics" || classtype.name == "Tumblebunnies" %>
-              <%= render 'coach_container', :coach => coach  %>
+              <%= render partial: 'coach_container', locals: {coach: coach } %>
               <% shown = true %>
           <% end %>
         <% end %>
@@ -41,7 +41,7 @@
     <% @coaches_by_location.each do |coach| %>  
       <% coach.classtypes.each do |classtype| %>    
         <% if classtype.name == "TAG" %>          
-          <%= render 'coach_container', :coach => coach  %>
+          <%= render partial: 'coach_container', locals: {coach: coach, tag: true } %>
         <% end %>
       <% end %>
     <% end %>

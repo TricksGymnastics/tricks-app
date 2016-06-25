@@ -22,7 +22,6 @@ class PartiesController < ApplicationController
   # POST /parties
   def create
     @party = Party.new(party_params)
-
     if @party.save
       redirect_to @party, notice: 'Party was successfully created.'
     else
@@ -53,6 +52,6 @@ class PartiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def party_params
-      params.require(:party).permit(:title, :description, :video, :image)
+      params.require(:party).permit(:title, :description, :video, :image, :image2, :image3)
     end
 end

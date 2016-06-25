@@ -19,6 +19,7 @@ class Coach < ActiveRecord::Base
 	validates_presence_of :gender, :location_ids, :level_ids, :classtype_ids
 	
 	mount_uploader :image, CoachImageUploader
+	mount_uploader :tag_image, CoachImageUploader
 
 	default_scope {order('coaches.id')}
 

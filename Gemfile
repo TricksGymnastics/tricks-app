@@ -38,9 +38,11 @@ gem 'thin'
 gem 'cancancan'
 gem 'will_paginate'
 
-gem 'mini_magick'
 gem "carrierwave"
-gem "fog"
+gem 'mini_magick'
+gem 'fog-google'
+gem 'google-api-client'
+# gem "fog"
 
 gem "fancybox2-rails"
 
