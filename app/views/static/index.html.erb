@@ -12,12 +12,12 @@
 
 <% main_picture_height = 500 %>
 <div class="row show-for-large" style="height: <%= main_picture_height %>px;">
-	<div class="column large-4" style="position: relative;">
+	<div class="column large-4 xlarge-3" style="position: relative;">
 		<% main_bubble = 0 %>
         <% if BubbleContent.exists?(sort_order: main_bubble) %>
 			<%= render :partial => "bubble_contents/bubble", locals: { data_toggle: 'register_now_modal', given_bubble: BubbleContent.where(sort_order: main_bubble).first} %>
 		<% end %>
-		<div style="position: absolute; bottom: -60px; right: -60px; width: 60%; height: 60%;">
+		<div style="position: absolute; top: 38%; right: -60px; width: 60%; height: 60%;">
 			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 1).first} %>
 		</div>
 	</div>
