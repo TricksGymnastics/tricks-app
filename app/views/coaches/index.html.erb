@@ -9,10 +9,10 @@
 <% end %>
 
 <div class="row" style="border: dashed 1px #444; padding-top: 1rem;">
-  <div class="columns medium-3"><h3>Staff by Location:</h3></div>
-  <div class="columns medium-3"><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, class: "button expanded" %></div>
-  <div class="columns medium-3"><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, class: "button expanded"  %></div>
-  <div class="columns medium-3"><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, class: "button expanded"  %></div>
+  <div class="column large-3"><h3>Staff by Location:</h3></div>
+  <div class="column large-3"><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, class: "button expanded" %></div>
+  <div class="column large-3"><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, class: "button expanded"  %></div>
+  <div class="column large-3"><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, class: "button expanded"  %></div>
 </div>
   <%# This contains a bug in coaches_controller type because the name of the class is Classtype, yeah i was a newb when i did that... Too lazy to go through and change to "Program" so i'm just cutting this section out, no one uses it anyways %>
   <!-- div style="padding: 6px; height: 50px; float:left; width: 455px; border: dashed 1px #444; margin: 0 5px;">
@@ -26,7 +26,7 @@
 </div> -->
 
 <div class="row align-center" id="classtype-container">
-  <div class="columns small-12">
+  <div class="column small-12">
     <h2>Granite Bay</h2>
   </div>
   <div class="row align-center">
@@ -41,7 +41,7 @@
 </div>
 
 <div class="row align-center" id="classtype-container">
-  <div class="columns small-12">
+  <div class="column small-12">
     <h2>Folsom</h2>
   </div>
   <div class="row align-center">
@@ -56,7 +56,7 @@
 </div>
 
 <div class="row align-center" id="classtype-container">
-  <div class="columns small-12">
+  <div class="column small-12">
     <h2>Sacramento</h2>
   </div>
   <div class="row align-center">

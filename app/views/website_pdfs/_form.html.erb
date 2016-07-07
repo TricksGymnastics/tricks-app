@@ -13,7 +13,7 @@
 
     
   <div class="row align-center">
-    <div class="column medium-4 small-10">
+    <div class="column large-4 small-10">
       <div class="input-group">
         <%= f.label :file_name, "PDF Being Updated: ", class: "input-group-label" %>
         <%= f.select :file_name, WebsitePdf::FILENAMES, :prompt => "Select a File Name", class: "input-group-field" %>
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="row align-center">
-    <div class="column medium-4 small-10">
+    <div class="column large-4 small-10">
       <div class="input-group">
         <%= f.label :file, "Choose PDF", class: "button expanded success" %>
         <%= f.file_field :file, class: "show-for-sr" %>
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="row align-center">
-    <div class="columns small-6 medium-2" style="margin-top: 50px;">
+    <div class="column small-6 large-2" style="margin-top: 50px;">
       <%= f.submit "Submit", class: "button expanded" %>
     </div>
   </div>

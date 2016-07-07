@@ -3,9 +3,9 @@
 <%= form_tag sessions_path do %>
 
 	<div class="row align-center">
-		<div class="columns small-12 medium-6">
+		<div class="column small-12 large-6">
 		    <div class="row">
-		      <div class="columns small-12">
+		      <div class="column small-12">
 		        <div class=" input-group">
 		          <%= label_tag :email, nil, class: "input-group-label" %>
 		          <%= text_field_tag :email, params[:email], class: "input-group-field" %>
@@ -14,7 +14,7 @@
 		    </div>
 		    
 		    <div class="row">
-		      <div class="columns small-12">
+		      <div class="column small-12">
 		        <div class=" input-group">
 		          <%= label_tag :password, nil, class: "input-group-label" %>
 		          <%= password_field_tag :password, nil, class: "input-group-field" %>

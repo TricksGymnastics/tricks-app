@@ -36,7 +36,7 @@ $(window).bind("load", function () {
 
 $(function(){
   var new_height = $("#mobile_menu").parent().height() + 10;
-  $("#mobile_menu").parent().css({"position":"fixed", "top":"48px", "left":"-100%", "z-index":"5", "width":"70%", 
+  $("#mobile_menu").parent().css({"position":"absolute", "top":"48px", "left":"-100%", "z-index":"5", "width":"70%", 
   "background-color":"#FEFEFE", "border":"solid 2px #666", "box-shadow":"0 0 25px #222", "height":new_height+"px"});
   
   

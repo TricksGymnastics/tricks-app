@@ -2,7 +2,7 @@
 
   <% if coach.current_employee? %>
   
-    <div class="columns medium-2 small-6" id="coach_container">
+    <div class="column large-2 medium-4 small-6" id="coach_container">
       <%= link_to coach.firstname+" "+coach.lastname, coach, id: "coach-name" %>
       <% if local_assigns[:tag] && !coach.tag_image.url.nil? && coach.tag_image_url.to_s.split('/').last.split('_').last != 'default.jpg'  %>
         <%= link_to image_tag(coach.tag_image_url(:thumb).to_s), coach %>   
@@ -13,7 +13,7 @@
     
   <% else %>
   
-    <div class="columns medium-2 small-6" id="coach_container">
+    <div class="column large-2 medium-4 small-6" id="coach_container">
       <%= link_to coach.firstname+" "+coach.lastname, coach, id: "past-coach-name" %>
       <% if local_assigns[:tag] && !coach.tag_image.url.nil? && coach.tag_image_url.to_s.split('/').last.split('_').last != 'default.jpg'  %>
         <%= link_to image_tag(coach.tag_image_url(:thumb).to_s), coach %>   
@@ -28,7 +28,7 @@
 
   <% if coach.current_employee? %>
   
-    <div class="columns medium-2 small-6" id="coach_container">
+    <div class="column large-2 medium-4 small-6" id="coach_container">
       <%= link_to coach.firstname, coach, id: "coach-name" %>
       <% if local_assigns[:tag] && !coach.tag_image.url.nil? && coach.tag_image_url.to_s.split('/').last.split('_').last != 'default.jpg'  %>
         <%= link_to image_tag(coach.tag_image_url(:thumb).to_s), coach %>   

@@ -2,9 +2,9 @@
   Tricks Kids Night Out
 <% end %>
 
-<div class="row align-justify">
+<div class="row align-center">
   
-  <div class="column medium-3 small-12 small-order-2 medium-order-1" style="border: solid 2px #333; margin: 50px 0;">
+  <div class="column large-3 small-11 small-order-2 large-order-1" style="border: solid 2px #333; margin: 50px 0;">
     <h3>Register Here!</h3>
     <div class="row align-center">
       <div class="column small-11">
@@ -18,69 +18,77 @@
       </div>
     </div>
     
-    <div class="row">
-      <div class="column small-3">
-        <h5>Time:</h5>
-      </div>
-      <div class="column small-9">
-        <h5 style="text-align:right;"><%= @datenight.when_time %></h5>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="column small-3">
-        <h5>Price:</h5>
-      </div>
-      <div class="column small-9">
-        <h5 style="text-align:right; margin-bottom:0;">$<%= @datenight.single_price %> for first child</h5>
-        <h5 style="text-align:right;">$<%= @datenight.sibling_price %> for siblings</h5>
-      </div>
-    </div>
-    
-    <div class="row" style="margin-top: 30px;">
-      <div class="column small-12">
-        <h3><%= @datenight.schedule_title %> Schedule:</h3>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="column small-12">
-        <% @datenight.datenight_events.each do |d| %>
-          <div class="row align-center" style="margin-bottom: 15px;">
-            <div class="column small-12">
-              <h6 style="text-decoration: underline; margin: 0;"><%= d.title %></h6>
-              <p><i><%= d.description %></i></p>
-            </div>
-            <div class="column small-12">
-              <div class="row">
-                <div class="column small-5">
-                  Granite Bay:
-                </div>
-                <div class="column small-7" style="text-align:right;">
-                  <%= d.gb_date.strftime("%a, %B %e") %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="column small-6">
-                  Folsom:
-                </div>
-                <div class="column small-6" style="text-align:right;">
-                  <%= d.fol_date.strftime("%a, %B %e") %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="column small-6">
-                  Sacramento:
-                </div>
-                <div class="column small-6" style="text-align:right;">
-                  <%= d.sac_date.strftime("%a, %B %e") %>
-                </div>
-              </div>
-            </div>
+    <div class="row align-justify">
+      <div class="column small-12 medium-5 large-12 medium-order-2" style="margin-bottom: 30px;">
+        <div class="row">
+          <div class="column large-3">
+            <h5>Time:</h5>
           </div>
-        <% end %>
+          <div class="column large-9">
+            <h5 style="text-align:right;"><%= @datenight.when_time %></h5>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="column small-2 medium-3 large-3">
+            <h5>Price:</h5>
+          </div>
+          <div class="column small-10 medium-9 large-9">
+            <h5 style="text-align:right; margin-bottom:0;">$<%= @datenight.single_price %> for first child</h5>
+            <h5 style="text-align:right;">$<%= @datenight.sibling_price %> for siblings</h5>
+          </div>
+        </div>
+      </div>
+      <div class="column small-12 medium-6 large-12 medium-order-1">
+        <div class="row">
+          <div class="column small-12">
+            <h3><%= @datenight.schedule_title %> Schedule:</h3>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="column small-12">
+            <% @datenight.datenight_events.each do |d| %>
+              <div class="row align-center" style="margin-bottom: 15px;">
+                <div class="column small-12">
+                  <h6 style="text-decoration: underline; margin: 0;"><%= d.title %></h6>
+                  <p><i><%= d.description %></i></p>
+                </div>
+                <div class="column small-12">
+                  <div class="row">
+                    <div class="column small-5">
+                      Granite Bay:
+                    </div>
+                    <div class="column small-7" style="text-align:right;">
+                      <%= d.gb_date.strftime("%a, %B %e") %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="column small-6">
+                      Folsom:
+                    </div>
+                    <div class="column small-6" style="text-align:right;">
+                      <%= d.fol_date.strftime("%a, %B %e") %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="column small-6">
+                      Sacramento:
+                    </div>
+                    <div class="column small-6" style="text-align:right;">
+                      <%= d.sac_date.strftime("%a, %B %e") %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
+    
+    
+    
 
     <% if can? :manage, Datenight %>
       <div class="row align-center" style="margin-top: 30px;">
@@ -91,7 +99,7 @@
     <% end %>
   </div>
   
-  <div class="column medium-9 small-12 small-order-1 medium-order-2" style="padding: 0 30px;">
+  <div class="column large-9 small-12 small-order-1 large-order-2" style="padding: 0 30px;">
     <div class="row">
       <div class="column small-12">
         <h1>Kids Night Out</h1>

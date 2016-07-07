@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "FileSpecificCSS/tricks_u_videos", :media => "all" %>
 
 <div class="row" style="margin-top: -20px;">
-  <div class="columns small-12">
+  <div class="column small-12">
     <h1>TricksU Videos<% if !@category.nil? %> - <%= params[:category] %><% end %></h1>
   </div>
 </div>
@@ -9,14 +9,14 @@
 
 <% if can? :manage, TricksUVideo %>
   <div class="row">
-    <div class="columns small-12">
+    <div class="column small-12">
       <h3><%= link_to 'Add New Video', new_tricks_u_video_path %></h3>
     </div>
   </div>
 <% end %>
 
 <div class="row" style="margin-bottom: 150px;">
-  <div class="columns medium-2 tricksu-categories">
+  <div class="column large-2 tricksu-categories">
     <% @categories.each do |category| %>
       <div class="tricksu-category" <% if params[:category] == category.title %>id="tab-active"<% end %>>
         <% if params[:category].nil? %>
@@ -28,10 +28,10 @@
     <% end %>
   </div>
 
-  <div class="columns tricksu-videos">
+  <div class="column tricksu-videos">
     <div class="row">
       <% @videos_by_category.each do |video| %>
-        <div class="columns medium-4 small-6 preview-box">
+        <div class="column large-4 small-6 preview-box">
           <h5 style="text-align: center;"><%= video.title %></h5>
           <%= link_to image_tag("http://img.youtube.com/vi/" + video.url.split("/").last + "/0.jpg"), video %>
           <% if can? :manage, TricksUVideo %>

@@ -16,20 +16,20 @@
   
 
   <div class="row">
-    <div class="columns medium-12 small-12">
+    <div class="column large-12 ">
       <%= f.label :reason, "Reason for Discontinuing", class: "input-group-label" %>
       <%= f.text_area :reason, required: true, placeholder: "Please be helpful", maxlength: 255, style: "height: 120px" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="columns medium-6 small-12">
+    <div class="column large-6 ">
       <div class=" input-group">
         <%= f.label :student_first_name, "First Name", class: "input-group-label" %>
         <%= f.text_field :student_first_name, required: true, placeholder: "Student First Name", class: "input-group-field" %>
       </div>
     </div>
-    <div class="columns medium-6 small-12">
+    <div class="column large-6 ">
       <div class="input-group">
         <%= f.label :student_last_name, "Last Name", class: "input-group-label" %>
         <%= f.text_field :student_last_name, required: true, placeholder: "Student Last Name", class: "input-group-field" %>
@@ -38,13 +38,13 @@
   </div>
   
   <div class="row">
-    <div class="columns medium-6 small-12">
+    <div class="column large-6 ">
       <div class=" input-group">
         <%= f.label :location, class: "input-group-label" %>
         <%= f.select :location, DiscontinueNotice::LOCATIONS, {:prompt => "Select a Location"}, required: true, class: "input-group-field" %>
       </div>
     </div>
-    <div class="columns medium-6 small-12">
+    <div class="column large-6 ">
       <div class="input-group">
         <%= f.label :parent_name, "Parent Name", class: "input-group-label" %>
         <%= f.text_field :parent_name, required: true, class: "input-group-field" %>
@@ -53,13 +53,13 @@
   </div>
   
   <div class="row">
-    <div class="columns medium-6 small-12">
+    <div class="column large-6 ">
       <div class=" input-group">
         <%= f.label :class_day, "Class Day", class: "input-group-label" %>
         <%= f.select :class_day, DiscontinueNotice::DAYS, {:prompt => "Select a Day"}, required: true, class: "input-group-field" %>
       </div>
     </div>
-    <div class="columns medium-6 small-12">
+    <div class="column large-6 ">
       <div class="input-group">
         <%= f.label :class_time, "Class Time", class: "input-group-label" %>
         <%= f.text_field :class_time, type: "time", required: true, class: "input-group-field", style: "padding: 5px 0.5rem" %>
@@ -68,7 +68,7 @@
   </div>
   
   <div class="row align-center">
-    <div class="columns medium-6 small-12">
+    <div class="column large-6 ">
       <div class=" input-group">
         <%= f.label :last_day, "Last Day of Class", class: "input-group-label" %>
         <%= f.text_field :last_day, id: 'last_day_date', class: "input-group-field" %>
@@ -79,10 +79,10 @@
   
  
   <div class="row">
-    <div class="columns shrink">
+    <div class="column shrink">
       <%= f.check_box :understood, required: true %>
     </div>
-    <div class="columns">
+    <div class="column">
       <%= f.label :understood, "I understand that my account must be at a zero (0) balance and that make-ups can only be used on an enrolled family member." %>
     </div>
   </div>

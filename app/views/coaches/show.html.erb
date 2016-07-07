@@ -1,14 +1,14 @@
 <%= stylesheet_link_tag "FileSpecificCSS/coaches", :media => "all" %>
 
 <div class="row" style="padding-top: 20px; margin-bottom: 150px;">
-  <div class="columns medium-3 small-12" style="text-align:center;">
+  <div class="column large-3 " style="text-align:center;">
     <div class="row">
-      <div class="columns small-12">
+      <div class="column small-12">
         <%= image_tag @coach.image_url(:thumb).to_s, style: "border: 2px solid #333; box-shadow: 0 0 15px #333;" %>
       </div>
     </div>
     <div class="row">
-      <div class="columns small-12">
+      <div class="column small-12">
         <% if can? :edit, Coach %>
           <%= link_to 'Edit', edit_coach_path(@coach) %> |
         <% end %>
@@ -32,7 +32,7 @@
       </div>
     </div>
   </div>
-  <div class="columns">
+  <div class="column">
       
     <% if can? :manage, Coach %>
       <% if @coach.startdate.nil? %>

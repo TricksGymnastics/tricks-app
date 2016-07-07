@@ -81,10 +81,10 @@ select{
 
 // Adjust width accordingly (use even #'s)
 $logo-width: 200px;
+$small-logo-width: 140px;
 // Reduce px value to increase space between logo and menu text
-$logo-padding: $logo-width - 32px; 
-// Leave alone
-$logo-margin: - ($logo-width / 2);
+$logo-padding: ($logo-width / 2) + 20px;
+$small-logo-padding: ($small-logo-width / 2) + 20px;
 
 /* Small Navigation */
 .logo-small {
@@ -178,34 +178,60 @@ $logo-margin: - ($logo-width / 2);
 
 #main-menu{
 	.main-menu-item{
-		font-size: 20px;
+		@include breakpoint(xlarge up){
+			font-size: 20px;
+		}
+		@include breakpoint(large down){
+			font-size: 14px;
+		}
 		color: $white;
 	}
 	
 	.main-menu-button{
-		font-size: 20px; 
+		@include breakpoint(xlarge up){
+			font-size: 20px;
+			padding: 7px 10px;
+		}
+		@include breakpoint(large down){
+			font-size: 14px;
+			padding: 7px 10px;
+		}
 		background-color: $tricks-orange; 
-		border-radius: 5px; 
-		padding: 7px 10px;
+		border-radius: 5px;
 	}
 
 	.logo-wrapper {
 		position: relative;
 		
 		.logo {
-			width: $logo-width;
+			@include breakpoint(xlarge up){
+				width: $logo-width;
+			}
+			@include breakpoint(large down){
+				width: $small-logo-width;
+			}
 			height:  92px;
 			position: absolute;
 			left: 50%;
 			right: 50%;
-			margin-left: $logo-margin;
+			@include breakpoint(xlarge up){
+				margin-left: -($logo-width / 2);
+			}
+			@include breakpoint(large down){
+				margin-left: -($small-logo-width / 2);
+			}
 		}
 	}
 
 	// Right part
 	.top-bar-right {
 		width: 50%;
-		padding-left: $logo-padding;
+		@include breakpoint(xlarge up){
+			padding-left: $logo-padding;
+		}
+		@include breakpoint(large down){
+			padding-left: $small-logo-padding;
+		}
 		
 		ul {
 			float: left;
@@ -215,7 +241,12 @@ $logo-margin: - ($logo-width / 2);
 	// Left part
 	.top-bar-left {
 		width:  50%;
-		padding-right: $logo-padding;
+		@include breakpoint(xlarge up){
+			padding-right: $logo-padding;
+		}
+		@include breakpoint(large down){
+			padding-right: $small-logo-padding;
+		}
 		
 		ul {
 			float: right;
@@ -362,15 +393,31 @@ $curve_amount: 30px;
 }
 
 #register_now_modal{
-	padding: 50px;
+	@include breakpoint(xlarge up){
+		padding: 50px;
+	}
+	@include breakpoint(large down){
+		padding: 10px;
+	}
 	.location-button, .program-button{
-		padding: 15px;
-		font-size: 24px;
+		@include breakpoint(xlarge up){
+			padding: 15px;
+			font-size: 24px;
+		}
+		@include breakpoint(large down){
+			padding: 10px;
+			font-size: 18px;
+		}
 	}
 }
 
 #choose_program_modal{
-	margin-top: 75px;
+	@include breakpoint(xlarge up){
+		margin-top: 75px;
+	}
+	@include breakpoint(large down){
+		margin-top: 25px;
+	}
 }
 
 body.is-reveal-open{
@@ -447,7 +494,7 @@ body.is-reveal-open{
 	box-shadow: 0 0 20px #444;
 	background-color: $white;
 	padding: 10px;
-	z-index: 10 !important;
+	z-index: 101 !important;
 }
 
 .ui-datepicker-prev{

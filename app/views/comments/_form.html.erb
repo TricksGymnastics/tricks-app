@@ -13,21 +13,21 @@
     <% end %>
 
   <div class="row align-center">
-    <div class="column medium-10 small-12">
+    <div class="column large-10 ">
       <div class="row">
-        <div class="column medium-4 small-12">
+        <div class="column large-4 ">
           <div class="input-group">
             <%= f.label :name, "First Name", class: "input-group-label" %>
             <%= f.text_field :name, class: "input-group-field" %>
           </div>
         </div>
-        <div class="column medium-4 small-12">
+        <div class="column large-4 ">
           <div class="input-group">
             <%= f.label :email, class: "input-group-label" %>
             <%= f.email_field :email, class: "input-group-field" %>
           </div>
         </div>
-        <div class="column medium-4 small-12">
+        <div class="column large-4 ">
           <div class="input-group">
             <%= f.label :activity, class: "input-group-label" %>
             <%= f.select :activity, ['Gymnastics', 'TAG', 'Dance', "Swim"], :prompt => "Select an Activity", class: "input-group-field" %>
@@ -36,7 +36,7 @@
       </div>
       
       <div class="row">
-        <div class="columns medium-12 small-12">
+        <div class="column large-12 ">
           <%= f.label :comment, class: "input-group-label" %>
           <%= f.text_area :comment, placeholder: "Let us know how we are doing\n\nIf you are having an issue with billing please call your gym directly", style: "height: 200px" %>
         </div>
@@ -44,7 +44,7 @@
       
       <% if can? :update, @comment %>
         <div class="row align-center">
-          <div class="column medium-4 small-10">
+          <div class="column large-4 small-10">
             <div class="input-group">
               <%= f.label :score, class: "input-group-label" %>
               <%= f.number_field :score, :min => 0, :max => 10, class: "input-group-field" %>
