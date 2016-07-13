@@ -482,6 +482,16 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  
+  <%= link_to '#', '#', id: "uploading_modal_hidden_trigger", 'data-toggle': 'uploading_modal', style: "display: none;" %>
+  <div class="reveal fast" id="uploading_modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+    <div class="row align-center">
+      <h1>Uploading Files</h1>
+    </div>
+    <div class="row align-center">
+			<%= image_tag("loading-spinner.gif") %>
+    </div>
+  </div>
 
   <div id="footer" style="z-index: 100; margin-top: 150px;">
       <!--<div style="height: 100px; width: 100%; background-color: #fff;">-->

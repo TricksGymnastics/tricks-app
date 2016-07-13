@@ -62,6 +62,13 @@ $(function(){
     event.preventDefault();
     updateLocation(event.target.text);
   });
+  
+  $("input:submit").on('click', function(event){
+    $("input:file").each(function( index ) {
+      if ($(this).val() != "")
+        $("#uploading_modal_hidden_trigger").trigger('click');
+    });
+  });
 });
 
 function resetLocationButtons(){
