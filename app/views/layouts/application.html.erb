@@ -92,19 +92,33 @@
         </div>
         <div class="top-bar-right">
           <ul class="menu" data-responsive-menu="drilldown large-dropdown">
-            <li><%= link_to "Users", users_path %></li>
+		        <% if can? :manage, User %>
+              <li><%= link_to "Users", users_path %></li>
+            <% end %>
             
-            <li><%= link_to "Promos", promo_slides_path %></li>
+		        <% if can? :manage, PromoSlide %>
+              <li><%= link_to "Promos", promo_slides_path %></li>
+            <% end %>
+		        
+		        <% if can? :manage, BubbleContent %>
+              <li><%= link_to "Bubbles", bubble_contents_path %></li>
+            <% end %>
+
+		        <% if can? :manage, Comment %>
+              <li><%= link_to "Comments", comments_path %></li>
+            <% end %>
+
+		        <% if can? :manage, KidQuote %>
+              <li><%= link_to "Kid Quotes", kid_quotes_path %></li>
+            <% end %>
+
+		        <% if can? :manage, Level %>
+              <li><%= link_to "Levels", levels_path %></li>
+            <% end %>
             
-            <li><%= link_to "Bubbles", bubble_contents_path %></li>
-
-            <li><%= link_to "Comments", comments_path %></li>
-
-            <li><%= link_to "Kid Quotes", kid_quotes_path %></li>
-
-            <li><%= link_to "Levels", levels_path %></li>
-            
-            <li><%= link_to "TricksU", tricksu_path %></li>
+		        <% if can? :read, TricksUVideo %>
+              <li><%= link_to "TricksU", tricksu_path %></li>
+            <% end %>
             
             <!--<li class="has-submenu"><%#= link_to "Schedules", 'javascript:void(0);' %>-->
             <!--  <ul class="submenu menu vertical" data-submenu>-->
@@ -112,31 +126,37 @@
             <!--  </ul>-->
             <!--</li>-->
 
-            <li class="has-submenu"><%= link_to "Staff", 'javascript:void(0);' %>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><%= link_to "All Coaches", coaches_path %></li>
-                <li><%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"} %></li>
-              </ul>
-            </li>   
+		        <% if can? :manage, Coach %>
+              <li class="has-submenu"><%= link_to "Staff", 'javascript:void(0);' %>
+                <ul class="submenu menu vertical" data-submenu>
+                  <li><%= link_to "All Coaches", coaches_path %></li>
+                  <li><%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"} %></li>
+                </ul>
+              </li>   
+            <% end %>
 
-            <li class="has-submenu">
-              <%= link_to "Recital Ads", 'javascript:void(0);' %>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><%= link_to "View Orders", "/recital_ads_by_year/"+Time.now.year.to_s %></li>
-                <li><%= link_to "Ad Types", recital_ad_types_path %></li>
-              </ul>
-            </li>
+		        <% if can? :manage, RecitalAd %>
+              <li class="has-submenu">
+                <%= link_to "Recital Ads", 'javascript:void(0);' %>
+                <ul class="submenu menu vertical" data-submenu>
+                  <li><%= link_to "View Orders", "/recital_ads_by_year/"+Time.now.year.to_s %></li>
+                  <li><%= link_to "Ad Types", recital_ad_types_path %></li>
+                </ul>
+              </li>
+            <% end %>
             
-            <li class="has-sbmenu">
-              <%= link_to "New Parties", 'javascript:void(0);' %>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><%= ultimate_fun_link = link_to "Ulimate Fun", Party.first %></li>
-                <li><%= ninja_warrior_link = link_to "Ninja Warrior", Party.second %></li>
-                <li><%= fun_and_games_link = link_to "Fun & Games", Party.third %></li>
-                <li><%= fairytale_link = link_to "Fairytale", Party.fourth %></li>
-                <li><%= ballet_link = link_to "Ballet", Party.fifth %></li>
-              </ul>
-            </li>
+		        <% if can? :manage, Party %>
+              <li class="has-sbmenu">
+                <%= link_to "New Parties", 'javascript:void(0);' %>
+                <ul class="submenu menu vertical" data-submenu>
+                  <li><%= ultimate_fun_link = link_to "Ulimate Fun", Party.first %></li>
+                  <li><%= ninja_warrior_link = link_to "Ninja Warrior", Party.second %></li>
+                  <li><%= fun_and_games_link = link_to "Fun & Games", Party.third %></li>
+                  <li><%= fairytale_link = link_to "Fairytale", Party.fourth %></li>
+                  <li><%= ballet_link = link_to "Ballet", Party.fifth %></li>
+                </ul>
+              </li>
+            <% end %>
             
 		        <% if can? :create, WebsitePdf %>
               <li><%= link_to "Website PDFs", website_pdfs_path %></li>

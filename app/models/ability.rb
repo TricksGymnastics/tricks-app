@@ -48,6 +48,7 @@ class Ability
 			can :manage, WebsitePdf
 			can :manage, Camp
 			can :manage, Party
+			cab :manage, BubbleContent
 		end
 
 		if user.role == "moderator" #Managers, Office Staff

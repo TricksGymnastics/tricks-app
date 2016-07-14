@@ -13,7 +13,6 @@ class CoachesController < ApplicationController
 
   def show
     @coach_levels = Coach.includes(:levels).find(params[:id]).levels.group_by(&:classtype_id)
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @coach }

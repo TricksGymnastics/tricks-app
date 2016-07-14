@@ -1,41 +1,22 @@
+<% name = coach.firstname %>
+<% id = "coach-name" %>
+
 <% if can? :manage, Coach %>
-
-  <% if coach.current_employee? %>
-  
-    <div class="column large-2 medium-4 small-6" id="coach_container">
-      <%= link_to coach.firstname+" "+coach.lastname, coach, id: "coach-name" %>
-      <% if local_assigns[:tag] && !coach.tag_image.url.nil? && coach.tag_image_url.to_s.split('/').last.split('_').last != 'default.jpg'  %>
-        <%= link_to image_tag(coach.tag_image_url(:thumb).to_s), coach %>   
-      <% else %>
-        <%= link_to image_tag(coach.image_url(:thumb).to_s), coach %>   
-      <% end %>
-    </div>
-    
-  <% else %>
-  
-    <div class="column large-2 medium-4 small-6" id="coach_container">
-      <%= link_to coach.firstname+" "+coach.lastname, coach, id: "past-coach-name" %>
-      <% if local_assigns[:tag] && !coach.tag_image.url.nil? && coach.tag_image_url.to_s.split('/').last.split('_').last != 'default.jpg'  %>
-        <%= link_to image_tag(coach.tag_image_url(:thumb).to_s), coach %>   
-      <% else %>
-        <%= link_to image_tag(coach.image_url(:thumb).to_s), coach %>   
-      <% end %>
-    </div>
-    
-  <% end %>
-  
-<% else %>
-
-  <% if coach.current_employee? %>
-  
-    <div class="column large-2 medium-4 small-6" id="coach_container">
-      <%= link_to coach.firstname, coach, id: "coach-name" %>
-      <% if local_assigns[:tag] && !coach.tag_image.url.nil? && coach.tag_image_url.to_s.split('/').last.split('_').last != 'default.jpg'  %>
-        <%= link_to image_tag(coach.tag_image_url(:thumb).to_s), coach %>   
-      <% else %>
-        <%= link_to image_tag(coach.image_url(:thumb).to_s), coach %>   
-      <% end %>
-    </div>
-    
+  <% name = coach.firstname+" "+coach.lastname %>
+  <% if !coach.current_employee? %>
+    <% id = "past-coach-name" %>
   <% end %>
 <% end %>
+
+<% should_use_tag_pic = 0 %>
+<% image = image_tag(coach.image_url(:thumb).to_s) %>
+
+<% if local_assigns[:tag] && !coach.tag_image.url.nil? && coach.tag_image_url.to_s.split('/').last.split('_').last != 'default.jpg'  %>
+  <% should_use_tag_pic = 1 %>
+  <% image = image_tag(coach.tag_image_url(:thumb).to_s) %>
+<% end %>
+
+<div class="column large-2 medium-4 small-6" id="coach_container">
+  <%= link_to name, coach_path(coach, use_tag_picture: should_use_tag_pic), id: id %>
+  <%= link_to image, coach_path(coach, use_tag_picture: should_use_tag_pic) %>
+</div>

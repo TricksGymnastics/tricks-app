@@ -1,4 +1,5 @@
 class BubbleContentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_bubble_content, only: [:show, :edit, :update, :destroy]
   # GET /bubble_contents
   def index
