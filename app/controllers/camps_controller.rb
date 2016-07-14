@@ -1,5 +1,6 @@
 class CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :except => [:index]
 
   # GET /camps
   def index

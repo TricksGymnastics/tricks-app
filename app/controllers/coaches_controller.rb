@@ -1,7 +1,7 @@
 class CoachesController < ApplicationController
   before_action :set_coach, only: [:show, :edit, :update, :destroy]
   
-  load_and_authorize_resource :except => [:type, :loc]
+  load_and_authorize_resource :except => [:type, :loc, :show]
   
   def index
     @coaches = Coach.joins(:locations).location_search(params[:location]).uniq.sort_by(&:firstname)
