@@ -6,7 +6,7 @@ class StaticController < ApplicationController
     @live_promos.to_ary.delete_if do |promo|
       if promo.data_type == "html"
         false
-      elsif !promo.image.file.exists?
+      elsif promo.image.file.nil? || !promo.image.file.exists?
         true # Make sure the if statement returns true, so it gets marked for deletion
       end
     end
