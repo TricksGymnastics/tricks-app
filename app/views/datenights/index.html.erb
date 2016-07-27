@@ -55,30 +55,36 @@
                   <p><i><%= d.description %></i></p>
                 </div>
                 <div class="column small-12">
-                  <div class="row">
-                    <div class="column small-5">
-                      Granite Bay:
+                  <% if !d.gb_date.nil? %>
+                    <div class="row">
+                      <div class="column small-5">
+                        Granite Bay:
+                      </div>
+                      <div class="column small-7" style="text-align:right;">
+                        <%= d.gb_date.strftime("%a, %B %e") %>
+                      </div>
                     </div>
-                    <div class="column small-7" style="text-align:right;">
-                      <%= d.gb_date.strftime("%a, %B %e") %>
+                  <% end %>
+                  <% if !d.fol_date.nil? %>
+                    <div class="row">
+                      <div class="column small-6">
+                        Folsom:
+                      </div>
+                      <div class="column small-6" style="text-align:right;">
+                        <%= d.fol_date.strftime("%a, %B %e") %>
+                      </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="column small-6">
-                      Folsom:
+                  <% end %>
+                  <% if !d.sac_date.nil? %>
+                    <div class="row">
+                      <div class="column small-6">
+                        Sacramento:
+                      </div>
+                      <div class="column small-6" style="text-align:right;">
+                        <%= d.sac_date.strftime("%a, %B %e") %>
+                      </div>
                     </div>
-                    <div class="column small-6" style="text-align:right;">
-                      <%= d.fol_date.strftime("%a, %B %e") %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="column small-6">
-                      Sacramento:
-                    </div>
-                    <div class="column small-6" style="text-align:right;">
-                      <%= d.sac_date.strftime("%a, %B %e") %>
-                    </div>
-                  </div>
+                  <% end %>
                 </div>
               </div>
             <% end %>
