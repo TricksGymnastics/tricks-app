@@ -115,7 +115,7 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 		background: $menu-background;
 		padding: 0.9rem;
 	}
-	&.top-bar {
+	&.logged-in {
 		background: $menu-background;		
 		ul {
 			background: $menu-background;		
@@ -125,16 +125,38 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 					color: #fff;
 				}
 				.is-submenu-item{
-					background-color: #777;
+					// background-color: #777;
+					@include breakpoint(large up){
+						// font-size: 12px;
+						background-color: #777;
+					}
 				}
 			}
+		}
+	}
+	
+	.logged-in-menu-item{
+		@include breakpoint(large only){
+			font-size: 12px;
+			padding: 13px 5px;
+		}
+		color: $white;
+	}
+	
+	.logged-in-menu-button{
+		@include breakpoint(large down){
+			font-size: 14px;
+		}
+		@include breakpoint(large up){
+			font-size: 14px;
+			padding: 7px 10px;
 		}
 	}
 
 	.menu-text {
 		color: #fff;  
 		@media only screen and (max-width: 40em) {
-			display: none !important;
+			// display: none !important;
 		}
 	}
 

@@ -18,7 +18,7 @@
 
     <%= analytics_init if Rails.env.production? %>
 
-    <% if @needs_stripe == true %>
+    <% if @needs_stripe == false %>
       <%= javascript_include_tag "https://js.stripe.com/v1/", "recital_ad/loader", "recital_ad/jquery.validate" %>
       <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
     <% end %>
@@ -58,7 +58,7 @@
   </head>
 
   <body>
-    <% show_size = false %>
+    <% show_size = true %>
     <% if !Rails.env.production? && show_size %>
     <div style="position: fixed; left: 50%; top: 50px; width: 20%; margin-left: -10%; border: solid 2px #333; z-index: 10000; background-color: white; text-align: center;">
       <div class="row">
@@ -79,45 +79,45 @@
     <% end %>
 
     <% if current_user %>
-      <div class="title-bar" data-responsive-toggle="logged-in-menu" data-hide-for="medium">
-        <button class="menu-icon" type="button" data-toggle></button>
-        <div class="title-bar-title">Menu</div>
+      <div class="title-bar hide-for-large" style="background-color: #333; height: 48px; text-align: right;">
+        <div class="title-bar-title">Staff Menu</div>
+        <button class="menu-icon" id="logged_in_menu_button" type="button" data-toggle></button>
       </div>
-
-      <div class="top-bar logged-in">
-        <div class="top-bar-left">
+      
+      <div class="top-bar logged-in" id="logged_in_top_bar" style="padding: 0;">
+        <div class="top-bar-left show-for-large">
           <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Staff Menu</li>
           </ul>
         </div>
         <div class="top-bar-right">
-          <ul class="menu" data-responsive-menu="drilldown large-dropdown">
+          <ul class="menu vertical large-horizontal" id="logged_in_menu" data-responsive-menu="drilldown large-dropdown">
 		        <% if can? :manage, User %>
-              <li><%= link_to "Users", users_path %></li>
+              <li><%= link_to "Users", users_path, class: 'logged-in-menu-item' %></li>
             <% end %>
             
 		        <% if can? :manage, PromoSlide %>
-              <li><%= link_to "Promos", promo_slides_path %></li>
+              <li><%= link_to "Promos", promo_slides_path, class: 'logged-in-menu-item' %></li>
             <% end %>
 		        
 		        <% if can? :manage, BubbleContent %>
-              <li><%= link_to "Bubbles", bubble_contents_path %></li>
+              <li><%= link_to "Bubbles", bubble_contents_path, class: 'logged-in-menu-item' %></li>
             <% end %>
 
 		        <% if can? :manage, Comment %>
-              <li><%= link_to "Comments", comments_path %></li>
+              <li><%= link_to "Comments", comments_path, class: 'logged-in-menu-item' %></li>
             <% end %>
 
 		        <% if can? :manage, KidQuote %>
-              <li><%= link_to "Kid Quotes", kid_quotes_path %></li>
+              <li><%= link_to "Kid Quotes", kid_quotes_path, class: 'logged-in-menu-item' %></li>
             <% end %>
 
 		        <% if can? :manage, Level %>
-              <li><%= link_to "Levels", levels_path %></li>
+              <li><%= link_to "Levels", levels_path, class: 'logged-in-menu-item' %></li>
             <% end %>
             
 		        <% if can? :read, TricksUVideo %>
-              <li><%= link_to "TricksU", tricksu_path %></li>
+              <li><%= link_to "TricksU", tricksu_path, class: 'logged-in-menu-item' %></li>
             <% end %>
             
             <!--<li class="has-submenu"><%#= link_to "Schedules", 'javascript:void(0);' %>-->
@@ -127,47 +127,47 @@
             <!--</li>-->
 
 		        <% if can? :manage, Coach %>
-              <li class="has-submenu"><%= link_to "Staff", 'javascript:void(0);' %>
+              <li class="has-submenu"><%= link_to "Staff", 'javascript:void(0);', class: 'logged-in-menu-item' %>
                 <ul class="submenu menu vertical" data-submenu>
-                  <li><%= link_to "All Coaches", coaches_path %></li>
-                  <li><%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"} %></li>
+                  <li><%= link_to "All Coaches", coaches_path, class: 'logged-in-menu-item' %></li>
+                  <li><%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"}, class: 'logged-in-menu-item' %></li>
                 </ul>
               </li>   
             <% end %>
 
 		        <% if can? :manage, RecitalAd %>
               <li class="has-submenu">
-                <%= link_to "Recital Ads", 'javascript:void(0);' %>
+                <%= link_to "Recital Ads", 'javascript:void(0);', class: 'logged-in-menu-item' %>
                 <ul class="submenu menu vertical" data-submenu>
-                  <li><%= link_to "View Orders", "/recital_ads_by_year/"+Time.now.year.to_s %></li>
-                  <li><%= link_to "Ad Types", recital_ad_types_path %></li>
+                  <li><%= link_to "View Orders", "/recital_ads_by_year/"+Time.now.year.to_s, class: 'logged-in-menu-item' %></li>
+                  <li><%= link_to "Ad Types", recital_ad_types_path, class: 'logged-in-menu-item' %></li>
                 </ul>
               </li>
             <% end %>
             
 		        <% if can? :manage, Party %>
               <li class="has-sbmenu">
-                <%= link_to "New Parties", 'javascript:void(0);' %>
+                <%= link_to "New Parties", 'javascript:void(0);', class: 'logged-in-menu-item' %>
                 <ul class="submenu menu vertical" data-submenu>
-                  <li><%= ultimate_fun_link = link_to "Ulimate Fun", Party.first %></li>
-                  <li><%= ninja_warrior_link = link_to "Ninja Warrior", Party.second %></li>
-                  <li><%= fun_and_games_link = link_to "Fun & Games", Party.third %></li>
-                  <li><%= fairytale_link = link_to "Fairytale", Party.fourth %></li>
-                  <li><%= ballet_link = link_to "Ballet", Party.fifth %></li>
+                  <li><%= ultimate_fun_link = link_to "Ulimate Fun", Party.first, class: 'logged-in-menu-item' %></li>
+                  <li><%= ninja_warrior_link = link_to "Ninja Warrior", Party.second, class: 'logged-in-menu-item' %></li>
+                  <li><%= fun_and_games_link = link_to "Fun & Games", Party.third, class: 'logged-in-menu-item' %></li>
+                  <li><%= fairytale_link = link_to "Fairytale", Party.fourth, class: 'logged-in-menu-item' %></li>
+                  <li><%= ballet_link = link_to "Ballet", Party.fifth, class: 'logged-in-menu-item' %></li>
                 </ul>
               </li>
             <% end %>
             
 		        <% if can? :create, WebsitePdf %>
-              <li><%= link_to "Website PDFs", website_pdfs_path %></li>
+              <li><%= link_to "Website PDFs", website_pdfs_path, class: 'logged-in-menu-item' %></li>
             <% end %>
             
         		<% if can? :manage, Absent %>
-        			<li><%= link_to "Absences", absents_path %></li>
+        			<li><%= link_to "Absences", absents_path, class: 'logged-in-menu-item' %></li>
         		<% end %>
             
         		<% if can? :manage, DiscontinueNotice %>
-        			<li><%= link_to "Notices of Discontinuation", discontinue_notices_path %></li>
+        			<li><%= link_to "Discontinuations", discontinue_notices_path, class: 'logged-in-menu-item' %></li>
         		<% end %>
             <!--<li class="has-submenu">-->
             <!--  <%#= link_to "Surveys", 'javascript:void(0);' %>-->
@@ -176,7 +176,8 @@
             <!--    <li><%#= link_to "Results", choose_survey_path %></li>-->
             <!--  </ul>-->
             <!--</li>-->
-            <li style="padding-left:10px;"><%= link_to "Logout (" + current_user.email + ")", logout_path, class: "button alert expand" %> </li>
+            <li class="hide-for-large-only" style="padding: 0 10px;"><%= link_to "Logout (" + current_user.email + ")", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
+            <li class="show-for-large-only" style="padding: 0 3px;"><%= link_to "Logout", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
           </ul>
         </div>
       </div>
@@ -282,7 +283,7 @@
             			<li><%= release_form_link = link_to @release_form.file_name.sub("Tricks_","").tr("_"," "), @release_form %></li>
             		<% end %>
             		
-                <li><%= discontinue_link = link_to "Notice of Disconinuation", new_discontinue_notice_path %></li>
+                <li><%= discontinue_link = link_to "Notice of Discontinuation", new_discontinue_notice_path %></li>
             		
                 <li><%= employment_link = link_to "Employment", employment_path %></li>
                 <!--<li><%#= recital_ad_link = link_to "Recital Ad Online Order", recital_ads_ad_select_path %></li>-->
@@ -304,7 +305,7 @@
      <!-- Small Navigation -->
     <div class="title-bar hide-for-large" data-sticky-container>
       <%= link_to image_tag('tricks-tiny.png'), root_path, class: "logo-small" %>
-      <button class="menu-icon" type="button" data-toggle></button>
+      <button class="menu-icon" id="mobile_menu_button" type="button" data-toggle></button>
       <div class="title-bar-title">Menu</div>
     </div>
     
