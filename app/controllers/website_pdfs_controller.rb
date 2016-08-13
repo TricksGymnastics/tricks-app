@@ -45,7 +45,7 @@ class WebsitePdfsController < ApplicationController
     else
       @website_pdf = WebsitePdf.find(@file.id)
 
-      if @website_pdf.update_attributes(params[:website_pdf])
+      if @website_pdf.update_attributes(website_pdf_params)
         redirect_to @website_pdf, notice: 'Website pdf was successfully updated.'
       else
         render :edit
