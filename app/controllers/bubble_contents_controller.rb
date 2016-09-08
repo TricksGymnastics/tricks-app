@@ -53,6 +53,6 @@ class BubbleContentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bubble_content_params
-      params.require(:bubble_content).permit(:link, :image, :color, :text, :text_color, :show_button, :sort_order)
+      params.require(:bubble_content).permit(:link, :image, :remove_image, :color, :text, :text_color, :show_button, :sort_order)
     end
 end

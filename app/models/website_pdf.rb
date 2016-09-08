@@ -12,9 +12,17 @@ class WebsitePdf < ActiveRecord::Base
   	'Tricks Class Sessions',
   	'Tricks Instructor Application',
   	'Tricks Office Application',
-  # 	'Dance Schedule (GraniteBay)',
-  # 	'Dance Schedule (Folsom)',
-  # 	'Dance Schedule (Sacramento)',
+  	'-------------',
+  	'Tumblebunnies Schedule (Granite Bay)',
+  	'Tumblebunnies Schedule (Folsom)',
+  	'Tumblebunnies Schedule (Sacramento)',
+  	'School Age Gymnastics Schedule (Granite Bay)',
+  	'School Age Gymnastics Schedule (Folsom)',
+  	'School Age Gymnastics Schedule (Sacramento)',
+  	'Dance Schedule (Granite Bay)',
+  	'Dance Schedule (Folsom)',
+  	'Dance Schedule (Sacramento)',
+  	'Swim Schedule (Folsom)',
   ]
   def to_param
     "#{file_name}"
