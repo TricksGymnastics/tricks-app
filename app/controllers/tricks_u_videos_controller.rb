@@ -68,6 +68,7 @@ class TricksUVideosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def video_params
-      params.require(:tricks_u_video).permit(:title, :url, :weight, :category_id)
+      # params.require(:tricks_u_video).permit(:title, :url, :weight, :category_id)
+      params.require(:tricks_u_video).permit!
     end
 end
