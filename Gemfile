@@ -21,6 +21,7 @@ gem 'rails_12factor'
 
 gem 'jquery-ui-rails'
 gem 'jquery-minicolors-rails'
+# gem 'jquery-validation-rails'
 
 
 group :development do

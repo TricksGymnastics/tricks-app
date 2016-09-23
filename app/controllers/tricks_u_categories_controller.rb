@@ -17,7 +17,7 @@ class TricksUCategoriesController < ApplicationController
   end
 
   def create
-    @category = TricksUCategory.new(category_params)
+    @category = TricksUCategory.new(tricks_u_category_params)
 
     respond_to do |format|
       if @category.save
@@ -32,7 +32,7 @@ class TricksUCategoriesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @category.update(category_params)
+      if @category.update(tricks_u_category_params)
         format.html { redirect_to @category, notice: 'Video was successfully updated.' }
         format.json { head :no_content }
       else
@@ -59,8 +59,9 @@ class TricksUCategoriesController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def category_params
-      params.require(:tricks_u_category).permit(:title, :weight, :hidden)
+    def tricks_u_category_params
+      params.require(:tricks_u_category).permit(:title, :weight, :hidden)#, tricksu_u_videos_attributes: [:title, :url, :weight])
+      # params.require(:tricks_u_category).permit!
     end
 
 end

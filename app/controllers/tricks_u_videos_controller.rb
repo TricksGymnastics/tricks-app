@@ -24,7 +24,7 @@ class TricksUVideosController < ApplicationController
   end
 
   def create
-    @video = TricksUVideo.new(video_params)
+    @video = TricksUVideo.new(tricks_u_video_params)
 
     respond_to do |format|
       if @video.save
@@ -40,7 +40,7 @@ class TricksUVideosController < ApplicationController
   def update
 
     respond_to do |format|
-      if @video.update(video_params)
+      if @video.update(tricks_u_video_params)
         format.html { redirect_to @video, notice: 'Video was successfully updated.' }
         format.json { head :no_content }
       else
@@ -67,8 +67,8 @@ class TricksUVideosController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def video_params
-      # params.require(:tricks_u_video).permit(:title, :url, :weight, :category_id)
-      params.require(:tricks_u_video).permit!
+    def tricks_u_video_params
+      params.require(:tricks_u_video).permit(:title, :url, :weight, :category_id)
+      # params.require(:tricks_u_video).permit!
     end
 end
