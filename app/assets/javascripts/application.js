@@ -139,6 +139,10 @@ function resetLocationButtons(){
     $('.location-classes-information').each(function(i, obj) {
       $(obj).hide();
     });
+    
+    $('.location-schedule-pdf').each(function(i, obj) {
+      $(obj).hide();
+    });
     $('#choose_program_modal').hide();
     $('.program-button#Swim').fadeOut(300);
 }
@@ -156,6 +160,7 @@ function updateLocation(loc){
   $('.location-button#'+loc).addClass('active');
   $('.footer-location-information#'+loc).show();
   $('.location-classes-information#'+loc).show();
+  $('.location-schedule-pdf#'+loc).show();
   $('#choose_program_modal').show();
   if (loc == "FOL"){
     $('.program-button#Swim').fadeIn(300);

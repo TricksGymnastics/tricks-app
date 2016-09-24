@@ -1,10 +1,14 @@
-<% content_for :title do %>
-    <%= @website_pdf.file_name.tr("_"," ") %>
-<% end %>
-
-<div class="row">
-    <div class="column small-12">
-        <h1 style="margin-bottom: 0"><%= @website_pdf.file_name.tr("_"," ") %></h1>
-        <iframe src="<%= @website_pdf.file.url %>" style="width:100%; height: 800px; border:solid #444 2px;" frameborder="0"></iframe>
+<% if !@website_pdf.nil? %>
+    <% content_for :title do %>
+        <%= @website_pdf.file_name.tr("_"," ") %>
+    <% end %>
+    
+    <div class="row">
+        <div class="column small-12">
+            <h1 style="margin-bottom: 0"><%= @website_pdf.file_name.tr("_"," ") %></h1>
+            <iframe src="<%= @website_pdf.file.url %>" style="width:100%; height: 800px; border:solid #444 2px;" frameborder="0"></iframe>
+        </div>
     </div>
-</div>
+<% else %>
+    <h2>There is no PDF with name: "<%= request.original_url.split("/").last %>"</h2>
+<% end %>

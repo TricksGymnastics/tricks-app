@@ -45,21 +45,24 @@
     <% image = bubble.image %>
 <% end %>
 
-<% if bubble.link.blank? %>
-    <% link = link_default %>
-<% else %>
-    <% link = bubble.link %>
+<% link = link_default %>
+<% data_toggle = data_toggle_default %>
+<% if !bubble.link.blank? %>
+    <% if bubble.link.include? "modal" %>
+        <% data_toggle = bubble.link %>
+    <% else %>
+        <% link = bubble.link %>
+    <% end %>
 <% end %>
 
-<% if !defined? data_toggle %>
-    <% data_toggle = data_toggle_default %>
-<% end %>
+
+
 
 <div style="text-align:center; width: 100%;">
     <!--<div class="column large-12">-->
-    <%= link_to image_tag(image, style: "border-radius: inherit;"), bubble.link, "data-toggle": data_toggle, style: "border-radius: 50%;" %>
+    <%= link_to image_tag(image, style: "border-radius: inherit;"), link, "data-toggle": data_toggle, style: "border-radius: 50%;" %>
     <% if bubble.show_button %>
-        <%= link_to bubble.text, bubble.link, class: "button", "data-toggle": data_toggle, style: "border-radius: 5px; margin-top: 15px; font-size: 20px; color: #fff;; box-shadow: 2px 2px 10px #222;" %>
+        <%= link_to text, link, class: "button", "data-toggle": data_toggle, style: "border-radius: 5px; margin-top: 15px; font-size: 20px; color: #fff;; box-shadow: 2px 2px 10px #222;" %>
     <% end %>
     <!--</div>-->
 </div>

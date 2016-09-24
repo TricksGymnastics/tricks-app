@@ -23,6 +23,9 @@ class WebsitePdf < ActiveRecord::Base
   	'Dance Schedule (Granite Bay)',
   	'Dance Schedule (Folsom)',
   	'Dance Schedule (Sacramento)',
+  	'TAG Schedule (Granite Bay)',
+  	'TAG Schedule (Folsom)',
+  	'TAG Schedule (Sacramento)',
   	'Swim Schedule (Folsom)',
   ]
   def to_param

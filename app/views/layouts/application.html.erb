@@ -452,14 +452,14 @@
             </div>  
             <div class="column small-12 large-4">
               <div class="row align-spaced">
-                <% @bubbles.each do |bubble| %>
+                <% @bubbles.each do |bubble_id| %>
                   <div class="column small-8 medium-5 large-10">
-                    <% if BubbleContent.exists?(sort_order: bubble) %>
+                    <% if BubbleContent.exists?(sort_order: bubble_id) %>
                       <br>
-                      <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: bubble).first} %>
+                      <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: bubble_id).first} %>
                       <br>
                     <% else %>
-                      <h2 style="color: red; margin: 40px 0;">BubbleContent(<%= bubble %>) Not Found</h2>
+                      <h2 style="color: red; margin: 40px 0;">BubbleContent(<%= bubble_id %>) Not Found</h2>
                     <% end %>
                   </div>
                 <% end %>

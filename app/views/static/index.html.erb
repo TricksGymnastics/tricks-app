@@ -15,7 +15,7 @@
 	<div class="column large-4 xlarge-3" style="position: relative;">
 		<% main_bubble = 0 %>
         <% if BubbleContent.exists?(sort_order: main_bubble) %>
-			<%= render :partial => "bubble_contents/bubble", locals: { data_toggle: 'register_now_modal', given_bubble: BubbleContent.where(sort_order: main_bubble).first} %>
+			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: main_bubble).first} %>
 		<% end %>
 		<div style="position: absolute; top: 38%; right: -60px; width: 60%; height: 60%;">
 			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 1).first} %>
@@ -27,7 +27,7 @@
 	<div class="column small-8 medium-5" style="position: relative;">
 		<% main_bubble = 0 %>
         <% if BubbleContent.exists?(sort_order: main_bubble) %>
-			<%= render :partial => "bubble_contents/bubble", locals: { data_toggle: 'register_now_modal', given_bubble: BubbleContent.where(sort_order: main_bubble).first} %>
+			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: main_bubble).first} %>
 		<% end %>
 		<div style="position: absolute; top: 30%; right: -60px; width: 60%; height: 60%;">
 			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 1).first} %>

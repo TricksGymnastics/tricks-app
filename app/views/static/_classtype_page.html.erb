@@ -31,3 +31,52 @@
     </ul>
   </div>
 </div>
+
+<div class="reveal fast large" style="z-index: 1010" id="schedule_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+  <div class="row align-center">
+    <% 
+    case request.original_url.split("/").last
+    when "tumblebunnies"
+      program = "Tumblebunnies"
+    when "gymnastics"
+      program = "School_Age_Gymnastics"
+    when "preschool_dance"
+      program = "Dance"
+    when "dance"
+      program = "Dance"
+    when "tag"
+      program = "Tag"
+    when "swim"
+      program = "Swim"
+    end
+    %>
+    <h1><%= program.gsub('_', ' ') %> Schedules</h1>
+  </div>
+  
+  <% locations = {"Granite_Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %>
+  <div class="row align-center" style="margin-bottom: 15px;">
+    <% locations.each do |loc| %>
+      <div class="column small-3">
+        <%= link_to loc[0].gsub("_"," "), 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row align-center">
+    <div class="column small-11">
+      <% locations.each do |loc| %>
+        <div class="location-schedule-pdf" id="<%= loc[1] %>">
+          <% pdf = WebsitePdf.where(file_name: program +"_Schedule_("+loc[0]+")").first %>
+          <% if !pdf.nil? %>
+            <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
+              <p>It appears you don't have a PDF plugin for this browser.
+               You can <a href="<%= pdf.file.url %>">click here to
+              download the PDF file.</a></p>  
+            </object>
+          <% else %>
+            <h3>Sorry, there is no schedule uploaded yet for this program and location</h3>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

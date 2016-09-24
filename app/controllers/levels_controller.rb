@@ -86,7 +86,16 @@ class LevelsController < ApplicationController
 								
 					instructor = "<span style='color: red;'>Staff</span>".html_safe
 					if !r['instructors'][0].nil?
-						instructor = r['instructors'][0].split.map(&:capitalize)[0..-2].join(" ")
+						# puts ":" + r['instructors'][0] + ":"
+						name_parts = []
+						r['instructors'][0].split.map(&:capitalize).each do |section|
+							# we do this because sometimes they add gym locations to the end of someones name. So first we need to remove that part.
+							if section[0] != '('
+								name_parts.push(section)
+							end
+						end
+						instructor = name_parts[0..-2].join(" ") #The [0..-2] get all members from the first to the second to last
+						# puts instructor
 					end
 					
 								

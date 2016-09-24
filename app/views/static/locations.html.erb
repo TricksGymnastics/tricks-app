@@ -2,7 +2,7 @@
 	<div class="column large-4 small-11" style="margin-bottom: 100px;">
 		<div class="row align-center">
 			<div class="column small-8 large-11">
-				<%= render :partial => "bubble_contents/bubble", locals: { data_toggle: 'granite_bay_modal!', given_bubble: BubbleContent.where(sort_order: 100).first} %>
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 100).first} %>
 			</div>
 		</div>
 		<div class="row align-center location-information">
@@ -32,7 +32,7 @@
 	<div class="column large-4 small-11" style="margin-bottom: 100px;">
 		<div class="row align-center">
 			<div class="column small-8 large-11">
-				<%= render :partial => "bubble_contents/bubble", locals: { data_toggle: 'folsom_modal!', given_bubble: BubbleContent.where(sort_order: 101).first} %>
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 101).first} %>
 			</div>
 		</div>
 		<div class="row align-center location-information">
@@ -60,7 +60,7 @@
 	<div class="column large-4 small-11" style="margin-bottom: 100px;">
 		<div class="row align-center">
 			<div class="column small-8 large-11">
-				<%= render :partial => "bubble_contents/bubble", locals: { data_toggle: 'sacramento_modal!', given_bubble: BubbleContent.where(sort_order: 102).first} %>
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 102).first} %>
 			</div>
 		</div>
 		<div class="row align-center location-information">
