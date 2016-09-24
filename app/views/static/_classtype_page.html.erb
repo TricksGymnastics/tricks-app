@@ -45,7 +45,7 @@
     when "dance"
       program = "Dance"
     when "tag"
-      program = "Tag"
+      program = "School_Age_Gymnastics" #"Tag"
     when "swim"
       program = "Swim"
     end
@@ -54,6 +54,9 @@
   </div>
   
   <% locations = {"Granite_Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %>
+  <% if program == "Swim" %>
+    <% locations.except!("Granite_Bay", "Sacramento") %>
+  <% end %>
   <div class="row align-center" style="margin-bottom: 15px;">
     <% locations.each do |loc| %>
       <div class="column small-3">
