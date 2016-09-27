@@ -48,6 +48,8 @@
       program = "School_Age_Gymnastics" #"Tag"
     when "swim"
       program = "Swim"
+    else
+      program = "Class"
     end
     %>
     <h1><%= program.gsub('_', ' ') %> Schedules</h1>
