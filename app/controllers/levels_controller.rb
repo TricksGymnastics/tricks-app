@@ -17,7 +17,6 @@ class LevelsController < ApplicationController
 
   # GET /levels/1/edit
   def edit
-    console
   end
 
   # POST /levels
