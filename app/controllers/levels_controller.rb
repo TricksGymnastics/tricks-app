@@ -17,12 +17,13 @@ class LevelsController < ApplicationController
 
   # GET /levels/1/edit
   def edit
+    console
   end
 
   # POST /levels
   def create
     @level = Level.new(level_params)
-    @level.video_url = "https://www.youtube.com/embed/" + @level.video_url.split('/').last
+    @level.video_url = "https://www.youtube.com/embed/" + @level.video_url.split('/').last.split('=').last
 
     if @level.save
       redirect_to levels_path, notice: 'Level was successfully created.'
@@ -33,8 +34,9 @@ class LevelsController < ApplicationController
 
   # PUT /levels/1
   def update
-    @level.video_url = "https://www.youtube.com/embed/" + @level.video_url.split('/').last
-    if @level.update(level_params)
+    new_params = level_params
+		new_params[:video_url] = "https://www.youtube.com/embed/" + new_params[:video_url].split('/').last.split('=').last
+    if @level.update(new_params)
       redirect_to levels_path, notice: 'Level was successfully updated.'
     else
       render :edit
