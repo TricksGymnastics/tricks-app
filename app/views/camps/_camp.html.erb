@@ -8,11 +8,11 @@
         <% if !given_camp.title.nil? && !given_camp.title.empty? %>
             <h1><%= given_camp.title %></h1>
         <% end %>
-        <% if !given_camp.image_url.nil? && !given_camp.image_url.empty? %>
-            <%= image_tag given_camp.image_url %>
-        <% end %>
         <div style="padding: 35px;">
             <%= given_camp.description.html_safe %>
         </div>
+        <% if !given_camp.image_url.nil? && !given_camp.image_url.empty? %>
+            <div style="text-align:center;"><%= image_tag given_camp.image_url %></div>
+        <% end %>
     </div>
 </div>
