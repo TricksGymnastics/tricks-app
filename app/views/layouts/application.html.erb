@@ -275,8 +275,8 @@
                 <li><%= absence_link = link_to "Notice of Absence", new_absent_path %></li>
 
             
-            		<% if !@class_sessions.nil? %>
-            			<li><%= class_sessions_link = link_to @class_sessions.file_name.sub("Tricks_","").tr("_"," "), @class_sessions %></li>
+            		<% if !@billing_cycle.nil? %>
+            			<li><%= billing_cycle_link = link_to @billing_cycle.file_name.sub("Tricks_","").tr("_"," "), @billing_cycle %></li>
             		<% end %>
             		
             		<% if !@release_form.nil? %>
@@ -374,8 +374,8 @@
             <ul class="vertical menu">
               <li><%= absence_link %></li>
               
-          		<% if !@class_sessions.nil? %>
-          			<li><%= class_sessions_link %></li>
+          		<% if !@billing_cycle.nil? %>
+          			<li><%= billing_cycle_link %></li>
           		<% end %>
           		
           		<% if !@release_form.nil? %>
@@ -601,7 +601,7 @@
                   <h3 class="footer-header">Forms</h3>
                   <ul>
                     <%= if defined? absence_link then ('<li>' + absence_link + '</li>').html_safe end %>
-                    <%= if defined? class_sessions_link then ('<li>' + class_sessions_link + '</li>').html_safe end %>
+                    <%= if defined? billing_cycle_link then ('<li>' + billing_cycle_link + '</li>').html_safe end %>
                     <%= if defined? release_form_link then ('<li>' + release_form_link + '</li>').html_safe end %>
                     <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
                     <%= if defined? employment_link then ('<li>' + employment_link + '</li>').html_safe end %>

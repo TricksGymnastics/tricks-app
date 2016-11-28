@@ -25,7 +25,6 @@ class TricksUVideosController < ApplicationController
 
   def create
     @video = TricksUVideo.new(tricks_u_video_params)
-
     respond_to do |format|
       if @video.save
         format.html { redirect_to tricksu_path }
@@ -38,7 +37,6 @@ class TricksUVideosController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       if @video.update(tricks_u_video_params)
         format.html { redirect_to @video, notice: 'Video was successfully updated.' }
