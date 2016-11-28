@@ -21,8 +21,8 @@ class ApplicationController < ActionController::Base
     
     @newsletter = WebsitePdf.where(:file_name => "Tricks_Newsletter").first
     @release_form = WebsitePdf.where(:file_name => "Tricks_Release_Form").first
-    @family_rules = WebsitePdf.where(:file_name => "Tricks_Class_Sessions").first
-    @billing_cycle = WebsitePdf.where(:file_name => "Tricks_Billing_Cycle").first
+    @family_rules = WebsitePdf.where(:file_name => "Tricks_Family_Rules").first
+    @billing_cycle = WebsitePdf.where(:file_name => "Tricks_Class_Sessions").first
   	@application = WebsitePdf.where(file_name: "Tricks_Instructor_Application").first
   	@office_application = WebsitePdf.where(file_name: "Tricks_Office_Application").first
   end
