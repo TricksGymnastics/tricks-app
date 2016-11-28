@@ -9,7 +9,7 @@ class WebsitePdf < ActiveRecord::Base
   # 	'Tricks Registration Form',
   	'Tricks Release Form',
   	'Tricks Family Rules',
-  	'Tricks Class Sessions',
+  	'Tricks Billing Cycle',
   	'Tricks Instructor Application',
   	'Tricks Office Application',
   	'Tricks Dance Dress Code',
