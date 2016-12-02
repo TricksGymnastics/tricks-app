@@ -34,6 +34,8 @@ $(window).bind("load", function () {
     }
 });
 
+
+
 $(function(){
   var new_height = $("#mobile_menu").parent().height() + 10;
   $("#mobile_menu").parent().css({"position":"relative", "top":"0px", "left":"-100%", "z-index":"5", "width":"250px", 
