@@ -4,6 +4,7 @@
 <% link_default = "javascript:void(0);" %>
 <% show_button_default = false %>
 <% data_toggle_default = "" %>
+<% font_size_default = "90" %>
 
 
 <% if defined? given_bubble #check if a bubble_content object was passed in %>
@@ -13,6 +14,7 @@
 <% else #check to see if it is a full custom bubble and use passed in locals or defaults %>
     <% bubble = BubbleContent.create() %>
     <% bubble.text = (defined? text) ? text : text_default %>
+    <%# bubble.font_size = (defined? font_size) ? font_size : font_size_default %>
     <% bubble.color = (defined? color) ? color : color_default %>
     <% bubble.text_color = (defined? text_color) ? text_color : text_color_default %>
     <% bubble.link = (defined? link) ? link : link_default %>
@@ -24,6 +26,10 @@
     <% text = text_default %>
 <% else %>
     <% text = bubble.text %>
+<% end %>
+
+<% if !defined? font_size %>
+    <% font_size = font_size_default %>
 <% end %>
     
 <% if bubble.image.blank? %>
@@ -40,7 +46,7 @@
         <% text_color = bubble.text_color.gsub('#', '') %>
     <% end %>
     
-    <% image = "https://placeholdit.imgix.net/~text?txtsize=90&bg="+color+"&txtclr="+text_color+"&txt="+text+"&w=500&h=500&fm=png" %>
+    <% image = "https://placeholdit.imgix.net/~text?txtsize="+font_size+"&bg="+color+"&txtclr="+text_color+"&txt="+text+"&w=500&h=500&fm=png" %>
 <% else %>
     <% image = bubble.image %>
 <% end %>
