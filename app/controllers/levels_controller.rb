@@ -22,7 +22,9 @@ class LevelsController < ApplicationController
   # POST /levels
   def create
     @level = Level.new(level_params)
-    @level.video_url = "https://www.youtube.com/embed/" + @level.video_url.split('/').last.split('=').last
+    if !@level.video_url.nil?
+    	@level.video_url = "https://www.youtube.com/embed/" + @level.video_url.split('/').last.split('=').last
+    end
 
     if @level.save
       redirect_to levels_path, notice: 'Level was successfully created.'
