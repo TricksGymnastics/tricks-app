@@ -22,7 +22,7 @@ class LevelsController < ApplicationController
   # POST /levels
   def create
     @level = Level.new(level_params)
-    if !@level.video_url.nil?
+    if !@level.video_url.empty?
     	@level.video_url = "https://www.youtube.com/embed/" + @level.video_url.split('/').last.split('=').last
     end
 
