@@ -36,7 +36,9 @@ class LevelsController < ApplicationController
   # PUT /levels/1
   def update
     new_params = level_params
-		new_params[:video_url] = "https://www.youtube.com/embed/" + new_params[:video_url].split('/').last.split('=').last
+    if !new_params[:video_url].empty?
+			new_params[:video_url] = "https://www.youtube.com/embed/" + new_params[:video_url].split('/').last.split('=').last
+		end
     if @level.update(new_params)
       redirect_to levels_path, notice: 'Level was successfully updated.'
     else
