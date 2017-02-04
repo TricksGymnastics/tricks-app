@@ -13,6 +13,7 @@ class WebsitePdf < ActiveRecord::Base
   	'Tricks Instructor Application',
   	'Tricks Office Application',
   	'Tricks Dance Dress Code',
+  	'Tricks Recital Packet',
   	'-------------',
   	'Tumblebunnies Schedule (Granite Bay)',
   	'Tumblebunnies Schedule (Folsom)',

@@ -52,4 +52,6 @@ Comments::Application.configure do
   # should be ok because this only happens in development
   config.web_console.whitelisted_ips = ['0.0.0.0/0'] 
   config.web_console.whiny_requests = true
+  
+  config.generators.assets = false
 end

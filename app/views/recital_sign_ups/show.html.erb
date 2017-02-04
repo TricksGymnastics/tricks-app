@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Child first name:</strong>
+  <%= @recital_sign_up.child_first_name %>
+</p>
+
+<p>
+  <strong>Child last name:</strong>
+  <%= @recital_sign_up.child_last_name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @recital_sign_up.location %>
+</p>
+
+<p>
+  <strong>Participating:</strong>
+  <%= @recital_sign_up.participating %>
+</p>
+
+<p>
+  <strong>Total recitals:</strong>
+  <%= @recital_sign_up.total_recitals %>
+</p>
+
+<p>
+  <strong>Multiple recitals:</strong>
+  <%= @recital_sign_up.multiple_recitals %>
+</p>
+
+<p>
+  <strong>Multiple children:</strong>
+  <%= @recital_sign_up.multiple_children %>
+</p>
+
+<p>
+  <strong>Costume fee agreement:</strong>
+  <%= @recital_sign_up.costume_fee_agreement %>
+</p>
+
+<p>
+  <strong>Recital fee agreement:</strong>
+  <%= @recital_sign_up.recital_fee_agreement %>
+</p>
+
+<%= link_to 'Edit', edit_recital_sign_up_path(@recital_sign_up) %> |
+<%= link_to 'Back', recital_sign_ups_path %>

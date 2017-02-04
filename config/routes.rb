@@ -1,5 +1,6 @@
 Comments::Application.routes.draw do
 
+  resources :recital_sign_ups
   resources :parties
   resources :camps
   root :to => 'static#index'

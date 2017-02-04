@@ -20,9 +20,9 @@
         <td><%= bubble_content.sort_order %></td>
         <td><%= link_to bubble_content.link %></td>
         <td><%= bubble_content.image %></td>
-        <td style="background-color: #<%= bubble_content.color.gsub('#', '') %>;"></td>
+        <td style="background-color: #<%= if !bubble_content.color.nil? then bubble_content.color.gsub('#', '') else "555" end %>;"></td>
         <td><%= bubble_content.text %></td>
-        <td><%= bubble_content.text_color.gsub('#', '') %></td>
+        <td><%= if !bubble_content.text_color.nil? then bubble_content.text_color.gsub('#', '') else 'eee' end %></td>
         <td><%= bubble_content.show_button ? "Yes" : "No" %></td>
         <td><%= link_to 'Show', bubble_content %></td>
         <td><%= link_to 'Edit', edit_bubble_content_path(bubble_content) %></td>

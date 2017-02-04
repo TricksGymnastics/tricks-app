@@ -1,0 +1,31 @@
+<% content_for :title do %>
+  Tricks Recital Info & Sign Up
+<% end %>
+
+<% update_bubbles([6]) %>
+  
+<h1><%= Time.now.year %> Recital Information</h1>
+<div class="row align-center">
+  <div class="column large-8 ">
+    We’re excited to have you join us for our 2017 Summer Recital.  Use the form below to register.
+    <h3>Gymnastics Coach</h3>
+    <p>TRICKS® Gymnastics is looking for an energetic, enthusiastic coaches to join our staff. A gymnastics background is preferred and a positive attitude is required. We ask that all of our employees commit to at least one year. A part-time position is available at any of our three amazing locations.</p>
+
+    <h3>Dance Teacher</h3>
+    <p>TRICKS® Dance is looking for experienced dance teachers who are passionate about children and dance. We have an extensive teacher training program and we follow a philosophy that states, &quot;Hire the character, train the skill.&quot; Applications are accepted at any of our three locations.</p>
+
+    <h3>Swim Coach</h3>
+    <p>TRICKS® Splash is always happy to hire a great swim coach to join us in our warm water, year round program. Mornings, daytimes and weekends available. We are accepting applications at our Folsom Gym!</p>
+
+		<% if !@application.nil? %>
+			<h4 style="text-align:center;"><%= link_to "Click Here To Open Instructor Application Form", @application %></h4>
+		<% end %>
+    
+    <h3 style="margin-top: 100px;">Office Staff</h3>
+    <p>TRICKS® is hiring a friendly and personable office staff member. Morning, mid-day, and afternoon shifts are available. Customer service background is preferred. Applications are accepted at any of our three locations.</p>
+
+		<% if !@office_application.nil? %>
+			<h4 style="text-align:center;"><%= link_to "Click Here To Open Host/Office Application Form", @office_application %></h4>
+		<% end %>
+  </div>
+</div>

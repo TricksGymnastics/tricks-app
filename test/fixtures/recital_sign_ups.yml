@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  child_first_name: MyString
+  child_last_name: MyString
+  location: 1
+  participating: false
+  total_recitals: 1
+  multiple_recitals: false
+  multiple_children: false
+  costume_fee_agreement: MyString
+  recital_fee_agreement: MyString
+
+two:
+  child_first_name: MyString
+  child_last_name: MyString
+  location: 1
+  participating: false
+  total_recitals: 1
+  multiple_recitals: false
+  multiple_children: false
+  costume_fee_agreement: MyString
+  recital_fee_agreement: MyString

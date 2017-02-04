@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622192103) do
+ActiveRecord::Schema.define(version: 20170204075214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -236,6 +236,20 @@ ActiveRecord::Schema.define(version: 20160622192103) do
     t.integer  "recital_ad_type_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+  end
+
+  create_table "recital_sign_ups", force: :cascade do |t|
+    t.string   "child_first_name"
+    t.string   "child_last_name"
+    t.integer  "location"
+    t.boolean  "participating"
+    t.integer  "total_recitals"
+    t.boolean  "multiple_recitals"
+    t.boolean  "multiple_children"
+    t.string   "costume_fee_agreement"
+    t.string   "recital_fee_agreement"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "schedules", force: :cascade do |t|

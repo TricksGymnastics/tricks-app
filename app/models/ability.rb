@@ -49,6 +49,7 @@ class Ability
 			can :manage, Camp
 			can :manage, Party
 			can :manage, BubbleContent
+			can :manage, RecitalSignUp
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -75,6 +76,8 @@ class Ability
 			cannot :destroy, Camp
 			can :manage, Party
 			cannot :destroy, Party
+			can :manage, RecitalSignUp
+			cannot :destroy, RecitalSignUp
 		end 
 
 		if user.role == "coach"
@@ -94,6 +97,7 @@ class Ability
 			can :create, World
 			can :read, Level
 			can :create, DiscontinueNotice
+			can :create, RecitalSignUp
 		end
 	end 
 end

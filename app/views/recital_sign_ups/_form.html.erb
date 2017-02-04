@@ -1,0 +1,87 @@
+
+
+<%= form_for(@recital_sign_up) do |f| %>
+  <% if @recital_sign_up.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recital_sign_up.errors.count, "error") %> prohibited this recital_sign_up from being saved:</h2>
+
+      <ul>
+      <% @recital_sign_up.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="row align-center">
+  <div class="columns large-10 small-12" style="text-align: center;">
+    <p>We’re excited to have you join us for our <%= Time.now.year %> Summer Recital!<br>
+    <% pdf = WebsitePdf.where(file_name: "Tricks_Recital_Packet").first %>
+    <% if !pdf.nil? %>
+      <%= link_to "Click here to view the Recital Packet", "javascript:void(0);", 'data-toggle': 'recital_packet_modal' %>
+      <div class="reveal fast large" style="z-index: 1010" id="recital_packet_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+        <div class="row align-center">
+          <h1><%= Time.now.year %> Recital Packet</h1>
+        </div>
+        <div class="row align-center">
+          <div class="column small-11">
+            <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
+              <p>It appears you don't have a PDF plugin for this browser.
+               You can <a href="<%= pdf.file.url %>">click here to
+              download the PDF file.</a></p>  
+            </object>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <h4>Use the form below to register.</h4>
+    <p>If you have any questions while completing this form please contact our office.<br>
+    Granite Bay: 916-791-4496 or email us at <%= mail_to "tricksgb@gmail.com", "tricksgb@gmail.com", subject:"Question about Recital Sign Ups" %><br>
+    Folsom: 916-351-0024 or email us at <%= mail_to "tricksfol@gmail.com", "tricksfol@gmail.com", subject:"Question about Recital Sign Ups" %><br>
+    Sacramento: 916-481-4496 or email us at <%= mail_to "trickssac@gmail.com", "trickssac@gmail.com", subject:"Question about Recital Sign Ups" %></p>
+    <div class="row" style="text-align:left; margin-top: 50px;">
+      <% yes_no = [['No', 0], ['Yes', 1]] %>
+      <div class="columns medium-6 small-12 input-group">
+        <%= f.label :child_first_name, "Child's First Name", class: "input-group-label" %>
+        <%= f.text_field :child_first_name, required: true, class: "input-group-field" %>
+      </div>
+      <div class="columns medium-6 small-12 input-group">
+        <%= f.label :child_last_name, "Child's Last Name", class: "input-group-label" %>
+        <%= f.text_field :child_last_name, required: true, class: "input-group-field" %>
+      </div>
+      <div class="columns medium-6 small-12 input-group">
+        <%= f.label :location, class: "input-group-label" %>
+        <%= f.select :location, Absent::LOCATIONS, {:prompt => "Select a Location"}, {:required => true, class: "input-group-field"} %>
+      </div>
+      <div class="columns medium-6 small-12 input-group">
+        <%= f.label :participating, "Will your child be participating in the "+Time.now.year.to_s+" Summer Recital?", class: "input-group-label" %>
+        <%= f.select :participating, yes_no, {:include_blank => false}, {:required => true, class: "input-group-field"} %>
+      </div>
+      <div class="columns small-12 input-group">
+        <%= f.label :total_recitals, "How many TRICKS Summer Recitals has your dancer participated in (including this show)?", class: "input-group-label" %>
+        <%= f.number_field :total_recitals, value: 1, in: 1...16, step: 1, class: "input-group-field", required: true %>
+      </div>
+      <div class="columns medium-6 small-12 input-group">
+        <%= f.label :multiple_recitals, "Is your dancer performing in more than one dance?", class: "input-group-label" %>
+        <%= f.select :multiple_recitals, yes_no, {:include_blank => true}, {:required => true, class: "input-group-field"} %>
+      </div>
+      <div class="columns medium-6 small-12 input-group">
+        <%= f.label :multiple_children, "Do you have more than one child participating in the recital?", class: "input-group-label" %>
+        <%= f.select :multiple_children, yes_no, {:include_blank => true}, {:required => true, class: "input-group-field"} %>
+      </div>
+      <div class="columns small-12 input-group">
+        <%= f.label :costume_fee_agreement, "I understand that my credit card will be charged a non-refundable costume fee of $57 ($67 ages 8+) on April 1, 2017", class: "input-group-label" %>
+        <%= f.text_field :costume_fee_agreement, placeholder: "Your Initials", required: true, class: "input-group-field" %>
+      </div>
+      <div class="columns small-12 input-group">
+        <%= f.label :recital_fee_agreement, "I understand or authorize my credit card to be charged a recital fee of $40 ($60 for family) on May 1, 2017", class: "input-group-label" %>
+        <%= f.text_field :recital_fee_agreement, placeholder: "Your Initials", required: true, class: "input-group-field" %>
+      </div>
+    </div>
+    <div class="actions" style="margin-top: 50px;">
+      <%= f.submit "Submit Sign Up", class: "button expanded" %>
+    </div>
+  </div>
+</div>
+<% end %>

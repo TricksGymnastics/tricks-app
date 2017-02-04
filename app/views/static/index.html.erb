@@ -41,11 +41,12 @@
 		</div>
 	</div>
 	
-	<!--<div class="column large-5 xlarge-4" style="position: relative;">-->
-	<!--	<div style="position: absolute; width: 90%; height: 90%;">-->
-	<!--		<%#= render :partial => "bubble_contents/bubble", locals: {color: "#71C951", text: "We open again on         January 2nd, 2017.          Happy Holidays!", font_size: "65", text_color: "#fff"} %>-->
-	<!--	</div>-->
-	<!--</div>-->
+	<div class="column large-5 xlarge-4" style="position: relative;">
+		<div style="position: absolute; width: 90%; height: 90%;">
+			<%# color: "#71C951", %>
+			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 5).first} %>
+		</div>
+	</div>
 </div>
 
 <!--<div class="row hide-for-large align-center">-->

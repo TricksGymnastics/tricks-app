@@ -1,0 +1,49 @@
+<style>
+  tr th{
+    text-align:center;
+  }
+</style>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Recital Sign Ups</h1>
+
+<table style="text-align:center;">
+  <thead>
+    <tr>
+      <th style="min-width: 300px;">Child name</th>
+      <th style="min-width: 150px;">Location</th>
+      <th>Participating</th>
+      <th>Total recitals</th>
+      <th>Multiple recitals</th>
+      <th>Multiple children</th>
+      <th style="min-width: 120px;">Costume fee agreement</th>
+      <th style="min-width: 120px;">Recital fee agreement</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recital_sign_ups.each do |recital_sign_up| %>
+      <tr>
+        <td><%= recital_sign_up.child_first_name + " " + recital_sign_up.child_last_name %></td>
+        <td><%= recital_sign_up.location.nil? ? "none" : Absent::LOCATIONS[recital_sign_up.location][0] %></td>
+        <td><%= recital_sign_up.participating ? "Yes" : "No" %></td>
+        <td><%= recital_sign_up.total_recitals %></td>
+        <td><%= recital_sign_up.multiple_recitals ? "Yes" : "No" %></td>
+        <td><%= recital_sign_up.multiple_children ? "Yes" : "No" %></td>
+        <td><%= recital_sign_up.costume_fee_agreement %></td>
+        <td><%= recital_sign_up.recital_fee_agreement %></td>
+        <td><%= link_to 'Show', recital_sign_up %></td>
+        <td><%= link_to 'Edit', edit_recital_sign_up_path(recital_sign_up) %></td>
+        <% if can? :destroy, RecitalSignUp %>
+          <td><%= link_to 'Destroy', recital_sign_up, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recital sign up', new_recital_sign_up_path %>
