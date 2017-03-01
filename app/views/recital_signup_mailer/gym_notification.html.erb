@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+</head>
+<body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
+  <div>
+    <h3>Recital Signup Submission</h3>
+
+    <p>Student: <%= @signup.child_first_name + " " + @signup.child_last_name %></p>
+
+
+    <table style="margin: 10px 0px; border-collapse:collapse; border: 1px #444 solid;">
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Location: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= Absent::LOCATIONS[@signup.location][0] %></td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Participating: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= @signup.participating ? "Yes" : "No" %></td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Total Recitals: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= @signup.total_recitals %></td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Multiple Recitals: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= @signup.multiple_recitals ? "Yes" : "No" %></td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Multiple Children: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= @signup.multiple_children ? "Yes" : "No" %></td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Costume Fee Agreement: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= @signup.costume_fee_agreement %> (Parent Initials)</td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 10px; border: solid #444 1px;">Rectial Fee Agreement: </td>
+        <td style="padding: 3px 10px; border: solid #444 1px;"><%= @signup.recital_fee_agreement %> (Parent Initials)</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

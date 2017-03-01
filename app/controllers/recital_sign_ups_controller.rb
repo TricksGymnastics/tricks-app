@@ -25,6 +25,7 @@ class RecitalSignUpsController < ApplicationController
     @recital_sign_up = RecitalSignUp.new(recital_sign_up_params)
 
     if @recital_sign_up.save
+      RecitalSignupMailer.gym_notification(@recital_sign_up).deliver_now
       redirect_to thankyou_path, notice: 'You successfully signed up for the Recital! Thank You.'
     else
       render :new
