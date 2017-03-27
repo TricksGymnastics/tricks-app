@@ -97,7 +97,7 @@ class Ability
 			can :create, World
 			can :read, Level
 			can :create, DiscontinueNotice
-			can :create, RecitalSignUp
+			# can :create, RecitalSignUp
 		end
 	end 
 end
