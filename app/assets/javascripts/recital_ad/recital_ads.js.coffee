@@ -79,3 +79,18 @@ $ ->
     count.innerHTML = maxwords
     return false
   true
+  
+# A failed attempt to show a display image for file about to be uploaded
+# readURL = (input) ->
+#   if input.files and input.files[0]
+#     reader = new FileReader
+
+#     reader.onload = (e) ->
+#       $('#img_prev').attr('src', e.target.result).width(150).height 200
+#       return
+
+#     reader.readAsDataURL input.files[0]
+#   return
+
+# $('#recital_ad_image').bind "change", ->
+#   readURL this

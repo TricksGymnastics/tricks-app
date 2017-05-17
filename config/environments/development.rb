@@ -54,4 +54,8 @@ Comments::Application.configure do
   config.web_console.whiny_requests = true
   
   config.generators.assets = false
+  config.generators.test_framework = nil
+  config.generators.assets = false
+  config.generators.helper = false
+  config.generators.stylesheets = false
 end
