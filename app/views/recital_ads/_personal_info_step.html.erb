@@ -33,14 +33,14 @@
       </div>
     </div>
     
-    <div class="row">
-      <div class="column small-12">
-        <div class=" input-group">
-          <%= f.label :email, class: "input-group-label" %>
-          <%= f.email_field :email, class: "input-group-field" %>
-        </div>
-      </div>
-    </div>
+    <!--<div class="row">-->
+    <!--  <div class="column small-12">-->
+    <!--    <div class=" input-group">-->
+    <!--      <%#= f.label :email, class: "input-group-label" %>-->
+    <!--      <%#= f.email_field :email, class: "input-group-field" %>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
     
     
     
@@ -56,43 +56,44 @@
       </div>
     <% end %>
     
-    
-    <% if @recital_ad.recital_ad_type.image? %>
-      <div class="row align-center">
-        <div class="column small-8">
-          <div class="input-group">
-            <%= f.label :image, "Upload Image", class: "button expanded" %>
-            <%= f.file_field :image, class: "show-for-sr" %>
-          </div>
-        </div>
-      </div>
-      <% if @recital_ad.image? %>
+    <div style="min-height: 100px;">
+      <% if @recital_ad.recital_ad_type.image? %>
         <div class="row align-center">
-          <div class="column shrink">
-            Uploaded Image:<br>
-            <%= image_tag(@recital_ad.image_url(:thumb).to_s, :border => "4px solid;") %>
+          <div class="column small-8">
+            <div class="input-group">
+              <%= f.label :image, "Upload Image", class: "button expanded" %>
+              <%= f.file_field :image, class: "show-for-sr" %>
+            </div>
           </div>
         </div>
+        <% if @recital_ad.image? %>
+          <div class="row align-center">
+            <div class="column shrink">
+              Uploaded Image:<br>
+              <%= image_tag(@recital_ad.image_url(:thumb).to_s, :border => "4px solid;") %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-      
-    <% if @recital_ad.recital_ad_type.pdf_file? %>
-      <div class="row align-center">
-        <div class="column small-8">
-          <div class="input-group">
-            <%= f.label :pdf_file, "Upload PDF", class: "button expanded" %>
-            <%= f.file_field :pdf_file, class: "show-for-sr" %>
-          </div>
-        </div>
-      </div>
-      <% if @recital_ad.pdf_file? %>
+        
+      <% if @recital_ad.recital_ad_type.pdf_file? %>
         <div class="row align-center">
-          <div class="column shrink">
-            Uploaded File:<br>
-            <%= @recital_ad.image_url().to_s %>
+          <div class="column small-8">
+            <div class="input-group">
+              <%= f.label :pdf_file, "Upload PDF", class: "button expanded" %>
+              <%= f.file_field :pdf_file, class: "show-for-sr" %>
+            </div>
           </div>
         </div>
+        <% if @recital_ad.pdf_file? %>
+          <div class="row align-center">
+            <div class="column shrink">
+              Uploaded File:<br>
+              <%= @recital_ad.image_url().to_s %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

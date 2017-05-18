@@ -32,11 +32,30 @@ class RecitalAdsController < ApplicationController
   # POST /recital_ads
   # POST /recital_ads.json
   def create
-    if @recital_ad.save_with_payment
-      RecitalAdMailer.order_confirmation(@recital_ad).deliver
-      redirect_to 'http://www.tricksgym.com/recital_ad_order_thank_you.html'
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+  
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => RecitalAdType.find_by_id(params[:recital_ad][:recital_ad_type_id]).price*100,
+      :description => 'Recital Ad Purchase: ...... '+params[:recital_ad][:firstname]+' '+params[:recital_ad][:lastname]+' ('+params[:stripeEmail]+')',
+      :currency    => 'usd'
+    )
+
+    # Causing some kind of template error...
+    # rescue Stripe::CardError => e
+    #   #flash[:error] = e.message
+    #   puts "Got a stripe error: " + e.message
+    #   redirect_to root_path+'recital_ads/ad_select'
+    
+    @recital_ad = RecitalAd.new(recital_ad_params)
+    @recital_ad.email = params[:stripeEmail]
+    if @recital_ad.save
+      redirect_to recital_ad_order_thank_you_path
     else
-      render :new
+      redirect_to root_path+'recital_ads/ad_select'
     end
   end
 

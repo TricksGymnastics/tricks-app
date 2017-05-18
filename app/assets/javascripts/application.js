@@ -122,10 +122,21 @@ $(function(){
   });
   
   $("input:submit").on('click', function(event){
-    $("input:file").each(function( index ) {
-      if ($(this).val() != "")
-        $("#uploading_modal_hidden_trigger").trigger('click');
-    });
+    var show_uploading_overlay = true;
+    if (typeof $(this).data('confirm') != 'undefined'){
+      event.stopImmediatePropagation();
+      if (!confirm($(this).data('confirm'))){
+        event.preventDefault();
+        show_uploading_overlay = false;
+      }
+    } 
+    
+    if (show_uploading_overlay){
+      $("input:file").each(function( index ) {
+        if ($(this).val() != "")
+          $("#uploading_modal_hidden_trigger").trigger('click');
+      });
+    }
   });
 });
 
