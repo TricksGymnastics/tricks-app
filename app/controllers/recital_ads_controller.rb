@@ -53,6 +53,7 @@ class RecitalAdsController < ApplicationController
     @recital_ad = RecitalAd.new(recital_ad_params)
     @recital_ad.email = params[:stripeEmail]
     if @recital_ad.save
+      RecitalAdMailer.order_confirmation(@recital_ad).deliver
       redirect_to recital_ad_order_thank_you_path
     else
       redirect_to root_path+'recital_ads/ad_select'
