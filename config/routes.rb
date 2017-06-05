@@ -43,7 +43,7 @@ Comments::Application.routes.draw do
   resources :bubble_contents
   # resources :training_videos
 
-  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party campus employment recital_ad_order_thank_you survey_thank_you thankyou our_story].each do |page|
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party campus employment recital_ad_order_thank_you survey_thank_you recital_info thankyou our_story].each do |page|
     get page, controller: "static", action: page
   end
 
