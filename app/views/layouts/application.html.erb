@@ -221,20 +221,16 @@
               </ul>
             </li>
             <li class="has-submenu">
-              <%= link_to "Parties", 'javascript:void(0);', class: 'main-menu-item'  %>
+              <%= link_to "Parties & Events", 'javascript:void(0);', class: 'main-menu-item'  %>
               <ul class="menu vertical">
-                <li><%= gym_parties_link = link_to "Gymnastics Parties", birthdays_path %></li>
-                <li><%= dance_parties_link = link_to "Dance Parties", princess_party_path %></li>
-              </ul>
-            </li>
-            <li class="has-submenu">
-              <%= link_to "Events", 'javascript:void(0);', class: 'main-menu-item' %>
-              <ul class="menu vertical">
+                <li><%= parties_link = link_to "Parties", birthdays_path %></li>
                 <li><%= datenight_link =  link_to "Kids Night Out", datenights_path %></li>
+                <!--<li><%#= pop_n_play_link =  link_to "Pop n Plays", datenights_path %></li>-->
                 <li><%= camps_link = link_to "Camps", camps_path %></li>
+                <!--<li><%#= field_trips_link = link_to "Field Trips", camps_path %></li>-->
+                <!--<li><%#= fundraising_link = link_to "Fundraising", camps_path %></li>-->
               </ul>
             </li>
-            
           </ul>
         </div>
         
@@ -334,15 +330,9 @@
             </ul>
           </li>
           <li>
-            <a href="#">Parties</a>
+            <a href="#">Parties & Events</a>
             <ul class="vertical menu">
-              <li><%= gym_parties_link %></li>
-              <li><%= dance_parties_link %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Events</a>
-            <ul class="vertical menu">
+              <li><%= parties_link %></li>
               <li><%= datenight_link %></li>
               <li><%= camps_link %></li>
             </ul>
@@ -546,32 +536,17 @@
                   </ul>
                 </div>
                 <div class="column medium-3 small-6">
-                  <h3 class="footer-header">Parties</h3>
+                  <h3 class="footer-header">Parties & Events</h3>
                   <ul>
-                      <li><%= link_to "Gymnastics Parties", birthdays_path %></li>
-                      <li><%= link_to "Dance Parties", princess_party_path %></li>
+                    <li><%= parties_link %></li>
+                    <li><%= datenight_link %></li>
+                    <li><%= camps_link %></li>
                     
                     <!--  <li><%#= link_to "Ulimate Fun", birthdays_path %></li>-->
                     <!--  <li><%#= link_to "Ninja Warrior", birthdays_path %></li>-->
                     <!--  <li><%#= link_to "Fun & Games", birthdays_path %></li>-->
                     <!--  <li><%#= link_to "Fairytale", princess_party_path %></li>-->
                     <!--  <li><%#= link_to "Ballet", princess_party_path %></li>-->
-                  </ul>
-                  
-                  
-                  <h3 class="footer-header">Events</h3>
-                  <ul>
-                    <li><%= link_to "Kids Night Out", datenights_path %></li>
-                    <li>
-                      <%= link_to "Camps", camps_path %>
-                      <!-- <h3>Camps</h3>
-                      <ul>
-                        <li><%#= link_to "Spring Break", camps_path %></li>
-                        <li><%#= link_to "Summer", camps_path %></li>
-                        <li><%#= link_to "Turkey", camps_path %></li>
-                        <li><%#= link_to "Holiday", camps_path %></li>
-                      </ul> -->
-                    </li>
                   </ul>
                 </div>
                 <div class="column medium-3 small-6">
