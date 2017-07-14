@@ -17,7 +17,7 @@
 <% end %>
 
 <div class="row">
-  <div class="column large-12">
+  <div class="columns large-12">
     <h1><%= given_title %></h1>
     <%= given_description %>
 
@@ -61,13 +61,13 @@
   <% end %>
   <div class="row align-center" style="margin-bottom: 15px;">
     <% locations.each do |loc| %>
-      <div class="column small-3">
+      <div class="columns small-3">
         <%= link_to loc[0].gsub("_"," "), 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
       </div>
     <% end %>
   </div>
   <div class="row align-center">
-    <div class="column small-11">
+    <div class="columns small-11">
       <% locations.each do |loc| %>
         <div class="location-schedule-pdf" id="<%= loc[1] %>">
           <% pdf = WebsitePdf.where(file_name: program +"_Schedule_("+loc[0]+")").first %>

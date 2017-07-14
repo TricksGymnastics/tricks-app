@@ -4,83 +4,83 @@
 
 <div class="row align-center">
   
-  <div class="column large-3 small-11 small-order-2 large-order-1" style="border: solid 2px #333; margin: 50px 0;">
+  <div class="columns large-3 small-11 small-order-2 large-order-1" style="border: solid 2px #333; margin: 50px 0;">
     <h3>Register Here!</h3>
     <div class="row align-center">
-      <div class="column small-11">
+      <div class="columns small-11">
         <%= link_to "Granite Bay", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=GB&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
       </div>
-      <div class="column small-11">
+      <div class="columns small-11">
         <%= link_to "Folsom", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=FOL&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
       </div>
-      <div class="column small-11">
+      <div class="columns small-11">
         <%= link_to "Sacramento", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=SAC&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
       </div>
     </div>
     
     <div class="row align-justify">
-      <div class="column small-12 medium-5 large-12 medium-order-2" style="margin-bottom: 30px;">
+      <div class="columns small-12 medium-5 large-12 medium-order-2" style="margin-bottom: 30px;">
         <div class="row">
-          <div class="column large-3">
+          <div class="columns large-3">
             <h5>Time:</h5>
           </div>
-          <div class="column large-9">
+          <div class="columns large-9">
             <h5 style="text-align:right;"><%= @datenight.when_time %></h5>
           </div>
         </div>
         
         <div class="row">
-          <div class="column small-2 medium-3 large-3">
+          <div class="columns small-2 medium-3 large-3">
             <h5>Price:</h5>
           </div>
-          <div class="column small-10 medium-9 large-9">
+          <div class="columns small-10 medium-9 large-9">
             <h5 style="text-align:right; margin-bottom:0;">$<%= @datenight.single_price %> for first child</h5>
             <h5 style="text-align:right;">$<%= @datenight.sibling_price %> for siblings</h5>
           </div>
         </div>
       </div>
-      <div class="column small-12 medium-6 large-12 medium-order-1">
+      <div class="columns small-12 medium-6 large-12 medium-order-1">
         <div class="row">
-          <div class="column small-12">
+          <div class="columns small-12">
             <h3><%= @datenight.schedule_title %> Schedule:</h3>
           </div>
         </div>
         
         <div class="row">
-          <div class="column small-12">
+          <div class="columns small-12">
             <% @datenight.datenight_events.each do |d| %>
               <div class="row align-center" style="margin-bottom: 15px;">
-                <div class="column small-12">
+                <div class="columns small-12">
                   <h6 style="text-decoration: underline; margin: 0;"><%= d.title %></h6>
                   <p><i><%= d.description %></i></p>
                 </div>
-                <div class="column small-12">
+                <div class="columns small-12">
                   <% if !d.gb_date.nil? %>
                     <div class="row">
-                      <div class="column small-5">
+                      <div class="columns small-5">
                         Granite Bay:
                       </div>
-                      <div class="column small-7" style="text-align:right;">
+                      <div class="columns small-7" style="text-align:right;">
                         <%= d.gb_date.strftime("%a, %B %e") %>
                       </div>
                     </div>
                   <% end %>
                   <% if !d.fol_date.nil? %>
                     <div class="row">
-                      <div class="column small-6">
+                      <div class="columns small-6">
                         Folsom:
                       </div>
-                      <div class="column small-6" style="text-align:right;">
+                      <div class="columns small-6" style="text-align:right;">
                         <%= d.fol_date.strftime("%a, %B %e") %>
                       </div>
                     </div>
                   <% end %>
                   <% if !d.sac_date.nil? %>
                     <div class="row">
-                      <div class="column small-6">
+                      <div class="columns small-6">
                         Sacramento:
                       </div>
-                      <div class="column small-6" style="text-align:right;">
+                      <div class="columns small-6" style="text-align:right;">
                         <%= d.sac_date.strftime("%a, %B %e") %>
                       </div>
                     </div>
@@ -98,20 +98,20 @@
 
     <% if can? :manage, Datenight %>
       <div class="row align-center" style="margin-top: 30px;">
-        <div class="column small-10">
+        <div class="columns small-10">
           <%= link_to "Edit Page", datenights_edit_path, class: "button expanded" %>
         </div>
       </div>
     <% end %>
   </div>
   
-  <div class="column large-9 small-12 small-order-1 large-order-2" style="padding: 0 30px;">
+  <div class="columns large-9 small-12 small-order-1 large-order-2" style="padding: 0 30px;">
     <div class="row">
-      <div class="column small-12">
+      <div class="columns small-12">
         <h1>Kids Night Out</h1>
         <p style="font-size: 16px;"><%= @datenight.about %></p>
       </div>
-      <div class="column small-12">    
+      <div class="columns small-12">    
         <h3>Upcoming Date Night!</h3>
         <!-- Current Slide for Date Night goes here -->
         <% unless @datenight.image == nil %>

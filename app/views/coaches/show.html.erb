@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag "FileSpecificCSS/coaches", :media => "all" %>
 <div class="row" style="padding-top: 20px; margin-bottom: 150px;">
-  <div class="column large-3 " style="text-align:center;">
+  <div class="columns large-3 " style="text-align:center;">
     <div class="row">
-      <div class="column small-12">
+      <div class="columns small-12">
         <% image_to_use = @coach.image_url(:thumb).to_s %>
         <% if params[:use_tag_picture].to_i == 1 %>
           <% image_to_use = @coach.tag_image_url(:thumb).to_s %>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="column small-12">
+      <div class="columns small-12">
         <% if can? :edit, Coach %>
           <%= link_to 'Edit', edit_coach_path(@coach) %> |
         <% end %>
@@ -35,7 +35,7 @@
       </div>
     </div>
   </div>
-  <div class="column">
+  <div class="columns">
       
     <% if can? :manage, Coach %>
       <% if @coach.startdate.nil? %>

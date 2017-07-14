@@ -1,0 +1,27 @@
+<%# 
+    Required locals:
+    form
+    field
+    question
+    
+    Optional locals:
+    placeholder
+    required
+    maxlength
+    height
+%>
+<% if !defined? placeholder %>
+    <% placeholder = "" %>
+<% end %>
+<% if !defined? required %>
+    <% required = false %>
+<% end %>
+<% if !defined? maxlength %>
+    <% maxlength = 225 %>
+<% end %>
+<% if !defined? height %>
+    <% height = 100 %>
+<% end %>
+
+<%= form.label field, question, class: "input-group-label" %>
+<%= form.text_area field, required: required, placeholder: placeholder, maxlength: maxlength, style: "height: " + height.to_s + "px" %>

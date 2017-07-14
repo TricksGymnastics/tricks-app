@@ -15,10 +15,10 @@
     
     
     <div class="row">
-      <div class="column">
+      <div class="columns">
         
         <div class="row">
-          <div class="column large-2 ">
+          <div class="columns large-2 ">
             <%= image_tag(@coach.image_url(:thumb).to_s, style: "width: 100%; margin-bottom: 15px;") %>
             
             <%= f.label :image, "Upload Image", class: "button expanded success" %>
@@ -28,23 +28,23 @@
               <%= f.check_box :remove_image %> Remove Picture
             <% end %>
           </div>
-          <div class="column">
+          <div class="columns">
             <div class="row">
               
-              <div class="column large-4 ">
+              <div class="columns large-4 ">
                 <div class="input-group">
                   <%= f.label :firstname, "First Name", class: "input-group-label" %>
                   <%= f.text_field :firstname, class: "input-group-field" %>
                 </div>
               </div>
-              <div class="column large-4 ">
+              <div class="columns large-4 ">
                 <div class="input-group">
                   <%= f.label :lastname, "Last Name", class: "input-group-label", "aria-describedby":"lastnameHelpText" %>
                   <%= f.text_field :lastname, class: "input-group-field", "aria-describedby":"lastnameHelpText" %>
                 </div>
                 <p class="help-text">(Not Displayed unless logged in)</p>
               </div>
-              <div class="column large-4 ">
+              <div class="columns large-4 ">
                 <div class="input-group">
                   <%= f.label :current_employee, "Current Employee", class: "input-group-label" %>
                   <%= f.check_box :current_employee, style: "margin-left: 15px;", class: "input-group-field" %>
@@ -53,7 +53,7 @@
             </div>
             
             <div class="row">
-              <div class="column large-4 ">
+              <div class="columns large-4 ">
                 <div class="input-group">
                   <%= f.label :gender, class: "input-group-label" %>
                   <%= f.radio_button :gender, "Girl", checked: true, class: "input-group-field", style: "margin-left: 15px;"%>
@@ -63,7 +63,7 @@
                 </div>
               </div>
               
-              <div class="column large-4 ">
+              <div class="columns large-4 ">
                 <div class="input-group">
                   <%= f.label :birthdate, class: "input-group-label" %>
                   <%#= date_select("coach", "birthdate", :default => Date.today, :order => [:month, :day]) %>
@@ -71,7 +71,7 @@
                 </div>
               </div>
               
-              <div class="column large-4 ">
+              <div class="columns large-4 ">
                 <div class="input-group">
                   <%= f.label :startdate, "Start Date at Tricks:", class: "input-group-label" %>
                   <%= f.text_field :startdate, :default => Date.today, id:'start_date', class: "input-group-field" %>
@@ -81,13 +81,13 @@
             </div>
             
             <div class="row">
-              <div class="column large-6 ">
+              <div class="columns large-6 ">
                 <div class="input-group">
                   <%= f.label :strengths, class: "input-group-label" %>
                   <%= f.text_field :strengths, class: "input-group-field" %>
                 </div>
               </div>
-              <div class="column large-6 ">
+              <div class="columns large-6 ">
                 <div class="input-group">
                   
                   <%= f.label :location_ids, "Locations:", class: "input-group-label" %>
@@ -105,7 +105,7 @@
               
               
             <div class="row">
-              <div class="column large-12">
+              <div class="columns large-12">
                 <div class="input-group">
                   
                   <%= f.label :classtype_ids, "Fields Employee works in:", class: "input-group-label" %>      
@@ -124,13 +124,13 @@
               </div>
             </div>
             <div class="row" style="margin-bottom: 15px;">
-              <div class="column large-4 " id="tag_image_container">
+              <div class="columns large-4 " id="tag_image_container">
                 <div class="row">
                   <% if @coach.tag_image_url != "/assets/boy_default.jpg" && @coach.tag_image_url != "/assets/girl_default.jpg" %>
-                    <div class="column large-4">
+                    <div class="columns large-4">
                       <%= image_tag @coach.tag_image_url %>
                     </div>
-                    <div class="column">
+                    <div class="columns">
                       <div class="input-group">
                         <div>
                           <%= f.label :tag_image, "Upload TAG Image", class: "button success" %>
@@ -141,7 +141,7 @@
                       </div>
                     </div>
                   <% else %>
-                    <div class="column">
+                    <div class="columns">
                       <div class="input-group">
                         <div>
                           <%= f.label :tag_image, "Upload TAG Image", class: "button success" %>
@@ -158,13 +158,13 @@
         
         <!--This is the row after the picture has ended-->
         <div class="row">
-          <div class="column small-12">
+          <div class="columns small-12">
             <label class="input-group-label" style="font-size: 18px;">Levels Coach is trained to teach:</label>
           </div>
         </div>
         <div class="row" style="margin-top: 15px;">
            <!--Gymnastics-->
-          <div class="column large-3 small-6">
+          <div class="columns large-3 small-6">
             <h4 style="text-align: center;">Gymnastics</h4>
             <%= hidden_field_tag "coach[level_ids][]", nil %>
             <% Level.where(:classtype_id => "1").each do |level| %>
@@ -174,7 +174,7 @@
           </div>
     
             <!--Tumblebunnies-->
-          <div class="column large-3 small-6">
+          <div class="columns large-3 small-6">
             <h4 style="text-align: center;">Tumblebunnies</h4>
             <%= hidden_field_tag "coach[level_ids][]", nil %>
             <% Level.where(:classtype_id => "2").each do |level| %>
@@ -185,7 +185,7 @@
           
           
           <!--TAG & Swim-->
-          <div class="column large-3 small-6">
+          <div class="columns large-3 small-6">
             <div style="margin-bottom: 15px;">
               <h4 style="text-align: center;">TAG</h4>
               <%= hidden_field_tag "coach[level_ids][]", nil %>
@@ -207,7 +207,7 @@
           
           
             <!--Dance-->
-          <div class="column large-3 small-6">
+          <div class="columns large-3 small-6">
                 <h4 style="text-align: center;">Dance</h4>
                 <%= hidden_field_tag "coach[level_ids][]", nil %>
                 <% Level.where(:classtype_id => "3").each do |level| %>
@@ -220,7 +220,7 @@
         
         
         <div class="row">
-          <div class="column large-12">
+          <div class="columns large-12">
             <div class="input-group">
               <%= f.label :fav_event, "Favorite Activity and Why:", class: "input-group-label" %>
               <%= f.text_field :fav_event, class: "input-group-field" %>
@@ -248,9 +248,9 @@
             <%= f.text_area :advice, style: "height: 150px" %>
           </div>
           
-          <div class="column">
+          <div class="columns">
             <div class="row align-center" style="margin-top: 50px;">
-              <div class="column large-8 ">
+              <div class="columns large-8 ">
                 <%= f.submit class: "button expanded" %>
               </div>
             </div>

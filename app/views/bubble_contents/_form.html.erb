@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="row align-center">
-    <div class="column large-8 small-11">
+    <div class="columns large-8 small-11">
       <div class="row">
-        <div class="column large-6 ">
+        <div class="columns large-6 ">
           <div class="input-group">
             <%= f.label :text, class: "input-group-label" %>
             <%= f.text_field :text, class: "input-group-field" %>
           </div>
         </div>
-        <div class="column large-6 ">
+        <div class="columns large-6 ">
           <div class="input-group">
             <%= f.label :text_color, class: "input-group-label" %>
             <%= f.text_field :text_color, type: 'minicolors', class: "input-group-field" %>
@@ -28,14 +28,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="column large-6 ">
+        <div class="columns large-6 ">
           <div class="input-group">
             <%= f.label :image, "Upload Image", class: "button expanded success" %>
             <%= f.file_field :image, class: "show-for-sr" %>
             <%= f.check_box :remove_image %> Remove Picture
           </div>
         </div>
-        <div class="column large-6 ">
+        <div class="columns large-6 ">
           <div class="input-group">
             <%= f.label :color, "Background Color", class: "input-group-label" %>
             <%= f.text_field :color, type: 'minicolors', class: "input-group-field" %>
@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="column small-12">
+        <div class="columns small-12">
           <div class="input-group">
             <%= f.label :link, class: "input-group-label" %>
             <%= f.text_field :link, class: "input-group-field" %>
@@ -51,13 +51,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="column large-6 ">
+        <div class="columns large-6 ">
           <div class="input-group">
             <%= f.label :sort_order, "Position ID", class: "input-group-label" %>
             <%= f.number_field :sort_order, class: "input-group-field" %>
           </div>
         </div>
-        <div class="column large-6 ">
+        <div class="columns large-6 ">
           <div class="input-group">
             <%= f.label :show_button, "Show Button Under Bubble", class: "input-group-label" %>
             <%= f.check_box :show_button, class: "input-group-field", style: "margin-left: 15px;" %>
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="row align-center" style="margin-bottom: 100px; margin-top: 50px;">
-        <div class="column small-8">
+        <div class="columns small-8">
           <%= f.submit class: "button expanded" %>
         </div>
       </div>

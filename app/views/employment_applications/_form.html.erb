@@ -1,0 +1,194 @@
+<style>
+  .input-group-label{
+    text-align: left;
+  }
+  .fieldset h1{
+    font-size: 30px;
+  }
+  .fieldset {
+    padding-bottom: 0px;
+    border: 1px solid #aaa;
+    box-shadow: 0px 0px 30px #888;
+  }
+</style>
+
+<%= form_for(@employment_application) do |f| %>
+  <% if @employment_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employment_application.errors.count, "error") %> prohibited this employment_application from being saved:</h2>
+
+      <ul>
+      <% @employment_application.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <% DiscontinueNotice::LOCATIONS.each do |loc| %>
+      
+    <div class="columns large-4 small-12">
+      <div class=" input-group">
+        <%= loc %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  
+  <fieldset class="fieldset">
+    <legend><h1>Personal Information</h1></legend>
+    <div class="row">
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :firstname, field_name: "First Name", placeholder: "First Name", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :middlename, field_name: "Middle Name", placeholder: "Middle Name", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, field_name: "Last Name", placeholder: "Last Name", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :email, field_name: "Email", placeholder: "tumblebunny@tricksgym.com", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :phone, field_name: "Phone", placeholder: "123-456-7890", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthday, field_name: "Birthdate", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :position_desired, field_name: "Position Desired", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :expected_pay, field_name: "Expected Pay", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :desired_hours, field_name: "Desired Hours", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/date', locals: {form: f, field: :date_available, field_name: "Date Available", required: true} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :can_drive, question: "Do you have your own transportation?"} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :mornings, question: "Can you work mornings?"} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :saturdays, question: "Can you work Saturdays?"} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :can_commit_one_year, question: "Can you commit to one year?"} %>
+      </div>
+      
+      <div class="columns small-12">
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :previous_experience, question: "Have you had any previous gymnastics/dance/swim experience? If yes, please explain:", required: true} %>
+      </div>
+      <div class="columns small-12">
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :experience_with_children, question: "Do you have any experience working with children? If yes, please explain:", required: true} %>
+      </div>
+      <div class="columns small-12">
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :reason, question: "What prompted you to select TRICKS as a potential employer?", required: true} %>
+      </div>
+      <div class="columns small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :hobbies, required: true} %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset class="fieldset">
+    <legend><h1>Job Requirements In Brief</h1></legend>
+    <div class="row">
+      <div class="columns small-12">
+        <p>Able to be energetic, professional, reliable, work well with children and parents, lift and spot children of all shapes and sizes, work well with others, and take on other duties that might not be expected.</p>
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :job_requirements_response, question: "After reading the above job requirements, would you be able to perform all potential job duties?"} %>
+      </div>
+    </div>
+  </fieldset>
+  
+  
+  <fieldset class="fieldset">
+    <legend><h1>Education</h1></legend>
+    
+  <div class="field">
+    <%= f.label :high_school_year %><br>
+    <%= f.text_field :high_school_year %>
+  </div>
+  <div class="field">
+    <%= f.label :high_school_graduation_year %><br>
+    <%= f.text_field :high_school_graduation_year %>
+  </div>
+  <div class="field">
+    <%= f.label :high_school_name %><br>
+    <%= f.text_field :high_school_name %>
+  </div>
+  <div class="field">
+    <%= f.label :college_year %><br>
+    <%= f.text_field :college_year %>
+  </div>
+  <div class="field">
+    <%= f.label :college_graduation_year %><br>
+    <%= f.text_field :college_graduation_year %>
+  </div>
+  <div class="field">
+    <%= f.label :college_name %><br>
+    <%= f.text_field :college_name %>
+  </div>
+  <div class="field">
+    <%= f.label :college_degree %><br>
+    <%= f.text_field :college_degree %>
+  </div>
+  <div class="field">
+    <%= f.label :continuing_education %><br>
+    <%= f.check_box :continuing_education %>
+  </div>
+  </fieldset>
+  
+  <fieldset class="fieldset">
+    <legend><h1>Employment History</h1></legend>
+    
+  <div class="field">
+    <%= f.label :do_not_contact_employer %><br>
+    <%= f.text_field :do_not_contact_employer %>
+  </div>
+  <div class="field">
+    <%= f.label :do_not_contact_reason %><br>
+    <%= f.text_area :do_not_contact_reason %>
+  </div>
+  
+  </fieldset>
+  
+  <fieldset class="fieldset">
+    <legend><h1>Other History</h1></legend>
+    
+  <div class="field">
+    <%= f.label :convicted %><br>
+    <%= f.check_box :convicted %>
+  </div>
+  <div class="field">
+    <%= f.label :convictions %><br>
+    <%= f.text_area :convictions %>
+  </div>
+  <div class="field">
+    <%= f.label :interview_date %><br>
+    <%= f.date_select :interview_date %>
+  </div>
+  <div class="field">
+    <%= f.label :interviewed_by %><br>
+    <%= f.text_field :interviewed_by %>
+  </div>
+  </fieldset>
+  
+  <fieldset class="fieldset">
+    <legend><h1>Certification</h1></legend>
+    <p>All applicants for employment are judged solely on the basis of qualification and ability without regard to age, sex, race, creed, color, national origin, marital status, disability, or veteran status. I understand and agree that employment may be contingent upon reference checks.</p>
+    <p>I acknowledge the fact that the Company follows an employment-at-will policy, in that I or the Company may terminate my employment at any time, or for any reason applicable with state or federal law. I understand that this application is not a contract of employment. I understand that to be employed I must be lawfully authorized to work in the United States, and show the employer documents that will prove this.</p>
+    <p>I authorize an inquiry to investigate my work, credit, and personal history and verify data given on this application, or on related papers and in interviews. I authorize all individuals, schools, and firms named therein, to provide any information requested about me, and I release them from all liability for damages in providing this information.</p>
+    <p>I certify that all of the statements, herein are true and understand that any falsification or willful omission shall be sufficient cause for dismissal or refusal of employment.</p>
+    <div class="actions" style="margin-top: 50px;">
+      <%= f.submit "Submit Application", class: "button expanded" %>
+    </div>
+  </fieldset>
+<% end %>

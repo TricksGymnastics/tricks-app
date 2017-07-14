@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502212825) do
+ActiveRecord::Schema.define(version: 20170714012904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20170502212825) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
 
   create_table "answers", force: :cascade do |t|
     t.string   "content",     limit: 255
@@ -160,6 +162,62 @@ ActiveRecord::Schema.define(version: 20170502212825) do
     t.boolean  "understood"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+  end
+
+  create_table "employment_applications", force: :cascade do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "middlename"
+    t.boolean  "granite_bay"
+    t.boolean  "folsom"
+    t.boolean  "sacramento"
+    t.string   "phone"
+    t.boolean  "mornings"
+    t.boolean  "saturdays"
+    t.text     "previous_experience"
+    t.text     "experience_with_children"
+    t.text     "reason"
+    t.string   "email"
+    t.string   "position_desired"
+    t.date     "birthday"
+    t.boolean  "can_drive"
+    t.boolean  "can_commit_one_year"
+    t.float    "expected_pay"
+    t.integer  "desired_hours"
+    t.date     "date_available"
+    t.text     "job_requirements_response"
+    t.string   "high_school_year"
+    t.string   "high_school_graduation_year"
+    t.string   "high_school_name"
+    t.string   "college_year"
+    t.string   "college_graduation_year"
+    t.string   "college_name"
+    t.string   "college_degree"
+    t.text     "hobbies"
+    t.boolean  "continuing_education"
+    t.string   "do_not_contact_employer"
+    t.text     "do_not_contact_reason"
+    t.boolean  "convicted"
+    t.text     "convictions"
+    t.date     "interview_date"
+    t.string   "interviewed_by"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "employment_histories", force: :cascade do |t|
+    t.string   "company_name"
+    t.string   "supervisor_name"
+    t.string   "job_title"
+    t.text     "description"
+    t.string   "phone"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.float    "start_pay"
+    t.float    "end_pay"
+    t.text     "reason_for_leaving"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "kid_quotes", force: :cascade do |t|

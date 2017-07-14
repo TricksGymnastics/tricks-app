@@ -1,10 +1,10 @@
 <div class="row align-center">
     <% if can? :manage, Camp %>
-        <div class="column small-11">
+        <div class="columns small-11">
             <h1 style="margin: 0; font-size: 30px;"><%= link_to "Edit Camp", edit_camp_path(given_camp) %></h1>
         </div>
     <% end %>
-    <div class="column small-11 large-10" style="border: solid 2px #555; box-shadow: 0 0 20px #999; margin-bottom: 50px; border-radius: 25px; padding: 0; overflow: hidden;">
+    <div class="columns small-11 large-10" style="border: solid 2px #555; box-shadow: 0 0 20px #999; margin-bottom: 50px; border-radius: 25px; padding: 0; overflow: hidden;">
         <% if !given_camp.title.nil? && !given_camp.title.empty? %>
             <h1><%= given_camp.title %></h1>
         <% end %>

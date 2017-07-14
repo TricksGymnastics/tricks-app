@@ -1,5 +1,6 @@
 Comments::Application.routes.draw do
 
+  resources :employment_applications
   resources :recital_sign_ups
   resources :parties
   resources :camps

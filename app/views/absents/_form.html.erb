@@ -11,13 +11,13 @@
       </div>
     <% end %>
     <div class="row">
-      <div class="column large-6 ">
+      <div class="columns large-6 ">
         <div class=" input-group">
           <%= f.label :first_name, "First Name", class: "input-group-label" %>
           <%= f.text_field :first_name, class: "input-group-field" %>
         </div>
       </div>
-      <div class="column large-6 ">
+      <div class="columns large-6 ">
         <div class=" input-group">
           <%= f.label :last_name, "Last Name", class: "input-group-label" %>
           <%= f.text_field :last_name, class: "input-group-field" %>
@@ -26,7 +26,7 @@
     </div>
    
     <div class="row">
-      <div class="column small-12">
+      <div class="columns small-12">
         <div class=" input-group">
           <%= f.label :location, "Location", class: "input-group-label" %>
           <%= f.select :location, Absent::LOCATIONS, :prompt => "Select a Location", class: "input-group-field" %>
@@ -35,13 +35,13 @@
     </div>
     
     <div class="row">
-      <div class="column large-6 ">
+      <div class="columns large-6 ">
         <div class=" input-group">
           <%= f.label :classtype_id, "Class Type", class: "input-group-label" %>
           <%= f.collection_select :classtype_id, Classtype.where(:id => 1..5), :id, :name, prompt: "Select a Class Type", id: "classtype_select", class: "input-group-field" %>
         </div>
       </div>
-      <div class="column large-6 ">
+      <div class="columns large-6 ">
         <div class=" input-group">
           <%= f.label :level_id, "Level", class: "input-group-label" %>
           <%= f.grouped_collection_select :level_id, Classtype.all, :levels, :name, :id, :levelname, class: "input-group-field" %>
@@ -51,13 +51,13 @@
 
 
     <div class="row">
-      <div class="column large-6 ">
+      <div class="columns large-6 ">
         <div class=" input-group">
           <%= f.label :date, "Date", class: "input-group-label" %>
           <%= f.text_field :date, id:'absent_date', class: "input-group-field" %>
         </div>
       </div>
-      <div class="column large-6 ">
+      <div class="columns large-6 ">
         <div class=" input-group">
           <%= f.label :time, "Time", class: "input-group-label", id: "absent_time_label" %>
           <%= f.text_field :time, type: "time", class: "input-group-field" %>

@@ -14,18 +14,18 @@
 
 
 <div class="row" id="personal_info">
-  <div class="column small-12">
+  <div class="columns small-12">
     <h3>Personal Information</h3>
     
     
     <div class="row">
-      <div class="column large-6 ">
+      <div class="columns large-6 ">
         <div class=" input-group">
           <%= f.label :firstname, "First Name", class: "input-group-label" %>
           <%= f.text_field :firstname, class: "input-group-field" %>
         </div>
       </div>
-      <div class="column large-6 ">
+      <div class="columns large-6 ">
         <div class=" input-group">
           <%= f.label :lastname, "Last Name", class: "input-group-label" %>
           <%= f.text_field :lastname, class: "input-group-field" %>
@@ -34,7 +34,7 @@
     </div>
     
     <!--<div class="row">-->
-    <!--  <div class="column small-12">-->
+    <!--  <div class="columns small-12">-->
     <!--    <div class=" input-group">-->
     <!--      <%#= f.label :email, class: "input-group-label" %>-->
     <!--      <%#= f.email_field :email, class: "input-group-field" %>-->
@@ -49,7 +49,7 @@
         window.word_max = "<%= @recital_ad.recital_ad_type.word_max %>";
       <% end %>
       <div class="row">
-        <div class="column small-12">
+        <div class="columns small-12">
           <%= f.label :message, ("Message " + "(<span id='count_number_words'>0</span>/" + @recital_ad.recital_ad_type.word_max.to_s + ")").html_safe, class: "input-group-label" %>
           <%= f.text_area :message, size: "40x6", onkeypress: "return check_length(this, document.getElementById('count_number_words'));", placeholder: "Please enter your message" %>
         </div>
@@ -59,7 +59,7 @@
     <div style="min-height: 100px;">
       <% if @recital_ad.recital_ad_type.image? %>
         <div class="row align-center">
-          <div class="column small-8">
+          <div class="columns small-8">
             <div class="input-group">
               <%= f.label :image, "Upload Image", class: "button expanded" %>
               <%= f.file_field :image, class: "show-for-sr" %>
@@ -68,7 +68,7 @@
         </div>
         <% if @recital_ad.image? %>
           <div class="row align-center">
-            <div class="column shrink">
+            <div class="columns shrink">
               Uploaded Image:<br>
               <%= image_tag(@recital_ad.image_url(:thumb).to_s, :border => "4px solid;") %>
             </div>
@@ -78,7 +78,7 @@
         
       <% if @recital_ad.recital_ad_type.pdf_file? %>
         <div class="row align-center">
-          <div class="column small-8">
+          <div class="columns small-8">
             <div class="input-group">
               <%= f.label :pdf_file, "Upload PDF", class: "button expanded" %>
               <%= f.file_field :pdf_file, class: "show-for-sr" %>
@@ -87,7 +87,7 @@
         </div>
         <% if @recital_ad.pdf_file? %>
           <div class="row align-center">
-            <div class="column shrink">
+            <div class="columns shrink">
               Uploaded File:<br>
               <%= @recital_ad.image_url().to_s %>
             </div>

@@ -1,0 +1,37 @@
+<%# 
+    Required locals:
+    form
+    field
+    question
+    
+    Optional locals:
+%>
+
+<style>
+  .inner-table tbody{
+    border-color: #ccc;
+  }
+  .inner-table tr td:nth-of-type(2){
+    width:0.1%;
+    white-space: nowrap;
+  }
+  .switch{
+    margin: 0;
+    height: 2rem;
+  }
+</style>
+
+<table class="unstriped inner-table">
+  <td>
+    <%= form.label field, question %>
+  </td>
+  <td>
+    <div class="switch">
+      <%= form.check_box field, class:"switch-input", id: question.gsub(" ", "_").gsub("?","").downcase + "_switch" %>
+      <%= form.label(field, class:"switch-paddle", for: question.gsub(" ", "_").gsub("?","").downcase + "_switch") do %>
+        <span class="switch-active" aria-hidden="true">Yes</span>
+        <span class="switch-inactive" aria-hidden="true">No</span>
+      <% end %>
+    </div>
+  </td>
+</table>

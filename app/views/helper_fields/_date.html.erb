@@ -1,0 +1,23 @@
+<%# 
+    Required locals:
+    form
+    field
+    field_name
+    
+    Optional locals:
+    required
+%>
+<% if !defined? required %>
+    <% required = false %>
+<% end %>
+
+<div class=" input-group">
+    <%= form.label field, field_name, class: "input-group-label" %>
+    <%= form.text_field field, required: required, id: field_name.gsub(" ", "_").downcase, class: "input-group-field" %>
+</div>
+
+<script>
+  $('#<%= field_name.gsub(" ", "_").downcase %>').datepicker({dateFormat: 'MM d, yy'})
+  // Have to hide the date picker because adding here caused it to be shown at the bottom of the page on load
+  $('#ui-datepicker-div').hide()
+</script>

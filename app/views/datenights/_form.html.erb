@@ -3,35 +3,35 @@
   
   <div class="row align-justify" style="margin-bottom:100px;">
     
-    <div class="column large-3 " style="border: solid 2px #333; margin: 50px 0; padding-top: 20px;">
+    <div class="columns large-3 " style="border: solid 2px #333; margin: 50px 0; padding-top: 20px;">
       
       <div class="row align-justify">
-        <div class="column small-3">
+        <div class="columns small-3">
           <h5>Time:</h5>
         </div>
-        <div class="column small-6">
+        <div class="columns small-6">
           <h5 style="text-align:right;"><%= f.text_field :when_time %></h5>
         </div>
       </div>
       
       <div class="row">
-        <div class="column small-3">
+        <div class="columns small-3">
           <h5>Price:</h5>
         </div>
-        <div class="column small-9">
+        <div class="columns small-9">
           <h5 style="text-align:right; margin-bottom:0;">$<%= f.number_field :single_price, style: 'width: 50px; display: inline;' %> for first child</h5>
           <h5 style="text-align:right;">$<%= f.number_field :sibling_price, style: 'width: 50px; display: inline;' %> for siblings</h5>
         </div>
       </div>
       
       <div class="row" style="margin-top: 10px;">
-        <div class="column small-12">
+        <div class="columns small-12">
           <h3><%= f.text_field :schedule_title, placeholder: "2013", style: "width: 80px; display: inline;" %> Schedule:</h3>
         </div>
       </div>
       
       <div class="row">
-        <div class="column small-12">
+        <div class="columns small-12">
           <%= f.fields_for :datenight_events do |builder| %>
             <%= render 'datenight_event_fields', f: builder %>      
           <% end %>
@@ -43,22 +43,22 @@
       </div>
     </div>
     
-    <div class="column large-9 " style="padding: 0 30px;">
+    <div class="columns large-9 " style="padding: 0 30px;">
       <div class="row">
-        <div class="column small-12">
+        <div class="columns small-12">
           <h1>Editing Kids Night Out</h1>
           <p style="font-size: 16px;"><%= f.text_area :about, style:"height: 200px; font-size: 16px;" %></p>
         </div>
-        <div class="column small-12">    
+        <div class="columns small-12">    
           <h3>Upcoming Date Night!</h3>
           <!-- Current Slide for Date Night goes here -->
           <div class="row align-center">
             <div class="small-8">
               <div class="row" style="border: 1px solid #777; box-shadow: 0 0 8px #444; padding: 10px;">
-                <div class="column large-6" style="text-align:right;">
+                <div class="columns large-6" style="text-align:right;">
                   Choose image to upload:  
                 </div>
-                <div class="column large-6">
+                <div class="columns large-6">
                   <%= f.file_field :image, style: "margin: 0;" %>
                 </div>
               </div>
@@ -67,7 +67,7 @@
           
           <% unless @datenight.image == nil %>
             <div class="row" style="margin-top: 25px;">
-              <div class="column small-12">
+              <div class="columns small-12">
                 <%= image_tag(@datenight.image, style:"box-shadow: 0 0 20px #222; width: 100%") %>
               </div>
             </div>
@@ -75,9 +75,9 @@
         </div>
       </div>
     </div>
-    <div class="column small-12" style="margin-top: 50px;">
+    <div class="columns small-12" style="margin-top: 50px;">
       <div class="row align-center">
-        <div class="column small-4">
+        <div class="columns small-4">
           <%= f.submit "Submit", class: "button expanded"  %>
         </div>
       </div>

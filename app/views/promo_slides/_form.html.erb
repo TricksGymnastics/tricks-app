@@ -15,7 +15,7 @@
     
     
     <div class="row">
-      <div class="column large-12">
+      <div class="columns large-12">
         <div class=" input-group">
           <%= f.label :title, class: "input-group-label" %>
           <%= f.text_field :title, class: "input-group-field" %>
@@ -24,13 +24,13 @@
     </div>
     
     <div class="row">
-      <div class="column large-3">
+      <div class="columns large-3">
         <div class="input-group">
           <%= f.label :live, class: "input-group-label" %>
           <%= f.check_box :live, style: "margin-left: 15px;", class: "input-group-field", id: "live_check_box" %>
         </div>
       </div>
-      <div class="column large-9" id="order_input">
+      <div class="columns large-9" id="order_input">
         <div class="input-group">
           <%= f.label :sort_order, "Order: ", class: "input-group-label" %>
           <% (1..6).each do |i| %>
@@ -54,20 +54,20 @@
     </div>
 
     <div class="row align-center" id="data_type_image_box" style="border: 2px dotted #555; padding: 15px 0;">
-      <div class="column small-12"> 
+      <div class="columns small-12"> 
         <div class="input-group">
           <%= f.label :link, class: "input-group-label" %>
           <%= f.check_box :link, class: "input-group-field", id: "link_check_box", style: "margin-left: 15px;" %>   
         </div>
       </div>
-      <div class="column small-12" id="link_path_input"> 
+      <div class="columns small-12" id="link_path_input"> 
         <b><%= f.label :link_path, "Link Path:" %></b>
         <%= f.text_field :link_path, size: 60 %>
         (ie. www.tricksgym.com/'path goes here')<br>
         Full http paths work as well: http://www.google.com<br><br>
       </div>
 
-      <div class="column small-6">        
+      <div class="columns small-6">        
         <% if @promo_slide.image_url == nil %> 
         <% else %>
           <%= image_tag @promo_slide.image_url %>
@@ -79,7 +79,7 @@
     </div>
 
     <div class="row align-center" id="html_input_field" style="display:none; border: dotted 2px #555; padding: 15px 0;">
-      <div class="column small-12">
+      <div class="columns small-12">
         <p>Please wrap your code in this div tag:<br>&lt;div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;"&#62;&lt;/div&#62;</p>
         <% if @promo_slide.html_code == nil %>
           <%= f.text_area :html_code, style: "width: 800px; height: 300px;", value: '<div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;">
@@ -97,7 +97,7 @@ Input your code inside this div.
 
 
     <div class="row align-center" style="margin-top: 50px;">
-      <div class="column small-6">
+      <div class="columns small-6">
         <%= f.submit class: "button expanded" %>
       </div>
     </div>

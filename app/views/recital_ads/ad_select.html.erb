@@ -12,17 +12,17 @@
   <!-- <h4>If you have an adblocker, please disable it for the duration of the order process</h4> -->
 
   <div class="row align-center">
-    <div class="column large-8 ">
+    <div class="columns large-8 ">
       <% @recital_ad_types[1..4].each do |ad| %>
         <div class="row align-middle" id="recital_ad_type_container">
-          <div class="column small-1" style="text-align:right;">
+          <div class="columns small-1" style="text-align:right;">
             <% if ad.name == "Ad 2" %>
               <%= radio_button_tag(:recital_ad_type_id, ad.id, :checked => true) %>
             <% else %>
               <%= radio_button_tag(:recital_ad_type_id, ad.id) %>
           <% end %>
           </div>
-          <div class="column shrink">
+          <div class="columns shrink">
             <% if ad.name == "Ad 2" %>
               <%= image_tag("/assets/2016_recital_ad_type_1.png") %>
             <% elsif ad.name == "Ad 3" %>
@@ -33,7 +33,7 @@
               <h2 style="text-align: left; margin-left: 10px;">Full Page Ad</h2>
             <% end %>
           </div>
-          <div class="column">
+          <div class="columns">
             <h3>Price: <%= number_to_currency(ad.price) %></h3>
             <% if ad.word_max != nil %>
               <h3>Up to <b style="text-decoration:underline;"><%= ad.word_max %></b> words</h3>
@@ -63,7 +63,7 @@
   </div>
   
   <div class="row align-center" style="margin-bottom: 100px;">
-    <div class="column small-4">
+    <div class="columns small-4">
       <%= submit_tag "Continue", name: nil, class:"button expanded", id:"ad_select_continue_button" %>
     </div>
   </div>

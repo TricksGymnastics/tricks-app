@@ -26,7 +26,7 @@
 	<div id="panel_<%= level.id %>" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel_<%= level.id %>-heading">
 		<% if !level.video_url.nil? && !level.video_url.empty? %>
 			<div class="row align-center">
-				<div class="column large-8 ">
+				<div class="columns large-8 ">
 					<div class="flex-video">
 						<iframe src="<%= level.video_url %>" frameborder="0" allowfullscreen></iframe>
 					</div>
@@ -37,7 +37,7 @@
 			<%= level.short_description %>
 		</div>
 		<div class="row" style="margin-bottom: 20px;">
-			<div class="column small-12">
+			<div class="columns small-12">
 				<h4 style="text-align: center;"><span style="margin-right: 50px;"><%= level.length %> mins</span>$<%= level.price %>/month</h4>
 			</div>
 		</div>
@@ -48,13 +48,13 @@
 		<div class="row align-justified" style="margin-bottom: 40px;">
 			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
 			<% locations.each do |loc| %>
-				<div class="column 3-small">
+				<div class="columns 3-small">
 					<%= link_to(loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1]) %>
 				</div>
 			<% end %>
 		</div>
 		<div class="row level-classes" id="<%= level.id %>">
-			<div class="column small-12" style="text-align:center;">
+			<div class="columns small-12" style="text-align:center;">
 				<%= image_tag("/assets/loading-spinner.gif") %>
 			</div>    
 		</div>
