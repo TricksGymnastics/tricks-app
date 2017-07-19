@@ -22,7 +22,18 @@ class EmploymentApplicationsController < ApplicationController
   # POST /employment_applications
   def create
     @employment_application = EmploymentApplication.new(employment_application_params)
-
+    address = Address.new(address_params)
+    address.update_attribute(:addressable, @employment_application)
+    
+    count = 1
+    params.keys.each do |key|
+      if key.include? "employment_history_"
+        history = EmploymentHistory.new(employment_history_params(count))
+        history.update_attribute(:history, @employment_application)
+        count += 1
+      end
+    end
+    
     if @employment_application.save
       redirect_to @employment_application, notice: 'Employment application was successfully created.'
     else
@@ -54,5 +65,13 @@ class EmploymentApplicationsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def employment_application_params
       params.require(:employment_application).permit(:firstname, :lastname, :middlename, :phone, :mornings, :saturdays, :previous_experience, :experience_with_children, :reason, :application_date, :email, :position_desired, :birthday, :can_drive, :can_commit_one_year, :expected_pay, :desired_hours, :date_available, :job_requirements_response, :high_school_year, :high_school_graduation_year, :high_school_name, :college_year, :college_graduation_year, :college_name, :college_degree, :hobbies, :continuing_education, :do_not_contact_employer, :do_not_contact_reason, :convicted, :convictions, :interview_date, :interviewed_by)
+    end
+    
+    def address_params
+       params.require(:address).permit(:street, :city, :state, :zip)
+    end
+    
+    def employment_history_params(id)
+       params.require(:"#{'employment_history_'+id.to_s}").permit(:company_name, :supervisor_name, :job_title, :description, :phone, :start_date, :end_date, :start_pay, :end_pay, :reason_for_leaving)
     end
 end

@@ -1,0 +1,57 @@
+<%#
+    In order for address to work you must do a few things in the model and controller of the parent class
+    
+    Controller::Create
+    
+    @address = Address.new(address_params)
+    @address.update_attribute(:addressable, @employment_application)
+    
+    private:
+    def address_params
+       params.require(:address).permit(:street, :city, :state, :zip)
+    end
+    
+    Model
+    has_one :address, :as => :addressable
+    
+    See EmploymentHistory as the example use case
+%>
+
+<%# 
+    Required locals:
+    title
+    
+    Optional locals:
+    required
+%>
+<% if !defined? required %>
+    <% required = false %>
+<% end %>
+
+<style>
+    #address_fieldset{
+        box-shadow: none;
+        margin-top: 0;
+    }
+</style>
+
+<fieldset class="fieldset" id="address_fieldset">
+    <legend><%= title %></legend>
+    
+    <%= fields_for :address do |address_fields| %>
+        <div class="row">
+            <div class="columns small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :street, field_name: "Street", required: required} %>
+            </div>
+            <div class="columns large-4 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :city, field_name: "City", required: required} %>
+            </div>
+            <div class="columns large-4 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :state, field_name: "State", required: required} %>
+            </div>
+            <div class="columns large-4 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :zip, field_name: "Zip", required: required} %>
+            </div>
+        </div>
+    <% end %>
+</fieldset>

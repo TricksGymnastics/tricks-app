@@ -20,6 +20,9 @@
   <%= @employment_application.phone %>
 </p>
 
+  <%= @employment_application.address.street %>
+  <%= @employment_application.employment_histories.first.company_name %>
+  <%= @employment_application.employment_histories.last.company_name %>
 <p>
   <strong>Mornings:</strong>
   <%= @employment_application.mornings %>
@@ -47,7 +50,7 @@
 
 <p>
   <strong>Application date:</strong>
-  <%= @employment_application.application_date %>
+  <%= @employment_application.created_at %>
 </p>
 
 <p>

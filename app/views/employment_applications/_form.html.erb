@@ -41,34 +41,37 @@
     <legend><h1>Personal Information</h1></legend>
     <div class="row">
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :firstname, field_name: "First Name", placeholder: "First Name", required: true} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :firstname, field_name: "First Name", placeholder: "First Name", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :middlename, field_name: "Middle Name", placeholder: "Middle Name", required: true} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :middlename, field_name: "Middle Name", placeholder: "Middle Name", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, field_name: "Last Name", placeholder: "Last Name", required: true} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, field_name: "Last Name", placeholder: "Last Name", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :email, field_name: "Email", placeholder: "tumblebunny@tricksgym.com", required: true} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :email, field_name: "Email", placeholder: "tumblebunny@tricksgym.com", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :phone, field_name: "Phone", placeholder: "123-456-7890", required: true} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :phone, field_name: "Phone", placeholder: "123-456-7890", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthday, field_name: "Birthdate", required: true} %>
+        <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthday, field_name: "Birthdate", required: false} %>
+      </div>
+      <div class="columns large-12 small-12">
+        <%= render partial: 'helper_fields/address', locals: {title: "Current Address", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :position_desired, field_name: "Position Desired", required: true} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :position_desired, field_name: "Position Desired", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :expected_pay, field_name: "Expected Pay", required: true} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :expected_pay, field_name: "Expected Pay", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :desired_hours, field_name: "Desired Hours", required: true} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :desired_hours, field_name: "Desired Hours", required: false} %>
       </div>
       <div class="columns large-4 small-12">
-        <%= render partial: 'helper_fields/date', locals: {form: f, field: :date_available, field_name: "Date Available", required: true} %>
+        <%= render partial: 'helper_fields/date', locals: {form: f, field: :date_available, field_name: "Date Available", required: false} %>
       </div>
       <div class="columns large-4 small-12">
         <%= render partial: 'helper_fields/switch', locals: {form: f, field: :can_drive, question: "Do you have your own transportation?"} %>
@@ -84,16 +87,16 @@
       </div>
       
       <div class="columns small-12">
-        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :previous_experience, question: "Have you had any previous gymnastics/dance/swim experience? If yes, please explain:", required: true} %>
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :previous_experience, question: "Have you had any previous gymnastics/dance/swim experience? If yes, please explain:", required: false} %>
       </div>
       <div class="columns small-12">
-        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :experience_with_children, question: "Do you have any experience working with children? If yes, please explain:", required: true} %>
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :experience_with_children, question: "Do you have any experience working with children? If yes, please explain:", required: false} %>
       </div>
       <div class="columns small-12">
-        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :reason, question: "What prompted you to select TRICKS as a potential employer?", required: true} %>
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :reason, question: "What prompted you to select TRICKS as a potential employer?", required: false} %>
       </div>
       <div class="columns small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :hobbies, required: true} %>
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :hobbies, question: "What are your hobbies and interests?", height: 60, required: false} %>
       </div>
     </div>
   </fieldset>
@@ -111,74 +114,74 @@
   
   <fieldset class="fieldset">
     <legend><h1>Education</h1></legend>
-    
-  <div class="field">
-    <%= f.label :high_school_year %><br>
-    <%= f.text_field :high_school_year %>
-  </div>
-  <div class="field">
-    <%= f.label :high_school_graduation_year %><br>
-    <%= f.text_field :high_school_graduation_year %>
-  </div>
-  <div class="field">
-    <%= f.label :high_school_name %><br>
-    <%= f.text_field :high_school_name %>
-  </div>
-  <div class="field">
-    <%= f.label :college_year %><br>
-    <%= f.text_field :college_year %>
-  </div>
-  <div class="field">
-    <%= f.label :college_graduation_year %><br>
-    <%= f.text_field :college_graduation_year %>
-  </div>
-  <div class="field">
-    <%= f.label :college_name %><br>
-    <%= f.text_field :college_name %>
-  </div>
-  <div class="field">
-    <%= f.label :college_degree %><br>
-    <%= f.text_field :college_degree %>
-  </div>
-  <div class="field">
-    <%= f.label :continuing_education %><br>
-    <%= f.check_box :continuing_education %>
-  </div>
+	  <% schoolyears = [['Freshman', 0], ['Softmore', 1], ['Junior', 2], ['Senior', 3], ['Graduated', 4]] %>
+    <div class="row">
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :high_school_name, fieldname: "High School Name", required: false} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/select', locals: {form: f, field: :high_school_year, fieldname: "High School Year", options: schoolyears, required: false} %>
+      </div>
+      <div class="columns large-4 small-12" id="high_school_year_question">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :high_school_graduation_year, field_name: "High School Graduation Year", required: false} %>
+      </div>
+    </div>
+    <div class="row" id="college_questions">
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :college_name, fieldname: "College Name", required: false} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/select', locals: {form: f, field: :college_year, fieldname: "College Year", options: schoolyears, required: false} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :college_graduation_year, field_name: "College Graduation Year", required: false} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :college_degree, field_name: "College Degree", required: false} %>
+      </div>
+      <div class="columns large-8 small-12">
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :continuing_education, question: "Are you planning to further your education?"} %>
+      </div>
+    </div>
   </fieldset>
   
   <fieldset class="fieldset">
     <legend><h1>Employment History</h1></legend>
-    
-  <div class="field">
-    <%= f.label :do_not_contact_employer %><br>
-    <%= f.text_field :do_not_contact_employer %>
-  </div>
-  <div class="field">
-    <%= f.label :do_not_contact_reason %><br>
-    <%= f.text_area :do_not_contact_reason %>
-  </div>
-  
+    <p>Please fill out information for your past 2 employers. If you only have 1, then you may leave the second one blank. If you don't have any leave them both blank. Fill out as much information as you know.</p>
+    <div class="row">
+      <div class="columns large-12 small-12">
+        <%= render partial: 'employment_history', locals: {id: 1, required: false} %>
+      </div>
+      <div class="columns large-12 small-12">
+        <%= render partial: 'employment_history', locals: {id: 2, required: false} %>
+      </div>
+      <div class="columns small-12">
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :do_not_contact_employer, question: "Is it ok if we contact your previous employers?", default: true} %>
+      </div>
+      <div class="columns small-12" id="do_not_contact_reason_question">
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :do_not_contact_reason, question: "Why don't you want us to contact your previous employers?"} %>
+      </div>
+    </div>
   </fieldset>
   
   <fieldset class="fieldset">
     <legend><h1>Other History</h1></legend>
+    <div class="row">
+      <div class="columns small-12">
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :convicted, question: "Have you been convicted of a crime in the last 7 years?"} %>
+      </div>
+      <div class="columns small-12" id="convictions_question">
+        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :convictions, question: "List the convictions that are a matter of public record (arrests are not convictions). A conviction will not necessarily disqualify you for employment:"} %>
+      </div>
+      
+      <div class="columns large-8 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :interviewed_by, field_name: "Interviewed By", required: false} %>
+      </div>
+      <div class="columns large-4 small-12">
+        <%= render partial: 'helper_fields/date', locals: {form: f, field: :interview_date, field_name: "Interview Date", required: false} %>
+      </div>
+    </div>
     
-  <div class="field">
-    <%= f.label :convicted %><br>
-    <%= f.check_box :convicted %>
-  </div>
-  <div class="field">
-    <%= f.label :convictions %><br>
-    <%= f.text_area :convictions %>
-  </div>
-  <div class="field">
-    <%= f.label :interview_date %><br>
-    <%= f.date_select :interview_date %>
-  </div>
-  <div class="field">
-    <%= f.label :interviewed_by %><br>
-    <%= f.text_field :interviewed_by %>
-  </div>
   </fieldset>
   
   <fieldset class="fieldset">

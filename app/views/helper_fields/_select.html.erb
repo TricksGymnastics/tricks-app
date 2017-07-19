@@ -1,0 +1,21 @@
+<%# 
+    Required locals:
+    form
+    field
+    options
+    
+    Optional locals:
+    prompt
+    required
+%>
+<% if !defined? prompt %>
+    <% prompt = "" %>
+<% end %>
+<% if !defined? required %>
+    <% required = false %>
+<% end %>
+
+<div class=" input-group">
+    <%= form.label field, class: "input-group-label" %>
+    <%= form.select field, options, {:prompt => prompt}, required: required, class: "input-group-field" %>
+</div>

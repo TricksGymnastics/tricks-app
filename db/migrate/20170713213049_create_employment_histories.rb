@@ -1,6 +1,7 @@
 class CreateEmploymentHistories < ActiveRecord::Migration
   def change
     create_table :employment_histories do |t|
+      t.references :history, polymorphic: true, index: true
       t.string :company_name
       t.string :supervisor_name
       t.string :job_title

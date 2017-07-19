@@ -206,6 +206,8 @@ ActiveRecord::Schema.define(version: 20170714012904) do
   end
 
   create_table "employment_histories", force: :cascade do |t|
+    t.integer  "history_id"
+    t.string   "history_type"
     t.string   "company_name"
     t.string   "supervisor_name"
     t.string   "job_title"
@@ -219,6 +221,8 @@ ActiveRecord::Schema.define(version: 20170714012904) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
+
+  add_index "employment_histories", ["history_type", "history_id"], name: "index_employment_histories_on_history_type_and_history_id", using: :btree
 
   create_table "kid_quotes", force: :cascade do |t|
     t.text     "quote"

@@ -1,0 +1,78 @@
+<%#
+    In order for address to work you must do a few things in the model and controller of the parent class
+    
+    Controller::Create
+    
+    @address = Address.new(address_params)
+    @address.update_attribute(:addressable, @employment_application)
+    
+    private:
+    def address_params
+       params.require(:address).permit(:street, :city, :state, :zip)
+    end
+    
+    Model
+    has_one :address, :as => :addressable
+    
+    See EmploymentHistory as the example use case
+%>
+
+<%# 
+    Required locals:
+    id
+    
+    Optional locals:
+    required
+%>
+<% if !defined? required %>
+    <% required = false %>
+<% end %>
+
+<style>
+    #address_fieldset{
+        box-shadow: none;
+        margin-top: 0;
+    }
+</style>
+    
+<fieldset class="fieldset" id="address_fieldset">
+    <legend><h5><%= "Previous Employment " + id.to_s %></h5></legend>
+    
+    <%= fields_for :"#{'employment_history_'+id.to_s}" do |eh| %>
+        <div class="row">
+            <div class="columns large-6 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :company_name, field_name: "Company Name", required: required} %>
+            </div>
+            <div class="columns large-6 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :job_title, field_name: "Job Title", required: required} %>
+            </div>
+            <div class="columns large-6 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :supervisor_name, field_name: "Supervisor", required: required} %>
+            </div>
+            <div class="columns large-6 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :phone, field_name: "Phone", required: required} %>
+            </div>
+            
+            <div class="columns large-12 small-12">
+            <%= render partial: 'helper_fields/address', locals: {title: "Address", required: required} %>
+            </div>
+            
+            <div class="columns small-12">
+                <%= render partial: 'helper_fields/textarea', locals: {form: eh, field: :description, question: "Describe the work you did:", height: 60, required: required} %>
+            </div>
+            
+            <div class="columns large-3 small-12">
+                <%= render partial: 'helper_fields/date', locals: {form: eh, field: :start_date, field_name: "Start Date", required: required} %>
+            </div>
+            <div class="columns large-3 small-12">
+                <%= render partial: 'helper_fields/date', locals: {form: eh, field: :end_date, field_name: "End Date", required: required} %>
+            </div>
+            <div class="columns large-3 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :start_pay, field_name: "Start Pay", required: required} %>
+            </div>
+            <div class="columns large-3 small-12">
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :end_pay, field_name: "End Pay", required: required} %>
+            </div>
+        </div>
+    <% end %>
+</fieldset>

@@ -5,7 +5,12 @@
     question
     
     Optional locals:
+    default
 %>
+
+<% if !defined? default %>
+    <% default = false %>
+<% end %>
 
 <style>
   .inner-table tbody{
@@ -27,7 +32,7 @@
   </td>
   <td>
     <div class="switch">
-      <%= form.check_box field, class:"switch-input", id: question.gsub(" ", "_").gsub("?","").downcase + "_switch" %>
+      <%= form.check_box field, checked: default, class:"switch-input", id: question.gsub(" ", "_").gsub("?","").downcase + "_switch" %>
       <%= form.label(field, class:"switch-paddle", for: question.gsub(" ", "_").gsub("?","").downcase + "_switch") do %>
         <span class="switch-active" aria-hidden="true">Yes</span>
         <span class="switch-inactive" aria-hidden="true">No</span>
