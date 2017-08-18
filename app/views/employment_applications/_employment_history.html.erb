@@ -19,6 +19,7 @@
 
 <%# 
     Required locals:
+    form
     id
     
     Optional locals:
@@ -38,23 +39,23 @@
 <fieldset class="fieldset" id="address_fieldset">
     <legend><h5><%= "Previous Employment " + id.to_s %></h5></legend>
     
-    <%= fields_for :"#{'employment_history_'+id.to_s}" do |eh| %>
+    <%= form.fields_for :employment_histories do |eh| %> 
         <div class="row">
             <div class="columns large-6 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :company_name, field_name: "Company Name", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :company_name, label: "Company Name", required: required} %>
             </div>
             <div class="columns large-6 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :job_title, field_name: "Job Title", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :job_title, label: "Job Title", required: required} %>
             </div>
             <div class="columns large-6 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :supervisor_name, field_name: "Supervisor", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :supervisor_name, label: "Supervisor", required: required} %>
             </div>
             <div class="columns large-6 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :phone, field_name: "Phone", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :phone, label: "Phone", required: required} %>
             </div>
             
             <div class="columns large-12 small-12">
-            <%= render partial: 'helper_fields/address', locals: {title: "Address", required: required} %>
+            <%= render partial: 'helper_fields/address', locals: {form: eh, title: "Address", required: required} %>
             </div>
             
             <div class="columns small-12">
@@ -62,16 +63,16 @@
             </div>
             
             <div class="columns large-3 small-12">
-                <%= render partial: 'helper_fields/date', locals: {form: eh, field: :start_date, field_name: "Start Date", required: required} %>
+                <%= render partial: 'helper_fields/date', locals: {form: eh, field: :start_date, label: "Start Date", required: required} %>
             </div>
             <div class="columns large-3 small-12">
-                <%= render partial: 'helper_fields/date', locals: {form: eh, field: :end_date, field_name: "End Date", required: required} %>
+                <%= render partial: 'helper_fields/date', locals: {form: eh, field: :end_date, label: "End Date", required: required} %>
             </div>
             <div class="columns large-3 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :start_pay, field_name: "Start Pay", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :start_pay, label: "Start Pay", required: required} %>
             </div>
             <div class="columns large-3 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :end_pay, field_name: "End Pay", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: eh, field: :end_pay, label: "End Pay", required: required} %>
             </div>
         </div>
     <% end %>

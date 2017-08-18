@@ -9,8 +9,8 @@ class CreateEmploymentHistories < ActiveRecord::Migration
       t.string :phone
       t.date :start_date
       t.date :end_date
-      t.float :start_pay
-      t.float :end_pay
+      t.string :start_pay
+      t.string :end_pay
       t.text :reason_for_leaving
 
       t.timestamps null: false

@@ -58,4 +58,5 @@ Comments::Application.configure do
   config.generators.assets = false
   config.generators.helper = false
   config.generators.stylesheets = false
+  config.time_zone = "Pacific Time (US & Canada)"
 end

@@ -4,7 +4,7 @@
 <% link_default = "javascript:void(0);" %>
 <% show_button_default = false %>
 <% data_toggle_default = "" %>
-<% font_size_default = "90" %>
+<% font_size_default = "40" %>
 
 
 <% if defined? given_bubble #check if a bubble_content object was passed in %>
@@ -31,9 +31,7 @@
 <% if !defined? font_size %>
     <% font_size = font_size_default %>
 <% end %>
-    
 <% if bubble.image.blank? %>
-
     <% if bubble.color.blank? %>
         <% color = color_default.gsub('#', '') %>
     <% else %>
@@ -64,9 +62,13 @@
 
 
 
-<div style="text-align:center; width: 100%;">
+<div style="width: 100%; position: relative; padding-top: 100%; background-color: #<%= color %>; border-radius: 50%;">
     <!--<div class="columns large-12">-->
-    <%= link_to image_tag(image, style: "border-radius: inherit;"), link, "data-toggle": data_toggle, style: "border-radius: 50%;" %>
+    <%#= link_to image_tag(image, style: "border-radius: inherit;"), link, "data-toggle": data_toggle, style: style %>
+    <%= link_to "", link, "data-toggle": data_toggle, style: "display: block; position: absolute; top: 0; bottom: 0; left: 0; right: 0;" %>
+    <div style="position: absolute; width: 100%; top: 50%; transform: translate(0, -50%); text-align: center; padding: 10px;">
+        <%= link_to text, link, "data-toggle": data_toggle, style: "color: #" + text_color + ";font-size: " + font_size + "px; text-shadow: -1px 1px #555, 1px 1px #555, 1px -1px #555, -1px -1px #555;" %>
+    </div>
     <% if bubble.show_button %>
         <%= link_to text, link, class: "button", "data-toggle": data_toggle, style: "border-radius: 5px; margin-top: 15px; font-size: 20px; color: #fff;; box-shadow: 2px 2px 10px #222;" %>
     <% end %>

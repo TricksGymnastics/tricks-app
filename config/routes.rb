@@ -1,6 +1,6 @@
 Comments::Application.routes.draw do
 
-  resources :employment_applications
+  resources :employment_applications, except: [:edit]
   resources :recital_sign_ups
   resources :parties
   resources :camps
@@ -44,15 +44,15 @@ Comments::Application.routes.draw do
   resources :bubble_contents
   # resources :training_videos
 
-  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party campus employment recital_ad_order_thank_you survey_thank_you recital_info thankyou our_story].each do |page|
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party campus employment recital_ad_order_thank_you survey_thank_you recital_info thankyou our_story indexold].each do |page|
     get page, controller: "static", action: page
   end
 
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'signup', to: 'users#new'
+  get 'login', to: 'sessions#new'
+  get 'logout', to: 'sessions#destroy'
   # get 'whereintheworld', to: 'worlds#new'
-  get 'tricksu', to: 'tricks_u_videos#index', as: 'tricksu'
+  get 'tricksu', to: 'tricks_u_videos#index'
 
   get 'tricksu/:category' => "tricks_u_videos#index"
 
@@ -60,4 +60,6 @@ Comments::Application.routes.draw do
   # get 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
   
   get 'levels/jr_request/:level_id' => "levels#get_jr_classes"
+  
+  patch 'employment_applications/:id/complete_interview', to: "employment_applications#complete_interview"
 end

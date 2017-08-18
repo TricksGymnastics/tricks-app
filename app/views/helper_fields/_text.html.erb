@@ -4,12 +4,14 @@
     field
     
     Optional locals:
-    field_name
+    label
     placeholder
     required
+    disabled
+    default
 %>
-<% if !defined? field_name %>
-    <% field_name = "" %>
+<% if !defined? label %>
+    <% label = "" %>
 <% end %>
 <% if !defined? placeholder %>
     <% placeholder = "" %>
@@ -17,8 +19,14 @@
 <% if !defined? required %>
     <% required = false %>
 <% end %>
+<% if !defined? disabled %>
+    <% disabled = false %>
+<% end %>
+<% if !defined? default %>
+    <% default = "" %>
+<% end %>
 
 <div class="input-group">
-    <%= form.label field, field_name, class: "input-group-label" %>
-    <%= form.text_field field, required: required, placeholder: placeholder, class: "input-group-field" %>
+    <%= form.label field, label, class: "input-group-label" %>
+    <%= form.text_field field, required: required, value: default, placeholder: placeholder, disabled: disabled, class: "input-group-field" %>
 </div>

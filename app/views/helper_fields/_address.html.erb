@@ -19,6 +19,7 @@
 
 <%# 
     Required locals:
+    form
     title
     
     Optional locals:
@@ -38,19 +39,19 @@
 <fieldset class="fieldset" id="address_fieldset">
     <legend><%= title %></legend>
     
-    <%= fields_for :address do |address_fields| %>
+    <%= form.fields_for :address do |address_fields| %>
         <div class="row">
             <div class="columns small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :street, field_name: "Street", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :street, label: "Street", required: required} %>
             </div>
             <div class="columns large-4 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :city, field_name: "City", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :city, label: "City", required: required} %>
             </div>
             <div class="columns large-4 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :state, field_name: "State", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :state, label: "State", required: required} %>
             </div>
             <div class="columns large-4 small-12">
-                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :zip, field_name: "Zip", required: required} %>
+                <%= render partial: 'helper_fields/text', locals: {form: address_fields, field: :zip, label: "Zip", required: required} %>
             </div>
         </div>
     <% end %>

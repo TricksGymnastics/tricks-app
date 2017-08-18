@@ -4,21 +4,29 @@ class CreateEmploymentApplications < ActiveRecord::Migration
       t.string :firstname
       t.string :lastname
       t.string :middlename
+      t.string :image
       t.boolean :granite_bay
       t.boolean :folsom
       t.boolean :sacramento
+      t.boolean :gymnastics
+      t.boolean :dance
+      t.boolean :swim
+      t.boolean :tag
+      t.boolean :hospitality
       t.string :phone
       t.boolean :mornings
       t.boolean :saturdays
       t.text :previous_experience
       t.text :experience_with_children
+      t.text :previous_office_experience
+      t.text :customer_service_experience
       t.text :reason
       t.string :email
       t.string :position_desired
-      t.date :birthday
+      t.boolean :over_eighteen
       t.boolean :can_drive
       t.boolean :can_commit_one_year
-      t.float :expected_pay
+      t.string :expected_pay
       t.integer :desired_hours
       t.date :date_available
       t.text :job_requirements_response
@@ -37,6 +45,8 @@ class CreateEmploymentApplications < ActiveRecord::Migration
       t.text :convictions
       t.date :interview_date
       t.string :interviewed_by
+      t.string :status
+      t.string :comment
 
       t.timestamps null: false
     end

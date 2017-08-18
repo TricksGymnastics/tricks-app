@@ -121,7 +121,7 @@ $(function(){
     updateLocation(event.target.text);
   });
   
-  $("input:submit").on('click', function(event){
+  $('form').submit(function(event){
     var show_uploading_overlay = true;
     if (typeof $(this).data('confirm') != 'undefined'){
       event.stopImmediatePropagation();
@@ -135,6 +135,7 @@ $(function(){
       $("input:file").each(function( index ) {
         if ($(this).val() != "")
           $("#uploading_modal_hidden_trigger").trigger('click');
+          return;
       });
     }
   });

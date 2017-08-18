@@ -386,6 +386,17 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 	}
 }
 
+.switch-button{
+	padding: 10px 5px; 
+	&.active{
+		background-color: $tricks-green;
+		color: $black !important;
+		&:hover{
+			color: $white;
+		}
+	}
+}
+
 $curve_amount: 30px;
 .orbit-container{
 	border-radius: $curve_amount; 

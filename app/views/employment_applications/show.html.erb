@@ -1,177 +1,294 @@
-<p id="notice"><%= notice %></p>
+<style>
+  .fieldset h1{
+    font-size: 30px;
+  }
+  .fieldset {
+    border: 1px solid #aaa;
+    box-shadow: 0px 0px 20px #555;
+    padding: 0 20px;
+    margin-top: 0;
+  }
+  .row{
+    margin-bottom: 20px;
+  }
+</style>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @employment_application.firstname %>
-</p>
+<div class="row">
+  <div class="columns">
+    <h1><%= @employment_application.firstname + " " + @employment_application.middlename + " " + @employment_application.lastname %></h1>
+  </div>
+</div>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @employment_application.lastname %>
-</p>
+<div class="row align-center">
+  <div class="columns large-3 small-8">
+    <%= image_tag @employment_application.image_url(:thumb).to_s, style: "margin-bottom: 20px;" %>
+  </div>
+  <div class="columns large-9 small-12">
+    <%= form_for @employment_application, url: {action: 'complete_interview'} do |f| %>
+      <div class="row" style="margin-bottom: 0;">
+        <div class="columns small-12 large-4">
+	        <% status = [['New', 0], ['First Interview', 1], ['Second Interview', 2], ['Maybe Later', 3], ['Not Hired', 4]] %>
+          <%= render partial: 'helper_fields/select', locals: {form: f, field: :high_school_year, fieldname: "Status", options: status, required: true} %>
+        </div>
+        <div class="columns small-12 large-8">
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment, label: "Comment: ", required: true, default: @employment_application.interviewed_by} %>
+        </div>
+        <div class="columns large-6 small-12">
+          <% button_text = "Complete Interview" %>
+          <% # if the interview has been completed %>
+          <% if !@employment_application.interview_date.nil? %>
+            <% button_text = "Completed on: " + @employment_application.interview_date.in_time_zone.strftime("%B %d, %Y") %>
+          <% end %>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :interviewed_by, label: "Interviewed By: ", required: true, default: @employment_application.interviewed_by} %>
+        </div>
+        <div class="columns large-6 small-12">
+          <%= f.submit button_text, class: "button expanded" %>
+        </div>
+      </div>
+    <% end %>
+    <fieldset class="fieldset">
+      <legend><h1>Personal Information</h1></legend>
+      <div class="row">
+        <div class="columns large-3 small-12">
+          <b>Address:</b><br>
+          <%= @employment_application.address.street %> <br>
+          <%= @employment_application.address.city %>, <%= @employment_application.address.state %> <%= @employment_application.address.zip %>
+        </div>
+        <div class="columns large-3 small-12">
+          <b>Phone:</b><br>
+          <%= @employment_application.phone %>
+        </div>
+        <div class="columns large-3 small-12">
+          <b>Email:</b><br>
+          <%= @employment_application.email %>
+        </div>
+        <div class="columns large-3 small-12">
+          <b>Date Submitted:</b><br>
+          <%= @employment_application.created_at.in_time_zone.strftime("%B %d, %Y") %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-4 small-12">
+          <b>Over 18 years old?</b><br>
+          <%= render partial: "answer", locals: {answer: @employment_application.over_eighteen} %>
+        </div>
+        <div class="columns large-4 small-12">
+          <b>Has own transportation?</b><br>
+          <%= render partial: "answer", locals: {answer: @employment_application.can_drive} %>
+        </div>
+        <div class="columns large-4 small-12">
+          <b>Can work Mornings?</b><br>
+          <%= render partial: "answer", locals: {answer: @employment_application.mornings} %>
+        </div>
+        <div class="columns large-4 small-12">
+          <b>Can work Saturdays?</b><br>
+          <%= render partial: "answer", locals: {answer: @employment_application.saturdays} %>
+        </div>
+        <div class="columns large-4 small-12">
+          <b>Can commit to one year?</b><br>
+          <%= render partial: "answer", locals: {answer: @employment_application.can_commit_one_year} %>
+        </div>
+        <div class="columns large-4 small-12">
+          <b>Accepts Job Requirements?</b><br>
+          <%= render partial: "answer", locals: {answer: @employment_application.job_requirements_response} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-3 small-6">
+          <b>Position desired:</b><br>
+          <%= @employment_application.position_desired %>
+        </div>
+        <div class="columns large-3 small-6">
+          <b>Expected pay:</b><br>
+          <%= @employment_application.expected_pay %>
+        </div>
+        <div class="columns large-3 small-6">
+          <b>Desired hours:</b><br>
+          <%= @employment_application.desired_hours %>
+        </div>
+        <div class="columns large-3 small-6">
+          <b>Date available:</b><br>
+          <%= @employment_application.date_available.in_time_zone.strftime("%B %d, %Y") %>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
 
-<p>
-  <strong>Middlename:</strong>
-  <%= @employment_application.middlename %>
-</p>
+<div class="row">
+  <div class="columns">
+    <fieldset class="fieldset">
+      <legend><h1>Experience</h1></legend>
+      <div class="row">
+        <div class="columns">
+          
+          <% if @employment_application.gymnastics || @employment_application.dance || @employment_application.swim || @employment_application.tag %>
+            <p>
+              <b>Previous experience teaching:</b><br>
+              <%= @employment_application.previous_experience %>
+            </p>
+            <p>
+              <b>Experience with children:</b><br>
+              <%= @employment_application.experience_with_children %>
+            </p>
+          <% end %>
+          
+          <% if @employment_application.hospitality %>
+            <p>
+              <b>Previous office experience:</b><br>
+              <%= @employment_application.previous_office_experience %>
+            </p>
+            <p>
+              <b>Customer service experience:</b><br>
+              <%= @employment_application.customer_service_experience %>
+            </p>
+          <% end %>
+          
+          <p>
+            <b>Why they want to work at Tricks:</b><br>
+            <%= @employment_application.reason %>
+          </p>
+          <p>
+            <b>Hobbies:</b><br>
+            <%= @employment_application.hobbies %>
+          </p>
+        </div>
+      </div>  
+    </fieldset>
+  </div>
+  
+</div>
+<div class="row">
+  <div class="columns">
+    <fieldset class="fieldset">
+      <legend><h1>Education</h1></legend>
+      <% schoolyears = [['Freshman', 0], ['Softmore', 1], ['Junior', 2], ['Senior', 3], ['Graduated', 4]] %>
+      <div class="row">
+        <div class="columns large-6 small-12">
+          
+          <p>
+            <b>High school name:</b>
+            <%= @employment_application.high_school_name %>
+          </p>
+          
+          <p>
+            <b>High school year:</b>
+            <%= schoolyears[@employment_application.high_school_year.to_i][0] %>
+          </p>
+          
+          <p>
+            <b>High school graduation year:</b>
+            <%= @employment_application.high_school_graduation_year %>
+          </p>
+        </div>
+        <div class="columns large-6 small-12">
+          <p>
+            <b>College name:</b>
+            <%= @employment_application.college_name %>
+          </p>
+          
+          <p>
+            <b>College year:</b>
+            <%= schoolyears[@employment_application.college_year.to_i][0] %>
+          </p>
+          
+          <p>
+            <b>College graduation year:</b>
+            <%= @employment_application.college_graduation_year %>
+          </p>
+          
+          <p>
+            <b>College degree:</b>
+            <%= @employment_application.college_degree %>
+          </p>
+          
+          <p>
+            <b>Continuing education:</b>
+            <%= render partial: "answer", locals: {answer: @employment_application.continuing_education} %>
+          </p>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+<div class="row">
+  <div class="columns">
+    <fieldset class="fieldset">
+      <legend><h1>Employment History</h1></legend>
+      <div class="row">
+        <div class="columns">
+          <b>Alright to contact previous employers?</b> <%= render partial: "answer", locals: {answer: @employment_application.do_not_contact_employer} %>
+        </div>
+        <% if !@employment_application.do_not_contact_employer %>
+          <div class="columns">
+            <b>Do not contact reason:</b><br>
+            <%= @employment_application.do_not_contact_reason %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row align-spaced">
+        <% @employment_application.employment_histories.reverse_each do |eh| %>
+          <div class="columns small-12 large-5" style="border: solid #888 2px; margin: 0 10px 10px; padding: 10px;">
+            <div class="row align-spaced">
+              <div class="columns small-12">
+                <h1 style="font-size: 40px;"><%= eh.company_name %></h1>
+                <h3 style="font-size: 24px;"><%= eh.job_title %></h3>
+                <p><%= eh.description %></p>
+              </div>
+              <div class="columns small-6">
+                <b>Supervisor: </b><br>
+                <%= eh.supervisor_name %>
+              </div>
+              <div class="columns small-6">
+                <b>Phone: </b><br>
+                <%= eh.phone %>
+              </div>
+              <div class="columns small-6">
+                <b>Start Date: </b><br>
+                <%= eh.start_date.in_time_zone.strftime("%B %d, %Y") %>
+              </div>
+              <div class="columns small-6">
+                <b>Start Pay: </b><br>
+                <%= eh.start_pay %>
+              </div>
+              <div class="columns small-6">
+                <b>End Date: </b><br>
+                <%= !eh.end_date.nil? ? eh.end_date.in_time_zone.strftime("%B %d, %Y") : "Current" %>
+              </div>
+              <div class="columns small-6">
+                <b>End Pay: </b><br>
+                <%= eh.end_pay %>
+              </div>
+              <div class="columns small-6">
+                <b>Address:</b><br>
+                <%= eh.address.street %> <br>
+                <%= eh.address.city %>, <%= eh.address.state %> <%= eh.address.zip %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
+  </div>
+</div>
+<div class="row">
+  <div class="columns">
+    <fieldset class="fieldset">
+      <legend><h1>Other History</h1></legend>
+      <div class="row">
+        <div class="columns large-4 small-12">
+          <b>Convicted in the past 7 years?</b> 
+          <%= render partial: "answer", locals: {answer: @employment_application.convicted} %>
+        </div>
+        <% if @employment_application.convicted %>
+          <div class="columns small-12">
+            <b>Convictions:</b>
+            <%= @employment_application.convictions %>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
+  </div>
+</div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @employment_application.phone %>
-</p>
-
-  <%= @employment_application.address.street %>
-  <%= @employment_application.employment_histories.first.company_name %>
-  <%= @employment_application.employment_histories.last.company_name %>
-<p>
-  <strong>Mornings:</strong>
-  <%= @employment_application.mornings %>
-</p>
-
-<p>
-  <strong>Saturdays:</strong>
-  <%= @employment_application.saturdays %>
-</p>
-
-<p>
-  <strong>Previous experience:</strong>
-  <%= @employment_application.previous_experience %>
-</p>
-
-<p>
-  <strong>Experience with children:</strong>
-  <%= @employment_application.experience_with_children %>
-</p>
-
-<p>
-  <strong>Reason:</strong>
-  <%= @employment_application.reason %>
-</p>
-
-<p>
-  <strong>Application date:</strong>
-  <%= @employment_application.created_at %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @employment_application.email %>
-</p>
-
-<p>
-  <strong>Position desired:</strong>
-  <%= @employment_application.position_desired %>
-</p>
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @employment_application.birthday %>
-</p>
-
-<p>
-  <strong>Can drive:</strong>
-  <%= @employment_application.can_drive %>
-</p>
-
-<p>
-  <strong>Can commit one year:</strong>
-  <%= @employment_application.can_commit_one_year %>
-</p>
-
-<p>
-  <strong>Expected pay:</strong>
-  <%= @employment_application.expected_pay %>
-</p>
-
-<p>
-  <strong>Desired hours:</strong>
-  <%= @employment_application.desired_hours %>
-</p>
-
-<p>
-  <strong>Date available:</strong>
-  <%= @employment_application.date_available %>
-</p>
-
-<p>
-  <strong>Job requirements response:</strong>
-  <%= @employment_application.job_requirements_response %>
-</p>
-
-<p>
-  <strong>High school year:</strong>
-  <%= @employment_application.high_school_year %>
-</p>
-
-<p>
-  <strong>High school graduation year:</strong>
-  <%= @employment_application.high_school_graduation_year %>
-</p>
-
-<p>
-  <strong>High school name:</strong>
-  <%= @employment_application.high_school_name %>
-</p>
-
-<p>
-  <strong>College year:</strong>
-  <%= @employment_application.college_year %>
-</p>
-
-<p>
-  <strong>College graduation year:</strong>
-  <%= @employment_application.college_graduation_year %>
-</p>
-
-<p>
-  <strong>College name:</strong>
-  <%= @employment_application.college_name %>
-</p>
-
-<p>
-  <strong>College degree:</strong>
-  <%= @employment_application.college_degree %>
-</p>
-
-<p>
-  <strong>Hobbies:</strong>
-  <%= @employment_application.hobbies %>
-</p>
-
-<p>
-  <strong>Continuing education:</strong>
-  <%= @employment_application.continuing_education %>
-</p>
-
-<p>
-  <strong>Do not contact employer:</strong>
-  <%= @employment_application.do_not_contact_employer %>
-</p>
-
-<p>
-  <strong>Do not contact reason:</strong>
-  <%= @employment_application.do_not_contact_reason %>
-</p>
-
-<p>
-  <strong>Convicted:</strong>
-  <%= @employment_application.convicted %>
-</p>
-
-<p>
-  <strong>Convictions:</strong>
-  <%= @employment_application.convictions %>
-</p>
-
-<p>
-  <strong>Interview date:</strong>
-  <%= @employment_application.interview_date %>
-</p>
-
-<p>
-  <strong>Interviewed by:</strong>
-  <%= @employment_application.interviewed_by %>
-</p>
-
-<%= link_to 'Edit', edit_employment_application_path(@employment_application) %> |
-<%= link_to 'Back', employment_applications_path %>
+<%= link_to 'Back to All Applications', employment_applications_path, class: "button expanded alert" %>

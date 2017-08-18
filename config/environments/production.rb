@@ -97,6 +97,7 @@ Comments::Application.configure do
     user_name: ENV['GMAIL_ID'],
     password: ENV['GMAIL_PASSWORD']
   }
+  config.time_zone = "Pacific Time (US & Canada)"
 
   config.exceptions_app = self.routes
 end

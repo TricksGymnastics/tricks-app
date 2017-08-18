@@ -1,93 +1,45 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "FileSpecificCSS/employment_applications", :media => "all" %>
 
-<h1>Listing Employment Applications</h1>
+<h1>Employment Applications</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Middlename</th>
-      <th>Phone</th>
-      <th>Mornings</th>
-      <th>Saturdays</th>
-      <th>Previous experience</th>
-      <th>Experience with children</th>
-      <th>Reason</th>
-      <th>Application date</th>
-      <th>Email</th>
-      <th>Position desired</th>
-      <th>Birthday</th>
-      <th>Can drive</th>
-      <th>Can commit one year</th>
-      <th>Expected pay</th>
-      <th>Desired hours</th>
-      <th>Date available</th>
-      <th>Job requirements response</th>
-      <th>High school year</th>
-      <th>High school graduation year</th>
-      <th>High school name</th>
-      <th>College year</th>
-      <th>College graduation year</th>
-      <th>College name</th>
-      <th>College degree</th>
-      <th>Hobbies</th>
-      <th>Continuing education</th>
-      <th>Do not contact employer</th>
-      <th>Do not contact reason</th>
-      <th>Convicted</th>
-      <th>Convictions</th>
-      <th>Interview date</th>
-      <th>Interviewed by</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employment_applications.each do |employment_application| %>
-      <tr>
-        <td><%= employment_application.firstname %></td>
-        <td><%= employment_application.lastname %></td>
-        <td><%= employment_application.middlename %></td>
-        <td><%= employment_application.phone %></td>
-        <td><%= employment_application.mornings %></td>
-        <td><%= employment_application.saturdays %></td>
-        <td><%= employment_application.previous_experience %></td>
-        <td><%= employment_application.experience_with_children %></td>
-        <td><%= employment_application.reason %></td>
-        <td><%= employment_application.created_at %></td>
-        <td><%= employment_application.email %></td>
-        <td><%= employment_application.position_desired %></td>
-        <td><%= employment_application.birthday %></td>
-        <td><%= employment_application.can_drive %></td>
-        <td><%= employment_application.can_commit_one_year %></td>
-        <td><%= employment_application.expected_pay %></td>
-        <td><%= employment_application.desired_hours %></td>
-        <td><%= employment_application.date_available %></td>
-        <td><%= employment_application.job_requirements_response %></td>
-        <td><%= employment_application.high_school_year %></td>
-        <td><%= employment_application.high_school_graduation_year %></td>
-        <td><%= employment_application.high_school_name %></td>
-        <td><%= employment_application.college_year %></td>
-        <td><%= employment_application.college_graduation_year %></td>
-        <td><%= employment_application.college_name %></td>
-        <td><%= employment_application.college_degree %></td>
-        <td><%= employment_application.hobbies %></td>
-        <td><%= employment_application.continuing_education %></td>
-        <td><%= employment_application.do_not_contact_employer %></td>
-        <td><%= employment_application.do_not_contact_reason %></td>
-        <td><%= employment_application.convicted %></td>
-        <td><%= employment_application.convictions %></td>
-        <td><%= employment_application.interview_date %></td>
-        <td><%= employment_application.interviewed_by %></td>
-        <td><%= link_to 'Show', employment_application %></td>
-        <td><%= link_to 'Edit', edit_employment_application_path(employment_application) %></td>
-        <td><%= link_to 'Destroy', employment_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+    <% locations = [['Granite Bay', 'granite_bay'], ['Folsom', 'folsom'], ['Sacramento', 'sacramento']] %>
+    <% locations.each do |loc| %>
+        <div class="columns large-expand small-12">
+            <div class="input-group">
+                <% classes = "button expanded switch-button" %>
+                <% if params.has_key?(:location) && params[:location] == loc[1] %>
+                    <% classes += " success" %>
+                <% end %>
+                <%= link_to loc[0], params.merge({location: loc[1]}), class: classes, id: loc[1]+"_filter_button" %>
+            </div>
+        </div>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
+<div class="row">
+    <% departments = [['Gymnastics', 'gymnastics'], ['Dance', 'dance'], ['Swim', 'swim'], ['TAG', 'tag'], ['Hospitality', 'hospitality']] %>
+    <% departments.each do |dep| %>
+        <% classes = "button expanded switch-button" %>
+        <% if params.has_key?(:"#{dep[1]}") %>
+            <% classes += " success" %>
+        <% end %>
+        <div class="columns large-expand small-12">
+            <div class="input-group">
+                <% if params.has_key?(:"#{dep[1]}") %>
+                    <%= link_to dep[0], params.except(:"#{dep[1]}"), class: classes, id: dep[1]+"_filter_button" %>
+                <% else %>
+                    <%= link_to dep[0], params.merge({:"#{dep[1]}" => true}), class: classes, id: dep[1]+"_filter_button" %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div class="row">
+    <% @employment_applications.each do |employment_application| %>
+      <%= render partial: 'application_preview', locals: {app: employment_application} %>
+    <% end %>
+</div>
 
 <%= link_to 'New Employment application', new_employment_application_path %>

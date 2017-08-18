@@ -1,0 +1,5 @@
+<% if !defined? answer %>
+    <% answer = false %>
+<% end %>
+
+<%= answer ? "<span style='color: green'>Yes</span>".html_safe : "<span style='color: red'>No</span>".html_safe %>

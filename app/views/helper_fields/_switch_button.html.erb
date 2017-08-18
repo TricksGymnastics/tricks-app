@@ -1,0 +1,19 @@
+<%# 
+    Required locals:
+    form
+    field
+    text
+    
+    Optional locals:
+    default
+    font_size
+%>
+<% if !defined? default %>
+    <% default = false %>
+<% end %>
+<% if !defined? style %>
+    <% style = '' %>
+<% end %>
+
+<%= form.check_box field, value: default, style: "display: none;" %>
+<%= link_to text, 'javascript:void(0);', class: "button expanded switch-button", id: text.gsub(' ','_').downcase+"_switch_button", style: style %>

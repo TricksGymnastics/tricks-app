@@ -35,7 +35,7 @@
       <%= form.check_box field, checked: default, class:"switch-input", id: question.gsub(" ", "_").gsub("?","").downcase + "_switch" %>
       <%= form.label(field, class:"switch-paddle", for: question.gsub(" ", "_").gsub("?","").downcase + "_switch") do %>
         <span class="switch-active" aria-hidden="true">Yes</span>
-        <span class="switch-inactive" aria-hidden="true">No</span>
+        <span class="switch-inactive" style="color: #333;" aria-hidden="true">No</span>
       <% end %>
     </div>
   </td>
