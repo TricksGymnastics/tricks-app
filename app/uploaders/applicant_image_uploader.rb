@@ -18,7 +18,7 @@ include CarrierWave::MiniMagick
   end
 
   version :thumb do
-    #process :resize_to_fill => [400, nil]
+    process :resize_to_fill => [400, -1]
   end
 
   def extension_white_list
