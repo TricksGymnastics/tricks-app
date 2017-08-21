@@ -6,7 +6,13 @@ class EmploymentApplicationsController < ApplicationController
     @employment_applications = EmploymentApplication.all
       
     if params.has_key?(:location)
-      @employment_applications = EmploymentApplication.where(:"#{params[:location]}" => true)
+      @employment_applications = @employment_applications.where(:"#{params[:location]}" => true)
+    end
+    
+    if params.has_key?(:status)
+      @employment_applications = @employment_applications.where(:status => params[:status])
+    else
+      @employment_applications = @employment_applications.where(:status => "0")
     end
     
     departments = ['gymnastics', 'dance', 'swim', 'tag', 'hospitality']
@@ -34,8 +40,10 @@ class EmploymentApplicationsController < ApplicationController
   # POST /employment_applications
   def create
     @employment_application = EmploymentApplication.new(employment_application_params)
+    @employment_application.status = 0
     
     if @employment_application.save
+      EmploymentApplicationMailer.gym_notification(@employment_application).deliver_now
       redirect_to @employment_application, notice: 'Employment application was successfully created.'
     else
       render :new

@@ -3,6 +3,43 @@
 <h1>Employment Applications</h1>
 
 <div class="row">
+    <div class="columns large-expand small-12">
+        <div class="input-group">
+            <% classes = "button expanded switch-button" %>
+            <% if params.has_key?(:status) %>
+                <%= link_to "New", params.except(:status), class: classes, id: "new_filter_button" %>
+            <% else %>
+                <% classes += " success" %>
+                <%= link_to "New", "javascript:void(0);", class: classes, id: "new_filter_button" %>
+            <% end %>
+        </div>
+    </div>
+    <% status = [['First Interview', 1], ['Second Interview', 2], ['Maybe Later', 3], ['Not Hired', 4], ['Hired', 5]] %>
+    <% status.each do |s| %>
+        <div class="columns large-expand small-12">
+            <div class="input-group">
+                <% classes = "button expanded switch-button" %>
+                <% if params.has_key?(:status) && params[:status] == s[1].to_s %>
+                    <% classes += " success" %>
+                <% end %>
+                <%= link_to s[0], params.merge({status: s[1].to_s}), class: classes, id: s[0].gsub(" ", "_").downcase+"_filter_button" %>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div class="row">
+    <div class="columns large-expand small-12">
+        <div class="input-group">
+            <% classes = "button expanded switch-button" %>
+            <% if params.has_key?(:location) %>
+                <%= link_to "All", params.except(:location), class: classes, id: "all_filter_button" %>
+            <% else %>
+                <% classes += " success" %>
+                <%= link_to "All", "javascript: void(0);", class: classes, id: "all_filter_button" %>
+            <% end %>
+        </div>
+    </div>
     <% locations = [['Granite Bay', 'granite_bay'], ['Folsom', 'folsom'], ['Sacramento', 'sacramento']] %>
     <% locations.each do |loc| %>
         <div class="columns large-expand small-12">

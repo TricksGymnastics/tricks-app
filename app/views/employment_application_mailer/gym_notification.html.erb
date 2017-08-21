@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+</head>
+<body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
+  <div>
+    <h3>Employment Application for <%= @application.first_name + " " + @application.last_name %></h3>
+
+    <p>Submitted on: <b><%= @application.created_at.strftime("%B %d, %Y") %></b></p>
+    
+    <% positions = [] %>
+    <%= if @application.gymnastics then positions << "Gymnastics" end %>
+    <%= if @application.dance then positions << "Dance" end %>
+    <%= if @application.swim then positions << "Swim" end %>
+    <%= if @application.tag then positions << "TAG" end %>
+    <%= if @application.hospitality then positions << "Hospitality" end %>
+    
+    <p>Applied for: <b>
+      <% if positions.count > 0 %>
+        <% positions.each do |pos| %>
+          <% if pos == positions.first %>
+            <%= pos %>
+          <% elsif pos == positions.last %>
+            <%= " and " + pos %>
+          <% else %>
+            <%= ", " + pos %>
+          <% end %>
+        <% end %>
+      <% else %>
+        No positions selected :(
+      <% end %>
+      </b>
+    </p>
+    
+    <h4><%= link_to "View Application", application %></h4>
+    
+    <%= link_to "View ALL Applications", employment_applications_path %>
+
+  </div>
+</body>
+</html>

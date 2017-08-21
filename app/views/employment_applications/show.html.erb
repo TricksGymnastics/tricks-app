@@ -27,11 +27,11 @@
     <%= form_for @employment_application, url: {action: 'complete_interview'} do |f| %>
       <div class="row" style="margin-bottom: 0;">
         <div class="columns small-12 large-4">
-	        <% status = [['New', 0], ['First Interview', 1], ['Second Interview', 2], ['Maybe Later', 3], ['Not Hired', 4]] %>
-          <%= render partial: 'helper_fields/select', locals: {form: f, field: :high_school_year, fieldname: "Status", options: status, required: true} %>
+	        <% status = [['New', 0], ['First Interview', 1], ['Second Interview', 2], ['Maybe Later', 3], ['Not Hired', 4], ['Hired', 5]] %>
+          <%= render partial: 'helper_fields/select', locals: {form: f, field: :status, fieldname: "Status", options: status, required: true} %>
         </div>
         <div class="columns small-12 large-8">
-          <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment, label: "Comment: ", required: true, default: @employment_application.interviewed_by} %>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment, label: "Comment: ", required: true, default: @employment_application.comment} %>
         </div>
         <div class="columns large-6 small-12">
           <% button_text = "Complete Interview" %>
