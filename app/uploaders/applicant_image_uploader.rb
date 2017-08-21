@@ -10,7 +10,7 @@ include CarrierWave::MiniMagick
   end
   
   def store_dir
-    "#{model.firstname+'_'+model.lastname}".gsub(" ", "_")
+    "#{model.id+"_"+model.firstname+'_'+model.lastname}".gsub(" ", "_")
   end
 
   def default_url
@@ -18,11 +18,11 @@ include CarrierWave::MiniMagick
   end
 
   version :thumb do
-    process :resize_to_fill => [400, nil]
+    #process :resize_to_fill => [400, nil]
   end
 
   def extension_white_list
-    %w(jpg jpeg png)
+    %w(jpg jpeg gif png)
   end
 
   # def filename
