@@ -1,5 +1,5 @@
 class EmploymentApplicationsController < ApplicationController
-  before_action :set_employment_application, only: [:show, :edit, :update, :destroy]
+  before_action :set_employment_application, only: [:show, :update, :destroy]
   load_and_authorize_resource :except => [:new, :create]
 
   # GET /employment_applications
@@ -67,9 +67,9 @@ class EmploymentApplicationsController < ApplicationController
     app.status = params[:employment_application][:status]
     app.interview_date = Time.now
     if app.save
-      redirect_to employment_applications_url, notice: 'Interview Completed! Application moved to archive.'
+      redirect_to employment_applications_url, notice: 'Interview status has been updated.'
     else
-      redirect_to app, notice: "Failed to complete the interview"
+      redirect_to app, notice: "Failed to update the interview"
     end
   end
 
