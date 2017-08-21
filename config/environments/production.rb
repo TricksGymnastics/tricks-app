@@ -100,4 +100,6 @@ Comments::Application.configure do
   config.time_zone = "Pacific Time (US & Canada)"
 
   config.exceptions_app = self.routes
+  
+  config.action_mailer.default_url_options = { :host => "http://www.tricksgym.com" }
 end

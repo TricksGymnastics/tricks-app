@@ -4,16 +4,16 @@
 </head>
 <body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
   <div>
-    <h3>Employment Application for <%= @application.first_name + " " + @application.last_name %></h3>
+    <h3>Employment Application for <%= @application.firstname + " " + @application.lastname %></h3>
 
     <p>Submitted on: <b><%= @application.created_at.strftime("%B %d, %Y") %></b></p>
     
     <% positions = [] %>
-    <%= if @application.gymnastics then positions << "Gymnastics" end %>
-    <%= if @application.dance then positions << "Dance" end %>
-    <%= if @application.swim then positions << "Swim" end %>
-    <%= if @application.tag then positions << "TAG" end %>
-    <%= if @application.hospitality then positions << "Hospitality" end %>
+    <% if @application.gymnastics then positions << "Gymnastics" end %>
+    <% if @application.dance then positions << "Dance" end %>
+    <% if @application.swim then positions << "Swim" end %>
+    <% if @application.tag then positions << "TAG" end %>
+    <% if @application.hospitality then positions << "Hospitality" end %>
     
     <p>Applied for: <b>
       <% if positions.count > 0 %>
@@ -32,9 +32,9 @@
       </b>
     </p>
     
-    <h4><%= link_to "View Application", application %></h4>
+    <h4><%= link_to "View Application", employment_application_url(@application)%></h4>
     
-    <%= link_to "View ALL Applications", employment_applications_path %>
+    <%= link_to "View ALL Applications", employment_applications_url %>
 
   </div>
 </body>

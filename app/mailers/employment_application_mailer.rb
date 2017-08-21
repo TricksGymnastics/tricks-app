@@ -10,7 +10,7 @@ class EmploymentApplicationMailer < ActionMailer::Base
     @application = application
     subject = "Employment Application for: " + application.firstname + " " + application.lastname
     
-    if (application.granite_bay)
+    if (application.granite_bay == 1)
       mail to: "tricksgb@gmail.com", subject: subject
     end
     
@@ -22,6 +22,6 @@ class EmploymentApplicationMailer < ActionMailer::Base
       mail to: "trickssac@gmail.com", subject: subject
     end
 
-    # mail to: "football80@gmail.com", subject: "This better work " + @absent.student_name
+    mail to: "football80@gmail.com", subject: subject
   end
 end
