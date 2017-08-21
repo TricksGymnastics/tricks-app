@@ -1,4 +1,4 @@
-class EmploymentApplicationMailer < ApplicationMailer  
+class EmploymentApplicationMailer < ActionMailer::Base
   require 'mail'
   address = Mail::Address.new "tricksgym@gmail.com"
   address.display_name = "Tricks Gymnastics, Dance & Swim"

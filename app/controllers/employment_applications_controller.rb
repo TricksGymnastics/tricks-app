@@ -1,5 +1,6 @@
 class EmploymentApplicationsController < ApplicationController
   before_action :set_employment_application, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :except => [:new, :create]
 
   # GET /employment_applications
   def index
