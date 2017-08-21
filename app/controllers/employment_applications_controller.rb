@@ -45,7 +45,7 @@ class EmploymentApplicationsController < ApplicationController
     
     if @employment_application.save
       EmploymentApplicationMailer.gym_notification(@employment_application).deliver_now
-      redirect_to @employment_application, notice: 'Employment application was successfully created.'
+      redirect_to root_path, notice: 'Employment application was successfully created.'
     else
       render :new
     end
