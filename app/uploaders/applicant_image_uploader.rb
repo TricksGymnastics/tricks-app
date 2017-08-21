@@ -10,7 +10,7 @@ include CarrierWave::MiniMagick
   end
   
   def store_dir
-    "#{model.id+"_"+model.firstname+'_'+model.lastname}".gsub(" ", "_")
+    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname}".gsub(" ", "_")
   end
 
   def default_url
