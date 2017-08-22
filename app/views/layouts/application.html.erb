@@ -6,18 +6,11 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Tricks" %></title>
 
-    <%= stylesheet_link_tag    'application' %><%# , media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application' %> <%# , 'data-turbolinks-track' => true %>
-    
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
-
-    <%#= stylesheet_link_tag    "application", :media => "all" %>
-    <%#= javascript_include_tag "application"%>
-    <%#= csrf_meta_tags %>
-
     <%= analytics_init if Rails.env.production? %>
-
 
     <script>
       function iecontent() {      
@@ -116,6 +109,10 @@
               <li><%= link_to "TricksU", tricksu_path, class: 'logged-in-menu-item' %></li>
             <% end %>
             
+		        <% if can? :manage, Coach %>
+              <li><%= link_to "Staff", coaches_path, class: 'logged-in-menu-item' %></li>
+            <% end %>
+            
             <!--<li class="has-submenu"><%#= link_to "Schedules", 'javascript:void(0);' %>-->
             <!--  <ul class="submenu menu vertical" data-submenu>-->
             <!--    <li><%#= link_to "View All", schedules_choose_path %></li>-->
@@ -123,36 +120,22 @@
             <!--</li>-->
 
 		        <% if can? :manage, Coach %>
-              <li class="has-submenu"><%= link_to "Staff", 'javascript:void(0);', class: 'logged-in-menu-item' %>
-                <ul class="submenu menu vertical" data-submenu>
-                  <li><%= link_to "All Coaches", coaches_path, class: 'logged-in-menu-item' %></li>
-                  <li><%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"}, class: 'logged-in-menu-item' %></li>
-                </ul>
-              </li>   
-            <% end %>
-
-		        <% if can? :manage, RecitalAd %>
-              <li class="has-submenu">
-                <%= link_to "Recital Ads", 'javascript:void(0);', class: 'logged-in-menu-item' %>
-                <ul class="submenu menu vertical" data-submenu>
-                  <li><%= link_to "View Orders", "/recital_ads_by_year/"+Time.now.year.to_s, class: 'logged-in-menu-item' %></li>
-                  <li><%= link_to "Ad Types", recital_ad_types_path, class: 'logged-in-menu-item' %></li>
-                </ul>
-              </li>
+              <li><%= link_to "Recital Ads", "/recital_ads_by_year/"+Time.now.year.to_s, class: 'logged-in-menu-item' %></li>
             <% end %>
             
-		        <% if can? :manage, Party %>
-              <li class="has-sbmenu">
-                <%= link_to "New Parties", 'javascript:void(0);', class: 'logged-in-menu-item' %>
+            
+		        <%# if can? :manage, Party %>
+              <!--<li class="has-sbmenu">
+                <%#= link_to "New Parties", 'javascript:void(0);', class: 'logged-in-menu-item' %>
                 <ul class="submenu menu vertical" data-submenu>
-                  <li><%= ultimate_fun_link = link_to "Ulimate Fun", Party.first, class: 'logged-in-menu-item' %></li>
-                  <li><%= ninja_warrior_link = link_to "Ninja Warrior", Party.second, class: 'logged-in-menu-item' %></li>
-                  <li><%= fun_and_games_link = link_to "Fun & Games", Party.third, class: 'logged-in-menu-item' %></li>
-                  <li><%= fairytale_link = link_to "Fairytale", Party.fourth, class: 'logged-in-menu-item' %></li>
-                  <li><%= ballet_link = link_to "Ballet", Party.fifth, class: 'logged-in-menu-item' %></li>
+                  <li><%#= ultimate_fun_link = link_to "Ulimate Fun", Party.first, class: 'logged-in-menu-item' %></li>
+                  <li><%#= ninja_warrior_link = link_to "Ninja Warrior", Party.second, class: 'logged-in-menu-item' %></li>
+                  <li><%#= fun_and_games_link = link_to "Fun & Games", Party.third, class: 'logged-in-menu-item' %></li>
+                  <li><%#= fairytale_link = link_to "Fairytale", Party.fourth, class: 'logged-in-menu-item' %></li>
+                  <li><%#= ballet_link = link_to "Ballet", Party.fifth, class: 'logged-in-menu-item' %></li>
                 </ul>
-              </li>
-            <% end %>
+              </li>-->
+            <%# end %>
             
 		        <% if can? :create, WebsitePdf %>
               <li><%= link_to "Website PDFs", website_pdfs_path, class: 'logged-in-menu-item' %></li>
@@ -184,16 +167,14 @@
     <!-- large-Up Navigation -->
     <div class="show-for-large" data-sticky-container style="z-index: 10;">
       <div class="top-bar" id="main-menu" data-sticky data-options="marginTop:0;" style="width: 100%; height: 50px;">
-        <div class="logo-wrapper show-for-large">
-          <div class="logo">
-            <%= link_to image_tag('tricks-header.png'), root_path %>
-          </div>
+        <div class="logo show-for-large">
+          <%= link_to image_tag('tricks-header.png'), root_path %>
         </div>
-  
+        
         <!-- Left Nav Section -->
         <div class="top-bar-left">
           <ul class="menu" data-responsive-menu="drilldown large-dropdown">
-            <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style: "margin-right: 20px;" %></li>
+            <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style: "margin-right: 20px; margin-top: 2px;" %></li>
             <li class="has-submenu">
               <%= link_to "Programs", 'javascript:void(0);', class: 'main-menu-item'  %>
               <ul class="menu vertical">
@@ -286,7 +267,7 @@
             <!-- <li><%#= faq_link = link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
             <li><%= blog_link = link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
             <!-- <li><%#= contact_link = link_to "Contact", locations_path, class: 'main-menu-item' %></li> -->
-            <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button main-menu-button", style: "margin-left: 20px;" %></li>
+            <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button main-menu-button", style: "margin-left: 20px; margin-top: 2px;" %></li>
   
           </ul>
         </div>

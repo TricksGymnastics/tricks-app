@@ -22,24 +22,18 @@ $ ->
             at_least_one_is_checked |= $('#employment_application_tag').is(':checked')
             if (at_least_one_is_checked)
                 $('#coach_questions').show()
-                #$("#coach_questions textarea").attr("style", "background-color: yellow;")
-                #having a lot of problems with setting and removing required
-                #$("#coach_questions textarea").prop("required", "required")
-                #$("#coach_questions textarea").attr("required", true)
+                $("#coach_questions textarea").attr("required", true)
             else
                 $('#coach_questions').hide()
-                #$("#coach_questions textarea").removeAttr("style")
-                #having a lot of problems with setting and removing required
-                #$("#coach_questions textarea").prop("required", "")
-                #$("#coach_questions textarea").removeAttr("required")
+                $("#coach_questions textarea").removeAttr("required")
                 
         else if (id.indexOf("employment_application_hospitality") >= 0)
             if (button.is(':checked'))
                 $('#hospitality_questions').show()
-                #$("#hospitality_questions textarea").attr('required',true)
+                $("#hospitality_questions textarea").attr("required", true)
             else
                 $('#hospitality_questions').hide()
-                #$("#hospitality_questions textarea").attr('required',false)
+                $("#hospitality_questions textarea").removeAttr("required")
             
     $('#coach_questions').hide()
     $('#hospitality_questions').hide()

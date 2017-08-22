@@ -3,16 +3,52 @@
 @import 'fonts';
 @import 'globals';
 @import 'settings';
+
+$primary-color: #2199e8;
+$secondary-color: #777;
+$alert-color: #ec5840;
+$body-font-family: TrebuchetMSRegular, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+
+// medium use to be 640, but I didn't like large being applied to a horizontal ipad, so I knocked them all down one.
+// Update: knocked medium down to 560 so that horizontal iphone5 is medium
+$breakpoints: (
+  small: 0,
+  medium: 560px,
+  large: 1024px,
+  xlarge: 1440px,
+  xxlarge: 1440px,
+);
+$breakpoint-classes: (small medium large xlarge);
+
+$header-font-family: 'Trebuchet MS';
+
+$accordion-plusminus: false;
+$accordion-item-color: foreground($accordion-background, $white);
+$accordion-item-background-hover: $dark-gray;
+$accordion-item-padding: 10px 8px;
+$accordion-content-border: 0px solid $light-gray;
+$accordion-content-color: foreground($accordion-background, $tricks-purple);
+
+$dropdownmenu-min-width: 225px;
+$dropdownmenu-padding: 7px 10px;
+
+$topbar-padding: 4px;
+$topbar-background: $primary-color;
+$topbar-title-spacing: 1rem;
+
+$dropdownmenu-arrow-color: $white;
+
 @import 'foundation';
 
-// If you'd like to include motion-ui, you need to install the motion-ui sass package.
+// If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
 //
 @import 'motion-ui/motion-ui';
 
 // We include everything by default.  To slim your CSS, remove components you don't use.
 
 @include foundation-global-styles;
-// @include foundation-grid;
+@include foundation-flex-grid;
+@include foundation-flex-classes;
 @include foundation-typography;
 @include foundation-button;
 @include foundation-forms;
@@ -24,14 +60,15 @@
 @include foundation-breadcrumbs;
 @include foundation-button-group;
 @include foundation-callout;
+@include foundation-card;
 @include foundation-close-button;
 @include foundation-drilldown-menu;
 @include foundation-dropdown;
-@include foundation-dropdown-menu;
-@include foundation-flex-video;
+@include foundation-responsive-embed;
 @include foundation-label;
 @include foundation-media-object;
 @include foundation-menu;
+@include foundation-menu-icon;
 @include foundation-off-canvas;
 @include foundation-orbit;
 @include foundation-pagination;
@@ -46,14 +83,12 @@
 @include foundation-title-bar;
 @include foundation-tooltip;
 @include foundation-top-bar;
-@include foundation-flex-grid;
-// @include foundation-flex-classes;
+@include foundation-dropdown-menu;
 
-// If you'd like to include motion-ui, you need to install the motion-ui sass package.
+// If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
 //
 @include motion-ui-transitions;
 @include motion-ui-animations;
-
 
 
 
@@ -128,7 +163,7 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 					// background-color: #777;
 					@include breakpoint(large up){
 						// font-size: 12px;
-						background-color: #777;
+						background-color: #999;
 					}
 				}
 			}
@@ -222,26 +257,22 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 		border-radius: 5px;
 	}
 
-	.logo-wrapper {
-		position: relative;
-		
-		.logo {
-			@include breakpoint(xlarge up){
-				width: $logo-width;
-			}
-			@include breakpoint(large down){
-				width: $small-logo-width;
-			}
-			height:  92px;
-			position: absolute;
-			left: 50%;
-			right: 50%;
-			@include breakpoint(xlarge up){
-				margin-left: -($logo-width / 2);
-			}
-			@include breakpoint(large down){
-				margin-left: -($small-logo-width / 2);
-			}
+	.logo {
+		@include breakpoint(xlarge up){
+			width: $logo-width;
+		}
+		@include breakpoint(large down){
+			width: $small-logo-width;
+		}
+		position: absolute;
+		left: 50%;
+		right: 50%;
+		top: 0;
+		@include breakpoint(xlarge up){
+			margin-left: -($logo-width / 2);
+		}
+		@include breakpoint(large down){
+			margin-left: -($small-logo-width / 2);
 		}
 	}
 
@@ -407,11 +438,11 @@ $curve_amount: 30px;
 .orbit-slide{
 	height: 360px;
 }
-@media #{$small-only}{
-	.orbit-slide{
-		height: 261px;
-	}
-}
+// @media #{$small-only}{
+// 	.orbit-slide{
+// 		height: 261px;
+// 	}
+// }
 
 .orbit-image{
 	border-radius: $curve_amount $curve_amount 0 0;
@@ -482,9 +513,9 @@ body.is-reveal-open{
 	}
 } 
 .minicolors-swatch{
-		height: 30px !important;
-		width: 30px !important;
-	}
+	height: 30px !important;
+	width: 30px !important;
+}
 .minicolors-input{
 	height: 40px !important;
 	width: 100% !important;

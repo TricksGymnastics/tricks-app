@@ -2,28 +2,28 @@
 <% outline = "-"+outline_width+"px 0 #222, 0 "+outline_width+"px #222, "+outline_width+"px 0 #222, 0 -"+outline_width+"px #222" %>
 <style>
   
-  #panel_<%= level.id %>-label.accordion-title, #panel_<%= level.id %>-label.accordion-title:focus, #panel_<%= level.id %>-label.accordion-title:hover, .is-active #panel_<%= level.id %>-label.accordion-title{
+  .panel-<%= level.id %>-label.accordion-title, .panel-<%= level.id %>-label.accordion-title:focus, .panel-<%= level.id %>-label.accordion-title:hover, .is-active .panel-<%= level.id %>-label.accordion-title{
   	background-color: <%= color %>;
   	margin: 25px 0 0 0;
-  	border-radius: 20px;
+  	border-radius: 20px !important;
   	box-sizing: border-box;
   	border: solid 2px <%= color %>;
   	text-shadow: <%= outline %>, 0 0 5px #555;
-		color: #fff;
+	color: #fff;
   }
-  #panel_<%= level.id %>-label.accordion-title:hover, .is-active #panel_<%= level.id %>-label.accordion-title{
+  .panel-<%= level.id %>-label.accordion-title:hover, .is-active .panel-<%= level.id %>-label.accordion-title{
   	border: solid 2px #333;
   	text-shadow: <%= outline %>, 0 0 15px #111;
   }
 </style>
 
 
-<li class="accordion-navigation">
-	<a href="#" class="accordion-title" id="panel_<%= level.sort_order %>-heading" aria-controls="panel_<%= level.id %>" id="link" data-id="<%= level.id %>">
+<li class="accordion-item" data-accordion-item>
+	<a href="#" class="accordion-title panel-<%= level.id %>-label">
 		<% level_title = (level.age.empty?) ? level.levelname : level.levelname + " - Age: " + level.age %>
 		<h3 data-id="<%= level.id %>" style="padding:0; margin:0; text-align:center;"><%= level_title %></h3>
 	</a>
-	<div id="panel_<%= level.id %>" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel_<%= level.id %>-heading">
+	<div class="accordion-content" data-tab-content>
 		<% if !level.video_url.nil? && !level.video_url.empty? %>
 			<div class="row align-center">
 				<div class="columns large-8 ">

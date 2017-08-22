@@ -5,6 +5,7 @@ class CreateEmploymentApplications < ActiveRecord::Migration
       t.string :lastname
       t.string :middlename
       t.string :image
+      t.string :resume
       t.boolean :granite_bay
       t.boolean :folsom
       t.boolean :sacramento

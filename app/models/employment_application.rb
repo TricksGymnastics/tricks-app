@@ -6,4 +6,5 @@ class EmploymentApplication < ActiveRecord::Base
     accepts_nested_attributes_for :employment_histories
     
 	mount_uploader :image, ApplicantImageUploader
+	mount_uploader :resume, ApplicantResumeUploader
 end

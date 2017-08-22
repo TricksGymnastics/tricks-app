@@ -1,3 +1,3 @@
-//= require jquery-ui/tabs
+//= require jquery-ui/widgets/tabs
 //= require fancybox
 //= require_directory .

@@ -2,18 +2,19 @@
 
 <h1>The Tricks Family</h1>
 
+<div class="row" style="padding-bottom: 1rem;">
+  <div class="columns"><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, class: "button expanded" %></div>
+  <div class="columns"><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, class: "button expanded"  %></div>
+  <div class="columns"><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, class: "button expanded"  %></div>
+  <div class="columns"><%= link_to "Past Employees", {:controller => "coaches", :action => "past_employees"}, class: 'button expanded' %></div>
+</div>
+
 <% if can? :manage, Coach %>
   <br><h2><%= link_to 'Add New Employee', new_coach_path %></h2><br>
 <% else %>
   <br>
 <% end %>
 
-<div class="row" style="border: dashed 1px #444; padding-top: 1rem;">
-  <div class="columns large-3"><h3>Staff by Location:</h3></div>
-  <div class="columns large-3"><%= link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}, class: "button expanded" %></div>
-  <div class="columns large-3"><%= link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}, class: "button expanded"  %></div>
-  <div class="columns large-3"><%= link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}, class: "button expanded"  %></div>
-</div>
   <%# This contains a bug in coaches_controller type because the name of the class is Classtype, yeah i was a newb when i did that... Too lazy to go through and change to "Program" so i'm just cutting this section out, no one uses it anyways %>
   <!-- div style="padding: 6px; height: 50px; float:left; width: 455px; border: dashed 1px #444; margin: 0 5px;">
     <h4 style="font-size: 18px;">Staff by Program:</h4>
