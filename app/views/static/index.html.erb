@@ -1,5 +1,11 @@
 <%= javascript_include_tag "static/static" %>
 
+<div class="show-for-large" id="background_images" style="position: fixed; top: -150px; z-index: -100; width: 2000px;  left: 50%; margin-left: -1000px; text-align: center;">
+	<%= image_tag('site_header_images/LargeImages/23.jpg', style: "display: none; margin: 0px auto;") %>
+	<%= image_tag('site_header_images/LargeImages/22.jpg', style: "display: none; margin: 0px auto;") %>
+	<%= image_tag('site_header_images/LargeImages/24.jpg', style: "display: none; margin: 0px auto;") %>
+</div>
+
 <div class="row align-justify" style="margin-top: 40px; margin-bottom: 80px;">
 	<div class="columns large-3 show-for-large" style="position: relative;">
 		<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 0).first} %>
