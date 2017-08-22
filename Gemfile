@@ -39,9 +39,9 @@ gem 'thin'
 gem 'cancancan'
 gem 'will_paginate'
 
-gem "carrierwave"
-gem 'mini_magick'
-gem 'fog-google'
+gem "carrierwave", "0.11.2"
+gem 'mini_magick', "4.5.1"
+gem 'fog-google', "0.3.2"
 gem "google-api-client", "> 0.8.5", "< 0.9"
 # gem "fog"
 
