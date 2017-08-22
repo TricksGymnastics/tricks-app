@@ -2,6 +2,8 @@
 
 class ApplicantResumeUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+
+  # storage :fog
   
   def fog_directory
     'applicant-resumes'

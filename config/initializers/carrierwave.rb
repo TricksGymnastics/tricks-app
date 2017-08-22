@@ -4,6 +4,7 @@ if Rails.env.development? or Rails.env.test?
     config.enable_processing = false
   end
 else
+  require 'carrierwave/storage/fog'
   CarrierWave.configure do |config|
     config.fog_provider = 'fog/google'
     config.fog_credentials = {
