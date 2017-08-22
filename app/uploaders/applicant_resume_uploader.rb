@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ApplicantResumeUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
@@ -6,7 +8,7 @@ class ApplicantResumeUploader < CarrierWave::Uploader::Base
   end
   
   def filename
-    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname}.#{file.extension}".gsub(" ", "_")
+    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname+"_resmue"}.#{file.extension}".gsub(" ", "_")
   end
   
   def extension_white_list

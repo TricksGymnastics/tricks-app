@@ -5,6 +5,7 @@ if Rails.env.development? or Rails.env.test?
   end
 else
   CarrierWave.configure do |config|
+    config.fog_provider = 'fog/google'
     config.fog_credentials = {
       :provider                         => 'Google',
       :google_storage_access_key_id     => ENV['GOOGLE_KEY_ID'],  
@@ -12,7 +13,6 @@ else
       :persistent                       => false
     }
     config.storage = :fog
-    # config.fog_provider = 'fog-google'
     config.fog_directory = 'tricks-images'
   end
 end
