@@ -39,6 +39,10 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.4)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -64,12 +68,11 @@ GEM
       addressable
     daemons (1.2.4)
     debug_inspector (0.0.3)
-    declarative (0.0.9)
-    declarative-option (0.1.0)
     erubis (2.7.0)
     eventmachine (1.2.5)
     excon (0.58.0)
     execjs (2.7.0)
+    extlib (0.9.16)
     fancybox2-rails (0.2.8)
       railties (>= 3.1.0, < 5.0)
     faraday (0.13.1)
@@ -98,13 +101,17 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     google-analytics-rails (1.1.1)
-    google-api-client (0.13.1)
-      addressable (~> 2.5, >= 2.5.1)
-      googleauth (~> 0.5)
-      httpclient (>= 2.8.1, < 3.0)
-      mime-types (~> 3.0)
-      representable (~> 3.0)
-      retriable (>= 2.0, < 4.0)
+    google-api-client (0.8.7)
+      activesupport (>= 3.2, < 5.0)
+      addressable (~> 2.3)
+      autoparse (~> 0.3)
+      extlib (~> 0.9)
+      faraday (~> 0.9)
+      googleauth (~> 0.3)
+      launchy (~> 2.4)
+      multi_json (~> 1.10)
+      retriable (~> 1.4)
+      signet (~> 0.6)
     googleauth (0.5.3)
       faraday (~> 0.12)
       jwt (~> 1.4)
@@ -116,7 +123,6 @@ GEM
     htmlentities (4.3.4)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
-    httpclient (2.8.3)
     i18n (0.8.6)
     jquery-minicolors-rails (2.2.3.1)
       jquery-rails
@@ -129,6 +135,8 @@ GEM
       railties (>= 3.2.16)
     json (1.8.6)
     jwt (1.5.6)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     libv8 (3.16.14.19)
     little-plugger (1.1.4)
     logging (2.2.2)
@@ -194,11 +202,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
     ref (2.0.0)
-    representable (3.0.4)
-      declarative (< 0.1.0)
-      declarative-option (< 0.2.0)
-      uber (< 0.2.0)
-    retriable (3.1.1)
+    retriable (1.4.1)
     sass (3.4.25)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -236,7 +240,6 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    uber (0.1.0)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     web-console (2.3.0)
@@ -264,7 +267,7 @@ DEPENDENCIES
   fog-google
   foundation-rails
   google-analytics-rails
-  google-api-client
+  google-api-client (> 0.8.5, < 0.9)
   httparty
   jquery-minicolors-rails
   jquery-rails
@@ -285,5 +288,8 @@ DEPENDENCIES
   wysiwyg-rails
   yaml_db
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   1.15.4

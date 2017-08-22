@@ -42,7 +42,7 @@ gem 'will_paginate'
 gem "carrierwave"
 gem 'mini_magick'
 gem 'fog-google'
-gem 'google-api-client'
+gem "google-api-client", "> 0.8.5", "< 0.9"
 # gem "fog"
 
 gem "fancybox2-rails"
