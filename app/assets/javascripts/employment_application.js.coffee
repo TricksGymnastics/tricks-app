@@ -65,3 +65,7 @@ $ ->
     $('#employment_application_image').change ->
         $('#employment_application_image').prev().addClass('success')
         $('#employment_application_image').prev().html "Change Image"
+        
+    $('#employment_application_resume').change ->
+        $('#employment_application_resume').prev().addClass('success')
+        $('#employment_application_resume').prev().html "Change Resume"
