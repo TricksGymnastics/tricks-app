@@ -38,6 +38,9 @@ $topbar-title-spacing: 1rem;
 
 $dropdownmenu-arrow-color: $white;
 
+$orbit-caption-background: rgba($primary-color, 1);
+$orbit-caption-padding: 7px 20px;
+
 @import 'foundation';
 
 // If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
@@ -431,7 +434,7 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 $curve_amount: 30px;
 .orbit-container{
 	border-radius: $curve_amount; 
-	box-shadow: 0 0 20px #666;
+	box-shadow: 0 0 40px #222;
 	overflow: hidden;
 }
 
@@ -450,6 +453,7 @@ $curve_amount: 30px;
 
 .orbit-caption{
 	border-radius: 0 0 $curve_amount $curve_amount;
+	color: #fefefe;
 }
 
 .reveal-overlay.fade-in, .reveal-overlay.fade-out {

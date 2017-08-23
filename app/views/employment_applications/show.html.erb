@@ -16,12 +16,61 @@
 <div class="row">
   <div class="columns">
     <h1><%= @employment_application.firstname + " " + @employment_application.middlename + " " + @employment_application.lastname %></h1>
+    <h3>
+      <% positions = [] %>
+      <% if @employment_application.gymnastics then positions << "Gymnastics" end %>
+      <% if @employment_application.dance then positions << "Dance" end %>
+      <% if @employment_application.swim then positions << "Swim" end %>
+      <% if @employment_application.tag then positions << "TAG" end %>
+      <% if @employment_application.hospitality then positions << "Hospitality" end %>
+      
+      Applied for:
+      <% if positions.count > 0 %>
+        <% positions.each do |pos| %>
+          <% if pos == positions.first %>
+            <%= pos %>
+          <% elsif pos == positions.last %>
+            <%= " and " + pos %>
+          <% else %>
+            <%= ", " + pos %>
+          <% end %>
+        <% end %>
+      <% else %>
+        Nothing
+      <% end %>
+      
+      <% locations = [] %>
+      <% if @employment_application.granite_bay then positions << "Granite Bay" end %>
+      <% if @employment_application.folsom then positions << "Folsom" end %>
+      <% if @employment_application.sacramento then positions << "Sacramento" end %>
+      
+      At
+      <% if locations.count > 0 %>
+        <% locations.each do |loc| %>
+          <% if loc == locations.first %>
+            <%= loc %>
+          <% elsif loc == locations.last %>
+            <%= " and " + loc %>
+          <% else %>
+            <%= ", " + loc %>
+          <% end %>
+        <% end %>
+      <% else %>
+        Nowhere
+      <% end %>
+      
+    </h3>
   </div>
 </div>
 
 <div class="row align-center">
   <div class="columns large-3 small-8">
     <%= image_tag @employment_application.image_url(:thumb).to_s, style: "margin-bottom: 20px;" %>
+    <% if @employment_application.resume.blank? %>
+      <%= link_to "No Resume Given", 'javascript:void(0);', class: "button expanded disabled" %>
+    <% else %>
+      <%= link_to "Download Resume", @employment_application.resume.url, class: "button expanded" %>
+    <% end %>
   </div>
   <div class="columns large-9 small-12">
     <%= form_for @employment_application, url: {action: 'complete_interview'} do |f| %>

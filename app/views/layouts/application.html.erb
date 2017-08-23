@@ -146,7 +146,11 @@
         		<% end %>
             
         		<% if can? :manage, DiscontinueNotice %>
-        			<li><%= link_to "Discontinuations", discontinue_notices_path, class: 'logged-in-menu-item' %></li>
+        			<li><%= link_to "Discontinues", discontinue_notices_path, class: 'logged-in-menu-item' %></li>
+        		<% end %>
+        		
+        		<% if can? :show, EmploymentApplication %>
+        			<li><%= link_to "Applications", employment_applications_path, class: 'logged-in-menu-item' %></li>
         		<% end %>
             <!--<li class="has-submenu">-->
             <!--  <%#= link_to "Surveys", 'javascript:void(0);' %>-->
