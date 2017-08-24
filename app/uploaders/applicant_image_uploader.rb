@@ -10,22 +10,22 @@ class ApplicantImageUploader < CarrierWave::Uploader::Base
   end
   
   def store_dir
-    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname}".gsub(" ", "_")
+    "#{model.firstname+'_'+model.lastname+"_"}#{SecureRandom.hex(4)}".tr(" ", "_")
   end
 
   def default_url
     "/assets/neutral_default.png"
   end
 
-  version :thumb do
-    process :resize_to_fill => [400, -1]
-  end
-
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
-  # def filename
-  #   "#{model.firstname+'_'+model.lastname}.#{file.extension}".tr(" ", "_") if original_filename
-  # end
+  
+  def auto_orient
+    manipulate! do |img|
+      img = img.auto_orient
+    end
+  end
+  process :auto_orient
+  process :resize_to_fill => [400, -1]
 end

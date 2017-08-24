@@ -4,7 +4,7 @@ class EmploymentApplicationsController < ApplicationController
 
   # GET /employment_applications
   def index
-    @employment_applications = EmploymentApplication.all
+    @employment_applications = EmploymentApplication.all.order("created_at DESC")
       
     if params.has_key?(:location)
       @employment_applications = @employment_applications.where(:"#{params[:location]}" => true)

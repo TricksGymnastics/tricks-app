@@ -10,10 +10,10 @@ class ApplicantResumeUploader < CarrierWave::Uploader::Base
   end
   
   def filename
-    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname+"_resmue"}.#{file.extension}".gsub(" ", "_")
+    "#{model.firstname+'_'+model.lastname+"_resmue_"}#{SecureRandom.hex(4)}.#{file.extension}".tr(" ", "_")
   end
   
   def extension_white_list
-    %w(pdf doc docx pub)
+    %w(pdf)
   end
 end
