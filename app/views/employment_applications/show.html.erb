@@ -65,8 +65,7 @@
 
 <div class="row align-center">
   <div class="columns large-3 small-8">
-    <% image = @employment_application.image.thumb.image.exists? ? @employment_application.image_url(:thumb).to_s : @employment_application.image_url %>
-    <%= image_tag image, style: "margin-bottom: 20px;" %>
+    <%= image_tag @employment_application.image_url, style: "margin-bottom: 20px;" %>
     <% if @employment_application.resume.blank? %>
       <%= link_to "No Resume Given", 'javascript:void(0);', class: "button expanded disabled" %>
     <% else %>

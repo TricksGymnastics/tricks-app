@@ -1,8 +1,6 @@
 <div class="columns large-3 medium-4 small-12" id="applicant_container">
     <%= link_to app.firstname+" "+app.lastname, employment_application_path(app), id: "applicant-name" %>
-    
-    <% image = app.image.thumb.image.exists? ? app.image_url(:thumb).to_s : app.image_url %>
-    <%= link_to image_tag(image), employment_application_path(app) %>
+    <%= link_to image_tag(app.image_url), employment_application_path(app) %>
 </div>
 
 
