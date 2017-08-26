@@ -10,7 +10,7 @@ class ApplicantResumeUploader < CarrierWave::Uploader::Base
   end
   
   def store_dir
-    "#{model.firstname+'_'+model.lastname+'_'+secure_token}".tr(" ", "_")
+    "#{model.firstname+'_'+model.lastname+'_'+model.id.to_s}".tr(" ", "_")
   end
   
   def filename
@@ -24,9 +24,9 @@ class ApplicantResumeUploader < CarrierWave::Uploader::Base
   protected
   def secure_token
     if !model.id.nil?
-      model.id
+      model.id.to_s
     else
-      EmploymentApplication.maximum(:id).next
+      EmploymentApplication.maximum(:id).next.to_s
     end
     # var = :"@#{mounted_as}_secure_token"
     # model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
