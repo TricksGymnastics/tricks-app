@@ -10,7 +10,7 @@ class ApplicantImageUploader < CarrierWave::Uploader::Base
   end
   
   def store_dir
-    "#{model.firstname+'_'+model.lastname+"_"+Time.now.to_i.to_s}".tr(" ", "_")
+    "#{model.firstname+'_'+model.lastname+'_'+secure_token}".tr(" ", "_") #not unique and it should be, but whatever for now
   end
   
   def filename
@@ -32,4 +32,11 @@ class ApplicantImageUploader < CarrierWave::Uploader::Base
   end
   process :auto_orient
   process :resize_to_fill => [400, -1]
+  
+  
+  protected
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
 end
