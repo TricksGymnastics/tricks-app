@@ -10,7 +10,7 @@ class ApplicantImageUploader < CarrierWave::Uploader::Base
   end
   
   def store_dir
-    "#{model.firstname+'_'+model.lastname+"_"+Time.now.to_i}".tr(" ", "_")
+    "#{model.firstname+'_'+model.lastname+"_"+Time.now.to_i.to_s}".tr(" ", "_")
   end
   
   def filename
