@@ -3,8 +3,6 @@
 class ApplicantImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  # storage :fog
-
   def fog_directory
     'applicant-images'
   end
@@ -32,16 +30,4 @@ class ApplicantImageUploader < CarrierWave::Uploader::Base
   end
   process :auto_orient
   process :resize_to_fill => [400, -1]
-  
-  
-  protected
-  def secure_token
-    if !model.id.nil?
-      model.id.to_s
-    else
-      EmploymentApplication.maximum(:id).next.to_s
-    end
-    # var = :"@#{mounted_as}_secure_token"
-    # model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
-  end
 end
