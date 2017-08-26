@@ -23,10 +23,10 @@ class ApplicantResumeUploader < CarrierWave::Uploader::Base
   
   protected
   def secure_token
-    if model.id.exists?
+    if !model.id.nil?
       model.id
     else
-      EmploymentApplication.last.id + 1
+      EmploymentApplication.maximum(:id).next
     end
     # var = :"@#{mounted_as}_secure_token"
     # model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
