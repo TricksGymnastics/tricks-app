@@ -10,9 +10,13 @@ class ApplicantImageUploader < CarrierWave::Uploader::Base
   end
   
   def store_dir
-    "#{model.firstname+'_'+model.lastname+"_"}#{SecureRandom.hex(4)}".tr(" ", "_")
+    "#{model.firstname+'_'+model.lastname+"_"+Time.now.to_i}".tr(" ", "_")
   end
-
+  
+  def filename
+    "image."+"#{file.extension}".tr(" ", "_") if original_filename.present?
+  end
+  
   def default_url
     "/assets/neutral_default.png"
   end

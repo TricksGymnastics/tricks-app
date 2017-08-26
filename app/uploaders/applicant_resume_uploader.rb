@@ -6,11 +6,15 @@ class ApplicantResumeUploader < CarrierWave::Uploader::Base
   # storage :fog
   
   def fog_directory
-    'applicant-resumes'
+    'employment-applications'
+  end
+  
+  def store_dir
+    "#{model.firstname+'_'+model.lastname+"_"+Time.now.to_i}".tr(" ", "_")
   end
   
   def filename
-    "#{model.firstname+'_'+model.lastname+"_resmue_"}#{SecureRandom.hex(4)}.#{file.extension}".tr(" ", "_")
+    "resume."+"#{file.extension}".tr(" ", "_") if original_filename.present?
   end
   
   def extension_white_list
