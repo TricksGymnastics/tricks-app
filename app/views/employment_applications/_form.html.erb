@@ -11,7 +11,7 @@
     box-shadow: 0px 0px 30px #888;
   }
 </style>
-<% required_fields = false %>
+<% required_fields = true %>
 <%= form_for(@employment_application) do |f| %>
   <% if @employment_application.errors.any? %>
     <div id="error_explanation">
