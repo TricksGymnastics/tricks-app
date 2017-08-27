@@ -40,9 +40,9 @@
       <% end %>
       
       <% locations = [] %>
-      <% if @employment_application.granite_bay == true then locations << "Granite Bay" else locations << "Not Granite Bay"  end %>
-      <% if @employment_application.folsom == true then locations << "Folsom" else locations << "Not Folsom" end %>
-      <% if @employment_application.sacramento == true then locations << "Sacramento" else locations << "Not Sacramento"  end %>
+      <% if @employment_application.granite_bay == true then locations << "Granite Bay" end %>
+      <% if @employment_application.folsom == true then locations << "Folsom" end %>
+      <% if @employment_application.sacramento == true then locations << "Sacramento" end %>
       
       <% string = "At " %>
       <% if locations.count > 0 %>
