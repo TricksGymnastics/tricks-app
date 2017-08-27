@@ -12,7 +12,7 @@ class ApplicantResumeUploader < CarrierWave::Uploader::Base
   end
   
   def filename
-    "#{model.firstname+'_'+model.lastname+"_resume"}.#{file.extension}".tr(" ", "_")
+    "#{model.firstname+'_'+model.lastname+"_resume"}.#{file.extension}".tr(" ", "_") if original_filename
   end
   
   def extension_white_list

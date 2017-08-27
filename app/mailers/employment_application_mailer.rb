@@ -8,23 +8,21 @@ class EmploymentApplicationMailer < ActionMailer::Base
 
   def gym_notification(application)
     @application = application
+    locations = ["trickswebmaster@gmail.com"]
     subject = "Employment Application for: " + application.firstname + " " + application.lastname
     
     if application.granite_bay
-      mail to: "tricksgb@gmail.com", subject: subject
-      mail to: "football80@gmail.com", subject: subject
+      locations << "tricksgb@gmail.com"
     end
     
     if application.folsom
-      mail to: "tricksfol@gmail.com", subject: subject
-      mail to: "football80@gmail.com", subject: subject
+      locations << "tricksfol@gmail.com"
     end
     
     if application.sacramento
-      mail to: "trickssac@gmail.com", subject: subject
-      mail to: "football80@gmail.com", subject: subject
+      locations << "trickssac@gmail.com"
     end
-
-    mail to: "football80@gmail.com", subject: "NEWAPP " + subject
+    
+    mail cc: locations, subject: subject #change to bcc: after i have verified it works
   end
 end

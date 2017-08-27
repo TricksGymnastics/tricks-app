@@ -15,21 +15,23 @@
     <% if @application.tag then positions << "TAG" end %>
     <% if @application.hospitality then positions << "Hospitality" end %>
     
-    <p>Applied for: <b>
-      <% if positions.count > 0 %>
-        <% positions.each do |pos| %>
-          <% if pos == positions.first %>
-            <%= pos %>
-          <% elsif pos == positions.last %>
-            <%= " and " + pos %>
-          <% else %>
-            <%= ", " + pos %>
-          <% end %>
+    <% string = "" %>
+    <% if positions.count > 0 %>
+      <% positions.each do |pos| %>
+        <% if pos == positions.first %>
+          <% string << pos %>
+        <% elsif pos == positions.last %>
+          <% string << " and " << pos %>
+        <% else %>
+          <% string << ", " << pos %>
         <% end %>
-      <% else %>
-        No positions selected :(
       <% end %>
-      </b>
+    <% else %>
+      <% string << "No positions selected :(" %>
+    <% end %>
+    
+    <p>
+      Applied for: <b><%= string %></b>
     </p>
     
     <% locations = [] %>
@@ -53,7 +55,7 @@
     <% end %>
     
     <p>
-      <b>At <%= string %></b>
+      At <b><%= string %></b>
     </p>
     
     <h4><%= link_to "View Application", employment_application_url(@application)%></h4>
