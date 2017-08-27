@@ -4,15 +4,15 @@ class ApplicantImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   def fog_directory
-    'applicant-images'
-  end
+    'employment-applications'
+  end 
   
   def store_dir
-    "#{model.firstname+'_'+model.lastname+'_'+model.id.to_s}".tr(" ", "_") #not unique and it should be, but whatever for now
+    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname}".tr(" ", "_")
   end
   
   def filename
-    "image."+"#{file.extension}".tr(" ", "_") if original_filename.present?
+    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname+"_image"}.#{file.extension}".tr(" ", "_")
   end
   
   def default_url
