@@ -40,25 +40,25 @@
       <% end %>
       
       <% locations = [] %>
-      <% if @employment_application.granite_bay == true then positions << "Granite Bay" else positions << "Not Granite Bay"  end %>
-      <% if @employment_application.folsom == true then positions << "Folsom" else positions << "Not Folsom" end %>
-      <% if @employment_application.sacramento == true then positions << "Sacramento" else positions << "Not Sacramento"  end %>
+      <% if @employment_application.granite_bay == true then locations << "Granite Bay" else locations << "Not Granite Bay"  end %>
+      <% if @employment_application.folsom == true then locations << "Folsom" else locations << "Not Folsom" end %>
+      <% if @employment_application.sacramento == true then locations << "Sacramento" else locations << "Not Sacramento"  end %>
       
-      At
+      <% string = "At " %>
       <% if locations.count > 0 %>
         <% locations.each do |loc| %>
           <% if loc == locations.first %>
-            <%= loc %>
+            <% string << loc %>
           <% elsif loc == locations.last %>
-            <%= " and " + loc %>
+            <% string << " and " << loc %>
           <% else %>
-            <%= ", " + loc %>
+            <% string << ", " << loc %>
           <% end %>
         <% end %>
       <% else %>
-        Nowhere
+        <% string << "Nowhere" %>
       <% end %>
-      
+      <%= string %>
     </h3>
   </div>
 </div>
