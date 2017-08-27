@@ -8,11 +8,11 @@ class ApplicantResumeUploader < CarrierWave::Uploader::Base
   end
   
   def store_dir
-    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname}".tr(" ", "_")
+    "#{model.firstname+'_'+model.lastname+'_'+created_at.to_i.to_s}".tr(" ", "_")
   end
   
   def filename
-    "#{model.id.to_s+"_"+model.firstname+'_'+model.lastname+"_resume"}.#{file.extension}".tr(" ", "_")
+    "#{model.firstname+'_'+model.lastname+"_resume"}.#{file.extension}".tr(" ", "_")
   end
   
   def extension_white_list
