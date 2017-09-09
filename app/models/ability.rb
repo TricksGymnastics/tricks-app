@@ -82,7 +82,7 @@ class Ability
 			can :read, EmploymentApplication
 			can :create, EmploymentApplication
 			can :show, EmploymentApplication
-			can :update, EmploymentApplication
+			can :complete_interview, EmploymentApplication
 		end 
 
 		if user.role == "coach"
