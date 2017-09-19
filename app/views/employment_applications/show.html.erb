@@ -157,7 +157,7 @@
         </div>
         <div class="columns large-3 small-6">
           <b>Date available:</b><br>
-          <%= @employment_application.date_available.in_time_zone.strftime("%B %d, %Y") %>
+          <%= !@employment_application.date_available.nil? ? @employment_application.date_available.in_time_zone.strftime("%B %d, %Y") : "none given" %>
         </div>
       </div>
     </fieldset>
