@@ -61,3 +61,5 @@ gem 'foundation-rails'#, '6.3.1.0'
 gem 'httparty' #needed to get json info from jackrabbit
 
 gem "wysiwyg-rails"
+
+gem "pry" #used to make the console pretty
