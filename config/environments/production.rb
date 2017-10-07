@@ -94,8 +94,8 @@ Comments::Application.configure do
     domain: "tricksgym.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV['GMAIL_ID'],
-    password: ENV['GMAIL_PASSWORD']
+    user_name: ENV['GMAIL_WEBMASTER_ID'],
+    password: ENV['GMAIL_WEBMASTER_PASSWORD']
   }
   config.time_zone = "Pacific Time (US & Canada)"
 

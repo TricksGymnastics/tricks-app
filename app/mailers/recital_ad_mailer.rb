@@ -1,6 +1,6 @@
 class RecitalAdMailer < ActionMailer::Base
   require 'mail'
-  address = Mail::Address.new "tricksgym@gmail.com"
+  address = Mail::Address.new "webmaster@tricksgym.com"
   address.display_name = "Tricks Gymnastics, Dance & Swim"
   address.format
 
