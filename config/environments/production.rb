@@ -90,12 +90,12 @@ Comments::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
-    port: 465,#587
-    domain: "tricksgym.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
+    port: 587,
+    domain: "gmail.com",
     user_name: ENV['GMAIL_WEBMASTER_ID'],
-    password: ENV['GMAIL_WEBMASTER_PASSWORD']
+    password: ENV['GMAIL_WEBMASTER_PASSWORD'],
+    authentication: "plain",
+    enable_starttls_auto: true
   }
   config.time_zone = "Pacific Time (US & Canada)"
 
