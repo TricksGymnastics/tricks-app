@@ -62,4 +62,4 @@ gem 'httparty' #needed to get json info from jackrabbit
 
 gem "wysiwyg-rails"
 
-gem "pry" #used to make the console pretty
+gem "awesome_print" #used to make the console pretty
