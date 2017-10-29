@@ -2,6 +2,11 @@
   <h1><%= link_to 'Add a New Camp', new_camp_path %></h1>
 <% end %>
 
-<% @camps.each do |camp| %>
-  <%= render partial: 'camp', locals: {given_camp: camp} %>
-<% end %>
+<% if @camps.size > 0 %>
+  <% @camps.each do |camp| %>
+    <%= render partial: 'camp', locals: {given_camp: camp} %>
+  <% end %>
+<% else %>
+  <h4 style="text-align: center;">Sorry but there are currently no camps available to register for.</h4>
+  <h3>Please check back later!</h3>
+<% end %>  

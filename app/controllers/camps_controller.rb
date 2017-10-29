@@ -18,8 +18,12 @@ class CampsController < ApplicationController
 
   # GET /camps/1/edit
   def edit
-    @camp.registration_opens = @camp.registration_opens.strftime("%B %-d, %Y")
-    @camp.registration_closes = @camp.registration_closes.strftime("%B %-d, %Y")
+    if !@camp.registration_opens.nil?
+      @camp.registration_opens = @camp.registration_opens.strftime("%B %-d, %Y")
+    end
+    if !@camp.registration_closes.nil?
+      @camp.registration_closes = @camp.registration_closes.strftime("%B %-d, %Y")
+    end
   end
 
   # POST /camps
