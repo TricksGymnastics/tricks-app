@@ -5,6 +5,8 @@
 <% show_button_default = false %>
 <% data_toggle_default = "" %>
 <% font_size_default = "40" %>
+<% text_border_color_default = "555" %>
+<% text_border_size_default = "1" %>
 
 
 <% if defined? given_bubble #check if a bubble_content object was passed in %>
@@ -30,6 +32,12 @@
 
 <% if !defined? font_size %>
     <% font_size = font_size_default %>
+<% end %>
+<% if !defined? text_border_color %>
+    <% text_border_color = text_border_color_default %>
+<% end %>
+<% if !defined? text_border_size %>
+    <% text_border_size = text_border_size_default %>
 <% end %>
 
 <% if bubble.color.blank? %>
@@ -65,8 +73,6 @@
 <div style="width: 100%; position: relative; padding-top: 100%; background-color: #<%= color %>; background-image: url(<%= image %>); background-size: contain; border-radius: 50%; box-shadow: 0px 0px 40px #222;">
     <%= link_to "", link, "data-toggle": data_toggle, style: "display: block; position: absolute; top: 0; bottom: 0; left: 0; right: 0;" %>
     <div style="position: absolute; width: 100%; top: 50%; transform: translate(0, -50%); text-align: center; padding: 10px; pointer-events: none;">
-        <% text_border_size = "2" %>
-        <% text_border_color = "777" %>
         <%= link_to text, link, "data-toggle": data_toggle, style: "color: #" + text_color + ";font-size: " + font_size + "px; text-shadow: -"+text_border_size+"px "+text_border_size+"px #"+text_border_color+", "+text_border_size+"px "+text_border_size+"px #"+text_border_color+", "+text_border_size+"px -"+text_border_size+"px #"+text_border_color+", -"+text_border_size+"px -"+text_border_size+"px #"+text_border_color+";" %>
     </div>
     <% if bubble.show_button %>
