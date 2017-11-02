@@ -2,7 +2,7 @@
 	<div class="columns large-4 small-11" style="margin-bottom: 100px;">
 		<div class="row align-center">
 			<div class="columns small-8 large-11">
-				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 100).first} %>
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 100).first, font_size: "50"} %>
 			</div>
 		</div>
 		<div class="row align-center location-information">
@@ -32,7 +32,7 @@
 	<div class="columns large-4 small-11" style="margin-bottom: 100px;">
 		<div class="row align-center">
 			<div class="columns small-8 large-11">
-				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 101).first} %>
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 101).first, font_size: "50"} %>
 			</div>
 		</div>
 		<div class="row align-center location-information">
@@ -60,7 +60,7 @@
 	<div class="columns large-4 small-11" style="margin-bottom: 100px;">
 		<div class="row align-center">
 			<div class="columns small-8 large-11">
-				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 102).first} %>
+				<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 102).first, font_size: "50"} %>
 			</div>
 		</div>
 		<div class="row align-center location-information">
@@ -84,9 +84,7 @@
 </div>
 
 
-
-
-<div class="reveal fast small" style="z-index: 1010" id="granite_bay_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+<div class="reveal fast large" style="z-index: 1010" id="granite_bay_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
 	<div class="flex-video">
 	  <iframe src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
 	</div>
@@ -96,9 +94,9 @@
 </div>
 
 
-<div class="reveal fast small" style="z-index: 1010" id="folsom_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+<div class="reveal fast medium" style="z-index: 1010" id="folsom_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
 	<div class="flex-video">
-	  <iframe src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
+	  <iframe src="https://www.google.com/maps/embed?pb=!1m0!4v1508206254785!6m8!1m7!1sCAoSLEFGMVFpcE51WkctZXRQVTZEZmVJVGk4RTRjVGp2SU5LNV8yV1VaT29Sbkpm!2m2!1d38.656872415621!2d-121.17661178246!3f193.5095173446468!4f-8.184181641094327!5f0.4000000000000002" frameborder="0" allowfullscreen></iframe>
 	</div>
 	<button class="close-button" data-close aria-label="Close reveal" type="button">
 	  <span aria-hidden="true">&times;</span>
@@ -106,9 +104,9 @@
 </div>
 
 
-<div class="reveal fast small" style="z-index: 1010" id="sacramento_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+<div class="reveal fast medium" style="z-index: 1010" id="sacramento_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
 	<div class="flex-video">
-	  <iframe src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
+	  <iframe src="https://www.google.com/maps/embed?pb=!1m0!4v1508206315631!6m8!1m7!1sCAoSLEFGMVFpcE5rR3JkdjMzdFpUVl9jS3JYbjhuZGgzN2dadElPYzVfWXR2WFhQ!2m2!1d38.617275678931!2d-121.36083996966!3f218.07720748001384!4f-4.697349233561056!5f0.4000000000000002" frameborder="0" allowfullscreen></iframe>
 	</div>
 	<button class="close-button" data-close aria-label="Close reveal" type="button">
 	  <span aria-hidden="true">&times;</span>

@@ -83,7 +83,7 @@
           <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment, label: "Comment: ", required: true, default: @employment_application.comment} %>
         </div>
         <div class="columns large-6 small-12">
-          <% button_text = "Complete Interview" %>
+          <% button_text = "Save" %>
           <% # if the interview has been completed %>
           <% if !@employment_application.interview_date.nil? %>
             <% button_text = "Completed on: " + @employment_application.interview_date.in_time_zone.strftime("%B %d, %Y") %>
