@@ -70,5 +70,7 @@ class StaticController < ApplicationController
     @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'").where("levels.levelname != 'Open By Request'")
     # @swim.delete_if   {|level| level.levelname == "Open By Request"}
   end
-
+def nasa
+  
+end
 end

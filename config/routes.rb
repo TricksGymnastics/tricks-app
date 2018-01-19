@@ -61,6 +61,7 @@ Comments::Application.routes.draw do
   
   get 'levels/jr_request/:level_id' => "levels#get_jr_classes"
   get 'parties/jr_request' => "parties#get_jr_parties"
+  get 'parties/jr_request_all' => "parties#get_jr_parties_all"
   
   patch 'employment_applications/:id/complete_interview', to: "employment_applications#complete_interview"
 end

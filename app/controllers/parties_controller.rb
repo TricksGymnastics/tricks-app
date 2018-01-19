@@ -1,6 +1,6 @@
 class PartiesController < ApplicationController
   before_action :set_party, only: [:edit, :update, :destroy]
-  load_and_authorize_resource :except => [:index, :get_jr_parties]
+  load_and_authorize_resource :except => [:index, :get_jr_parties, :get_jr_parties_all]
 
   # GET /parties
   def index
@@ -41,6 +41,53 @@ class PartiesController < ApplicationController
     redirect_to parties_url, notice: 'Party was successfully destroyed.'
   end
 
+	def get_jr_parties_all
+		response = JSON.parse(HTTParty.get('https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc=&cat1=Parties').body)
+			
+		if response['rows'].length > 0
+			parties = Hash.new
+										
+			response['rows'].each do |r|
+				# puts r.to_s.gsub("=>",":")
+				entry = Hash.new
+							
+				entry['link'] = r['online_reg_link'].gsub("amp;", "")
+				
+				#entry['openings'] = r['openings']['calculated_openings'] > 0 ? r['openings']['calculated_openings'] : r['openings']['calculated_openings'].abs.to_s + " on Wait List"
+				entry['openings'] = r['openings']['calculated_openings'] > 0 ? true : false
+				
+				entry['price'] = r['description']
+				
+				
+				
+				date = Date.strptime(r['start_date'], '%Y-%m-%d')
+				time = Time.strptime(r['start_time'], '%H:%M')
+				
+				loc = r['location'];
+				
+				if parties[loc].nil?
+					parties[loc] = Hash.new
+				end
+				
+				if parties[loc][date].nil?
+					parties[loc][date] = Hash.new
+				end
+				
+				parties[loc][date][time] = entry
+			end
+			
+			
+			
+		else
+			render :text => "Error: Could not contact jackrabbitclass.com for price information."
+		end
+		
+		out = "<script>
+					$('.price').text('"+parties.first[1].first[1].first[1]['price'].gsub("\r\n"," | ")+"');
+				</script>"
+				
+		render :text => out
+	end
 
   def get_jr_parties
     out = "<div class='columns 11-small'>"
@@ -64,26 +111,8 @@ class PartiesController < ApplicationController
   				entry['openings'] = r['openings']['calculated_openings'] > 0 ? true : false
   				
   				entry['price'] = r['description']
-  				entry['duration'] = Time.at((Time.strptime(r['end_time'], '%H:%M') - Time.strptime(r['start_time'], '%H:%M'))).utc.strftime("%lh %Mm")
   				
-  				
-  				# min_age = (r['min_age'].empty?) ? '' : r['min_age'][1..2]#, months: r['min_age'][4..5]}
-  				# max_age = (r['max_age'].empty?) ? '' : r['max_age'][1..2]#, months: r['max_age'][4..5]}
-  				# if min_age != '' && max_age != ''
-  				# 	if min_age == max_age
-	  			# 		entry['age'] = min_age.gsub(/^0/, "")
-  				# 	else
-	  			# 		entry['age'] = min_age.gsub(/^0/, "") + " - " + max_age.gsub(/^0/, "")
-  				# 	end
-	  			# elsif min_age != ''
-	  			# 	entry['age'] = min_age.gsub(/^0/, "")
-	  			# elsif max_age != ''
-	  			# 	entry['age'] = max_age.gsub(/^0/, "")
-	  			# else
-  				# 	entry['age'] = '<span style="color: red">none</span>'
-	  			# end
-  				
-  				date = Date.strptime(r['start_date'], '%Y-%m-%d')
+  			 date = Date.strptime(r['start_date'], '%Y-%m-%d')
   				time = Time.strptime(r['start_time'], '%H:%M')
   				
   				if parties[date].nil?
@@ -94,11 +123,6 @@ class PartiesController < ApplicationController
   			end
   			
 				# note: when accessing a hash in a .each loop, key is at [0] and value is at [1] for each pair
-				out += "
-				<script>
-					$('.length').text('"+parties.first[1].first[1]['duration']+"');
-					$('.price').text('"+parties.first[1].first[1]['price'].gsub("\r\n"," | ")+"');
-				</script>"
 				
 				out += "<table style='text-align: center;'>"
 				current_year = 1990
@@ -131,9 +155,9 @@ class PartiesController < ApplicationController
 						
 						#check if the party is still available
 						if party['openings']
-				  		out += "<td>Taken</td>"
-						else
 				  		out += "<td>"+view_context.link_to("Register", party['link'])+"</td>"
+						else
+				  		out += "<td>Taken</td>"
 						end
 						
 						current_time = current_time + 1

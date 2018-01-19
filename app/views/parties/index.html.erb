@@ -1,5 +1,5 @@
-<% given_title = "Parties" %>
-<% given_bubbles = [204,3] %>
+<% given_title = "Parties at Tricks" %>
+<% given_bubbles = [3, 10] %>
 
 <% if defined? given_title %>
   <% content_for :title do %>
@@ -14,10 +14,71 @@
 <div class="row">
   <div class="columns large-12">
     <h1><%= given_title %></h1>
+    
+    <style>
+      .party-info-box{
+        text-align: center; 
+        border: solid 10px blue; 
+        border-radius: 25px; 
+        padding:10px;
+        margin-bottom: 15px;
+      }
+      .blue{
+        border-color: #2c4298;
+      }
+      .green{
+        border-color: #62c233;
+      }
+      .orange{
+        border-color: #f78c17;
+      }
+      .pink{
+        border-color: #ec2364;
+      }
+    </style>
 
-    <p><%= "Come join us for your party!!!" * 20 %></p>
-
-    <h2 style="text-align:center;font-size: 22px; margin-top:25px;">Click on a Party Name for details</h2>
+    <div class="row">
+      <div class="columns small-12 party-info-box blue">
+        <h3>"The best party ever!"</h3>
+        We aim to hear those words from your child! So, whether it's a birthday, team party or other special event, our fun, highly-skilled coaches will bring the party to life - leading the kids through high energy games and exciting activities.
+      </div>
+    </div>
+        
+    <div class="row">
+      <div class="columns small-12 party-info-box green">
+        <h3>What's included</h3>
+        <p>When you host your party at Tricks, you leave the work to us!</p>
+        <strong>All our parties include:</strong>
+        <ul style="list-style-position:inside; margin: 0;">
+          <li>1 Hour in the Gym or Dance Room</li>
+          <li>45 Minutes in the Party Room</li>
+          <li>15 invitations*</li>
+          <li>Decorations</li>
+          <li>Tablecloths, Plates, Napkins, Utensils</li>
+          <li>Balloons</li>
+          <li>One High-Energy Party Coach and One Coordinator<br>to Help in the Party Room with Set Up and Clean Up</li>
+        </ul>
+      </div>
+    </div>
+        
+    <div class="row party-info-box orange">
+      <div class="columns small-12">
+        <div id="script_placeholder"></div>
+        <h3>Pricing</h3>
+  			<h4 style="text-align: center; margin: 0;"></span><span class="price"></span></h4>
+  			<h5>Additional Options</h5>
+  			Large Cheese or Pepperoni Pizzas - $23 Each<br>
+  			Goody Bags - $3.50 per Child
+      </div>
+    </div>
+      
+    <div class="row party-info-box pink">
+      <div class="columns small-12" style="font-size: 14px;">
+        *The party price is for up to 15 children, including the party child. $10.00 per additional child (20 max). 50% deposit due at the time of booking. Cancellation policy: Full refund of the deposit will be given for a party cancelled 3 or more weeks prior to the party date. A 50% refund of the deposit will be given for a party cancelled 2 to 3 weeks prior to the party date. No refund will be given if the party is cancelled within 2 weeks of the party date, but Tricks would be happy to reschedule the party at no additional cost.
+      </div>
+    </div>
+    
+    <h2 style="font-size: 22px; margin-top:25px;">Click on a Party Name for details</h2>
     
     <ul class="accordion" data-accordion data-allow-all-closed="true">
       <% @parties.each do |party| %>
