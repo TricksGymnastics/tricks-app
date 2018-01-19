@@ -2,7 +2,7 @@ Comments::Application.routes.draw do
 
   resources :employment_applications, except: [:edit]
   resources :recital_sign_ups
-  resources :parties
+  resources :parties, except: [:show]
   resources :camps
   root :to => 'static#index'
 
@@ -44,7 +44,7 @@ Comments::Application.routes.draw do
   resources :bubble_contents
   # resources :training_videos
 
-  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party campus employment recital_ad_order_thank_you survey_thank_you recital_info thankyou our_story indexold].each do |page|
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party campus employment recital_ad_order_thank_you survey_thank_you recital_info thankyou our_story indexold nasa].each do |page|
     get page, controller: "static", action: page
   end
 
@@ -60,6 +60,7 @@ Comments::Application.routes.draw do
   # get 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
   
   get 'levels/jr_request/:level_id' => "levels#get_jr_classes"
+  get 'parties/jr_request' => "parties#get_jr_parties"
   
   patch 'employment_applications/:id/complete_interview', to: "employment_applications#complete_interview"
 end

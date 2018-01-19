@@ -14,5 +14,5 @@
 
 $(function() {
   $('.wysiwyg').froalaEditor();
-  $('a:contains("Unlicensed Froala Editor")').remove();
+  $('a:contains("Unlicensed")').remove();
 });

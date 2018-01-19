@@ -1,7 +1,7 @@
 jQuery ->
   $('#level_color').minicolors()
   
-  $('.accordion-title').on 'click', (event) ->
+  $('.accordion-title.level-panel').on 'click', (event) ->
     event.preventDefault()
     level_id = $(event.target).data("id")
     $.ajax

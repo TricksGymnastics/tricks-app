@@ -1,0 +1,81 @@
+<% outline_width = "1" %>
+<% outline = "-"+outline_width+"px 0 #222, 0 "+outline_width+"px #222, "+outline_width+"px 0 #222, 0 -"+outline_width+"px #222" %>
+<style>
+  
+  .panel-<%= party.id %>-label.accordion-title, .panel-<%= party.id %>-label.accordion-title:focus, .panel-<%= party.id %>-label.accordion-title:hover, .is-active .panel-<%= party.id %>-label.accordion-title{
+  	background-color: <%= party.color %>;
+  	margin: 25px 0 0 0;
+  	border-radius: 20px !important;
+  	box-sizing: border-box;
+  	border: solid 2px <%= party.color %>;
+  	text-shadow: <%= outline %>, 0 0 5px #555;
+	  color: #fff;
+  }
+  .panel-<%= party.id %>-label.accordion-title:hover, .is-active .panel-<%= party.id %>-label.accordion-title{
+  	border: solid 2px #333;
+  	text-shadow: <%= outline %>, 0 0 15px #111;
+  }
+</style>
+
+
+<li class="accordion-item" data-accordion-item>
+	<a href="#" class="accordion-title panel-<%= party.id %>-label party-panel">
+		<h3 data-id="<%= party.id %>" style="padding:0; margin:0; text-align:center;"><%= party.title %></h3>
+	</a>
+	<div class="accordion-content" data-tab-content>
+		<% if can? :manage, Party %>
+	    <div class="row">
+	    	<div class="columns small-12" style="font-size: 22px; text-align: center;">
+	    		 <%= link_to 'Click here to Edit', edit_party_path(party) %>
+	    	</div>
+	    </div>
+    <% end %>
+		<div class="row align-center">
+			<div class="columns small-11">
+				<%= party.description %>
+			</div>
+		</div>
+
+    <% if !party.activities.nil? %>
+	    <div class="row align-center" style="margin: 10px 0;">
+	    	<div class="columns small-12" style="text-align: center;">
+	    		<span style="font-size: 18px; font-weight: bold;"><%= party.activities.gsub(', ', ' • ') %></span>
+	    	</div>
+	    </div>
+    <% end %>
+
+    
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="columns small-12">
+				<div id="simple_test"></div>
+				<h4 style="text-align: center;"><span style="margin-right: 50px;" class="length"></span><span class="price"></span></h4>
+			</div>
+		</div>
+    
+    <% if !party.video.empty? %>
+      <div class="row align-center">
+        <div class="columns small-12 large-8">
+      		<div class="flex-video">
+      			<iframe src="https://www.youtube.com/embed/'<%= party.video.split('/').last%>" frameborder="0" allowfullscreen></iframe>
+      		</div>
+        </div>
+      </div>
+    <% end %>
+    
+    <h3> Choose a location to register </h3>
+		
+		<div class="row align-justified">
+			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
+			<% locations.each do |loc| %>
+				<div class="columns 3-small">
+					<%= link_to(loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1]) %>
+				</div>
+			<% end %>
+		</div>
+		<div class="row available-parties" id="<%= party.id %>">
+			<div class="columns small-12" style="text-align:center;">
+				<%= image_tag("/assets/loading-spinner.gif") %>
+			</div>    
+		</div>
+	</div>
+</li>

@@ -1,33 +1,53 @@
-<p id="notice"><%= notice %></p>
+<% given_title = "Parties" %>
+<% given_bubbles = [204,3] %>
 
-<h1>Listing Parties</h1>
+<% if defined? given_title %>
+  <% content_for :title do %>
+    <%= given_title %>
+  <% end %>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Video</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if defined? given_bubbles %>
+  <% update_bubbles(given_bubbles) %>
+<% end %>
 
-  <tbody>
-    <% @parties.each do |party| %>
-      <tr>
-        <td><%= party.title %></td>
-        <td><%= party.description %></td>
-        <td><%= party.video %></td>
-        <td><%= party.image %></td>
-        <td><%= link_to 'Show', party %></td>
-        <td><%= link_to 'Edit', edit_party_path(party) %></td>
-        <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+  <div class="columns large-12">
+    <h1><%= given_title %></h1>
+
+    <p><%= "Come join us for your party!!!" * 20 %></p>
+
+    <h2 style="text-align:center;font-size: 22px; margin-top:25px;">Click on a Party Name for details</h2>
+    
+    <ul class="accordion" data-accordion data-allow-all-closed="true">
+      <% @parties.each do |party| %>
+        <%= render partial: 'show', locals: {party: party} %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="reveal fast large" style="z-index: 1010" id="schedule_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+  <div class="row align-center">
+    <h1>Available Party Times</h1>
+  </div>
+  
+  <% locations = {"Granite_Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %>
+  <div class="row align-center" style="margin-bottom: 15px;">
+    <% locations.each do |loc| %>
+      <div class="columns small-3">
+        <%= link_to loc[0].gsub("_"," "), 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Party', new_party_path %>
+  </div>
+  
+  <div class="row align-center">
+    <div class="columns small-11">
+      <% locations.each do |loc| %>
+        <div class="location-schedule-pdf" id="<%= loc[1] %>">
+          <h3>Sorry, there is no schedule uploaded yet for this program and location</h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
