@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109165317) do
+ActiveRecord::Schema.define(version: 20180121052356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20180109165317) do
     t.string   "lastname"
     t.string   "middlename"
     t.string   "image"
+    t.string   "resume"
     t.boolean  "granite_bay"
     t.boolean  "folsom"
     t.boolean  "sacramento"
@@ -265,6 +266,7 @@ ActiveRecord::Schema.define(version: 20180109165317) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "shortname"
   end
 
   create_table "parties", force: :cascade do |t|

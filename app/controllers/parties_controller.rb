@@ -90,6 +90,9 @@ class PartiesController < ApplicationController
 	end
 
   def get_jr_parties
+    party = Party.find(params[:party_id])
+  	# if the party id is for a dance party
+  		# clear response for folsom
     out = "<div class='columns 11-small'>"
 		locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"}
 		
@@ -98,7 +101,8 @@ class PartiesController < ApplicationController
 			url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc[1]+'&cat1=Parties'
 			response = JSON.parse(HTTParty.get(url).body)
 			
-			if response['rows'].length > 0
+			
+			if response['rows'].length > 0 && !(loc[1] == "FOL" && (party.id == 2 || party.id == 4)) #exclude dance parties (id's 2 & 4) from folsom
 				parties = Hash.new
 							
 				response['rows'].each do |r|
@@ -123,6 +127,10 @@ class PartiesController < ApplicationController
   			end
   			
 				# note: when accessing a hash in a .each loop, key is at [0] and value is at [1] for each pair
+				out += 
+				"<script>
+					$('."+loc[1]+"_price').text('"+parties.first[1].first[1]['price'].gsub("\r\n"," | ")+"');
+				</script>"
 				
 				out += "<table style='text-align: center;'>"
 				current_year = 1990
@@ -141,7 +149,7 @@ class PartiesController < ApplicationController
 					
 					out += "<tr><td>"+date.strftime('%B %e')+"</td>"
 					
-					no_party = "<td style='color: red;'>None</td>"
+					no_party = "<td style='font-size: 13px;'>Reserved</td>"
 					
 					current_time = 0;
 					times.sort.map do |time, party|
@@ -155,9 +163,9 @@ class PartiesController < ApplicationController
 						
 						#check if the party is still available
 						if party['openings']
-				  		out += "<td>"+view_context.link_to("Register", party['link'])+"</td>"
+				  		out += "<td style='font-size:17px; padding: 3px;'>"+view_context.link_to("Register", party['link'])+"</td>"
 						else
-				  		out += "<td>Taken</td>"
+				  		out += no_party
 						end
 						
 						current_time = current_time + 1
@@ -173,7 +181,7 @@ class PartiesController < ApplicationController
 				end
 				out += "</table>"
 			else
-				out += "<h4 style='text-align:center;'>Sorry! No parties at this location</h4>"
+				out += "<div style='text-align:center; padding:30px; background-color: #ddd; font-size: 26px;'><h2>Sorry!</h2>We do not offer this kind of<br>party at this location</div>"
 			end
 			out += "</div>"
 		end

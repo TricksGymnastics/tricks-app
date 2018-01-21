@@ -54,7 +54,21 @@
       </div>
     <% end %>
     
-    <h3> Choose a location to register </h3>
+		<div class="row party_price" style="text-align: center; border: solid 5px #f78c17; padding: 10px; margin: 20px; border-radius: 1000px;">
+			<div class="columns small-12">
+				<h4 style="text-align: center;">
+					<span style="display: none;" class="GB_price"></span>
+					<span style="display: none;" class="FOL_price"></span>
+					<span style="display: none;" class="SAC_price"></span>
+				</h4>
+				<h5><%= link_to "Here is what is included", "javascript:void(0);", "data-toggle": "whats_included_modal", style:"text-decoration: underline;" %></h5>
+  			<strong>Additional Options</strong><br>
+  			Large Cheese or Pepperoni Pizzas - $23 Each<br>
+  			Goody Bags - $3.50 per Child
+			</div>
+		</div>
+		
+    <h5 style="text-align: center;"> Choose a location to register </h5>
 		
 		<div class="row align-justified">
 			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
