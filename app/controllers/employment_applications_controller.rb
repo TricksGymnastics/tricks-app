@@ -1,27 +1,81 @@
 class EmploymentApplicationsController < ApplicationController
-  before_action :set_employment_application, only: [:show, :update, :destroy]
+  before_action :set_employment_application, only: [:show, :update, :destroy, :archive]
   load_and_authorize_resource :except => [:new, :create]
 
   # GET /employment_applications
   def index
-    @employment_applications = EmploymentApplication.all.order("created_at DESC")
-      
+    query = Hash.new
+    query[:archived] = nil
+    
     if params.has_key?(:location)
-      @employment_applications = @employment_applications.where(:"#{params[:location]}" => true)
+      query[:"#{params[:location]}"] = true
     end
     
     if params.has_key?(:status)
-      @employment_applications = @employment_applications.where(:status => params[:status])
+      query[:status] = params[:status]
     else
-      @employment_applications = @employment_applications.where(:status => "0")
+      query[:status] = "0"
     end
     
-    departments = ['gymnastics', 'dance', 'swim', 'tag', 'hospitality']
+    departments = [:gymnastics, :dance, :swim, :tag, :hospitality]
     departments.each do |dep|
-      if params.has_key?(:"#{dep}")
-        @employment_applications = @employment_applications.where(:"#{dep}" => true)
+      if params.has_key?(dep)
+        query[dep] = true
       end
     end
+    
+    @employment_applications = EmploymentApplication.where(query).order("created_at DESC")
+    
+    
+    @counts = Hash.new
+    
+    status_query = query.clone
+    # remove existing status from query
+    status_query.except!(:status)
+    # get counts for each status
+    EmploymentApplication::STATUS.each do |status|
+      status_query[:status] = status[1]
+      @counts["status_"+status[1].to_s] = EmploymentApplication.where(status_query).count
+    end
+    
+    
+    location_query = query.clone
+    # remove existing location from query
+    Location.all.each do |loc|
+      loc_name = loc.name.downcase.gsub(" ", "_")
+      location_query.except!(:"#{loc_name}")
+    end
+    
+    # get count of all locations
+    @counts["all"] = EmploymentApplication.where(location_query).count
+    
+    Location.all.each do |loc|
+      # match location name to symbol syntax
+      loc_name = loc.name.downcase.gsub(" ", "_")
+      # add query for loc = true
+      location_query[:"#{loc_name}"] = true
+      # get count using query
+      @counts[loc_name] = EmploymentApplication.where(location_query).count
+      # remove query for next iteration
+      location_query.except!(:"#{loc_name}")
+    end
+    
+    
+    departments_query = query.clone
+    # since we an select multiple departments we want to get counts if we added a single additional department to the existing query
+    departments.each do |dep|
+      if !departments_query.key?(dep)
+        # add query for loc = true
+        departments_query[dep] = true
+        # get count using query
+        @counts[dep] = EmploymentApplication.where(departments_query).count
+        # remove query for next iteration
+        departments_query.except!(dep)
+      else
+        @counts[dep] = EmploymentApplication.where(query).count
+      end
+    end
+    
   end
 
   # GET /employment_applications/1
@@ -76,7 +130,15 @@ class EmploymentApplicationsController < ApplicationController
   # DELETE /employment_applications/1
   def destroy
     @employment_application.destroy
-    redirect_to employment_applications_url, notice: 'Employment application was successfully destroyed.'
+    redirect_to employment_applications_url, notice: 'Employment Application was successfully destroyed.'
+  end
+  
+  def archive
+  	@employment_application.archived = true
+  	@employment_application.save
+    redirect_to employment_applications_url, notice: 'Employment Application was Archived. If this was a mistake, contact the webmaster.'
+    #check for things archived more than 30 days ago, destroy them all.
+  	
   end
 
   private

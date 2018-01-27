@@ -61,4 +61,6 @@ Comments::Application.configure do
   config.time_zone = "Pacific Time (US & Canada)"
   
   config.action_mailer.default_url_options = { :host => "http://tricks-app-jtensai.c9users.io" }
+  
+   config.active_record.raise_in_transactional_callbacks = true
 end

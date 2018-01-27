@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-gem 'rails', '4.2.5' #3.2.14
-gem 'pg'
+gem 'rails', '4.2.5'
+gem 'pg', "~> 0.21" #1.0.0 is the current version but not yet supported by rails
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
@@ -56,7 +56,7 @@ gem 'google-analytics-rails'
 gem 'premailer-rails'
 gem 'nokogiri'
 
-gem 'foundation-rails'#, '6.3.1.0'
+gem 'foundation-rails',  '6.4.1.2'#, '6.3.1.0'
 
 gem 'httparty' #needed to get json info from jackrabbit
 

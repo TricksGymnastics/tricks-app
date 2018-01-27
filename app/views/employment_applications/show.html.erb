@@ -71,13 +71,13 @@
     <% else %>
       <%= link_to "Download Resume", @employment_application.resume.url, class: "button expanded" %>
     <% end %>
+    <%= link_to 'Archive Application', @employment_application, data: { confirm: 'Archived Applications are no longer accessible and will be destroyed 30 days after being archived. If you need to recover an archived Application, contact the webmaster. Are you sure you want to Archive this Application?' }, method: :archive, class:"button expanded alert" %>
   </div>
   <div class="columns large-9 small-12">
     <%= form_for @employment_application, url: {action: 'complete_interview'} do |f| %>
       <div class="row" style="margin-bottom: 0;">
         <div class="columns small-12 large-4">
-	        <% status = [['New', 0], ['First Interview', 1], ['Second Interview', 2], ['Maybe Later', 3], ['Not Hired', 4], ['Hired', 5]] %>
-          <%= render partial: 'helper_fields/select', locals: {form: f, field: :status, fieldname: "Status", options: status, required: true} %>
+          <%= render partial: 'helper_fields/select', locals: {form: f, field: :status, fieldname: "Status", options: EmploymentApplication::STATUS, required: true} %>
         </div>
         <div class="columns small-12 large-8">
           <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment, label: "Comment: ", required: true, default: @employment_application.comment} %>

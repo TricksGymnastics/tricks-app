@@ -180,6 +180,7 @@ function updateLocation(loc){
     $('.program-button#Swim').fadeIn(300);
   }
   $('.party_price').hide();
+  $('.NONE_price').hide();
   $('.GB_price').hide();
   $('.FOL_price').hide();
   $('.SAC_price').hide();
