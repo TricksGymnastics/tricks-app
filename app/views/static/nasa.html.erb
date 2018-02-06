@@ -10,3 +10,26 @@
     <li>Send a confirmation email to job applicants</li>
     <li>Set up a way to delete job applications</li>
 </ul>
+<% 
+  given_locals = {
+    happenis: "Testing",
+    border: 'blue',
+    abc: 'solid'
+    # solid dashed dotted
+    
+  }  
+  masakra = {
+    happenis: "More",
+    border: 'yellow',
+    abc: 'dashed'
+    
+  }
+ fast={
+     happenis: "Again",
+     border: 'dotted black',
+     abc: ''
+ }
+%>
+<%= render partial: 'nasapartial', locals: given_locals %>
+<%= render partial: 'nasapartial', locals: masakra %>
+<%= render partial: 'nasapartial', locals: fast %>
