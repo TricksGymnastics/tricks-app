@@ -44,7 +44,7 @@ Comments::Application.routes.draw do
   resources :bubble_contents
   # resources :training_videos
 
-  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party campus employment recital_ad_order_thank_you survey_thank_you recital_info thankyou our_story polkadots indexold nasa].each do |page|
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive birthdays princess_party campus recital_ad_order_thank_you survey_thank_you recital_info thankyou our_story polkadots indexold nasa].each do |page|
     get page, controller: "static", action: page
   end
 
@@ -65,4 +65,5 @@ Comments::Application.routes.draw do
   
   patch 'employment_applications/:id/complete_interview', to: "employment_applications#complete_interview"
   post 'employment_applications/:id', to: "employment_applications#archive"
+  get 'employment', to: 'employment_applications#new'
 end
