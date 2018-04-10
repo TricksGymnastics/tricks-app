@@ -6,7 +6,7 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Tricks" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
@@ -271,7 +271,7 @@
             <!-- <li><%#= faq_link = link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
             <li><%= blog_link = link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
             <!-- <li><%#= contact_link = link_to "Contact", locations_path, class: 'main-menu-item' %></li> -->
-            <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button main-menu-button", style: "margin-left: 20px;" %></li>
+            <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/jr3.0/ParentPortal/Login?orgId=313983", class: "button main-menu-button", style: "margin-left: 20px;" %></li>
   
           </ul>
         </div>

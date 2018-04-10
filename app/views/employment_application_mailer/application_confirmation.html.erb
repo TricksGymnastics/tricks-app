@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+</head>
+<body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
+<h3> 
+Thank you for applying to Tricks!
+</h3>
+<p>
+    <% locations = [] %>
+    You applied at: <% if @application.granite_bay then locations << 'Granite Bay' end %>
+    <% if @application.folsom then locations << 'Folsom' end %>
+    <% if @application.sacramento then locations << 'Sacramento' end %>
+    
+    <% first = true %>
+    
+    <% locations.each do |loc| %>
+        <% if first then %>
+        <%= loc %>
+    <% end %>
+    <%# You applied at: Granite Bay Folsom Sacramento %>
+    <%# You applied at:Folsom Sacramento %>
+    <%# You applied at: Granite Bay, Folsom, and Sacramento %> 
+</p>
+<p>
+    You applied for:
+</p>
+</body>
+</html>
