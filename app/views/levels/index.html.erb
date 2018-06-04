@@ -34,7 +34,7 @@
     <td><%= level.sort_order %></td>
     <td><%= level.levelname %></td>
     <td><%= level.length %> mins</td>
-    <td><%= level.price %> $</td>
+    <td><%= number_to_currency(level.price, precision: 2) %></td>
     <td><%= level.age %></td>
     <td><%= level.gender %></td>
     <td><%= level.classtype.name %></td>    

@@ -26,7 +26,7 @@
                 <td style="background-color: #FFFF82;"><%= schedule.time.strftime("%l:%M %p") %></td>
                 <td style="background-color: #FFFF82;"><%= schedule.teacher %></td>
                 <td style="background-color: #FFFF82;"><%= schedule.location %></td>
-                <td style="background-color: #FFFF82;"><%= schedule.level.price %>$</td>
+                <td style="background-color: #FFFF82;"><%= number_to_currency(schedule.level.price, precision: 2) %></td>
                 <td style="background-color: #FFFF82;"><%= schedule.level.length %> min</td>
                 <td style="background-color: #FFFF82;"><%= schedule.level.age %></td>
                 <td style="background-color: #FFFF82;"><%= schedule.level.gender %></td>
@@ -40,7 +40,7 @@
                 <td><%= schedule.time.strftime("%l:%M %p") %></td>
                 <td><%= schedule.teacher %></td>
                 <td><%= schedule.location %></td>
-                <td><%= schedule.level.price %>$</td>
+                <td><%= number_to_currency(schedule.level.price, precision: 2) %></td>
                 <td><%= schedule.level.length %> min</td>
                 <td><%= schedule.level.age %></td>
                 <td><%= schedule.level.gender %></td>
@@ -58,7 +58,7 @@
                 <td style="background-color: #FFFF82;"><%= schedule.time.strftime("%l:%M %p") %></td>
                 <td style="background-color: #FFFF82;"><%= schedule.teacher %></td>
                 <td style="background-color: #FFFF82;"><%= schedule.location %></td>
-                <td style="background-color: #FFFF82;"><%= schedule.level.price %>$</td>
+                <td style="background-color: #FFFF82;"><%= number_to_currency(schedule.level.price, precision: 2) %></td>
                 <td style="background-color: #FFFF82;"><%= schedule.level.length %> min</td>
                 <td style="background-color: #FFFF82;"><%= schedule.level.age %></td>
                 <td style="background-color: #FFFF82;"><%= schedule.level.gender %></td>
@@ -70,7 +70,7 @@
                 <td><%= schedule.time.strftime("%l:%M %p") %></td>
                 <td><%= schedule.teacher %></td>
                 <td><%= schedule.location %></td>
-                <td><%= schedule.level.price %>$</td>
+                <td><%= number_to_currency(schedule.level.price, precision: 2) %></td>
                 <td><%= schedule.level.length %> min</td>
                 <td><%= schedule.level.age %></td>
                 <td><%= schedule.level.gender %></td>

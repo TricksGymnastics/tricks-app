@@ -25,7 +25,7 @@
 
 <p>
   <b>Price:</b>
-  $<%= @schedule.level.price %>
+  <%= number_to_currency(@schedule.level.price, precision: 2) %>
 </p>
 
 <p>
