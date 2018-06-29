@@ -4,15 +4,16 @@
 </head>
 <body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
   <div>
-    <h3><%= @error.inspect %></h3>
-	<p style="margin-top: 100px;"><b>Stack Trace:</b></p>
-	<% if @error %>
-		<table style="margin: 10px; border-spacing: 0px; border: 1px #444 solid;">
-			<% @error.backtrace.each do |trace| %>
-				<tr><td style="padding: 5px 15px; border: solid #444 1px;"><%= trace %></td></tr>
-			<% end %>
-		</table>
-	<% end %>
+  	<h3>URL: <%= @url %></h3>
+    <h4><%= @error.inspect %></h4>
+		<p style="margin-top: 100px;"><b>Stack Trace:</b></p>
+		<% if @error %>
+			<table style="margin: 10px; border-spacing: 0px; border: 1px #444 solid;">
+				<% @error.backtrace.each do |trace| %>
+					<tr><td style="padding: 5px 15px; border: solid #444 1px;"><%= trace %></td></tr>
+				<% end %>
+			</table>
+		<% end %>
   </div>
 </body>
 </html>

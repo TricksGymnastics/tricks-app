@@ -37,7 +37,7 @@
     <br><h1 style="text-align: right; margin: -80px 0 0 0; font-size: 40px;"><%= link_to 'Edit', edit_level_path(@level), style: "color: #{@bgc_blue};" %></h1>
   <% end %>
   <div style="width: 100%; text-align:center; font-size: 16px;">
-    <b>Age: </b><%= @level.age %>  /  <b>Length: </b><%= @level.length %>  /  <b>Price: </b><%= number_to_currency(@level.price. precision: 2) %>  /  <b>Gender: </b><%= @level.gender %>
+    <b>Age: </b><%= @level.age %>  /  <b>Length: </b><%= @level.length %>  /  <b>Price: </b><%= number_to_currency(@level.price, precision: 2) %>  /  <b>Gender: </b><%= @level.gender %>
 
   </div>
 
