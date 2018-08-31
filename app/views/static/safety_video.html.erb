@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="column small-12">
+        <object id="safety_video_object" type="text/html" data="http://tricks-safety-video.herokuapp.com/" style="width: 100%;">
+            <p>Shouldn't show up</p>
+        </object>
+    </div>
+</div>
+
+<script>
+    function resize(){
+        var width = document.getElementById("safety_video_object").offsetWidth;
+        var height = width * 0.59765625;
+        document.getElementById("safety_video_object").style.height = height + "px";
+    }
+    resize();
+    window.onresize = function(){
+        resize();
+    };
+</script>
