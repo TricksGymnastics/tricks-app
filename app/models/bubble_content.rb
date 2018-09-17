@@ -1,5 +1,4 @@
 class BubbleContent < ActiveRecord::Base
+    mount_uploader :image, BubbleContentUploader
     
-    
-  mount_uploader :image, BubbleContentUploader
 end
