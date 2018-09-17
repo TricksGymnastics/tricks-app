@@ -94,7 +94,9 @@ $orbit-caption-padding: 7px 20px;
 @include motion-ui-animations;
 
 
-
+body{
+	line-height: 1.2;
+}
 
 h1{
 	text-align: center;
@@ -106,6 +108,7 @@ h2{
 
 h3{
 	text-align: center;
+	font-family: 'Roboto', sans-serif;
 }
 
 p{
