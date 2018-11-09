@@ -1,11 +1,4 @@
-class ErrorMailer < ActionMailer::Base
-  require 'mail'
-  address = Mail::Address.new "trickswebmaster@gmail.com"
-  address.display_name = "Tricks Webmaster"
-  address.format
-
-  default from: address
-
+class ErrorMailer < ApplicationMailer
   def error_details(url, error)
     @url = url
     @error = error

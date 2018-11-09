@@ -87,16 +87,23 @@ Comments::Application.configure do
   GA.tracker = "UA-35415628-1"
 
   # Change mail delvery to either :smtp, :sendmail, :file, :test
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "gmail.com",
-    user_name: ENV['GMAIL_WEBMASTER_ID'],
-    password: ENV['GMAIL_WEBMASTER_PASSWORD'],
-    authentication: "plain",
-    enable_starttls_auto: true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   domain: "gmail.com",
+  #   user_name: ENV['GMAIL_WEBMASTER_ID'],
+  #   password: ENV['GMAIL_WEBMASTER_PASSWORD'],
+  #   authentication: "plain",
+  #   enable_starttls_auto: true
+  # }
+  
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['MAILGUN_API_KEY'],
+    domain: 'mg.tricksgym.com',
   }
+  
   config.time_zone = "Pacific Time (US & Canada)"
 
   config.exceptions_app = self.routes

@@ -1,16 +1,9 @@
-class EmploymentApplicationMailer < ActionMailer::Base
-  require 'mail'
-  address = Mail::Address.new "trickswebmaster@gmail.com"
-  address.display_name = "Tricks Gymnastics, Dance & Swim"
-  address.format
-
-  default from: address
-
+class EmploymentApplicationMailer < ApplicationMailer
   def gym_notification(application)
     @application = application
-    locations = []
     subject = "Employment Application for: " + application.firstname + " " + application.lastname
     
+    locations = []
     if application.granite_bay
       locations << "tricksgb@gmail.com"
     end
@@ -23,6 +16,6 @@ class EmploymentApplicationMailer < ActionMailer::Base
       locations << "trickssac@gmail.com"
     end
     
-    mail cc: locations, subject: subject #change to bcc: after i have verified it works
+    mail cc: locations, subject: subject #TODO: change to bcc: after i have verified it works
   end
 end
