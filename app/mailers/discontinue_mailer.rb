@@ -4,7 +4,6 @@ class DiscontinueMailer < ApplicationMailer
     @subject = "Notice of Discontinuation for: " + @notification.student_first_name + " " + @notification.student_last_name
     
     to_address = get_location_email(DiscontinueNotice::LOCATIONS[@notification.location][0])
-    to_address = "nasagreenday89@gmail.com"
     
     mail to: to_address, subject: @subject
   end
