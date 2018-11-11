@@ -7,16 +7,20 @@
 $primary-color: #2199e8;
 $secondary-color: #777;
 $alert-color: #ec5840;
-$body-font-family: TrebuchetMSRegular, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: TrebuchetMSRegular,
+'Helvetica Neue',
+Helvetica,
+Roboto,
+Arial,
+sans-serif;
 
 // medium use to be 640, but I didn't like large being applied to a horizontal ipad, so I knocked them all down one.
 // Update: knocked medium down to 560 so that horizontal iphone5 is medium
-$breakpoints: (
-  small: 0,
-  medium: 560px,
-  large: 1024px,
-  xlarge: 1440px,
-  xxlarge: 1440px,
+$breakpoints: ( small: 0,
+medium: 560px,
+large: 1024px,
+xlarge: 1440px,
+xxlarge: 1440px,
 );
 $breakpoint-classes: (small medium large xlarge);
 
@@ -48,7 +52,6 @@ $orbit-caption-padding: 7px 20px;
 @import 'motion-ui/motion-ui';
 
 // We include everything by default.  To slim your CSS, remove components you don't use.
-
 @include foundation-global-styles;
 @include foundation-flex-grid;
 @include foundation-flex-classes;
@@ -94,33 +97,34 @@ $orbit-caption-padding: 7px 20px;
 @include motion-ui-animations;
 
 
-body{
+body {
 	line-height: 1.2;
 }
 
-h1{
+h1 {
 	text-align: center;
 	font-family: 'grilled_cheese';
 }
-h2{
+
+h2 {
 	text-align: center;
 }
 
-h3{
+h3 {
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 }
 
-p{
+p {
 	font-size: 16px;
 }
 
 
-select{
+select {
 	margin-bottom: 0;
 }
 
-.reveal.medium{
+.reveal.medium {
 	width: 70% !important;
 }
 
@@ -128,10 +132,11 @@ select{
 $logo-width: 200px;
 $small-logo-width: 140px;
 // Reduce px value to increase space between logo and menu text
-$logo-padding: ($logo-width / 2) + 20px;
-$small-logo-padding: ($small-logo-width / 2) + 20px;
+$logo-padding: ($logo-width / 2)+20px;
+$small-logo-padding: ($small-logo-width / 2)+20px;
 
 /* Small Navigation */
+
 .logo-small {
 	float: right;
 }
@@ -148,11 +153,10 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 }
 
 /* Medium-Up Navigation */
-@media only screen and (min-width: 40rem) { 
-	
-}
 
-.logged-in{
+@media only screen and (min-width: 40rem) {}
+
+.logged-in {
 	$menu-background: #333;
 	z-index: 20;
 	position: relative;
@@ -161,17 +165,17 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 		padding: 0.9rem;
 	}
 	&.logged-in {
-		background: $menu-background;		
+		background: $menu-background;
 		ul {
-			background: $menu-background;		
+			background: $menu-background;
 			li {
-				background: $menu-background;			
+				background: $menu-background;
 				a {
 					color: #fff;
 				}
-				.is-submenu-item{
+				.is-submenu-item {
 					// background-color: #777;
-					@include breakpoint(large up){
+					@include breakpoint(large up) {
 						// font-size: 12px;
 						background-color: #999;
 					}
@@ -179,27 +183,27 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 			}
 		}
 	}
-	
-	.logged-in-menu-item{
-		@include breakpoint(large only){
+
+	.logged-in-menu-item {
+		@include breakpoint(large only) {
 			font-size: 12px;
 			padding: 13px 5px;
 		}
 		color: $white;
 	}
-	
-	.logged-in-menu-button{
-		@include breakpoint(large down){
+
+	.logged-in-menu-button {
+		@include breakpoint(large down) {
 			font-size: 14px;
 		}
-		@include breakpoint(large up){
+		@include breakpoint(large up) {
 			font-size: 14px;
 			padding: 7px 10px;
 		}
 	}
 
 	.menu-text {
-		color: #fff;  
+		color: #fff;
 		@media only screen and (max-width: 40em) {
 			// display: none !important;
 		}
@@ -229,8 +233,8 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 	.dropdown.menu .is-dropdown-submenu-parent.is-right-arrow>a::after {
 		border-color: #fff transparent transparent;
 	}
-	
-	
+
+
 
 	.is-drilldown-submenu-parent>a::after {
 		border-color: transparent transparent transparent #fff;
@@ -243,122 +247,111 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 }
 
 
-#main-menu{
-	.main-menu-item{
-		@include breakpoint(xlarge up){
+#main-menu {
+	.main-menu-item {
+		@include breakpoint(xlarge up) {
 			font-size: 20px;
 		}
-		@include breakpoint(large down){
+		@include breakpoint(large down) {
 			font-size: 14px;
 		}
 		color: $white;
 	}
-	
-	.main-menu-button{
-		@include breakpoint(xlarge up){
+
+	.main-menu-button {
+		@include breakpoint(xlarge up) {
 			font-size: 20px;
 			padding: 7px 10px;
 		}
-		@include breakpoint(large down){
+		@include breakpoint(large down) {
 			font-size: 14px;
 			padding: 7px 10px;
 		}
-		background-color: $tricks-orange; 
+		background-color: $tricks-orange;
 		border-radius: 5px;
 	}
 
 	.logo {
-		@include breakpoint(xlarge up){
+		@include breakpoint(xlarge up) {
 			width: $logo-width;
 		}
-		@include breakpoint(large down){
+		@include breakpoint(large down) {
 			width: $small-logo-width;
 		}
 		position: absolute;
 		left: 50%;
 		right: 50%;
 		top: 0;
-		@include breakpoint(xlarge up){
+		@include breakpoint(xlarge up) {
 			margin-left: -($logo-width / 2);
 		}
-		@include breakpoint(large down){
+		@include breakpoint(large down) {
 			margin-left: -($small-logo-width / 2);
 		}
-	}
-
-	// Right part
+	} // Right part
 	.top-bar-right {
 		width: 50%;
-		@include breakpoint(xlarge up){
+		@include breakpoint(xlarge up) {
 			padding-left: $logo-padding;
 		}
-		@include breakpoint(large down){
+		@include breakpoint(large down) {
 			padding-left: $small-logo-padding;
 		}
-		
+
 		ul {
 			float: left;
 		}
-	}
-	
-	// Left part
+	} // Left part
 	.top-bar-left {
-		width:  50%;
-		@include breakpoint(xlarge up){
+		width: 50%;
+		@include breakpoint(xlarge up) {
 			padding-right: $logo-padding;
 		}
-		@include breakpoint(large down){
+		@include breakpoint(large down) {
 			padding-right: $small-logo-padding;
 		}
-		
+
 		ul {
 			float: right;
 		}
 	}
-	.is-dropdown-submenu li{
+	.is-dropdown-submenu li {
 		background-color: $white;
 	}
-	
-	.is-dropdown-submenu-parent.is-down-arrow > a::after {
-		border-color: #fff transparent transparent;	
-		
+
+	.is-dropdown-submenu-parent.is-down-arrow>a::after {
+		border-color: #fff transparent transparent;
+
 	}
 }
 
-#header-secondary{
-	
-}
+#header-secondary {}
 
-#main-container{
+#main-container {
 	// padding: 20px 20px 20px 20px;
 	// min-height: 400px;
-	
 	// Notifications
-	.callout{
-		text-align:center;
+	.callout {
+		text-align: center;
 	}
-	
-	#page-content{
-		
-	}
-	
-	#sidebar-content{
-		
-	}
+
+	#page-content {}
+
+	#sidebar-content {}
 }
 
-#footer{
+#footer {
 	position: relative;
 	width: 100%;
 	background-color: $tricks-orange;
 	z-index: 100;
-	
-	#footer-content{
+
+	#footer-content {
 		// border: dashed 2px #444;
 		margin: 20px 0;
 		min-height: 100px;
-		
-		h3{
+
+		h3 {
 			text-align: left;
 			margin: 0;
 			font-size: 14px;
@@ -366,205 +359,212 @@ $small-logo-padding: ($small-logo-width / 2) + 20px;
 			font-weight: bold;
 			text-decoration: underline;
 		}
-		h3.footer-header{
+		h3.footer-header {
 			font-size: 22px;
 			text-decoration: none;
 		}
-		ul{
+		ul {
 			list-style-type: none;
 		}
-		a{
+		a {
 			color: $white;
 		}
-		a:hover{
+		a:hover {
 			color: $black;
 		}
 	}
 }
 
-.location-information{
+.location-information {
 	margin-top: 70px;
 	text-align: center;
-	p{
+	p {
 		font-size: 18px;
 		margin-bottom: 8px;
 	}
 }
 
-#footer_location_container{
+#footer_location_container {
 	font-size: 22px;
 	text-align: center;
-	.footer-location-information{
+	.footer-location-information {
 		display: none;
-		p{
+		p {
 			font-size: 22px;
 			color: $white;
 			text-shadow: #000 0px 0px 1px;
 			margin-bottom: 8px;
 		}
-		a{
+		a {
 			color: $white;
-		}
-		// background-color: $white;
-		&#NONE{
+		} // background-color: $white;
+		&#NONE {
 			color: $white;
 			text-shadow: #000 0px 0px 2px;
 		}
 	}
 }
-.button{
+
+.button {
 	box-shadow: 2px 2px 10px #222;
 }
 
-.location-button{
-	padding: 10px 5px; 
-	&.active{
+.location-button {
+	padding: 10px 5px;
+	&.active {
 		background-color: $tricks-green;
 		color: $black !important;
-		&:hover{
+		&:hover {
 			color: $white;
 		}
 	}
 }
 
-.switch-button{
-	padding: 10px 5px; 
-	&.active{
+.switch-button {
+	padding: 10px 5px;
+	&.active {
 		background-color: $tricks-green;
 		color: $black !important;
-		&:hover{
+		&:hover {
 			color: $white;
 		}
 	}
 }
 
 $curve_amount: 30px;
-.orbit-container{
-	border-radius: $curve_amount; 
+.orbit-container {
+	border-radius: $curve_amount;
 	box-shadow: 0 0 40px #222;
 	overflow: hidden;
 }
 
-.orbit-slide{
+.orbit-slide {
 	height: 360px;
 }
+
 // @media #{$small-only}{
 // 	.orbit-slide{
 // 		height: 261px;
 // 	}
 // }
-
-.orbit-image{
+.orbit-image {
 	border-radius: $curve_amount $curve_amount 0 0;
 }
 
-.orbit-caption{
+.orbit-caption {
 	border-radius: 0 0 $curve_amount $curve_amount;
 	color: #fefefe;
 }
 
-.reveal-overlay.fade-in, .reveal-overlay.fade-out {
+.reveal-overlay.fade-in,
+.reveal-overlay.fade-out {
 	transition-duration: 0.2s;
 }
 
-#register_now_modal{
-	@include breakpoint(xlarge up){
+#register_now_modal {
+	@include breakpoint(xlarge up) {
 		padding: 50px;
 	}
-	@include breakpoint(large down){
+	@include breakpoint(large down) {
 		padding: 10px;
 	}
-	.location-button, .program-button{
-		@include breakpoint(xlarge up){
+	.location-button,
+	.program-button {
+		@include breakpoint(xlarge up) {
 			padding: 15px;
 			font-size: 24px;
 		}
-		@include breakpoint(large down){
+		@include breakpoint(large down) {
 			padding: 10px;
 			font-size: 18px;
 		}
 	}
 }
 
-#choose_program_modal{
-	@include breakpoint(xlarge up){
+#choose_program_modal {
+	@include breakpoint(xlarge up) {
 		margin-top: 75px;
 	}
-	@include breakpoint(large down){
+	@include breakpoint(large down) {
 		margin-top: 25px;
 	}
 }
 
-body.is-reveal-open{
+body.is-reveal-open {
 	overflow-y: scroll;
 }
 
-.reveal-overlay{
+.reveal-overlay {
 	overflow-y: hidden;
 }
-.reveal { 
-   z-index:2000 !important;
-   -webkit-transform: translate3d(0,0,1px);
-   transform: translate3d(0,0,1px);
+
+.reveal {
+	z-index: 2000 !important;
+	-webkit-transform: translate3d(0, 0, 1px);
+	transform: translate3d(0, 0, 1px);
 }
 
-.callout-container{
+.callout-container {
 	position: relative;
 	width: 80%;
 	z-index: 5;
 	margin: 0 auto;
 }
-.callout{
-	margin-bottom: -42px; // makes it so it doesn't push down anything under it
+
+.callout {
+	position: absolute;
+	width: 100%;
 }
 
-.minicolors-theme-default{
-	&.minicolors{
+.minicolors-theme-default {
+	&.minicolors {
 		width: 100% !important;
 	}
-} 
-.minicolors-swatch{
+}
+
+.minicolors-swatch {
 	height: 30px !important;
 	width: 30px !important;
 }
-.minicolors-input{
+
+.minicolors-input {
 	height: 40px !important;
 	width: 100% !important;
-	padding-left: 40px !important; 
+	padding-left: 40px !important;
 }
 
-.comment-container{
+.comment-container {
 	border-radius: 15px;
 	margin-bottom: 30px;
 	padding: 10px;
-	p{
+	p {
 		margin: 0;
 	}
-	h6{
+	h6 {
 		text-align: right;
 		margin: 0;
 	}
-	&.Gymnastics{
+	&.Gymnastics {
 		border: solid 3px $tricks-dark-green;
 		box-shadow: 0 0 20px $tricks-dark-green;
 	}
-	&.Dance{
+	&.Dance {
 		border: solid 3px $tricks-pink;
 		box-shadow: 0 0 20px $tricks-dark-pink;
 	}
-	&.Swim{
+	&.Swim {
 		border: solid 3px $tricks-light-blue;
 		box-shadow: 0 0 20px $tricks-dark-blue;
 	}
 }
 
-.help-text{
+.help-text {
 	margin-top: -1rem;
 }
 
 
 
-#ui-datepicker-div{
+#ui-datepicker-div {
 	border: solid 1px #666;
 	box-shadow: 0 0 20px #444;
 	background-color: $white;
@@ -572,18 +572,18 @@ body.is-reveal-open{
 	z-index: 101 !important;
 }
 
-.ui-datepicker-prev{
+.ui-datepicker-prev {
 	float: left;
 }
 
-.ui-datepicker-next{
+.ui-datepicker-next {
 	float: right;
 }
 
-.ui-datepicker-title{
+.ui-datepicker-title {
 	text-align: center;
 }
 
-.ui-datepicker-calendar{
+.ui-datepicker-calendar {
 	margin-bottom: 0;
 }
