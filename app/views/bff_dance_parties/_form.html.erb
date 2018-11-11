@@ -1,0 +1,29 @@
+<%= form_for(@bff_dance_party) do |f| %>
+  <% if @bff_dance_party.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bff_dance_party.errors.count, "error") %> prohibited this bff_dance_party from being saved:</h2>
+
+      <ul>
+      <% @bff_dance_party.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :suggestion %><br>
+    <%= f.text_field :suggestion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

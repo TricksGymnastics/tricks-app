@@ -1,5 +1,6 @@
 Comments::Application.routes.draw do
 
+  resources :bff_dance_parties
   resources :employment_applications, except: [:edit]
   resources :recital_sign_ups
   resources :parties, except: [:show]

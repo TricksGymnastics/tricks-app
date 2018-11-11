@@ -1,0 +1,43 @@
+
+<div style="height: 1200px; width: 800px; background-color:#C39BD3; border: 3px solid #4A235A; margin: 100px 0px 15px 0px;">
+  <h1>Bff Dance Party</h1>
+  <div style="padding: 20px; height: 400px; width: 400px; background-color: #E5E7E9; border: 4px solid #A6ACAF; margin: auto;">
+    <p style="text-align: center; font-family: Lucida Console;">This is where the theme picture would go, need to work on image gallery later.</p>
+  
+  </div>
+ <p style="text-align: center;">Some text here and there</p>
+ <p style="padding: 50px; text-align: center; font-family: Lucida Console;">More text about the event information and price, dates and some suggestion how to get ready for the party and some rule?.</p>
+  <div style="height: 50px; width: 600px; border: 2px solid black; border-radius: 50px; background-color: white; margin: auto;">
+    <p style="text-align: center;">here are some options to choose</p>
+  </div>
+  </div>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Suggestion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bff_dance_parties.each do |bff_dance_party| %>
+      <tr>
+        <td><%= bff_dance_party.name %></td>
+        <td><%= bff_dance_party.date %></td>
+        <td><%= bff_dance_party.suggestion %></td>
+        <td><%= link_to 'Show', bff_dance_party %></td>
+        <td><%= link_to 'Edit', edit_bff_dance_party_path(bff_dance_party) %></td>
+        <td><%= link_to 'Destroy', bff_dance_party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bff dance party', new_bff_dance_party_path %>

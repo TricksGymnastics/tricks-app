@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604193209) do
+ActiveRecord::Schema.define(version: 20181106050458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 20180604193209) do
     t.integer  "weight"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "bff_dance_parties", force: :cascade do |t|
+    t.string   "name"
+    t.date     "date"
+    t.string   "suggestion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "bubble_contents", force: :cascade do |t|
