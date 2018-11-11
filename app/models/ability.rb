@@ -25,7 +25,7 @@ class Ability
 		#SurveyResult
 		#Datenight
 
-		if user.role == "superadmin" #Jordan
+		if user.role == "superadmin" #Jordan & Nasa
 			can :manage, :all
 		end
 
@@ -51,6 +51,7 @@ class Ability
 			can :manage, BubbleContent
 			can :manage, RecitalSignUp
 			can :manage, EmploymentApplication
+			can :manage, BffDanceParty
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -83,6 +84,7 @@ class Ability
 			can :create, EmploymentApplication
 			can :show, EmploymentApplication
 			can :complete_interview, EmploymentApplication
+			can :manage, BffDanceParty
 		end 
 
 		if user.role == "coach"
