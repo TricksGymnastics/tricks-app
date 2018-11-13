@@ -1,0 +1,12 @@
+<div class="row align-center" style="border: solid 3px #23c4e2; background-color: #23c4e2; border-radius: 20px; color: white;">
+  <div class="columns small-12" style="text-align: center">
+    <% if can? :manage, BffDanceParty %>
+      <%= link_to 'Click here to Edit', edit_bff_dance_party_path(party), style: "color: white; text-decoration: underline; font-size: 20px;"%>
+      <br>
+    <% end %>
+    
+    <h3><%= party.date %> <%= party.name %></h3>
+    <br>
+    (<%= party.suggestion %>)
+  </div>
+</div>

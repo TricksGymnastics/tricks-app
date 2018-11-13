@@ -1,4 +1,5 @@
 class BffDancePartiesController < ApplicationController
+  load_and_authorize_resource# :except => [:index, :show]
   before_action :set_bff_dance_party, only: [:show, :edit, :update, :destroy]
 
   # GET /bff_dance_parties
