@@ -51,19 +51,15 @@
         border-radius: 30px;
         padding: 20px;
         text-align: center;
-        margin: 5%;
-        width: 50%;
-        display: inline-block;
+        box-sizing: border-box;
       }
     </style>
 
     <div class="row">
       <div class="columns small-12">
-        <!--<h1>BFF Dance Party!</h1>-->
-        <%= image_tag "bff_dance_parties/bff_dance_party_header.png" %>
-        <h5>(Bring a Friend Friday Dance Parties)</h5>
-        <h4 style="color: #fa8aae;">Bring a friend and join us once a month<br>for out pop-in dance party!</h4>
-        <!--<h2 style="font-size: 26px; margin-top:25px;">Click on a Party Name for Details, Pricing, and Reservations</h2>-->
+        <h1>BFF Dance Party!</h1>
+        <h4 style="color: #fa8aae;">Bring a Friend Friday Dance Parties. Join us for 45 minutes of music, dancing, crafts and fun with friends!<br>Ages 3-5 (children must be potty-trained).</h4>
+      <!--<h2 style="font-size: 26px; margin-top:25px;">Click on a Party Name for Details, Pricing, and Reservations</h2>-->
       </div>
     </div>
     
@@ -76,14 +72,12 @@
     <div class="row">
       <div class="columns small-12">
         <h4 style="color: #23c4e2">Register early to guarantee your spot or just drop in! $10/pair</h4>
-        <h3>Perfect for 3-5 year olds!</h3>
+        <h3>Upcoming BFF party!</h3>
       </div>
     </div>
     
     <div class="row">
-      <div class="columns small-3">
-        <%= image_tag "bff_dance_parties/tricks_dance_school.png", style: "width: 25%; position: relative; top: 0;" %>
-        <div class="columns small-6" id="details">
+        <div class="columns small-12" id="details">
           <p>BFF Dance Parties will be held the last Friday of every month. Class times vary per studio. see below.</p>
           <ul style="list-style-position:inside; margin: 0;">
             <li>Granite Bay - 2:30-3:15pm</li>
@@ -91,11 +85,6 @@
             <li>Sacramento - 2:45-3:30pm</li>
           </ul>
         </div>
-        
-        <div class="columns">
-          <%= image_tag "bff_dance_parties/unicorn.png", style: "position: relative; top: 0; right: 0; display: inline-block; width: 15%;" %>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -105,63 +94,3 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div style="height: 1200px; width: 800px; background-color:#C39BD3; border: 3px solid #4A235A; margin: 100px 0px 15px 0px;">
-  <h1>Bff Dance Party</h1>
-  <div style="padding: 20px; height: 400px; width: 400px; background-color: #E5E7E9; border: 4px solid #A6ACAF; margin: auto;">
-    <p style="text-align: center; font-family: Lucida Console;">This is where the theme picture would go, need to work on image gallery later.</p>
-  
-  </div>
- <p style="text-align: center;">Some text here and there</p>
- <p style="padding: 50px; text-align: center; font-family: Lucida Console;">More text about the event information and price, dates and some suggestion how to get ready for the party and some rule?.</p>
-  <div style="height: 50px; width: 600px; border: 2px solid black; border-radius: 50px; background-color: white; margin: auto;">
-    <p style="text-align: center;">here are some options to choose</p>
-  </div>
-  </div>
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Suggestion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bff_dance_parties.each do |bff_dance_party| %>
-      <tr>
-        <td><%= bff_dance_party.name %></td>
-        <td><%= bff_dance_party.date %></td>
-        <td><%= bff_dance_party.suggestion %></td>
-        <td><%= link_to 'Show', bff_dance_party %></td>
-        <td><%= link_to 'Edit', edit_bff_dance_party_path(bff_dance_party) %></td>
-        <td><%= link_to 'Destroy', bff_dance_party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Bff dance party', new_bff_dance_party_path %>
