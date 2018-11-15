@@ -1,16 +1,48 @@
-<div class="row align-center" style="border: solid 3px #23c4e2; background-color: #23c4e2; border-radius: 20px; color: white;">
-  <div class="columns small-12" style="text-align: center">
-    <% if can? :manage, BffDanceParty %>
-      <%= link_to 'Click here to Edit', edit_bff_dance_party_path(party), style: "color: white; text-decoration: underline; font-size: 20px;"%>
-      <br>
-    <% end %>
-    
-    <h3><%= party.name  %> <%= party.date %></h3>
-    <p><%= party.granite_bay_start_time %></p>
-    <p><%= party.folsom_start_time %></p>
-    <p><%= party.sacramento_start_time %></p>
-    <p><%= party.suggestion %></p>
-  </div>
-</div>
 
-strftime("%l:%M %p")
+    
+
+<% if is_first then %>
+  <div class="row" style="border: solid #fa8aae 10px; border-radius: 25px;">
+    <div class="columns" style="padding: 0px;">
+      <div style="text-align: center; overflow: hidden;">
+        <%= image_tag party.image_url, alt: party.name, style: "width: 100%; border-radius: 15px 15px 0 0;" %>
+        <% if can? :manage, BffDanceParty %>
+          <%= link_to 'Click here to Edit', edit_bff_dance_party_path(party), style: " text-decoration: underline; font-size: 20px;"%>
+          <br>
+        <% end %>
+      </div>
+      <h4 style="color: #fa8aae;"><%= party.suggestion %></h4>
+      <h5><b>Ages 3-5</b> (children must be potty-trained).</h5>
+      
+      <div class="row">
+          <div class="columns small-12" style="text-align: center;">
+            <ul style="list-style-type: none;">
+              <li style="text-decoration: underline; font-size: 20px;">Class times vary per studio:</li>
+              <li>Granite Bay: <%= party.granite_bay_start_time.strftime("%l:%M %p") + " - " + party.granite_bay_start_time.advance(minutes: party.granite_bay_duration).strftime("%l:%M %p") %></li>
+              <li>Folsom: <%= party.folsom_start_time.strftime("%l:%M %p") + " - " + party.folsom_start_time.advance(minutes: party.folsom_duration).strftime("%l:%M %p") %></li>
+              <li>Sacramento:<%= party.sacramento_start_time.strftime("%l:%M %p") + " - " + party.sacramento_start_time.advance(minutes: party.sacramento_duration).strftime("%l:%M %p") %></li>
+            </ul>
+          </div>
+      </div>
+  
+      <h5 style="color: #fa8aae;">Register early to guarantee your spot or just drop in! $10/pair</h5>
+    </div>
+  </div>
+<% else %>
+  <div class="row align-center" style="border: solid 3px #23c4e2; background-color: #23c4e2; border-radius: 20px; color: white; margin-top: 30px; padding: 15px;">
+    <div class="columns small-12" style="text-align: center">
+      <h3><%= party.name  %> (<%= party.date %>) </h3>
+      <h4><%= party.suggestion %></h4>
+            <ul style="list-style-type: none;">
+              <li style="text-decoration: underline; font-size: 20px;">Class times vary per studio:</li>
+              <li>Granite Bay: <%= party.granite_bay_start_time.strftime("%l:%M %p") + " - " + party.granite_bay_start_time.advance(minutes: party.granite_bay_duration).strftime("%l:%M %p") %></li>
+              <li>Folsom: <%= party.folsom_start_time.strftime("%l:%M %p") + " - " + party.folsom_start_time.advance(minutes: party.folsom_duration).strftime("%l:%M %p") %></li>
+              <li>Sacramento:<%= party.sacramento_start_time.strftime("%l:%M %p") + " - " + party.sacramento_start_time.advance(minutes: party.sacramento_duration).strftime("%l:%M %p") %></li>
+            </ul>
+    </div>
+  </div>
+<% end %>
+
+
+
+
