@@ -11,157 +11,62 @@
   <% update_bubbles(given_bubbles) %>
 <% end %>
 
+<style>
+  h1{
+    color: #fa8aae;
+  }
+  h1 {
+    font-size: 60px;
+  }
+  h4, h5{
+    text-align: center;
+  }
+  .party-info-box{
+    text-align: center; 
+    border: solid 10px blue; 
+    border-radius: 25px; 
+    padding:10px;
+    margin-bottom: 15px;
+  }
+  .blue-text{
+    color: #23c4e2;
+  }
+</style>
     <!--<div>-->
     <!--  <%#= image_tag "/assets/site_header_images/parties_header.jpg", style:"margin-top: -120px;" %>-->
     <!--</div>-->
     
-<div class="row" style="border: solid 3px #fa8aae; padding: 15px; border-radius: 3px;">
-  <div class="columns large-12">
-    <style>
-      h1{
-        color: #fa8aae;
-      }
-      h1 {
-        font-size: 72px;
-      }
-      h4, h5{
-        text-align: center;
-      }
-      .party-info-box{
-        text-align: center; 
-        border: solid 10px blue; 
-        border-radius: 25px; 
-        padding:10px;
-        margin-bottom: 15px;
-      }
-      .yellow{
-        border-color: #fcee21;
-      }
-      .green{
-        border-color: #62c233;
-      }
-      .orange{
-        border-color: #f78c17;
-      }
-      .pink{
-        border-color: #ec2364;
-      }
-      #details{
-        background-color: #fee180;
-        border-radius: 30px;
-        padding: 20px;
-        text-align: center;
-        margin: 5%;
-        width: 50%;
-        display: inline-block;
-      }
-    </style>
+<div class="row">
+  <div class="columns small-12">
+    <h1>BFF Dance Party!</h1>
+    <% if can? :create, BffDanceParty %>
+      <h4 style="margin-top: -25px;"><%= link_to "(Add New BFF Dance Party)", new_bff_dance_party_path %></h4>
+    <% end %>
+    <h4>Bring a Friend Friday Dance Parties</h4>
+    <h5>Join us for 45 minutes of music, dancing, crafts and fun with friends!</h5>
+    <h5>BFF Dance Parties will be held the last Friday of every month.</h5>
+  </div>
+</div>
 
-    <div class="row">
-      <div class="columns small-12">
-        <!--<h1>BFF Dance Party!</h1>-->
-        <%= image_tag "bff_dance_parties/bff_dance_party_header.png" %>
-        <h5>(Bring a Friend Friday Dance Parties)</h5>
-        <h4 style="color: #fa8aae;">Bring a friend and join us once a month<br>for out pop-in dance party!</h4>
-        <!--<h2 style="font-size: 26px; margin-top:25px;">Click on a Party Name for Details, Pricing, and Reservations</h2>-->
-      </div>
-    </div>
+<div class="row">
+  <div class="columns large-12">
+    <%= render partial: 'show', locals: {party: @bff_dance_parties.first, is_first: true} %>
     
+    <!--<h4>Click on a Dance Party Name for Details, and Registration</h4>-->
     <ul class="accordion" data-accordion data-allow-all-closed="true">
+      <% first = true %>
       <% @bff_dance_parties.each do |party| %>
-        <%= render partial: 'show', locals: {party: party} %>
+        <% if first then %>
+          <% first = false %>
+        <% else %>
+          <%= render partial: 'show', locals: {party: party, is_first: false} %>
+          <% end %>
       <% end %>
     </ul>
     
-    <div class="row">
-      <div class="columns small-12">
-        <h4 style="color: #23c4e2">Register early to guarantee your spot or just drop in! $10/pair</h4>
-        <h3>Perfect for 3-5 year olds!</h3>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="columns small-3">
-        <%= image_tag "bff_dance_parties/tricks_dance_school.png", style: "width: 25%; position: relative; top: 0;" %>
-        <div class="columns small-6" id="details">
-          <p>BFF Dance Parties will be held the last Friday of every month. Class times vary per studio. see below.</p>
-          <ul style="list-style-position:inside; margin: 0;">
-            <li>Granite Bay - 2:30-3:15pm</li>
-            <li>Folsom - 2:30-3:15pm</li>
-            <li>Sacramento - 2:45-3:30pm</li>
-          </ul>
-        </div>
-        
-        <div class="columns">
-          <%= image_tag "bff_dance_parties/unicorn.png", style: "position: relative; top: 0; right: 0; display: inline-block; width: 15%;" %>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
-<div class="reveal fast large" style="z-index: 1010" id="details_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up" style="border-radius: 300px;">
+<!--<div class="reveal fast large" style="z-index: 1010" id="details_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up" style="border-radius: 300px;">-->
   
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div style="height: 1200px; width: 800px; background-color:#C39BD3; border: 3px solid #4A235A; margin: 100px 0px 15px 0px;">
-  <h1>Bff Dance Party</h1>
-  <div style="padding: 20px; height: 400px; width: 400px; background-color: #E5E7E9; border: 4px solid #A6ACAF; margin: auto;">
-    <p style="text-align: center; font-family: Lucida Console;">This is where the theme picture would go, need to work on image gallery later.</p>
-  
-  </div>
- <p style="text-align: center;">Some text here and there</p>
- <p style="padding: 50px; text-align: center; font-family: Lucida Console;">More text about the event information and price, dates and some suggestion how to get ready for the party and some rule?.</p>
-  <div style="height: 50px; width: 600px; border: 2px solid black; border-radius: 50px; background-color: white; margin: auto;">
-    <p style="text-align: center;">here are some options to choose</p>
-  </div>
-  </div>
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Suggestion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bff_dance_parties.each do |bff_dance_party| %>
-      <tr>
-        <td><%= bff_dance_party.name %></td>
-        <td><%= bff_dance_party.date %></td>
-        <td><%= bff_dance_party.suggestion %></td>
-        <td><%= link_to 'Show', bff_dance_party %></td>
-        <td><%= link_to 'Edit', edit_bff_dance_party_path(bff_dance_party) %></td>
-        <td><%= link_to 'Destroy', bff_dance_party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Bff dance party', new_bff_dance_party_path %>
+<!--</div>-->
