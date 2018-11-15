@@ -15,7 +15,12 @@
     <!--  <%#= image_tag "/assets/site_header_images/parties_header.jpg", style:"margin-top: -120px;" %>-->
     <!--</div>-->
     
-<div class="row" style="border: solid 3px #fa8aae; padding: 15px; border-radius: 3px;">
+<div>
+    <h1>BFF Dance Party!</h1>
+    <h4 style="color: #fa8aae;">Bring a Friend Friday Dance Parties. Join us for 45 minutes of music, dancing, crafts and fun with friends!<br>Ages 3-5 (children must be potty-trained).</h4><br>
+</div>
+
+<div class="row">
   <div class="columns large-12">
     <style>
       h1{
@@ -54,26 +59,34 @@
         box-sizing: border-box;
       }
     </style>
-
+    
+  
     <div class="row">
       <div class="columns small-12">
-        <h1>BFF Dance Party!</h1>
-        <h4 style="color: #fa8aae;">Bring a Friend Friday Dance Parties. Join us for 45 minutes of music, dancing, crafts and fun with friends!<br>Ages 3-5 (children must be potty-trained).</h4>
+         
       <!--<h2 style="font-size: 26px; margin-top:25px;">Click on a Party Name for Details, Pricing, and Reservations</h2>-->
       </div>
     </div>
-    
+    Blurb 1
     <ul class="accordion" data-accordion data-allow-all-closed="true">
+      <% first = true %>
       <% @bff_dance_parties.each do |party| %>
-        <%= render partial: 'show', locals: {party: party} %>
+        <% if first then %>
+          <% first = false %>
+        <% else %>
+          <%= render partial: 'show', locals: {party: party} %>
+          <% end %>
       <% end %>
     </ul>
-    
+    Blurb 2
     <div class="row">
       <div class="columns small-12">
         <h4 style="color: #23c4e2">Register early to guarantee your spot or just drop in! $10/pair</h4>
         <h3>Upcoming BFF party!</h3>
       </div>
+    </div>
+    <div class="row" style="border">
+      
     </div>
     
     <div class="row">
