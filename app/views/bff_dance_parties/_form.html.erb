@@ -18,7 +18,7 @@
         <%= f.text_field :name, class: "input-group-field" %>
       </div>
     </div>
-    <div class="columns large-4 ">
+    <div class="columns small-4 ">
       <div class=" input-group">
         <%= f.label :date, "Date", class: "input-group-label" %>
         <%= f.text_field :date, id:'bff_dance_party_date', class: "input-group-field" %>
@@ -27,7 +27,13 @@
   </div>
  
   <div class="row">
-    <div class="columns small-12">
+    <div class="columns small-4 ">
+      <div class="input-group">
+        <%= f.label :image, "Upload Image", class: "button expanded success" %>
+        <%= f.file_field :image, class: "show-for-sr" %>
+      </div>
+    </div>
+    <div class="columns small-8">
       <div class=" input-group">
         <%= f.label :suggestion, "Suggestion", class: "input-group-label" %>
         <%= f.text_field :suggestion, placeholder: "Students can wear Frozen outfit/costumes to the party!", class: "input-group-field" %>
@@ -36,13 +42,13 @@
   </div>
   
   <div class="row">
-    <div class="columns large-6 ">
+    <div class="columns small-6 ">
       <div class=" input-group">
         <%= f.label :granite_bay_start_time, "Granite Bay Start Time", class: "input-group-label", id: "bff_dance_party_granite_bay_start_time" %>
         <%= f.text_field :granite_bay_start_time, type: "time", class: "input-group-field" %>
       </div>
     </div>
-    <div class="columns large-6 ">
+    <div class="columns small-6 ">
       <div class="input-group">
         <%= f.label :granite_bay_duration, "Duration", class: "input-group-label" %>
         <%= f.number_field :granite_bay_duration, class: "input-group-field" %>
@@ -51,13 +57,13 @@
   </div>
   
   <div class="row">
-    <div class="columns large-6 ">
+    <div class="columns small-6 ">
       <div class=" input-group">
         <%= f.label :folsom_start_time, "Folsom Start Time", class: "input-group-label", id: "bff_dance_party_folsom_start_time" %>
         <%= f.text_field :folsom_start_time, type: "time", class: "input-group-field" %>
       </div>
     </div>
-    <div class="columns large-6 ">
+    <div class="columns small-6 ">
       <div class="input-group">
         <%= f.label :folsom_duration, "Duration", class: "input-group-label" %>
         <%= f.number_field :folsom_duration, class: "input-group-field" %>
@@ -66,13 +72,13 @@
   </div>
   
   <div class="row">
-    <div class="columns large-6 ">
+    <div class="columns small-6 ">
       <div class=" input-group">
         <%= f.label :sacramento_start_time, "Sacramento Start Time", class: "input-group-label", id: "bff_dance_party_sacramento_start_time" %>
         <%= f.text_field :sacramento_start_time, type: "time", class: "input-group-field" %>
       </div>
     </div>
-    <div class="columns large-6 ">
+    <div class="columns small-6 ">
       <div class="input-group">
         <%= f.label :sacramento_duration, "Duration", class: "input-group-label" %>
         <%= f.number_field :sacramento_duration, class: "input-group-field" %>
@@ -80,7 +86,9 @@
     </div>
   </div>
   
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row align-center" style="margin-bottom: 100px; margin-top: 50px;">
+    <div class="columns small-8">
+      <%= f.submit class: "button expanded" %>
+    </div>
   </div>
 <% end %>
