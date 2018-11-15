@@ -5,8 +5,12 @@
       <br>
     <% end %>
     
-    <h3><%= party.date %> <%= party.name %></h3>
-    <br>
-    (<%= party.suggestion %>)
+    <h3><%= party.name  %> <%= party.date %></h3>
+    <p><%= party.granite_bay_start_time %></p>
+    <p><%= party.folsom_start_time %></p>
+    <p><%= party.sacramento_start_time %></p>
+    <p><%= party.suggestion %></p>
   </div>
 </div>
+
+strftime("%l:%M %p")

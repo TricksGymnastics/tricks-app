@@ -55,6 +55,6 @@ class BffDancePartiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bff_dance_party_params
-      params.require(:bff_dance_party).permit(:name, :date, :suggestion)
+      params.require(:bff_dance_party).permit(:name, :date, :suggestion, :granite_bay_start_time,:granite_bay_duration,:folsom_start_time, :folsom_duration, :sacramento_start_time, :sacramento_duration, :image)
     end
 end
