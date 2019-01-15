@@ -16,6 +16,6 @@ class EmploymentApplicationMailer < ApplicationMailer
       locations << "trickssac@gmail.com"
     end
     
-    mail cc: locations, subject: subject #TODO: change to bcc: after i have verified it works
+    mail to: "trickswebmaster@gmail.com", cc: locations, subject: subject #TODO: change to bcc: after i have verified it works
   end
 end
