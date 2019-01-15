@@ -25,20 +25,21 @@
 			<ul class="orbit-container">
 			    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
 			    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-
 			    <% i = 0 %>
 				<% @live_promos.each do |promo| %>
 					<%# orbit is being stupid and apparently cannot dynamically set its own height, so we just hard code it to 321 for the height of a promo image %>
 				    <li class="orbit-slide">
 						<% if promo.data_type == "html" %>
 							<%= render :inline => promo.html_code %>
-						<% else %>
+						<% elsif !promo.image.file.nil? && promo.image.file.exists? %>
 							<% if promo.link == true %>
-									<%= link_to image_tag(promo.image_url, alt: promo.title, class: "orbit-image"), promo.link_path, style: "cursor: pointer;" %>				
+								<%= link_to image_tag(promo.image_url, alt: promo.title, class: "orbit-image"), promo.link_path, style: "cursor: pointer;" %>				
 							<% else %>
-									<%= image_tag promo.image_url, alt: promo.title, class: "orbit-image" %>
+								<%= image_tag promo.image_url, alt: promo.title, class: "orbit-image" %>
 							<% end %>
 							<figcaption class="orbit-caption"><%= promo.title %></figcaption>
+						<% else %>
+							<div class="orbit-image" style="background-color: #ddd; height: 100%; text-align: center;">Image not found</div>
 						<% end %>
 				    </li>
 					<% i = i+1 %>
