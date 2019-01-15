@@ -1,5 +1,7 @@
 Comments::Application.routes.draw do
 
+  resources :kids_night_outs
+  resources :kids_night_outs
   resources :bff_dance_parties
   resources :employment_applications, except: [:edit]
   resources :recital_sign_ups

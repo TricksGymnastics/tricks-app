@@ -1,0 +1,160 @@
+<% given_title = "Kids Night Out" %>
+<% given_bubbles = [10, 3] %>
+
+<% if defined? given_title %>
+  <% content_for :title do %>
+    <%= given_title %>
+  <% end %>
+<% end %>
+
+<% if defined? given_bubbles %>
+  <% update_bubbles(given_bubbles) %>
+<% end %>
+
+<% content_for :header_image do %>
+  <%#=  %>
+<% end %>
+
+
+<style>
+  h1, h3{
+    color: #031473;
+  }
+  h1 {
+    font-size: 60px;
+  }
+  h4, h5{
+    text-align: center;
+  }
+</style>
+
+<div class="row">
+    <div class="row">
+        <div class="columns small-12" style="margin-top: 200px;">
+          <h1>Kids Night Out</h1>
+          <p style="font-size: 24px; font-family: TrebuchetMSRegular;">Hey Kids! Do you want a fun-filled night with a bounce house, high energy games, crafts, crazy obstacles and super fun coaches? Then TRICKS is the place for you! Join us this month for KIDS NIGHT OUT. Ages 3 to 11 (children must be potty-trained)</p>
+        </div>
+    </div>
+  <div class="small-12" style="margin-top: 25px">
+    <h3>Register Here!</h3>
+    <div class="row align-center">
+      <div class="columns small-11 large-4">
+        <%= link_to "Granite Bay", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=GB&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+      </div>
+      <div class="columns small-11 large-4">
+        <%= link_to "Folsom", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=FOL&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+      </div>
+      <div class="columns small-11 large-4">
+        <%= link_to "Sacramento", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=SAC&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+      </div>
+    </div>
+    
+    <% @kids_night_outs.each do |kno| %>
+    <div class="row align-justify">
+      <div class="columns small-12 medium-5 large-12 medium-order-2" style="margin-bottom: 30px;">
+        <div class="row">
+          <div class="columns large-3">
+            <h5>Time:</h5>
+          </div>
+          <div class="columns large-9">
+            <h5 style="text-align:right;"><%= kno.when_time %></h5>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="columns small-2 medium-3 large-3">
+            <h5>Price:</h5>
+          </div>
+          <div class="columns small-10 medium-9 large-9">
+            <h5 style="text-align:right; margin-bottom:0;">$<%= kno.single_price %> for first child</h5>
+            <h5 style="text-align:right;">$<%= kno.sibling_price %> for siblings</h5>
+          </div>
+        </div>
+      </div>
+      <div class="columns small-12 medium-6 large-12 medium-order-1">
+        <div class="row" style="margin-top: 25px;">
+          <div class="columns small-12">
+            <h3><%= kno.schedule_title %> Schedule:</h3>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="columns small-12">
+        
+              <div class="row align-center" style="margin-bottom: 15px;">
+                <div class="columns small-12">
+                  <h6 style="text-decoration: underline; margin: 0;"><%= kno.title %></h6>
+                  <p><i><%= kno.description %></i></p>
+                </div>
+                <div class="columns small-12">
+                  <% if !kno.gb_date.nil? %>
+                    <div class="row">
+                      <div class="columns small-5">
+                        Granite Bay:
+                      </div>
+                      <div class="columns small-7" style="text-align:right;">
+                        <%= kno.gb_date.strftime("%a, %B %e") %>
+                      </div>
+                    </div>
+                  <% end %>
+                  <% if !kno.fol_date.nil? %>
+                    <div class="row">
+                      <div class="columns small-6">
+                        Folsom:
+                      </div>
+                      <div class="columns small-6" style="text-align:right;">
+                        <%= kno.fol_date.strftime("%a, %B %e") %>
+                      </div>
+                    </div>
+                  <% end %>
+                  <% if !kno.sac_date.nil? %>
+                    <div class="row">
+                      <div class="columns small-6">
+                        Sacramento:
+                      </div>
+                      <div class="columns small-6" style="text-align:right;">
+                        <%= kno.sac_date.strftime("%a, %B %e") %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    
+    
+
+    <% if can? :manage, KidsNightOut %>
+      <div class="row align-center" style="margin-top: 30px;">
+        <div class="columns small-10">
+          <%#= link_to "Edit Page", kids_night_out_edit_path, class: "button expanded" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <%#= kids_night_out.date %>
+        <%#= kids_night_out.time %>
+        <%#= kids_night_out.description %>
+        <%#= kids_night_out.sac_time %>
+        <%#= kids_night_out.fol_time %>
+        <%#= kids_night_out.gb_time %>
+        <%#= kids_night_out.image %>
+    

@@ -1,0 +1,80 @@
+<%= form_for(@kids_night_out) do |f| %>
+  <% if @kids_night_out.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kids_night_out.errors.count, "error") %> prohibited this kids_night_out from being saved:</h2>
+
+      <ul>
+      <% @kids_night_out.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="row">
+    <div class="column small-12">
+      <div class="input-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>  
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column small-4">
+      <div class="input-group">
+        <%= f.label :date %><br>
+        <%= f.date_select :date %>
+      </div>
+    </div>
+    <div class="column small-4">
+      <div class="input-group">
+        <%= f.label :time %><br>
+        <%= f.time_select :time %>
+      </div>
+    </div>
+  </div>   
+  
+  <div class="row">
+    <div class="column small-12">
+      <div class="input-group">
+        <%= f.label :description %><br>
+        <%= f.text_area :description %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="column small-3">
+      <div class="input-group">
+        <%= f.label :sac_time %><br>
+        <%= f.time_select :sac_time %>
+      </div>
+    </div>
+    <div class="column small-3">
+      <div class="inout-group">
+        <%= f.label :fol_time %><br>
+        <%= f.time_select :fol_time %>
+      </div>
+    </div>
+    <div class="column small-3">
+      <div class="inout-group">
+        <%= f.label :gb_time %><br>
+        <%= f.time_select :gb_time %>
+      </div>
+    </div>
+   </div>
+   
+  <div class="row">
+    <div class="column small-8">
+      <div class="input-group">
+        <%= f.label :image %><br>
+        <%= f.text_field :image %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
