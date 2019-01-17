@@ -1,49 +1,14 @@
 class StaticController < ApplicationController
   def index
-    @kid_quote = KidQuote.all.sample(n=3)
     @live_promos = PromoSlide.where(live: true).order(:sort_order)
-    # @live_promos.each do |promo|
-    # @live_promos.to_ary.delete_if do |promo|
-    #   if promo.data_type == "html"
-    #     false
-    #   elsif promo.image.file.nil? || !promo.image.file.exists?
-    #     true # Make sure the if statement returns true, so it gets marked for deletion
-    #   end
-    # end
-    # end
-    
-    #render :layout => "random_quote"
-  end
-  def indexold
-    @kid_quote = KidQuote.all.sample(n=3)
-    @live_promos = PromoSlide.where(live: true).order(:sort_order)
-    # @live_promos.each do |promo|
-    @live_promos.to_ary.delete_if do |promo|
-      if promo.data_type == "html"
-        false
-      elsif promo.image.file.nil? || !promo.image.file.exists?
-        true # Make sure the if statement returns true, so it gets marked for deletion
-      end
-    end
-    # end
-    
-    #render :layout => "random_quote"
   end
 
   def site_comments
     @comment = Comment.where(score: 8..10).sample(n=4)
   end
 
-  def app_landing
-    render :layout => "application"
-  end
-
   def datenight
     @datenight = Datenight.first
-  end
-
-  def registration
-    @schedules = Schedule.joins(:level).location_search(params[:location]).level_search(params[:level]).age_search(params[:age])
   end
 
   def gymnastics
@@ -68,10 +33,5 @@ class StaticController < ApplicationController
 
   def swim
     @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'").where("levels.levelname != 'Open By Request'")
-    # @swim.delete_if   {|level| level.levelname == "Open By Request"}
-  end
-  
-  def nasa
-    
   end
 end
