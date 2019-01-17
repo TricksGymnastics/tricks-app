@@ -3,8 +3,7 @@ class CreateKidsNightOuts < ActiveRecord::Migration
     create_table :kids_night_outs do |t|
       t.string :title
       t.date :date
-      t.time :time
-      t.text :description
+      t.text :details
       t.time :sac_time
       t.time :fol_time
       t.time :gb_time

@@ -12,67 +12,62 @@
   <% end %>
   
   <div class="row">
-    <div class="column small-12">
+    <div class="column small-6">
       <div class="input-group">
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>  
+        <%= f.label :title, "Title", class: "input-group-label" %>
+        <%= f.text_field :title, class: "input-group-field" %>  
+      </div>
+    </div>
+    <div class="column small-4">
+      <div class="">
+        <%= f.label :image, "Upload Image", class: "button expanded success" %>
+        <%= f.file_field :image, class: "show-for-sr" %>
+      </div>
+    </div>
+  </div> 
+  
+  <div class="row">
+    <div class="column small-10">
+      <div class="input-group">
+        <%= f.label :details, class: "input-group-label" %>
+        <%= f.text_area :details, class: "input-group-text" %>
       </div>
     </div>
   </div>
-
+  
   <div class="row">
-    <div class="column small-4">
+    <div class="column small-10">
       <div class="input-group">
-        <%= f.label :date %><br>
-        <%= f.date_select :date %>
-      </div>
-    </div>
-    <div class="column small-4">
-      <div class="input-group">
-        <%= f.label :time %><br>
-        <%= f.time_select :time %>
+        <%= f.label :date, class: "input-group-label" %>
+        <%= f.date_select :date, id: "kids_night_outs", class: "show-for-sr" %>
       </div>
     </div>
   </div>   
   
-  <div class="row">
-    <div class="column small-12">
-      <div class="input-group">
-        <%= f.label :description %><br>
-        <%= f.text_area :description %>
-      </div>
-    </div>
-  </div>
+
   
   <div class="row">
     <div class="column small-3">
       <div class="input-group">
-        <%= f.label :sac_time %><br>
-        <%= f.time_select :sac_time %>
+        <%= f.label :sac_time, "Sac Time", class: "input-group-label", id: "kids_night_out_sacramento_time" %>
+        <%= f.time_select :sac_time, type: "time", class: "input-group-field" %>
       </div>
     </div>
     <div class="column small-3">
       <div class="inout-group">
-        <%= f.label :fol_time %><br>
-        <%= f.time_select :fol_time %>
+        <%= f.label :fol_time, "Fol Time", class: "input-group-label", id: "kids-night_out_folsom_time" %>
+        <%= f.time_select :fol_time, type: "time", class: "input-group-field" %>
       </div>
     </div>
     <div class="column small-3">
       <div class="inout-group">
-        <%= f.label :gb_time %><br>
-        <%= f.time_select :gb_time %>
-      </div>
-    </div>
-   </div>
-   
-  <div class="row">
-    <div class="column small-8">
-      <div class="input-group">
-        <%= f.label :image %><br>
-        <%= f.text_field :image %>
+        <%= f.label :gb_time, "GB Time", class: "input-group-label", id: "kids_night_out_Granite_Bay_time"%>
+        <%= f.time_select :gb_time, type: "time", class: "input-group-field" %>
       </div>
     </div>
   </div>
+   
+ 
   
   <div class="actions">
     <%= f.submit %>
