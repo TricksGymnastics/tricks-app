@@ -99,7 +99,8 @@ class EmploymentApplicationsController < ApplicationController
     
     if @employment_application.save
       EmploymentApplicationMailer.gym_notification(@employment_application).deliver_now
-      redirect_to 'http://www.tricksgym.com/thankyou', notice: 'Employment application was successfully created.'
+      EmploymentApplicationMailer.application_confirmation(@employment_application).deliver_now
+      redirect_to 'http://www.tricksgym.com/thankyou', notice: 'Employment Application was successfully submitted.'
     else
       render :new
     end

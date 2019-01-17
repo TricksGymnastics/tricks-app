@@ -4,26 +4,25 @@
 </head>
 <body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
 <h3> 
-Thank you for applying to Tricks!
+    Thank you for applying to Tricks!
 </h3>
 <p>
     <% locations = [] %>
-    You applied at: <% if @application.granite_bay then locations << 'Granite Bay' end %>
+    
+    <% if @application.granite_bay then locations << 'Granite Bay' end %>
     <% if @application.folsom then locations << 'Folsom' end %>
     <% if @application.sacramento then locations << 'Sacramento' end %>
     
-    <% first = true %>
-    
-    <% locations.each do |loc| %>
-        <% if first then %>
-        <%= loc %>
+    <% if locations.size == 1 %>
+        <% loc_string = locations[0] %>
+    <% elsif locations.size == 2 %>
+        <% loc_string = locations[0] + " and " + locations[1]%>
+    <% elsif locations.size == 3 %>
+        <% loc_string = locations[0] + ", " + locations[1] + " and " + locations[2]%>
     <% end %>
-    <%# You applied at: Granite Bay Folsom Sacramento %>
-    <%# You applied at:Folsom Sacramento %>
-    <%# You applied at: Granite Bay, Folsom, and Sacramento %> 
-</p>
-<p>
-    You applied for:
-</p>
+    
+    Application for <%= @application.firstname + " " + @application.lastname %> has been received.
+    <%#= "You applied at: " + loc_string %>
+    
 </body>
 </html>
