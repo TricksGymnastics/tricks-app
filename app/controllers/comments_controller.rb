@@ -44,11 +44,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
-        #format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        CommentMailer.comment_notification(@comment).deliver_now
         if can? :manage, Comment
           format.html { redirect_to comments_path, notice: 'Comment was successfully created.' }
         else
-          format.html { redirect_to "http://www.tricksgym.com/comments.html", notice: 'Comment was successfully created.' }
+          format.html { redirect_to site_comments_path, notice: 'Comment was successfully submitted.' }
         end
         format.json { render json: @comment, status: :created, location: @comment }
       else
