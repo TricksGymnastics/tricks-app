@@ -12,30 +12,22 @@
     <% end %>
     <div class="row">
       <div class="columns large-6 ">
-        <div class=" input-group">
-          <%= f.label :first_name, "First Name", class: "input-group-label" %>
-          <%= f.text_field :first_name, class: "input-group-field" %>
-        </div>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :first_name, label: "First Name"} %>
       </div>
       <div class="columns large-6 ">
-        <div class=" input-group">
-          <%= f.label :last_name, "Last Name", class: "input-group-label" %>
-          <%= f.text_field :last_name, class: "input-group-field" %>
-        </div>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :last_name, label: "Last Name"} %>
       </div>
     </div>
    
     <div class="row">
       <div class="columns small-12">
-        <div class=" input-group">
-          <%= f.label :location, "Location", class: "input-group-label" %>
-          <%= f.select :location, Absent::LOCATIONS, :prompt => "Select a Location", class: "input-group-field" %>
-        </div>
+        <%= render partial: 'helper_fields/select', locals: {form: f, field: :location, fieldname: "Location", options: Absent::LOCATIONS, prompt: "Select a Location"} %>
       </div>
     </div>
     
     <div class="row">
       <div class="columns large-6 ">
+        <%#= render partial: 'helper_fields/collection_select', locals: {form: f, field: :classtype_id, fieldname: "Class Type", collection: Classtype.where(:id => 1..5), id: :id, name: :name, prompt: "Select a Class Type"} %>
         <div class=" input-group">
           <%= f.label :classtype_id, "Class Type", class: "input-group-label" %>
           <%= f.collection_select :classtype_id, Classtype.where(:id => 1..5), :id, :name, prompt: "Select a Class Type", id: "classtype_select", class: "input-group-field" %>
@@ -52,16 +44,10 @@
 
     <div class="row">
       <div class="columns large-6 ">
-        <div class=" input-group">
-          <%= f.label :date, "Date", class: "input-group-label" %>
-          <%= f.text_field :date, id:'absent_date', class: "input-group-field" %>
-        </div>
+        <%= render partial: 'helper_fields/date', locals: {form: f, field: :date, label: "Date"} %>
       </div>
       <div class="columns large-6 ">
-        <div class=" input-group">
-          <%= f.label :time, "Time", class: "input-group-label", id: "absent_time_label" %>
-          <%= f.text_field :time, type: "time", class: "input-group-field" %>
-        </div>
+        <%= render partial: 'helper_fields/time', locals: {form: f, field: :time, label: "Time"} %>
       </div>
     </div>
 
