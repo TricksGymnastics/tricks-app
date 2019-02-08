@@ -22,15 +22,20 @@
             <div class="columns small-12" style="text-align: center;">
               <ul style="list-style-type: none;">
                 <li style="text-decoration: underline; font-size: 20px;">Class times vary per studio:</li>
-                <li>Granite Bay: <%= party.granite_bay_start_time.strftime("%l:%M %p") + " - " + party.granite_bay_start_time.advance(minutes: party.granite_bay_duration).strftime("%l:%M %p") %></li>
-                <li>Folsom: <%= party.folsom_start_time.strftime("%l:%M %p") + " - " + party.folsom_start_time.advance(minutes: party.folsom_duration).strftime("%l:%M %p") %></li>
-                <li>Sacramento:<%= party.sacramento_start_time.strftime("%l:%M %p") + " - " + party.sacramento_start_time.advance(minutes: party.sacramento_duration).strftime("%l:%M %p") %></li>
+                <% if !party.granite_bay_start_time.nil? && !party.granite_bay_duration.nil? %>
+                  <li>Granite Bay: <%= party.granite_bay_start_time.strftime("%l:%M %p") + " - " + party.granite_bay_start_time.advance(minutes: party.granite_bay_duration).strftime("%l:%M %p") %></li>
+                <% end %>
+                <% if !party.folsom_start_time.nil? && !party.folsom_duration.nil? %>
+                  <li>Folsom: <%= party.folsom_start_time.strftime("%l:%M %p") + " - " + party.folsom_start_time.advance(minutes: party.folsom_duration).strftime("%l:%M %p") %></li>
+                <% end %>
+                <% if !party.sacramento_start_time.nil? && !party.sacramento_duration.nil? %>
+                  <li>Sacramento:<%= party.sacramento_start_time.strftime("%l:%M %p") + " - " + party.sacramento_start_time.advance(minutes: party.sacramento_duration).strftime("%l:%M %p") %></li>
+                <% end %>
               </ul>
             </div>
         </div>
     
-        <h5 style="color: #fa8aae;">Cost: $10 per child & bring a friend that's new to TRICKS for free!<br>
-  (*New friend must not be currently enrolled at any TRICKS location)</h5>
+        <h5 style="color: #fa8aae;">Cost: $10 per child</h5>
 
       
       <% end %>
