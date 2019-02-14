@@ -20,7 +20,7 @@ class KidsNightOutsController < ApplicationController
     @kids_night_out = KidsNightOut.new(kids_night_out_params)
 
     if @kids_night_out.save
-      redirect_to @kids_night_out, notice: 'Kids night out was successfully created.'
+      redirect_to kids_night_outs_path, notice: 'Kids night out was successfully created.'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class KidsNightOutsController < ApplicationController
   # PATCH/PUT /kids_night_outs/1
   def update
     if @kids_night_out.update(kids_night_out_params)
-      redirect_to @kids_night_out, notice: 'Kids night out was successfully updated.'
+      redirect_to kids_night_outs_path, notice: 'Kids night out was successfully updated.'
     else
       render :edit
     end
