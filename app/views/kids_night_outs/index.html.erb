@@ -1,0 +1,87 @@
+<% given_title = "Kids Night Out" %>
+<% given_bubbles = [10, 3] %>
+
+<% if defined? given_title %>
+  <% content_for :title do %>
+    <%= given_title %>
+  <% end %>
+<% end %>
+
+<% if defined? given_bubbles %>
+  <% update_bubbles(given_bubbles) %>
+<% end %>
+
+<% content_for :header_image do %>
+  <%#=  %>
+<% end %>
+
+
+<style>
+  }
+  h4, h5{
+    text-align: center;
+  }
+</style>
+
+<div class="row">
+    <div class="columns small-12" style="margin-top: 50px;">
+        <h1>Kids Night Out</h1> 
+        <% if can? :manage, KidsNightOut %>
+            <div class="row align-center" style="margin-top: 30px;">
+                <div class="columns small-6">
+                    <%= link_to "Add Kids Night Out", new_kids_night_out_path, class: "button expanded" %>
+                </div>
+            </div>
+        <% end %>
+        <p style="font-size: 24px; font-family: TrebuchetMSRegular; margin-top: 30px;">Hey Kids! Do you want a fun-filled night with a bounce house, high energy games, crafts, crazy obstacles and super fun coaches? Then TRICKS is the place for you! Join us this month for KIDS NIGHT OUT. Ages 3 to 11 (children must be potty-trained)</p>
+    </div>
+    
+    <div class="columns small-12" style="margin-top: 25px">
+        <h3>Register Here!</h3>
+        <div class="row align-center">
+            <div class="columns small-11 large-4">
+                <%= link_to "Granite Bay", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=GB&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+            </div>
+            <div class="columns small-11 large-4">
+                <%= link_to "Folsom", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=FOL&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+            </div>
+            <div class="columns small-11 large-4">
+                <%= link_to "Sacramento", "http://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date Night&loc=SAC&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+            </div>
+        </div>
+    </div>
+</div>
+<% first=true%>
+<% @kids_night_outs.each do |kno| %>  
+    <% if first %> 
+        <div class="row align-center">
+            <div class="column small-12" style="margin-top: 30px;">   
+               
+                <% unless kno.image == nil %>
+                    <%= image_tag(kno.image_url, style:"box-shadow: 0 0 20px #222; width: 100%") %>
+                <% end %>
+                <% if can? :manage, KidsNightOut %>
+                        <br><br><%= link_to "Edit", edit_kids_night_out_path(kno), class:"button expanded"%>
+                <% end %>
+            </div>
+        </div>
+        <% first=false %>
+    <% else %>
+        <div class="row" style="border: solid 3px #1779ba; border-radius: 10px; margin: 30px 0px 0px 0px; padding: 15px;">
+            <div class="column small-12">
+                <h4><%= kno.title %> 
+                    <% if can? :manage, KidsNightOut %>
+                        (<%= link_to "Edit", edit_kids_night_out_path(kno)%>)
+                    <% end %>
+                </h4> 
+                <p style="text-align: justify;"><%= kno.details %></li> 
+                <p>
+                <b>Date: <%= kno.date.strftime("%B %e, %Y") %> </b>
+                <br>Sacramento: <%= kno.sac_time.strftime("%l:%M%P") %>
+                <br>Granite Bay: <%= kno.gb_time.strftime("%l:%M%P") %>
+                <br>Folsom: <%= kno.fol_time.strftime("%l:%M%P") %>
+                </p>
+            </div>
+        </div>
+    <% end %>
+<% end %>
