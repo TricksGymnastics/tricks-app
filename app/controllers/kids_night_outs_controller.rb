@@ -1,13 +1,9 @@
 class KidsNightOutsController < ApplicationController
-  before_action :set_kids_night_out, only: [:show, :edit, :update, :destroy]
+  before_action :set_kids_night_out, only: [:edit, :update, :destroy]
 
   # GET /kids_night_outs
   def index
     @kids_night_outs = KidsNightOut.where("date >= ?", Date.today).order(:date)
-  end
-
-  # GET /kids_night_outs/1
-  def show
   end
 
   # GET /kids_night_outs/new
