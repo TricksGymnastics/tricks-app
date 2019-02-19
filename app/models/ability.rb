@@ -39,7 +39,6 @@ class Ability
 			can :manage, PromoSlide
 			can :manage, User
 			can :manage, Datenight
-			can :manage, World
 			can :manage, TricksUCategory
 			can :manage, TricksUVideo
 			can :manage, DiscontinueNotice
@@ -64,8 +63,6 @@ class Ability
 			can :manage, DiscontinueNotice
 			can :read, WebsitePdf
 			can :create, WebsitePdf
-			can :read, World
-			can :create, World
 			can :read, TricksUVideo
 			can :show, TricksUCategory
 			cannot :destroy, Survey
@@ -97,7 +94,6 @@ class Ability
 			can :create, RecitalAd
 			can :create, SurveyResult
 			can :read, Survey
-			can :create, World
 			can :read, Level
 			can :create, DiscontinueNotice
 			can :create, EmploymentApplication
