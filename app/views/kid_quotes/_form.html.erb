@@ -11,20 +11,18 @@
         </ul>
       </div>
     <% end %>
+    <div class="row align-center">
+      <div class="columns small-11 large-8">
+        <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :quote} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :name, placeholder: "If unknown, make one up"} %>
+        <%= render partial: 'helper_fields/number', locals: {form: f, field: :age, min: 0} %>
+      </div>
+      
+      <div class="columns small-11 large-8">
+        <%= f.submit "Submit", class: "button expanded" %>
+      </div>
+    </div>
 
-    <div class="field">
-      <%= f.label :quote %><br>
-      <%= f.text_area :quote %>
-    </div>
-    
-    <%= render partial: 'helper_fields/text', locals: {form: f, field: :name, placeholder: "If unknown, make one up"} %>
-    
-    <div class="field">
-      <%= f.label :age %><br>
-      <%= f.number_field :age, :min => 0 %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
   <% end %>
 </div>

@@ -19,10 +19,7 @@
           <%= render partial: 'helper_fields/text', locals: {form: f, field: :name, label: "First Name"} %>
         </div>
         <div class="columns large-4 ">
-          <div class="input-group">
-            <%= f.label :email, class: "input-group-label" %>
-            <%= f.email_field :email, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/email', locals: {form: f, field: :email} %>
         </div>
         <div class="columns large-4 ">
           <%= render partial: 'helper_fields/select', locals: {form: f, field: :activity, options: ['Gymnastics', 'TAG', 'Dance', "Swim"], prompt: "Select an Activity"} %>
@@ -31,18 +28,14 @@
       
       <div class="row">
         <div class="columns large-12 ">
-          <%= f.label :comment, class: "input-group-label" %>
-          <%= f.text_area :comment, placeholder: "Let us know how we are doing\n\nIf you are having an issue with billing please call your gym directly", style: "height: 200px" %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :comment, required: false, placeholder: "Let us know how we are doing\n\nIf you are having an issue with billing please call your gym directly", height: 200} %>
         </div>
       </div>
       
       <% if can? :update, @comment %>
         <div class="row align-center">
           <div class="columns large-4 small-10">
-            <div class="input-group">
-              <%= f.label :score, class: "input-group-label" %>
-              <%= f.number_field :score, :min => 0, :max => 10, class: "input-group-field" %>
-            </div>
+            <%= render partial: 'helper_fields/number', locals: {form: f, field: :score, min: 0, max: 10} %>
           </div>
         </div>
       <% end %>
@@ -56,12 +49,8 @@
             <% end %>
           </div>
         </div>
-      
     </div>
   </div>
-   
-
-    
-    
+  
   <% end %>
 </div>

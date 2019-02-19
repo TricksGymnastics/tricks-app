@@ -16,8 +16,17 @@
 <% if !defined? required %>
     <% required = false %>
 <% end %>
+<% if !defined? min %>
+    <% min = "" %>
+<% end %>
+<% if !defined? max %>
+    <% max = "" %>
+<% end %>
+<% if !defined? value %>
+    <% value = form.object.send(field) %>
+<% end %>
 
 <div class="input-group">
     <%= form.label field, label, class: "input-group-label" %>
-    <%= form.number_field field, required: required, class: "input-group-field" %>
+    <%= form.number_field field, value: value, min: min, max: max, required: required, class: "input-group-field" %>
 </div>

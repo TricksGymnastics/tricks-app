@@ -1,6 +1,3 @@
-<%#= include_wysiwyg %>
-
-
 <%= form_for(@party) do |f| %>
   <% if @party.errors.any? %>
     <div id="error_explanation">
@@ -39,16 +36,13 @@
           <%= render partial: 'helper_fields/color_picker', locals: {form: f, field: :color, label: "Bar Color"} %>
         </div>
         <div class="columns large-6 ">
-          <div class="input-group">
-            <%= f.label :sort_order, "Order", class: "input-group-label" %>
-            <%= f.number_field :sort_order, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/number', locals: {form: f, field: :sort_order, label: "Order"} %>
         </div>
       </div>
       
       <div class="row align-center" style="margin-bottom: 50px;">
-        <div class="columns small-12 large-12">
-          <%= f.text_area :description, style: "height: 300px;" %>
+        <div class="columns small-12">
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :description, height: 300} %>
         </div>
       </div>
     

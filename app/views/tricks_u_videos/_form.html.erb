@@ -11,26 +11,23 @@
     </div>
   <% end %>
 
-  <div style="margin: 20px 50px">
-    <div class="field">
+  <div class="row align-center">
+    <div class="columns small-12 large-5">
       <%= render partial: 'helper_fields/text', locals: {form: f, field: :title, required: true} %>
     </div>
-    <div class="field">
+    <div class="columns small-12 large-5">
       <%= render partial: 'helper_fields/text', locals: {form: f, field: :url, required: true} %>
     </div>
-    
-    <div class="field">
+    <div class="columns small-12 large-5">
       <%= render partial: 'helper_fields/select', locals: {form: f, field: :category_id, options: options_from_collection_for_select(TricksUCategory.all, :id, :title), label: "Category"} %>
     </div>
-    <div class="field">
-      <%= f.label :weight, "Weight" %><br />
-      <%= f.number_field :weight %>
+    <div class="columns small-12 large-5">
+      <%= render partial: 'helper_fields/number', locals: {form: f, field: :weight} %>
     </div>
-    <br><br>
-    <div class="row align-center" style="margin-bottom: 100px; margin-top: 50px;">
-      <div class="columns small-8">
-        <%= f.submit class: "button expanded" %>
-      </div>
+  </div>
+  <div class="row align-center" style="margin-bottom: 100px; margin-top: 50px;">
+    <div class="columns small-8">
+      <%= f.submit class: "button expanded" %>
     </div>
   </div>
 <% end %>

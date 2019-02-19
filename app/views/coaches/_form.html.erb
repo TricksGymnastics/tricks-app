@@ -19,18 +19,10 @@
         
         <div class="row">
           <div class="columns large-2 ">
-            <%= image_tag(@coach.image_url(:thumb).to_s, style: "width: 100%; margin-bottom: 15px;") %>
-            
-            <%= f.label :image, "Upload Image", class: "button expanded success" %>
-            <%= f.file_field :image, class: "show-for-sr" %>
-            
-            <% if @coach.image_url != "/assets/boy_default.jpg" && @coach.image_url != "/assets/girl_default.jpg" %>
-              <%= f.check_box :remove_image %> Remove Picture
-            <% end %>
+            <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @coach.image.thumb} %>
           </div>
           <div class="columns">
             <div class="row">
-              
               <div class="columns large-4 ">
                 <%= render partial: 'helper_fields/text', locals: {form: f, field: :firstname, label: "First Name"} %>
               </div>
@@ -41,10 +33,7 @@
                 <p class="help-text">(Not Displayed unless logged in)</p>
               </div>
               <div class="columns large-4 ">
-                <div class="input-group">
-                  <%= f.label :current_employee, "Current Employee", class: "input-group-label" %>
-                  <%= f.check_box :current_employee, style: "margin-left: 15px;", class: "input-group-field" %>
-                </div>
+                <%= render partial: 'helper_fields/switch', locals: {form: f, field: :current_employee, question: "Current Employee?"} %>
               </div>
             </div>
             
@@ -107,35 +96,15 @@
                 </div>
               </div>
             </div>
+            
             <div class="row" style="margin-bottom: 15px;">
-              <div class="columns large-4 " id="tag_image_container">
+              <div class="columns large-8 " id="tag_image_container">
                 <div class="row">
-                  <% if @coach.tag_image_url != "/assets/boy_default.jpg" && @coach.tag_image_url != "/assets/girl_default.jpg" %>
-                    <div class="columns large-4">
-                      <%= image_tag @coach.tag_image_url %>
-                    </div>
-                    <div class="columns">
-                      <div class="input-group">
-                        <div>
-                          <%= f.label :tag_image, "Upload TAG Image", class: "button success" %>
-                          <%= f.file_field :tag_image, class: "show-for-sr" %><br>
-                          
-                          <%= f.check_box :remove_tag_image %> Remove Picture
-                        </div>
-                      </div>
-                    </div>
-                  <% else %>
-                    <div class="columns">
-                      <div class="input-group">
-                        <div>
-                          <%= f.label :tag_image, "Upload TAG Image", class: "button success" %>
-                          <%= f.file_field :tag_image, class: "show-for-sr" %><br>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
+                  <div class="columns large-4">
+                    <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :tag_image, image: @coach.tag_image} %>
+                  </div>
                 </div>
-              </div>              
+              </div>
             </div>
           </div>
         </div>

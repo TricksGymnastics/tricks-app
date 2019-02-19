@@ -22,7 +22,7 @@
  
   <div class="row">
     <div class="columns small-4 ">
-      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image_url: @bff_dance_party.image_url} %>
+      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @bff_dance_party.image} %>
     </div>
     <div class="columns small-8">
       <%= render partial: 'helper_fields/text', locals: {form: f, field: :suggestion, label: "Suggestion", placeholder: "Students can wear Frozen outfit/costumes to the party!"} %>

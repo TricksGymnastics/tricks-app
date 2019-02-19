@@ -16,8 +16,8 @@
 <% if defined? label && label.nil? %>
     <% label = "Upload Image" %>
 <% end %>
-<% if !defined? image_url %>
-    <% image_url = nil %>
+<% if !defined? image %>
+    <% image = nil %>
 <% end %>
 <% if !defined? required %>
     <% required = false %>
@@ -29,14 +29,27 @@
     <% classes = "button expanded" %>
 <% end %>
 
-<% if !image_url.nil? %>
-<%= image_tag image_url %>
-<div style="border: solid 1px #ccc; padding: 10px; margin-bottom: 1rem;">
-<% end %>
-    <%= form.label field, label, class: classes %>
-    <%= form.file_field field, required: required, disabled: disabled, class: "show-for-sr" %>
-    <% if !image_url.nil? %>
-    <style>table{margin-bottom: 0;}</style>
-    <%= render partial: 'helper_fields/switch', locals: {form: form, field: :remove_image, question: "Remove Image?"} %>
-</div>
+
+<%# eventually need to incorporate logic to handle default images %>
+<%# if @coach.image_url != "/assets/boy_default.jpg" && @coach.image_url != "/assets/girl_default.jpg" %>
+<% valid_image = false %>
+<% if !image.nil? %>
+    <% if !image.file.nil? %>
+        <% if image.file.exists? %>
+            <% valid_image = true %>
+        <% end %>
     <% end %>
+<% end %>
+
+<% if valid_image %>
+    <%= image_tag image.url %>
+    <div style="border: solid 1px #ccc; padding: 10px; margin-bottom: 1rem;">
+    <%= render partial: 'helper_fields/switch', locals: {form: form, field: :remove_image, question: "Remove Image?"} %>
+<% end %>
+    
+    <%= form.label field, label, class: classes, style: "margin-bottom: 0;" %>
+    <%= form.file_field field, required: required, disabled: disabled, class: "show-for-sr" %>
+    
+<% if valid_image %>
+</div>
+<% end %>

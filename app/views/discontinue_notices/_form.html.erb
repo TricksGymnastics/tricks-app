@@ -17,8 +17,7 @@
 
   <div class="row">
     <div class="columns large-12 ">
-      <%= f.label :reason, "Reason for Discontinuing", class: "input-group-label" %>
-      <%= f.text_area :reason, required: true, placeholder: "Please be helpful", maxlength: 255, style: "height: 120px" %>
+      <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :reason, question: "Reason for Discontinuing", required: true, placeholder: "Please try to be helpful", height: 120, maxlength: 225} %>
     </div>
   </div>
 
@@ -55,14 +54,9 @@
     </div>
   </div>
   
-  
- 
   <div class="row">
-    <div class="columns shrink">
-      <%= f.check_box :understood, required: true %>
-    </div>
     <div class="columns">
-      <%= f.label :understood, "I understand that my account must be at a zero (0) balance and that make-ups can only be used on an enrolled family member." %>
+      <%= render partial: 'helper_fields/switch', locals: {form: f, field: :understood, question: "I understand that my account must be at a zero (0) balance and that make-ups can only be used on an enrolled family member.", required: true} %>
     </div>
   </div>
   

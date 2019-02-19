@@ -2,12 +2,15 @@
     Required locals:
     form
     field
-    question
     
     Optional locals:
+    question
     default
 %>
 
+<% if !defined? question %>
+    <% question = "" %>
+<% end %>
 <% if !defined? default %>
     <% default = false %>
 <% end %>

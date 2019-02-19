@@ -55,8 +55,7 @@
         <%= render partial: 'helper_fields/switch', locals: {form: f, field: :participating, question: "Will your child be participating in the "+Time.now.year.to_s+" Summer Recital?"} %>
       </div>
       <div class="columns small-12 input-group">
-        <%= f.label :total_recitals, "How many TRICKS Summer Recitals has your dancer participated in (including this show)?", class: "input-group-label" %>
-        <%= f.number_field :total_recitals, value: 1, in: 1...16, step: 1, class: "input-group-field", required: true %>
+        <%= render partial: 'helper_fields/number', locals: {form: f, field: :total_recitals, label: "How many TRICKS Summer Recitals has your dancer participated in (including this show)?", required: true, min: 1, max: 16} %>
       </div>
       <div class="columns small-12">
         <%# Would be nice to find a way to force a user to acknowledge this field instead of having it accidentally left as default %>

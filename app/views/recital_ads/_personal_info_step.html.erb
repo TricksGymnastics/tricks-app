@@ -27,25 +27,13 @@
       </div>
     </div>
     
-    <!--<div class="row">-->
-    <!--  <div class="columns small-12">-->
-    <!--    <div class=" input-group">-->
-    <!--      <%#= f.label :email, class: "input-group-label" %>-->
-    <!--      <%#= f.email_field :email, class: "input-group-field" %>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--</div>-->
-    
-    
-    
     <% unless @recital_ad.recital_ad_type.pdf_file? %> 
       <%= javascript_tag do %>
         window.word_max = "<%= @recital_ad.recital_ad_type.word_max %>";
       <% end %>
       <div class="row">
         <div class="columns small-12">
-          <%= f.label :message, ("Message " + "(<span id='count_number_words'>0</span>/" + @recital_ad.recital_ad_type.word_max.to_s + ")").html_safe, class: "input-group-label" %>
-          <%= f.text_area :message, size: "40x6", onkeypress: "return check_length(this, document.getElementById('count_number_words'));", placeholder: "Please enter your message" %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :message, question: ("Message " + "(<span id='count_number_words'>0</span>/" + @recital_ad.recital_ad_type.word_max.to_s + ")").html_safe, height: 160, onkeypress: "return check_length(this, document.getElementById('count_number_words'));", placeholder: "Please enter your message"} %>
         </div>
       </div>
     <% end %>
@@ -54,7 +42,7 @@
       <% if @recital_ad.recital_ad_type.image? %>
         <div class="row align-center">
           <div class="columns small-6">
-            <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image_url: @recital_ad.image_url} %>
+            <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @recital_ad.image} %>
           </div>
         </div>
       <% end %>
