@@ -16,10 +16,7 @@
     <div class="columns large-10 ">
       <div class="row">
         <div class="columns large-4 ">
-          <div class="input-group">
-            <%= f.label :name, "First Name", class: "input-group-label" %>
-            <%= f.text_field :name, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :name, label: "First Name"} %>
         </div>
         <div class="columns large-4 ">
           <div class="input-group">
@@ -28,10 +25,7 @@
           </div>
         </div>
         <div class="columns large-4 ">
-          <div class="input-group">
-            <%= f.label :activity, class: "input-group-label" %>
-            <%= f.select :activity, ['Gymnastics', 'TAG', 'Dance', "Swim"], :prompt => "Select an Activity", class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/select', locals: {form: f, field: :activity, options: ['Gymnastics', 'TAG', 'Dance', "Swim"], prompt: "Select an Activity"} %>
         </div>
       </div>
       

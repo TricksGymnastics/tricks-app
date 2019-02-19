@@ -13,16 +13,14 @@
 
   <div style="margin: 20px 50px">
     <div class="field">
-      <%= f.label :title, "Title" %><br />
-      <%= f.text_field :title, required: true %>
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :title, required: true} %>
     </div>
     <div class="field">
-      <%= f.label :url %><br />
-      <%= f.text_field :url, required: true %>
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :url, required: true} %>
     </div>
+    
     <div class="field">
-      <%= f.label :category_id, "Category" %><br />
-      <%= f.select :category_id, options_from_collection_for_select(TricksUCategory.all, :id, :title) %>
+      <%= render partial: 'helper_fields/select', locals: {form: f, field: :category_id, options: options_from_collection_for_select(TricksUCategory.all, :id, :title), label: "Category"} %>
     </div>
     <div class="field">
       <%= f.label :weight, "Weight" %><br />

@@ -1,6 +1,4 @@
 jQuery ->
-  $('#party_color').minicolors()
-  
   $('.accordion-title.party-panel').on 'click', (event) ->
     event.preventDefault()
     party_id = $(event.target).data("id")

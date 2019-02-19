@@ -15,7 +15,7 @@
 
 
 <div class="row align-center">
-  <div class="columns large-10 small-12" style="text-align: center;">
+  <div class="columns large-11 small-12" style="text-align: center;">
     <p>We’re excited to have you join us for our <%= Time.now.year %> Summer Recital!<br>
     <% pdf = WebsitePdf.where(file_name: "Tricks_Recital_Packet").first %>
     <% if !pdf.nil? %>
@@ -41,42 +41,36 @@
     Folsom: 916-351-0024 or email us at <%= mail_to "tricksfol@gmail.com", "tricksfol@gmail.com", subject:"Question about Recital Sign Ups" %><br>
     Sacramento: 916-481-4496 or email us at <%= mail_to "trickssac@gmail.com", "trickssac@gmail.com", subject:"Question about Recital Sign Ups" %></p>
     <div class="row" style="text-align:left; margin-top: 50px;">
-      <% yes_no = [['No', 0], ['Yes', 1]] %>
-      <div class="columns medium-6 small-12 input-group">
-        <%= f.label :child_first_name, "Child's First Name", class: "input-group-label" %>
-        <%= f.text_field :child_first_name, required: true, class: "input-group-field" %>
+      <div class="columns medium-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :child_first_name, label: "Child's First Name", required: true} %>
       </div>
-      <div class="columns medium-6 small-12 input-group">
-        <%= f.label :child_last_name, "Child's Last Name", class: "input-group-label" %>
-        <%= f.text_field :child_last_name, required: true, class: "input-group-field" %>
+      <div class="columns medium-4 small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :child_last_name, label: "Child's Last Name", required: true} %>
       </div>
-      <div class="columns medium-6 small-12 input-group">
-        <%= f.label :location, class: "input-group-label" %>
-        <%= f.select :location, Absent::LOCATIONS, {:prompt => "Select a Location"}, {:required => true, class: "input-group-field"} %>
+      <div class="columns medium-4 small-12">
+        <%= render partial: 'helper_fields/select', locals: {form: f, field: :location, options: Absent::LOCATIONS, prompt: "Select a Location", required: true} %>
       </div>
-      <div class="columns medium-6 small-12 input-group">
-        <%= f.label :participating, "Will your child be participating in the "+Time.now.year.to_s+" Summer Recital?", class: "input-group-label" %>
-        <%= f.select :participating, yes_no, {:include_blank => false}, {:required => true, class: "input-group-field"} %>
+      <div class="columns small-12">
+        <%# Would be nice to find a way to force a user to acknowledge this field instead of having it accidentally left as default %>
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :participating, question: "Will your child be participating in the "+Time.now.year.to_s+" Summer Recital?"} %>
       </div>
       <div class="columns small-12 input-group">
         <%= f.label :total_recitals, "How many TRICKS Summer Recitals has your dancer participated in (including this show)?", class: "input-group-label" %>
         <%= f.number_field :total_recitals, value: 1, in: 1...16, step: 1, class: "input-group-field", required: true %>
       </div>
-      <div class="columns medium-6 small-12 input-group">
-        <%= f.label :multiple_recitals, "Is your dancer performing in more than one dance?", class: "input-group-label" %>
-        <%= f.select :multiple_recitals, yes_no, {:include_blank => true}, {:required => true, class: "input-group-field"} %>
+      <div class="columns small-12">
+        <%# Would be nice to find a way to force a user to acknowledge this field instead of having it accidentally left as default %>
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :multiple_recitals, question: "Is your dancer performing in more than one dance?"} %>
       </div>
-      <div class="columns medium-6 small-12 input-group">
-        <%= f.label :multiple_children, "Do you have more than one child participating in the recital?", class: "input-group-label" %>
-        <%= f.select :multiple_children, yes_no, {:include_blank => true}, {:required => true, class: "input-group-field"} %>
+      <div class="columns small-12">
+        <%# Would be nice to find a way to force a user to acknowledge this field instead of having it accidentally left as default %>
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :multiple_children, question: "Do you have more than one child participating in the recital?"} %>
       </div>
-      <div class="columns small-12 input-group">
-        <%= f.label :costume_fee_agreement, "I understand that my credit card will be charged a non-refundable costume fee of $57 ($67 ages 8+) on April 1, 2017", class: "input-group-label" %>
-        <%= f.text_field :costume_fee_agreement, placeholder: "Your Initials", required: true, class: "input-group-field" %>
+      <div class="columns small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :costume_fee_agreement, label: "I understand that my credit card will be charged a non-refundable costume fee of $57 ($67 ages 8+) on April 1, 2017", required: true, placeholder: "Your Initials"} %>
       </div>
-      <div class="columns small-12 input-group">
-        <%= f.label :recital_fee_agreement, "I understand or authorize my credit card to be charged a recital fee of $40 ($60 for family) on May 1, 2017", class: "input-group-label" %>
-        <%= f.text_field :recital_fee_agreement, placeholder: "Your Initials", required: true, class: "input-group-field" %>
+      <div class="columns small-12">
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :recital_fee_agreement, label: "I understand or authorize my credit card to be charged a recital fee of $40 ($60 for family) on May 1, 2017", required: true, placeholder: "Your Initials"} %>
       </div>
     </div>
     <div class="actions" style="margin-top: 50px;">

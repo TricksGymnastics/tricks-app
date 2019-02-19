@@ -10,6 +10,9 @@
     maxlength
     height
 %>
+
+<%#= render partial: 'helper_fields/text_area', locals: {form: f, field: :previous_office_experience, question: "Have you had any experience working in an office? If yes, please explain:", required: false} %>
+
 <% if !defined? placeholder %>
     <% placeholder = "" %>
 <% end %>

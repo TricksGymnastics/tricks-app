@@ -13,14 +13,6 @@ jQuery ->
       $('#absent_level_id').empty()
       $('#absent_level_id').prop("disabled", true)
 
-  $('#absent_date').datepicker({dateFormat: 'MM d, yy'})
-  
-
-
-
-
-
-
 
 
   ###

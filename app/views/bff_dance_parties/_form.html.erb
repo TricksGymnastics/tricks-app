@@ -13,76 +13,46 @@
   
   <div class="row">
     <div class="columns small-8">
-      <div class=" input-group">
-        <%= f.label :name, "Party Name", class: "input-group-label" %>
-        <%= f.text_field :name, class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :name, label: "Party"} %>
     </div>
     <div class="columns small-4 ">
-      <div class=" input-group">
-        <%= f.label :date, "Date", class: "input-group-label" %>
-        <%= f.text_field :date, id:'bff_dance_party_date', class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/date', locals: {form: f, field: :date, label: "Date"} %>
     </div>
   </div>
  
   <div class="row">
     <div class="columns small-4 ">
-      <div class="input-group">
-        <%= f.label :image, "Upload Image", class: "button expanded success" %>
-        <%= f.file_field :image, class: "show-for-sr" %>
-      </div>
+      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image_url: @bff_dance_party.image_url} %>
     </div>
     <div class="columns small-8">
-      <div class=" input-group">
-        <%= f.label :suggestion, "Suggestion", class: "input-group-label" %>
-        <%= f.text_field :suggestion, placeholder: "Students can wear Frozen outfit/costumes to the party!", class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :suggestion, label: "Suggestion", placeholder: "Students can wear Frozen outfit/costumes to the party!"} %>
     </div>
   </div>
   
   <div class="row">
     <div class="columns small-6 ">
-      <div class=" input-group">
-        <%= f.label :granite_bay_start_time, "Granite Bay Start Time", class: "input-group-label", id: "bff_dance_party_granite_bay_start_time" %>
-        <%= f.text_field :granite_bay_start_time, type: "time", class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/time', locals: {form: f, field: :granite_bay_start_time, label: "Granite Bay Start Time"} %>
     </div>
     <div class="columns small-6 ">
-      <div class="input-group">
-        <%= f.label :granite_bay_duration, "Duration", class: "input-group-label" %>
-        <%= f.number_field :granite_bay_duration, class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/number', locals: {form: f, field: :granite_bay_duration, label: "Duration"} %>
     </div>
   </div>
   
   <div class="row">
     <div class="columns small-6 ">
-      <div class=" input-group">
-        <%= f.label :folsom_start_time, "Folsom Start Time", class: "input-group-label", id: "bff_dance_party_folsom_start_time" %>
-        <%= f.text_field :folsom_start_time, type: "time", class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/time', locals: {form: f, field: :folsom_start_time, label: "Folsom Start Time"} %>
     </div>
     <div class="columns small-6 ">
-      <div class="input-group">
-        <%= f.label :folsom_duration, "Duration", class: "input-group-label" %>
-        <%= f.number_field :folsom_duration, class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/number', locals: {form: f, field: :folsom_duration, label: "Duration"} %>
     </div>
   </div>
   
   <div class="row">
     <div class="columns small-6 ">
-      <div class=" input-group">
-        <%= f.label :sacramento_start_time, "Sacramento Start Time", class: "input-group-label", id: "bff_dance_party_sacramento_start_time" %>
-        <%= f.text_field :sacramento_start_time, type: "time", class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/time', locals: {form: f, field: :sacramento_start_time, label: "Sacramento Start Time"} %>
     </div>
     <div class="columns small-6 ">
-      <div class="input-group">
-        <%= f.label :sacramento_duration, "Duration", class: "input-group-label" %>
-        <%= f.number_field :sacramento_duration, class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/number', locals: {form: f, field: :sacramento_duration, label: "Duration"} %>
     </div>
   </div>
   

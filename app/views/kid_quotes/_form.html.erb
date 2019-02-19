@@ -16,10 +16,9 @@
       <%= f.label :quote %><br>
       <%= f.text_area :quote %>
     </div>
-    <div class="field">
-      <%= f.label :name, :placeholder => 'If unknown, make one up' %><br>
-      <%= f.text_field :name %>
-    </div>
+    
+    <%= render partial: 'helper_fields/text', locals: {form: f, field: :name, placeholder: "If unknown, make one up"} %>
+    
     <div class="field">
       <%= f.label :age %><br>
       <%= f.number_field :age, :min => 0 %>

@@ -16,7 +16,6 @@ class Ability
 		#Comment
 		#KidQuote
 		#User
-		#Schedule
 		#Level
 		#Coach
 		#RecitalAd
@@ -32,7 +31,6 @@ class Ability
 		if user.role == "admin" #, Barbara Jo, Vern
 			can :manage, Comment
 			can :manage, KidQuote
-			can :manage, Schedule
 			can :manage, Level
 			can :manage, Coach
 			can :manage, RecitalAd
@@ -57,7 +55,6 @@ class Ability
 		if user.role == "moderator" #Managers, Office Staff
 			can :manage, Comment
 			can :manage, KidQuote
-			can :manage, Schedule
 			can :manage, Level
 			can :manage, Coach
 			can :manage, RecitalAd
@@ -96,7 +93,6 @@ class Ability
 			can :read, Comment
 			can :create, Comment
 			cannot :show, Comment
-			can :read, Schedule
 			can :read, Coach
 			can :create, RecitalAd
 			can :create, SurveyResult

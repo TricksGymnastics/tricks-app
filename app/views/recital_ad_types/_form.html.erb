@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= render partial: 'helper_fields/text', locals: {form: f, field: :name} %>
   </div>
 
   <div class="field">
@@ -27,8 +26,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :actual_size %><br>
-    <%= f.text_field :actual_size %>
+    <%= render partial: 'helper_fields/text', locals: {form: f, field: :actual_size} %>
   </div>
 
   <div class="field">

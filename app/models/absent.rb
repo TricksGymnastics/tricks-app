@@ -8,5 +8,5 @@ class Absent < ActiveRecord::Base
 
   LOCATIONS = [['Granite Bay', 0], ['Folsom', 1], ['Sacramento', 2]]
   HUMAN_LOCATIONS = ['Granite Bay', 'Folsom', 'Sacramento']
-
+  
 end

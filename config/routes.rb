@@ -27,7 +27,6 @@ Comments::Application.routes.draw do
 
   resources :comments
   resources :kid_quotes
-  # resources :schedules
   resources :coaches
   resources :users
   resources :sessions
@@ -39,7 +38,6 @@ Comments::Application.routes.draw do
   resources :survey_results
   resources :datenights
   resources :absents
-  resources :worlds
   resources :tricks_u_categories
   resources :tricks_u_videos
   resources :website_pdfs
@@ -54,7 +52,6 @@ Comments::Application.routes.draw do
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
-  # get 'whereintheworld', to: 'worlds#new'
   get 'tricksu', to: 'tricks_u_videos#index'
 
   get 'tricksu/:category' => "tricks_u_videos#index"

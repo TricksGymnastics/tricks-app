@@ -13,8 +13,7 @@
 
   <div style="margin: 20px 50px">
     <div class="field">
-      <%= f.label :title, "Title" %><br />
-      <%= f.text_field :title %>
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :title} %>
     </div>
     <div class="field">
       <%= f.label :weight, "Weight" %><br />

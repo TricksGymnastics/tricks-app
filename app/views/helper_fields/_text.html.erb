@@ -8,8 +8,10 @@
     placeholder
     required
     disabled
-    default
 %>
+
+<%#= render partial: 'helper_fields/text', locals: {form: f, field: :text} %>
+
 <% if !defined? label %>
     <% label = "" %>
 <% end %>
@@ -22,11 +24,8 @@
 <% if !defined? disabled %>
     <% disabled = false %>
 <% end %>
-<% if !defined? default %>
-    <% default = "" %>
-<% end %>
 
 <div class="input-group">
     <%= form.label field, label, class: "input-group-label" %>
-    <%= form.text_field field, required: required, value: default, placeholder: placeholder, disabled: disabled, class: "input-group-field" %>
+    <%= form.text_field field, required: required, placeholder: placeholder, disabled: disabled, class: "input-group-field" %>
 </div>

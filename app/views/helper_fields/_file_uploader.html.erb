@@ -1,0 +1,18 @@
+<%# 
+    Required locals:
+    form
+    field
+    
+    Optional locals:
+    label
+    required
+%>
+<% if !defined? label %>
+    <% label = "Upload" %>
+<% end %>
+<% if !defined? required %>
+    <% required = false %>
+<% end %>
+
+<%= form.label field, label, class: "button expanded" %>
+<%= form.file_field field, required: required, class: "show-for-sr" %>

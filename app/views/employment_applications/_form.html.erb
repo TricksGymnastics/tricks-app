@@ -73,7 +73,7 @@
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, label: "Last Name", placeholder: "Last Name", required: required_fields} %>
       </div>
       <div class="columns large-3 small-12">
-        <%= render partial: 'helper_fields/uploader', locals: {form: f, field: :image, label: "Upload Image (Optional)", object: @employment_application} %>
+        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, label: "Upload Image (Optional)"} %>
       </div>
       <div class="columns large-4 small-12">
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :email, label: "Email", placeholder: "tumblebunny@tricksgym.com", required: required_fields} %>
@@ -82,7 +82,7 @@
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :phone, label: "Phone", placeholder: "123-456-7890", required: required_fields} %>
       </div>
       <div class="columns large-4 small-6">
-        <%= render partial: 'helper_fields/uploader', locals: {form: f, field: :resume, label: "Upload Resume (PDF)", object: @employment_application} %>
+        <%= render partial: 'helper_fields/file_uploader', locals: {form: f, field: :resume, label: "Upload Resume (PDF)"} %>
       </div>
       <div class="columns large-12 small-12">
         <%= render partial: 'helper_fields/address', locals: {form: f, title: "Current Address", required: required_fields} %>

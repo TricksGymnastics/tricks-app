@@ -14,31 +14,19 @@
   <% end %>
 
   <div class="row align-center">
-    <div class="columns small-12 large-6">
-      <div class="input-group">
-        <%= f.label :title, class: "input-group-label" %>
-        <%= f.text_field :title, class: "input-group-field" %>
-      </div>
-    </div>
-    <div class="columns small-12 large-2">
-      <div class="input-group">
-        <%= f.label :image, "Upload Image", class: "button expanded" %>
-        <%= f.file_field :image, required: true, class: "show-for-sr" %>
-      </div>
+    <div class="columns small-10">
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :title} %>
     </div>
   </div>
   <div class="row align-center">
-    <div class="columns small-6 large-4">
-      <div class="input-group">
-        <%= f.label :registration_opens, class: "input-group-label" %>
-        <%= f.text_field :registration_opens, required: true, class: "input-group-field date_field" %>
-      </div>
+    <div class="columns small-5">
+      <%= render partial: 'helper_fields/date', locals: {form: f, field: :registration_opens, label: "Registration Opens", required: true} %>
     </div>
-    <div class="columns small-6 large-4">
-      <div class="input-group">
-        <%= f.label :registration_closes, class: "input-group-label" %>
-        <%= f.text_field :registration_closes, required: true, class: "input-group-field date_field" %>
-      </div>
+    <div class="columns small-5">
+      <%= render partial: 'helper_fields/date', locals: {form: f, field: :registration_closes, label: "Registration Closes", required: true} %>
+    </div>
+    <div class="columns small-10 large-6">
+      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, required: true, image_url: @camp.image_url} %>
     </div>
   </div>
   

@@ -32,15 +32,11 @@
             <div class="row">
               
               <div class="columns large-4 ">
-                <div class="input-group">
-                  <%= f.label :firstname, "First Name", class: "input-group-label" %>
-                  <%= f.text_field :firstname, class: "input-group-field" %>
-                </div>
+                <%= render partial: 'helper_fields/text', locals: {form: f, field: :firstname, label: "First Name"} %>
               </div>
               <div class="columns large-4 ">
                 <div class="input-group">
-                  <%= f.label :lastname, "Last Name", class: "input-group-label", "aria-describedby":"lastnameHelpText" %>
-                  <%= f.text_field :lastname, class: "input-group-field", "aria-describedby":"lastnameHelpText" %>
+                  <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, label: "Last Name"} %>
                 </div>
                 <p class="help-text">(Not Displayed unless logged in)</p>
               </div>
@@ -64,32 +60,20 @@
               </div>
               
               <div class="columns large-4 ">
-                <div class="input-group">
-                  <%= f.label :birthdate, class: "input-group-label" %>
-                  <%#= date_select("coach", "birthdate", :default => Date.today, :order => [:month, :day]) %>
-                  <%= f.text_field :birthdate, id:'birth_date', class: "input-group-field" %>
-                </div>
+                <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthdate} %>
               </div>
               
               <div class="columns large-4 ">
-                <div class="input-group">
-                  <%= f.label :startdate, "Start Date at Tricks:", class: "input-group-label" %>
-                  <%= f.text_field :startdate, :default => Date.today, id:'start_date', class: "input-group-field" %>
-                  <%#= date_select("coach", "startdate", :default => Date.today, :order => [:month, :day, :year], :start_year => 1990, :end_year => Date.today.year + 3) %>
-                </div>
+                <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthdate, label: "Start Date at Tricks:", default_date: Date.today} %>
               </div>
             </div>
             
             <div class="row">
               <div class="columns large-6 ">
-                <div class="input-group">
-                  <%= f.label :strengths, class: "input-group-label" %>
-                  <%= f.text_field :strengths, class: "input-group-field" %>
-                </div>
+                <%= render partial: 'helper_fields/text', locals: {form: f, field: :strengths} %>
               </div>
               <div class="columns large-6 ">
                 <div class="input-group">
-                  
                   <%= f.label :location_ids, "Locations:", class: "input-group-label" %>
                   <%= hidden_field_tag "coach[location_ids][]", nil %>
                   <% Location.all.each do |location| %>
@@ -221,25 +205,10 @@
         
         <div class="row">
           <div class="columns large-12">
-            <div class="input-group">
-              <%= f.label :fav_event, "Favorite Activity and Why:", class: "input-group-label" %>
-              <%= f.text_field :fav_event, class: "input-group-field" %>
-            </div>
-            
-            <div class="input-group">
-              <%= f.label :fav_skill, "Favorite Skill and Why:", class: "input-group-label" %>
-              <%= f.text_field :fav_skill, class: "input-group-field" %>
-            </div>
-            
-            <div class="input-group">
-              <%= f.label :fav_food, "Favorite Food:", class: "input-group-label" %>
-              <%= f.text_field :fav_food, class: "input-group-field" %>
-            </div>
-            
-            <div class="input-group">
-              <%= f.label :disney_char, "If you could be a Disney Character, who would you be?", class: "input-group-label" %>
-              <%= f.text_field :disney_char, class: "input-group-field" %>
-            </div>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_event, label: "Favorite Activity and Why:"} %>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_skill, label: "Favorite Skill and Why:"} %>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_food, label: "Favorite Food"} %>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :disney_char, label: "If you could be a Disney Character, who would you be?"} %>
             
             <%= f.label :experience, class: "input-group-label" %>
             <%= f.text_area :experience, style: "height: 150px" %>

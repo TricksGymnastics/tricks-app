@@ -1,7 +1,5 @@
 class Coach < ActiveRecord::Base
 	#attr_accessible :image, :firstname, :lastname, :gender, :location_ids, :level_ids, :classtype_ids, :experience, :fav_event, :fav_skill, :fav_food, :disney_char, :advice, :birthdate, :startdate, :remove_image, :strengths, :current_employee
-	has_many :schedules
-
 	has_many :coach_levels
 	has_many :levels, through: :coach_levels
 	accepts_nested_attributes_for :coach_levels

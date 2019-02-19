@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212064808) do
+ActiveRecord::Schema.define(version: 20190219055024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -363,20 +363,6 @@ ActiveRecord::Schema.define(version: 20181212064808) do
     t.datetime "updated_at",            null: false
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.string   "level",         limit: 255
-    t.string   "day",           limit: 255
-    t.string   "teacher",       limit: 255
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.string   "location",      limit: 255
-    t.integer  "level_id"
-    t.integer  "classtype_id"
-    t.time     "time"
-    t.boolean  "future_class",              default: false
-    t.boolean  "recital_class",             default: false
-  end
-
   create_table "survey_results", force: :cascade do |t|
     t.text     "result"
     t.integer  "survey_id"
@@ -424,16 +410,6 @@ ActiveRecord::Schema.define(version: 20181212064808) do
   create_table "website_pdfs", force: :cascade do |t|
     t.string   "file",       limit: 255
     t.string   "file_name",  limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "worlds", force: :cascade do |t|
-    t.string   "image",      limit: 255
-    t.string   "first_name", limit: 255
-    t.string   "last_name",  limit: 255
-    t.string   "location",   limit: 255
-    t.date     "date"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

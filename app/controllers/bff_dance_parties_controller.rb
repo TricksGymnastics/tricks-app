@@ -4,7 +4,6 @@ class BffDancePartiesController < ApplicationController
 
   # GET /bff_dance_parties
   def index
-    #Article.where("published_at >= ?", Time.current)
     @bff_dance_parties = BffDanceParty.where("date >= ?", Date.today).order(:date)
   end
 
