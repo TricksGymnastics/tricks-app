@@ -1,0 +1,21 @@
+<%# 
+    Required locals:
+    form
+    field
+    
+    Optional locals:
+    label
+%>
+
+<% if !defined? label %>
+    <% label = "" %>
+<% end %>
+
+<div class="input-group">
+    <%= form.label field, label, class: "input-group-label" %>
+    <%= form.text_field field, class: "input-group-field" %>
+</div>
+
+<script>
+    $('input:last').minicolors()
+</script>

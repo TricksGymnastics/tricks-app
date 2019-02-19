@@ -5,6 +5,6 @@ class RecitalSignupMailer < ApplicationMailer
     @subject = "Recital Signup for: " + @signup.child_first_name + " " + @signup.child_last_name
     to_address = get_location_email(Absent::LOCATIONS[@signup.location][0])
     
-    mail to: gym_email, subject: @subject
+    mail to: to_address, subject: @subject
   end
 end

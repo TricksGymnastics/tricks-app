@@ -80,7 +80,7 @@
           <%= render partial: 'helper_fields/select', locals: {form: f, field: :status, fieldname: "Status", options: EmploymentApplication::STATUS, required: true} %>
         </div>
         <div class="columns small-12 large-8">
-          <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment, label: "Comment: ", required: true, default: @employment_application.comment} %>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment, label: "Comment: ", required: true} %>
         </div>
         <div class="columns large-6 small-12">
           <% button_text = "Save" %>
@@ -88,7 +88,7 @@
           <% if !@employment_application.interview_date.nil? %>
             <% button_text = "Completed on: " + @employment_application.interview_date.in_time_zone.strftime("%B %d, %Y") %>
           <% end %>
-          <%= render partial: 'helper_fields/text', locals: {form: f, field: :interviewed_by, label: "Interviewed By: ", required: true, default: @employment_application.interviewed_by} %>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :interviewed_by, label: "Interviewed By: ", required: true} %>
         </div>
         <div class="columns large-6 small-12">
           <%= f.submit button_text, class: "button expanded" %>

@@ -7,11 +7,14 @@
     Optional locals:
     required
 %>
+<% if !defined? label %>
+    <% label = "" %>
+<% end %>
 <% if !defined? required %>
     <% required = false %>
 <% end %>
 
 <div class=" input-group">
   <%= form.label field, label, class: "input-group-label" %>
-  <%= form.text_field field, type: "time", required: required, class: "input-group-field" %>
+  <%= form.time_field field, required: required, class: "input-group-field" %>
 </div>

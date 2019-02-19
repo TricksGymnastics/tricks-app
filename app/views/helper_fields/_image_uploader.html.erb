@@ -1,0 +1,55 @@
+<%# 
+    Required locals:
+    form
+    field
+    
+    Optional locals:
+    image_url
+    classes
+    label
+    required
+    disabled
+%>
+
+<%#= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :text} %>
+
+<% if defined? label && label.nil? %>
+    <% label = "Upload Image" %>
+<% end %>
+<% if !defined? image %>
+    <% image = nil %>
+<% end %>
+<% if !defined? required %>
+    <% required = false %>
+<% end %>
+<% if !defined? disabled %>
+    <% disabled = false %>
+<% end %>
+<% if !defined? classes %>
+    <% classes = "button expanded" %>
+<% end %>
+
+
+<%# eventually need to incorporate logic to handle default images %>
+<%# if @coach.image_url != "/assets/boy_default.jpg" && @coach.image_url != "/assets/girl_default.jpg" %>
+<% valid_image = false %>
+<% if !image.nil? %>
+    <% if !image.file.nil? %>
+        <% if image.file.exists? %>
+            <% valid_image = true %>
+        <% end %>
+    <% end %>
+<% end %>
+
+<% if valid_image %>
+    <%= image_tag image.url %>
+    <div style="border: solid 1px #ccc; padding: 10px; margin-bottom: 1rem;">
+    <%= render partial: 'helper_fields/switch', locals: {form: form, field: :remove_image, question: "Remove Image?"} %>
+<% end %>
+    
+    <%= form.label field, label, class: classes, style: "margin-bottom: 0;" %>
+    <%= form.file_field field, required: required, disabled: disabled, class: "show-for-sr" %>
+    
+<% if valid_image %>
+</div>
+<% end %>

@@ -14,18 +14,12 @@
     
   <div class="row align-center">
     <div class="columns large-4 small-10">
-      <div class="input-group">
-        <%= f.label :file_name, "PDF Being Updated: ", class: "input-group-label" %>
-        <%= f.select :file_name, WebsitePdf::FILENAMES, :prompt => "Select a File Name", class: "input-group-field" %>
-      </div>
+      <%= render partial: 'helper_fields/select', locals: {form: f, field: :file_name, options: WebsitePdf::FILENAMES, label: "PDF Being Updated", prompt: "Select a File Name"} %>
     </div>
   </div>
   <div class="row align-center">
     <div class="columns large-4 small-10">
-      <div class="input-group">
-        <%= f.label :file, "Choose PDF", class: "button expanded success" %>
-        <%= f.file_field :file, class: "show-for-sr" %>
-      </div>
+      <%= render partial: 'helper_fields/file_uploader', locals: {form: f, field: :file, label: "Choose PDF"} %>
     </div>
   </div>
   <div class="row align-center">

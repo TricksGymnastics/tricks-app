@@ -11,40 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="row align-center">
+    <div class="columns small-12 large-4">
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :name} %>
+      </div>
+    <div class="columns small-12 large-4">
+      <%= render partial: 'helper_fields/number', locals: {form: f, field: :price} %>
+      </div>
+    <div class="columns small-12 large-4">
+      <%= render partial: 'helper_fields/number', locals: {form: f, field: :word_max} %>
+    </div>
+    <div class="columns small-12 large-4">
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :actual_size} %>
+    </div>
+    <div class="columns small-12 large-4">
+      <%= render partial: 'helper_fields/switch', locals: {form: f, field: :image} %>
+    </div>
+    <div class="columns small-12 large-4">
+      <%= render partial: 'helper_fields/switch', locals: {form: f, field: :pdf_file} %>
+    </div>
+    
+    <div class="columns small-6">
+      <%= f.submit "Submit", class: "button expanded" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :word_max %><br>
-    <%= f.number_field :word_max %>
-  </div>
-
-  <div class="field">
-    <%= f.label :actual_size %><br>
-    <%= f.text_field :actual_size %>
-  </div>
-
-  <div class="field">
-    <br><%= f.check_box :image %>
-    <%= f.label :image %>
-  </div>
-
-  <div class="field">
-    <%= f.check_box :pdf_file %>
-    <%= f.label :pdf_file %>
-  </div>
-
-  <br>
-
-  <div class="actions">
-    <%= f.submit :style => "padding: 3px 8px;" %>
-  </div>
-  <br>
+  
 <% end %>

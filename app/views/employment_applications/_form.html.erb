@@ -73,7 +73,7 @@
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, label: "Last Name", placeholder: "Last Name", required: required_fields} %>
       </div>
       <div class="columns large-3 small-12">
-        <%= render partial: 'helper_fields/uploader', locals: {form: f, field: :image, label: "Upload Image (Optional)", object: @employment_application} %>
+        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, label: "Upload Image (Optional)"} %>
       </div>
       <div class="columns large-4 small-12">
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :email, label: "Email", placeholder: "tumblebunny@tricksgym.com", required: required_fields} %>
@@ -82,7 +82,7 @@
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :phone, label: "Phone", placeholder: "123-456-7890", required: required_fields} %>
       </div>
       <div class="columns large-4 small-6">
-        <%= render partial: 'helper_fields/uploader', locals: {form: f, field: :resume, label: "Upload Resume (PDF)", object: @employment_application} %>
+        <%= render partial: 'helper_fields/file_uploader', locals: {form: f, field: :resume, label: "Upload Resume (PDF)"} %>
       </div>
       <div class="columns large-12 small-12">
         <%= render partial: 'helper_fields/address', locals: {form: f, title: "Current Address", required: required_fields} %>
@@ -118,27 +118,27 @@
     </div>
 			<div id="coach_questions" class="row">
         <div class="columns small-12">
-          <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :previous_experience, question: "Have you had any previous gymnastics/dance/swim experience? If yes, please explain:", required: false} %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :previous_experience, question: "Have you had any previous gymnastics/dance/swim experience? If yes, please explain:", required: false} %>
         </div>
         <div class="columns small-12">
-          <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :experience_with_children, question: "Do you have any experience working with children? If yes, please explain:", required: false} %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :experience_with_children, question: "Do you have any experience working with children? If yes, please explain:", required: false} %>
         </div>
       </div>
       
       <div id="hospitality_questions" class="row">
         <div class="columns small-12">
-          <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :previous_office_experience, question: "Have you had any experience working in an office? If yes, please explain:", required: false} %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :previous_office_experience, question: "Have you had any experience working in an office? If yes, please explain:", required: false} %>
         </div>
         <div class="columns small-12">
-          <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :customer_service_experience, question: "Do you have any experience in customer service? If yes, please explain:", required: false} %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :customer_service_experience, question: "Do you have any experience in customer service? If yes, please explain:", required: false} %>
         </div>
       </div>
       <div class="row">
         <div class="columns small-12">
-          <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :reason, question: "What prompted you to select TRICKS as a potential employer?", required: required_fields} %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :reason, question: "What prompted you to select TRICKS as a potential employer?", required: required_fields} %>
         </div>
         <div class="columns small-12">
-          <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :hobbies, question: "What are your hobbies and interests?", height: 60, required: required_fields} %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :hobbies, question: "What are your hobbies and interests?", height: 60, required: required_fields} %>
         </div>
       </div>
   </fieldset>
@@ -201,7 +201,7 @@
         <%= render partial: 'helper_fields/switch', locals: {form: f, field: :do_not_contact_employer, question: "Is it ok if we contact your previous employers?", default: true} %>
       </div>
       <div class="columns small-12" id="do_not_contact_reason_question">
-        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :do_not_contact_reason, question: "Why don't you want us to contact your previous employers?"} %>
+        <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :do_not_contact_reason, question: "Why don't you want us to contact your previous employers?"} %>
       </div>
     </div>
   </fieldset>
@@ -213,7 +213,7 @@
         <%= render partial: 'helper_fields/switch', locals: {form: f, field: :convicted, question: "Have you been convicted of a crime in the last 7 years?"} %>
       </div>
       <div class="columns small-12" id="convictions_question">
-        <%= render partial: 'helper_fields/textarea', locals: {form: f, field: :convictions, question: "List the convictions that are a matter of public record (arrests are not convictions). A conviction will not necessarily disqualify you for employment:"} %>
+        <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :convictions, question: "List the convictions that are a matter of public record (arrests are not convictions). A conviction will not necessarily disqualify you for employment:"} %>
       </div>
     </div>
   </fieldset>

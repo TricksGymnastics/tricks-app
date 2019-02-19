@@ -15,16 +15,10 @@
     <div class="columns large-8 ">
       <div class="row">
         <div class="columns large-6 ">
-          <div class="input-group">
-            <%= f.label :levelname, "Level", class: "input-group-label" %>
-            <%= f.text_field :levelname, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :levelname, label: "Level"} %>
         </div>
         <div class="columns large-6 ">
-          <div class="input-group">
-            <%= f.label :jack_rabbit_name, "Jackrabbit Name", class: "input-group-label" %>
-            <%= f.text_field :jack_rabbit_name, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :jack_rabbit_name, label: "Jackrabbit Name"} %>
         </div>
       </div>
       
@@ -36,74 +30,46 @@
           </div>
         </div>
         <div class="columns large-3 ">
-          <div class="input-group">
-            <%= f.label :age, class: "input-group-label" %>
-            <%= f.text_field :age, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :age, label: "Ages"} %>
         </div>
         <div class="columns large-3 ">
-          <div class="input-group">
-            <%= f.label :gender, class: "input-group-label" %>
-            <%= f.select :gender, ['Girls', 'Boys', 'Both'], :prompt => "Select a Gender", class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/select', locals: {form: f, field: :gender, options: ['Girls', 'Boys', 'Both'], prompt: "Select a Gender"} %>
         </div>
       </div>
       
       <div class="row">
         <div class="columns large-3 small-6">
-          <div class="input-group">
-            <%= f.label :length, class: "input-group-label" %>
-            <%= f.number_field :length, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/number', locals: {form: f, field: :length} %>
         </div>
         <div class="columns large-3 small-6">
-          <div class="input-group">
-            <%= f.label :price, class: "input-group-label" %>
-            <%= f.number_field :price, class: "input-group-field", value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), step: :any %>
-          </div>
+          <%= render partial: 'helper_fields/number', locals: {form: f, field: :price} %>
         </div>
         <div class="columns large-6 ">
-          <div class="input-group">
-            <%= f.label :show_registration, "Beginning Level Class", class: "input-group-label" %>
-            <%= f.check_box :show_registration, class: "input-group-field", style: "margin-left: 15px;" %>
-          </div>
+          <%= render partial: 'helper_fields/switch', locals: {form: f, field: :show_registration, question: "Beginning Level Class?"} %>
         </div>
       </div>
       <div class="row">
         <div class="columns large-6 ">
-          <div class="input-group">
-            <%= f.label :color, "Class Bar Color", class: "input-group-label" %>
-            <%= f.text_field :color, type: 'minicolors', class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/color_picker', locals: {form: f, field: :color, label: "Class Bar Color"} %>
         </div>
         <div class="columns large-6 ">
-          <div class="input-group">
-            <%= f.label :sort_order, class: "input-group-label" %>
-            <%= f.number_field :sort_order, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/number', locals: {form: f, field: :sort_order} %>
         </div>
       </div>
       
       
       <div class="row">
         <div class="columns large-6 ">
-          <div class="input-group">
-            <%= f.label :video_url, class: "input-group-label" %>
-            <%= f.text_field :video_url, class: "input-group-field" %>
-          </div>
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :video_url} %>
         </div>
         <div class="columns large-6 ">
-          <div class="input-group">
-            <%= f.label :image, "Upload Image", class: "button expanded" %>
-            <%= f.file_field :image, class: "show-for-sr" %>
-          </div>
+          <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @level.image} %>
         </div>
       </div>
         
       <div class="row">
         <div class="columns large-12 ">
-          <%= f.label :short_description, "Description", class: "input-group-label" %>
-          <%= f.text_area :short_description, placeholder: "Text describing what the class is about", style: "height: 150px" %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :short_description, question: "Description", placeholder: "Text describing what the class is about", height: 200} %>
         </div>
       </div>
 

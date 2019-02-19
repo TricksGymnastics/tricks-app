@@ -14,37 +14,34 @@
       </div>
     <% end %>
     
-		<div class="field">
-			<%= f.label :email %><br>
-			<%= f.email_field :email %>
+    <%= render partial: 'helper_fields/email', locals: {form: f, field: :email, required: true} %>
+    
+    <div class="input-group">
+			<%= f.label :password, class: "input-group-label" %>
+			<%= f.password_field :password, required: true, class: "input-group-field" %>
 		</div>
-		<div class="field">
-			<%= f.label :password %><br>
-			<%= f.password_field :password %>
+		
+    <div class="input-group">
+			<%= f.label :password_digest, "Password Confirmation", class: "input-group-label" %>
+			<%= f.password_field :password_confirmation, required: true, class: "input-group-field" %>
 		</div>
-		<div class="field">
-			<%= f.label :password_digest, "Password Confirmation" %><br>
-			<%= f.password_field :password_confirmation %>
-		</div>
-
+		
 
 		<% if can? :manage, @user %>
 			<div class="field">
-			    <%= f.label :role %><br>
-			    <%= f.radio_button :role, "superadmin" %>
-			    <%= label_tag(:role , "Superadmin") %><br>
-			    <%= f.radio_button :role, "admin" %>
-			    <%= label_tag(:role , "Admin") %><br>
-			    <%= f.radio_button :role, "moderator" %>
-			    <%= label_tag(:role, "Moderator") %><br>
+				<%= f.label :role %><br>
+				<%= f.radio_button :role, "superadmin" %>
+				<%= label_tag(:role , "Superadmin") %><br>
+				<%= f.radio_button :role, "admin" %>
+				<%= label_tag(:role , "Admin") %><br>
+				<%= f.radio_button :role, "moderator" %>
+				<%= label_tag(:role, "Moderator") %><br>
 				<%= f.radio_button :role, "coach" %>
 				<%= label_tag(:role, "Coach") %><br>
 				<%= f.radio_button :role, "author" %>
 				<%= label_tag(:role, "Author") %><br>
-	  		</div>
-	  	<% end %>
-		
-		<div class="actions"><%= f.submit %></div>
-
+				</div>
+			<% end %>
+		<%= f.submit "Submit", class: "button expanded" %>
 	<% end %>
 </div>

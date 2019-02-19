@@ -11,22 +11,20 @@
     </div>
   <% end %>
 
-  <div style="margin: 20px 50px">
-    <div class="field">
-      <%= f.label :title, "Title" %><br />
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :weight, "Weight" %><br />
-      <%= f.number_field :weight %>
-    </div>
-    <div class="field">
-      <%= f.label :hidden %><br />
-      <%= f.check_box :hidden %>
-    </div>
-    <br><br>
-    <div class="actions">
-      <%= f.submit "Submit" %>
+  <div class="row align-center">
+    <div class="columns small-12 large-6">
+      <div class="row align-center">
+        <div class="columns small-12">
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :title} %>
+        </div>
+        <div class="columns small-12 large-6">
+          <%= render partial: 'helper_fields/number', locals: {form: f, field: :weight} %>
+        </div>
+        <div class="columns small-12 large-6">
+          <%= render partial: 'helper_fields/switch', locals: {form: f, field: :hidden} %>
+        </div>
+      </div>
+      <%= f.submit "Submit", class: "button expanded" %>
     </div>
   </div>
 <% end %>

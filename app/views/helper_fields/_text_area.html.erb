@@ -1,0 +1,37 @@
+<%# 
+    Required locals:
+    form
+    field
+    
+    Optional locals:
+    question
+    placeholder
+    onkeypress
+    required
+    maxlength
+    height
+%>
+
+<%#= render partial: 'helper_fields/text_area', locals: {form: f, field: :previous_office_experience, question: "Have you had any experience working in an office? If yes, please explain:", required: false} %>
+
+<% if !defined? question %>
+    <% question = "" %>
+<% end %>
+<% if !defined? placeholder %>
+    <% placeholder = "" %>
+<% end %>
+<% if !defined? onkeypress %>
+    <% onkeypress = "" %>
+<% end %>
+<% if !defined? required %>
+    <% required = false %>
+<% end %>
+<% if !defined? maxlength %>
+    <% maxlength = 225 %>
+<% end %>
+<% if !defined? height %>
+    <% height = 100 %>
+<% end %>
+
+<%= form.label field, question, class: "input-group-label" %>
+<%= form.text_area field, required: required, onkeypress: onkeypress, placeholder: placeholder, maxlength: maxlength, style: "height: " + height.to_s + "px" %>

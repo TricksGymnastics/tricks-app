@@ -2,19 +2,29 @@
     Required locals:
     form
     field
-    label
     
     Optional locals:
+    label
     required
+    default_date
 %>
+
+<%#= render partial: 'helper_fields/date', locals: {form: f, field: :field} %>
+
+<% if !defined? label %>
+    <% label = "" %>
+<% end %>
 <% if !defined? required %>
     <% required = false %>
+<% end %>
+<% if !defined? default_date %>
+    <% default_date = "" %>
 <% end %>
 
 <div class=" input-group">
     <%= form.label field, label, class: "input-group-label" %>
     <%# as long as no id is given, it set the id = name, which solved my 'not unique' problem %>
-    <%= form.text_field field, required: required, class: "input-group-field" %>
+    <%= form.text_field field, default: default_date, required: required, class: "input-group-field" %>
 </div>
 
 <script>

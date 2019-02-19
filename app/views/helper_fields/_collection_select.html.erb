@@ -5,13 +5,9 @@
     options
     
     Optional locals:
-    label
     prompt
     required
 %>
-
-<%#= render partial: 'helper_fields/select', locals: {form: f, field: :field, options: array_of_options} %>
-
 <% if !defined? label %>
     <% label = "" %>
 <% end %>
@@ -22,7 +18,15 @@
     <% required = false %>
 <% end %>
 
+DO NOT USE YET, Not yet implemented
+
+<div class=" input-group">
+    <%= form.label field, class: "input-group-label" %>
+    <%= form.select field, options, {:prompt => prompt}, required: required, class: "input-group-field" %>
+</div>
+
+
 <div class=" input-group">
     <%= form.label field, label, class: "input-group-label" %>
-    <%= form.select field, options, {:prompt => prompt}, required: required, class: "input-group-field" %>
+    <%= form.collection_select field, collection, :id, :name, prompt: "Select a Class Type", id: "classtype_select", class: "input-group-field" %>
 </div>
