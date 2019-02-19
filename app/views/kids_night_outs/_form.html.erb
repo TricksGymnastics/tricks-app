@@ -11,65 +11,41 @@
     </div>
   <% end %>
   
-  <div class="row">
-    <div class="column small-6">
-      <div class="input-group">
-        <%= f.label :title, "Title", class: "input-group-label" %>
-        <%= f.text_field :title, required: true, class: "input-group-field" %>  
-      </div>
+  <div class="row align-center">
+    <div class="column small-8">
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :title, required: true} %>
     </div>
     <div class="column small-4">
-      <div class="">
-        <%= f.label :image, "Upload Image", class: "button expanded success" %>
-        <%= f.file_field :image, class: "show-for-sr" %>
-      </div>
+      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :title, image: @kids_night_out.image} %>
     </div>
   </div> 
   
-  <div class="row">
-    <div class="column small-10">
-      <div class="input-group">
-        <%= f.label :details, class: "input-group-label" %>
-        <%= f.text_area :details, class: "input-group-text" %>
-      </div>
+  <div class="row align-center">
+    <div class="column small-12">
+      <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :details} %>
     </div>
   </div>
   
-  <div class="row">
-    <div class="column small-10">
-      <div class="input-group">
-        <%= f.label :date, class: "input-group-label" %>
-        <%= f.date_select :date, id: "kids_night_outs", class: "show-for-sr" %>
-      </div>
+  <div class="row align-center">
+    <div class="column small-6 large-3">
+      <%= render partial: 'helper_fields/date', locals: {form: f, field: :date} %>
     </div>
-  </div>   
-  
-
-  
-  <div class="row">
-    <div class="column small-3">
-      <div class="input-group">
-        <%= f.label :sac_time, "Sac Time", class: "input-group-label", id: "kids_night_out_sacramento_time" %>
-        <%= f.time_select :sac_time, type: "time", class: "input-group-field" %>
-      </div>
+    <div class="column small-6 large-3">
+      <%= render partial: 'helper_fields/time', locals: {form: f, field: :gb_time, label: "Sac Time"} %>
     </div>
-    <div class="column small-3">
-      <div class="inout-group">
-        <%= f.label :fol_time, "Fol Time", class: "input-group-label", id: "kids-night_out_folsom_time" %>
-        <%= f.time_select :fol_time, type: "time", class: "input-group-field" %>
-      </div>
+    <div class="column small-6 large-3">
+      <%= render partial: 'helper_fields/time', locals: {form: f, field: :fol_time, label: "Sac Time"} %>
     </div>
-    <div class="column small-3">
-      <div class="inout-group">
-        <%= f.label :gb_time, "GB Time", class: "input-group-label", id: "kids_night_out_Granite_Bay_time"%>
-        <%= f.time_select :gb_time, type: "time", class: "input-group-field" %>
-      </div>
+    <div class="column small-6 large-3">
+      <%= render partial: 'helper_fields/time', locals: {form: f, field: :sac_time, label: "Sac Time"} %>
     </div>
   </div>
    
  
   
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row align-center">
+    <div class="columns small-6">
+      <%= f.submit "Submit", class: "button expanded" %>
+    </div>
   </div>
 <% end %>
