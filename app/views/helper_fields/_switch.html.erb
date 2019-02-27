@@ -9,10 +9,10 @@
 %>
 
 <% if !defined? question %>
-    <% question = "" %>
+    <% question = field.to_s.titleize %>
 <% end %>
 <% if !defined? default %>
-    <% default = false %>
+    <% default = form.object.send(field) %>
 <% end %>
 
 <style>

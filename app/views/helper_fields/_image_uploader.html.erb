@@ -6,15 +6,15 @@
     Optional locals:
     image_url
     classes
-    label
+    button_text
     required
     disabled
 %>
 
 <%#= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :text} %>
-
-<% if defined? label && label.nil? %>
-    <% label = "Upload Image" %>
+<%#= console %>
+<% if !defined? button_text %>
+    <% button_text = "Upload Image" %>
 <% end %>
 <% if !defined? image %>
     <% image = nil %>
@@ -47,7 +47,7 @@
     <%= render partial: 'helper_fields/switch', locals: {form: form, field: :remove_image, question: "Remove Image?"} %>
 <% end %>
     
-    <%= form.label field, label, class: classes, style: "margin-bottom: 0;" %>
+    <%= form.label field, button_text, class: classes, style: "margin-bottom: 0;" %>
     <%= form.file_field field, required: required, disabled: disabled, class: "show-for-sr" %>
     
 <% if valid_image %>

@@ -1,0 +1,58 @@
+<%# 
+    Required locals:
+    form
+    field
+    array
+    second_field
+    
+    Optional locals:
+    label
+    vertical
+%>
+<% if !defined? label %>
+    <% label = "" %>
+<% end %>
+<% if !defined? vertical %>
+    <% vertical = false %>
+<% end %>
+
+<% if !vertical %>
+<div class="input-group" style="width: 100%;">
+    <%= form.label field, label, class: "input-group-label" %>
+<% else %>
+    <h4 style="text-align: center;"><%= label %></h4>
+<% end %>
+    <% hidden_field = "#{form.object.class.name.underscore}[#{field.to_s}][]" %>
+    <%= hidden_field_tag hidden_field, nil %>
+    <% array.each do |obj| %>
+        <% option_text = obj.send(second_field) %>
+        <% option_id = dom_id(obj) %>
+        
+        <div class="columns <%= field.to_s %>_options" style="padding: 0 0 0 5px;<%= if vertical then " margin-bottom: 8px;" end %>">
+            <%= link_to option_text, "javascript:void(0);", id: option_id, class: "multi-select-button" %>
+            <%= check_box_tag hidden_field, obj.id, form.object.send(field).include?(obj.id), id: option_id+"_hidden", class: vertical ? "" : "input-group-field", style: "display: none;" %>
+        </div>
+        
+        <script>
+            let <%= option_id %> = document.getElementById("<%= option_id %>");
+            let <%= option_id %>_hidden = document.getElementById("<%= option_id %>_hidden");
+            
+            <%= option_id %>.addEventListener('click', function(){
+                if (<%= option_id %>_hidden.checked == true){
+                    <%= option_id %>.classList.remove("checked");
+                    <%= option_id %>_hidden.checked = false;
+                }
+                else{
+                    <%= option_id %>.classList.add("checked");
+                    <%= option_id %>_hidden.checked = true;
+                }
+            });
+            
+            if (<%= option_id %>_hidden.checked == true){
+                <%= option_id %>.classList.add("checked");
+            }
+        </script>
+    <% end %>
+<% if !vertical %>
+</div>
+<% end %>

@@ -3,7 +3,6 @@
     <% if @coach.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@coach.errors.count, "error") %> prohibited this coach from being saved:</h2>
-
         <ul>
         <% @coach.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -11,189 +10,89 @@
         </ul>
       </div>
     <% end %>
-    
-    
-    
+
     <div class="row">
+      <div class="columns large-2 ">
+        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @coach.image.thumb} %>
+        
+          <div id="tag_image_container">
+            <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :tag_image, button_text: "Tag Image", image: @coach.tag_image} %>
+          </div>
+      </div>
       <div class="columns">
-        
         <div class="row">
-          <div class="columns large-2 ">
-            <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @coach.image.thumb} %>
+          <div class="columns large-6 ">
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :firstname, label: "First Name"} %>
           </div>
-          <div class="columns">
-            <div class="row">
-              <div class="columns large-4 ">
-                <%= render partial: 'helper_fields/text', locals: {form: f, field: :firstname, label: "First Name"} %>
-              </div>
-              <div class="columns large-4 ">
-                <div class="input-group">
-                  <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, label: "Last Name"} %>
-                </div>
-                <p class="help-text">(Not Displayed unless logged in)</p>
-              </div>
-              <div class="columns large-4 ">
-                <%= render partial: 'helper_fields/switch', locals: {form: f, field: :current_employee, question: "Current Employee?"} %>
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="columns large-4 ">
-                <div class="input-group">
-                  <%= f.label :gender, class: "input-group-label" %>
-                  <%= f.radio_button :gender, "Girl", checked: true, class: "input-group-field", style: "margin-left: 15px;"%>
-                  <%= label_tag(:gender , "Girl", style: "margin-right: 20px;") %>
-                  <%= f.radio_button :gender, "Boy", class: "input-group-field" %>
-                  <%= label_tag(:gender, "Boy") %>
-                </div>
-              </div>
-              
-              <div class="columns large-4 ">
-                <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthdate} %>
-              </div>
-              
-              <div class="columns large-4 ">
-                <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthdate, label: "Start Date at Tricks:", default_date: Date.today} %>
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="columns large-6 ">
-                <%= render partial: 'helper_fields/text', locals: {form: f, field: :strengths} %>
-              </div>
-              <div class="columns large-6 ">
-                <div class="input-group">
-                  <%= f.label :location_ids, "Locations:", class: "input-group-label" %>
-                  <%= hidden_field_tag "coach[location_ids][]", nil %>
-                  <% Location.all.each do |location| %>
-                    <!--<div>-->
-                      <%= check_box_tag "coach[location_ids][]", location.id, @coach.location_ids.include?(location.id), id: dom_id(location), class: "input-group-field", style: "margin-left:15px;" %>
-                      <%= label_tag dom_id(location), location.name %>
-                    <!--</div>-->
-                  <% end %>
-                  
-                </div>
-              </div>
-            </div>
-              
-              
-            <div class="row">
-              <div class="columns large-12">
-                <div class="input-group">
-                  
-                  <%= f.label :classtype_ids, "Fields Employee works in:", class: "input-group-label" %>      
-                  <%= hidden_field_tag "coach[classtype_ids][]", nil %>
-                  <% Classtype.order(:id).each do |classtype| %>
-                    <%= check_box_tag "coach[classtype_ids][]", classtype.id, @coach.classtype_ids.include?(classtype.id), id: dom_id(classtype), class: "input-group-field", style: "margin-left:15px;" %>
-                    <%= label_tag dom_id(classtype), classtype.name %>
-                  <% end %>        
-                  <!--<div>If Office, please select one of these:  <%#= hidden_field_tag "coach[level_ids][]", nil %></div>-->
-                  <!--<%# Level.where(:classtype_id => "9").each do |level| %>-->
-                  <!--  <%#= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>-->
-                  <!--  <%#= label_tag dom_id(level), level.levelname %>-->
-                  <!--<%# end %>-->
-              
-                </div>
-              </div>
-            </div>
-            
-            <div class="row" style="margin-bottom: 15px;">
-              <div class="columns large-8 " id="tag_image_container">
-                <div class="row">
-                  <div class="columns large-4">
-                    <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :tag_image, image: @coach.tag_image} %>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="columns large-6 ">
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, label: "Last Name", help_text: "Not Displayed unless logged in"} %>
           </div>
-        </div>
-        
-        <!--This is the row after the picture has ended-->
-        <div class="row">
+          <div class="columns large-6 ">
+            <%= render partial: 'helper_fields/radio_buttons', locals: {form: f, field: :gender, array: {girl: "Girl", boy: "Boy"}} %>
+          </div>
+          <div class="columns large-6 ">
+            <%= render partial: 'helper_fields/switch', locals: {form: f, field: :current_employee, question: "Current Employee?"} %>
+          </div>
+          <div class="columns large-6 ">
+            <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthdate} %>
+          </div>
+          <div class="columns large-6 ">
+            <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthdate, label: "Start Date at Tricks:", default_date: Date.today} %>
+          </div>
+          <div class="columns small-12 ">
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :strengths} %>
+          </div>
+          <div class="columns small-12 ">
+            <%= render partial: 'helper_fields/multi_select_buttons', locals:{form: f, field: :location_ids, label: "Locations", array: Location.all, second_field: :name} %>
+          </div>
           <div class="columns small-12">
-            <label class="input-group-label" style="font-size: 18px;">Levels Coach is trained to teach:</label>
+            <%= render partial: 'helper_fields/multi_select_buttons', locals:{form: f, field: :classtype_ids, label: "Fields Employee works in:", array: Classtype.order(:id), second_field: :name} %>
           </div>
-        </div>
-        <div class="row" style="margin-top: 15px;">
-           <!--Gymnastics-->
-          <div class="columns large-3 small-6">
-            <h4 style="text-align: center;">Gymnastics</h4>
-            <%= hidden_field_tag "coach[level_ids][]", nil %>
-            <% Level.where(:classtype_id => "1").each do |level| %>
-              <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
-              <%= label_tag dom_id(level), level.levelname %><br>
-            <% end %> 
-          </div>
-    
-            <!--Tumblebunnies-->
-          <div class="columns large-3 small-6">
-            <h4 style="text-align: center;">Tumblebunnies</h4>
-            <%= hidden_field_tag "coach[level_ids][]", nil %>
-            <% Level.where(:classtype_id => "2").each do |level| %>
-              <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
-              <%= label_tag dom_id(level), level.levelname %><br>
-            <% end %>  
-          </div>
-          
-          
-          <!--TAG & Swim-->
-          <div class="columns large-3 small-6">
-            <div style="margin-bottom: 15px;">
-              <h4 style="text-align: center;">TAG</h4>
-              <%= hidden_field_tag "coach[level_ids][]", nil %>
-              <% Level.where(:classtype_id => "5").each do |level| %>
-                <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
-                <%= label_tag dom_id(level), level.levelname %><br>
-              <% end %> 
-            </div>
-            <div>
-              <h4 style="text-align: center;">Swim</h4>
-              <%= hidden_field_tag "coach[level_ids][]", nil %>
-              <% Level.where(:classtype_id => "4").each do |level| %>
-                <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
-                <%= label_tag dom_id(level), level.levelname %><br>
-              <% end %>  
-            </div>
-          </div>
-          
-          
-          
-            <!--Dance-->
-          <div class="columns large-3 small-6">
-                <h4 style="text-align: center;">Dance</h4>
-                <%= hidden_field_tag "coach[level_ids][]", nil %>
-                <% Level.where(:classtype_id => "3").each do |level| %>
-                  <%= check_box_tag "coach[level_ids][]", level.id, @coach.level_ids.include?(level.id), id: dom_id(level) %>
-                  <%= label_tag dom_id(level), level.levelname %><br>
-                <% end %>  
-              </div>
-        </div>
-        
-        
-        
-        <div class="row">
-          <div class="columns large-12">
+          <div class="columns small-12">
             <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_event, label: "Favorite Activity and Why:"} %>
             <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_skill, label: "Favorite Skill and Why:"} %>
             <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_food, label: "Favorite Food"} %>
             <%= render partial: 'helper_fields/text', locals: {form: f, field: :disney_char, label: "If you could be a Disney Character, who would you be?"} %>
-            
-            <%= f.label :experience, class: "input-group-label" %>
-            <%= f.text_area :experience, style: "height: 150px" %>
-            
-            <%= f.label :advice, "Advice for Students:", class: "input-group-label" %>
-            <%= f.text_area :advice, style: "height: 150px" %>
-          </div>
-          
-          <div class="columns">
-            <div class="row align-center" style="margin-top: 50px;">
-              <div class="columns large-8 ">
-                <%= f.submit class: "button expanded" %>
-              </div>
-            </div>
+            <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :experience, height: 100} %>
+            <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :advice, question: "Advice for Students:", height: 100} %>
           </div>
         </div>
+      </div>
+    </div>
+    
+    <!--This is the row after the picture has ended-->
+    <div class="row">
+      <div class="columns small-12">
+        <label class="input-group-label" style="font-size: 18px;">Levels Coach is trained to teach:</label>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 15px;">
+       <!--Gymnastics-->
+      <div class="columns large-3 small-6">
+        <%= render partial: 'helper_fields/multi_select_buttons', locals:{form: f, field: :level_ids, array: Level.where(:classtype_id => "1"), second_field: :levelname, label: "Gymnastics", vertical: true} %>
+      </div>
+        <!--Tumblebunnies-->
+      <div class="columns large-3 small-6">
+        <%= render partial: 'helper_fields/multi_select_buttons', locals:{form: f, field: :level_ids, array: Level.where(:classtype_id => "2"), second_field: :levelname, label: "Tumblebunnies", vertical: true} %>
+      </div>
+      <!--TAG & Swim-->
+      <div class="columns large-3 small-6">
+        <div style="margin-bottom: 15px;">
+          <%= render partial: 'helper_fields/multi_select_buttons', locals:{form: f, field: :level_ids, array: Level.where(:classtype_id => "5"), second_field: :levelname, label: "TAG", vertical: true} %>
+        </div>
+        <div>
+          <%= render partial: 'helper_fields/multi_select_buttons', locals:{form: f, field: :level_ids, array: Level.where(:classtype_id => "4"), second_field: :levelname, label: "Swim", vertical: true} %>
+        </div>
+      </div>
+      <!--Dance-->
+      <div class="columns large-3 small-6">
+        <%= render partial: 'helper_fields/multi_select_buttons', locals:{form: f, field: :level_ids, array: Level.where(:classtype_id => "3"), second_field: :levelname, label: "Dance", vertical: true} %>
+      </div>
+    </div>
+    
+    <div class="row align-center" style="margin-top: 50px;">
+      <div class="columns large-8 ">
+        <%= f.submit class: "button expanded" %>
       </div>
     </div>
   <% end %>

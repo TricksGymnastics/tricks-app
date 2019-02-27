@@ -1,0 +1,62 @@
+<%# 
+    Required locals:
+    form
+    field
+    array - array may be an array of numbers (1..10) or a hash {first: "value 1", second: 32} (I think this works))
+    
+    Optional locals:
+    label
+%>
+<% if !defined? label %>
+    <% label = field.to_s.titleize %>
+<% end %>
+
+
+<div class="input-group" style="width: 100%; border: 1px solid #cacaca; box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);">
+  <%= form.label field, label, class: "input-group-label", style: "margin-right: 3px;" %>
+  <%= form.hidden_field field %>
+  
+  <% hidden = field.to_s + "_hidden" %>
+  <% selected = field.to_s + "_selected" %>
+  
+  <% array.each do |option| %>
+    <% if option.class == Array %>
+      <% option_value = option[0] %>
+      <% option_text = option[1] %>
+    <% else %>
+      <% option_value = option %>
+      <% option_text = option.to_s %>
+    <% end %>
+    <% option_id = field.to_s + "_" + option_value.to_s %>
+    
+    <div class="columns <%= field.to_s %>_options" style="padding: 3px;">
+      <%= link_to option_text, "javascript:void(0);", id: option_id, "data-value": option_value, class: "radio-button" %>
+    </div>
+    <script>
+      let <%= option_id %> = document.getElementById('<%= option_id %>');
+      <%= option_id %>.addEventListener('click', function(){
+        if (<%= selected %> != null){
+          <%= selected %>.classList.remove("selected");
+        }
+        <%= selected %> = <%= option_id %>;
+        <%= selected %>.classList.add("selected");
+        // updates the hidden field value
+        <%= hidden %>.value = <%= selected %>.getAttribute('data-value');
+      });
+    </script>
+  <% end %>
+  <script>
+    let <%= hidden %> = document.getElementById('<%= form.object.class.name.underscore + "_" + field.to_s %>');
+    let <%= selected %> = document.getElementById("<%= field.to_s %>_" + <%= hidden %>.value);
+    if (<%= selected %> != null){
+        <%= selected %>.classList.add("selected");
+    }
+    // Until I can go through and convert all values to lowercase in the database for fields that are expressed through radio buttons, this next chunk of code needs to be here.
+    else{
+      <%= selected %> = document.getElementById("<%= field.to_s %>_" + <%= hidden %>.value.toLowerCase());
+      if (<%= selected %> != null){
+        <%= selected %>.classList.add("selected");
+      }
+    }
+  </script>
+</div>

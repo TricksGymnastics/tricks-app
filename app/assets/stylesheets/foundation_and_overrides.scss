@@ -556,7 +556,7 @@ body.is-reveal-open {
 }
 
 .help-text {
-	margin-top: -1rem;
+	margin: 0;
 }
 
 
@@ -583,4 +583,43 @@ body.is-reveal-open {
 
 .ui-datepicker-calendar {
 	margin-bottom: 0;
+}
+
+.radio-button {
+	// display: inline-block;
+	vertical-align: middle;
+	margin: 0;
+	border: 3px solid #1779ba;
+	transition: background-color 0.25s ease-out, color 0.25s ease-out;
+	text-align: center;
+	cursor: pointer;
+	color: #1779ba;
+	box-sizing: border-box;
+
+	display: block;
+	width: 100%; //box-shadow: none !important;
+	padding: 4.5px 0;
+	border-radius: 999px;
+	&.selected {
+		background-color: #1779ba;
+		color: #fefefe;
+	}
+}
+
+.multi-select-button {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0;
+	border: 3px solid #1779ba;
+	transition: background-color 0.25s ease-out, color 0.25s ease-out;
+	text-align: center;
+	cursor: pointer;
+	color: #1779ba;
+	box-sizing: border-box; // display: block;
+	width: 100%; //box-shadow: none !important;
+	padding: 8.5px 0; // border-radius: 999px;
+	&.checked {
+		background-color: #1779ba;
+		color: #fefefe;
+	}
 }

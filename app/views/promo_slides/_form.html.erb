@@ -22,71 +22,56 @@
     
     <div class="row">
       <div class="columns large-3">
-        <div class="input-group">
-          <%= f.label :live, class: "input-group-label" %>
-          <%= f.check_box :live, style: "margin-left: 15px;", class: "input-group-field", id: "live_check_box" %>
-        </div>
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :live} %>
       </div>
       <div class="columns large-9" id="order_input">
-        <div class="input-group">
-          <%= f.label :sort_order, "Order: ", class: "input-group-label" %>
-          <% (1..6).each do |i| %>
-            <%= f.radio_button :sort_order, i, class: "order_radio_buttons input-group-field", style: "margin-left: 15px" %>
-            <%= label_tag(:sort_order, i, style: "margin-right: 20px;") %>
-          <% end %>
-        </div>
+        <%= render partial: 'helper_fields/radio_buttons', locals: {form: f, field: :sort_order, array: (1..6)} %>
       </div>
-    </div>    
-      
+    </div>
+    
     <div class="row">
       <div class="columns small-12">
-        <div class="input-group">
-          <%= f.label :data_type, "Data Type: ", style: "margin-right: 20px;", class: "input-group-label" %>
-          <%= f.radio_button :data_type, "image", class: "input-group-field", id: "image_radio_button", style: "margin-left: 15px", checked: true %>
-          <%= label_tag(:data_type_image, "Image", style: "margin-right: 20px;") %>
-          <%= f.radio_button :data_type, "html", class: "input-group-field", id: "html_radio_button", style: "margin-left: 15px" %>
-          <%= label_tag(:data_type_image, "HTML", style: "margin-right: 20px;") %>
-        </div>
+        <%= render partial: 'helper_fields/radio_buttons', locals: {form: f, field: :data_type, array: {image: "Image", html: "HTML"}} %>
       </div>
     </div>
 
-    <div class="row align-center" id="data_type_image_box" style="border: 2px dotted #555; padding: 15px 0;">
-      <div class="columns small-12"> 
-        <div class="input-group">
-          <%= f.label :link, class: "input-group-label" %>
-          <%= f.check_box :link, class: "input-group-field", id: "link_check_box", style: "margin-left: 15px;" %>   
-        </div>
+    <div class="row" id="data_type_image_box" style="margin-top: 30px;">
+      <div class="columns small-6 large-4">
+        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @promo_slide.image} %>
       </div>
-      <div class="columns small-12" id="link_path_input"> 
+      
+      <div class="columns small-12 large-3"> 
+        <%= render partial: 'helper_fields/switch', locals: {form: f, field: :link} %>
+      </div>
+      
+      <div class="columns small-12 large-5" id="link_path_input"> 
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :link_path, label: "Link Path"} %>
         (ie. www.tricksgym.com/'path goes here')<br>
         Full http paths work as well: http://www.google.com<br><br>
       </div>
+    </div>
 
-      <div class="columns small-6">
-        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @promo_slide.image} %>
+    <div class="row align-center" id="html_input_field" style="display:none;">
+      <div class="columns small-12" >
+        <div style="border: dotted 2px #555; padding: 5px 15px;">
+          <p>Please wrap your code in this div tag:<br>&lt;div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;"&#62;&lt;/div&#62;</p>
+          <% if @promo_slide.html_code == nil %>
+            <%= f.text_area :html_code, style: "width: 800px; height: 300px;", value: '<div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;">
+  
+  Existing "div" tag is used to place the box correctly in the Promo slide holder. 
+  Input your code inside this div.
+  
+  </div>' %>
+          <% else %>
+            <%= f.text_area :html_code, style: "width: 800px; height: 300px;" %>
+          <% end %>
+        </div>
       </div>
     </div>
 
-    <div class="row align-center" id="html_input_field" style="display:none; border: dotted 2px #555; padding: 15px 0;">
-      <div class="columns small-12">
-        <p>Please wrap your code in this div tag:<br>&lt;div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;"&#62;&lt;/div&#62;</p>
-        <% if @promo_slide.html_code == nil %>
-          <%= f.text_area :html_code, style: "width: 800px; height: 300px;", value: '<div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;">
-
-Existing "div" tag is used to place the box correctly in the Promo slide holder. 
-Input your code inside this div.
-
-</div>' %>
-      <% else %>
-        <%= f.text_area :html_code, style: "width: 800px; height: 300px;" %>
-      <% end %>
-      </div>
-    </div>
 
 
-
-    <div class="row align-center" style="margin-top: 50px;">
+    <div class="row align-center" style="margin-top: 80px;">
       <div class="columns small-6">
         <%= f.submit class: "button expanded" %>
       </div>
