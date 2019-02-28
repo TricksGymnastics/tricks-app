@@ -1,4 +1,5 @@
 class KidsNightOutsController < ApplicationController
+  load_and_authorize_resource :except => [:index]
   before_action :set_kids_night_out, only: [:edit, :update, :destroy]
 
   # GET /kids_night_outs

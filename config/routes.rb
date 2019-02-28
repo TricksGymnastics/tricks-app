@@ -21,10 +21,6 @@ Comments::Application.routes.draw do
 
   get 'datenights/edit' => 'datenights#edit'
 
-  # get 'choose_survey' => 'survey_results#choose_survey' 
-  # get 'survey_result_for/:name' => 'survey_results#survey_results_for' 
-  # get 'survey_results/:id' => 'survey_results#show' 
-
   resources :comments
   resources :kid_quotes
   resources :coaches
@@ -34,8 +30,6 @@ Comments::Application.routes.draw do
   resources :recital_ads
   resources :recital_ad_types
   resources :promo_slides
-  resources :surveys
-  resources :survey_results
   resources :datenights
   resources :absents
   resources :tricks_u_categories
@@ -43,9 +37,8 @@ Comments::Application.routes.draw do
   resources :website_pdfs
   resources :discontinue_notices
   resources :bubble_contents
-  # resources :training_videos
 
-  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive campus recital_ad_order_thank_you survey_thank_you recital_info thankyou our_story safety_video food_drive].each do |page|
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments competitive campus recital_ad_order_thank_you recital_info thankyou our_story safety_video food_drive].each do |page|
     get page, controller: "static", action: page
   end
 
@@ -55,9 +48,6 @@ Comments::Application.routes.draw do
   get 'tricksu', to: 'tricks_u_videos#index'
 
   get 'tricksu/:category' => "tricks_u_videos#index"
-
-  # get 'survey/:id/start' => 'survey_results#new', as: 'start_survey'
-  # get 'survey/:id/results' => 'survey_results#results_page', as: 'results_page'
   
   get 'levels/jr_request/:level_id' => "levels#get_jr_classes"
   get 'parties/jr_request/:party_id' => "parties#get_jr_parties"

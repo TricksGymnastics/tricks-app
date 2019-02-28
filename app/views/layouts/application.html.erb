@@ -112,30 +112,10 @@
 		        <% if can? :manage, Coach %>
               <li><%= link_to "Staff", coaches_path, class: 'logged-in-menu-item' %></li>
             <% end %>
-            
-            <!--<li class="has-submenu"><%#= link_to "Schedules", 'javascript:void(0);' %>-->
-            <!--  <ul class="submenu menu vertical" data-submenu>-->
-            <!--    <li><%#= link_to "View All", schedules_choose_path %></li>-->
-            <!--  </ul>-->
-            <!--</li>-->
 
 		        <% if can? :manage, Coach %>
               <li><%= link_to "Recital Ads", "/recital_ads_by_year/"+Time.now.year.to_s, class: 'logged-in-menu-item' %></li>
             <% end %>
-            
-            
-		        <%# if can? :manage, Party %>
-              <!--<li class="has-sbmenu">
-                <%#= link_to "New Parties", 'javascript:void(0);', class: 'logged-in-menu-item' %>
-                <ul class="submenu menu vertical" data-submenu>
-                  <li><%#= ultimate_fun_link = link_to "Ulimate Fun", Party.first, class: 'logged-in-menu-item' %></li>
-                  <li><%#= ninja_warrior_link = link_to "Ninja Warrior", Party.second, class: 'logged-in-menu-item' %></li>
-                  <li><%#= fun_and_games_link = link_to "Fun & Games", Party.third, class: 'logged-in-menu-item' %></li>
-                  <li><%#= fairytale_link = link_to "Fairytale", Party.fourth, class: 'logged-in-menu-item' %></li>
-                  <li><%#= ballet_link = link_to "Ballet", Party.fifth, class: 'logged-in-menu-item' %></li>
-                </ul>
-              </li>-->
-            <%# end %>
             
 		        <% if can? :create, WebsitePdf %>
               <li><%= link_to "Website PDFs", website_pdfs_path, class: 'logged-in-menu-item' %></li>
@@ -152,13 +132,6 @@
         		<% if can? :show, EmploymentApplication %>
         			<li><%= link_to "Applications", employment_applications_path, class: 'logged-in-menu-item' %></li>
         		<% end %>
-            <!--<li class="has-submenu">-->
-            <!--  <%#= link_to "Surveys", 'javascript:void(0);' %>-->
-            <!--  <ul class="submenu menu vertical" data-submenu>-->
-            <!--    <li><%#= link_to "View All Surveys", surveys_path %></li>-->
-            <!--    <li><%#= link_to "Results", choose_survey_path %></li>-->
-            <!--  </ul>-->
-            <!--</li>-->
             <li class="hide-for-large-only" style="padding: 0 10px;"><%= link_to "Logout (" + current_user.email + ")", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
             <li class="show-for-large-only" style="padding: 0 3px;"><%= link_to "Logout", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
           </ul>
@@ -269,8 +242,6 @@
             		
                 <li><%= employment_link = link_to "Employment Application", new_employment_application_path %></li>
                 <!--<li><%#= recital_ad_link = link_to "Recital Ad Online Order", recital_ads_ad_select_path %></li>-->
-                <!--<li><%#= surveys_link = link_to "Surveys", surveys_path %></li>-->
-                <!--<li><%#= world_link = link_to "Where in the World", worlds_path %></li>-->
               </ul>
             </li>
             <!-- <li><%#= faq_link = link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
@@ -562,8 +533,6 @@
                     <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
                     <%= if defined? employment_link then ('<li>' + employment_link + '</li>').html_safe end %>
                     <%= if defined? recital_ad_link then ('<li>' + recital_ad_link + '</li>').html_safe end %>
-                    <%= if defined? surveys_link then ('<li>' + surveys_link + '</li>').html_safe end %>
-                    <%= if defined? world_link then ('<li>' + world_link + '</li>').html_safe end %>
                   </ul>
                   <!--<h3 class="footer-header"><%#= link_to "FAQ", '#', class: 'main-menu-item' %></h3>-->
                   <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>

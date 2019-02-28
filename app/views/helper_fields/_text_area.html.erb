@@ -26,6 +26,9 @@
 <% if !defined? required %>
     <% required = false %>
 <% end %>
+<% if !defined? default %>
+    <% default = form.object.send(field) %>
+<% end %>
 <% if !defined? maxlength %>
     <% maxlength = 225 %>
 <% end %>
@@ -34,4 +37,4 @@
 <% end %>
 
 <%= form.label field, question, class: "input-group-label" %>
-<%= form.text_area field, required: required, onkeypress: onkeypress, placeholder: placeholder, maxlength: maxlength, style: "height: " + height.to_s + "px" %>
+<%= form.text_area field, required: required, value: default, onkeypress: onkeypress, placeholder: placeholder, maxlength: maxlength, style: "height: " + height.to_s + "px" %>

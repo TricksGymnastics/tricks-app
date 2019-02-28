@@ -12,18 +12,6 @@ class Ability
 		# :destroy (destroy)
 		# :manage (all)
 
-		## Object ##
-		#Comment
-		#KidQuote
-		#User
-		#Level
-		#Coach
-		#RecitalAd
-		#PromoSlide
-		#Survey
-		#SurveyResult
-		#Datenight
-
 		if user.role == "superadmin" #Jordan & Nasa
 			can :manage, :all
 		end
@@ -34,8 +22,6 @@ class Ability
 			can :manage, Level
 			can :manage, Coach
 			can :manage, RecitalAd
-			can :manage, Survey
-			can :manage, SurveyResult
 			can :manage, PromoSlide
 			can :manage, User
 			can :manage, Datenight
@@ -49,6 +35,7 @@ class Ability
 			can :manage, RecitalSignUp
 			can :manage, EmploymentApplication
 			can :manage, BffDanceParty
+			can :manage, KidsNightOut
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -57,16 +44,12 @@ class Ability
 			can :manage, Level
 			can :manage, Coach
 			can :manage, RecitalAd
-			can :manage, Survey
-			can :manage, SurveyResult
 			can :manage, Datenight
 			can :manage, DiscontinueNotice
 			can :read, WebsitePdf
 			can :create, WebsitePdf
 			can :read, TricksUVideo
 			can :show, TricksUCategory
-			cannot :destroy, Survey
-			cannot :destroy, SurveyResult
 			cannot :destroy, Level
 			can :manage, Camp
 			cannot :destroy, Camp
@@ -79,6 +62,7 @@ class Ability
 			can :show, EmploymentApplication
 			can :complete_interview, EmploymentApplication
 			can :manage, BffDanceParty
+			can :manage, KidsNightOut
 		end 
 
 		if user.role == "coach"
@@ -92,8 +76,6 @@ class Ability
 			cannot :show, Comment
 			can :read, Coach
 			can :create, RecitalAd
-			can :create, SurveyResult
-			can :read, Survey
 			can :read, Level
 			can :create, DiscontinueNotice
 			can :create, EmploymentApplication

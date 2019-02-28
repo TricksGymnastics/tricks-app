@@ -56,14 +56,15 @@
         <div style="border: dotted 2px #555; padding: 5px 15px;">
           <p>Please wrap your code in this div tag:<br>&lt;div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;"&#62;&lt;/div&#62;</p>
           <% if @promo_slide.html_code == nil %>
-            <%= f.text_area :html_code, style: "width: 800px; height: 300px;", value: '<div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;">
+            <% default_html_code = '<div style="width: 100%; height: 100%; box-shadow: inset 0 0 10px #fff; border-radius: 20px;">
   
   Existing "div" tag is used to place the box correctly in the Promo slide holder. 
   Input your code inside this div.
   
   </div>' %>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :html_code, value: default_html_code, height: 300} %>
           <% else %>
-            <%= f.text_area :html_code, style: "width: 800px; height: 300px;" %>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :html_code, height: 300} %>
           <% end %>
         </div>
       </div>

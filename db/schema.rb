@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190219055024) do
+ActiveRecord::Schema.define(version: 20190228010113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,6 @@ ActiveRecord::Schema.define(version: 20190219055024) do
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
-
-  create_table "answers", force: :cascade do |t|
-    t.string   "content",     limit: 255
-    t.integer  "question_id"
-    t.integer  "weight"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
 
   create_table "bff_dance_parties", force: :cascade do |t|
     t.string   "name"
@@ -319,13 +311,6 @@ ActiveRecord::Schema.define(version: 20190219055024) do
     t.integer  "sort_order"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string   "content",    limit: 255
-    t.integer  "survey_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "recital_ad_types", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.integer  "price"
@@ -361,25 +346,6 @@ ActiveRecord::Schema.define(version: 20190219055024) do
     t.string   "recital_fee_agreement"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-  end
-
-  create_table "survey_results", force: :cascade do |t|
-    t.text     "result"
-    t.integer  "survey_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "feedback",   limit: 255
-  end
-
-  create_table "surveys", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.boolean  "live"
-    t.boolean  "scoreable"
-    t.boolean  "image_result"
-    t.string   "image",          limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "feedback_check"
   end
 
   create_table "tricks_u_categories", force: :cascade do |t|
