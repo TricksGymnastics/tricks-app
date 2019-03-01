@@ -154,7 +154,7 @@
             <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style: "margin-right: 20px;" %></li>
             <li class="has-submenu">
               <%= link_to "Programs", 'javascript:void(0);', class: 'main-menu-item'  %>
-              <ul class="menu vertical">
+              <ul class="menu vertical load-hidden">
                 <li class="has-submenu">
                   <%= link_to "Gymnastics", "javascript:void(0);" %>
                   <ul class="menu vertical">
@@ -180,7 +180,7 @@
             </li>
             <li class="has-submenu">
               <%= link_to "Parties & Events", 'javascript:void(0);', class: 'main-menu-item'  %>
-              <ul class="menu vertical">
+              <ul class="menu vertical load-hidden">
                 <li><%= parties_link = link_to "Parties", parties_path %></li>
                 <li><%= datenight_link =  link_to "Kids Night Out", datenights_path %></li>
                 <% if can? :manage, KidsNightOut %>
@@ -191,7 +191,6 @@
                 <li><%= camps_link = link_to "Camps", camps_path %></li>
                 <!--<li><%#= field_trips_link = link_to "Field Trips", camps_path %></li>-->
                 <!--<li><%#= fundraising_link = link_to "Fundraising", camps_path %></li>-->
-                
               </ul>
             </li>
           </ul>
@@ -202,7 +201,7 @@
           <ul class="menu" data-responsive-menu="drilldown large-dropdown">
             <li class="has-submenu">
               <%= link_to "About Us", 'javascript:void(0);', class: 'main-menu-item' %>
-              <ul class="menu vertical">
+              <ul class="menu vertical load-hidden">
                 <li><%= story_link = link_to "Our Story", our_story_path %></li>
                 <li><%= facilities_link = link_to "Our Facilities", locations_path %></li>
                 <li class="has-submenu">
@@ -226,7 +225,7 @@
             </li>
             <li class="has-submenu">
               <%= link_to "Forms", 'javascript:void(0);', class: 'main-menu-item' %>
-              <ul class="menu vertical">
+              <ul class="menu vertical load-hidden">
                 <li><%= absence_link = link_to "Notice of Absence", new_absent_path %></li>
 
             
@@ -262,85 +261,79 @@
       <div class="title-bar-title">Menu</div>
     </div>
     
-    <!--<div class="row"  style="display: none;">-->
-    <!--  <div class="columns">-->
-    <%# styling for this is found in application.js %>
-        <ul class="hide-for-large vertical menu" id="mobile_menu" data-drilldown>
-          <li><%= link_to "Register Now", "javascript:void(0);", 'data-toggle': 'register_now_modal' %></li>
+    <ul class="hide-for-large vertical menu" id="mobile_menu" data-drilldown>
+      <li><%= link_to "Register Now", "javascript:void(0);", 'data-toggle': 'register_now_modal' %></li>
+      <li>
+        <a href="#">Programs</a>
+        <ul class="vertical menu">
           <li>
-            <a href="#">Programs</a>
+            <a href="#">Gymnastics</a>
             <ul class="vertical menu">
-              <li>
-                <a href="#">Gymnastics</a>
-                <ul class="vertical menu">
-                  <li><%= tb_link %></li>
-                  <li><%= gym_link %></li>
-                  <li><%= comp_link %></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Dance</a>
-                <ul class="vertical menu">
-                  <li><%= pre_dance_link %></li>
-                  <li><%= school_dance_link %></li>
-                </ul>
-              </li>
-              <li><%= tag_link %></li>
-              <li><%= swim_link %></li>
-              <li><%= campus_link %></li>
+              <li><%= tb_link %></li>
+              <li><%= gym_link %></li>
+              <li><%= comp_link %></li>
             </ul>
           </li>
           <li>
-            <a href="#">Parties & Events</a>
+            <a href="#">Dance</a>
             <ul class="vertical menu">
-              <li><%= parties_link %></li>
-              <li><%= datenight_link %></li>
-              <li><%= bff_dance_parties_link %></li>
-              <li><%= camps_link %></li>
+              <li><%= pre_dance_link %></li>
+              <li><%= school_dance_link %></li>
             </ul>
           </li>
-          <li>
-            <a href="#">About Us</a>
-            <ul class="vertical menu">
-              <li><%= story_link %></li>
-              <li><%= facilities_link %></li>
-              <li>
-                <a href="#">Our Staff</a>
-                <ul class="vertical menu">
-                  <li><%= gb_staff_link %></li>
-                  <li><%= fol_staff_link %></li>
-                  <li><%= sac_staff_link %></li>
-                </ul>
-              </li>
-              <li><%= testimonials_link %></li>
-              <li><%= family_rules_link %></li>
-              <li><%= newsletter_link %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Forms</a>
-            <ul class="vertical menu">
-              <li><%= absence_link %></li>
-              
-          		<% if !@billing_cycle.nil? %>
-          			<li><%= billing_cycle_link %></li>
-          		<% end %>
-          		
-          		<% if !@release_form.nil? %>
-          			<li><%= release_form_link %></li>
-          		<% end %>
-            		
-              <li><%= discontinue_link %></li>
-              <li><%= employment_link %></li>
-              <!--<li><%#= recital_ad_link %></li>-->
-            </ul>
-          </li>
-          <li><%= blog_link %></li>
-          <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983" %></li>
+          <li><%= tag_link %></li>
+          <li><%= swim_link %></li>
+          <li><%= campus_link %></li>
         </ul>
-    <!--  </div>-->
-    <!--</div>-->
-    
+      </li>
+      <li>
+        <a href="#">Parties & Events</a>
+        <ul class="vertical menu">
+          <li><%= parties_link %></li>
+          <li><%= datenight_link %></li>
+          <li><%= bff_dance_parties_link %></li>
+          <li><%= camps_link %></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">About Us</a>
+        <ul class="vertical menu">
+          <li><%= story_link %></li>
+          <li><%= facilities_link %></li>
+          <li>
+            <a href="#">Our Staff</a>
+            <ul class="vertical menu">
+              <li><%= gb_staff_link %></li>
+              <li><%= fol_staff_link %></li>
+              <li><%= sac_staff_link %></li>
+            </ul>
+          </li>
+          <li><%= testimonials_link %></li>
+          <li><%= family_rules_link %></li>
+          <li><%= newsletter_link %></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Forms</a>
+        <ul class="vertical menu">
+          <li><%= absence_link %></li>
+          
+      		<% if !@billing_cycle.nil? %>
+      			<li><%= billing_cycle_link %></li>
+      		<% end %>
+      		
+      		<% if !@release_form.nil? %>
+      			<li><%= release_form_link %></li>
+      		<% end %>
+        		
+          <li><%= discontinue_link %></li>
+          <li><%= employment_link %></li>
+          <!--<li><%#= recital_ad_link %></li>-->
+        </ul>
+      </li>
+      <li><%= blog_link %></li>
+      <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983" %></li>
+    </ul>
 
 
     <% if content_for?(:header_image) %>

@@ -234,8 +234,6 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 		border-color: #fff transparent transparent;
 	}
 
-
-
 	.is-drilldown-submenu-parent>a::after {
 		border-color: transparent transparent transparent #fff;
 	}
@@ -319,9 +317,8 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 		background-color: $white;
 	}
 
-	.is-dropdown-submenu-parent.is-down-arrow>a::after {
-		border-color: #fff transparent transparent;
-
+	.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a::after {
+		border-color: transparent transparent transparent $primary-color;
 	}
 }
 
@@ -622,4 +619,8 @@ body.is-reveal-open {
 		background-color: #1779ba;
 		color: #fefefe;
 	}
+}
+
+.load-hidden {
+	display: none;
 }

@@ -27,6 +27,6 @@ jQuery ->
     array.eq(i).fadeOut(500, fadeInNext)
     return
   
-  array.eq(0).show()
-  setInterval myFunction, 10000
-  
+  $(document).ready ->
+    array.eq(0).fadeIn(500)
+    setInterval myFunction, 10000

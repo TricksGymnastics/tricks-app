@@ -51,22 +51,9 @@
         </div>
     </div>
 </div>
-<% first=true%>
-<% @kids_night_outs.each do |kno| %>  
-    <% if first %> 
-        <div class="row align-center">
-            <div class="column small-12" style="margin-top: 30px;">   
-               
-                <% unless kno.image == nil %>
-                    <%= image_tag(kno.image_url, style:"box-shadow: 0 0 20px #222; width: 100%") %>
-                <% end %>
-                <% if can? :manage, KidsNightOut %>
-                        <br><br><%= link_to "Edit", edit_kids_night_out_path(kno), class:"button expanded"%>
-                <% end %>
-            </div>
-        </div>
-        <% first=false %>
-    <% else %>
+<% is_the_first_kno = true%>
+<% @kids_night_outs.each do |kno| %>
+    <% if !is_the_first_kno || kno.image.url.nil? %>
         <div class="row" style="border: solid 3px #1779ba; border-radius: 10px; margin: 30px 0px 0px 0px; padding: 15px;">
             <div class="column small-12">
                 <h4><%= kno.title %> 
@@ -81,6 +68,18 @@
                 <br>Granite Bay: <%= kno.gb_time.strftime("%l:%M%P") %>
                 <br>Folsom: <%= kno.fol_time.strftime("%l:%M%P") %>
                 </p>
+            </div>
+        </div>
+    <% end %>
+    
+    <% if is_the_first_kno && !kno.image.url.nil? %>
+        <% is_the_first_kno = false %>
+        <div class="row align-center">
+            <div class="column small-12" style="margin-top: 30px;">
+                <%= image_tag(kno.image_url, style:"box-shadow: 0 0 20px #222; width: 100%") %>
+                <% if can? :manage, KidsNightOut %>
+                    <br><br><%= link_to "Edit", edit_kids_night_out_path(kno), class:"button expanded"%>
+                <% end %>
             </div>
         </div>
     <% end %>
