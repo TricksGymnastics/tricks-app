@@ -7,7 +7,7 @@
 </div>
 
 
-<% if can? :manage, TricksUVideo %>
+<% if can? :create, TricksUVideo %>
   <div class="row">
     <div class="columns small-12">
       <h3><%= link_to 'Add New Video', new_tricks_u_video_path %></h3>
@@ -37,8 +37,10 @@
         <div class="columns large-4 small-6 preview-box">
           <h5 style="text-align: center;"><%= video.title %></h5>
           <%= link_to image_tag("http://img.youtube.com/vi/" + video.url.split("/").last + "/0.jpg"), video %>
-          <% if can? :manage, TricksUVideo %>
+          <% if can? :update, TricksUVideo %>
             <%= link_to 'Edit', edit_tricks_u_video_path(video) %>
+          <% end %>
+          <% if can? :destroy, TricksUVideo %>
             <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </div>
