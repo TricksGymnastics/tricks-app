@@ -1,4 +1,4 @@
-<h1><%= @video.title %><% if can? :update, TricksUVideo %><%= link_to 'Edit', edit_tricks_u_video_path(@video) %><% end %></h1>
+<h1><%= @video.title %> <% if can? :update, TricksUVideo %><%= link_to '(Edit)', edit_tricks_u_video_path(@video) %><% end %></h1>
 <div class="row align-center">
     <div class="columns small-11 large-10" style="text-align: center">
         <div class="video-box">
