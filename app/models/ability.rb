@@ -49,6 +49,8 @@ class Ability
 			can :read, WebsitePdf
 			can :create, WebsitePdf
 			can :read, TricksUVideo
+			can :create, TricksUVideo
+			can :update, TricksUVideo
 			can :show, TricksUCategory
 			cannot :destroy, Level
 			can :manage, Camp
