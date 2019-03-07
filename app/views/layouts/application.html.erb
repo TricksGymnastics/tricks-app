@@ -580,8 +580,10 @@
           <% end %>
         </div>
       </div>
-      <%= image_tag "structure/white-footer-overlay.png", height: 40 %>
+      <% height = 5 %>
+      <% width = 300 %>
+      <% buffer = 20 %>
+      <div style="width: 100%; height: <%= (height * 2) + buffer %>px; background-image: url(&quot;data:image/svg+xml;charset=utf8,<svg height='100%' width='100%' viewBox='0 0 <%= width %> <%= (height * 2) + buffer %>' xmlns='http://www.w3.org/2000/svg'><path d='m 0 0 q <%= width / 8 %> 0 <%= width / 4 %> <%= height %> t <%= width / 4 %> <%= height %> t <%= width / 4 %> -<%= height %> t <%= width / 4 %> -<%= height %> l 0 <%= (height * 2) + buffer %> l -<%= width %> 0 z' stroke='white' fill='white' /></svg>&quot;); background-size: contain;"></div>
     </div>
-
   </body>
 </html>

@@ -22,14 +22,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="columns large-4 ">
+        <div class="columns large-6 ">
           <%= render partial: 'helper_fields/color_picker', locals: {form: f, field: :color, label: "Background Color"} %>
         </div>
-        <div class="columns large-4 ">
+        <div class="columns large-6 ">
           <%= render partial: 'helper_fields/color_picker', locals: {form: f, field: :text_color, label: "Text Color"} %>
-        </div>
-        <div class="columns large-4 ">
-          <%= render partial: 'helper_fields/switch', locals: {form: f, field: :show_button, question: "Show Button Under Bubble"} %>
         </div>
       </div>
       <div class="row">
