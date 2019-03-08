@@ -78,11 +78,11 @@
     
     
     
-    <p><b><% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%><%= doing_text %></p>
+    <p><b><% if @coach.gender == "Girl" || @coach.gender == "girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> works in: </b><%= @coach.locations.map(&:name).join(' and ')%><%= doing_text %></p>
 
     <% if can? :manage, Coach %>
       <div style="width: 100%; float:left; margin-bottom: -10px;">
-        <p style="margin-bottom: 0px;"><b>Levels <% if @coach.gender == "Girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> teaches:</b></p>
+        <p style="margin-bottom: 0px;"><b>Levels <% if @coach.gender == "Girl" || @coach.gender == "girl" %> Miss <% else %> Mr. <% end %><%= @coach.firstname %> teaches:</b></p>
         <div>
           <% @coach_levels.each do |classtype, levels| %>
             <div style="float:left; margin: 0px 35px 30px 10px;">
@@ -126,7 +126,7 @@
   
     <% if @coach.disney_char == "" %>
     <% else %>
-      <p><b>If <%= @coach.firstname %> could be any Disney Character,<% if @coach.gender == "Girl" %> she <% else %> he <% end %> would be:</b>
+      <p><b>If <%= @coach.firstname %> could be any Disney Character,<% if @coach.gender == "Girl" || @coach.gender == "girl" %> she <% else %> he <% end %> would be:</b>
       <%= @coach.disney_char %></p>
     <% end %>  
     
