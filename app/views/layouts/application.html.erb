@@ -182,10 +182,7 @@
               <%= link_to "Parties & Events", 'javascript:void(0);', class: 'main-menu-item'  %>
               <ul class="menu vertical load-hidden">
                 <li><%= parties_link = link_to "Parties", parties_path %></li>
-                <li><%= datenight_link =  link_to "Kids Night Out", datenights_path %></li>
-                <% if can? :manage, KidsNightOut %>
-                  <li><%= kids_night_outs_link = link_to "Kids Night Out (New)", kids_night_outs_path %></li>
-                <% end %>
+                <li><%= kids_night_outs_link = link_to "Kids Night Out", kids_night_outs_path %></li>
                 <li><%= bff_dance_parties_link = link_to "BFF Dance Party", bff_dance_parties_path %></li>
                 <!--<li><%#= pop_n_play_link =  link_to "Pop n Plays", datenights_path %></li>-->
                 <li><%= camps_link = link_to "Camps", camps_path %></li>
@@ -290,7 +287,7 @@
         <a href="#">Parties & Events</a>
         <ul class="vertical menu">
           <li><%= parties_link %></li>
-          <li><%= datenight_link %></li>
+          <li><%= kids_night_outs_link %></li>
           <li><%= bff_dance_parties_link %></li>
           <li><%= camps_link %></li>
         </ul>
@@ -462,7 +459,7 @@
         <div class="columns small-12" id="footer-content">
           <div class="row" style="font-size: 13px;">
             <div class="columns large-8 small-12 small-order-2 large-order-1">
-              <div class="row">
+              <div class="row show-for-medium">
                 <div class="columns medium-3 small-6">
                   <h3 class="footer-header">Programs</h3>
                   <ul>
@@ -493,7 +490,7 @@
                   <h3 class="footer-header">Parties & Events</h3>
                   <ul>
                     <li><%= parties_link %></li>
-                    <li><%= datenight_link %></li>
+                    <li><%= kids_night_outs_link %></li>
                     <li><%= bff_dance_parties_link %></li>
                     <li><%= camps_link %></li>
                   </ul>

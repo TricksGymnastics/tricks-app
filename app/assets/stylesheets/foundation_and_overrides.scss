@@ -429,16 +429,16 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 }
 
 $curve_amount: 30px;
-$orbit_height: 360px;
 .orbit-container {
 	border-radius: $curve_amount;
 	box-shadow: 0 0 40px #222;
 	overflow: hidden;
-	height: $orbit_height;
 }
 
 .orbit-slide {
-	height: $orbit_height;
+	// height: $orbit_height;
+	width: 100%;
+	height: 100%;
 }
 
 .orbit-image {
