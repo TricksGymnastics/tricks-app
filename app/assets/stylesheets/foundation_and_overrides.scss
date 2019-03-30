@@ -45,6 +45,10 @@ $dropdownmenu-arrow-color: $white;
 $orbit-caption-background: rgba($primary-color, 1);
 $orbit-caption-padding: 7px 20px;
 
+// $offcanvas-background: $dark-gray;
+// $offcanvas-inner-shadow-color: $black;
+// $offcanvas-inner-shadow-size: 20px;
+$offcanvas-shadow: 0 0 10px rgba($black, 0.7);
 @import 'foundation';
 
 // If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
@@ -130,29 +134,11 @@ select {
 
 // Adjust width accordingly (use even #'s)
 $logo-width: 200px;
-$small-logo-width: 140px;
+$medium-logo-width: 140px;
+$small-logo-width: 100px;
 // Reduce px value to increase space between logo and menu text
 $logo-padding: ($logo-width / 2)+20px;
 $small-logo-padding: ($small-logo-width / 2)+20px;
-
-/* Small Navigation */
-
-.logo-small {
-	float: right;
-}
-
-.title-bar {
-	padding: 0 .5rem;
-	background-color: $primary-color;
-}
-
-.menu-icon,
-.title-bar-title {
-	position: relative;
-	top: 10px;
-}
-
-/* Medium-Up Navigation */
 
 @media only screen and (min-width: 40rem) {}
 
@@ -162,7 +148,6 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 	position: relative;
 	.title-bar {
 		background: $menu-background;
-		padding: 0.9rem;
 	}
 	&.logged-in {
 		background: $menu-background;
@@ -244,8 +229,37 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 
 }
 
+.logo {
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	top: 0;
+	@include breakpoint(small) {
+		width: $small-logo-width;
+		margin-left: -($small-logo-width / 2);
+	}
+	@include breakpoint(medium up) {
+		width: $medium-logo-width;
+		margin-left: -($medium-logo-width / 2);
+	}
+	@include breakpoint(xlarge up) {
+		width: $logo-width;
+		margin-left: -($logo-width / 2);
+	}
+}
+
+.title-bar-title {
+	color: #fefefe;
+}
 
 #main-menu {
+	filter: drop-shadow(0px 0px 12px #444);
+	@include breakpoint(large up) {
+		height: 50px;
+	}
+	@include breakpoint(medium down) {
+		height: 40px;
+	}
 	.main-menu-item {
 		@include breakpoint(xlarge up) {
 			font-size: 20px;
@@ -267,25 +281,6 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 		}
 		background-color: $tricks-orange;
 		border-radius: 5px;
-	}
-
-	.logo {
-		@include breakpoint(xlarge up) {
-			width: $logo-width;
-		}
-		@include breakpoint(large down) {
-			width: $small-logo-width;
-		}
-		position: absolute;
-		left: 50%;
-		right: 50%;
-		top: 0;
-		@include breakpoint(xlarge up) {
-			margin-left: -($logo-width / 2);
-		}
-		@include breakpoint(large down) {
-			margin-left: -($small-logo-width / 2);
-		}
 	} // Right part
 	.top-bar-right {
 		width: 50%;
@@ -322,7 +317,22 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 	}
 }
 
-#header-secondary {}
+#mobile_menu {
+	padding: 20px;
+	.main-menu-button {
+		// font-size: 14px;
+		// padding: 7px 10px;
+		background-color: $tricks-orange;
+		border-radius: 10px; // margin: 15px;
+	}
+	.menu a,
+	.menu .button {
+		line-height: inherit; // text-decoration: none;
+		// border: solid 1px #d9d9d9; // white-space: nowrap;
+		// display: block;
+		// padding: 0.7rem 1rem;
+	}
+}
 
 #main-container {
 	// padding: 20px 20px 20px 20px;
@@ -331,10 +341,6 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 	.callout {
 		text-align: center;
 	}
-
-	#page-content {}
-
-	#sidebar-content {}
 }
 
 #footer {
@@ -403,7 +409,12 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 }
 
 .button {
-	box-shadow: 2px 2px 10px #222;
+	@include breakpoint(large up) {
+		box-shadow: 2px 2px 10px #222;
+	}
+	@include breakpoint(medium down) {
+		box-shadow: 3px 3px 10px #666;
+	}
 }
 
 .location-button {
@@ -433,6 +444,13 @@ $curve_amount: 30px;
 	border-radius: $curve_amount;
 	box-shadow: 0 0 40px #222;
 	overflow: hidden;
+	@include breakpoint(large up) {
+		box-shadow: 0 0 40px #222;
+	}
+	@include breakpoint(medium down) {
+		box-shadow: 0 0 20px #999;
+		margin: 15px;
+	}
 }
 
 .orbit-slide {
@@ -630,8 +648,14 @@ body.is-reveal-open {
 	padding-top: 100%;
 	background-size: contain;
 	border-radius: 50%;
-	box-shadow: 0px 0px 40px #222;
 	display: block;
+
+	@include breakpoint(large up) {
+		box-shadow: 0px 0px 40px #222;
+	}
+	@include breakpoint(medium down) {
+		box-shadow: 0px 0px 20px #777;
+	}
 }
 
 #bubble_text_container {

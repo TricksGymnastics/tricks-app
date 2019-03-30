@@ -9,7 +9,7 @@
 	<%= image_tag('site_header_images/Sacramento/IMG_7827.jpg', style: "display: none; margin: 0px auto;") %>
 </div>
 
-<div class="row align-justify" style="margin-top: 40px; margin-bottom: 80px;">
+<div class="row align-justify" style="margin-bottom: 80px;">
 	<div class="columns large-3 show-for-large" style="position: relative;">
 		<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 0).first} %>
 		<div style="position: absolute; top: 48%; right: -160px; width: 65%; height: 65%;">

@@ -33,4 +33,10 @@ module ApplicationHelper
   def include_wysiwyg
     (stylesheet_link_tag "wysiwyg/loader", :media => "all") + (javascript_include_tag "wysiwyg/loader")
   end
+  
+  def try_to_show_link(link)
+    if defined? link then 
+      return ('<li>' + link + '</li>').html_safe 
+    end
+  end
 end

@@ -12,30 +12,6 @@
 
     <%= analytics_init if Rails.env.production? %>
 
-    <script>
-      function iecontent() {      
-        if (Function('/*@cc_on return document.documentMode===10@*/')()){
-          var div = document.getElementById("ieDiv");
-          div.style.display = "block";
-        }
-      }
-      function addLoadEvent(func) {
-        var oldonload = window.onload;
-        if (typeof window.onload != 'function') {
-          window.onload = func;
-        } else {
-          window.onload = function() {
-            if (oldonload) {
-              oldonload();
-            }
-            func();
-          }
-        }
-      }
-      addLoadEvent(iecontent);
-    </script>
-    <%= yield :iescript %>
-
     <%= yield :jsforpage %>
 
     <meta http-equiv="pragma" content="no-cache"/>
@@ -46,541 +22,554 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
 
+<%
+  kids_night_outs_link = link_to "Kids Night Out", kids_night_outs_path
+  bff_dance_parties_link = link_to "BFF Dance Party", bff_dance_parties_path
+  camps_link = link_to "Camps", camps_path
+  story_link = link_to "Our Story", our_story_path
+  facilities_link = link_to "Our Facilities", locations_path
+  gb_staff_link = link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"}
+  fol_staff_link = link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}
+  sac_staff_link = link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}
+  testimonials_link = link_to "Testimonials", site_comments_path
+  
+  if !@family_rules.nil? 
+    family_rules_link = link_to @family_rules.file_name.sub("Tricks_","").tr("_"," "), @family_rules
+  end
+  if !@newsletter.nil?
+    newsletter_link = link_to @newsletter.file_name.sub("Tricks_","").tr("_"," "), @newsletter
+  end
+  blog_link = link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item'
+  discontinue_link = link_to "Notice of Discontinuation", new_discontinue_notice_path
+  employment_link = link_to "Employment Application", new_employment_application_path
+  absence_link = link_to "Notice of Absence", new_absent_path
+  if !@billing_cycle.nil?
+    billing_cycle_link = link_to @billing_cycle.file_name.sub("Tricks_","").tr("_"," "), @billing_cycle
+  end
+  if !@release_form.nil?
+    release_form_link = link_to @release_form.file_name.sub("Tricks_","").tr("_"," "), @release_form
+  end
+  
+  %>
   <body>
-    <% show_size = false %>
-    <% if !Rails.env.production? && show_size %>
-    <div style="position: fixed; left: 50%; top: 50px; width: 20%; margin-left: -10%; border: solid 2px #333; z-index: 10000; background-color: white; text-align: center;">
-      <div class="row">
-        <div class="show-for-small-only columns">
-          Small
-        </div>
-        <div class="show-for-medium-only columns">
-          Medium
-        </div>
-        <div class="show-for-large-only columns">
-          Large
-        </div>
-        <div class="show-for-xlarge columns">
-          XLarge
+    <div class="off-canvas position-right" id="mobile_menu" data-off-canvas zdata-transition="overlap">
+      <%= link_to "Register Now", "javascript:void(0);", 'data-toggle': 'register_now_modal', class: "button expanded main-menu-button" %>
+      <ul class="vertical menu accordion-menu" style="margin-bottom: 20px;" data-accordion-menu>
+        <li>
+          <a href="#">Programs</a>
+          <ul class="vertical menu nested">
+            <li>
+              <a href="#">Gymnastics</a>
+              <ul class="vertical menu nested">
+                <li><%= tb_link = link_to "Preschool (0-5)", tumblebunnies_path %></li>
+                <li><%= gym_link = link_to "School Age (6-18)", gymnastics_path %></li>
+                <li><%= comp_link = link_to "Competitive", competitive_path %></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Dance</a>
+              <ul class="vertical menu nested">
+                <li><%= pre_dance_link = link_to "Preschool (0-5)", preschool_dance_path %></li>
+                <li><%= school_dance_link = link_to "School Age (6-18)", dance_path %></li>
+              </ul>
+            </li>
+            <li><%= tag_link = link_to "TAG", tag_path %></li>
+            <li><%= swim_link = link_to "Swim", swim_path %></li>
+            <li><%= campus_link = link_to "CampUs", campus_path %></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Parties & Events</a>
+          <ul class="vertical menu nested">
+            <li><%= parties_link = link_to "Parties", parties_path %></li>
+            <li><%= kids_night_outs_link %></li>
+            <li><%= bff_dance_parties_link %></li>
+            <li><%= camps_link %></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">About Us</a>
+          <ul class="vertical menu nested">
+            <li><%= story_link %></li>
+            <li><%= facilities_link %></li>
+            <li>
+              <a href="#">Our Staff</a>
+              <ul class="vertical menu nested">
+                <li><%= gb_staff_link %></li>
+                <li><%= fol_staff_link %></li>
+                <li><%= sac_staff_link %></li>
+              </ul>
+            </li>
+            <li><%= testimonials_link %></li>
+            <li><%= family_rules_link %></li>
+            <li><%= newsletter_link %></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Forms</a>
+          <ul class="vertical menu nested">
+            <li><%= absence_link %></li>
+            
+        		<% if !@billing_cycle.nil? %>
+        			<li><%= billing_cycle_link %></li>
+        		<% end %>
+        		
+        		<% if !@release_form.nil? %>
+        			<li><%= release_form_link %></li>
+        		<% end %>
+          		
+            <li><%= discontinue_link %></li>
+            <li><%= employment_link %></li>
+            <!--<li><%#= recital_ad_link %></li>-->
+          </ul>
+        </li>
+        <li><%= blog_link %></li>
+      </ul>
+      <%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button expanded main-menu-button" %>
+    </div>
+    
+    
+    <div class="off-canvas-content" data-off-canvas-content>
+      
+      <% show_size = false %>
+      <% if !Rails.env.production? && show_size %>
+      <div style="position: fixed; left: 50%; top: 50px; width: 20%; margin-left: -10%; border: solid 2px #333; z-index: 10000; background-color: white; text-align: center;">
+        <div class="row">
+          <div class="show-for-small-only columns">
+            Small
+          </div>
+          <div class="show-for-medium-only columns">
+            Medium
+          </div>
+          <div class="show-for-large-only columns">
+            Large
+          </div>
+          <div class="show-for-xlarge columns">
+            XLarge
+          </div>
         </div>
       </div>
-    </div>
-    <% end %>
-
-    <% if current_user %>
-      <div class="title-bar hide-for-large" style="background-color: #333; height: 48px; text-align: right;">
-        <div class="title-bar-title">Staff Menu</div>
-        <button class="menu-icon" id="logged_in_menu_button" type="button" data-toggle></button>
+      <% end %>
+  
+      <% if current_user %>
+        <div class="title-bar hide-for-large" style="background-color: #333; height: 48px; text-align: right;">
+          <div class="title-bar-title">Staff Menu</div>
+          <button class="menu-icon" id="logged_in_menu_button" type="button" data-toggle></button>
+        </div>
+        
+        <div class="top-bar logged-in" id="logged_in_top_bar" style="padding: 0;">
+          <div class="top-bar-left show-for-large">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li class="menu-text">Staff Menu</li>
+            </ul>
+          </div>
+          <div class="top-bar-right">
+            <ul class="menu vertical large-horizontal" id="logged_in_menu" data-responsive-menu="drilldown large-dropdown">
+  		        <% if can? :manage, User %>
+                <li><%= link_to "Users", users_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+              
+  		        <% if can? :manage, PromoSlide %>
+                <li><%= link_to "Promos", promo_slides_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+  		        
+  		        <% if can? :manage, BubbleContent %>
+                <li><%= link_to "Bubbles", bubble_contents_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+  
+  		        <% if can? :manage, Comment %>
+                <li><%= link_to "Comments", comments_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+  
+  		        <% if can? :manage, KidQuote %>
+                <li><%= link_to "Kid Quotes", kid_quotes_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+  
+  		        <% if can? :manage, Level %>
+                <li><%= link_to "Levels", levels_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+              
+  		        <% if can? :read, TricksUVideo %>
+                <li><%= link_to "TricksU", tricksu_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+              
+  		        <% if can? :manage, Coach %>
+                <li><%= link_to "Staff", coaches_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+  
+  		        <% if can? :manage, Coach %>
+                <li><%= link_to "Recital Ads", "/recital_ads_by_year/"+Time.now.year.to_s, class: 'logged-in-menu-item' %></li>
+              <% end %>
+              
+  		        <% if can? :create, WebsitePdf %>
+                <li><%= link_to "Website PDFs", website_pdfs_path, class: 'logged-in-menu-item' %></li>
+              <% end %>
+              
+          		<% if can? :manage, Absent %>
+          			<li><%= link_to "Absences", absents_path, class: 'logged-in-menu-item' %></li>
+          		<% end %>
+              
+          		<% if can? :manage, DiscontinueNotice %>
+          			<li><%= link_to "Discontinues", discontinue_notices_path, class: 'logged-in-menu-item' %></li>
+          		<% end %>
+          		
+          		<% if can? :show, EmploymentApplication %>
+          			<li><%= link_to "Applications", employment_applications_path, class: 'logged-in-menu-item' %></li>
+          		<% end %>
+              <li class="hide-for-large-only" style="padding: 0 10px;"><%= link_to "Logout (" + current_user.email + ")", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
+              <li class="show-for-large-only" style="padding: 0 3px;"><%= link_to "Logout", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+  
+      <div data-sticky-container style="z-index: 20;">
+        <div class="top-bar sticky" id="main-menu" data-sticky data-options="marginTop:0;stickyOn:small">
+          <div class="logo">
+            <%= link_to image_tag('tricks-header.png'), root_path %>
+          </div>
+          <!-- Left Nav Section -->
+          <div class="top-bar-left show-for-large">
+            <ul class="menu" data-responsive-menu="drilldown large-dropdown">
+              <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style: "margin-right: 20px;" %></li>
+              <li class="has-submenu">
+                <%= link_to "Programs", 'javascript:void(0);', class: 'main-menu-item'  %>
+                <ul class="menu vertical load-hidden">
+                  <li class="has-submenu">
+                    <%= link_to "Gymnastics", "javascript:void(0);" %>
+                    <ul class="menu vertical">
+                      <li><%= tb_link %></li>
+                      <li><%= gym_link %></li>
+                      <li><%= comp_link %></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <%= link_to "Dance", "javascript:void(0);" %>
+                    <ul class="menu vertical">
+                      <li><%= pre_dance_link %></li>
+                      <li><%= school_dance_link %></li>
+                      <li><%#= dance_team_link = link_to "Dance Team", dance_path %></li>
+                      <li><%#= summer_recital_link = link_to "Summer Recital", dance_path %></li>
+                      <li><%#= winter_show_link = link_to "Winter Show", dance_path %></li>
+                    </ul>
+                  </li>
+                  <li><%= tag_link %></li>
+                  <li><%= swim_link %></li>
+                  <li><%= campus_link %></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <%= link_to "Parties & Events", 'javascript:void(0);', class: 'main-menu-item'  %>
+                <ul class="menu vertical load-hidden">
+                  <li><%= parties_link %></li>
+                  <li><%= kids_night_outs_link %></li>
+                  <li><%= bff_dance_parties_link %></li>
+                  <!--<li><%#= pop_n_play_link =  link_to "Pop n Plays", datenights_path %></li>-->
+                  <li><%= camps_link %></li>
+                  <!--<li><%#= field_trips_link = link_to "Field Trips", camps_path %></li>-->
+                  <!--<li><%#= fundraising_link = link_to "Fundraising", camps_path %></li>-->
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <!-- Right Nav Section -->
+          <div class="top-bar-right show-for-large">
+            <ul class="menu" data-responsive-menu="drilldown large-dropdown">
+              <li class="has-submenu">
+                <%= link_to "About Us", 'javascript:void(0);', class: 'main-menu-item' %>
+                <ul class="menu vertical load-hidden">
+                  <li><%= story_link %></li>
+                  <li><%= facilities_link %></li>
+                  <li class="has-submenu">
+                    <%= link_to "Our Staff", "javascript:void()" %>
+                    <ul class="menu vertical">
+                      <li><%= gb_staff_link %></li>
+                      <li><%= fol_staff_link %></li>
+                      <li><%= sac_staff_link %></li>
+                    </ul>
+                  </li>
+                  <li><%= testimonials_link %></li>
+                  <%= try_to_show_link(family_rules_link) %>
+                  <%= try_to_show_link(newsletter_link) %>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <%= link_to "Forms", 'javascript:void(0);', class: 'main-menu-item' %>
+                <ul class="menu vertical load-hidden">
+                  <li><%= absence_link %></li>
+                  <%= try_to_show_link(billing_cycle_link) %>
+                  <%= try_to_show_link(release_form_link) %>
+                  <li><%= discontinue_link %></li>
+                  <li><%= employment_link %></li>
+                  <!--<li><%#= recital_ad_link = link_to "Recital Ad Online Order", recital_ads_ad_select_path %></li>-->
+                </ul>
+              </li>
+              <!-- <li><%#= faq_link = link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
+              <li><%= blog_link %></li>
+              <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/jr3.0/ParentPortal/Login?orgId=313983", class: "button main-menu-button", style: "margin-left: 20px;" %></li>
+    
+            </ul>
+          </div>
+          
+          <div class="hide-for-large" style="position: absolute; right: 6px;" data-toggle="mobile_menu">
+            <span class="title-bar-title">Menu</span>
+            <button class="menu-icon" id="mobile_menu_button" style="margin: 0px 5px;" type="button"></button>
+          </div>
+        </div>
       </div>
       
-      <div class="top-bar logged-in" id="logged_in_top_bar" style="padding: 0;">
-        <div class="top-bar-left show-for-large">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">Staff Menu</li>
-          </ul>
-        </div>
-        <div class="top-bar-right">
-          <ul class="menu vertical large-horizontal" id="logged_in_menu" data-responsive-menu="drilldown large-dropdown">
-		        <% if can? :manage, User %>
-              <li><%= link_to "Users", users_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-            
-		        <% if can? :manage, PromoSlide %>
-              <li><%= link_to "Promos", promo_slides_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-		        
-		        <% if can? :manage, BubbleContent %>
-              <li><%= link_to "Bubbles", bubble_contents_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-
-		        <% if can? :manage, Comment %>
-              <li><%= link_to "Comments", comments_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-
-		        <% if can? :manage, KidQuote %>
-              <li><%= link_to "Kid Quotes", kid_quotes_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-
-		        <% if can? :manage, Level %>
-              <li><%= link_to "Levels", levels_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-            
-		        <% if can? :read, TricksUVideo %>
-              <li><%= link_to "TricksU", tricksu_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-            
-		        <% if can? :manage, Coach %>
-              <li><%= link_to "Staff", coaches_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-
-		        <% if can? :manage, Coach %>
-              <li><%= link_to "Recital Ads", "/recital_ads_by_year/"+Time.now.year.to_s, class: 'logged-in-menu-item' %></li>
-            <% end %>
-            
-		        <% if can? :create, WebsitePdf %>
-              <li><%= link_to "Website PDFs", website_pdfs_path, class: 'logged-in-menu-item' %></li>
-            <% end %>
-            
-        		<% if can? :manage, Absent %>
-        			<li><%= link_to "Absences", absents_path, class: 'logged-in-menu-item' %></li>
-        		<% end %>
-            
-        		<% if can? :manage, DiscontinueNotice %>
-        			<li><%= link_to "Discontinues", discontinue_notices_path, class: 'logged-in-menu-item' %></li>
-        		<% end %>
-        		
-        		<% if can? :show, EmploymentApplication %>
-        			<li><%= link_to "Applications", employment_applications_path, class: 'logged-in-menu-item' %></li>
-        		<% end %>
-            <li class="hide-for-large-only" style="padding: 0 10px;"><%= link_to "Logout (" + current_user.email + ")", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
-            <li class="show-for-large-only" style="padding: 0 3px;"><%= link_to "Logout", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
-          </ul>
-        </div>
-      </div>
-    <% end %>
-
-
-
-    <!-- large-Up Navigation -->
-    <div class="show-for-large" data-sticky-container style="z-index: 10;">
-      <div class="top-bar" id="main-menu" data-sticky data-options="marginTop:0;" style="width: 100%; height: 50px;">
-        <div class="logo show-for-large">
-          <%= link_to image_tag('tricks-header.png'), root_path %>
-        </div>
-        
-        <!-- Left Nav Section -->
-        <div class="top-bar-left">
-          <ul class="menu" data-responsive-menu="drilldown large-dropdown">
-            <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style: "margin-right: 20px;" %></li>
-            <li class="has-submenu">
-              <%= link_to "Programs", 'javascript:void(0);', class: 'main-menu-item'  %>
-              <ul class="menu vertical load-hidden">
-                <li class="has-submenu">
-                  <%= link_to "Gymnastics", "javascript:void(0);" %>
-                  <ul class="menu vertical">
-                    <li><%= tb_link = link_to "Preschool (0-5)", tumblebunnies_path %></li>
-                    <li><%= gym_link = link_to "School Age (6-18)", gymnastics_path %></li>
-                    <li><%= comp_link = link_to "Competitive", competitive_path %></li>
-                  </ul>
-                </li>
-                <li class="has-submenu">
-                  <%= link_to "Dance", "javascript:void(0);" %>
-                  <ul class="menu vertical">
-                    <li><%= pre_dance_link = link_to "Preschool (0-5)", preschool_dance_path %></li>
-                    <li><%= school_dance_link = link_to "School Age (6-18)", dance_path %></li>
-                    <li><%#= dance_team_link = link_to "Dance Team", dance_path %></li>
-                    <li><%#= summer_recital_link = link_to "Summer Recital", dance_path %></li>
-                    <li><%#= winter_show_link = link_to "Winter Show", dance_path %></li>
-                  </ul>
-                </li>
-                <li><%= tag_link = link_to "TAG", tag_path %></li>
-                <li><%= swim_link = link_to "Swim", swim_path %></li>
-                <li><%= campus_link = link_to "CampUs", campus_path %></li>
-              </ul>
-            </li>
-            <li class="has-submenu">
-              <%= link_to "Parties & Events", 'javascript:void(0);', class: 'main-menu-item'  %>
-              <ul class="menu vertical load-hidden">
-                <li><%= parties_link = link_to "Parties", parties_path %></li>
-                <li><%= kids_night_outs_link = link_to "Kids Night Out", kids_night_outs_path %></li>
-                <li><%= bff_dance_parties_link = link_to "BFF Dance Party", bff_dance_parties_path %></li>
-                <!--<li><%#= pop_n_play_link =  link_to "Pop n Plays", datenights_path %></li>-->
-                <li><%= camps_link = link_to "Camps", camps_path %></li>
-                <!--<li><%#= field_trips_link = link_to "Field Trips", camps_path %></li>-->
-                <!--<li><%#= fundraising_link = link_to "Fundraising", camps_path %></li>-->
-              </ul>
-            </li>
-          </ul>
-        </div>
-        
-        <!-- Right Nav Section -->
-        <div class="top-bar-right">
-          <ul class="menu" data-responsive-menu="drilldown large-dropdown">
-            <li class="has-submenu">
-              <%= link_to "About Us", 'javascript:void(0);', class: 'main-menu-item' %>
-              <ul class="menu vertical load-hidden">
-                <li><%= story_link = link_to "Our Story", our_story_path %></li>
-                <li><%= facilities_link = link_to "Our Facilities", locations_path %></li>
-                <li class="has-submenu">
-                  <%= link_to "Our Staff", "javascript:void()" %>
-                  <ul class="menu vertical">
-                    <li><%= gb_staff_link = link_to "Granite Bay", {:controller => "coaches", :action => "loc", :name => "Granite Bay"} %></li>
-                    <li><%= fol_staff_link = link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"} %></li>
-                    <li><%= sac_staff_link = link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"} %></li>
-                  </ul>
-                </li>
-                <li><%= testimonials_link = link_to "Testimonials", site_comments_path %></li>
-            
-            		<% if !@family_rules.nil? %>
-            			<li><%= family_rules_link = link_to @family_rules.file_name.sub("Tricks_","").tr("_"," "), @family_rules %></li>
-            		<% end %>
-            		
-            		<% if !@newsletter.nil? %>
-                  <li><%= newsletter_link = link_to @newsletter.file_name.sub("Tricks_","").tr("_"," "), @newsletter %></li>
-            		<% end %>
-              </ul>
-            </li>
-            <li class="has-submenu">
-              <%= link_to "Forms", 'javascript:void(0);', class: 'main-menu-item' %>
-              <ul class="menu vertical load-hidden">
-                <li><%= absence_link = link_to "Notice of Absence", new_absent_path %></li>
-
-            
-            		<% if !@billing_cycle.nil? %>
-            			<li><%= billing_cycle_link = link_to @billing_cycle.file_name.sub("Tricks_","").tr("_"," "), @billing_cycle %></li>
-            		<% end %>
-            		
-            		<% if !@release_form.nil? %>
-            			<li><%= release_form_link = link_to @release_form.file_name.sub("Tricks_","").tr("_"," "), @release_form %></li>
-            		<% end %>
-            		
-                <li><%= discontinue_link = link_to "Notice of Discontinuation", new_discontinue_notice_path %></li>
-            		
-                <li><%= employment_link = link_to "Employment Application", new_employment_application_path %></li>
-                <!--<li><%#= recital_ad_link = link_to "Recital Ad Online Order", recital_ads_ad_select_path %></li>-->
-              </ul>
-            </li>
-            <!-- <li><%#= faq_link = link_to "FAQ", '#', class: 'main-menu-item' %></li> -->
-            <li><%= blog_link = link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></li>
-            <!-- <li><%#= contact_link = link_to "Contact", locations_path, class: 'main-menu-item' %></li> -->
-            <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/jr3.0/ParentPortal/Login?orgId=313983", class: "button main-menu-button", style: "margin-left: 20px;" %></li>
   
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-
-     <!-- Small Navigation -->
-    <div class="title-bar hide-for-large" data-sticky-container>
-      <%= link_to image_tag('tricks-tiny.png'), root_path, class: "logo-small" %>
-      <button class="menu-icon" id="mobile_menu_button" type="button" data-toggle></button>
-      <div class="title-bar-title">Menu</div>
-    </div>
-    
-    <ul class="hide-for-large vertical menu" id="mobile_menu" data-drilldown>
-      <li><%= link_to "Register Now", "javascript:void(0);", 'data-toggle': 'register_now_modal' %></li>
-      <li>
-        <a href="#">Programs</a>
-        <ul class="vertical menu">
-          <li>
-            <a href="#">Gymnastics</a>
-            <ul class="vertical menu">
-              <li><%= tb_link %></li>
-              <li><%= gym_link %></li>
-              <li><%= comp_link %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Dance</a>
-            <ul class="vertical menu">
-              <li><%= pre_dance_link %></li>
-              <li><%= school_dance_link %></li>
-            </ul>
-          </li>
-          <li><%= tag_link %></li>
-          <li><%= swim_link %></li>
-          <li><%= campus_link %></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Parties & Events</a>
-        <ul class="vertical menu">
-          <li><%= parties_link %></li>
-          <li><%= kids_night_outs_link %></li>
-          <li><%= bff_dance_parties_link %></li>
-          <li><%= camps_link %></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">About Us</a>
-        <ul class="vertical menu">
-          <li><%= story_link %></li>
-          <li><%= facilities_link %></li>
-          <li>
-            <a href="#">Our Staff</a>
-            <ul class="vertical menu">
-              <li><%= gb_staff_link %></li>
-              <li><%= fol_staff_link %></li>
-              <li><%= sac_staff_link %></li>
-            </ul>
-          </li>
-          <li><%= testimonials_link %></li>
-          <li><%= family_rules_link %></li>
-          <li><%= newsletter_link %></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">Forms</a>
-        <ul class="vertical menu">
-          <li><%= absence_link %></li>
-          
-      		<% if !@billing_cycle.nil? %>
-      			<li><%= billing_cycle_link %></li>
-      		<% end %>
-      		
-      		<% if !@release_form.nil? %>
-      			<li><%= release_form_link %></li>
-      		<% end %>
-        		
-          <li><%= discontinue_link %></li>
-          <li><%= employment_link %></li>
-          <!--<li><%#= recital_ad_link %></li>-->
-        </ul>
-      </li>
-      <li><%= blog_link %></li>
-      <li><%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983" %></li>
-    </ul>
-
-
-    <% if content_for?(:header_image) %>
-      <div id="header-secondary" class="row" style=" z-index: 5;">
-        <div style="overflow: hidden; width: 100%; position: absolute; left: 0;">
-          <image width="3000" height="1000" src=<%= yield(:header_image) %>></image>
-        </div>
-      </div>
-    
-      <div class="row" style="padding-top: 22%;"></div>
-    <% else %>
-      <div class="row show-for-large-only" style="padding-top: 50px;"></div>
-      <div class="row show-for-xlarge" style="padding-top: 100px;"></div>
-    <% end %>  
-    
-    <div class="row" style="padding-top: 20px;">
-      <div class="columns small-12" id="main-container">
-        <% if flash.to_a.length > 0 %>
-          <div class="callout-container">
-            <% flash.each do |name, msg| %>
   
-              <% if name.to_s == "alert" %>
-                <div class="callout warning" data-closable>   
-                  <%= msg %>
-                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              <% end %>
-  
-              <% if name.to_s == "notice" %>
-                <div class="callout success" data-closable>   
-                  <%= msg %>
-                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              <% end %>
-  
-              <% if name.to_s == "error" %>
-                <div class="callout alert" data-closable>   
-                  <%= msg %>
-                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              <% end %>
-            <% end %>
+      <% if content_for?(:header_image) %>
+        <div id="header-secondary" class="row" style=" z-index: 5;">
+          <div style="overflow: hidden; width: 100%; position: absolute; left: 0;">
+            <image width="3000" height="1000" src=<%= yield(:header_image) %>></image>
           </div>
-        <% end %>
-        
-        <% if !@bubbles.nil? %>
-          <div class="row align-center">
-            <div class="columns small-12 large-8 ">
-              <%= yield %>
-            </div>  
-            <div class="columns small-12 large-4">
-              <div class="row align-spaced">
-                <% @bubbles.each do |bubble_id| %>
-                  <div class="columns small-8 medium-5 large-10">
-                    <% if BubbleContent.exists?(sort_order: bubble_id) %>
-                      <br>
-                      <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: bubble_id).first} %>
-                      <br>
-                    <% else %>
-                      <h2 style="color: red; margin: 40px 0;">BubbleContent(<%= bubble_id %>) Not Found</h2>
-                    <% end %>
+        </div>
+      
+        <div class="row" style="padding-top: 22%;"></div>
+      <% else %>
+        <div class="row show-for-small" style="padding-top: 20px;"></div>
+        <div class="row show-for-large" style="padding-top: 30px;"></div>
+        <div class="row show-for-xlarge" style="padding-top: 50px;"></div>
+      <% end %>  
+      
+      <div class="row" style="padding-top: 20px;">
+        <div class="columns small-12" id="main-container">
+          <% if flash.to_a.length > 0 %>
+            <div class="callout-container">
+              <% flash.each do |name, msg| %>
+    
+                <% if name.to_s == "alert" %>
+                  <div class="callout warning" data-closable>   
+                    <%= msg %>
+                    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
                 <% end %>
-              </div>
-            </div>  
-          </div>
-        <% else %>
-          <div class="row">
-            <div class="columns small-12">
-              <%= yield %>
+    
+                <% if name.to_s == "notice" %>
+                  <div class="callout success" data-closable>   
+                    <%= msg %>
+                    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <% end %>
+    
+                <% if name.to_s == "error" %>
+                  <div class="callout alert" data-closable>   
+                    <%= msg %>
+                    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-  <div class="reveal fast large" id="register_now_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
-    <div id="choose_location_modal">
-      <h1>Choose a Location</h1>
-      <div class="row" style="margin-top: 25px;">
-  			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
-  			<% locations.each do |loc| %>
-          <div class="columns small-12 large-4">
-            <%= link_to loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
-          </div>
-  			<% end %>
-      </div>
-    </div>
-    <div id="choose_program_modal">
-      <h1>Choose a Program</h1>
-      <div class="row" style="margin-top: 20px;">
-  			<% programs = {"Preschool Gymnastics" => tumblebunnies_path, "School-Age Gymnastics" => gymnastics_path, "Preschool Dance" => preschool_dance_path, "School-Age Dance" => dance_path, "TAG" => tag_path, "Swim" => swim_path} %> 
-  			<% programs.each do |prog| %>
-          <div class="columns small-12 large-6">
-            <%= link_to prog[0], prog[1], class: "button expanded program-button", id: prog[0] %>
-          </div>
-  			<% end %>
-      </div>
-    </div>
-    <button class="close-button" data-close aria-label="Close reveal" type="button">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  
-  <%= link_to '#', '#', id: "uploading_modal_hidden_trigger", 'data-toggle': 'uploading_modal', style: "display: none;" %>
-  <div class="reveal fast" id="uploading_modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
-    <div class="row align-center">
-      <h1>Uploading Files</h1>
-    </div>
-    <div class="row align-center">
-			<%= image_tag("loading-spinner.gif") %>
-    </div>
-  </div>
-
-  <div id="footer" style="z-index: 100; margin-top: 150px;">
-      <!--<div style="height: 100px; width: 100%; background-color: #fff;">-->
-        <!-- only here for a bit of padding above the footer -->
-      <!--</div>-->
-      <div class="row">
-        <div class="columns small-12" id="footer-content">
-          <div class="row" style="font-size: 13px;">
-            <div class="columns large-8 small-12 small-order-2 large-order-1">
-              <div class="row show-for-medium">
-                <div class="columns medium-3 small-6">
-                  <h3 class="footer-header">Programs</h3>
-                  <ul>
-                    <li>
-                      <h3>Gymnastics</h3>
-                      <ul>
-                        <%= if defined? tb_link then ('<li>' + tb_link + '</li>').html_safe end %>
-                        <%= if defined? gym_link then ('<li>' + gym_link + '</li>').html_safe end %>
-                        <%= if defined? comp_link then ('<li>' + comp_link + '</li>').html_safe end %>
-                      </ul>
-                    </li>
-                    <li>
-                      <h3>Dance</h3>
-                      <ul>
-                        <%= if defined? pre_dance_link then ('<li>' + pre_dance_link + '</li>').html_safe end %>
-                        <%= if defined? school_dance_link then ('<li>' + school_dance_link + '</li>').html_safe end %>
-                        <%= if defined? dance_team_link then ('<li>' + dance_team_link + '</li>').html_safe end %>
-                        <%= if defined? summer_recital_link then ('<li>' + summer_recital_link + '</li>').html_safe end %>
-                        <%= if defined? winter_show_link then ('<li>' + winter_show_link + '</li>').html_safe end %>
-                      </ul>
-                    </li>
-                    <%= if defined? tag_link then ('<li>' + tag_link + '</li>').html_safe end %>
-                    <%= if defined? swim_link then ('<li>' + swim_link + '</li>').html_safe end %>
-                    <%= if defined? campus_link then ('<li>' + campus_link + '</li>').html_safe end %>
-                  </ul>
-                </div>
-                <div class="columns medium-3 small-6">
-                  <h3 class="footer-header">Parties & Events</h3>
-                  <ul>
-                    <li><%= parties_link %></li>
-                    <li><%= kids_night_outs_link %></li>
-                    <li><%= bff_dance_parties_link %></li>
-                    <li><%= camps_link %></li>
-                  </ul>
-                </div>
-                <div class="columns medium-3 small-6">
-                  
-                  <h3 class="footer-header">About Us</h3>
-                  <ul>
-                    <%= if defined? story_link then ('<li>' + story_link + '</li>').html_safe end %>
-                    <%= if defined? facilities_link then ('<li>' + facilities_link + '</li>').html_safe end %>
-                    <li>
-                      <h3>Our Staff</h3>
-                      <ul>
-                        <%= if defined? gb_staff_link then ('<li>' + gb_staff_link + '</li>').html_safe end %>
-                        <%= if defined? fol_staff_link then ('<li>' + fol_staff_link + '</li>').html_safe end %>
-                        <%= if defined? sac_staff_link then ('<li>' + sac_staff_link + '</li>').html_safe end %>
-                      </ul>
-                    </li>
-                    <%= if defined? testimonials_link then ('<li>' + testimonials_link + '</li>').html_safe end %>
-                    <%= if defined? family_rules_link then ('<li>' + family_rules_link + '</li>').html_safe end %>
-                    <%= if defined? newsletter_link then ('<li>' + newsletter_link + '</li>').html_safe end %>
-                  </ul>
-                </div>
-                <div class="columns medium-3 small-6">
-                  <h3 class="footer-header">Forms</h3>
-                  <ul>
-                    <%= if defined? absence_link then ('<li>' + absence_link + '</li>').html_safe end %>
-                    <%= if defined? billing_cycle_link then ('<li>' + billing_cycle_link + '</li>').html_safe end %>
-                    <%= if defined? release_form_link then ('<li>' + release_form_link + '</li>').html_safe end %>
-                    <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
-                    <%= if defined? employment_link then ('<li>' + employment_link + '</li>').html_safe end %>
-                    <%= if defined? recital_ad_link then ('<li>' + recital_ad_link + '</li>').html_safe end %>
-                  </ul>
-                  <!--<h3 class="footer-header"><%#= link_to "FAQ", '#', class: 'main-menu-item' %></h3>-->
-                  <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>
-                  <h3 class="footer-header"><%= link_to "Contact", locations_path, class: 'main-menu-item' %></h3>
-                </div>
-              </div>
-            </div>
-            
-            <div class="columns large-4 small-12 small-order-1 large-order-2" style="margin-bottom: 20px;">
-              <div class="row">
-                <div class="columns small-4">
-                  <%= link_to "Granite Bay", 'javascript:void(0);', class: "button expanded location-button", id: "GB" %>
-                </div>
-                <div class="columns small-4">
-                  <%= link_to "Folsom", 'javascript:void(0);', class: "button expanded location-button", id: "FOL" %>
-                </div>
-                <div class="columns small-4">
-                  <%= link_to "Sacramento", 'javascript:void(0);', class: "button expanded location-button", id: "SAC" %>
-                </div>
-              </div>
-              <div class="row" id="footer_location_container">
-                <div class="columns 9-small footer-location-information" id="GB">
-                  <p>4070 Cavitt Stallman Rd<br>
-            			Granite Bay, CA 9574</p>
-            			<p>Phone: (916) 791-4496</p>
-            			<p>Email: <%= link_to 'tricksgb@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
-                </div>
-                <div class="columns 9-small footer-location-information" id="FOL">
-                 	<p>370 Plaza Drive<br>
-            			Folsom, CA 95630</p>
-            			<p>Phone: (916) 351-0024</p>
-            			<p>Email: <%= link_to 'tricksfol@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
-                </div>
-                <div class="columns 9-small footer-location-information" id="SAC">
-                 	<p>4440 Marconi Avenue, Suite 100<br>
-			            Sacramento, CA 95821</p>
-            			<p>Phone: (916) 481-4496</p>
-            			<p>Email: <%= link_to 'trickssac@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
-                </div>
-                <div class="columns 9-small footer-location-information" id="NONE">
-                  Click a button for more information about the location
-                </div>
-              </div>
-            </div>
-          </div>
-          <% if !current_user %>
+          <% end %>
+          
+          <% if !@bubbles.nil? %>
             <div class="row align-center">
-              <div class="columns small-10 large-6">
-                <%= link_to "Staff Login", login_path, class: "button secondary expanded", style: "margin-top: 50px;" %>
+              <div class="columns small-12 large-8 ">
+                <%= yield %>
+              </div>  
+              <div class="columns small-12 large-4">
+                <div class="row align-spaced">
+                  <% @bubbles.each do |bubble_id| %>
+                    <div class="columns small-8 medium-5 large-10">
+                      <% if BubbleContent.exists?(sort_order: bubble_id) %>
+                        <br>
+                        <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: bubble_id).first} %>
+                        <br>
+                      <% else %>
+                        <h2 style="color: red; margin: 40px 0;">BubbleContent(<%= bubble_id %>) Not Found</h2>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>  
+            </div>
+          <% else %>
+            <div class="row">
+              <div class="columns small-12">
+                <%= yield %>
               </div>
             </div>
           <% end %>
         </div>
       </div>
-      <% height = 5 %>
-      <% width = 300 %>
-      <% buffer = 20 %>
-      <div style="width: 100%; height: <%= (height * 2) + buffer %>px; background-image: url(&quot;data:image/svg+xml;charset=utf8,<svg height='100%' width='100%' viewBox='0 0 <%= width %> <%= (height * 2) + buffer %>' xmlns='http://www.w3.org/2000/svg'><path d='m 0 0 q <%= width / 8 %> 0 <%= width / 4 %> <%= height %> t <%= width / 4 %> <%= height %> t <%= width / 4 %> -<%= height %> t <%= width / 4 %> -<%= height %> l 0 <%= (height * 2) + buffer %> l -<%= width %> 0 z' stroke='white' fill='white' /></svg>&quot;); background-size: contain;"></div>
+  
+    <div class="reveal fast large" id="register_now_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+      <div id="choose_location_modal">
+        <h1>Choose a Location</h1>
+        <div class="row" style="margin-top: 25px;">
+    			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
+    			<% locations.each do |loc| %>
+            <div class="columns small-12 large-4">
+              <%= link_to loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
+            </div>
+    			<% end %>
+        </div>
+      </div>
+      <div id="choose_program_modal">
+        <h1>Choose a Program</h1>
+        <div class="row" style="margin-top: 20px;">
+    			<% programs = {"Preschool Gymnastics" => tumblebunnies_path, "School-Age Gymnastics" => gymnastics_path, "Preschool Dance" => preschool_dance_path, "School-Age Dance" => dance_path, "TAG" => tag_path, "Swim" => swim_path} %> 
+    			<% programs.each do |prog| %>
+            <div class="columns small-12 large-6">
+              <%= link_to prog[0], prog[1], class: "button expanded program-button", id: prog[0] %>
+            </div>
+    			<% end %>
+        </div>
+      </div>
+      <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+    <%= link_to '#', '#', id: "uploading_modal_hidden_trigger", 'data-toggle': 'uploading_modal', style: "display: none;" %>
+    <div class="reveal fast" id="uploading_modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+      <div class="row align-center">
+        <h1>Uploading Files</h1>
+      </div>
+      <div class="row align-center">
+  			<%= image_tag("loading-spinner.gif") %>
+      </div>
+    </div>
+  
+    <div id="footer" style="z-index: 100; margin-top: 150px;">
+        <!--<div style="height: 100px; width: 100%; background-color: #fff;">-->
+          <!-- only here for a bit of padding above the footer -->
+        <!--</div>-->
+        <div class="row">
+          <div class="columns small-12" id="footer-content">
+            <div class="row" style="font-size: 13px;">
+              <div class="columns large-8 small-12 small-order-2 large-order-1">
+                <div class="row show-for-medium">
+                  <div class="columns medium-3 small-6">
+                    <h3 class="footer-header">Programs</h3>
+                    <ul>
+                      <li>
+                        <h3>Gymnastics</h3>
+                        <ul>
+                          <%= if defined? tb_link then ('<li>' + tb_link + '</li>').html_safe end %>
+                          <%= if defined? gym_link then ('<li>' + gym_link + '</li>').html_safe end %>
+                          <%= if defined? comp_link then ('<li>' + comp_link + '</li>').html_safe end %>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>Dance</h3>
+                        <ul>
+                          <%= if defined? pre_dance_link then ('<li>' + pre_dance_link + '</li>').html_safe end %>
+                          <%= if defined? school_dance_link then ('<li>' + school_dance_link + '</li>').html_safe end %>
+                          <%= if defined? dance_team_link then ('<li>' + dance_team_link + '</li>').html_safe end %>
+                          <%= if defined? summer_recital_link then ('<li>' + summer_recital_link + '</li>').html_safe end %>
+                          <%= if defined? winter_show_link then ('<li>' + winter_show_link + '</li>').html_safe end %>
+                        </ul>
+                      </li>
+                      <%= if defined? tag_link then ('<li>' + tag_link + '</li>').html_safe end %>
+                      <%= if defined? swim_link then ('<li>' + swim_link + '</li>').html_safe end %>
+                      <%= if defined? campus_link then ('<li>' + campus_link + '</li>').html_safe end %>
+                    </ul>
+                  </div>
+                  <div class="columns medium-3 small-6">
+                    <h3 class="footer-header">Parties & Events</h3>
+                    <ul>
+                      <li><%= parties_link %></li>
+                      <li><%= kids_night_outs_link %></li>
+                      <li><%= bff_dance_parties_link %></li>
+                      <li><%= camps_link %></li>
+                    </ul>
+                  </div>
+                  <div class="columns medium-3 small-6">
+                    
+                    <h3 class="footer-header">About Us</h3>
+                    <ul>
+                      <%= if defined? story_link then ('<li>' + story_link + '</li>').html_safe end %>
+                      <%= if defined? facilities_link then ('<li>' + facilities_link + '</li>').html_safe end %>
+                      <li>
+                        <h3>Our Staff</h3>
+                        <ul>
+                          <%= if defined? gb_staff_link then ('<li>' + gb_staff_link + '</li>').html_safe end %>
+                          <%= if defined? fol_staff_link then ('<li>' + fol_staff_link + '</li>').html_safe end %>
+                          <%= if defined? sac_staff_link then ('<li>' + sac_staff_link + '</li>').html_safe end %>
+                        </ul>
+                      </li>
+                      <%= if defined? testimonials_link then ('<li>' + testimonials_link + '</li>').html_safe end %>
+                      <%= if defined? family_rules_link then ('<li>' + family_rules_link + '</li>').html_safe end %>
+                      <%= if defined? newsletter_link then ('<li>' + newsletter_link + '</li>').html_safe end %>
+                    </ul>
+                  </div>
+                  <div class="columns medium-3 small-6">
+                    <h3 class="footer-header">Forms</h3>
+                    <ul>
+                      <%= if defined? absence_link then ('<li>' + absence_link + '</li>').html_safe end %>
+                      <%= if defined? billing_cycle_link then ('<li>' + billing_cycle_link + '</li>').html_safe end %>
+                      <%= if defined? release_form_link then ('<li>' + release_form_link + '</li>').html_safe end %>
+                      <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
+                      <%= if defined? employment_link then ('<li>' + employment_link + '</li>').html_safe end %>
+                      <%= if defined? recital_ad_link then ('<li>' + recital_ad_link + '</li>').html_safe end %>
+                    </ul>
+                    <!--<h3 class="footer-header"><%#= link_to "FAQ", '#', class: 'main-menu-item' %></h3>-->
+                    <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>
+                    <h3 class="footer-header"><%= link_to "Contact", locations_path, class: 'main-menu-item' %></h3>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="columns large-4 small-12 small-order-1 large-order-2" style="margin-bottom: 20px;">
+                <div class="row">
+                  <div class="columns small-4">
+                    <%= link_to "Granite Bay", 'javascript:void(0);', class: "button expanded location-button", id: "GB" %>
+                  </div>
+                  <div class="columns small-4">
+                    <%= link_to "Folsom", 'javascript:void(0);', class: "button expanded location-button", id: "FOL" %>
+                  </div>
+                  <div class="columns small-4">
+                    <%= link_to "Sacramento", 'javascript:void(0);', class: "button expanded location-button", id: "SAC" %>
+                  </div>
+                </div>
+                <div class="row" id="footer_location_container">
+                  <div class="columns 9-small footer-location-information" id="GB">
+                    <p>4070 Cavitt Stallman Rd<br>
+              			Granite Bay, CA 9574</p>
+              			<p>Phone: (916) 791-4496</p>
+              			<p>Email: <%= link_to 'tricksgb@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                  </div>
+                  <div class="columns 9-small footer-location-information" id="FOL">
+                   	<p>370 Plaza Drive<br>
+              			Folsom, CA 95630</p>
+              			<p>Phone: (916) 351-0024</p>
+              			<p>Email: <%= link_to 'tricksfol@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                  </div>
+                  <div class="columns 9-small footer-location-information" id="SAC">
+                   	<p>4440 Marconi Avenue, Suite 100<br>
+  			            Sacramento, CA 95821</p>
+              			<p>Phone: (916) 481-4496</p>
+              			<p>Email: <%= link_to 'trickssac@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                  </div>
+                  <div class="columns 9-small footer-location-information" id="NONE">
+                    Click a button for more information about the location
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% if !current_user %>
+              <div class="row align-center">
+                <div class="columns small-10 large-6">
+                  <%= link_to "Staff Login", login_path, class: "button secondary expanded", style: "margin-top: 50px;" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% height = 5 %>
+        <% width = 300 %>
+        <% buffer = 20 %>
+        <div style="width: 100%; height: <%= (height * 2) + buffer %>px; background-image: url(&quot;data:image/svg+xml;charset=utf8,<svg height='100%' width='100%' viewBox='0 0 <%= width %> <%= (height * 2) + buffer %>' xmlns='http://www.w3.org/2000/svg'><path d='m 0 0 q <%= width / 8 %> 0 <%= width / 4 %> <%= height %> t <%= width / 4 %> <%= height %> t <%= width / 4 %> -<%= height %> t <%= width / 4 %> -<%= height %> l 0 <%= (height * 2) + buffer %> l -<%= width %> 0 z' stroke='white' fill='white' /></svg>&quot;); background-size: contain;"></div>
+      </div>
     </div>
   </body>
 </html>

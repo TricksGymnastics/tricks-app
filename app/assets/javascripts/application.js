@@ -25,48 +25,9 @@ $(window).on("load", function() {
   $(".load-hidden").each(function() {
     $(this).removeClass("load-hidden");
   });
-  
-  // var pos = $("#footer").position();
-  // var height = $(window).height();
-  // height = height - pos.top;
-  // height = height - footer.height();
-  // if (height > 0) {
-  //   $("#footer").css({
-  //     'margin-top': height + 'px'
-  //   });
-  // }
 });
 
-
-
 $(function() {
-  var new_height = $("#mobile_menu").parent().height() + 10;
-  $("#mobile_menu").parent().css({
-    "position": "relative",
-    "top": "0px",
-    "left": "-100%",
-    "z-index": "5",
-    "width": "250px",
-    "background-color": "#FEFEFE",
-    "border": "solid 2px #666",
-    "box-shadow": "0 0 25px #222",
-    "height": new_height + "px",
-    "margin-bottom": "-" + new_height + "px"
-  });
-
-  var showing_menu = false;
-  $('#mobile_menu_button').on('click', function(event) {
-    event.preventDefault();
-    if (showing_menu) {
-      $("#mobile_menu").parent().animate({ "left": "-100%" }, 500); //.slideToggle(200);
-      showing_menu = false;
-    }
-    else {
-      $("#mobile_menu").parent().animate({ "left": "0" }, 500); //.slideToggle(200);
-      showing_menu = true;
-    }
-  });
-
   var showing_staff_menu = false;
   var staff_menu_new_height = $("#logged_in_menu").parent().height() + 10;
   var distance_to_hide_top = staff_menu_new_height + 48;
