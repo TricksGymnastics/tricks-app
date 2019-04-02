@@ -24,9 +24,7 @@ class EmploymentApplicationsController < ApplicationController
       end
     end
     
-    @employment_applications = EmploymentApplication.where(query).order("created_at DESC")
-    
-    
+    @employment_applications = EmploymentApplication.where(search).text_search(params[:search]).order("created_at DESC")
     @counts = Hash.new
     
     status_query = query.clone

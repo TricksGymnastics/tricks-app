@@ -1,7 +1,19 @@
 <%= stylesheet_link_tag "FileSpecificCSS/employment_applications", :media => "all" %>
 
-<h1>Employment Applications</h1>
 
+    <h1>Employment Applications</h1>
+    
+<div class="row">
+    <div style="float:right; margin-right: 0px;">
+       <%= form_tag employment_applications_path, method: :get do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+      <% end %>
+    </div>
+</div>    
+    
 <div class="row">
     <style>
         #interview_set_up_filter_button{
