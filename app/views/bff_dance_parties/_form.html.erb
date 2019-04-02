@@ -16,44 +16,28 @@
       <%= render partial: 'helper_fields/text', locals: {form: f, field: :name, label: "Party"} %>
     </div>
     <div class="columns small-4 ">
-      <%= render partial: 'helper_fields/date', locals: {form: f, field: :date, label: "Date"} %>
-    </div>
-  </div>
- 
-  <div class="row">
-    <div class="columns small-4 ">
       <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @bff_dance_party.image} %>
     </div>
-    <div class="columns small-8">
+  </div>
+  
+  <div class="row align-center">
+    <div class="columns small-12">
       <%= render partial: 'helper_fields/text', locals: {form: f, field: :suggestion, label: "Suggestion", placeholder: "Students can wear Frozen outfit/costumes to the party!"} %>
     </div>
   </div>
-  
   <div class="row">
-    <div class="columns small-6 ">
-      <%= render partial: 'helper_fields/time', locals: {form: f, field: :granite_bay_start_time, label: "Granite Bay Start Time"} %>
-    </div>
-    <div class="columns small-6 ">
-      <%= render partial: 'helper_fields/number', locals: {form: f, field: :granite_bay_duration, label: "Duration"} %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="columns small-6 ">
-      <%= render partial: 'helper_fields/time', locals: {form: f, field: :folsom_start_time, label: "Folsom Start Time"} %>
-    </div>
-    <div class="columns small-6 ">
-      <%= render partial: 'helper_fields/number', locals: {form: f, field: :folsom_duration, label: "Duration"} %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="columns small-6 ">
-      <%= render partial: 'helper_fields/time', locals: {form: f, field: :sacramento_start_time, label: "Sacramento Start Time"} %>
-    </div>
-    <div class="columns small-6 ">
-      <%= render partial: 'helper_fields/number', locals: {form: f, field: :sacramento_duration, label: "Duration"} %>
-    </div>
+        <div class="columns small-6 large-3 ">
+          <%= render partial: 'helper_fields/date', locals: {form: f, field: :date, label: "Date"} %>
+        </div>
+        <div class="columns small-6 large-3 ">
+          <%= render partial: 'helper_fields/time', locals: {form: f, field: :granite_bay_start_time, label: "Granite Bay Start Time"} %>
+        </div>
+        <div class="columns small-6 large-3 ">
+          <%= render partial: 'helper_fields/time', locals: {form: f, field: :folsom_start_time, label: "Folsom Start Time"} %>
+        </div>
+        <div class="columns small-6 large-3 ">
+          <%= render partial: 'helper_fields/time', locals: {form: f, field: :sacramento_start_time, label: "Sacramento Start Time"} %>
+        </div>
   </div>
   
   <div class="row align-center" style="margin-bottom: 100px; margin-top: 50px;">

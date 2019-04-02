@@ -1,57 +1,35 @@
 <% if is_first then %>
-  <div class="row" style="border: solid #fa8aae 10px; border-radius: 25px; margin-top: 30px;">
-    <div class="columns" style="padding: 0px;">
+
+  <div class="row align-center">
+    <div class="columns">
       <% if party.nil? %>
         <h3 style="padding: 30px;">No BFF Dance Parties currently available :(</h3><h3 style="padding: 30px;">Please check back later!</h3>
       <% else %>
-        <div style="text-align: center; overflow: hidden;">
-          <% if !party.image.nil? %>
-            <%= image_tag party.image_url, alt: party.name, style: "width: 100%; border-radius: 15px 15px 0 0;" %>
-          <% else %>
-            <h3><%= party.name  %> (<%= party.date %>) </h3>
-          <% end %>
-          <% if can? :manage, BffDanceParty %>
-            <%= link_to 'Click here to Edit', edit_bff_dance_party_path(party), style: " text-decoration: underline; font-size: 20px;"%>
-            <br>
-          <% end %>
-        </div>
-        <h4 style="color: #fa8aae;"><%= party.suggestion %></h4>
-        <h5><b>Ages 3-5</b> (children must be potty-trained).</h5>
-        
-        <div class="row">
-            <div class="columns small-12" style="text-align: center;">
-              <ul style="list-style-type: none;">
-                <li style="text-decoration: underline; font-size: 20px;">Class times vary per studio:</li>
-                <% if !party.granite_bay_start_time.nil? && !party.granite_bay_duration.nil? %>
-                  <li>Granite Bay: <%= party.granite_bay_start_time.strftime("%l:%M %p") + " - " + party.granite_bay_start_time.advance(minutes: party.granite_bay_duration).strftime("%l:%M %p") %></li>
-                <% end %>
-                <% if !party.folsom_start_time.nil? && !party.folsom_duration.nil? %>
-                  <li>Folsom: <%= party.folsom_start_time.strftime("%l:%M %p") + " - " + party.folsom_start_time.advance(minutes: party.folsom_duration).strftime("%l:%M %p") %></li>
-                <% end %>
-                <% if !party.sacramento_start_time.nil? && !party.sacramento_duration.nil? %>
-                  <li>Sacramento:<%= party.sacramento_start_time.strftime("%l:%M %p") + " - " + party.sacramento_start_time.advance(minutes: party.sacramento_duration).strftime("%l:%M %p") %></li>
-                <% end %>
-              </ul>
-            </div>
-        </div>
-    
-        <h5 style="color: #fa8aae;">Cost: $10 per child</h5>
-
-      
-      <% end %>
+        <% if !party.image.nil? %>
+          <%= image_tag party.image_url, alt: party.name, style: "margin-top: 30px; box-shadow: 0 0 20px #222; width: 100%;" %> 
+        <% end %>
+      <% end %>  
     </div>
   </div>
+  <% if can? :manage, BffDanceParty %>
+    <br><%= link_to 'Edit', edit_bff_dance_party_path(party), class:"button expanded" %>
+  <% end %>
 <% else %>
-  <div class="row align-center" style="border: solid 3px #23c4e2; background-color: #23c4e2; border-radius: 20px; color: white; margin-top: 30px; padding: 15px;">
-    <div class="columns small-12" style="text-align: center">
-      <h3><%= party.name  %> (<%= party.date %>) </h3>
-      <h4><%= party.suggestion %></h4>
-      <ul style="list-style-type: none;">
-        <li style="text-decoration: underline; font-size: 20px;">Class times vary per studio:</li>
-        <li>Granite Bay: <%= party.granite_bay_start_time.strftime("%l:%M %p") + " - " + party.granite_bay_start_time.advance(minutes: party.granite_bay_duration).strftime("%l:%M %p") %></li>
-        <li>Folsom: <%= party.folsom_start_time.strftime("%l:%M %p") + " - " + party.folsom_start_time.advance(minutes: party.folsom_duration).strftime("%l:%M %p") %></li>
-        <li>Sacramento:<%= party.sacramento_start_time.strftime("%l:%M %p") + " - " + party.sacramento_start_time.advance(minutes: party.sacramento_duration).strftime("%l:%M %p") %></li>
-      </ul>
+
+  <div class="row align-center" style="border: solid 5px #B689D4; border-radius: 10px; margin: 35px 0px 0px 0px; padding: 15px;">
+    <div class="columns small-12" style="text-align: justify;">
+      <h4><%= party.name  %>
+        <% if can? :manage, BffDanceParty %>
+          (<%= link_to 'Edit', edit_bff_dance_party_path(party)%>)
+        <% end %>
+      </h4>
+        <p><%= party.suggestion %></p>
+          <b>Date: <%=party.date.strftime("%B %e, %Y") %></b>
+          <br>Granite Bay: <%= party.granite_bay_start_time.strftime("%l:%M %p") %>
+          <br>Folsom: <%= party.folsom_start_time.strftime("%l:%M %p") %>
+          <br>Sacramento:<%= party.sacramento_start_time.strftime("%l:%M %p")%>
+        </p>
+        <p>*Class times vary per studio</p>
     </div>
   </div>
 <% end %>
