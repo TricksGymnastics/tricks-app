@@ -11,40 +11,30 @@
   <% update_bubbles(given_bubbles) %>
 <% end %>
 
-<style>
-  h1{
-    color: #fa8aae;
-  }
-  h1 {
-    font-size: 60px;
-  }
-  h4, h5{
-    text-align: center;
-  }
-  .party-info-box{
-    text-align: center; 
-    border: solid 10px blue; 
-    border-radius: 25px; 
-    padding:10px;
-    margin-bottom: 15px;
-  }
-  .blue-text{
-    color: #23c4e2;
-  }
-</style>
-    <!--<div>-->
-    <!--  <%#= image_tag "/assets/site_header_images/parties_header.jpg", style:"margin-top: -120px;" %>-->
-    <!--</div>-->
-    
 <div class="row">
   <div class="columns small-12">
     <h1>BFF Dance Party!</h1>
     <% if can? :create, BffDanceParty %>
-      <h4 style="margin-top: -25px;"><%= link_to "(Add New BFF Dance Party)", new_bff_dance_party_path %></h4>
+     <div class="row align-center">
+        <div class="columns small-6">
+          <%= link_to "Add New BFF Dance Party", new_bff_dance_party_path, class: "button expanded" %>
+        </div>
+     </div>
     <% end %>
-    <h4>Bring a Friend Friday Dance Parties</h4>
-    <h5>Join us for 45 minutes of music, dancing, crafts and fun with friends!</h5>
-    <h5>BFF Dance Parties will be held the last Friday of every month.</h5>
+    <h5 style="margin: 25px 0px 10px;">Bring a Friend Friday Dance Parties. Join us for 45 minutes of music, dancing, crafts and fun with friends! BFF Dance Parties will be held the last Friday of every month. Ages 3-5 (children must be potty-trained).</h5></h5>
+  </div>
+</div>
+
+<h3>Register Here!</h3>
+<div class="row align-center">
+  <div class="columns small-11 large-4">
+    <%= link_to "Granite Bay", "https://app.jackrabbitclass.com/eventcalendar.asp?id=&key=&clabel=Date%2F6%2F2019&orgid=313983&loc=GB", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+  </div>
+  <div class="columns small-11 large-4">
+    <%= link_to "Folsom", "https://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date%20Night&loc=FOL&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+  </div>
+  <div class="columns small-11 large-4">
+    <%= link_to "Sacramento", "https://app.jackrabbitclass.com/eventcalendar.asp?&cat2=Date%20Night&loc=SAC&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
   </div>
 </div>
 
@@ -60,7 +50,7 @@
           <% first = false %>
         <% else %>
           <%= render partial: 'show', locals: {party: party, is_first: false} %>
-          <% end %>
+        <% end %>
       <% end %>
     </ul>
     
