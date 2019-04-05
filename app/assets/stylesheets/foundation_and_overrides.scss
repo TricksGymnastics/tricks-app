@@ -14,16 +14,6 @@ Roboto,
 Arial,
 sans-serif;
 
-// medium use to be 640, but I didn't like large being applied to a horizontal ipad, so I knocked them all down one.
-// Update: knocked medium down to 560 so that horizontal iphone5 is medium
-$breakpoints: ( small: 0,
-medium: 560px,
-large: 1024px,
-xlarge: 1440px,
-xxlarge: 1440px,
-);
-$breakpoint-classes: (small medium large xlarge);
-
 $header-font-family: 'Trebuchet MS';
 
 $accordion-plusminus: false;
@@ -142,91 +132,36 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 
 @media only screen and (min-width: 40rem) {}
 
-.logged-in {
-	$menu-background: #333;
-	z-index: 20;
-	position: relative;
-	.title-bar {
-		background: $menu-background;
-	}
-	&.logged-in {
-		background: $menu-background;
-		ul {
-			background: $menu-background;
-			li {
-				background: $menu-background;
-				a {
-					color: #fff;
-				}
-				.is-submenu-item {
-					// background-color: #777;
-					@include breakpoint(large up) {
-						// font-size: 12px;
-						background-color: #999;
-					}
-				}
-			}
-		}
-	}
-
-	.logged-in-menu-item {
-		@include breakpoint(large only) {
-			font-size: 12px;
-			padding: 13px 5px;
-		}
+$staff-menu-background: #555;
+#staff_menu_off_canvas {
+	background-color: $staff-menu-background;
+	box-shadow: inset -13px 0 20px -13px #000;
+	color: $white;
+	a {
 		color: $white;
 	}
-
-	.logged-in-menu-button {
-		@include breakpoint(large down) {
-			font-size: 14px;
-		}
-		@include breakpoint(large up) {
-			font-size: 14px;
-			padding: 7px 10px;
-		}
+	li:not(:last-child) {
+		border-bottom: 1px solid #4e4e4e;
+		margin-right: 20px;
 	}
+}
 
-	.menu-text {
-		color: #fff;
-		@media only screen and (max-width: 40em) {
-			// display: none !important;
-		}
+#staff_menu {
+	z-index: 20;
+	position: relative;
+	color: #fff;
+	background: $staff-menu-background;
+	ul {
+		background-color: transparent;
 	}
-
-	@media only screen and (min-width: 40em) {
-		.menu:last-child {
-			border-left: 1px solid #4e4e4e;
-		}
-		.menu:first-child {
-			border-left: none;
-		}
-		.menu {
-			li:not(:last-child) {
-				border-right: 1px solid #4e4e4e;
-			}
-		}
+	li:not(:last-child) {
+		border-right: 1px solid #222;
 	}
-
-	.dropdown.menu .submenu {
-		border: none;
+	.menu a,
+	.menu .button {
+		color: $white;
+		padding: 10px 7px;
 	}
-	.is-dropdown-submenu {
-		z-index: 20;
-	}
-
-	.dropdown.menu .is-dropdown-submenu-parent.is-right-arrow>a::after {
-		border-color: #fff transparent transparent;
-	}
-
-	.is-drilldown-submenu-parent>a::after {
-		border-color: transparent transparent transparent #fff;
-	}
-
-	.js-drilldown-back::before {
-		border-color: transparent #fff transparent transparent;
-	}
-
 }
 
 .logo {
@@ -255,6 +190,7 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 #main-menu {
 	filter: drop-shadow(0px 0px 12px #444);
 	height: 50px;
+
 	.main-menu-item {
 		@include breakpoint(xlarge up) {
 			font-size: 20px;
@@ -303,6 +239,7 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 			float: right;
 		}
 	}
+
 	.is-dropdown-submenu li {
 		background-color: $white;
 	}
@@ -326,6 +263,10 @@ $small-logo-padding: ($small-logo-width / 2)+20px;
 		// border: solid 1px #d9d9d9; // white-space: nowrap;
 		// display: block;
 		// padding: 0.7rem 1rem;
+	}
+	li {
+		border-top: 1px solid #dcdcdc;
+		margin-right: 30px;
 	}
 }
 

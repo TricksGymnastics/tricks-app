@@ -52,7 +52,7 @@
   
   %>
   <body>
-    <div class="off-canvas position-right" id="mobile_menu" data-off-canvas zdata-transition="overlap">
+    <div class="off-canvas position-right" id="mobile_menu" data-off-canvas>
       <%= link_to "Register Now", "javascript:void(0);", 'data-toggle': 'register_now_modal', class: "button expanded main-menu-button" %>
       <ul class="vertical menu accordion-menu" style="margin-bottom: 20px;" data-accordion-menu>
         <li>
@@ -123,14 +123,18 @@
             <!--<li><%#= recital_ad_link %></li>-->
           </ul>
         </li>
-        <li><%= blog_link %></li>
+        <li style="border-bottom: 1px solid #dcdcdc;"><%= blog_link %></li>
       </ul>
       <%= link_to "Parent Portal", "https://app.jackrabbitclass.com/portal/ppLogin.asp?id=313983", class: "button expanded main-menu-button" %>
     </div>
     
+    <% if current_user %>
+      <div class="off-canvas position-left" id="staff_menu_off_canvas" data-off-canvas>
+        <%= render partial: '/layouts/staff_menu', given_locals: {vertical: true} %>
+      </div>
+    <% end %>
     
-    <div class="off-canvas-content" data-off-canvas-content>
-      
+    <div class="off-canvas-content" data-off-canvas-content >
       <% show_size = false %>
       <% if !Rails.env.production? && show_size %>
       <div style="position: fixed; left: 50%; top: 50px; width: 20%; margin-left: -10%; border: solid 2px #333; z-index: 10000; background-color: white; text-align: center;">
@@ -152,73 +156,12 @@
       <% end %>
   
       <% if current_user %>
-        <div class="title-bar hide-for-large" style="background-color: #333; height: 48px; text-align: right;">
-          <div class="title-bar-title">Staff Menu</div>
-          <button class="menu-icon" id="logged_in_menu_button" type="button" data-toggle></button>
-        </div>
-        
-        <div class="top-bar logged-in" id="logged_in_top_bar" style="padding: 0;">
-          <div class="top-bar-left show-for-large">
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li class="menu-text">Staff Menu</li>
-            </ul>
+        <div class="top-bar show-for-xlarge" id="staff_menu">
+          <div class="top-bar-left">
+            <div class="title-bar-title" style="margin-left: 6px;"><%= current_user.email %></div>
           </div>
           <div class="top-bar-right">
-            <ul class="menu vertical large-horizontal" id="logged_in_menu" data-responsive-menu="drilldown large-dropdown">
-  		        <% if can? :manage, User %>
-                <li><%= link_to "Users", users_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-              
-  		        <% if can? :manage, PromoSlide %>
-                <li><%= link_to "Promos", promo_slides_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-  		        
-  		        <% if can? :manage, BubbleContent %>
-                <li><%= link_to "Bubbles", bubble_contents_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-  
-  		        <% if can? :manage, Comment %>
-                <li><%= link_to "Comments", comments_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-  
-  		        <% if can? :manage, KidQuote %>
-                <li><%= link_to "Kid Quotes", kid_quotes_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-  
-  		        <% if can? :manage, Level %>
-                <li><%= link_to "Levels", levels_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-              
-  		        <% if can? :read, TricksUVideo %>
-                <li><%= link_to "TricksU", tricksu_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-              
-  		        <% if can? :manage, Coach %>
-                <li><%= link_to "Staff", coaches_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-  
-  		        <% if can? :manage, Coach %>
-                <li><%= link_to "Recital Ads", "/recital_ads_by_year/"+Time.now.year.to_s, class: 'logged-in-menu-item' %></li>
-              <% end %>
-              
-  		        <% if can? :create, WebsitePdf %>
-                <li><%= link_to "Website PDFs", website_pdfs_path, class: 'logged-in-menu-item' %></li>
-              <% end %>
-              
-          		<% if can? :manage, Absent %>
-          			<li><%= link_to "Absences", absents_path, class: 'logged-in-menu-item' %></li>
-          		<% end %>
-              
-          		<% if can? :manage, DiscontinueNotice %>
-          			<li><%= link_to "Discontinues", discontinue_notices_path, class: 'logged-in-menu-item' %></li>
-          		<% end %>
-          		
-          		<% if can? :show, EmploymentApplication %>
-          			<li><%= link_to "Applications", employment_applications_path, class: 'logged-in-menu-item' %></li>
-          		<% end %>
-              <li class="hide-for-large-only" style="padding: 0 10px;"><%= link_to "Logout (" + current_user.email + ")", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
-              <li class="show-for-large-only" style="padding: 0 3px;"><%= link_to "Logout", logout_path, class: "button alert expand logged-in-menu-button" %> </li>
-            </ul>
+            <%= render partial: '/layouts/staff_menu', locals: {vertical: false} %>
           </div>
         </div>
       <% end %>
@@ -229,7 +172,7 @@
             <%= link_to image_tag('tricks-header.png'), root_path %>
           </div>
           <!-- Left Nav Section -->
-          <div class="top-bar-left show-for-large">
+          <div class="top-bar-left show-for-xlarge">
             <ul class="menu" data-responsive-menu="drilldown large-dropdown">
               <li><%= link_to "Register Now", "javascript:void(0);", class: "button main-menu-button", 'data-toggle': 'register_now_modal', style: "margin-right: 20px;" %></li>
               <li class="has-submenu">
@@ -273,7 +216,7 @@
             </ul>
           </div>
           <!-- Right Nav Section -->
-          <div class="top-bar-right show-for-large">
+          <div class="top-bar-right show-for-xlarge">
             <ul class="menu" data-responsive-menu="drilldown large-dropdown">
               <li class="has-submenu">
                 <%= link_to "About Us", 'javascript:void(0);', class: 'main-menu-item' %>
@@ -311,15 +254,20 @@
             </ul>
           </div>
           
-          <div class="hide-for-large" style="position: absolute; right: 6px; transform-origin: 100% 50% 0; transform: scale(1.2);" data-toggle="mobile_menu">
+          <% if current_user %>
+            <div class="hide-for-xlarge" style="position: absolute; left: 6px; transform-origin: 0% 50% 0; transform: scale(1.1);" data-toggle="staff_menu_off_canvas">
+              <button class="menu-icon" id="toggle_menu_button" style="margin: 0px 5px;" type="button"></button>
+              <span class="title-bar-title">Staff</span>
+            </div>
+          <% end %>
+          
+          <div class="hide-for-xlarge" style="position: absolute; right: 6px; transform-origin: 100% 50% 0; transform: scale(1.1);" data-toggle="mobile_menu">
             <span class="title-bar-title">Menu</span>
             <button class="menu-icon" id="mobile_menu_button" style="margin: 0px 5px;" type="button"></button>
           </div>
         </div>
       </div>
       
-  
-  
       <% if content_for?(:header_image) %>
         <div id="header-secondary" class="row" style=" z-index: 5;">
           <div style="overflow: hidden; width: 100%; position: absolute; left: 0;">
@@ -329,9 +277,8 @@
       
         <div class="row" style="padding-top: 22%;"></div>
       <% else %>
-        <div class="row show-for-small" style="padding-top: 20px;"></div>
+        <div class="row show-for-small" style="padding-top: 60px;"></div>
         <div class="row show-for-large" style="padding-top: 30px;"></div>
-        <div class="row show-for-xlarge" style="padding-top: 50px;"></div>
       <% end %>  
       
       <div class="row" style="padding-top: 20px;">

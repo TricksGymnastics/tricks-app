@@ -1,0 +1,65 @@
+<% if !defined? vertical %>
+  <% vertical = true %>
+<% end %>
+<% orientation = vertical ? "vertical" : "horizontal" %>
+
+<ul class="menu <%= orientation %>">
+  <% if vertical %>
+    <li style="text-align: center; padding: 10px;">
+      <div style="font-size: 20px;">Staff Menu</div>
+      <div><%= current_user.email %></div>
+    </li>
+  <% end %>
+  <% if can? :manage, User %>
+    <li><%= link_to "Users", users_path %></li>
+  <% end %>
+  
+  <% if can? :manage, PromoSlide %>
+    <li><%= link_to "Promos", promo_slides_path %></li>
+  <% end %>
+  
+  <% if can? :manage, BubbleContent %>
+    <li><%= link_to "Bubbles", bubble_contents_path %></li>
+  <% end %>
+
+  <% if can? :manage, Comment %>
+    <li><%= link_to "Comments", comments_path %></li>
+  <% end %>
+
+  <% if can? :manage, KidQuote %>
+    <li><%= link_to "Kid Quotes", kid_quotes_path %></li>
+  <% end %>
+
+  <% if can? :manage, Level %>
+    <li><%= link_to "Levels", levels_path %></li>
+  <% end %>
+  
+  <% if can? :read, TricksUVideo %>
+    <li><%= link_to "TricksU", tricksu_path %></li>
+  <% end %>
+  
+  <% if can? :manage, Coach %>
+    <li><%= link_to "Staff", coaches_path %></li>
+  <% end %>
+
+  <% if can? :manage, Coach %>
+    <li><%= link_to "Recital Ads", "/recital_ads_by_year/"+Time.now.year.to_s %></li>
+  <% end %>
+  
+  <% if can? :create, WebsitePdf %>
+    <li><%= link_to "Website PDFs", website_pdfs_path %></li>
+  <% end %>
+  
+  <% if can? :manage, Absent %>
+    <li><%= link_to "Absences", absents_path %></li>
+  <% end %>
+  
+  <% if can? :manage, DiscontinueNotice %>
+    <li><%= link_to "Discontinues", discontinue_notices_path %></li>
+  <% end %>
+
+  <% if can? :show, EmploymentApplication %>
+    <li><%= link_to "Applications", employment_applications_path %></li>
+  <% end %>
+  <li style="padding: <%= vertical ? 10 : 5 %>px; margin: 0;"><%= link_to "Logout", logout_path, class: "button alert expand", style: "padding: " + (vertical ? "10" : "5") + "px 10px;" %> </li>
+</ul>
