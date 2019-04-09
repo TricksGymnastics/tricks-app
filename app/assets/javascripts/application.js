@@ -25,6 +25,15 @@ $(window).on("load", function() {
   $(".load-hidden").each(function() {
     $(this).removeClass("load-hidden");
   });
+  
+  if ($(document).height() <= $(window).height()){
+    // content does not fill page, add a buffer to cover the bottom of the page
+    const bottom = $("#footer").offset().top + $("#footer").height();
+    const height = $(window).height() - bottom;
+    const elem = document.createElement('div');
+    elem.style.cssText = 'position: absolute; top: '+bottom+'px; width: 100%; height: '+height+'px; z-index: 100; background-color: #fff;';
+    document.body.appendChild(elem);
+  }
 });
 
 $(function() {
