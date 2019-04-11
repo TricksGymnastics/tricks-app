@@ -2,7 +2,7 @@
 
 class RecitalAdPdfFileUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  
+
   def fog_directory
     'recital-ads'
   end

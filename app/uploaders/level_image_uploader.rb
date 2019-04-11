@@ -2,7 +2,7 @@
 
 class LevelImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  
+
   def fog_directory
     'level-images'
   end

@@ -1,7 +1,7 @@
 require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
-  if Rails.env.production?
+  if Rails.env.production? or Rails.env.development? #comment out the or if you are planning up testing upload
     config.fog_credentials = {
       :provider                         => 'Google',
       :google_storage_access_key_id     => ENV['GOOGLE_KEY_ID'],  
@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     config.storage = :fog
   else
     config.storage = :file
-    config.enable_processing = false
+    config.enable_processing = true
   end
 end

@@ -8,15 +8,18 @@
   <% end %>
 <% end %>
 
+<% image = coach.image.thumb %>
 <% should_use_tag_pic = 0 %>
-<% image = image_tag(coach.image_url(:thumb).to_s) %>
-
-<% if local_assigns[:tag] && !coach.tag_image.url.nil? && coach.tag_image_url.to_s.split('/').last.split('_').last != 'default.jpg'  %>
+<%# if a tag image was requested, and we have a tag image, and the tag image is not the default, show the tag image %>
+<% if local_assigns[:tag] || image.file.nil? || !image.file.exists? %>
   <% should_use_tag_pic = 1 %>
-  <% image = image_tag(coach.tag_image_url(:thumb).to_s) %>
+  <% image = coach.tag_image.thumb %>
+<% end %>
+<% if image.file.nil? || !image.file.exists? %>
+  <% image = coach.image.default_url %>
 <% end %>
 
 <div class="columns large-2 medium-4 small-6" id="coach_container">
   <%= link_to name, coach_path(coach, use_tag_picture: should_use_tag_pic), id: id %>
-  <%= link_to image, coach_path(coach, use_tag_picture: should_use_tag_pic) %>
+  <%= link_to image_tag(image), coach_path(coach, use_tag_picture: should_use_tag_pic) %>
 </div>

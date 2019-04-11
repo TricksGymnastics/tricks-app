@@ -2,7 +2,7 @@
 
 class ApplicantResumeUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  
+
   def fog_directory
     'employment-applications'
   end

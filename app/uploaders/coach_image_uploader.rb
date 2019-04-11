@@ -3,8 +3,6 @@
 class CoachImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  # storage :fog
-
   def fog_directory
     'coach-pics'
   end

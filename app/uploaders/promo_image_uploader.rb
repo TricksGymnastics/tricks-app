@@ -2,7 +2,7 @@
 
 class PromoImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  
+
   def fog_directory
     'promo-images'
   end

@@ -8,12 +8,6 @@ gem 'coffee-rails'
 gem 'uglifier'
 
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
-
-
-
-
 
 gem 'yaml_db'
 gem 'therubyracer'
@@ -31,6 +25,9 @@ group :development do
 	# gem 'byebug'
 	gem 'web-console', '~> 2.0' #put <%= console %> on any page I want a console to show on the error page
 end
+group :production do
+	gem "rack-timeout"
+end
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.1.2'
@@ -41,8 +38,7 @@ gem 'will_paginate'
 
 gem "carrierwave", "0.11.2"
 gem 'mini_magick', "4.5.1"
-gem 'fog-google', "0.3.2"
-gem "google-api-client", "> 0.8.5", "< 0.9"
+gem 'fog-google'
 # gem "fog"
 
 gem "fancybox2-rails"
@@ -60,8 +56,4 @@ gem 'foundation-rails',  '6.4.1.2'#, '6.3.1.0'
 
 gem 'httparty' #needed to get json info from jackrabbit
 
-gem "wysiwyg-rails"
-
 gem "awesome_print" #used to make the console pretty
-
-gem "rack-timeout"

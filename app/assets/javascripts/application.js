@@ -28,9 +28,9 @@ $(window).on("load", function() {
   
   if ($(document).height() <= $(window).height()){
     // content does not fill page, add a buffer to cover the bottom of the page
-    const bottom = $("#footer").offset().top + $("#footer").height();
-    const height = $(window).height() - bottom;
-    const elem = document.createElement('div');
+    var bottom = $("#footer").offset().top + $("#footer").height();
+    var height = $(window).height() - bottom;
+    var elem = document.createElement('div');
     elem.style.cssText = 'position: absolute; top: '+bottom+'px; width: 100%; height: '+height+'px; z-index: 100; background-color: #fff;';
     document.body.appendChild(elem);
   }
