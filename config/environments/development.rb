@@ -7,7 +7,7 @@ Comments::Application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
- config.eager_load = false
+  config.eager_load = false
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -15,19 +15,6 @@ Comments::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
-
-      # Change mail delvery to either :smtp, :sendmail, :file, :test
-      # config.action_mailer.delivery_method = :smtp
-      # config.action_mailer.smtp_settings = {
-      #   address: "smtp.gmail.com",
-      #   port: 587,
-      #   domain: "dev.tricksgym.com",
-      #   authentication: "plain",
-      #   enable_starttls_auto: true,
-      #   user_name: ENV['LOCAL_GMAIL_ACCOUNT'],
-      #   password: ENV['LOCAL_GMAIL_PASSWORD']
-      # }
-
 
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {

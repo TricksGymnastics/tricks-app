@@ -10,16 +10,19 @@
 
 <% image = coach.image.thumb %>
 <% should_use_tag_pic = 0 %>
-<%# if a tag image was requested, and we have a tag image, and the tag image is not the default, show the tag image %>
-<% if local_assigns[:tag] || image.file.nil? || !image.file.exists? %>
+<%# Problem: if a tag image was requested, and we have a tag image, and the tag image is not the default, show the tag image %>
+<%# Solution: image.file.nil? tells us if we expect a file to be there. In production, !nil? and exists? are effectively the same thing %>
+<% if local_assigns[:tag] || image.file.nil? %>
   <% should_use_tag_pic = 1 %>
   <% image = coach.tag_image.thumb %>
 <% end %>
-<% if image.file.nil? || !image.file.exists? %>
+<% if image.file.nil? %>
   <% image = coach.image.default_url %>
 <% end %>
 
 <div class="columns large-2 medium-4 small-6" id="coach_container">
   <%= link_to name, coach_path(coach, use_tag_picture: should_use_tag_pic), id: id %>
-  <%= link_to image_tag(image), coach_path(coach, use_tag_picture: should_use_tag_pic) %>
+  <div class="coach_image_frame">
+    <%= link_to image_tag(image), coach_path(coach, use_tag_picture: should_use_tag_pic) %>
+  </div>
 </div>

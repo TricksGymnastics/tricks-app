@@ -34,7 +34,7 @@ $ ->
             else
                 $('#hospitality_questions').hide()
                 $("#hospitality_questions textarea").removeAttr("required")
-            
+
     $('#coach_questions').hide()
     $('#hospitality_questions').hide()
     
@@ -69,3 +69,12 @@ $ ->
     $('#employment_application_resume').change ->
         $('#employment_application_resume').prev().addClass('success')
         $('#employment_application_resume').prev().html "Change Resume"
+
+    autoResizeImageContainers()
+
+autoResizeImageContainers = ->
+    $('.applicant_image_frame').each ->
+        obj = $(@)
+        obj.height obj.width() * 1.3712
+
+$(window).resize -> autoResizeImageContainers()

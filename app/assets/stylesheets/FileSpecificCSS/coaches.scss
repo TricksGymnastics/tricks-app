@@ -38,20 +38,23 @@
 }
 
 #coach_container{
-  text-align: center;  
-  margin-bottom: 20px;
-  a img {
-    box-sizing: border-box;
-    text-align: center;
-    display:block;
-    border: 1px solid #333;
-    margin: 0 auto;
-    // box-shadow: 0 0 10px #fff;
-  	&:hover {
-  	border: 2px solid #fff;  
-    box-shadow: 0 0 25px #222;
-  	}
-  }
+    text-align: center;  
+    margin-bottom: 20px;
+}
+
+.coach_image_frame{
+    a img {
+        text-align: center;
+        display:block;
+        border: 1px solid #333;
+        width:100%;
+        height:100%;
+        object-fit: cover;
+    }
+    &:hover {
+    	border: 2px solid #fff;  
+      box-shadow: 0 0 25px #222;
+    }
 }
 
 #coach-name{
