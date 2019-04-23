@@ -14,8 +14,9 @@ class Coach < ActiveRecord::Base
 	
 	validates :firstname,:presence => {:message => "cannot be blank."}#, :format => /^[A-Za-z\d_-]+$/
 	validates :lastname,:presence => {:message => "cannot be blank."}#, :format => /^[A-Za-z\d_-]+$/
-	validates_presence_of :gender, :location_ids, :level_ids, :classtype_ids
-	
+	validates_presence_of :gender, :location_ids, :classtype_ids
+	# validates_presence_of :level_ids, :unless => lambda { self.classtype_ids == ["", "9"] }
+	# puts "LOG: " + (lambda { |c| c.classtype_ids == ["", "9"] }).to_s
 	mount_uploader :image, CoachImageUploader
 	mount_uploader :tag_image, CoachImageUploader
 

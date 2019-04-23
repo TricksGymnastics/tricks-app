@@ -32,6 +32,8 @@ class CoachesController < ApplicationController
 
   def create
     @coach = Coach.new(coach_params)
+    
+	 # puts "LOG: " + (coach_params).to_s
     respond_to do |format|
       if @coach.save
         format.html { redirect_to @coach, notice: 'Coach was successfully created.' }
