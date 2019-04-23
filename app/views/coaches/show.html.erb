@@ -3,7 +3,6 @@
   <div class="columns large-3 " style="text-align:center;">
     <div class="row">
       <div class="columns small-12">
-        <%= console %>
         <% image_to_use = @coach.image.thumb %>
         <% if params[:use_tag_picture].to_i == 1 || image_to_use.file.nil? #|| !image_to_use.file.exists? %>
           <% image_to_use = @coach.tag_image.thumb %>
