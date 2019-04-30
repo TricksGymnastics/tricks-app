@@ -271,7 +271,7 @@
       <% if content_for?(:header_image) %>
         <div id="header-secondary" class="row" style=" z-index: 5;">
           <div style="overflow: hidden; width: 100%; position: absolute; left: 0;">
-            <image width="3000" height="1000" src=<%= yield(:header_image) %>></image>
+            <img width="3000" height="1000" src=<%= yield(:header_image) %>/>
           </div>
         </div>
       
@@ -444,22 +444,20 @@
                           <%= if defined? sac_staff_link then ('<li>' + sac_staff_link + '</li>').html_safe end %>
                         </ul>
                       </li>
-                      <%= if defined? testimonials_link then ('<li>' + testimonials_link + '</li>').html_safe end %>
-                      <%= if defined? family_rules_link then ('<li>' + family_rules_link + '</li>').html_safe end %>
-                      <%= if defined? newsletter_link then ('<li>' + newsletter_link + '</li>').html_safe end %>
+                      <%= try_to_show_link(testimonials_link) %>
+                      <%= try_to_show_link(family_rules_link) %>
+                      <%= try_to_show_link(newsletter_link) %>
                     </ul>
                   </div>
                   <div class="columns medium-3 small-6">
                     <h3 class="footer-header">Forms</h3>
                     <ul>
-                      <%= if defined? absence_link then ('<li>' + absence_link + '</li>').html_safe end %>
-                      <%= if defined? billing_cycle_link then ('<li>' + billing_cycle_link + '</li>').html_safe end %>
-                      <%= if defined? release_form_link then ('<li>' + release_form_link + '</li>').html_safe end %>
-                      <%= if defined? discontinue_link then ('<li>' + discontinue_link + '</li>').html_safe end %>
-                      <%= if defined? employment_link then ('<li>' + employment_link + '</li>').html_safe end %>
-                      <%= if defined? recital_ad_link then ('<li>' + recital_ad_link + '</li>').html_safe end %>
+                      <%= try_to_show_link(absence_link) %>
+                      <%= try_to_show_link(billing_cycle_link) %>
+                      <%= try_to_show_link(release_form_link) %>
+                      <%= try_to_show_link(discontinue_link) %>
+                      <%= try_to_show_link(employment_link) %>
                     </ul>
-                    <!--<h3 class="footer-header"><%#= link_to "FAQ", '#', class: 'main-menu-item' %></h3>-->
                     <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>
                     <h3 class="footer-header"><%= link_to "Contact", locations_path, class: 'main-menu-item' %></h3>
                   </div>

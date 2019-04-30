@@ -17,15 +17,15 @@ ActiveRecord::Schema.define(version: 20190228010113) do
   enable_extension "plpgsql"
 
   create_table "absents", force: :cascade do |t|
-    t.string   "first_name",   limit: 255
-    t.string   "last_name",    limit: 255
+    t.string   "first_name"
+    t.string   "last_name"
     t.integer  "location"
     t.integer  "classtype_id"
     t.integer  "level_id"
     t.date     "date"
     t.time     "time"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "addresses", force: :cascade do |t|
@@ -79,96 +79,96 @@ ActiveRecord::Schema.define(version: 20190228010113) do
   end
 
   create_table "classtypes", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "coach_classtypes", force: :cascade do |t|
     t.integer  "classtype_id"
     t.integer  "coach_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "coach_levels", force: :cascade do |t|
     t.integer  "level_id"
     t.integer  "coach_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "coach_locations", force: :cascade do |t|
     t.integer  "coach_id"
     t.integer  "location_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "coaches", force: :cascade do |t|
-    t.string   "image",            limit: 255
-    t.string   "firstname",        limit: 255
-    t.string   "lastname",         limit: 255
-    t.string   "gender",           limit: 255
+    t.string   "image"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "gender"
     t.date     "birthdate"
     t.date     "startdate"
     t.text     "experience"
-    t.string   "fav_event",        limit: 255
-    t.string   "fav_skill",        limit: 255
-    t.string   "fav_food",         limit: 255
+    t.string   "fav_event"
+    t.string   "fav_skill"
+    t.string   "fav_food"
     t.text     "advice"
-    t.string   "disney_char",      limit: 255
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.string   "strengths",        limit: 255
-    t.boolean  "current_employee",             default: true
+    t.string   "disney_char"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "strengths"
+    t.boolean  "current_employee", default: true
     t.string   "tag_image"
   end
 
   create_table "comments", force: :cascade do |t|
     t.text     "comment"
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.integer  "score"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "activity",   limit: 255
-    t.string   "email",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "activity"
+    t.string   "email"
   end
 
   create_table "datenight_events", force: :cascade do |t|
-    t.string   "title",        limit: 255
+    t.string   "title"
     t.text     "description"
     t.integer  "datenight_id"
     t.date     "sac_date"
     t.date     "gb_date"
     t.date     "fol_date"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "datenights", force: :cascade do |t|
-    t.string   "image",          limit: 255
+    t.string   "image"
     t.text     "about"
-    t.string   "when_time",      limit: 255
+    t.string   "when_time"
     t.integer  "single_price"
     t.integer  "sibling_price"
-    t.string   "schedule_title", limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "schedule_title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "discontinue_notices", force: :cascade do |t|
-    t.string   "reason",             limit: 255
-    t.string   "student_first_name", limit: 255
-    t.string   "student_last_name",  limit: 255
+    t.string   "reason"
+    t.string   "student_first_name"
+    t.string   "student_last_name"
     t.integer  "location"
     t.integer  "class_day"
     t.time     "class_time"
     t.date     "last_day"
-    t.string   "parent_name",        limit: 255
+    t.string   "parent_name"
     t.boolean  "understood"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "employment_applications", force: :cascade do |t|
@@ -243,10 +243,10 @@ ActiveRecord::Schema.define(version: 20190228010113) do
 
   create_table "kid_quotes", force: :cascade do |t|
     t.text     "quote"
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.integer  "age"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "kids_night_outs", force: :cascade do |t|
@@ -262,28 +262,28 @@ ActiveRecord::Schema.define(version: 20190228010113) do
   end
 
   create_table "levels", force: :cascade do |t|
-    t.string   "levelname",         limit: 255
+    t.string   "levelname"
     t.integer  "length"
     t.float    "price"
-    t.string   "age",               limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.string   "age"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "sort_order"
     t.integer  "classtype_id"
-    t.string   "gender",            limit: 255
-    t.string   "jack_rabbit_name",  limit: 255
-    t.string   "color",             limit: 255
+    t.string   "gender"
+    t.string   "jack_rabbit_name"
+    t.string   "color"
     t.text     "description"
     t.text     "short_description"
-    t.string   "video_url",         limit: 255
-    t.string   "image",             limit: 255
+    t.string   "video_url"
+    t.string   "image"
     t.boolean  "show_registration"
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "shortname"
   end
 
@@ -299,39 +299,39 @@ ActiveRecord::Schema.define(version: 20190228010113) do
   end
 
   create_table "promo_slides", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.boolean  "link",                   default: false
-    t.boolean  "live",                   default: false
-    t.string   "data_type",  limit: 255, default: "Image"
-    t.string   "image",      limit: 255
+    t.string   "title"
+    t.boolean  "link",       default: false
+    t.boolean  "live",       default: false
+    t.string   "data_type",  default: "Image"
+    t.string   "image"
     t.text     "html_code"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.string   "link_path",  limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "link_path"
     t.integer  "sort_order"
   end
 
   create_table "recital_ad_types", force: :cascade do |t|
-    t.string   "name",        limit: 255
+    t.string   "name"
     t.integer  "price"
     t.integer  "word_max"
-    t.string   "actual_size", limit: 255
+    t.string   "actual_size"
     t.boolean  "image"
     t.boolean  "pdf_file"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "recital_ads", force: :cascade do |t|
-    t.string   "firstname",          limit: 255
-    t.string   "lastname",           limit: 255
-    t.string   "email",              limit: 255
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
     t.text     "message"
-    t.string   "image",              limit: 255
-    t.string   "pdf_file",           limit: 255
+    t.string   "image"
+    t.string   "pdf_file"
     t.integer  "recital_ad_type_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "recital_sign_ups", force: :cascade do |t|
@@ -349,35 +349,35 @@ ActiveRecord::Schema.define(version: 20190228010113) do
   end
 
   create_table "tricks_u_categories", force: :cascade do |t|
-    t.string   "title",      limit: 255
+    t.string   "title"
     t.integer  "weight"
     t.boolean  "hidden"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tricks_u_videos", force: :cascade do |t|
-    t.string   "url",         limit: 255
-    t.string   "title",       limit: 255
+    t.string   "url"
+    t.string   "title"
     t.integer  "weight"
     t.integer  "category_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           limit: 255
-    t.string   "password_digest", limit: 255
-    t.string   "role",            limit: 255, default: "author"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "role",            default: "author"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "website_pdfs", force: :cascade do |t|
-    t.string   "file",       limit: 255
-    t.string   "file_name",  limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "file"
+    t.string   "file_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

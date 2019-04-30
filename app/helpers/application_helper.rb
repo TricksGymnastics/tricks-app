@@ -31,7 +31,7 @@ module ApplicationHelper
   
   def try_to_show_link(link)
     if defined? link then 
-      return ('<li>' + link + '</li>').html_safe 
+      return ('<li>' + link.to_s + '</li>').html_safe 
     end
   end
 end

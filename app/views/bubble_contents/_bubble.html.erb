@@ -13,7 +13,8 @@
     <% bubble = given_bubble %>
 <% elsif defined? @bubble_content #check if we are in the "show" view for bubble_content %>
     <% bubble = @bubble_content %>
-<% else #check to see if it is a full custom bubble and use passed in locals or defaults %>
+<% end %>
+<% if bubble.nil? #check to see if it is a full custom bubble and use passed in locals or defaults %>
     <% bubble = BubbleContent.create() %>
     <% bubble.text = (defined? text) ? text : text_default %>
     <%# bubble.font_size = (defined? font_size) ? font_size : font_size_default %>
