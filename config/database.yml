@@ -31,18 +31,18 @@ development:
   username: tensai
   password: tricks
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: tricks_production
-  pool: 5
-  username: tensai
-  password: tricks
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: tricks_production
+#   pool: 5
+#   username: tensai
+#   password: tricks
 
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: tricks_test
-  pool: 5
-  username: tensai
-  password: tricks
+# test:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: tricks_test
+#   pool: 5
+#   username: tensai
+#   password: tricks
