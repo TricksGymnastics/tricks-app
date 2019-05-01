@@ -9,7 +9,7 @@ default: &default
 
 development:
   <<: *default
-  database: tricks_dev
+  database: tricks_development
 
 test:
   <<: *default
