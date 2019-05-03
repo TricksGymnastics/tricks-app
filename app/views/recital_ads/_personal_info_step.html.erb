@@ -13,16 +13,16 @@
 </div>
 
 
-<div class="row" id="personal_info">
-  <div class="columns small-12">
+<div class="row align-center" id="personal_info" style="margin-bottom: 30px;">
+  <div class="columns small-11">
     <h3>Personal Information</h3>
     
     
     <div class="row">
-      <div class="columns large-6 ">
+      <div class="columns large-6 small-12">
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :firstname, label: "First Name"} %>
       </div>
-      <div class="columns large-6 ">
+      <div class="columns large-6 small-12">
         <%= render partial: 'helper_fields/text', locals: {form: f, field: :lastname, label: "Last Name"} %>
       </div>
     </div>
@@ -38,30 +38,28 @@
       </div>
     <% end %>
     
-    <div style="min-height: 100px;">
-      <% if @recital_ad.recital_ad_type.image? %>
+    <% if @recital_ad.recital_ad_type.image? %>
+      <div class="row align-center">
+        <div class="columns small-12">
+          <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @recital_ad.image} %>
+        </div>
+      </div>
+    <% end %>
+      
+    <% if @recital_ad.recital_ad_type.pdf_file? %>
+      <div class="row align-center">
+        <div class="columns small-12">
+          <%= render partial: 'helper_fields/file_uploader', locals: {form: f, field: :pdf_file, label: "Upload PDF"} %>
+        </div>
+      </div>
+      <% if @recital_ad.pdf_file? %>
         <div class="row align-center">
-          <div class="columns small-6">
-            <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @recital_ad.image} %>
+          <div class="columns shrink">
+            Uploaded File:<br>
+            <%= @recital_ad.pdf_file_url().to_s %>
           </div>
         </div>
       <% end %>
-        
-      <% if @recital_ad.recital_ad_type.pdf_file? %>
-        <div class="row align-center">
-          <div class="columns small-8">
-            <%= render partial: 'helper_fields/file_uploader', locals: {form: f, field: :pdf_file, label: "Upload PDF"} %>
-          </div>
-        </div>
-        <% if @recital_ad.pdf_file? %>
-          <div class="row align-center">
-            <div class="columns shrink">
-              Uploaded File:<br>
-              <%= @recital_ad.pdf_file_url().to_s %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
