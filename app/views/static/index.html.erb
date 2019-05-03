@@ -16,7 +16,7 @@
 			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 1).first} %>
 		</div>
 		<div style="position: absolute; top: -13%; right: -230px; width: 75%; height: 75%;">
-			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 3).first} %>
+			<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 6).first} %>
 		</div>
 	</div>
 	
@@ -63,7 +63,7 @@
 </div>
 <div class="row hide-for-large align-center" style="margin-bottom: 50px;">
 	<div class="columns small-5 medium-4">
-		<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 3).first} %>
+		<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 6).first} %>
 	</div>
 	<div class="columns small-5 medium-4">
 		<%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 1).first} %>

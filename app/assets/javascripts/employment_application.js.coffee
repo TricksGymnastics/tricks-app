@@ -72,9 +72,23 @@ $ ->
 
     autoResizeImageContainers()
 
+    # this enables live search of profiles, but it is currently not working super well with the other filters.
+    # even if one filter is selected, the results returned here are without filters on, even though it appears
+    # that filters are being applied (highlighted buttons)
+    # timeout = null
+    # $('#applicant_search input').keyup ->
+    #     clearTimeout(timeout)
+    #     timeout = setTimeout((->
+    #         $.get $('#applicant_search').attr('action'), $('#applicant_search').serialize(), null, 'script'
+    #     ), 200)
+    #     false
+
 autoResizeImageContainers = ->
+    console.log ("Resizing images")
     $('.applicant_image_frame').each ->
         obj = $(@)
         obj.height obj.width() * 1.3712
 
 $(window).resize -> autoResizeImageContainers()
+
+$(document).ajaxComplete -> autoResizeImageContainers()

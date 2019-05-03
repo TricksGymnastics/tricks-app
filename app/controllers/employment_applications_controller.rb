@@ -4,6 +4,8 @@ class EmploymentApplicationsController < ApplicationController
 
   # GET /employment_applications
   def index
+    search_result = EmploymentApplication.search(params[:search])
+
     query = Hash.new
     query[:archived] = nil
     
@@ -24,7 +26,7 @@ class EmploymentApplicationsController < ApplicationController
       end
     end
     
-    @employment_applications = EmploymentApplication.where(query).order("created_at DESC")
+    @employment_applications = search_result.where(query).order("created_at DESC")
     
     
     @counts = Hash.new
@@ -35,7 +37,7 @@ class EmploymentApplicationsController < ApplicationController
     # get counts for each status
     EmploymentApplication::STATUS.each do |status|
       status_query[:status] = status[1]
-      @counts["status_"+status[1].to_s] = EmploymentApplication.where(status_query).count
+      @counts["status_"+status[1].to_s] = search_result.where(status_query).count
     end
     
     
@@ -47,7 +49,7 @@ class EmploymentApplicationsController < ApplicationController
     end
     
     # get count of all locations
-    @counts["all"] = EmploymentApplication.where(location_query).count
+    @counts["all"] = search_result.where(location_query).count
     
     Location.all.each do |loc|
       # match location name to symbol syntax
@@ -55,7 +57,7 @@ class EmploymentApplicationsController < ApplicationController
       # add query for loc = true
       location_query[:"#{loc_name}"] = true
       # get count using query
-      @counts[loc_name] = EmploymentApplication.where(location_query).count
+      @counts[loc_name] = search_result.where(location_query).count
       # remove query for next iteration
       location_query.except!(:"#{loc_name}")
     end
@@ -68,11 +70,11 @@ class EmploymentApplicationsController < ApplicationController
         # add query for loc = true
         departments_query[dep] = true
         # get count using query
-        @counts[dep] = EmploymentApplication.where(departments_query).count
+        @counts[dep] = search_result.where(departments_query).count
         # remove query for next iteration
         departments_query.except!(dep)
       else
-        @counts[dep] = EmploymentApplication.where(query).count
+        @counts[dep] = search_result.where(query).count
       end
     end
     
