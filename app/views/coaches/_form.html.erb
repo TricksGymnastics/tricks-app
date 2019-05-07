@@ -37,7 +37,7 @@
             <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthdate} %>
           </div>
           <div class="columns large-6 ">
-            <%= render partial: 'helper_fields/date', locals: {form: f, field: :birthdate, label: "Start Date at Tricks:", default_date: Date.today} %>
+            <%= render partial: 'helper_fields/date', locals: {form: f, field: :startdate, label: "Start Date at Tricks:", default_date: Date.today} %>
           </div>
           <div class="columns small-12 ">
             <%= render partial: 'helper_fields/text', locals: {form: f, field: :strengths} %>
@@ -49,11 +49,11 @@
             <%= render partial: 'helper_fields/multi_select_buttons', locals:{form: f, field: :classtype_ids, label: "Fields Employee works in:", array: Classtype.order(:id), second_field: :name} %>
           </div>
           <div class="columns small-12">
-            <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_event, label: "Favorite Activity and Why:"} %>
-            <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_skill, label: "Favorite Skill and Why:"} %>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_event, label: "Favorite Event (gym)/genre (dance) and why?"} %>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_skill, label: "Favorite skill or step to do and why?"} %>
             <%= render partial: 'helper_fields/text', locals: {form: f, field: :fav_food, label: "Favorite Food"} %>
-            <%= render partial: 'helper_fields/text', locals: {form: f, field: :disney_char, label: "If you could be a Disney Character, who would you be?"} %>
-            <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :experience, height: 100} %>
+            <%= render partial: 'helper_fields/text', locals: {form: f, field: :disney_char, label: "If you could be a Disney Character, who would you be and why?"} %>
+            <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :experience, question: "Experience with gymnastics/dance/swim/office/hosting:", height: 100} %>
             <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :advice, question: "Advice for Students:", height: 100} %>
           </div>
         </div>
