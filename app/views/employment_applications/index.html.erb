@@ -2,6 +2,17 @@
 
 <h1>Employment Applications</h1>
 
+<%= form_tag employment_applications_path, :method => 'get', :id => "applicant_search" do %>
+    <div class="row">  
+        <div class="columns small-expand large-8" style="margin-bottom: 10px;">
+            <%= text_field_tag :search, params[:search], placeholder: "Search for First or Last name" %>
+        </div>
+        <div class="columns small-shrink large-4">  
+            <%= submit_tag "Search", class: "button expanded" %>
+        </div>
+    </div>    
+<% end %>
+
 <div class="row">
     <style>
         #interview_set_up_filter_button{
@@ -80,10 +91,9 @@
     <% end %>
 </div>
 
-<div class="row">
-    <% @employment_applications.each do |employment_application| %>
-      <%= render partial: 'application_preview', locals: {app: employment_application} %>
-    <% end %>
+
+<div id="applicants">
+    <%= render partial: 'applicants' %>
 </div>
 
 <%= link_to 'New Employment application', new_employment_application_path %>

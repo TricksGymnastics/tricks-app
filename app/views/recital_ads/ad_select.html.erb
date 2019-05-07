@@ -12,7 +12,7 @@
   <!-- <h4>If you have an adblocker, please disable it for the duration of the order process</h4> -->
 
   <div class="row align-center">
-    <div class="columns large-8 ">
+    <div class="columns large-8 small-11">
       <% @recital_ad_types[1..4].each do |ad| %>
         <div class="row align-middle" id="recital_ad_type_container">
           <div class="columns small-1" style="text-align:right;">
@@ -22,7 +22,7 @@
               <%= radio_button_tag(:recital_ad_type_id, ad.id) %>
           <% end %>
           </div>
-          <div class="columns shrink">
+          <div class="columns small-11 medium-shrink">
             <% if ad.name == "Ad 2" %>
               <%= image_tag("/assets/2016_recital_ad_type_1.png") %>
             <% elsif ad.name == "Ad 3" %>
@@ -33,7 +33,7 @@
               <h2 style="text-align: left; margin-left: 10px;">Full Page Ad</h2>
             <% end %>
           </div>
-          <div class="columns">
+          <div class="columns small-12 medium-expand">
             <h3>Price: <%= number_to_currency(ad.price) %></h3>
             <% if ad.word_max != nil %>
               <h3>Up to <b style="text-decoration:underline;"><%= ad.word_max %></b> words</h3>
