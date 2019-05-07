@@ -43,11 +43,11 @@
 
 <% if valid_image %>
     <%= image_tag image.url %>
-    <div style="border: solid 1px #ccc; padding: 10px; margin-bottom: 1rem;">
+    <div style="border: solid 1px #ccc; padding: 10px 10px 0 10px;">
     <%= render partial: 'helper_fields/switch', locals: {form: form, field: :remove_image, question: "Remove Image?"} %>
 <% end %>
     
-    <%= form.label field, button_text, class: classes, style: "margin-bottom: 0;" %>
+    <%= form.label field, button_text, class: classes %>
     <%= form.file_field field, required: required, disabled: disabled, class: "show-for-sr" %>
     
 <% if valid_image %>

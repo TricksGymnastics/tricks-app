@@ -4,6 +4,7 @@ class EmploymentApplicationsController < ApplicationController
 
   # GET /employment_applications
   def index
+    # EmploymentApplication.first.employment_application_reviews.first.id
     search_result = EmploymentApplication.search(params[:search])
 
     query = Hash.new
@@ -97,7 +98,33 @@ class EmploymentApplicationsController < ApplicationController
   # POST /employment_applications
   def create
     @employment_application = EmploymentApplication.new(employment_application_params)
-    @employment_application.status = 0
+
+         
+    if params.has_key?(:location)
+      query[:"#{params[:location]}"] = true
+    end
+    
+    if params.has_key?(:status)
+      query[:status] = params[:status]
+    else
+      query[:status] = "0"
+    end
+    
+    departments = ["gymnastics", "dance", "swim", "tag", "hospitality"]
+    Locations.all.each do |loc|
+      loc = loc.name.downcase.gsub(" ", "_")
+      if (@employment_application."#{loc}")
+        departments.each do |dep|
+          if (@employment_application."#{dep}")
+            review = EmploymentApplicationReview.new
+            review.employment_application_id = @employment_application.id
+            review.location = loc
+            review.department = dep
+            review.save
+          end
+        end
+      end
+    end
     
     if @employment_application.save
       EmploymentApplicationMailer.gym_notification(@employment_application).deliver_now

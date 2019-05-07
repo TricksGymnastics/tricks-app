@@ -26,6 +26,10 @@ group :development do
 	gem 'web-console', '~> 2.0' #put <%= console %> on any page I want a console to show on the error page
 end
 
+group :production do
+	gem "rack-timeout" # causing problems locally
+end
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.1.2'
 
@@ -53,5 +57,3 @@ gem 'foundation-rails',  '6.4.1.2'#, '6.3.1.0'
 gem 'httparty' #needed to get json info from jackrabbit
 
 gem "awesome_print" #used to make the console pretty
-
-gem "rack-timeout"
