@@ -1,9 +1,9 @@
 <% if is_first then %>
-
   <div class="row align-center">
     <div class="columns">
       <% if party.nil? %>
-        <h3 style="padding: 30px;">No BFF Dance Parties currently available :(</h3><h3 style="padding: 30px;">Please check back later!</h3>
+        <h3 style="padding: 10px; margin-top: 50px;">No BFF Dance Parties currently available :(</h3>
+        <h3 style="padding: 10px;">Please check back later!</h3>
       <% else %>
         <% if !party.image.nil? %>
           <%= image_tag party.image_url, alt: party.name, style: "margin-top: 30px; box-shadow: 0 0 20px #222; width: 100%;" %> 
@@ -11,7 +11,7 @@
       <% end %>  
     </div>
   </div>
-  <% if can? :manage, BffDanceParty %>
+  <% if !party.nil? && (can? :manage, BffDanceParty) %>
     <br><%= link_to 'Edit', edit_bff_dance_party_path(party), class:"button expanded" %>
   <% end %>
 <% else %>
@@ -20,7 +20,7 @@
     <div class="columns small-12" style="text-align: justify;">
       <h4><%= party.name  %>
         <% if can? :manage, BffDanceParty %>
-          (<%= link_to 'Edit', edit_bff_dance_party_path(party)%>)
+          (<%= link_to 'Edit', edit_bff_dance_party_path(party) %>)
         <% end %>
       </h4>
         <p><%= party.suggestion %></p>
