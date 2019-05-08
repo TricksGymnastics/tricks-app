@@ -3,6 +3,9 @@
 <h1>The Tricks Family</h1>
 
 <h3>
+<% content_for :title do %>
+	<%= "Tricks - "+params[:name]+ " Staff " %>
+  <% end %>
 <% if params[:name] == "Granite Bay" %>
   Granite Bay (est. 1990)
 <% elsif params[:name] == "Folsom" %>
