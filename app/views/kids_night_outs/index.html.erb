@@ -1,11 +1,9 @@
-<% given_title = "Kids Night Out" %>
 <% given_bubbles = [10, 3] %>
 
-<% if defined? given_title %>
   <% content_for :title do %>
-    <%= given_title %>
+    <%= "Tricks - Kids Night Out" %>
   <% end %>
-<% end %>
+
 
 <% if defined? given_bubbles %>
   <% update_bubbles(given_bubbles) %>

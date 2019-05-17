@@ -1,6 +1,6 @@
 <% if !@website_pdf.nil? %>
     <% content_for :title do %>
-        <%= @website_pdf.file_name.tr("_"," ") %>
+        <%= +@website_pdf.file_name.tr("_"," ")+ " PDF" %>
     <% end %>
     
     <div class="row">
