@@ -33,15 +33,18 @@
       <h3 id="must_choose_location" style="color: red; display: none;">You much choose at least 1 location.</h3>
       <h4 style="text-align: center;">Locations you are applying to: </h4>
     </div>
+
     <% locations = [['Granite Bay', 'granite_bay'], ['Folsom', 'folsom'], ['Sacramento', 'sacramento']] %>
-    <% locations.each do |loc| %>
-      
-      <div class="columns large-expand small-12">
+    <% locations.each do |loc| %>      
+      <div class="columns large-expand small-12" style="z-index: 2;">
         <div class="input-group">
           <%= render partial: 'helper_fields/switch_button', locals: {form: f, field: :"#{loc[1]}", text: loc[0], style: 'font-size: 18px;'} %>
         </div>
       </div>
     <% end %>
+    <div class="columns small-12" style="text-align: center; margin-top: -40px; z-index: 1; opacity: 0;">
+      <%= f.radio_button :granite_bay, "hidden", id:"hidden_required_location" %>
+    </div>
   </div>
   
   <div class="row" id="select-department-container">
@@ -58,6 +61,10 @@
         </div>
       </div>
     <% end %>
+    
+    <div class="columns small-12" style="text-align: center; margin-top: -40px; z-index: 1; opacity: 0;">
+      <%= f.radio_button :gymnastics, "hidden", id:"hidden_required_department" %>
+    </div>
   </div>
   
   <fieldset class="fieldset">

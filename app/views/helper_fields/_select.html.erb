@@ -21,8 +21,8 @@
 <% if !defined? required %>
     <% required = false %>
 <% end %>
-
+<% puts "Prompt: " + prompt %>
 <div class=" input-group">
     <%= form.label field, label, class: "input-group-label" %>
-    <%= form.select field, options, {:prompt => prompt}, required: required, class: "input-group-field" %>
+    <%= form.select field, options, {include_blank: prompt}, class: "input-group-field", required: required ? "required" : false %>
 </div>

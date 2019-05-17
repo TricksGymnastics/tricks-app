@@ -12,16 +12,16 @@
     <% end %>
     <div class="row">
       <div class="columns large-6 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :first_name, label: "First Name"} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :first_name, label: "First Name", required: true} %>
       </div>
       <div class="columns large-6 small-12">
-        <%= render partial: 'helper_fields/text', locals: {form: f, field: :last_name, label: "Last Name"} %>
+        <%= render partial: 'helper_fields/text', locals: {form: f, field: :last_name, label: "Last Name", required: true} %>
       </div>
     </div>
    
     <div class="row">
       <div class="columns small-12">
-        <%= render partial: 'helper_fields/select', locals: {form: f, field: :location, fieldname: "Location", options: Absent::LOCATIONS, prompt: "Select a Location"} %>
+        <%= render partial: 'helper_fields/select', locals: {form: f, field: :location, fieldname: "Location", options: Absent::LOCATIONS, prompt: "Select a Location", required: true} %>
       </div>
     </div>
     
@@ -44,10 +44,10 @@
 
     <div class="row">
       <div class="columns large-6 small-12">
-        <%= render partial: 'helper_fields/date', locals: {form: f, field: :date} %>
+        <%= render partial: 'helper_fields/date', locals: {form: f, field: :date, required: true} %>
       </div>
       <div class="columns large-6 small-12">
-        <%= render partial: 'helper_fields/time', locals: {form: f, field: :time} %>
+        <%= render partial: 'helper_fields/time', locals: {form: f, field: :time, required: true} %>
       </div>
     </div>
 

@@ -1,7 +1,10 @@
 <div class="columns large-3 medium-4 small-12" id="applicant_container">
-    <%= link_to app.firstname+" "+app.lastname, employment_application_path(app), id: "applicant-name" %>
+    <%# link = employment_application_path(review.employment_application, loc: review.location, dep: review.department) %>
+    <% link = employment_application_path(review) %>
+    <%= link_to review.employment_application.firstname+" "+review.employment_application.lastname, link, id: "applicant-name" %>
+    <h5><%= review.location.titleize + " - " + review.department.titleize %></h5>
     <div class="applicant_image_frame">
-        <%= link_to image_tag(app.image_url), employment_application_path(app) %>
+        <%= link_to image_tag(review.employment_application.image_url), link %>
     </div>
 </div>
 

@@ -12,11 +12,12 @@
     margin-bottom: 20px;
   }
 </style>
-
 <div class="row">
   <div class="columns">
     <h1><%= @employment_application.firstname + " " + @employment_application.middlename + " " + @employment_application.lastname %></h1>
-    <h3>
+    <%
+=begin%>
+ <h4>
       <% positions = [] %>
       <% if @employment_application.gymnastics then positions << "Gymnastics" end %>
       <% if @employment_application.dance then positions << "Dance" end %>
@@ -58,8 +59,11 @@
       <% else %>
         <% string << "Nowhere" %>
       <% end %>
-      <%= string %>
-    </h3>
+      <%= string.html_safe %>
+    </h4> 
+<%
+=end%>
+    
   </div>
 </div>
 
@@ -71,27 +75,51 @@
     <% else %>
       <%= link_to "Download Resume", @employment_application.resume.url, class: "button expanded" %>
     <% end %>
-    <%= link_to 'Archive Application', @employment_application, data: { confirm: 'Archived Applications are no longer accessible and will be destroyed 30 days after being archived. If you need to recover an archived Application, contact the webmaster. Are you sure you want to Archive this Application?' }, method: :archive, class:"button expanded alert" %>
+    <%= link_to 'Archive Application', {:controller => :employment_applications, :action => :archive}, data: { confirm: 'Archived Applications are no longer accessible and will be destroyed 30 days after being archived. If you need to recover an archived Application, contact the webmaster. Are you sure you want to Archive this Application?' }, method: "archive", class:"button expanded alert" %>
   </div>
   <div class="columns large-9 small-12">
-    <%= form_for @employment_application, url: {action: 'complete_interview'} do |f| %>
-      <div class="row" style="margin-bottom: 0;">
-        <div class="columns small-12 large-4">
+    <%= form_for @review, url: {controller: 'employment_applications', action: 'update_review'} do |f| %>
+      <div class="row align-center" style="margin-bottom: 0;">
+        <div class="columns small-12 large-4 input-group">
+          <% if @review.location != 'nowhere' %>
+            <label class="input-group-label" style="width: 100%;">
+              <span style="text-align: center; width: 100%; font-size: 24px; font-weight: bold;">
+                <%= @review.location.titleize %>
+              </span>
+            </label>            
+          <% else %>
+            <%= render partial: 'helper_fields/select', locals: {form: f, field: :location, options: Location.all.pluck(:name), prompt: "Choose Location", required: true} %>
+          <% end %>
+        </div>
+        <div class="columns small-12 large-4 input-group">
+          <% if @review.department != 'none' %>
+            <label class="input-group-label" style="width: 100%;">
+              <span style="text-align: center; width: 100%; font-size: 24px; font-weight: bold;">
+                <%= @review.department.titleize %>
+              </span>
+            </label>
+          <% else %>
+            <%= render partial: 'helper_fields/select', locals: {form: f, field: :department, options: ["Gymnastics", "Dance", "Swim", "Tag", "Hospitality"], prompt: "Choose Department", required: true} %>
+          <% end %>
+        </div>
+        <div class="columns small-12 large-4 input-group">
+          <label class="input-group-label" style="padding: 7px; width: 100%;">
+            <span style="text-align: center; width: 100%;">
+              <%= "Last Edited: " + @review.updated_at.in_time_zone.strftime("%B %d, %Y") %>
+            </span>
+          </label>
+        </div>
+        <div class="columns small-12 large-6">
           <%= render partial: 'helper_fields/select', locals: {form: f, field: :status, fieldname: "Status", options: EmploymentApplication::STATUS, required: true} %>
         </div>
-        <div class="columns small-12 large-8">
-          <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment, label: "Comment: ", required: true} %>
+        <div class="columns small-12 large-6">
+          <%= render partial: 'helper_fields/text', locals: {form: f, field: :last_edited_by, label: "Edited By: ", required: true} %>
         </div>
-        <div class="columns large-6 small-12">
-          <% button_text = "Save" %>
-          <% # if the interview has been completed %>
-          <% if !@employment_application.interview_date.nil? %>
-            <% button_text = "Completed on: " + @employment_application.interview_date.in_time_zone.strftime("%B %d, %Y") %>
-          <% end %>
-          <%= render partial: 'helper_fields/text', locals: {form: f, field: :interviewed_by, label: "Interviewed By: ", required: true} %>
+        <div class="columns small-12">
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :notes, label: "Comment: ", required: true} %>
         </div>
-        <div class="columns large-6 small-12">
-          <%= f.submit button_text, class: "button expanded" %>
+        <div class="columns small-12">
+          <%= f.submit "Save", class: "button expanded" %>
         </div>
       </div>
     <% end %>

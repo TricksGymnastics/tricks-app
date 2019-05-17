@@ -7,6 +7,9 @@ class CreateEmploymentApplicationReviews < ActiveRecord::Migration
       t.references :employment_application, foreign_key: true
       t.string :location
       t.string :department
+      t.boolean :archived
+      
+      t.timestamps null: false
     end
   end
 end

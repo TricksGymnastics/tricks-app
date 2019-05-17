@@ -1,4 +1,32 @@
 $ ->
+    locations_selected = 0
+    $('#hidden_required_location').prop('required', true)
+    $('#select-location-container').find('.switch-button').each ->
+        obj = $(@)
+        obj.click ->
+            if obj.prev().is ':checked'
+                locations_selected--
+                if locations_selected == 0
+                    $('#hidden_required_location').prop('required', true)
+            else
+                locations_selected++
+                $('#hidden_required_location').prop('required', false)
+
+    departments_selected = 0
+    $('#hidden_required_department').prop('required', true)
+    $('#select-department-container').find('.switch-button').each ->
+        obj = $(@)
+        obj.click ->
+            if obj.prev().is ':checked'
+                departments_selected--
+                if departments_selected == 0
+                    $('#hidden_required_department').prop('required', true)
+            else
+                departments_selected++
+                $('#hidden_required_department').prop('required', false)
+
+            
+
     $('.switch-button').click ->
         checkbox = $(this).prev()
         checkbox.prop('checked', !checkbox.is(':checked'))

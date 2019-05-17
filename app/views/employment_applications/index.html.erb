@@ -57,7 +57,7 @@
             <% end %>
         </div>
     </div>
-    <% locations = [['Granite Bay', 'granite_bay'], ['Folsom', 'folsom'], ['Sacramento', 'sacramento']] %>
+    <% locations = [['Granite Bay', 'granite_bay'], ['Folsom', 'folsom'], ['Sacramento', 'sacramento'], ['Nowhere', 'nowhere']] %>
     <% locations.each do |loc| %>
         <div class="columns large-expand small-12">
             <div class="input-group">
@@ -72,28 +72,27 @@
 </div>
 
 <div class="row">
-    <% departments = [['Gymnastics', 'gymnastics'], ['Dance', 'dance'], ['Swim', 'swim'], ['TAG', 'tag'], ['Hospitality', 'hospitality']] %>
+    <% departments = [['Gymnastics', 'gymnastics'], ['Dance', 'dance'], ['Swim', 'swim'], ['TAG', 'tag'], ['Hospitality', 'hospitality'], ['None', 'none']] %>
     <% departments.each do |dep| %>
         <% classes = "button expanded switch-button" %>
-        <% if params.has_key?(:"#{dep[1]}") %>
+        <% if params.has_key?(:department) && params[:department] == dep[1] %>
             <% classes += " success" %>
         <% end %>
         <div class="columns large-expand small-12">
             <div class="input-group">
-                <% dep_text = dep[0] + " (" + @counts[:"#{dep[1]}"].to_s + ")" %>
-                <% if params.has_key?(:"#{dep[1]}") %>
-                    <%= link_to dep_text, params.except(:"#{dep[1]}"), class: classes, id: dep[1]+"_filter_button" %>
+                <% dep_text = dep[0] + " (" + @counts[dep[1].intern].to_s + ")" %>
+                <% if params.has_key?(:department) && params[:department] == dep[1] %>
+                    <%= link_to dep_text, params.except(:department), class: classes, id: dep[1]+"_filter_button" %>
                 <% else %>
-                    <%= link_to dep_text, params.merge({:"#{dep[1]}" => true}), class: classes, id: dep[1]+"_filter_button" %>
+                    <%= link_to dep_text, params.merge({department: dep[1]}), class: classes, id: dep[1]+"_filter_button" %>
                 <% end %>
             </div>
         </div>
     <% end %>
 </div>
 
-
 <div id="applicants">
     <%= render partial: 'applicants' %>
-</div>
+</div> 
 
 <%= link_to 'New Employment application', new_employment_application_path %>

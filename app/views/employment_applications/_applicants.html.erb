@@ -1,5 +1,5 @@
 <div class="row">
-    <% @employment_applications.each do |employment_application| %>
-        <%= render partial: 'application_preview', locals: {app: employment_application} %>
+    <% @employment_application_reviews.each do |review| %>
+        <%= render partial: 'application_preview', locals: {review: review} %>
     <% end %>
 </div>

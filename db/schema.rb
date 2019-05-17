@@ -172,12 +172,15 @@ ActiveRecord::Schema.define(version: 20190506160246) do
   end
 
   create_table "employment_application_reviews", force: :cascade do |t|
-    t.integer "status"
-    t.text    "notes"
-    t.string  "last_edited_by"
-    t.integer "employment_application_id"
-    t.string  "location"
-    t.string  "department"
+    t.integer  "status"
+    t.text     "notes"
+    t.string   "last_edited_by"
+    t.integer  "employment_application_id"
+    t.string   "location"
+    t.string   "department"
+    t.boolean  "archived"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "employment_applications", force: :cascade do |t|

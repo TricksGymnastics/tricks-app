@@ -9,4 +9,12 @@ class EmploymentApplicationReview < ActiveRecord::Base
         self.notes ||= ""
         self.last_edited_by ||= ""
     end    
+
+    def self.search(search)
+        if search
+            joins(:employment_application).where("concat(employment_applications.firstname, ' ', employment_applications.lastname) ILIKE ?", "%#{search}%")
+        else
+            EmploymentApplicationReview.all
+        end
+    end
 end

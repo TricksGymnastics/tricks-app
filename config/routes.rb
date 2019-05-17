@@ -53,7 +53,9 @@ Comments::Application.routes.draw do
   get 'parties/jr_request/:party_id' => "parties#get_jr_parties"
   get 'parties/jr_request_all' => "parties#get_jr_parties_all"
   
-  patch 'employment_applications/:id/complete_interview', to: "employment_applications#complete_interview"
+  # patch 'employment_applications/:id/complete_interview', to: "employment_applications#complete_interview"
+  # patch 'employment_applications/:id/update_review', to: "employment_applications#update_review"
+  patch 'employment_applications/:id/update_review', to: "employment_applications#update_review"
   post 'employment_applications/:id', to: "employment_applications#archive"
   get 'employment', to: 'employment_applications#new'
 end
