@@ -4,10 +4,10 @@
     <div class="row">
       <div class="columns small-12">
         <% image_to_use = @coach.image.thumb %>
-        <% if params[:use_tag_picture].to_i == 1 || image_to_use.file.nil? #|| !image_to_use.file.exists? %>
+        <% if (params[:use_tag_picture].to_i == 1 || image_to_use.file.nil?) && (!@coach.tag_image.thumb.to_s.include? "default") %>
           <% image_to_use = @coach.tag_image.thumb %>
         <% end  %>
-        <% if image_to_use.file.nil?# || !image_to_use.file.exists? %>
+        <% if image_to_use.file.nil? %>
           <% image_to_use = @coach.image.default_url %>
         <% end %>
         <%= image_tag image_to_use, style: "border: 2px solid #333; box-shadow: 0 0 15px #333;" %>

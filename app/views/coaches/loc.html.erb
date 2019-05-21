@@ -68,15 +68,13 @@
     <div class="columns small-12">
       <h2>Swim</h2>
     </div>
-    <div class="row align-center">
-      <% @coaches_by_location.each do |coach| %>    
-        <% coach.classtypes.each do |classtype| %>
-          <% if classtype.name == "Swim" %>
-            <%= render 'coach_container', :coach => coach  %>
-          <% end %>
+    <% @coaches_by_location.each do |coach| %>    
+      <% coach.classtypes.each do |classtype| %>
+        <% if classtype.name == "Swim" %>
+          <%= render 'coach_container', :coach => coach  %>
         <% end %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 <% end %>
 
@@ -84,13 +82,11 @@
   <div class="columns small-12">
     <h2>Office & Hosts</h2>
   </div>
-  <div class="row align-center">
-    <% @coaches_by_location.each do |coach| %>    
-      <% coach.classtypes.each do |classtype| %>
-        <% if classtype.name == "Office" %>
-          <%= render 'coach_container', :coach => coach  %>
-        <% end %>
+  <% @coaches_by_location.each do |coach| %>    
+    <% coach.classtypes.each do |classtype| %>
+      <% if classtype.name == "Office" %>
+        <%= render 'coach_container', :coach => coach  %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 </div>

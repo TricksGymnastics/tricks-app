@@ -11,7 +11,6 @@ gem 'jquery-rails'
 
 gem 'yaml_db'
 gem 'therubyracer'
-gem 'rails_12factor'
 
 gem 'jquery-ui-rails'
 gem 'jquery-minicolors-rails'
@@ -28,6 +27,7 @@ end
 
 group :production do
 	gem "rack-timeout" # causing problems locally
+	gem 'rails_12factor' # allows stdout logging, which is on by default in development
 end
 
 # To use ActiveModel has_secure_password

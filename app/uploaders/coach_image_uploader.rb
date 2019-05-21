@@ -12,11 +12,12 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    if model.gender == "Girl" then
-      "/assets/girl_default.jpg"
-    else
-      "/assets/boy_default.jpg"
-    end
+    "/assets/neutral_default.png"
+    # if model.gender == "Girl" || model.gender == "girl" then
+    #   "/assets/girl_default.jpg"
+    # else
+    #   "/assets/boy_default.jpg"
+    # end
   end
 
   # def auto_orient
