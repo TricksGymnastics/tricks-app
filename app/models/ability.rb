@@ -63,6 +63,8 @@ class Ability
 			can :create, EmploymentApplication
 			can :show, EmploymentApplication
 			can :complete_interview, EmploymentApplication
+			can :update_review, EmploymentApplication
+			can :archive, EmploymentApplication
 			can :manage, BffDanceParty
 			can :manage, KidsNightOut
 		end 
