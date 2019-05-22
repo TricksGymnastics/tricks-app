@@ -1,30 +1,15 @@
-# https://api.jqueryui.com/tabs/
 jQuery ->
-  array = $('#background_images').children('img')
+  images = ["Folsom/IMG_7786.jpg", "Folsom/IMG_7790.jpg", "Folsom/IMG_7792.jpg", "Sacramento/IMG_7840.jpg", "Sacramento/IMG_7839.jpg", "Sacramento/IMG_7827.jpg"]
   
-  $('#background_images').children('img').each (index) ->
-    child = $(this)
-    
-    # img = new Image
-    # img.onload = ->
-    #   # child.attr 'style', 'margin-left: ' + -@width/2 + '; left: 50%; width: ' + @width +'; position: fixed; top: 0; z-index: -100;'
-    #   return
-    # img.src = child.attr 'src'
-    
-    child.hide
-    return
-  
-  i = 0
-  fadeInNext = ->
+  i = -1
+  changeBackgroundImage = ->
     i = i + 1
-    if i == array.length
+    if i == images.length
       i = 0
-    array.eq(i).fadeIn(1000)
-    return
-    
-  myFunction = ->
-    array.eq(i).fadeOut(500, fadeInNext)
-    return
+    $('#background_images').fadeOut 500, ->
+      $('#background_images').css('background-image', 'url(assets/site_header_images/'+images[i]+')')
+      $('#background_images').fadeIn 1000, ->
+        setTimeout changeBackgroundImage, 10000
   
   updateOrbitSize = ->
     $('.orbit-container').each (i, obj) ->
@@ -32,10 +17,11 @@ jQuery ->
       
   updateBlueBar = ->
     $('#blue_bar').height($('#blue_bar').parent().height())
+    bottom = $(window).height() - ($('#blue_bar').position().top + $('#blue_bar').outerHeight(true));
+    $('#background_images').css({bottom: bottom+"px"})
   
   $(document).ready ->
-    array.eq(0).fadeIn(500)
-    setInterval myFunction, 10000
+    changeBackgroundImage()
     updateOrbitSize()
     updateBlueBar()
     

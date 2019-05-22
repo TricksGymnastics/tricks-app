@@ -112,7 +112,6 @@ $ ->
     #     false
 
 autoResizeImageContainers = ->
-    console.log ("Resizing images")
     $('.applicant_image_frame').each ->
         obj = $(@)
         obj.height obj.width() * 1.3712

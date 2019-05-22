@@ -1,12 +1,6 @@
 <%= javascript_include_tag "static/static" %>
 
-<div class="show-for-large" id="background_images" style="position: fixed; top: -120px; z-index: -100; max-width: 100%;  left: 50%; margin-left: -50%; text-align: center;">
-	<%= image_tag('site_header_images/Folsom/IMG_7786.jpg', style: "display: none; margin: 0px auto;") %>
-	<%= image_tag('site_header_images/Folsom/IMG_7790.jpg', style: "display: none; margin: 0px auto;") %>
-	<%= image_tag('site_header_images/Folsom/IMG_7792.jpg', style: "display: none; margin: 0px auto;") %>
-	<%= image_tag('site_header_images/Sacramento/IMG_7840.jpg', style: "display: none; margin: 0px auto;") %>
-	<%= image_tag('site_header_images/Sacramento/IMG_7839.jpg', style: "display: none; margin: 0px auto;") %>
-	<%= image_tag('site_header_images/Sacramento/IMG_7827.jpg', style: "display: none; margin: 0px auto;") %>
+<div class="show-for-medium" id="background_images" style="background-size: cover; position: fixed; top: -120px; z-index: -100; left: 0; right: 0; background-position: center;">
 </div>
 
 <div class="row align-justify" style="margin-bottom: 80px;">
@@ -26,23 +20,25 @@
 			    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
 			    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
 			    <% i = 0 %>
-				<% @live_promos.each do |promo| %>
+
+ 					<% @live_promos.each do |promo| %>
 				    <li class="orbit-slide">
-						<% if promo.data_type == "html" %>
-							<%= render :inline => promo.html_code %>
-						<% elsif !promo.image.file.nil? && promo.image.file.exists? %>
-							<% if promo.link == true %>
-								<%= link_to image_tag(promo.image_url, alt: promo.title, class: "orbit-image"), promo.link_path, style: "cursor: pointer;" %>
+							<% if promo.data_type == "html" %>
+								<%= render :inline => promo.html_code %>
+							<% elsif !promo.image.file.nil? && promo.image.file.exists? %>
+								<% if promo.link == true %>
+									<%= link_to image_tag(promo.image_url, alt: promo.title, class: "orbit-image"), promo.link_path, style: "cursor: pointer;" %>
+								<% else %>
+									<%= image_tag promo.image_url, alt: promo.title, class: "orbit-image" %>
+								<% end %>
+								<figcaption class="orbit-caption"><%= promo.title %></figcaption>
 							<% else %>
-								<%= image_tag promo.image_url, alt: promo.title, class: "orbit-image" %>
+								<div class="orbit-image" style="background-color: #ddd; height: 100%; text-align: center;">Image not found</div>
 							<% end %>
-							<figcaption class="orbit-caption"><%= promo.title %></figcaption>
-						<% else %>
-							<div class="orbit-image" style="background-color: #ddd; height: 100%; text-align: center;">Image not found</div>
-						<% end %>
-				    </li>
-					<% i = i+1 %>
-				<% end %>
+						</li>
+						<% i = i+1 %>
+					<% end %> 
+
 			</ul>
 				<% j = 0 %>
 				<nav class="orbit-bullets">
