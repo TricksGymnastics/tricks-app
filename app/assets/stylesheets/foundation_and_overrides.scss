@@ -439,11 +439,11 @@ $curve_amount: 30px;
 }
 
 body.is-reveal-open {
-	overflow-y: scroll;
+	overflow-y: hidden;
 }
 
 .reveal-overlay {
-	overflow-y: hidden;
+	overflow: auto;
 }
 
 .reveal {

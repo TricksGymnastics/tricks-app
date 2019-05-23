@@ -349,32 +349,32 @@
       </div>
   
       <div class="reveal fast large" id="register_now_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
-      <div id="choose_location_modal">
-        <h1>Choose a Location</h1>
-        <div class="row" style="margin-top: 25px;">
-    			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
-    			<% locations.each do |loc| %>
-            <div class="columns small-12 large-4">
-              <%= link_to loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
-            </div>
-    			<% end %>
+        <div id="choose_location_modal">
+          <h1>Choose a Location</h1>
+          <div class="row" style="margin-top: 25px;">
+            <% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
+            <% locations.each do |loc| %>
+              <div class="columns small-12 large-4">
+                <%= link_to loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1] %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div id="choose_program_modal">
-        <h1>Choose a Program</h1>
-        <div class="row" style="margin-top: 20px;">
-    			<% programs = {"Preschool Gymnastics" => tumblebunnies_path, "School-Age Gymnastics" => gymnastics_path, "Preschool Dance" => preschool_dance_path, "School-Age Dance" => dance_path, "TAG" => tag_path, "Swim" => swim_path} %> 
-    			<% programs.each do |prog| %>
-            <div class="columns small-12 large-6">
-              <%= link_to prog[0], prog[1], class: "button expanded program-button", id: prog[0] %>
-            </div>
-    			<% end %>
+        <div id="choose_program_modal">
+          <h1>Choose a Program</h1>
+          <div class="row" style="margin-top: 20px;">
+            <% programs = {"Preschool Gymnastics" => tumblebunnies_path, "School-Age Gymnastics" => gymnastics_path, "Preschool Dance" => preschool_dance_path, "School-Age Dance" => dance_path, "TAG" => tag_path, "Swim" => swim_path} %> 
+            <% programs.each do |prog| %>
+              <div class="columns small-12 large-6">
+                <%= link_to prog[0], prog[1], class: "button expanded program-button", id: prog[0] %>
+              </div>
+            <% end %>
+          </div>
         </div>
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <button class="close-button" data-close aria-label="Close reveal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
     
       <%= link_to '#', '#', id: "uploading_modal_hidden_trigger", 'data-toggle': 'uploading_modal', style: "display: none;" %>
       <div class="reveal fast" id="uploading_modal" data-reveal data-close-on-click="false" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
