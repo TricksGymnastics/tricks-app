@@ -58,7 +58,7 @@ class LevelsController < ApplicationController
 		locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"}
 		
     locations.each do |loc|
-		  out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%;'>"
+		  out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%; overflow: scroll;'>"
 			url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc[1]+'&cat2='+level.jack_rabbit_name
 			response = JSON.parse(HTTParty.get(url).body)
 			if response['rows'].length > 0
