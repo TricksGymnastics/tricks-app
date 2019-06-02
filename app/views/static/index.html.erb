@@ -25,7 +25,7 @@
 				    <li class="orbit-slide">
 							<% if promo.data_type == "html" %>
 								<%= render :inline => promo.html_code %>
-							<% elsif !promo.image.file.nil? && promo.image.file.exists? %>
+							<% elsif !promo.image.file.nil? %>
 								<% if promo.link == true %>
 									<%= link_to image_tag(promo.image_url, alt: promo.title, class: "orbit-image"), promo.link_path, style: "cursor: pointer;" %>
 								<% else %>
