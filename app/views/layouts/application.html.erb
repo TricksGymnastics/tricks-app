@@ -133,7 +133,6 @@
         <%= render partial: '/layouts/staff_menu', given_locals: {vertical: true} %>
       </div>
     <% end %>
-    
     <div class="off-canvas-content" data-off-canvas-content >
       <% show_size = false %>
       <% if !Rails.env.production? && show_size %>
@@ -339,6 +338,11 @@
               </div>  
             </div>
           <% else %>
+            <div class="row align-center">
+              <div class="columns small-10" style="margin-bottom: 60px; margin-top: -10px; border: solid 4px #2a2ad1; border-radius: 20px; background-color: #bfbfff; padding: 5px; z-index: 10;">
+                <h1>We are closed for the 4th of July</h1>
+              </div>
+            </div>
             <div class="row">
               <div class="columns small-12">
                 <%= yield %>
@@ -386,135 +390,135 @@
       </div>
     </div>
   
-      <div id="footer" style="z-index: 100; margin-top: 150px;">
-        <!--<div style="height: 100px; width: 100%; background-color: #fff;">-->
-          <!-- only here for a bit of padding above the footer -->
-        <!--</div>-->
-        <div class="row">
-          <div class="columns small-12" id="footer-content">
-            <div class="row" style="font-size: 13px;">
-              <div class="columns large-8 small-12 small-order-2 large-order-1">
-                <div class="row show-for-medium">
-                  <div class="columns medium-3 small-6">
-                    <h3 class="footer-header">Programs</h3>
-                    <ul>
-                      <li>
-                        <h3>Gymnastics</h3>
-                        <ul>
-                          <%= if defined? tb_link then ('<li>' + tb_link + '</li>').html_safe end %>
-                          <%= if defined? gym_link then ('<li>' + gym_link + '</li>').html_safe end %>
-                          <%= if defined? comp_link then ('<li>' + comp_link + '</li>').html_safe end %>
-                        </ul>
-                      </li>
-                      <li>
-                        <h3>Dance</h3>
-                        <ul>
-                          <%= if defined? pre_dance_link then ('<li>' + pre_dance_link + '</li>').html_safe end %>
-                          <%= if defined? school_dance_link then ('<li>' + school_dance_link + '</li>').html_safe end %>
-                          <%= if defined? dance_team_link then ('<li>' + dance_team_link + '</li>').html_safe end %>
-                          <%= if defined? summer_recital_link then ('<li>' + summer_recital_link + '</li>').html_safe end %>
-                          <%= if defined? winter_show_link then ('<li>' + winter_show_link + '</li>').html_safe end %>
-                        </ul>
-                      </li>
-                      <%= if defined? tag_link then ('<li>' + tag_link + '</li>').html_safe end %>
-                      <%= if defined? swim_link then ('<li>' + swim_link + '</li>').html_safe end %>
-                      <%= if defined? campus_link then ('<li>' + campus_link + '</li>').html_safe end %>
-                    </ul>
-                  </div>
-                  <div class="columns medium-3 small-6">
-                    <h3 class="footer-header">Parties & Events</h3>
-                    <ul>
-                      <li><%= parties_link %></li>
-                      <li><%= kids_night_outs_link %></li>
-                      <li><%= bff_dance_parties_link %></li>
-                      <li><%= camps_link %></li>
-                    </ul>
-                  </div>
-                  <div class="columns medium-3 small-6">
-                    
-                    <h3 class="footer-header">About Us</h3>
-                    <ul>
-                      <%= if defined? story_link then ('<li>' + story_link + '</li>').html_safe end %>
-                      <%= if defined? facilities_link then ('<li>' + facilities_link + '</li>').html_safe end %>
-                      <li>
-                        <h3>Our Staff</h3>
-                        <ul>
-                          <%= if defined? gb_staff_link then ('<li>' + gb_staff_link + '</li>').html_safe end %>
-                          <%= if defined? fol_staff_link then ('<li>' + fol_staff_link + '</li>').html_safe end %>
-                          <%= if defined? sac_staff_link then ('<li>' + sac_staff_link + '</li>').html_safe end %>
-                        </ul>
-                      </li>
-                      <%= try_to_show_link(testimonials_link) %>
-                      <%= try_to_show_link(family_rules_link) %>
-                      <%= try_to_show_link(newsletter_link) %>
-                    </ul>
-                  </div>
-                  <div class="columns medium-3 small-6">
-                    <h3 class="footer-header">Forms</h3>
-                    <ul>
-                      <%= try_to_show_link(absence_link) %>
-                      <%= try_to_show_link(billing_cycle_link) %>
-                      <%= try_to_show_link(release_form_link) %>
-                      <%= try_to_show_link(discontinue_link) %>
-                      <%= try_to_show_link(employment_link) %>
-                    </ul>
-                    <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>
-                    <h3 class="footer-header"><%= link_to "Contact", locations_path, class: 'main-menu-item' %></h3>
-                  </div>
+    <div id="footer" style="z-index: 100; margin-top: 150px;">
+      <!--<div style="height: 100px; width: 100%; background-color: #fff;">-->
+        <!-- only here for a bit of padding above the footer -->
+      <!--</div>-->
+      <div class="row">
+        <div class="columns small-12" id="footer-content">
+          <div class="row" style="font-size: 13px;">
+            <div class="columns large-8 small-12 small-order-2 large-order-1">
+              <div class="row show-for-medium">
+                <div class="columns medium-3 small-6">
+                  <h3 class="footer-header">Programs</h3>
+                  <ul>
+                    <li>
+                      <h3>Gymnastics</h3>
+                      <ul>
+                        <%= if defined? tb_link then ('<li>' + tb_link + '</li>').html_safe end %>
+                        <%= if defined? gym_link then ('<li>' + gym_link + '</li>').html_safe end %>
+                        <%= if defined? comp_link then ('<li>' + comp_link + '</li>').html_safe end %>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>Dance</h3>
+                      <ul>
+                        <%= if defined? pre_dance_link then ('<li>' + pre_dance_link + '</li>').html_safe end %>
+                        <%= if defined? school_dance_link then ('<li>' + school_dance_link + '</li>').html_safe end %>
+                        <%= if defined? dance_team_link then ('<li>' + dance_team_link + '</li>').html_safe end %>
+                        <%= if defined? summer_recital_link then ('<li>' + summer_recital_link + '</li>').html_safe end %>
+                        <%= if defined? winter_show_link then ('<li>' + winter_show_link + '</li>').html_safe end %>
+                      </ul>
+                    </li>
+                    <%= if defined? tag_link then ('<li>' + tag_link + '</li>').html_safe end %>
+                    <%= if defined? swim_link then ('<li>' + swim_link + '</li>').html_safe end %>
+                    <%= if defined? campus_link then ('<li>' + campus_link + '</li>').html_safe end %>
+                  </ul>
                 </div>
-              </div>
-              
-              <div class="columns large-4 small-12 small-order-1 large-order-2" style="margin-bottom: 20px;">
-                <div class="row">
-                  <div class="columns small-4">
-                    <%= link_to "Granite Bay", 'javascript:void(0);', class: "button expanded location-button", id: "GB" %>
-                  </div>
-                  <div class="columns small-4">
-                    <%= link_to "Folsom", 'javascript:void(0);', class: "button expanded location-button", id: "FOL" %>
-                  </div>
-                  <div class="columns small-4">
-                    <%= link_to "Sacramento", 'javascript:void(0);', class: "button expanded location-button", id: "SAC" %>
-                  </div>
+                <div class="columns medium-3 small-6">
+                  <h3 class="footer-header">Parties & Events</h3>
+                  <ul>
+                    <li><%= parties_link %></li>
+                    <li><%= kids_night_outs_link %></li>
+                    <li><%= bff_dance_parties_link %></li>
+                    <li><%= camps_link %></li>
+                  </ul>
                 </div>
-                <div class="row" id="footer_location_container">
-                  <div class="columns 9-small footer-location-information" id="GB">
-                    <p>4070 Cavitt Stallman Rd<br>
-              			Granite Bay, CA 9574</p>
-              			<p>Phone: (916) 791-4496</p>
-              			<p>Email: <%= link_to 'tricksgb@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
-                  </div>
-                  <div class="columns 9-small footer-location-information" id="FOL">
-                   	<p>370 Plaza Drive<br>
-              			Folsom, CA 95630</p>
-              			<p>Phone: (916) 351-0024</p>
-              			<p>Email: <%= link_to 'tricksfol@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
-                  </div>
-                  <div class="columns 9-small footer-location-information" id="SAC">
-                   	<p>4440 Marconi Avenue, Suite 100<br>
-  			            Sacramento, CA 95821</p>
-              			<p>Phone: (916) 481-4496</p>
-              			<p>Email: <%= link_to 'trickssac@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
-                  </div>
-                  <div class="columns 9-small footer-location-information" id="NONE">
-                    Click a button for more information about the location
-                  </div>
+                <div class="columns medium-3 small-6">
+                  
+                  <h3 class="footer-header">About Us</h3>
+                  <ul>
+                    <%= if defined? story_link then ('<li>' + story_link + '</li>').html_safe end %>
+                    <%= if defined? facilities_link then ('<li>' + facilities_link + '</li>').html_safe end %>
+                    <li>
+                      <h3>Our Staff</h3>
+                      <ul>
+                        <%= if defined? gb_staff_link then ('<li>' + gb_staff_link + '</li>').html_safe end %>
+                        <%= if defined? fol_staff_link then ('<li>' + fol_staff_link + '</li>').html_safe end %>
+                        <%= if defined? sac_staff_link then ('<li>' + sac_staff_link + '</li>').html_safe end %>
+                      </ul>
+                    </li>
+                    <%= try_to_show_link(testimonials_link) %>
+                    <%= try_to_show_link(family_rules_link) %>
+                    <%= try_to_show_link(newsletter_link) %>
+                  </ul>
+                </div>
+                <div class="columns medium-3 small-6">
+                  <h3 class="footer-header">Forms</h3>
+                  <ul>
+                    <%= try_to_show_link(absence_link) %>
+                    <%= try_to_show_link(billing_cycle_link) %>
+                    <%= try_to_show_link(release_form_link) %>
+                    <%= try_to_show_link(discontinue_link) %>
+                    <%= try_to_show_link(employment_link) %>
+                  </ul>
+                  <h3 class="footer-header"><%= link_to "Blog", 'http://tricksgym.blogspot.com/', class: 'main-menu-item' %></h3>
+                  <h3 class="footer-header"><%= link_to "Contact", locations_path, class: 'main-menu-item' %></h3>
                 </div>
               </div>
             </div>
-            <% if !current_user %>
-              <div class="row align-center">
-                <div class="columns small-10 large-6">
-                  <%= link_to "Staff Login", login_path, class: "button secondary expanded", style: "margin-top: 50px;" %>
+            
+            <div class="columns large-4 small-12 small-order-1 large-order-2" style="margin-bottom: 20px;">
+              <div class="row">
+                <div class="columns small-4">
+                  <%= link_to "Granite Bay", 'javascript:void(0);', class: "button expanded location-button", id: "GB" %>
+                </div>
+                <div class="columns small-4">
+                  <%= link_to "Folsom", 'javascript:void(0);', class: "button expanded location-button", id: "FOL" %>
+                </div>
+                <div class="columns small-4">
+                  <%= link_to "Sacramento", 'javascript:void(0);', class: "button expanded location-button", id: "SAC" %>
                 </div>
               </div>
-            <% end %>
+              <div class="row" id="footer_location_container">
+                <div class="columns 9-small footer-location-information" id="GB">
+                  <p>4070 Cavitt Stallman Rd<br>
+                  Granite Bay, CA 9574</p>
+                  <p>Phone: (916) 791-4496</p>
+                  <p>Email: <%= link_to 'tricksgb@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                </div>
+                <div class="columns 9-small footer-location-information" id="FOL">
+                  <p>370 Plaza Drive<br>
+                  Folsom, CA 95630</p>
+                  <p>Phone: (916) 351-0024</p>
+                  <p>Email: <%= link_to 'tricksfol@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                </div>
+                <div class="columns 9-small footer-location-information" id="SAC">
+                  <p>4440 Marconi Avenue, Suite 100<br>
+                  Sacramento, CA 95821</p>
+                  <p>Phone: (916) 481-4496</p>
+                  <p>Email: <%= link_to 'trickssac@gmail.com', 'mailto:tricksgb@gmail.com?subject=Email from Website' %></p>
+                </div>
+                <div class="columns 9-small footer-location-information" id="NONE">
+                  Click a button for more information about the location
+                </div>
+              </div>
+            </div>
           </div>
+          <% if !current_user %>
+            <div class="row align-center">
+              <div class="columns small-10 large-6">
+                <%= link_to "Staff Login", login_path, class: "button secondary expanded", style: "margin-top: 50px;" %>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <% height = 5 %>
-        <% width = 300 %>
-        <% buffer = 20 %>
-        <div style="width: 100%; height: <%= (height * 2) + buffer %>px; background-image: url(&quot;data:image/svg+xml;charset=utf8,<svg height='100%' width='100%' viewBox='0 0 <%= width %> <%= (height * 2) + buffer %>' xmlns='http://www.w3.org/2000/svg'><path d='m 0 0 q <%= width / 8 %> 0 <%= width / 4 %> <%= height %> t <%= width / 4 %> <%= height %> t <%= width / 4 %> -<%= height %> t <%= width / 4 %> -<%= height %> l 0 <%= (height * 2) + buffer %> l -<%= width %> 0 z' stroke='white' fill='white' /></svg>&quot;); background-size: contain;"></div>
       </div>
+      <% height = 5 %>
+      <% width = 300 %>
+      <% buffer = 20 %>
+      <div style="width: 100%; height: <%= (height * 2) + buffer %>px; background-image: url(&quot;data:image/svg+xml;charset=utf8,<svg height='100%' width='100%' viewBox='0 0 <%= width %> <%= (height * 2) + buffer %>' xmlns='http://www.w3.org/2000/svg'><path d='m 0 0 q <%= width / 8 %> 0 <%= width / 4 %> <%= height %> t <%= width / 4 %> <%= height %> t <%= width / 4 %> -<%= height %> t <%= width / 4 %> -<%= height %> l 0 <%= (height * 2) + buffer %> l -<%= width %> 0 z' stroke='white' fill='white' /></svg>&quot;); background-size: contain;"></div>
+    </div>
     </div>
   </body>
 </html>
