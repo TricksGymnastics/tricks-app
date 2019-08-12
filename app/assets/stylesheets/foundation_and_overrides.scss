@@ -481,9 +481,50 @@ body.is-reveal-open {
 	padding-left: 40px !important;
 }
 
+.comment-filter-button {
+	text-align: center; 
+	font-weight: bold; 
+	border: 4px solid #222; 
+	padding: 10px; 
+	width: 100%; 
+	display: block;
+	&.Gymnastics {
+		&.active {
+			background-color: $tricks-dark-green;
+			color: #fefefe;
+		}
+		color: $tricks-dark-green;
+		border-color: $tricks-dark-green;
+	}
+	&.Tag {
+		&.active {
+			background-color: $tricks-orange;
+			color: #fefefe;
+		}
+		color: $tricks-orange;
+		border-color: $tricks-orange;
+	}
+	&.Dance {
+		&.active {
+			background-color: $tricks-pink;
+			color: #fefefe;
+		}
+		color: $tricks-pink;
+		border-color: $tricks-pink;
+	}
+	&.Swim {
+		&.active {
+			background-color: $tricks-light-blue;
+			color: #fefefe;
+		}
+		color: $tricks-light-blue;
+		border-color: $tricks-light-blue;
+	}
+}
+
 .comment-container {
 	border-radius: 15px;
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 	padding: 10px;
 	p {
 		margin: 0;
@@ -494,23 +535,25 @@ body.is-reveal-open {
 	}
 	&.Gymnastics {
 		border: solid 3px $tricks-dark-green;
-		box-shadow: 0 0 20px $tricks-dark-green;
+		box-shadow: 0 0 15px $tricks-dark-green;
+	}
+	&.Tag {
+		border: solid 3px $tricks-dark-orange;
+		box-shadow: 0 0 15px $tricks-orange;
 	}
 	&.Dance {
 		border: solid 3px $tricks-pink;
-		box-shadow: 0 0 20px $tricks-dark-pink;
+		box-shadow: 0 0 15px $tricks-pink;
 	}
 	&.Swim {
-		border: solid 3px $tricks-light-blue;
-		box-shadow: 0 0 20px $tricks-dark-blue;
+		border: solid 3px $tricks-blue;
+		box-shadow: 0 0 15px $tricks-light-blue;
 	}
 }
 
 .help-text {
 	margin: 0;
 }
-
-
 
 #ui-datepicker-div {
 	border: solid 1px #666;

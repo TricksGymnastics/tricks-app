@@ -4,7 +4,7 @@ class DiscontinueNoticesController < ApplicationController
   # GET /discontinue_notices
   # GET /discontinue_notices.json
   def index
-    @discontinue_notices = DiscontinueNotice.order("discontinue_notices.created_at DESC").all
+    @discontinue_notices = DiscontinueNotice.order("discontinue_notices.created_at DESC").limit(100)
   end
 
   # GET /discontinue_notices/1

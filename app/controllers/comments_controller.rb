@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   
-  load_and_authorize_resource :except => :random_comment
+  load_and_authorize_resource
   helper_method :sort_column, :sort_direction 
   
   # GET /comments
@@ -81,11 +81,6 @@ class CommentsController < ApplicationController
       format.html { redirect_to comments_url }
       format.json { head :no_content }
     end
-  end
-
-  def random_comment
-    @comment = Comment.where(score: 7..10).sample(n=6)
-    render :layout => "random_comment"
   end
 
   private

@@ -4,7 +4,12 @@ class StaticController < ApplicationController
   end
 
   def site_comments
-    @comment = Comment.where(score: 8..10).sample(n=4)
+    @comments = Comment.all
+    if params.has_key?(:type)
+      @comments = @comments.where(activity: params[:type])
+    end
+
+    @comments = @comments.where(score: 8..10).sample(n=4)
   end
 
   def datenight

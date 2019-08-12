@@ -9,19 +9,35 @@
     <div class="row">
       <div class="columns">
         <h1 style="margin-bottom: 0;">Comments</h1>
-        <h5 style="margin-top: -10px; margin-bottom: 10px; text-align: center;">Reload page for more comments</h5>
       </div>
     </div>
     
     <div class="row">
       <div class="columns">
-        <p>Please feel free to leave us a comment about our Staff, Facilities, Website, or anything else you would like. Simply click on the button above to leave your comment.
+        <p>Please feel free to leave us a comment about our Staff, Facilities, Website, or anything else you would like. Simply click on the big green button to leave a comment.
         </p>
-        <p>Comments on this page are randomly chosen from all of the comments that have been submitted in the past by both Parents and Children. Each time you come to visit the comments page you will be able to see new comments! The comments with the <b style="color: #009700; font-size: 17px;">Green</b> border are <b style="color: #009700; font-size: 17px;">Gymnastics</b> based, <b style="color:#E80068; font-size: 17px;">Pink</b> border are <b style="color: #E80068; font-size: 17px;">Dance</b>, and the ones with the <b style="color:#03C; font-size: 17px;">Blue</b> border are from <b style="color: #03C; font-size: 17px;">Swimmers</b>.</p>
+        <p>Comments on this page are randomly chosen from all of the comments that have been submitted in the past by both Parents and Children. Each time you come to visit the comments page you will be able to see new comments!</p>
+        <h5 style=text-align:center;">Click one of the buttons to only show comments for that activity</h5>
       </div>
     </div>
     
-    <% @comment.each do |t| %>
+    <div class="row" style="margin-top: 5px; margin-bottom: 40px">
+      <% [{name: 'Gymnastics', color: "#009700"},
+          # {name: 'TAG', color: "orange"},
+          {name: "Dance", color: "#E80068"},
+          {name: "Swim", color: "#03C"}].each do | program | %>
+        <div class="columns small-6 large-expand">
+          <% is_active = (params.has_key?(:type) && params[:type] == program[:name]) %>
+          <% link = is_active ? params.except(:type) : params.merge({type: program[:name]})%>
+          <%= link_to program[:name], link, class: "comment-filter-button " + program[:name] + (is_active ? " active" : "") %>
+        </div>   
+      <% end %>
+    </div>
+
+    
+
+    
+    <% @comments.each do |t| %>
       <div class="row">
         <div class="columns">
           <div class="comment-container <%= t.activity %>">
