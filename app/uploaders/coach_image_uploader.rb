@@ -25,14 +25,23 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   #     img = img.auto_orient
   #   end
   # end
+  process :rotate_according_to_exif
+
+  def rotate_according_to_exif
+    manipulate! do |img|
+      img.tap(&:auto_orient)
+    end
+  end
 
   version :thumb do
     # process :auto_orient
+    process :rotate_according_to_exif
     process :resize_to_fill => [210, 290]
   end
 
   version :small_thumb, :from_version => :thumb do 
     # process :auto_orient
+    process :rotate_according_to_exif
     process :resize_to_limit => [150, 150]
   end
   
