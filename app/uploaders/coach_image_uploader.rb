@@ -8,7 +8,7 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   end
   
   def store_dir
-    "uploads/#{model.firstname+'_'+model.lastname+'_'+model.id}".tr(" ", "_")
+    "uploads/#{model.firstname+'_'+model.lastname+'_'+model.id.to_s}".tr(" ", "_")
   end
 
   def default_url
