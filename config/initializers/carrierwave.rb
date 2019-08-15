@@ -9,6 +9,7 @@ CarrierWave.configure do |config|
       :persistent                       => false 
     }
     config.fog_directory = 'tricks-images'
+    config.fog_attributes = { cache_control: "no-cache" }
     config.storage = :fog
   else
     config.storage = :file
