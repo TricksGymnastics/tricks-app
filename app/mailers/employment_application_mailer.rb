@@ -1,22 +1,18 @@
 class EmploymentApplicationMailer < ApplicationMailer
-  def gym_notification(application)
-    @application = application
-    subject = "Employment Application for: " + application.firstname + " " + application.lastname
+  def gym_notification(review)
+    @review = review
+    subject = "Employment Application for: " + @review.employment_application.firstname + " " + @review.employment_application.lastname
     
-    locations = []
-    if application.granite_bay
-      locations << "tricksgb@gmail.com"
+    email = ""
+    if review.location == "granite_bay"
+      email = "tricksgb@gmail.com"
+    elsif review.location == "folsom"
+      email = "tricksfol@gmail.com"
+    elsif review.location == "sacramento"
+      email = "trickssac@gmail.com"
     end
     
-    if application.folsom
-      locations << "tricksfol@gmail.com"
-    end
-    
-    if application.sacramento
-      locations << "trickssac@gmail.com"
-    end
-    
-    mail to: "trickswebmaster@gmail.com", cc: locations, subject: subject #TODO: change to bcc: after i have verified it works
+    mail to: "trickswebmaster@gmail.com", cc: email, subject: subject #TODO: change to bcc: after i have verified it works
   end
   
   def application_confirmation(application)

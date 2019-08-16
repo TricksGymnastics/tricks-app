@@ -2,63 +2,23 @@
 <html>
 <head>
 </head>
-<body style="color:#222; font-size:16px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;">
+<body style="color:#222; font-size:16px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;">
   <div>
-    <h3>Employment Application for <%= @application.firstname + " " + @application.lastname %></h3>
+    <h3>Employment Application for <%= @review.employment_application.firstname + " " + @review.employment_application.lastname %></h3>
 
-    <p>Submitted on: <b><%= @application.created_at.strftime("%B %d, %Y") %></b></p>
+    <p>Submitted on: <b><%= @review.employment_application.created_at.strftime("%B %d, %Y") %></b></p>
     
-    <% positions = [] %>
-    <% if @application.gymnastics then positions << "Gymnastics" end %>
-    <% if @application.dance then positions << "Dance" end %>
-    <% if @application.swim then positions << "Swim" end %>
-    <% if @application.tag then positions << "TAG" end %>
-    <% if @application.hospitality then positions << "Hospitality" end %>
-    
-    <% string = "" %>
-    <% if positions.count > 0 %>
-      <% positions.each do |pos| %>
-        <% if pos == positions.first %>
-          <% string << pos %>
-        <% elsif pos == positions.last %>
-          <% string << " and " << pos %>
-        <% else %>
-          <% string << ", " << pos %>
-        <% end %>
-      <% end %>
-    <% else %>
-      <% string << "No positions selected :(" %>
-    <% end %>
     
     <p>
-      Applied for: <b><%= string %></b>
+      Applied for: <b><%= @review.department.gsub("_"," ").titleize %></b>
     </p>
     
-    <% locations = [] %>
-    <% if @application.granite_bay then locations << "Granite Bay" end %>
-    <% if @application.folsom then locations << "Folsom" end %>
-    <% if @application.sacramento then locations << "Sacramento" end %>
-    
-    <% string = "" %>
-    <% if locations.count > 0 %>
-      <% locations.each do |loc| %>
-        <% if loc == locations.first %>
-          <% string << loc %>
-        <% elsif loc == locations.last %>
-          <% string << " and " << loc %>
-        <% else %>
-          <% string << ", " << loc %>
-        <% end %>
-      <% end %>
-    <% else %>
-      <% string << "Nowhere" %>
-    <% end %>
-    
+   
     <p>
-      At <b><%= string %></b>
+      At <b><%= @review.location.gsub("_"," ").titleize %></b>
     </p>
     
-    <h4><%= link_to "View Application", employment_application_url(@application)%></h4>
+    <h4><%= link_to "View Application Review", employment_application_url(@review)%></h4>
     
     <%= link_to "View ALL Applications", employment_applications_url %>
 

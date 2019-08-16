@@ -109,18 +109,20 @@ class EmploymentApplicationsController < ApplicationController
         loc = loc.name.downcase.gsub(" ", "_")
         if (@employment_application.send loc)
           departments.each do |dep|
-            if (@employment_application.send dep)
+            if (@employment_application.send dep && !(loc != "folsom" && dep == "swim"))
               review = EmploymentApplicationReview.new
               review.employment_application_id = @employment_application.id
               review.location = loc
               review.department = dep
-              review.save
+              if review.save
+                EmploymentApplicationMailer.gym_notification(review).deliver_now
+              end
             end
           end
         end
       end
 
-      EmploymentApplicationMailer.gym_notification(@employment_application).deliver_now
+      
       EmploymentApplicationMailer.application_confirmation(@employment_application).deliver_now
       redirect_to 'http://www.tricksgym.com/thankyou', notice: 'Employment Application was successfully submitted.'
     else
