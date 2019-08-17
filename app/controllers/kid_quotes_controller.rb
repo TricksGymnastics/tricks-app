@@ -7,7 +7,7 @@ class KidQuotesController < ApplicationController
   # GET /kid_quotes
   # GET /kid_quotes.json
   def index
-    @kid_quotes = KidQuote.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 20, :page => params[:page])
+    @kid_quotes = KidQuote.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @kid_quotes }

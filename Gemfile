@@ -35,7 +35,7 @@ gem 'bcrypt-ruby', '3.1.2'
 
 gem 'thin'
 gem 'cancancan'
-gem 'will_paginate'
+gem 'kaminari' #pagination - https://github.com/kaminari/kaminari
 
 gem "carrierwave", "0.11.2"
 gem 'mini_magick', "4.5.1"

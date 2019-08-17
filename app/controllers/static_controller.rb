@@ -9,7 +9,7 @@ class StaticController < ApplicationController
       @comments = @comments.where(activity: params[:type])
     end
 
-    @comments = @comments.where(score: 8..10).sample(n=4)
+    @comments = @comments.where(score: 8..10).page(params[:page]).per(4)
   end
 
   def datenight
