@@ -1,3 +1,5 @@
+<%#= javascript_include_tag "comments" %>
+
 <% content_for :title do %>
   Tricks - Comments
 <% end %>
@@ -26,7 +28,7 @@
           # {name: 'TAG', color: "orange"},
           {name: "Dance", color: "#E80068"},
           {name: "Swim", color: "#03C"}].each do | program | %>
-        <div class="columns small-6 large-expand">
+        <div class="columns small-expand">
           <% is_active = (params.has_key?(:type) && params[:type] == program[:name]) %>
           <% link = is_active ? params.except(:type) : params.merge({type: program[:name]})%>
           <%= link_to program[:name], link, class: "comment-filter-button " + program[:name] + (is_active ? " active" : "") %>
@@ -34,23 +36,17 @@
       <% end %>
     </div>
 
+    <div id="comments">
+      <%= render partial: 'site_comments', locals: {comments: @comments} %>
+    </div>
     
-
-    
-    <% @comments.each do |t| %>
-      <div class="row">
-        <div class="columns">
-          <div class="comment-container <%= t.activity %>">
-            <p><%= t.comment %></p>
-            <h6>-<%= t.name %></h6>
-          </div>
+    <div class="row align-center">
+      <div class="columns small-6" style="text-align: center;">
+        <div style="display: none;">
+          <%= paginate @comments, window: 2 %>
+          <img src="/assets/loading-spinner-white.gif">
         </div>
-      </div>
-    <% end %>
-    
-    <div class="row">
-      <div class="columns" style="text-align: center;">
-        <%= paginate @comments, window: 2 %>
+        <%= link_to "Load More", "javascript:void(0);", class: "button large expanded", style: "margin: 30px 0 50px 0", id: "load_more_comments" %>
       </div>
     </div>
   </div>

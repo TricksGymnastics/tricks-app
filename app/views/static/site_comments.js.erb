@@ -1,0 +1,7 @@
+$('#comments').append('<%= j render partial: "site_comments", locals: {comments: @comments} %>');
+<% if @comments.next_page %>
+  $('.pagination').replaceWith('<%= j paginate @comments, window: 2 %>');
+  $('#load_more_comments').addClass("large").html("Load More");
+<% else %>
+  $('.pagination').remove();
+<% end %>

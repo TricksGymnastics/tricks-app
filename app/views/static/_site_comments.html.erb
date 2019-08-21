@@ -1,0 +1,10 @@
+<% comments.each do |t| %>
+    <div class="row">
+    <div class="columns">
+        <div class="comment-container <%= t.activity %>">
+        <p><%= t.comment %></p>
+        <h6>-<%= t.name %></h6>
+        </div>
+    </div>
+    </div>
+<% end %>

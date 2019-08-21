@@ -28,7 +28,7 @@
       
       <div class="row">
         <div class="columns large-12 ">
-          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :comment, required: false, placeholder: "Let us know how we are doing\n\nIf you are having an issue with billing please call your gym directly", height: 200} %>
+          <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :comment, required: false, placeholder: "Let us know how we are doing\n\nIf you are having an issue with billing please call your gym directly", maxlength: 1000, height: 200} %>
         </div>
       </div>
       
