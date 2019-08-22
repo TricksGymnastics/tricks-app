@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<% content_for :title do %>
+    <%= "Tricks - Making A Difference" %>
+<% end %>
+
+
+<div class="row">
+  <div class="column">
+    <h1>Making A Differences</h1>
+      <div class="row align-center" style="margin-top: 30px;">
+        <div class="columns small-6">
+          <%= link_to 'New Making a difference', new_making_a_difference_path, class: "button expanded" %>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+  <div class="row">
+    <% @making_a_differences.each do |making_a_difference| %>
+      <div class="column large-4" style="padding: 20px;">
+        <div style="padding: 10px; border: solid 2px #D8D8D8; border-radius: 5px; box-shadow: 5px 5px 5px 5px #D8D8D8;">
+          <h5 style="margin: 15px; text-align: center;"><%= making_a_difference.title %></h5>
+          <div class="comment" style= "text-overflow: ellipsis; max-height: 50px; overflow: hidden;"><%= making_a_difference.comment %></div>
+          <p style="text-align: right; font-weight: bold;"><%= making_a_difference.name %>,  <%= making_a_difference.date %></p>
+          <td><%= link_to 'Show', making_a_difference %></td>
+          <td><%= link_to 'Edit', edit_making_a_difference_path(making_a_difference) %></td>
+          <td><%= link_to 'Destroy', making_a_difference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </div>
+      </div>
+
+    <% end %>
+  </div>
+
+
+<script> 
+
+function ellipsizeTextBox(el) {
+    console.log(el);
+    var wordArray = el.innerHTML.split(' ');
+    while(el.scrollHeight > el.offsetHeight) {
+        wordArray.pop();
+        el.innerHTML = wordArray.join(' ') + '...';
+     }
+}
+let comments = document.getElementsByClassName("comment");
+for (let comment of comments){
+  ellipsizeTextBox(comment);
+}
+</script>

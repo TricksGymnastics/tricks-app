@@ -274,6 +274,15 @@ ActiveRecord::Schema.define(version: 2019_09_17_190836) do
     t.string "shortname"
   end
 
+  create_table "making_a_differences", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.text "comment"
+    t.date "date"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parties", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "description"
