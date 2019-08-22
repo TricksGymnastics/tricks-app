@@ -1,0 +1,32 @@
+Guide to install rails
+https://gorails.com/setup/windows/10
+
+this is a needed fix for the above install steps
+https://stackoverflow.com/questions/50085258/installing-ruby-2-3-x-on-ubuntu-18-04-is-causing-an-error-by-the-end-of-the-inst
+sudo apt purge libssl-dev && sudo apt install libssl1.0-dev
+
+this fixes a problem installing gem pg
+https://stackoverflow.com/questions/13086073/rails-install-pg-cant-find-the-libpq-fe-h-header
+sudo apt-get install libpq-dev
+
+install heroku cli https://devcenter.heroku.com/articles/heroku-cli
+this is the given command, but at this time (Aug 2019) it is not supported in WSL
+sudo snap install --classic heroku
+https://superuser.com/questions/1391219/setting-up-heroku-cli-in-wsl
+curl https://cli-assets.heroku.com/install.sh | sh
+
+install postgresql
+https://stackoverflow.com/questions/46312111/windows-linux-subsystem-and-postgresql-connection-failed
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+sudo service postgresql start
+sudo -i -u postgres
+psql
+\password postgres
+tricks
+tricks
+rake db:create
+
+to pull the live database down
+PGUSER=postgres PGPASSWORD=tricks PGHOST=localhost dropdb tricks_development
+PGUSER=postgres PGPASSWORD=tricks PGHOST=localhost heroku pg:pull DATABASE_URL tricks_development --app tricks-app
