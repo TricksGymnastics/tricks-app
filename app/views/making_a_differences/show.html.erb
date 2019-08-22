@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @making_a_difference.title %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @making_a_difference.comment %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @making_a_difference.date %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @making_a_difference.name %>
+</p>
+
+<%= link_to 'Edit', edit_making_a_difference_path(@making_a_difference) %> |
+<%= link_to 'Back', making_a_differences_path %>

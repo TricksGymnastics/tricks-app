@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :making_a_differences
   resources :kids_night_outs
   get 'datenights', to: redirect('kids_night_outs')
   resources :bff_dance_parties
