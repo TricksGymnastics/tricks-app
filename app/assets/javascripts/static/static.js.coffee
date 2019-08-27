@@ -8,13 +8,9 @@ jQuery ->
 
   changeBackgroundImage = ->
     if img.prop('complete')
-      # image already loaded
-      console.log("Background image loaded very fast!")
       swap()
     else
-      console.log("Image still loading")
       img.one 'load', ->
-        console.log("Image done loading")
         swap()
 
   swap = ->
