@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 ruby '2.3.4'
 
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.11'
 gem 'pg', "~> 0.21" #1.0.0 is the current version but not yet supported by rails
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
+
+# gem "activejob", ">= 4.2.11"
+# gem "actionview", ">= 4.2.11.1"
+# gem "activerecord", ">= 4.2.7.1"
 
 gem 'jquery-rails'
 
@@ -38,7 +42,7 @@ gem 'cancancan'
 gem 'kaminari' #pagination - https://github.com/kaminari/kaminari
 
 gem "carrierwave", "0.11.2"
-gem 'mini_magick', "4.5.1"
+gem 'mini_magick', ">= 4.9.4"
 gem 'fog-google'
 
 gem "fancybox2-rails"
@@ -50,7 +54,7 @@ gem 'google-analytics-rails'
 
 gem 'mailgun-ruby', '~>1.1.6'
 gem 'premailer-rails'
-gem 'nokogiri'
+gem "nokogiri", ">= 1.10.4"
 
 gem 'foundation-rails',  '6.4.1.2'#, '6.3.1.0'
 
