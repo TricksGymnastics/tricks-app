@@ -658,8 +658,11 @@ body.is-reveal-open {
 	font-size: 0;
 }
 
-
 .pagination a,
 .pagination button {
   display: inline;
+}
+
+.dropdown.menu > li > a  {
+	background-color: transparent;
 }

@@ -1,15 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.3.4'
 
-gem 'rails', '4.2.11'
+gem 'rails', '5.0'
 gem 'pg', "~> 0.21" #1.0.0 is the current version but not yet supported by rails
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-
-# gem "activejob", ">= 4.2.11"
-# gem "actionview", ">= 4.2.11.1"
-# gem "activerecord", ">= 4.2.7.1"
 
 gem 'jquery-rails'
 
@@ -26,7 +22,7 @@ group :development do
 	# gem 'binding_of_caller'
 	# gem 'quiet_assets'
 	# gem 'byebug'
-	gem 'web-console', '~> 2.0' #put <%= console %> on any page I want a console to show on the error page
+	gem 'web-console' #put <%= console %> on any page I want a console to show on the error page
 end
 
 group :production do
@@ -56,7 +52,7 @@ gem 'mailgun-ruby', '~>1.1.6'
 gem 'premailer-rails'
 gem "nokogiri", ">= 1.10.4"
 
-gem 'foundation-rails',  '6.4.1.2'#, '6.3.1.0'
+gem 'foundation-rails'
 
 gem 'httparty' #needed to get json info from jackrabbit
 

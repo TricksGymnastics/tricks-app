@@ -1,4 +1,4 @@
-Comments::Application.routes.draw do
+Rails.application.routes.draw do
 
   resources :kids_night_outs
   resources :kids_night_outs
