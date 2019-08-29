@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
-  before_filter :set_variables
+  before_action :set_variables
 
   def set_variables
     @bgc_yellow = "#FFF55E" #"#F2E300"

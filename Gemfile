@@ -1,59 +1,72 @@
 source 'https://rubygems.org'
-ruby '2.3.4'
 
-gem 'rails', '5.0'
-gem 'pg', "~> 0.21" #1.0.0 is the current version but not yet supported by rails
+ruby '2.3.4'
+gem 'rails', '5.2.3'
+
+gem 'pg', "1.0.0"
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-
-gem 'jquery-rails'
-
 gem 'yaml_db'
 gem 'therubyracer'
-
-gem 'jquery-ui-rails'
-gem 'jquery-minicolors-rails'
-# gem 'jquery-validation-rails'
-
 
 group :development do
 	# gem 'better_errors'
 	# gem 'binding_of_caller'
 	# gem 'quiet_assets'
 	# gem 'byebug'
-	gem 'web-console' #put <%= console %> on any page I want a console to show on the error page
+	# put <%= console %> on any page I want a console to show on the error page
+	gem 'web-console' 
 end
 
 group :production do
+	# Sets a specific timeout for some actions so they don't cause the server to hang until crash
 	gem "rack-timeout" # causing problems locally
-	gem 'rails_12factor' # allows stdout logging, which is on by default in development
+	# Heroku says we should have this one
+	gem 'rails_12factor'
 end
 
+# Adds use of jQuery
+gem 'jquery-rails'
+# Adds jQuery-UI. Used for a few different visual effects accross the site
+gem 'jquery-ui-rails'
+# Adds jQuery.minicolors. Used for creating color pickers to forms
+gem 'jquery-minicolors-rails'
+
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '3.1.2'
+gem 'bcrypt'
 
+# Local web server?
 gem 'thin'
-gem 'cancancan'
-gem 'kaminari' #pagination - https://github.com/kaminari/kaminari
 
+# Role specific permissions definied in Ability.rb
+gem 'cancancan'
+
+#pagination - https://github.com/kaminari/kaminari
+gem 'kaminari'
+
+# File uploads
 gem "carrierwave", "0.11.2"
+# Image manipulation (resize, rotate, scale)
 gem 'mini_magick', ">= 4.9.4"
+# File storage solution
 gem 'fog-google'
 
-gem "fancybox2-rails"
-
+# Used to integrate with stripe.com for payment handling
 gem "stripe"
 
+# Google Analytics
 gem 'google-analytics-rails'
-# gem "client_side_validations"
 
+# Service used for sending email
 gem 'mailgun-ruby', '~>1.1.6'
-gem 'premailer-rails'
-gem "nokogiri", ">= 1.10.4"
 
+# Allows for CSS styling to be applied to emails from <style> tags or other files
+# instead of only in style="" attr
+gem 'premailer-rails' 
+
+# CSS Framework
 gem 'foundation-rails'
 
-gem 'httparty' #needed to get json info from jackrabbit
-
-gem "awesome_print" #used to make the console pretty
+# Allows making http requests and waiting for responses. Needed to get json class infor from jackrabbit
+gem 'httparty'

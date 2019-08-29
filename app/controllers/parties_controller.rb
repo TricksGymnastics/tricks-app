@@ -79,14 +79,14 @@ class PartiesController < ApplicationController
       
       
     else
-      render :text => "Error: Could not contact jackrabbitclass.com for price information."
+      render plain: "Error: Could not contact jackrabbitclass.com for price information."
     end
     
     out = "<script>
           $('.price').text('"+parties.first[1].first[1].first[1]['price'].gsub("\r\n"," | ")+"');
         </script>"
         
-    render :text => out
+    render plain: out
   end
 
   def get_jr_parties
@@ -248,7 +248,7 @@ class PartiesController < ApplicationController
       out += "</div>"
     end
     out += "</div>"
-    render :text => out
+    render plain: out
   end
 
   private

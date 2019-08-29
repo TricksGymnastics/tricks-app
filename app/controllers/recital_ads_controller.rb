@@ -2,7 +2,7 @@ class RecitalAdsController < ApplicationController
   before_action :set_recital_ad, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :except => [:ad_select]
 
-  before_filter :set_variables
+  before_action :set_variables
 
   # GET /recital_ads
   # GET /recital_ads.json

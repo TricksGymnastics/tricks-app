@@ -24,6 +24,7 @@
   <% image = coach.image.default_url %>
 <% end %>
 <% puts image %>
+<% image = image.is_a?(String) ? image : image.url %>
 <div class="columns large-2 medium-4 small-6" id="coach_container">
   <%= link_to name, coach_path(coach, use_tag_picture: should_use_tag_pic), id: id %>
   <div class="coach_image_frame">

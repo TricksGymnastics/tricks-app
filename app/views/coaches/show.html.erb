@@ -10,6 +10,8 @@
         <% if image_to_use.file.nil? %>
           <% image_to_use = @coach.image.default_url %>
         <% end %>
+        
+        <% image_to_use = image_to_use.is_a?(String) ? image_to_use : image_to_use.url %>
         <%= image_tag image_to_use, style: "border: 2px solid #333; box-shadow: 0 0 15px #333;" %>
       </div>
     </div>

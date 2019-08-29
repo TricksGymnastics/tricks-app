@@ -31,13 +31,13 @@
                         <% classes += " success" %>
                         <%= link_to button_text, "javascript::void();", class: classes, id: "new_filter_button" %>
                     <% else %>
-                        <%= link_to button_text, params.permit().except(:status), class: classes, id: "new_filter_button" %>
+                        <%= link_to button_text, request.parameters.except(:status), class: classes, id: "new_filter_button" %>
                     <% end %>
                 <% else %>
                     <% if params[:status] == s[1].to_s %>
                         <% classes += " success" %>
                     <% end %>
-                    <%= link_to button_text, params.permit().merge({status: s[1].to_s}), class: classes, id: s[0].gsub(" ", "_").downcase+"_filter_button" %>
+                    <%= link_to button_text, request.parameters.merge({status: s[1].to_s}), class: classes, id: s[0].gsub(" ", "_").downcase+"_filter_button" %>
                 <% end %>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <% classes = "button expanded switch-button" %>
             <% all_text = "All Locations (" + @counts["all"].to_s + ")" %>
             <% if params.has_key?(:location) %>
-                <%= link_to all_text, params.permit().except(:location), class: classes, id: "all_filter_button" %>
+                <%= link_to all_text, request.parameters.except(:location), class: classes, id: "all_filter_button" %>
             <% else %>
                 <% classes += " success" %>
                 <%= link_to all_text, "javascript: void(0);", class: classes, id: "all_filter_button" %>
@@ -65,7 +65,7 @@
                 <% if params.has_key?(:location) && params[:location] == loc[1] %>
                     <% classes += " success" %>
                 <% end %>
-                <%= link_to loc[0] +" (" + @counts[loc[1]].to_s + ")", params.permit().merge({location: loc[1]}), class: classes, id: loc[1]+"_filter_button" %>
+                <%= link_to loc[0] +" (" + @counts[loc[1]].to_s + ")", request.parameters.merge({location: loc[1]}), class: classes, id: loc[1]+"_filter_button" %>
             </div>
         </div>
     <% end %>
@@ -82,9 +82,9 @@
             <div class="input-group">
                 <% dep_text = dep[0] + " (" + @counts[dep[1].intern].to_s + ")" %>
                 <% if params.has_key?(:department) && params[:department] == dep[1] %>
-                    <%= link_to dep_text, params.permit().except(:department), class: classes, id: dep[1]+"_filter_button" %>
+                    <%= link_to dep_text, request.parameters.except(:department), class: classes, id: dep[1]+"_filter_button" %>
                 <% else %>
-                    <%= link_to dep_text, params.permit().merge({department: dep[1]}), class: classes, id: dep[1]+"_filter_button" %>
+                    <%= link_to dep_text, request.parameters.merge({department: dep[1]}), class: classes, id: dep[1]+"_filter_button" %>
                 <% end %>
             </div>
         </div>

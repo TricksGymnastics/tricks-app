@@ -180,7 +180,7 @@ class LevelsController < ApplicationController
 					out += "</div>"
 				end
 			out += "</div>"
-    render :text => out
+    render plain: out
   end
   
   
