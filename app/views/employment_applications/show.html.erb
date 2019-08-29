@@ -81,6 +81,7 @@
     <%= form_for @review, url: {controller: 'employment_applications', action: 'update_review'} do |f| %>
       <div class="row align-center" style="margin-bottom: 0;">
         <div class="columns small-12 large-4 input-group">
+          <%# TODO: Get rid of this 'nowhere' and 'none' logic, they have been cleaned up and shouldn't be possible anymore %>
           <% if @review.location != 'nowhere' %>
             <label class="input-group-label" style="width: 100%;">
               <span style="text-align: center; width: 100%; font-size: 24px; font-weight: bold;">

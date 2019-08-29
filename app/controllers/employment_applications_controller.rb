@@ -43,7 +43,6 @@ class EmploymentApplicationsController < ApplicationController
     # remove existing location from query
     location_query.except!(:location)
     locations = Location.all.pluck(:name)
-    locations << 'nowhere'
     # locations.each do |loc|
     #   loc_name = loc.downcase.gsub(" ", "_")
     #   location_query.except!(:"#{loc_name}")
@@ -67,7 +66,7 @@ class EmploymentApplicationsController < ApplicationController
     departments_query = query.clone
     # since we can select multiple departments we want to get counts 
     # if we added a single additional department to the existing query
-    departments = [:gymnastics, :dance, :swim, :tag, :hospitality, :none]
+    departments = [:gymnastics, :dance, :swim, :tag, :hospitality]
     departments.each do |dep|
       if !departments_query.key?(dep)
         # add query for loc = true

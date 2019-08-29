@@ -91,12 +91,10 @@ private
   end
     
   def sort_column
-      KidQuote.column_names.include?(params[:sort]) ? params[:sort] : "age"
+    KidQuote.column_names.include?(params[:sort]) ? params[:sort] : "age"
   end
 
   def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
-
-
 end
