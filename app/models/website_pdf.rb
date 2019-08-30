@@ -28,6 +28,9 @@ class WebsitePdf < ActiveRecord::Base
   	'TAG Schedule (Folsom)',
   	'TAG Schedule (Sacramento)',
   	'Swim Schedule (Folsom)',
+		'-------------',
+		'Littlest Nutcracker',
+		'Winter Dance Recital'
   ]
   def to_param
     "#{file_name}"

@@ -71,6 +71,7 @@
               <ul class="vertical menu nested">
                 <li><%= pre_dance_link = link_to "Preschool (0-5)", preschool_dance_path %></li>
                 <li><%= school_dance_link = link_to "School Age (6-18)", dance_path %></li>
+                <li><%= recital_info_link = link_to "Recital Information", recital_info_path %></li>
               </ul>
             </li>
             <li><%= tag_link = link_to "TAG", tag_path %></li>
@@ -190,6 +191,7 @@
                     <ul class="menu vertical">
                       <li><%= pre_dance_link %></li>
                       <li><%= school_dance_link %></li>
+                      <li><%= recital_info_link %></li>
                       <li><%#= dance_team_link = link_to "Dance Team", dance_path %></li>
                       <li><%#= summer_recital_link = link_to "Summer Recital", dance_path %></li>
                       <li><%#= winter_show_link = link_to "Winter Show", dance_path %></li>
@@ -410,6 +412,7 @@
                       <ul>
                         <%= if defined? pre_dance_link then ('<li>' + pre_dance_link + '</li>').html_safe end %>
                         <%= if defined? school_dance_link then ('<li>' + school_dance_link + '</li>').html_safe end %>
+                        <%= if defined? recital_info_link then ('<li>' + recital_info_link + '</li>').html_safe end %>
                         <%= if defined? dance_team_link then ('<li>' + dance_team_link + '</li>').html_safe end %>
                         <%= if defined? summer_recital_link then ('<li>' + summer_recital_link + '</li>').html_safe end %>
                         <%= if defined? winter_show_link then ('<li>' + winter_show_link + '</li>').html_safe end %>

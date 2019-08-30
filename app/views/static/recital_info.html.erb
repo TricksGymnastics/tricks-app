@@ -1,74 +1,18 @@
 <% content_for :title do %>
   Tricks Recital Info
 <% end %>
-<style>
-  h5{
-    text-decoration: underline;
-    margin-top: 10px;
-    margin-bottom: 0px;
-  }
-</style>
-<h1><%= Time.now.year %> Summer Recital Information</h1>
-<div class="row align-center">
-  <div class="columns large-12" style="text-align:center;">
-    <h3>WHEN:</h3>
-    
-    <h5>Show #1 (FOLSOM STUDIO)</h5>
-    Dress Rehearsal: Wednesday, June 14th 3:30pm<br>
-    Performance: Friday, June 16th @ 4:00pm
-    
-    <h5>Show #2 (FOLSOM STUDIO)</h5>
-    Dress Rehearsal: Wednesday, June 14th 5:00pm<br>
-    Performance: Friday, June 16th @ 6:30pm
-    
-    <h5>Show #3 (GRANITE BAY STUDIO)</h5>
-    Dress Rehearsal: Thursday, June 15th 3:30pm<br>
-    Performance: Saturday, June 17th @ 11:00am
-    
-    <h5>Show #4 (GRANITE BAY STUDIO)</h5>
-    Dress Rehearsal: Thursday, June 15th 5:00pm<br>
-    Performance: Saturday, June 17th @ 1:30pm
-    
-    <h5>Show #5 (GRANITE BAY & SACRAMENTO STUDIOS)</h5>
-    Dress Rehearsal: Thursday, June 15th 6:30pm (Granite Bay Dancers Only)<br>
-    Performance: Saturday, June 17th @ 4:00pm
-    
-    <h5>Show #6 (SACRAMENTO STUDIO)</h5>
-    Dress Rehearsal: Wednesday, June 14th 6:30pm (All Sacramento Dancers)<br>
-    Performance: Saturday, June 17th @ 6:30pm<br><br>
-    
-    <b>**Dancers will come to dress rehearsal in full costume attire. </b><br>
-    <b>**Dancers are required to show up 30 minutes prior to their showtime on the day of their performance.</b><br>
-    <b>**There will be no regular dance classes the week of the performance. Dress rehearsal will count as your child's class for the week</b><br><br>
+<h1><%= Time.now.year %> Winter Recital Information</h1>
 
-    
-    <h3>WHERE:</h3>
-    <b>Dress rehearsal AND performance will be held at:</b><br>
-    Jill Solberg Performing Arts Theater at Folsom High School<br>
-    <%= link_to "1655 Iron Point Road, Folsom, CA 95630", "https://www.google.com/maps/place/1655+Iron+Point+Rd,+Folsom,+CA+95630/@38.647838,-121.1609177,17z/data=!3m1!4b1!4m5!3m4!1s0x809ae43297059fd1:0x58f2c53c804f0b1e!8m2!3d38.647838!4d-121.158729" %><br>
-    **For the most direct access to the theater, enter from Prairie City Rd. Across from Intel.<br><br>
-    
-    
-    <h3>TICKETS:</h3>
-    On-sale at <%= link_to "tututix.com/tricksgym", "http://tututix.com/tricksgym" %> or over the phone by calling 435-222-2TIX<br><br>
-    
-    **The 2 tickets that are included in your recital fee will be available for pick up in the office the week before the recital June 5-10.<br><br>
-    
-    Tickets are limited so please purchase tickets ahead of time. **Shows can sell out.<br>
-    Any remaining tickets will be sold at the door for $10.00 (Cash Only)<br>
-    Doors will open 30 minutes prior to showtime<br><br>
-    Anyone who will take a seat will need a ticket. <br>
-    If you have signed up to be a parent volunteer you will not need to purchase a ticket for yourself.  We will be passing out wristbands for you. <br><br>
-    
-    
-    <h3>PICTURES & VIDEOTAPING:</h3>
-    <%= link_to "Spectrum Photography", "http://www.spectrum200.com/" %> will be taking group photos and individual photos for those interested during dress rehearsal.<br>
-    <%= link_to "Spicerack Productions", "http://www.spicerackproductions.com/" %> will record HD video of the performance which will be available for purchase on DVD or Blue-ray.<br><br>
-    
-    <h3>FLOWERS:</h3>
-    A single rose bouquet will be available for purchase for $5.00 in the lobby on the day of the show. (Cash Only)<br><br>
-    
-    
+<div class="row align-center" style="margin-bottom: 80px;">
+  <div class="columns small-3" style="margin: 30px;">
+    <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 210).first} %>
+  </div>
+  <div class="columns small-3" style="margin: 30px;">
+    <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 211).first} %>
+  </div>
+</div>
+<div class="row align-center">
+  <div class="columns small-12" style="text-align:center;">
     If you have any questions please give our office a call!<br><br>
     
     Sacramento: 916-481-4496<br>
@@ -76,5 +20,47 @@
     Granite Bay: 916-791-4496<br><br>
     
     <h3>See you at the show!</h3>
+  </div>
+</div>
+
+<div class="reveal fast large" style="z-index: 1010" id="littlest_nutcracker_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+  <div class="row align-center">
+    <h1>Littlest Nutcracker</h1>
+  </div>
+  
+  <div class="row align-center">
+    <div class="columns small-11">
+      <% pdf = WebsitePdf.where(file_name: "Littlest_Nutcracker").first %>
+      <% if !pdf.nil? %>
+        <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
+          <p>It appears you don't have a PDF plugin for this browser.
+            You can <a href="<%= pdf.file.url %>">click here to
+          download the PDF file.</a></p>  
+        </object>
+      <% else %>
+        <h3>Sorry, no info for the Littlest Nutcracker has been uploaded yet</h3>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="reveal fast large" style="z-index: 1010" id="winter_dance_recital_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+  <div class="row align-center">
+    <h1>Winter Dance Recital</h1>
+  </div>
+  
+  <div class="row align-center">
+    <div class="columns small-11">
+      <% pdf = WebsitePdf.where(file_name: "Winter_Dance_Recital").first %>
+      <% if !pdf.nil? %>
+        <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
+          <p>It appears you don't have a PDF plugin for this browser.
+            You can <a href="<%= pdf.file.url %>">click here to
+          download the PDF file.</a></p>  
+        </object>
+      <% else %>
+        <h3>Sorry, no info for the Winter Dance Rectial has been uploaded yet</h3>
+      <% end %>
+    </div>
   </div>
 </div>
