@@ -108,7 +108,7 @@ class EmploymentApplicationsController < ApplicationController
         loc = loc.name.downcase.gsub(" ", "_")
         if (@employment_application.send loc)
           departments.each do |dep|
-            if (@employment_application.send dep && !(loc != "folsom" && dep == "swim"))
+            if ((@employment_application.send dep) && !(loc != "folsom" && dep == "swim"))
               review = EmploymentApplicationReview.new
               review.employment_application_id = @employment_application.id
               review.location = loc
