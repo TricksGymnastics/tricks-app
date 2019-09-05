@@ -98,6 +98,7 @@ Rails.application.configure do
   
   config.time_zone = "Pacific Time (US & Canada)"
 
-  # config.exceptions_app = self.routes
+  # allows us to handle exceptions through error_controller.rb
+  config.exceptions_app = self.routes
   
 end
