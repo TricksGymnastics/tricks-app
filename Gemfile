@@ -22,8 +22,6 @@ end
 group :production do
 	# Sets a specific timeout for some actions so they don't cause the server to hang until crash
 	gem "rack-timeout" # causing problems locally
-	# Heroku says we should have this one
-	gem 'rails_12factor'
 end
 
 # Adds use of jQuery
