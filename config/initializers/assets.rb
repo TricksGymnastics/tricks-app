@@ -11,13 +11,10 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( FileSpecificCSS/* recital_ad/* dance_company/* schedule/* static/* )
 
 # not sure if everything below this is still needed or not
-# Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
+# # Precompile additional assets
+Rails.application.config.assets.precompile += %w( .svg .eot .woff .tff )
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
 # # Generate digests for assets URLs
 # Rails.application.config.assets.digest = true
 
-# # Add the fonts path
-# Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-
-# # Precompile additional assets
-# Rails.application.config.assets.precompile += %w( .svg .eot .woff .tff )

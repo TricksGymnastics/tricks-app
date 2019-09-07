@@ -4,9 +4,7 @@ ruby '2.4.4'
 gem 'rails', '5.2.3'
 
 gem 'pg', "1.0.0"
-gem 'sass-rails'
-gem 'coffee-rails'
-gem 'uglifier'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'yaml_db'
 gem 'therubyracer'
 
