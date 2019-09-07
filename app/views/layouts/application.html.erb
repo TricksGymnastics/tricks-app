@@ -272,7 +272,7 @@
       <% if content_for?(:header_image) %>
         <div id="header-secondary" class="row" style=" z-index: 5;">
           <div style="overflow: hidden; width: 100%; position: absolute; left: 0;">
-            <img width="3000" height="1000" src=<%= yield(:header_image) %>/>
+            <%= image_tag yield(:header_image), height: "1000", width: "3000" %>
           </div>
         </div>
       

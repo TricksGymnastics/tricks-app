@@ -44,7 +44,7 @@
       <div class="columns small-6" style="text-align: center;">
         <div style="display: none;">
           <%= paginate @comments, window: 2 %>
-          <img src="/assets/loading-spinner-white.gif">
+          <%= image_tag "loading-spinner-white.gif" %>
         </div>
         <%= link_to "Load More", "javascript:void(0);", class: "button large expanded", style: "margin: 30px 0 50px 0", id: "load_more_comments" %>
       </div>
