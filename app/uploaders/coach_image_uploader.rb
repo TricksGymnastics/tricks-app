@@ -12,13 +12,23 @@ class CoachImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "/assets/neutral_default.png"
+    "neutral_default.png"
     # if model.gender == "Girl" || model.gender == "girl" then
-    #   "/assets/girl_default.jpg"
+    #   "girl_default.jpg"
     # else
-    #   "/assets/boy_default.jpg"
+    #   "boy_default.jpg"
     # end
   end
+
+  # before :store, :swap_out_default_url
+
+  # def swap_out_default_url
+  #   self.class_eval do
+  #     def default_url
+  #       "neutral_default.png"
+  #     end
+  #   end
+  # end
 
   # def auto_orient
   #   manipulate! do |img|

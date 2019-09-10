@@ -16,8 +16,18 @@ class ApplicantImageUploader < CarrierWave::Uploader::Base
   end
   
   def default_url
-    "/assets/neutral_default.png"
+    "neutral_default.png"
   end
+
+  # before :store, :swap_out_default_url
+
+  # def swap_out_default_url
+  #   self.class_eval do
+  #     def default_url
+  #       "neutral_default.png"
+  #     end
+  #   end
+  # end
 
   def extension_white_list
     %w(jpg jpeg gif png)

@@ -18,6 +18,7 @@ group :development do
 	# gem 'byebug'
 	# put <%= console %> on any page I want a console to show on the error page
 	gem 'web-console' 
+	gem 'awesome_print'
 end
 
 group :production do
