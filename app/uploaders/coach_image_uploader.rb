@@ -7,6 +7,7 @@ class CoachImageUploader < CarrierWave::Uploader::Base
     'coach-pics'
   end
   
+  # https://stackoverflow.com/questions/15823061/how-can-i-reorganize-an-existing-folder-hierarchy-with-carrierwave
   def store_dir
     "uploads/#{model.firstname+'_'+model.lastname}".tr(" ", "_")
   end
@@ -19,16 +20,6 @@ class CoachImageUploader < CarrierWave::Uploader::Base
     #   "boy_default.jpg"
     # end
   end
-
-  # before :store, :swap_out_default_url
-
-  # def swap_out_default_url
-  #   self.class_eval do
-  #     def default_url
-  #       "neutral_default.png"
-  #     end
-  #   end
-  # end
 
   # def auto_orient
   #   manipulate! do |img|
