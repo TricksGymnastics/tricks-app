@@ -5,6 +5,9 @@ gem 'rails', '5.2.3'
 
 gem 'pg', "1.0.0"
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 gem 'yaml_db'
 gem 'therubyracer'
 
