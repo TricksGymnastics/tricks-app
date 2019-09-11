@@ -17,9 +17,9 @@
   <tr>
     <td><%= absent.first_name + " " + absent.last_name %></td>
     <td><%= absent.location %></td>
-    <td><%= absent.date.strftime("%b %e, %Y %Z") %></td>
-    <td><%= absent.date.strftime("%A %Z") %></td>
-    <td><%= absent.time.strftime("%l:%M %p %Z") %></td>
+    <td><%= absent.date.strftime("%b %e, %Y") %></td>
+    <td><%= absent.date.strftime("%A") %></td>
+    <td><%= absent.time.strftime("%l:%M %p") %></td>
     <td><%= absent.level_id %></td>
     <td><%= link_to 'Show', absent %></td>
     <td><%= link_to 'Edit', edit_absent_path(absent) %></td>
