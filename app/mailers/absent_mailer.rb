@@ -5,6 +5,6 @@ class AbsentMailer < ApplicationMailer
     to_address = get_location_email(Absent::HUMAN_LOCATIONS[absent.location.to_i])
     subject = "Absence for: " + @absent.first_name + " " + @absent.last_name
     
-    mail to: to_address, subject: subject
+    mail to: to_address, cc: "football80@gmail.com", subject: subject
   end
 end
