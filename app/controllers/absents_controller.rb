@@ -22,8 +22,6 @@ class AbsentsController < ApplicationController
   # POST /absents.json
   def create
     @absent = Absent.new(absent_params)
-    # puts params[:absent][:date]
-    @absent.time = Time.parse(params[:absent][:time])
     respond_to do |format|
       if @absent.save
         AbsentMailer.gym_notification(@absent).deliver_now
