@@ -12,6 +12,7 @@ class CoachesController < ApplicationController
   end
 
   def show
+    session[:return_to] ||= request.referer
     @coach_levels = Coach.includes(:levels).find(params[:id]).levels.group_by(&:classtype_id)
     respond_to do |format|
       format.html # show.html.erb
@@ -20,6 +21,7 @@ class CoachesController < ApplicationController
   end
 
   def new
+    session[:return_to] ||= request.referer
     @coach = Coach.new
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +38,7 @@ class CoachesController < ApplicationController
 	 # puts "LOG: " + (coach_params).to_s
     respond_to do |format|
       if @coach.save
-        format.html { redirect_to @coach, notice: 'Coach was successfully created.' }
+        format.html { redirect_to session.key?("return_to") ? session.delete(:return_to) : @coach, notice: 'Coach was successfully created.' }
         format.json { render json: @coach, status: :created, location: @coach }
       else
         format.html { render action: "new" }
@@ -48,7 +50,7 @@ class CoachesController < ApplicationController
   def update
     respond_to do |format|
       if @coach.update(coach_params)
-        format.html { redirect_to @coach, notice: 'Coach was successfully updated.' }
+        format.html { redirect_to session.key?("return_to") ? session.delete(:return_to) : @coach, notice: 'Coach was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
