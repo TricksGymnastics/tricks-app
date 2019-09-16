@@ -12,10 +12,6 @@ class StaticController < ApplicationController
     @comments = @comments.where(score: 8..10).page(params[:page]).per(4)
   end
 
-  def datenight
-    @datenight = Datenight.first
-  end
-
   def gymnastics
     @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'")
   end

@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   get 'recital_ads_by_year/:year' => "recital_ads#by_year"
   get 'recital_ad_mailer/:id' => 'recital_ads#order_confirmation'
 
-  get 'datenights/edit' => 'datenights#edit'
-
   resources :comments
   resources :kid_quotes
   resources :coaches
@@ -30,7 +28,6 @@ Rails.application.routes.draw do
   resources :recital_ads
   resources :recital_ad_types
   resources :promo_slides
-  resources :datenights
   resources :absents
   resources :tricks_u_categories
   resources :tricks_u_videos

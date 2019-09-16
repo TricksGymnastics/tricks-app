@@ -24,7 +24,6 @@ class Ability
 			can :manage, RecitalAd
 			can :manage, PromoSlide
 			can :manage, User
-			can :manage, Datenight
 			can :manage, TricksUCategory
 			can :manage, TricksUVideo
 			can :manage, DiscontinueNotice
@@ -44,7 +43,6 @@ class Ability
 			can :manage, Level
 			can :manage, Coach
 			can :manage, RecitalAd
-			can :manage, Datenight
 			can :manage, DiscontinueNotice
 			can :read, WebsitePdf
 			can :create, WebsitePdf

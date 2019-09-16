@@ -1,3 +1,3 @@
 class KidsNightOut < ActiveRecord::Base
-    mount_uploader :image, DatenightImageUploader
+    mount_uploader :image, KNOImageUploader
 end
