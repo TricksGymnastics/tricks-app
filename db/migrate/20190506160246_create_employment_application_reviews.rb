@@ -1,4 +1,4 @@
-class CreateEmploymentApplicationReviews < ActiveRecord::Migration
+class CreateEmploymentApplicationReviews < ActiveRecord::Migration[4.2]
   def change
     create_table :employment_application_reviews do |t|
       t.integer :status

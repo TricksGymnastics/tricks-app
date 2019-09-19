@@ -1,4 +1,4 @@
-class DropExtraTables < ActiveRecord::Migration
+class DropExtraTables < ActiveRecord::Migration[4.2]
   def change
     if table_exists? :answers
       drop_table :answers

@@ -1,4 +1,4 @@
-class CreateDiscontinueNotices < ActiveRecord::Migration
+class CreateDiscontinueNotices < ActiveRecord::Migration[4.2]
   def change
     create_table :discontinue_notices do |t|
       t.string :reason

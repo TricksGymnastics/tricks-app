@@ -1,4 +1,4 @@
-class RemoveClasstypeFromSchedules < ActiveRecord::Migration
+class RemoveClasstypeFromSchedules < ActiveRecord::Migration[4.2]
   def up
     remove_column :schedules, :class_type
   end

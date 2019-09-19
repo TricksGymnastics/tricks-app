@@ -1,4 +1,4 @@
-class RemovePriceAndLengthAndAgeFromSchedules < ActiveRecord::Migration
+class RemovePriceAndLengthAndAgeFromSchedules < ActiveRecord::Migration[4.2]
   def up
     remove_column :schedules, :price
         remove_column :schedules, :length

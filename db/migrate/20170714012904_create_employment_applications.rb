@@ -1,4 +1,4 @@
-class CreateEmploymentApplications < ActiveRecord::Migration
+class CreateEmploymentApplications < ActiveRecord::Migration[4.2]
   def change
     create_table :employment_applications do |t|
       t.string :firstname

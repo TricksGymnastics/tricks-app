@@ -1,4 +1,4 @@
-class CreateBubbleContents < ActiveRecord::Migration
+class CreateBubbleContents < ActiveRecord::Migration[4.2]
   def change
     create_table :bubble_contents do |t|
       t.string :link

@@ -1,4 +1,4 @@
-class CreateAbsents < ActiveRecord::Migration
+class CreateAbsents < ActiveRecord::Migration[4.2]
   def change
     create_table :absents do |t|
       t.string :first_name

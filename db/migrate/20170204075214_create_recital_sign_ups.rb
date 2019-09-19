@@ -1,4 +1,4 @@
-class CreateRecitalSignUps < ActiveRecord::Migration
+class CreateRecitalSignUps < ActiveRecord::Migration[4.2]
   def change
     create_table :recital_sign_ups do |t|
       t.string :child_first_name

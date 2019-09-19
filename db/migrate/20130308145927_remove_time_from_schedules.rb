@@ -1,4 +1,4 @@
-class RemoveTimeFromSchedules < ActiveRecord::Migration
+class RemoveTimeFromSchedules < ActiveRecord::Migration[4.2]
  def up
     remove_column :schedules, :time
   end

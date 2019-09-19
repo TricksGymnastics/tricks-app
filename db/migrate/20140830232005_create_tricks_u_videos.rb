@@ -1,4 +1,4 @@
-class CreateTricksUVideos < ActiveRecord::Migration
+class CreateTricksUVideos < ActiveRecord::Migration[4.2]
   def change
     create_table :tricks_u_videos do |t|
       t.string :url

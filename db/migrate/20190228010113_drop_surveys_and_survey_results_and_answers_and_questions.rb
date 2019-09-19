@@ -1,4 +1,4 @@
-class DropSurveysAndSurveyResultsAndAnswersAndQuestions < ActiveRecord::Migration
+class DropSurveysAndSurveyResultsAndAnswersAndQuestions < ActiveRecord::Migration[4.2]
   def change
     drop_table :surveys
     drop_table :survey_results

@@ -1,4 +1,4 @@
-class CreateBffDanceParties < ActiveRecord::Migration
+class CreateBffDanceParties < ActiveRecord::Migration[4.2]
   def change
     create_table :bff_dance_parties do |t|
       t.string :name

@@ -1,4 +1,4 @@
-class CreateKidsNightOuts < ActiveRecord::Migration
+class CreateKidsNightOuts < ActiveRecord::Migration[4.2]
   def change
     create_table :kids_night_outs do |t|
       t.string :title

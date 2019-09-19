@@ -1,4 +1,4 @@
-class CreateEmploymentHistories < ActiveRecord::Migration
+class CreateEmploymentHistories < ActiveRecord::Migration[4.2]
   def change
     create_table :employment_histories do |t|
       t.references :history, polymorphic: true, index: true

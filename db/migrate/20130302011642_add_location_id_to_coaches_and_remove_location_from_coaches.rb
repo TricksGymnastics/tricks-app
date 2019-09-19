@@ -1,4 +1,4 @@
-class AddLocationIdToCoachesAndRemoveLocationFromCoaches < ActiveRecord::Migration
+class AddLocationIdToCoachesAndRemoveLocationFromCoaches < ActiveRecord::Migration[4.2]
   def up
     remove_column :coaches, :location
     add_column :coaches, :location_id, :integer

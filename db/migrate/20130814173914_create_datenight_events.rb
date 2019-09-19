@@ -1,4 +1,4 @@
-class CreateDatenightEvents < ActiveRecord::Migration
+class CreateDatenightEvents < ActiveRecord::Migration[4.2]
   def change
     create_table :datenight_events do |t|
       t.string :title

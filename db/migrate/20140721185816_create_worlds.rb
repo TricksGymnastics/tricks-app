@@ -1,4 +1,4 @@
-class CreateWorlds < ActiveRecord::Migration
+class CreateWorlds < ActiveRecord::Migration[4.2]
   def change
     create_table :worlds do |t|
       t.string :image

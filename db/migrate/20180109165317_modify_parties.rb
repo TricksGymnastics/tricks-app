@@ -1,4 +1,4 @@
-class ModifyParties < ActiveRecord::Migration
+class ModifyParties < ActiveRecord::Migration[4.2]
   def change
     add_column :parties, :color, :string
     add_column :parties, :activities, :string

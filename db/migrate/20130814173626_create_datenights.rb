@@ -1,4 +1,4 @@
-class CreateDatenights < ActiveRecord::Migration
+class CreateDatenights < ActiveRecord::Migration[4.2]
   def change
     create_table :datenights do |t|
       t.string :image

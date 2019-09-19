@@ -1,4 +1,4 @@
-class CreatePromoSlides < ActiveRecord::Migration
+class CreatePromoSlides < ActiveRecord::Migration[4.2]
   def change
     create_table :promo_slides do |t|
       t.string :title

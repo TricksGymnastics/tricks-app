@@ -1,4 +1,4 @@
-class CreateCamps < ActiveRecord::Migration
+class CreateCamps < ActiveRecord::Migration[4.2]
   def change
     create_table :camps do |t|
       t.string :title

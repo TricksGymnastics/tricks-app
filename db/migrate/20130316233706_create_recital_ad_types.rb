@@ -1,4 +1,4 @@
-class CreateRecitalAdTypes < ActiveRecord::Migration
+class CreateRecitalAdTypes < ActiveRecord::Migration[4.2]
   def change
     create_table :recital_ad_types do |t|
       t.string :name

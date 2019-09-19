@@ -1,4 +1,4 @@
-class CreateWebsitePdfs < ActiveRecord::Migration
+class CreateWebsitePdfs < ActiveRecord::Migration[4.2]
   def change
     create_table :website_pdfs do |t|
       t.string :file
