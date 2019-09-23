@@ -53,10 +53,6 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
 # Adds use of jQuery
 gem 'jquery-rails'
 # Adds jQuery-UI. Used for a few different visual effects accross the site
