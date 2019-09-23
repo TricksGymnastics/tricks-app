@@ -123,7 +123,7 @@ class EmploymentApplicationsController < ApplicationController
 
       
       EmploymentApplicationMailer.application_confirmation(@employment_application).deliver_now
-      redirect_to 'http://www.tricksgym.com/thankyou', notice: 'Employment Application was successfully submitted.'
+      redirect_to thankyou_path, notice: 'Employment Application was successfully submitted.'
     else
       render :new
     end

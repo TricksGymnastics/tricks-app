@@ -30,3 +30,6 @@ rake db:create
 to pull the live database down
 PGUSER=postgres PGPASSWORD=tricks PGHOST=localhost dropdb tricks_development
 PGUSER=postgres PGPASSWORD=tricks PGHOST=localhost heroku pg:pull DATABASE_URL tricks_development --app tricks-app
+
+to copy live database to stage
+heroku pg:copy tricks-app::DATABASE_URL DATABASE_URL --app tricks-stage
