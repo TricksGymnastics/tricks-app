@@ -1,0 +1,34 @@
+THIS IS ONLY USED AS A DEPENDENCY, HOPEFULLY THE GEMS USING IT WILL UPDATE THEMSELVES
+       Post-install message from sass:
+       
+       Ruby Sass has reached end-of-life and should no longer be used.
+       
+       * If you use Sass as a command-line tool, we recommend using Dart Sass, the new
+         primary implementation: https://sass-lang.com/install
+       
+       * If you use Sass as a plug-in for a Ruby web framework, we recommend using the
+         sassc gem: https://github.com/sass/sassc-ruby#readme
+       
+       * For more details, please refer to the Sass blog:
+         https://sass-lang.com/blog/posts/7828841
+       
+WILL NEED TO SET THIS UP TO USE ACTIVE_STORAGE, UNTIL THEN WE CAN IGNORE IT
+###### WARNING:
+       You set your `config.active_storage.service` to :local in production.
+       If you are uploading files to this app, they will not persist after the app
+       is restarted, on one-off dynos, or if the app has multiple dynos.
+       Heroku applications have an ephemeral file system. To
+       persist uploaded files, please use a service such as S3 and update your Rails
+       configuration.
+       
+       For more information can be found in this article:
+         https://devcenter.heroku.com/articles/active-storage-on-heroku
+       
+ONLY NEEDED FOR UPLOAD PREVIEWS OF .PDF FILES AND VIDEO UPLOADS
+###### WARNING:
+       We detected that some binary dependencies required to
+       use all the preview features of Active Storage are not
+       present on this system.
+       
+       For more information please see:
+         https://devcenter.heroku.com/articles/active-storage-on-heroku
