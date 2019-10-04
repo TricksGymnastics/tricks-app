@@ -14,6 +14,7 @@
 //= require jquery-ui/widgets/datepicker
 //= require jquery_ujs
 //= require jquery.minicolors
+//= require activestorage
 //= require foundation
 //= require_directory .
 

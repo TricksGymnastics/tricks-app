@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :confirmation => true, :on => :create
 	validates_uniqueness_of :email
 
+	has_one_attached :avatar
+
 	def self.search(search)
   		if search
     		where('email ILIKE ?', "%#{search}%")

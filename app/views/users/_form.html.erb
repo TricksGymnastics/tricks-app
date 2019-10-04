@@ -15,7 +15,7 @@
     <% end %>
     
     <%= render partial: 'helper_fields/email', locals: {form: f, field: :email, required: true} %>
-    
+    <%= f.file_field :avatar, direct_upload: true %>
     <div class="input-group">
 			<%= f.label :password, class: "input-group-label" %>
 			<%= f.password_field :password, required: true, class: "input-group-field" %>

@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 	end
 
 	def create
-	  @user = User.new(user_params)
+    @user = User.new(user_params)
+    @user.avatar.attach(params[:avatar])
 		if @user.save
 			session[:user_id] = @user.id
 			redirect_to users_path, notice: "User succesfully created!"
@@ -36,8 +37,14 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
+        @user.avatar.attach(user_params.require(:avatar))
+        if @user.avatar.attached?
+          format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -64,7 +71,7 @@ private
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :role)
+    params.require(:user).permit(:email, :password, :password_confirmation, :role, :avatar)
   end
 
   def sort_column
