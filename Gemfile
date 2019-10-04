@@ -79,6 +79,9 @@ gem "stripe"
 # Google Analytics
 gem 'google-analytics-rails'
 
+# reCAPTCHA https://github.com/ambethia/recaptcha
+gem "recaptcha"
+
 # Service used for sending email
 gem 'mailgun-ruby', '~>1.1.6'
 

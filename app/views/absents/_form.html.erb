@@ -52,7 +52,8 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Submit Absence", class: "button expanded" %>
+      <%#= f.submit "Submit Absence", class: "button expanded" %>
+      <%= invisible_recaptcha_tags text: 'Submit Absence', class: "button expanded" %>
     </div>
   <% end %>
 </div>

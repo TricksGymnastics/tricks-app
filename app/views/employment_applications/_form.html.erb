@@ -231,8 +231,8 @@
     <p>I acknowledge the fact that the Company follows an employment-at-will policy, in that I or the Company may terminate my employment at any time, or for any reason applicable with state or federal law. I understand that this application is not a contract of employment. I understand that to be employed I must be lawfully authorized to work in the United States, and show the employer documents that will prove this.</p>
     <p>I authorize an inquiry to investigate my work, credit, and personal history and verify data given on this application, or on related papers and in interviews. I authorize all individuals, schools, and firms named therein, to provide any information requested about me, and I release them from all liability for damages in providing this information.</p>
     <p>I certify that all of the statements, herein are true and understand that any falsification or willful omission shall be sufficient cause for dismissal or refusal of employment.</p>
-    <div class="actions" style="margin-top: 50px;">
-      <%= f.submit "Submit Application", class: "button expanded" %>
+    <div class="actions" style="margin-top: 50px; margin-bottom: 30px;">
+      <%= invisible_recaptcha_tags text: 'Submit Application', class: "button expanded" %>
     </div>
   </fieldset>
 <% end %>

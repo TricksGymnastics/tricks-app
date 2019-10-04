@@ -102,7 +102,7 @@ class EmploymentApplicationsController < ApplicationController
   def create
     @employment_application = EmploymentApplication.new(employment_application_params)
     
-    if @employment_application.save
+    if verify_recaptcha(model: @employment_application) && @employment_application.save
       departments = ["gymnastics", "dance", "swim", "tag", "hospitality"]
       Location.all.each do |loc|
         loc = loc.name.downcase.gsub(" ", "_")
@@ -121,7 +121,6 @@ class EmploymentApplicationsController < ApplicationController
         end
       end
 
-      
       EmploymentApplicationMailer.application_confirmation(@employment_application).deliver_now
       redirect_to thankyou_path, notice: 'Employment Application was successfully submitted.'
     else
