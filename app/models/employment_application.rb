@@ -1,11 +1,11 @@
 class EmploymentApplication < ActiveRecord::Base
-    has_one :address, :as => :addressable
+    has_one :address, :as => :addressable, dependent: :destroy
     accepts_nested_attributes_for :address
     
-    has_many :employment_histories, :as => :history
+    has_many :employment_histories, :as => :history, dependent: :destroy
     accepts_nested_attributes_for :employment_histories
 
-    has_many :employment_application_reviews
+    has_many :employment_application_reviews, dependent: :destroy
     
     STATUS = [['New', 0], ['Interested', 1], ['Emailed', 2], ['Interview Set Up', 3], ['Not Hired', 4], ['Maybe Later', 5], ['Hired', 6]]
     
