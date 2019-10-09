@@ -9,8 +9,8 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w( FileSpecificCSS/* recital_ad/* dance_company/* schedule/* static/* )
+# Rails.application.config.assets.precompile += %w( FileSpecificCSS/* recital_ad/* )
 
-# # Precompile additional assets
-Rails.application.config.assets.precompile += %w( .svg .eot .woff .tff )
-Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
+# Precompile additional assets
+# Rails.application.config.assets.precompile += %w( .svg .eot .woff .tff )
+# Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
