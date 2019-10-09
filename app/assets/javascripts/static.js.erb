@@ -7,42 +7,55 @@ jQuery(function() {
     '<%= image_url "site_header_images/Sacramento/IMG_7839.jpg" %>',
     '<%= image_url "site_header_images/Sacramento/IMG_7827.jpg" %>'
   ]
-
-  const img = $('#background_image_loader');
-  let i = 0;
-  img.prop('src', images[0]);
   
-  const changeBackgroundImage = function() {
-    if (img.prop('complete')) {
-      swap();
+  /*
+  * Preload an image if not cached, then call a callback function
+  * @param {String} the image url
+  * @param {Function} the callback function
+  */
+  function loadImg(url, fn) {
+    var img = new Image();
+    img.src = url;
+    if (img.complete) { // If the image has been cached, just call the callback
+      // console.log("Already downloaded.");
+      if (fn) fn(img);
     } else {
-      img.one('load', function() {
-        swap();
-      });
-    }
-  };
+      img.onerror = function() { // If fail to load the image
+        // console.log("Failed to download");
+        if (fn) fn(img);
+      };
+      img.onload = function() { // If loaded successfully
+        // console.log("Done downloading");
+        if (fn) fn(img);
+        //On IE6, multiple frames in a image will fire the 'onload' event for multiple times. So set to null
+        img.onload = null; 
+      };
+    };
+  }
 
-  const swap = function() {
-    $('#background_images').fadeOut(500, function() {
+  let i = 0;
+  const swap = async function(image) {
+    $('#background_images').fadeOut(500, () => {
       $('#background_images').css('background-image', "url("+images[i]+")");
-      return $('#background_images').fadeIn(1000, function() {
-        return setTimeout(changeBackgroundImage, 5000);
+      $('#background_images').fadeIn(1000, () => {
+        setTimeout(() => {
+          loadImg(images[i], swap);
+          i = i + 1;
+          if (i === images.length) {
+            i = 0;
+          }
+        }, 5000);
       });
     });
-    i = i + 1;
-    if (i === images.length) {
-      i = 0;
-    }
-    img.prop('src', images[i]);
   };
 
-  const updateOrbitSize = function() {
+  const updateOrbitSize = async function() {
     $('.orbit-container').each(function(i, obj) {
       $(this).height($(this).width() * (320 / 570) + 39 + "px");
     });
   };
 
-  const updateBlueBar = function() {
+  const updateBlueBar = async function() {
     var bottom;
     $('#blue_bar').height($('#blue_bar').parent().height());
     bottom = $(window).height() - ($('#blue_bar').position().top + $('#blue_bar').outerHeight(true));
@@ -52,7 +65,7 @@ jQuery(function() {
   };
 
   $(document).ready(function() {
-    changeBackgroundImage();
+    loadImg(images[i], swap);
     updateOrbitSize();
     updateBlueBar();
   });
