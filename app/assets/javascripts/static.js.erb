@@ -13,7 +13,7 @@ jQuery(function() {
   * @param {String} the image url
   * @param {Function} the callback function
   */
-  function loadImg(url, fn) {
+  async function loadImg(url, fn) {
     var img = new Image();
     img.src = url;
     if (img.complete) { // If the image has been cached, just call the callback
