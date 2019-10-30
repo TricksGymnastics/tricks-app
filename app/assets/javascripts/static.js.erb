@@ -21,7 +21,7 @@ jQuery(function() {
   * @param {String} the image url
   * @param {Function} the callback function
   */
-  async function loadImg(url, fn, time_of_request_ms) {
+  function loadImg(url, fn, time_of_request_ms) {
     // console.log("Loading image: " + url);
     var img = new Image();
     img.onerror = function() { // If failed to load the image
@@ -42,19 +42,19 @@ jQuery(function() {
     img.src = url;
   }
 
-  async function swap(image) {
-    $('#background_images2').fadeOut(500, () => {
+  function swap(image) {
+    $('#background_images').fadeOut(500, () => {
       // console.log("Showing image: " + image.src);
-      $('#background_images2').css('background-image', "url("+image.src+")");
+      $('#background_images').css('background-image', "url("+image.src+")");
       
       incrementImageToDownload();
-      $('#background_images2').fadeIn(1000, () => {
+      $('#background_images').fadeIn(1000, () => {
         loadImg(images[image_to_download], swap, Date.now());
       });
     });
   };
 
-  async function updateOrbitSize() {
+  function updateOrbitSize() {
     if ($('.orbit-container').length){
       $('.orbit-container').each(function(i, obj) {
         $(this).height($(this).width() * (320 / 570) + 39 + "px");
@@ -62,8 +62,9 @@ jQuery(function() {
     }
   };
 
-  async function updateBlueBar() {
+  function updateBlueBar() {
     if ($('#blue_bar').length){
+      // console.log("Updating blue bar");
       var bottom;
       $('#blue_bar').height($('#blue_bar').parent().height());
       bottom = $(window).height() - ($('#blue_bar').position().top + $('#blue_bar').outerHeight(true));
@@ -75,10 +76,11 @@ jQuery(function() {
 
   $(document).ready(function() {
     if ($('#background_images').length){
+      // console.log("Start loading images");
       loadImg(images[image_to_download], swap, Date.now());
     }
     updateOrbitSize();
-    updateBlueBar();
+    setTimeout(updateBlueBar, 1000);
   });
   
   $(window).resize(function() {
