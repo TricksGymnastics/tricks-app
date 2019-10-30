@@ -8,64 +8,75 @@ jQuery(function() {
     '<%= image_url "site_header_images/Sacramento/IMG_7827.jpg" %>'
   ]
   
+  let image_to_download = 0;
+  function incrementImageToDownload(){
+    image_to_download = image_to_download + 1;
+    if (image_to_download === images.length) {
+      image_to_download = 0;
+    }
+  }
+  const MIN_DISPLAY_TIME = 5000;
   /*
   * Preload an image if not cached, then call a callback function
   * @param {String} the image url
   * @param {Function} the callback function
   */
-  async function loadImg(url, fn) {
+  async function loadImg(url, fn, time_of_request_ms) {
+    // console.log("Loading image: " + url);
     var img = new Image();
-    img.src = url;
-    if (img.complete) { // If the image has been cached, just call the callback
-      // console.log("Already downloaded.");
-      if (fn) fn(img);
-    } else {
-      img.onerror = function() { // If fail to load the image
-        // console.log("Failed to download");
-        if (fn) fn(img);
-      };
-      img.onload = function() { // If loaded successfully
-        // console.log("Done downloading");
-        if (fn) fn(img);
-        //On IE6, multiple frames in a image will fire the 'onload' event for multiple times. So set to null
-        img.onload = null; 
-      };
+    img.onerror = function() { // If failed to load the image
+      // console.log("Failed to download");
+      incrementImageToDownload();
+      loadImg(images[image_to_download], swap, Date.now());
     };
+    img.onload = function() { // If loaded successfully
+      // console.log("Done downloading");
+      // setup a timeout to show the image that got downloaded
+      // console.log("Time remaining before swap: " + (5000 - (Date.now() - time_of_request_ms)));
+      setTimeout(() => {
+        if (fn) fn(img, true);
+        //On IE6, multiple frames in a image will fire the 'onload' event for multiple times. So set to null
+        img.onload = null;
+      }, MIN_DISPLAY_TIME - (Date.now() - time_of_request_ms));
+    };
+    img.src = url;
   }
 
-  let i = 0;
-  const swap = async function(image) {
-    $('#background_images').fadeOut(500, () => {
-      $('#background_images').css('background-image', "url("+images[i]+")");
-      $('#background_images').fadeIn(1000, () => {
-        setTimeout(() => {
-          loadImg(images[i], swap);
-          i = i + 1;
-          if (i === images.length) {
-            i = 0;
-          }
-        }, 5000);
+  async function swap(image) {
+    $('#background_images2').fadeOut(500, () => {
+      // console.log("Showing image: " + image.src);
+      $('#background_images2').css('background-image', "url("+image.src+")");
+      
+      incrementImageToDownload();
+      $('#background_images2').fadeIn(1000, () => {
+        loadImg(images[image_to_download], swap, Date.now());
       });
     });
   };
 
-  const updateOrbitSize = async function() {
-    $('.orbit-container').each(function(i, obj) {
-      $(this).height($(this).width() * (320 / 570) + 39 + "px");
-    });
+  async function updateOrbitSize() {
+    if ($('.orbit-container').length){
+      $('.orbit-container').each(function(i, obj) {
+        $(this).height($(this).width() * (320 / 570) + 39 + "px");
+      });
+    }
   };
 
-  const updateBlueBar = async function() {
-    var bottom;
-    $('#blue_bar').height($('#blue_bar').parent().height());
-    bottom = $(window).height() - ($('#blue_bar').position().top + $('#blue_bar').outerHeight(true));
-    $('#background_images').css({
-      bottom: bottom + "px"
-    });
+  async function updateBlueBar() {
+    if ($('#blue_bar').length){
+      var bottom;
+      $('#blue_bar').height($('#blue_bar').parent().height());
+      bottom = $(window).height() - ($('#blue_bar').position().top + $('#blue_bar').outerHeight(true));
+      $('#background_images').css({
+        bottom: bottom + "px"
+      });
+    }
   };
 
   $(document).ready(function() {
-    loadImg(images[i], swap);
+    if ($('#background_images').length){
+      loadImg(images[i], swap);
+    }
     updateOrbitSize();
     updateBlueBar();
   });
