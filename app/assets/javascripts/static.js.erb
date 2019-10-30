@@ -75,7 +75,7 @@ jQuery(function() {
 
   $(document).ready(function() {
     if ($('#background_images').length){
-      loadImg(images[i], swap);
+      loadImg(images[image_to_download], swap, Date.now());
     }
     updateOrbitSize();
     updateBlueBar();
