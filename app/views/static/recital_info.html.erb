@@ -1,25 +1,43 @@
 <% content_for :title do %>
   Tricks Recital Info
 <% end %>
-<h1><%= Time.now.year %> Winter Recital Information</h1>
+<h1 style="margin-bottom: 50px;"><%= Time.now.year %> Winter Recital Information</h1>
 
-<div class="row align-center" style="margin-bottom: 80px;">
-  <div class="columns small-3" style="margin: 30px;">
+<div class="row align-center" style="margin-bottom: 50px;">
+
+  <div class="columns small-5 large-3" style="mxargin: 10px;">
     <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 210).first} %>
   </div>
-  <div class="columns small-3" style="margin: 30px;">
+  <div class="columns small-5 large-3 large-offset-1" style="margxin: 10px;">
     <%= render :partial => "bubble_contents/bubble", locals: {given_bubble: BubbleContent.where(sort_order: 211).first} %>
   </div>
 </div>
-<div class="row align-center">
-  <div class="columns small-12" style="text-align:center;">
-    If you have any questions please give our office a call!<br><br>
-    
-    Sacramento: 916-481-4496<br>
-    Folsom: 916-351-0024<br>
-    Granite Bay: 916-791-4496<br><br>
-    
-    <h3>See you at the show!</h3>
+
+<div class="row align-center" >
+  <div class="columns small-11 large-8" style="border: solid 3px #ddd; padding: 10px; border-radius: 10px;">
+    <h5 style="text-align: center;">All tickets will be sold online beginning 10/27 at 9:00am</h5>
+    <ol style="margin: 10px 50px;">
+      <li>Visit: <a href="https://27561.danceticketing.com">https://27561.danceticketing.com</a></li>
+      <li>Choose your seats on the seating chart.</li>
+      <li>Tickets cost $10.00-$15.00 (including fees)</li>
+      <li>You may print your tickets or show them on your smartphone to enter the theater.</li>
+    </ol>
+
+    <ul>
+      <li>Anyone occupying a seat must have a ticket.</li>
+      <li>Dancers in the show and Parent Volunteers do not need a ticket.</li>
+      <li>Shows can sell out! Do not wait till the last minute to purchase your tickets.</li>
+    </ul>
+        
+    <div style="text-align: center;">
+      If you have any questions please give our office a call!<br><br>
+      
+      Sacramento: 916-481-4496<br>
+      Folsom: 916-351-0024<br>
+      Granite Bay: 916-791-4496<br><br>
+      
+      <h4>See you at the show!</h4>
+    </div>
   </div>
 </div>
 
