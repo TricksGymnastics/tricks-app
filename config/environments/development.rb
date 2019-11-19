@@ -68,7 +68,6 @@ Rails.application.configure do
 
   config.generators.assets = false
   config.generators.test_framework = nil
-  config.generators.assets = false
   config.generators.helper = false
   config.generators.stylesheets = false
   config.time_zone = "Pacific Time (US & Canada)"

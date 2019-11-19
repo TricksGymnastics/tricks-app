@@ -1,2 +1,2 @@
-class Party < ActiveRecord::Base
+class Party < ApplicationRecord
 end

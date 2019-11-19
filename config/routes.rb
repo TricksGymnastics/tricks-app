@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :pages
   resources :kids_night_outs
   get 'datenights', to: redirect('kids_night_outs')
   resources :bff_dance_parties
@@ -55,4 +56,7 @@ Rails.application.routes.draw do
   patch 'employment_applications/:id/update_review', to: "employment_applications#update_review"
   post 'employment_applications/:id', to: "employment_applications#archive"
   get 'employment', to: 'employment_applications#new'
+
+  # must be at the end since routes are matched top to bottom and we don't want to override and existing route
+  get '/:page_url' => 'pages#show'
 end

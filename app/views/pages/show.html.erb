@@ -1,0 +1,15 @@
+<% content_for :title do %>
+  <%= "Tricks - " + @page.title %>
+<% end %>
+
+<% if defined? @page.bubbles %>
+  <% bubbles = @page.bubbles.split(",") %>
+  <% update_bubbles(bubbles) %>
+<% end %>
+
+<div class="row">
+  <div class="columns small-12">
+    <h1><%= @page.title %> <%= link_to "(Edit)", edit_page_path(@page) %></h1>
+    <%= @page.content %>
+  </div>
+</div>

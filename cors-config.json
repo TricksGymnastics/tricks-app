@@ -1,0 +1,9 @@
+// https://cloud.google.com/storage/docs/configuring-cors
+[
+  {
+    "origin": ["*"],
+    "responseHeader": ["Content-Type", "Content-Md5" ],
+    "method": ["PUT", "GET", "HEAD", "DELETE", "OPTIONS"],
+    "maxAgeSeconds": 3600
+  }
+]

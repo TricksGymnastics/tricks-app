@@ -1,4 +1,4 @@
-class Classtype < ActiveRecord::Base
+class Classtype < ApplicationRecord
 	has_many :levels
 	# has_many :coaches
 	has_many :absents

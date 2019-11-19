@@ -1,4 +1,4 @@
-class Level < ActiveRecord::Base
+class Level < ApplicationRecord
     has_many :coach_levels
     has_many :coaches, through: :coach_levels
     has_many :absents

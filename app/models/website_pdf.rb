@@ -1,4 +1,4 @@
-class WebsitePdf < ActiveRecord::Base
+class WebsitePdf < ApplicationRecord
   #attr_accessible :file, :file_name
 
   validates_presence_of :file, :file_name

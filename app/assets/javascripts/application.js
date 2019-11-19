@@ -20,6 +20,11 @@
 
 /*global $*/
 
+// console.log('Hello World from Webpacker');
+
+// require("trix")
+// require("@rails/actiontext")
+
 $(function() { $(document).foundation(); });
 
 $(window).on("load", function() {

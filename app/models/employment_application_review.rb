@@ -1,4 +1,4 @@
-class EmploymentApplicationReview < ActiveRecord::Base
+class EmploymentApplicationReview < ApplicationRecord
     belongs_to :employment_application
     after_initialize :init
 

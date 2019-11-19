@@ -1,4 +1,4 @@
-class RecitalAd < ActiveRecord::Base
+class RecitalAd < ApplicationRecord
   #attr_accessible :title, :body, :recital_ad_type_id, :firstname, :lastname, :email, :stripe_card_token, :image, :pdf_file, :message
   belongs_to :recital_ad_type
   validates_presence_of :email

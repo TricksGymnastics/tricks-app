@@ -1,0 +1,68 @@
+<script>
+  jQuery(function() {
+    // 1mb 3mb 5mb 10mb 20mb 30mb
+    const images = [
+      '<%= image_url "https://sample-videos.com/img/Sample-png-image-200kb.png" %>',
+      '<%= image_url "https://sample-videos.com/img/Sample-png-image-3mb.png" %>',
+    'https://www.tricksgym.com/assets/site_header_images/Folsom/IMG_7786-81eaa3dfe5bbcdb4770f7809e87a18ac6b813b34af443cd51b382050b8cd6c76.jpg',
+    'https://www.tricksgym.com/assets/site_header_images/Folsom/IMG_7790-ae556440b111288723ef61f9beee7356c830d33dd26dafdfc8dd5ce08c2d9bf9.jpg',
+    'https://www.tricksgym.com/assets/site_header_images/Folsom/IMG_7792-92a562a3fe757101439176201b1dfbf01316d5ca8197faa0ccbb7c2e6377e1da.jpg',
+    'https://www.tricksgym.com/assets/site_header_images/Sacramento/IMG_7840-4264aaafc4c2acbfa7e24ab2e7f6fda308d2f373720610b5d7c701922f1ea785.jpg',
+    'https://www.tricksgym.com/assets/site_header_images/Sacramento/IMG_7839-b1ed1b236c0dfcb515e5ee8c1195b79e1ee2383c758ec3817e41a1f1785bd313.jpg',
+    'https://www.tricksgym.com/assets/site_header_images/Sacramento/IMG_7827-221b155a51c469dce99efbb8142e82c0209939c0fdac49da0154362ffd0230ca.jpg'
+    ]
+
+    let image_to_download = 0;
+    function incrementImageToDownload(){
+      image_to_download = image_to_download + 1;
+      if (image_to_download === images.length) {
+        image_to_download = 0;
+      }
+    }
+    const MIN_DISPLAY_TIME = 5000;
+    /*
+    * Preload an image if not cached, then call a callback function
+    * @param {String} the image url
+    * @param {Function} the callback function
+    */
+    async function loadImg(url, fn, time_of_request_ms) {
+      // console.log("Loading image: " + url);
+      var img = new Image();
+      img.onerror = function() { // If failed to load the image
+        // console.log("Failed to download");
+        incrementImageToDownload();
+        loadImg(images[image_to_download], swap, Date.now());
+      };
+      img.onload = function() { // If loaded successfully
+        // console.log("Done downloading");
+        // setup a timeout to show the image that got downloaded
+        // console.log("Time remaining before swap: " + (5000 - (Date.now() - time_of_request_ms)));
+        setTimeout(() => {
+          if (fn) fn(img, true);
+          //On IE6, multiple frames in a image will fire the 'onload' event for multiple times. So set to null
+          img.onload = null;
+        }, MIN_DISPLAY_TIME - (Date.now() - time_of_request_ms));
+      };
+      img.src = url;
+    }
+
+    async function swap(image) {
+      $('#background_images2').fadeOut(500, () => {
+        // console.log("Showing image: " + image.src);
+        $('#background_images2').css('background-image', "url("+image.src+")");
+        
+        incrementImageToDownload();
+        $('#background_images2').fadeIn(1000, () => {
+          loadImg(images[image_to_download], swap, Date.now());
+        });
+      });
+    };
+
+    $(document).ready(function() {
+      // console.log("Start loading images");
+      loadImg(images[image_to_download], swap, Date.now());
+    });
+  });
+</script>
+test
+<div id="background_images2" style="width: 500px; height: 500px; background-color: blue; background-size: cover;"></div>

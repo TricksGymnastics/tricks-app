@@ -1,2 +1,2 @@
-class RecitalSignUp < ActiveRecord::Base
+class RecitalSignUp < ApplicationRecord
 end

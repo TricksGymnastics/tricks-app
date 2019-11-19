@@ -1,4 +1,4 @@
-class KidQuote < ActiveRecord::Base
+class KidQuote < ApplicationRecord
 
 	validates_presence_of :quote
 

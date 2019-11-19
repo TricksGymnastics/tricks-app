@@ -1,3 +1,3 @@
-class BffDanceParty < ActiveRecord::Base
+class BffDanceParty < ApplicationRecord
   mount_uploader :image, BffDancePartyUploader
 end

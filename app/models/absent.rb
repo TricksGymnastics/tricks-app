@@ -1,4 +1,4 @@
-class Absent < ActiveRecord::Base
+class Absent < ApplicationRecord
   #attr_accessible :first_name, :last_name, :location, :classtype_id, :level_id, :date, :time
   belongs_to :classtype
   belongs_to :level

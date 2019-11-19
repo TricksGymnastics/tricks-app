@@ -1,0 +1,43 @@
+<%= form_with(model: page, local: true) do |form| %>
+  <% if page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+        <% page.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="columns small-12 large-6">
+      <%= render partial: 'helper_fields/text', locals: {form: form, field: :title} %>
+    </div>
+    <div class="columns small-12 large-6">
+      <%= render partial: 'helper_fields/text', locals: {form: form, field: :url} %>
+    </div>
+
+    <div class="columns large-4 small-12">
+      <%= render partial: 'helper_fields/text', locals: {form: form, field: :bubbles} %>
+    </div>
+
+    <div class="columns large-4 small-12">
+      <%= render partial: 'helper_fields/date', locals: {form: form, field: :start_time, required: true} %>
+    </div>
+
+    <div class="columns large-4 small-12">
+      <%= render partial: 'helper_fields/date', locals: {form: form, field: :end_time, required: true} %>
+    </div>
+
+    <div class="columns small-12" style="margin-bottom: 50px;">
+      <%= form.label :content %>
+      <%= form.rich_text_area :content %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit Page", class: "button expanded" %>
+  </div>
+<% end %>
