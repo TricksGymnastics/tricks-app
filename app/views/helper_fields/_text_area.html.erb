@@ -30,7 +30,8 @@
     <% default = form.object.send(field) %>
 <% end %>
 <% if !defined? maxlength %>
-    <% maxlength = 225 %>
+    <%# not currently used. This code goes after placeholder: `, maxlength: maxlength` %>
+    <% maxlength = 1000 %>
 <% end %>
 <% if !defined? height %>
     <% height = 100 %>
@@ -40,4 +41,4 @@
     It is wider because sometimes the question for the text-box is too long to fit on a small screen
     Unsure of the best way to tell it to wrap if it is too long %>
 <%= form.label field, question, class: "input-group-label", style: "max-width: 100%;" %>
-<%= form.text_area field, required: required, value: default, onkeypress: onkeypress, placeholder: placeholder, maxlength: maxlength, style: "height: " + height.to_s + "px" %>
+<%= form.text_area field, required: required, value: default, onkeypress: onkeypress, placeholder: placeholder, style: "height: " + height.to_s + "px" %>

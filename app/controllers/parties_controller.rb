@@ -141,51 +141,47 @@ class PartiesController < ApplicationController
         
         # puts loc
         parties.sort.map do |date, times|
-          new_times = []
-          times.keys.sort.each do |time|
-            new_times << time.strftime('%-l:%M %P')
-          end
+          new_times = ["1:00 pm", "2:15 pm", "3:30 pm", "4:45 pm", "6:00 pm"]
+          # times.keys.sort.each do |time|
+          #   new_times << time.strftime('%-l:%M %P')
+          # end
           
           # Check if we need to do a new row of time headers. This should only happen if times don't match up between possible_times and new_times
-          needs_new_times_row = false
+          # needs_new_times_row = false
           # puts "new_times: " + new_times.count.to_s + " > " + "possible_times: " + possible_times.count.to_s + " === " + (new_times.count > possible_times.count).to_s
           
-          if new_times.count > possible_times.count
-            needs_new_times_row = true
-          else
-            # new_times must be smaller than or equal to size of possible_times, check for mismatched times
-            new_pos = 0
-            possible_pos = 0
-            while possible_pos < possible_times.count && new_pos < new_times.count do
+          # if new_times.count > possible_times.count
+          #   needs_new_times_row = true
+          # else
+          #   # new_times must be smaller than or equal to size of possible_times, check for mismatched times
+          #   new_pos = 0
+          #   possible_pos = 0
+          #   while possible_pos < possible_times.count && new_pos < new_times.count do
               
-              # offset new_pos until it finds a match in possible_times, if it doesn't then we need a new row of times
-              while new_times[new_pos] != possible_times[possible_pos] && possible_pos < possible_times.count do
-                possible_pos += 1
-              end
+          #     # offset new_pos until it finds a match in possible_times, if it doesn't then we need a new row of times
+          #     while new_times[new_pos] != possible_times[possible_pos] && possible_pos < possible_times.count do
+          #       possible_pos += 1
+          #     end
               
-              #If we got here we know that there is at least 1 matching time, check if the rest of the new ones are in possible
-              if possible_times[possible_pos] != new_times[new_pos]
-                needs_new_times_row = true
-                break
-              end
-              new_pos += 1
-              possible_pos += 1
-            end
+          #     #If we got here we know that there is at least 1 matching time, check if the rest of the new ones are in possible
+          #     if possible_times[possible_pos] != new_times[new_pos]
+          #       needs_new_times_row = true
+          #       break
+          #     end
+          #     new_pos += 1
+          #     possible_pos += 1
+          #   end
             
-            if new_pos > new_times.count then
-              needs_new_times_row = true
-            end
-          end
+          #   if new_pos > new_times.count then
+          #     needs_new_times_row = true
+          #   end
+          # end
           
           # is it a new year?
           if (current_year == 1990 || date.strftime('%Y') != current_year)
-            out += "</table><table style='text-align:center;'><tr style='line-height: 12px; font-size: 22px; background-color: #bbb;'><td colspan='"+(times.keys.count + 1).to_s+"'>"+date.strftime('%Y')+"</td></tr>"
+            out += "</table><table style='text-align:center;'><tr style='line-height: 12px; font-size: 22px; background-color: #bbb;'><td colspan='"+(new_times.count + 1).to_s+"'>"+date.strftime('%Y')+"</td></tr>"
             current_year = date.strftime('%Y')
-          end
-          
-          
-          
-          if needs_new_times_row
+
             possible_times = new_times
             out += "<tr><td></td>"
             possible_times.each do |possible_time|
@@ -193,12 +189,6 @@ class PartiesController < ApplicationController
             end
             out += "</tr>"
           end
-          
-          
-          
-          
-          
-          
           
           
           
