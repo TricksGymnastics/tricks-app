@@ -1,16 +1,32 @@
 <% content_for :title do %>
 	<%= "Tricks - Camps" %>
-  <% end %>
+<% end %>
 
 <% if can? :manage, Camp %>
   <h1><%= link_to 'Add a New Camp', new_camp_path %></h1>
 <% end %>
 
 <% if @camps.size > 0 %>
+  <div class="row align-center">
+    <div class="columns small-12 medium-8" style="margin-bottom: 50px;">
+        <h3>Register Here!</h3>
+        <div class="row align-center">
+            <div class="columns small-11 large-4">
+                <%= link_to "Granite Bay", "http://app.jackrabbitclass.com/eventcalendar.asp?loc=GB&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+            </div>
+            <div class="columns small-11 large-4">
+                <%= link_to "Folsom", "http://app.jackrabbitclass.com/eventcalendar.asp?loc=FOL&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+            </div>
+            <div class="columns small-11 large-4">
+                <%= link_to "Sacramento", "http://app.jackrabbitclass.com/eventcalendar.asp?loc=SAC&orgid=313983", class: "button expanded", style: "font-size: 20px; padding: 10px;" %>
+            </div>
+        </div>
+    </div>
+  </div>
   <% @camps.each do |camp| %>
     <%= render partial: 'camp', locals: {given_camp: camp} %>
   <% end %>
 <% else %>
-  <h4 style="text-align: center;">Sorry but there are currently no camps available to register for.</h4>
+  <h4 style="text-align: center; margin-top: 100px;">Sorry but there are currently no camps available to register for.</h4>
   <h3>Please check back later!</h3>
 <% end %>  
