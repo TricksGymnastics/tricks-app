@@ -16,31 +16,30 @@
   </div>
 </div>
 
-  <div class="reveal" id="making-a-diffrence-modal" data-reveal>
-      
-      <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+<div class="reveal" id="making-a-diffrence-modal" data-reveal style="padding: 300px;">
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">
+        <p style="text: align-center; padding: 30px;">How do I get the comments to show in this one by one and add next button ?<p>
+      </span>
+    </button>
+</div> 
 
-    
-
-  <div class="row">
-    <% @making_a_differences.each do |making_a_difference| %>
-      <a href="javascript:updateText(<%= making_a_difference.title %>);" data-open="making-a-diffrence-modal">
-        <div class="column large-4" style="padding: 20px;">
-          <div style="padding: 10px; border: solid 2px #D8D8D8; border-radius: 5px; box-shadow: 5px 5px 5px 5px #D8D8D8;">
-            <h5 style="margin: 15px; text-align: center;"><%= making_a_difference.title %></h5>
-            <div class="comment" style= "text-overflow: ellipsis; max-height: 50px; overflow: hidden;"><%= making_a_difference.comment %></div>
-            <p style="text-align: right; font-weight: bold;"><%= making_a_difference.name %>,  <%= making_a_difference.date %></p>
-            <td><%= link_to 'Show', making_a_difference %></td>
-            <td><%= link_to 'Edit', edit_making_a_difference_path(making_a_difference) %></td>
-            <td><%= link_to 'Destroy', making_a_difference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </div>
-        </div>
-      </a>
-    <% end %>
-  </div>
+<div class="row">
+  <% @making_a_differences.each do |making_a_difference| %>
+    <a href="javascript:updateText(<%= making_a_difference.title %>);" data-open="making-a-diffrence-modal">
+      <div class="column large-4" style="padding: 20px;">
+        <div style="padding: 10px; border: solid 2px #D8D8D8; border-radius: 5px; box-shadow: 5px 5px 5px 5px #D8D8D8;">
+          <h5 style="margin: 15px; text-align: center;"><%= making_a_difference.title %></h5>
+          <div class="comment" style= "text-overflow: ellipsis; max-height: 80px; overflow: hidden;"><%= making_a_difference.comment %></div>
+          <p style="text-align: right; font-weight: bold;"><%= making_a_difference.name %>,  <%= making_a_difference.date %></p>
+          <td><%= link_to 'Show', making_a_difference %></td>
+          <td><%= link_to 'Edit', edit_making_a_difference_path(making_a_difference) %></td>
+          <td><%= link_to 'Destroy', making_a_difference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </div>
+      </div>
+    </a>
+  <% end %>
+</div>
 
   
 <script> 
@@ -62,7 +61,7 @@ for (let comment of comments){
 </script>
 
 
-var modal = document.getId(".modal");
+<!-- var modal = document.getId(".modal");
 var trigger = document.querySelector(".trigger");
 var closeButton = document.querySelector(".close-button");
 
@@ -74,4 +73,4 @@ function windowOnClick(event) {
     if (event.target === modal) {
         toggleModal();
     }
-}
+} -->
