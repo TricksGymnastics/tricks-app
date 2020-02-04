@@ -36,9 +36,16 @@
 		<div class="row" style="margin-bottom: 10px;">
 			<%= level.short_description %>
 		</div>
-		<div class="row" style="margin-bottom: 20px;">
+		<div class="row level_details" style="margin-bottom: 20px;">
 			<div class="columns small-12">
-				<h4 style="text-align: center;"><span style="margin-right: 50px;"><%= level.length %> mins</span><%= number_to_currency(level.price, precision: 2) %> / 4 Week Session</h4>
+				<h4 style="text-align: center;">
+					<span style="margin-right: 50px;"><%= level.length %> mins</span>
+
+					<span class="NONE_price">Choose a location for Pricing Info</span>
+					<span style="display: none;" class="GB_price"></span>
+					<span style="display: none;" class="FOL_price"></span>
+					<span style="display: none;" class="SAC_price"></span>
+				</h4>
 			</div>
 		</div>
 		

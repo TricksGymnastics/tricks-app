@@ -105,6 +105,7 @@ function updateLocation(loc) {
     $('.program-button#Swim').fadeIn(300);
   }
   $('.party_price').hide();
+  $('.level_details').hide();
   $('.NONE_price').hide();
   $('.GB_price').hide();
   $('.FOL_price').hide();
@@ -112,6 +113,7 @@ function updateLocation(loc) {
   if ($('.' + loc + '_price').text() != "") {
     $('.' + loc + '_price').show();
     $('.party_price').show();
+    $('.level_details').show();
   }
 }
 

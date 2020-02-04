@@ -57,19 +57,21 @@ class LevelsController < ApplicationController
     out = "<div class='columns 11-small'>"
 		locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"}
 		
-    locations.each do |loc|
-		  out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%; overflow: auto;'>"
+		locations.each do |loc|
+			out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%; overflow: auto;'>"
 			url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc[1]+'&cat2='+level.jack_rabbit_name
 			response = JSON.parse(HTTParty.get(url).body)
+			price = "No pricing data available"
 			if response['rows'].length > 0
 			  sorted_classes = []
-							
+				price = response['rows'][0]['tuition']['fee']
+
 				response['rows'].each do |r|
 					# puts r.to_s.gsub("=>",":")
 					entry = {}
 					day = {0 => "Unassigned"}
 					r['meeting_days'].each do |d|
-            if d[1] == true
+						if d[1] == true
 							case d[0]
 							when "mon"
 							  day = {1 => "Monday"}
@@ -87,10 +89,10 @@ class LevelsController < ApplicationController
 							  day = {7 => "Sunday"}
 							else
 							  day = {0 => "None"}
-              end
-            end
-          end
-								
+							end
+						end
+					end
+
 					instructor = "<span style='color: red;'>Staff</span>".html_safe
 					if !r['instructors'][0].nil?
 						# puts ":" + r['instructors'][0] + ":"
@@ -104,14 +106,13 @@ class LevelsController < ApplicationController
 						instructor = name_parts[0..-2].join(" ") #The [0..-2] get all members from the first to the second to last
 						# puts instructor
 					end
-					
-								
+
   				entry['link'] = r['online_reg_link'].gsub("amp;", "")
   				entry['link_text'] = r['openings']['calculated_openings'] > 0 ? "Register" : "Get on Wait List"
   				entry['openings'] = r['openings']['calculated_openings'] > 0 ? r['openings']['calculated_openings'] : r['openings']['calculated_openings'].abs.to_s + " on Wait List"
   				entry['day'] = day
   				entry['time'] = Time.strptime(r['start_time'], '%H:%M').strftime('%l:%M %P')
-  				
+
   				min_age = (r['min_age'].empty?) ? '' : r['min_age'][1..2]#, months: r['min_age'][4..5]}
   				max_age = (r['max_age'].empty?) ? '' : r['max_age'][1..2]#, months: r['max_age'][4..5]}
   				if min_age != '' && max_age != ''
@@ -178,6 +179,12 @@ class LevelsController < ApplicationController
 							out += "<h4 style='text-align:center;'>No classes for this level at this location</h4>"
 						end
 					out += "</div>"
+
+					if price != "No pricing data available"
+						out += "<script>
+							$('."+loc[1]+"_price').text('$"+ '%.2f' % price +" / 4 Week Session');
+						</script>"
+					end
 				end
 			out += "</div>"
     render plain: out
