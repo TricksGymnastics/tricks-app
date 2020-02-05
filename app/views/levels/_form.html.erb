@@ -38,11 +38,8 @@
       </div>
       
       <div class="row">
-        <div class="columns large-3 small-6">
+        <div class="columns large-6">
           <%= render partial: 'helper_fields/number', locals: {form: f, field: :length} %>
-        </div>
-        <div class="columns large-3 small-6">
-          <%= render partial: 'helper_fields/number', locals: {form: f, field: :price, value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), step: 0.25} %>
         </div>
         <div class="columns large-6 ">
           <%= render partial: 'helper_fields/switch', locals: {form: f, field: :show_registration, question: "Beginning Level Class?"} %>

@@ -15,7 +15,6 @@
     <th>Order</th>
     <th>Level</th>
     <th>Length</th>
-    <th>Price</th>
     <th>Age</th>
     <th>Gender</th>
     <th>Activity</th>
@@ -34,10 +33,9 @@
     <td><%= level.sort_order %></td>
     <td><%= level.levelname %></td>
     <td><%= level.length %> mins</td>
-    <td><%= number_to_currency(level.price, precision: 2) %></td>
     <td><%= level.age %></td>
     <td><%= level.gender %></td>
-    <td><%= level.classtype.name %></td>    
+    <td><%= level.classtype.name %></td>
     <td style="background-color: white;"><% if !level.jack_rabbit_name.nil? %> <span style="color: green;">&#x2714;</span> <% else %> <span style="color: red;">&#x2717;</span> <% end %></td>
     <td style="border: 0; padding: 2px; background-color: white;"><%= link_to 'Edit', edit_level_path(level) %></td>
     <% if can? :destroy, Level %>

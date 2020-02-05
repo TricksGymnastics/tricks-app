@@ -1,6 +1,7 @@
 jQuery(function() {
+  $('.level_details').show();
+
   return $('.accordion-title.level-panel').on('click', function(event) {
-    $('.level_details').hide();
     var level_id;
     event.preventDefault();
     level_id = $(event.target).data("id");

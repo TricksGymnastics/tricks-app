@@ -19,7 +19,7 @@
 
 
 <li class="accordion-item" data-accordion-item>
-	<a href="#" class="accordion-title panel-<%= level.id %>-label level-panel">
+	<a href="#" data-id="<%= level.id %>" class="accordion-title panel-<%= level.id %>-label level-panel" style="display: block;">
 		<% level_title = (level.age.empty?) ? level.levelname : level.levelname + " - Age: " + level.age %>
 		<h3 data-id="<%= level.id %>" style="padding:0; margin:0; text-align:center;"><%= level_title %></h3>
 	</a>
@@ -33,33 +33,21 @@
 				</div>
 			</div>
 		<% end %>
-		<div class="row" style="margin-bottom: 10px;">
+		<div class="row">
 			<%= level.short_description %>
 		</div>
-		<div class="row level_details" style="margin-bottom: 20px;">
-			<div class="columns small-12">
-				<h4 style="text-align: center;">
-					<span style="margin-right: 50px;"><%= level.length %> mins</span>
 
-					<span class="NONE_price">Choose a location for Pricing Info</span>
-					<span style="display: none;" class="GB_price"></span>
-					<span style="display: none;" class="FOL_price"></span>
-					<span style="display: none;" class="SAC_price"></span>
-				</h4>
-			</div>
-		</div>
-		
-		<% if !level.show_registration %>
-			<h4 style="text-align:center;">Only Beginning classes available for online registration</h4>
-		<% end %>
-		<div class="row align-justified" style="margin-bottom: 40px;">
+		<div class="row align-justified" style="margin: 30px 0px 10px 0px;">
 			<% locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"} %> 
 			<% locations.each do |loc| %>
 				<div class="columns 3-small">
-					<%= link_to(loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1]) %>
+					<%= link_to(loc[0], 'javascript:void(0);', class: "button expanded location-button", id: loc[1], style: "margin-bottom: 0;") %>
 				</div>
 			<% end %>
 		</div>
+		<% if !level.show_registration %>
+			<h5 style="text-align:center; margin-bottom: 20px;">Only Beginning classes available for online registration</h5>
+		<% end %>
 		<div class="row level-classes" id="<%= level.id %>">
 			<div class="columns small-12" style="text-align:center;">
 				<%= image_tag("loading-spinner.gif") %>

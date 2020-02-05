@@ -21,7 +21,6 @@ schedule LevelsControllerTest < ActionController::TestCase
       post :create, level: @level.attributes
     end
 
-    assert_redirected_to level_path(assigns(:level))
   end
 
   test "should show level" do
@@ -36,7 +35,6 @@ schedule LevelsControllerTest < ActionController::TestCase
 
   test "should update level" do
     put :update, id: @level, level: @level.attributes
-    assert_redirected_to level_path(assigns(:level))
   end
 
   test "should destroy level" do

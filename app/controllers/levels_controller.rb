@@ -1,13 +1,9 @@
 class LevelsController < ApplicationController
-  before_action :set_level, only: [:show, :edit, :update, :destroy]
+  before_action :set_level, only: [:edit, :update, :destroy]
   load_and_authorize_resource :except => [:get_jr_classes]
   # GET /levels
   def index
     @levels = Level.all.order(:sort_order)
-  end
-
-  # GET /levels/1
-  def show
   end
 
   # GET /levels/new
@@ -58,13 +54,27 @@ class LevelsController < ApplicationController
 		locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"}
 		
 		locations.each do |loc|
-			out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%; overflow: auto;'>"
 			url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc[1]+'&cat2='+level.jack_rabbit_name
 			response = JSON.parse(HTTParty.get(url).body)
-			price = "No pricing data available"
+			out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%; overflow: auto;'>"
 			if response['rows'].length > 0
 			  sorted_classes = []
 				price = response['rows'][0]['tuition']['fee']
+
+					# out += "<script>
+					# 	$('."+loc[1]+"_price').text('$"+ '%.2f' % price +" / 4 Week Session');
+					# </script>"
+	
+				out +='
+					<div class="row level-details" style="margin-bottom: 0px;">
+						<div class="columns small-12">
+							<h4 style="text-align: center;">
+								<span style="margin-right: 50px;">' + level.length.to_s + ' mins</span>
+								$' + '%.2f' % price + ' / 4 Week Session
+							</h4>
+						</div>
+					</div>
+				'
 
 				response['rows'].each do |r|
 					# puts r.to_s.gsub("=>",":")
@@ -152,7 +162,7 @@ class LevelsController < ApplicationController
   				end
   				
   			end
-								
+				
 				out += "<table style='text-align: center;'>
 								<tr>
 									<th></th>
@@ -163,30 +173,24 @@ class LevelsController < ApplicationController
 									<th>Instructor</th>
 								</tr>"
 								
-								sorted_classes.each do |c|
-								  #view_context.link_to(c['link_text'], c['link'])
-									out += "<tr>
-										<td>" + (c['link'] == '' ? 'Call to Register' : view_context.link_to(c['link_text'], c['link'])) + "</td> 
-										<td>" + c['openings'].to_s + "</td>
-										<td>" + c['day'].values[0] + "</td>
-										<td>" + c['time'] + "</td>
-										<td>" + c['age'] + "</td>
-										<td>" + c['instructor'] + "</td>
-									</tr>"
-								end
-							out += "</table>"
-						else
-							out += "<h4 style='text-align:center;'>No classes for this level at this location</h4>"
-						end
-					out += "</div>"
-
-					if price != "No pricing data available"
-						out += "<script>
-							$('."+loc[1]+"_price').text('$"+ '%.2f' % price +" / 4 Week Session');
-						</script>"
-					end
+				sorted_classes.each do |c|
+					#view_context.link_to(c['link_text'], c['link'])
+					out += "<tr>
+						<td>" + (c['link'] == '' ? 'Call to Register' : view_context.link_to(c['link_text'], c['link'])) + "</td> 
+						<td>" + c['openings'].to_s + "</td>
+						<td>" + c['day'].values[0] + "</td>
+						<td>" + c['time'] + "</td>
+						<td>" + c['age'] + "</td>
+						<td>" + c['instructor'] + "</td>
+					</tr>"
 				end
+				out += "</table>"
+			else
+				out += "<h4 style='text-align:center;'>No classes for this level at this location</h4>"
+			end
 			out += "</div>"
+		end
+		out += "</div>"
     render plain: out
   end
   
