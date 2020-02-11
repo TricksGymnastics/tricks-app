@@ -16,11 +16,11 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? # true
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -115,7 +115,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-    api_key: ENV['MAILGUN_API_KEY'],
+    api_key: Rails.application.credentials.mailgun_api_key,
     domain: 'mg.tricksgym.com',
   }
   config.action_mailer.default_url_options = { :host => "http://www.tricksgym.com" }

@@ -43,8 +43,6 @@ If db:create is failing to yarn issues:
 3. you might need to restart here if the next command is not working
 4. yarn install
 
-
-
 to pull the live database down
 PGUSER=postgres PGPASSWORD=tricks PGHOST=localhost dropdb tricks_development
 PGUSER=postgres PGPASSWORD=tricks PGHOST=localhost heroku pg:pull DATABASE_URL tricks_development --app tricks-app
@@ -53,5 +51,15 @@ to copy live database to stage
 heroku pg:copy tricks-app::DATABASE_URL DATABASE_URL --app tricks-stage
 
 Tips:
-To stop git complaining about line endings:
+When using WSL line endings can get messed up, this causes heroku to crash after building the site
+If committing from WSL make sure to use this git config for line endings
     git config --global core.autocrlf input
+
+removes a hook that was preventing sudo apt install
+sudo rm -rf /etc/apt/apt.conf.d/20snapd.conf
+
+program to convert line endings
+sudo apt install dos2unix
+
+convert all line endings
+find ./ -type f -exec dos2unix {} \;
