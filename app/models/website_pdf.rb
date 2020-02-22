@@ -30,7 +30,8 @@ class WebsitePdf < ActiveRecord::Base
   	'Swim Schedule (Folsom)',
 		'-------------',
 		'Littlest Nutcracker',
-		'Winter Dance Recital'
+		'Winter Dance Recital',
+		'Summer Recital Info'
   ]
   def to_param
     "#{file_name}"

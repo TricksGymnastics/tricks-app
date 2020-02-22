@@ -24,7 +24,8 @@ class ApplicationController < ActionController::Base
     @family_rules = WebsitePdf.where(:file_name => "Tricks_Family_Rules").first
     @billing_cycle = WebsitePdf.where(:file_name => "Tricks_Billing_Cycle").first
   	@application = WebsitePdf.where(file_name: "Tricks_Instructor_Application").first
-  	@office_application = WebsitePdf.where(file_name: "Tricks_Office_Application").first
+    @office_application = WebsitePdf.where(file_name: "Tricks_Office_Application").first
+    @summer_recital_info = WebsitePdf.where(file_name: "Summer Recital Info").first
   end
   
   rescue_from CanCan::AccessDenied do |exception|
