@@ -49,7 +49,7 @@
   if !@release_form.nil?
     release_form_link = link_to @release_form.file_name.sub("Tricks_","").tr("_"," "), @release_form
   end
-  if !@summer_recital_info?
+  if !@summer_recital_info.nil?
     summer_recital_info_link = link_to @summer_recital_info.file_name.sub("Tricks_", "").tr("_", " "), @summer_recital_info
   end
   
