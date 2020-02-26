@@ -1,0 +1,61 @@
+<% content_for :title do %>
+  Tricks - Summer Recital Info
+<% end %>
+
+<% update_bubbles([212, 213]) %>
+
+<div class="row">
+  <div class="columns">
+    <%= image_tag "events/recital-logo-header-color.png" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns">
+    <p>
+    This page is still under construction
+    </p>
+  </div>
+</div>
+
+<div class="reveal fast large" style="z-index: 1010" id="recital_packet_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+  <div class="row align-center">
+    <h1>Recital Packet</h1>
+  </div>
+  
+  <div class="row align-center">
+    <div class="columns small-11">
+      <% pdf = WebsitePdf.where(file_name: "Summer_Recital_Info").first %>
+      <% if !pdf.nil? %>
+        <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
+          <p>It appears you don't have a PDF plugin for this browser.
+            You can <a href="<%= pdf.file.url %>">click here to
+          download the PDF file.</a></p>  
+        </object>
+      <% else %>
+        <h3>Sorry, the Recital Packet hasn't been uploaded yet :(</h3>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="reveal fast large" style="z-index: 1010" id="hair_makeup_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
+  <div class="row align-center">
+    <h1>Hair/Makeup for Shows</h1>
+  </div>
+  
+  <div class="row align-center">
+    <div class="columns small-11">
+      <% pdf = WebsitePdf.where(file_name: "Hair_Makeup_For_Shows").first %>
+      <% if !pdf.nil? %>
+        <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
+          <p>It appears you don't have a PDF plugin for this browser.
+            You can <a href="<%= pdf.file.url %>">click here to
+          download the PDF file.</a></p>  
+        </object>
+      <% else %>
+        <h3>Sorry, the Recital Packet hasn't been uploaded yet :(</h3>
+      <% end %>
+    </div>
+  </div>
+</div>
