@@ -31,8 +31,8 @@ class WebsitePdf < ActiveRecord::Base
     '-------------',
     'Littlest Nutcracker',
     'Winter Dance Recital',
-    'Summer Recital Info',
-    'Hair Makeup For Shows'
+    'General Recital Info',
+    'Show Assignments and Costume Details'
   ]
   def to_param
     "#{file_name}"

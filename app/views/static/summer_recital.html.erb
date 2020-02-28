@@ -10,22 +10,31 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" style="margin: 50px 0;">
   <div class="columns">
-    <p>
-    This page is still under construction
-    </p>
+    <h5>
+      Tickets go on sale May 3rd at 9:00am (pacific). ALL tickets must be purchased online through <%= link_to "Dance Recital Ticketing", "https://27561.danceticketing.com/" %> or by calling (706) 550-1416.
+    </h5>
+  </div>
+</div>
+
+<div class="row align-spaced">
+  <div class="columns small-6 medium-4">
+    <%= link_to "Purchase Photos", "https://tricksdanceschool.pixieset.com", class: "button expanded large" %>
+  </div>
+  <div class="columns small-6 medium-4">
+    <%= link_to "Purchase DVD", "https://spicerack-productions.square.site/s/search?q=tricks", class: "button expanded large" %>
   </div>
 </div>
 
 <div class="reveal fast large" style="z-index: 1010" id="recital_packet_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
   <div class="row align-center">
-    <h1>Recital Packet</h1>
+    <h1>General Recital Information</h1>
   </div>
   
   <div class="row align-center">
     <div class="columns small-11">
-      <% pdf = WebsitePdf.where(file_name: "Summer_Recital_Info").first %>
+      <% pdf = WebsitePdf.where(file_name: "General_Recital_Information").first %>
       <% if !pdf.nil? %>
         <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
           <p>It appears you don't have a PDF plugin for this browser.
@@ -33,7 +42,7 @@
           download the PDF file.</a></p>  
         </object>
       <% else %>
-        <h3>Sorry, the Recital Packet hasn't been uploaded yet :(</h3>
+        <h3>Sorry, the General Recital Information pdf hasn't been uploaded yet :(</h3>
       <% end %>
     </div>
   </div>
@@ -41,7 +50,7 @@
 
 <div class="reveal fast large" style="z-index: 1010" id="hair_makeup_modal" data-reveal data-close-on-click="true" data-animation-in="scale-in-down" data-animation-out="scale-out-up">
   <div class="row align-center">
-    <h1>Hair/Makeup for Shows</h1>
+    <h1>Show Assignments and Costume Details</h1>
   </div>
   
   <div class="row align-center">
@@ -54,7 +63,7 @@
           download the PDF file.</a></p>  
         </object>
       <% else %>
-        <h3>Sorry, the Recital Packet hasn't been uploaded yet :(</h3>
+        <h3>Sorry, the Show Assignments and Costume Details pdf hasn't been uploaded yet :(</h3>
       <% end %>
     </div>
   </div>
