@@ -53,7 +53,7 @@
   if show_summer_recital_link
     summer_recital_link = link_to "Summer Recital", summer_recital_path
   end
-  
+
   %>
   <body>
     <div class="off-canvas position-right" id="mobile_menu" data-off-canvas>
@@ -418,10 +418,8 @@
                       <ul>
                         <%= if defined? pre_dance_link then ('<li>' + pre_dance_link + '</li>').html_safe end %>
                         <%= if defined? school_dance_link then ('<li>' + school_dance_link + '</li>').html_safe end %>
-                        <%= try_to_show_link(summer_recital_link) %>
-                        <%#= if defined? recital_info_link then ('<li>' + recital_info_link + '</li>').html_safe end %>
                         <%= if defined? dance_team_link then ('<li>' + dance_team_link + '</li>').html_safe end %>
-                        <%= if defined? summer_recital_link then ('<li>' + summer_recital_link + '</li>').html_safe end %>
+                        <%= try_to_show_link(summer_recital_link) %>
                         <%= if defined? winter_show_link then ('<li>' + winter_show_link + '</li>').html_safe end %>
                       </ul>
                     </li>
