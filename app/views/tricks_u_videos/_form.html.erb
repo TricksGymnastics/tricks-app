@@ -19,7 +19,7 @@
       <%= render partial: 'helper_fields/text', locals: {form: f, field: :url, required: true} %>
     </div>
     <div class="columns small-12 large-5">
-      <%= render partial: 'helper_fields/select', locals: {form: f, field: :category_id, options: options_from_collection_for_select(TricksUCategory.all, :id, :title), label: "Category"} %>
+      <%= render partial: 'helper_fields/select', locals: {form: f, field: :category_id, options: options_from_collection_for_select(TricksUCategory.all, :id, :title, @video.category_id), label: "Category"} %>
     </div>
     <div class="columns small-12 large-5">
       <%= render partial: 'helper_fields/number', locals: {form: f, field: :weight} %>
