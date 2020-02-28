@@ -34,7 +34,7 @@
   
   <div class="row align-center">
     <div class="columns small-11">
-      <% pdf = WebsitePdf.where(file_name: "General_Recital_Information").first %>
+      <% pdf = WebsitePdf.where(file_name: "General_Recital_Info").first %>
       <% if !pdf.nil? %>
         <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
           <p>It appears you don't have a PDF plugin for this browser.
@@ -55,7 +55,7 @@
   
   <div class="row align-center">
     <div class="columns small-11">
-      <% pdf = WebsitePdf.where(file_name: "Hair_Makeup_For_Shows").first %>
+      <% pdf = WebsitePdf.where(file_name: "Show_Assignments_and_Costume_Details").first %>
       <% if !pdf.nil? %>
         <object data="<%= pdf.file.url %>" type="application/pdf" width="100%" style="min-height: 600px;"> 
           <p>It appears you don't have a PDF plugin for this browser.
@@ -63,7 +63,7 @@
           download the PDF file.</a></p>  
         </object>
       <% else %>
-        <h3>Sorry, the Show Assignments and Costume Details pdf hasn't been uploaded yet :(</h3>
+        <h3 style="margin: 30px;">Sorry, the Show Assignments and Costume Details pdf isn't quite ready yet. Please check back later.</h3>
       <% end %>
     </div>
   </div>
