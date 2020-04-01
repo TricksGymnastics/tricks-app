@@ -1,0 +1,30 @@
+<div class="column large-6 small-12" >
+  <div class="MADcontainer" style= "border: 3px solid <%=color%>;">
+    <div class="row align-center" style="margin: 0;">
+      <div class="column small-12" style= "border-radius: 0px; padding: 10px; background-image: linear-gradient(to top, rgba(193,229,219,0), rgba(209, 237, 230, 1), rgba(209, 237, 230, 1));">
+        <h3 style="text-align: center;"><%=title%></h3>
+      </div>
+    </div>
+          
+    <div class="row align-center ">
+      <% mads.each do |making_a_difference| %>
+        <div class="column large-6 small-11" style="padding: 5px;">
+          <a style="outline: none;" href="javascript:updateText('<%= making_a_difference.comment %>', '<%= making_a_difference.name %>');" data-open="making-a-diffrence-modal">
+            <div style="padding: 10px; border: hidden;">
+              <div class="comment" style= "text-overflow: ellipsis; max-height: 80px; overflow: hidden; color: #222; margin: 20px 20px 0px 20px;">
+                <%= making_a_difference.comment %>
+              </div>
+              <p style="text-align: right; color: #222; margin: 10px 10px 0px 0px;"><%= making_a_difference.name %></p>
+              <% if can? :manage, MakingADifference %>
+                <%= link_to 'Show', making_a_difference %>
+                <%= link_to 'Edit', edit_making_a_difference_path(making_a_difference) %>
+                <%= link_to 'Destroy', making_a_difference, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>   
+            </div>
+          </a>
+        </div>
+      <% end %> 
+      <div class="column" style="text-align: center; padding: 40px"><%= paginate mads, param_name: param_name %></div>
+    </div>
+  </div>
+</div>
