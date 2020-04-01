@@ -1,50 +1,61 @@
 <p id="notice"><%= notice %></p>
 
+<style>
+.MADcontainer {
+  border-radius: 10px;
+}
+</style>
+
 <% content_for :title do %>
     <%= "Tricks - Making A Difference" %>
 <% end %>
-
+<% content_for :header_image do "site_header_images/Sample_2.jpg" end %>
 
 <div class="row">
   <div class="column">
-    <h1>Making A Differences</h1>
-      <div class="row align-center" style="margin-top: 30px;">
-        <div class="columns small-6">
-          <%= link_to 'New Making a difference', new_making_a_difference_path, class: "button expanded" %>
-        </div>
-      </div>
+    <h1 style="margin-top: 20px;">Making A Difference</h1>
+    <h5 style="text-align: center; margin-bottom: 30px;">"We only get one chance to make a difference in the life of a child. Commit to doing it every day!"</h5>
+    <div class="row align-center" style="margin-bottom: 30px;">
+    <% if can? :manage, MakingADifference %>
+      <%= link_to 'New Making a difference', new_making_a_difference_path, class: "button" %>
+    <% end %>
+    </div>
   </div>
 </div>
 
-<div class="reveal" id="making-a-diffrence-modal" data-reveal style="padding: 300px;">
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">
-        <p style="text: align-center; padding: 30px;">How do I get the comments to show in this one by one and add next button ?<p>
-      </span>
-    </button>
-</div> 
-
-<div class="row">
-  <% @making_a_differences.each do |making_a_difference| %>
-    <a href="javascript:updateText(<%= making_a_difference.title %>);" data-open="making-a-diffrence-modal">
-      <div class="column large-4" style="padding: 20px;">
-        <div style="padding: 10px; border: solid 2px #D8D8D8; border-radius: 5px; box-shadow: 5px 5px 5px 5px #D8D8D8;">
-          <h5 style="margin: 15px; text-align: center;"><%= making_a_difference.title %></h5>
-          <div class="comment" style= "text-overflow: ellipsis; max-height: 80px; overflow: hidden;"><%= making_a_difference.comment %></div>
-          <p style="text-align: right; font-weight: bold;"><%= making_a_difference.name %>,  <%= making_a_difference.date %></p>
-          <td><%= link_to 'Show', making_a_difference %></td>
-          <td><%= link_to 'Edit', edit_making_a_difference_path(making_a_difference) %></td>
-          <td><%= link_to 'Destroy', making_a_difference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </div>
-      </div>
-    </a>
-  <% end %>
+<div class="row show-for-medium">
+  <%= render partial: 'MAD_container', locals: {mads:@children_comments, title: "Children's Lives", color:"#b4ddd6", param_name: :children_page} %>
+  <%= render partial: 'MAD_container', locals: {mads:@parents_comments, title: "Parent's Lives", color:"#b4ddd6", param_name: :parent_page} %>
 </div>
 
-  
+<div class="reveal" id="making-a-diffrence-modal" data-reveal style="margin: auto; height: 500px; max-width: 600px;">
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">
+      <p style="text-align: justify; padding: 40px 30px 30px 55px;" id="comment"></p>
+      <p style="text-align: right; font-weight: bold;" id="name"></p>
+    </span>
+  </button>
+</div> 
+
+<ul class="tabs show-for-small-only" data-tabs id="making-a-difference-tabs" style="border: none; text-align: center;">
+  <li style="width: 50%;" class="tabs-title is-active"><a style="font-size: 20px;" href="#panel1" aria-selected="true">Children</a></li>
+  <li style="width: 50%;" class="tabs-title"><a style="font-size: 20px;" href="#panel2">Parent</a></li>
+</ul>
+<div class="tabs-content show-for-small-only" data-tabs-content="making-a-difference-tabs" style="border: none;">
+  <div class="tabs-panel is-active" id="panel1">
+    <%= render partial: 'MAD_container', locals: {mads:@children_comments, title: "Children's Lives", color:"#b4ddd6", param_name: :children_page} %>
+  </div>
+  <div class="tabs-panel show-for-small-only" id="panel2" style="border: none;">
+    <%= render partial: 'MAD_container', locals: {mads:@parents_comments, title: "Parent's Lives", color:"#b4ddd6", param_name: :parent_page} %>
+  </div>
+</div>
+
 <script> 
-function updateText(title){
-  title = 
+function updateText(comment, name){
+  console.log(comment, name);
+  document.getElementById("comment").innerHTML = comment;
+  document.getElementById("name").innerHTML = name
+ 
 }
 function ellipsizeTextBox(el) {
     console.log(el);
@@ -59,6 +70,21 @@ for (let comment of comments){
   ellipsizeTextBox(comment);
 }
 </script>
+
+
+ <!--nav aria-label="Pagination">
+  <ul class="pagination text-center">
+    <li class="pagination-previous disabled">Previous</li>
+    <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+    <li><a href="#" aria-label="Page 2">2</a></li>
+    <li><a href="#" aria-label="Page 3">3</a></li>
+    <li><a href="#" aria-label="Page 4">4</a></li>
+    <li class="ellipsis"></li>
+    <li><a href="#" aria-label="Page 12">12</a></li>
+    <li><a href="#" aria-label="Page 13">13</a></li>
+    <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+  </ul>
+</nav>
 
 
 <!-- var modal = document.getId(".modal");

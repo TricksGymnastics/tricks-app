@@ -3,7 +3,8 @@ class MakingADifferencesController < ApplicationController
 
   # GET /making_a_differences
   def index
-    @making_a_differences = MakingADifference.all
+    @children_comments = MakingADifference.where(type_of_life: "Children").page(params[:children_page]).per(8)
+    @parents_comments = MakingADifference.where(type_of_life: "Parents").page(params[:parent_page]).per(8)
   end
 
   # GET /making_a_differences/1
