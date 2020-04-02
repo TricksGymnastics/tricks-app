@@ -52,13 +52,11 @@
 
 <script> 
 function updateText(comment, name){
-  console.log(comment, name);
   document.getElementById("comment").innerHTML = comment;
   document.getElementById("name").innerHTML = name
  
 }
 function ellipsizeTextBox(el) {
-    console.log(el);
     var wordArray = el.innerHTML.split(' ');
     while(el.scrollHeight > el.offsetHeight) {
         wordArray.pop();
@@ -71,32 +69,3 @@ for (let comment of comments){
 }
 </script>
 
-
- <!--nav aria-label="Pagination">
-  <ul class="pagination text-center">
-    <li class="pagination-previous disabled">Previous</li>
-    <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-    <li><a href="#" aria-label="Page 2">2</a></li>
-    <li><a href="#" aria-label="Page 3">3</a></li>
-    <li><a href="#" aria-label="Page 4">4</a></li>
-    <li class="ellipsis"></li>
-    <li><a href="#" aria-label="Page 12">12</a></li>
-    <li><a href="#" aria-label="Page 13">13</a></li>
-    <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
-  </ul>
-</nav>
-
-
-<!-- var modal = document.getId(".modal");
-var trigger = document.querySelector(".trigger");
-var closeButton = document.querySelector(".close-button");
-
-function toggleModal() {
-    modal.classList.toggle("show-modal");
-}
-
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-} -->

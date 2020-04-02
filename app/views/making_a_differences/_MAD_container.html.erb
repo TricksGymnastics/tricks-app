@@ -9,7 +9,7 @@
     <div class="row align-center ">
       <% mads.each do |making_a_difference| %>
         <div class="column large-6 small-11" style="padding: 5px;">
-          <a style="outline: none;" href="javascript:updateText('<%= making_a_difference.comment %>', '<%= making_a_difference.name %>');" data-open="making-a-diffrence-modal">
+          <a style="outline: none;" href='javascript:updateText("<%= making_a_difference.comment%>", "<%= making_a_difference.name %>");' data-open="making-a-diffrence-modal">
             <div style="padding: 10px; border: hidden;">
               <div class="comment" style= "text-overflow: ellipsis; max-height: 80px; overflow: hidden; color: #222; margin: 20px 20px 0px 20px;">
                 <%= making_a_difference.comment %>

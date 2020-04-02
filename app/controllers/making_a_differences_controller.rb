@@ -23,7 +23,6 @@ class MakingADifferencesController < ApplicationController
   # POST /making_a_differences
   def create
     @making_a_difference = MakingADifference.new(making_a_difference_params)
-
     if @making_a_difference.save
       redirect_to @making_a_difference, notice: 'Making a difference was successfully created.'
     else
@@ -54,6 +53,6 @@ class MakingADifferencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def making_a_difference_params
-      params.require(:making_a_difference).permit(:title, :comment, :date, :name)
+      params.require(:making_a_difference).permit(:comment, :type_of_life, :name)
     end
 end

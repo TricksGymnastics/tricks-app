@@ -35,6 +35,7 @@ class Ability
 			can :manage, EmploymentApplication
 			can :manage, BffDanceParty
 			can :manage, KidsNightOut
+			can :manage, MakingADifference
 		end
 
 		if user.role == "moderator" #Managers, Office Staff
@@ -65,6 +66,8 @@ class Ability
 			can :archive, EmploymentApplication
 			can :manage, BffDanceParty
 			can :manage, KidsNightOut
+			can :manage, MakingADifference
+			cannot :destroy, MakingADifference
 		end 
 
 		if user.role == "coach"
