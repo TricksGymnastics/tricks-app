@@ -1,4 +1,4 @@
-class CreateMakingADifferences < ActiveRecord::Migration
+class CreateMakingADifferences < ActiveRecord::Migration[5.2]
   def change
     create_table :making_a_differences do |t|
       t.string :title
