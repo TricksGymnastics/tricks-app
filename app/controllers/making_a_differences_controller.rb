@@ -1,6 +1,7 @@
 class MakingADifferencesController < ApplicationController
-  before_action :set_making_a_difference, only: [:show, :edit, :update, :destroy]
-
+   load_and_authorize_resource :except => [:index]
+   before_action :set_making_a_difference, only: [:show, :edit, :update, :destroy]
+ 
   # GET /making_a_differences
   def index
     @children_comments = MakingADifference.where(type_of_life: "Children").page(params[:children_page]).per(8)
