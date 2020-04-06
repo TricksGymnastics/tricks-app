@@ -10,17 +10,23 @@
       </ul>
     </div>
   <% end %>
-  <div class="row">
-    <div class="column large-12">
-      <%= render partial: 'helper_fields/text', locals: {form: f, field: :comment} %>
+
+  <div class="row align-center">
+    <div class="column large-5 small-12">
       <%= render partial: 'helper_fields/text', locals: {form: f, field: :name} %>
     </div>
-  </div>
-  <div class="row">
-    <div class="columns large-3 ">
+    <div class="columns large-5">
       <%= render partial: 'helper_fields/select', locals: {form: f, field: :type_of_life, options: ['Children', 'Parents'], prompt: "Select Story"} %>
     </div>
   </div>
+
+  <div class="row align-center">
+    <div class="column large-10">
+      <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :comment} %>
+    </div>
+  </div>
+    
+    
   
   <div class="row align-center" style="margin-bottom: 100px; margin-top: 50px;">
     <div class="columns small-6">
