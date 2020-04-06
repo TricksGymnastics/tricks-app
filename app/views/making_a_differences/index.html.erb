@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<style>
+.MADcontainer {
+  border-radius: 10px;
+}
+</style>
+
+<% content_for :title do %>
+    <%= "Tricks - Making A Difference" %>
+<% end %>
+<%# content_for :header_image do "site_header_images/Sample_2.jpg" end %>
+
+<div class="row">
+  <div class="column">
+    <h1>Making A Difference</h1>
+    <h5 style="text-align: center; margin-bottom: 30px;">"We only get one chance to make a difference in the life of a child. Commit to doing it every day!"</h5>
+    <div class="row align-center" style="margin-bottom: 30px;">
+    <% if can? :manage, MakingADifference %>
+      <%= link_to 'New Making a difference', new_making_a_difference_path, class: "button" %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row show-for-medium">
+  <%= render partial: 'MAD_container', locals: {mads:@children_comments, title: "Children's Lives", color:"#b4ddd6", param_name: :children_page} %>
+  <%= render partial: 'MAD_container', locals: {mads:@parents_comments, title: "Parent's Lives", color:"#b4ddd6", param_name: :parent_page} %>
+</div>
+
+<div class="reveal" id="making-a-diffrence-modal" data-reveal style="margin: auto; height: 500px; max-width: 600px;">
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">
+      <p style="text-align: justify; padding: 40px 30px 30px 55px;" id="comment"></p>
+      <p style="text-align: right; font-weight: bold;" id="name"></p>
+    </span>
+  </button>
+</div> 
+
+<ul class="tabs show-for-small-only" data-tabs id="making-a-difference-tabs" style="border: none; text-align: center;">
+  <li style="width: 50%;" class="tabs-title is-active"><a style="font-size: 20px;" href="#panel1" aria-selected="true">Children</a></li>
+  <li style="width: 50%;" class="tabs-title"><a style="font-size: 20px;" href="#panel2">Parent</a></li>
+</ul>
+<div class="tabs-content show-for-small-only" data-tabs-content="making-a-difference-tabs" style="border: none;">
+  <div class="tabs-panel is-active" id="panel1">
+    <%= render partial: 'MAD_container', locals: {mads:@children_comments, title: "Children's Lives", color:"#b4ddd6", param_name: :children_page} %>
+  </div>
+  <div class="tabs-panel show-for-small-only" id="panel2" style="border: none;">
+    <%= render partial: 'MAD_container', locals: {mads:@parents_comments, title: "Parent's Lives", color:"#b4ddd6", param_name: :parent_page} %>
+  </div>
+</div>
+
+<script> 
+function updateText(comment, name){
+  document.getElementById("comment").innerHTML = comment;
+  document.getElementById("name").innerHTML = name
+ 
+}
+function ellipsizeTextBox(el) {
+    var wordArray = el.innerHTML.split(' ');
+    while(el.scrollHeight > el.offsetHeight) {
+        wordArray.pop();
+        el.innerHTML = wordArray.join(' ') + '...';
+     }
+}
+let comments = document.getElementsByClassName("comment");
+for (let comment of comments){
+  ellipsizeTextBox(comment);
+}
+</script>
+

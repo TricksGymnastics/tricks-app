@@ -32,6 +32,7 @@
   fol_staff_link = link_to "Folsom", {:controller => "coaches", :action => "loc", :name => "Folsom"}
   sac_staff_link = link_to "Sacramento", {:controller => "coaches", :action => "loc", :name => "Sacramento"}
   testimonials_link = link_to "Testimonials", site_comments_path
+  making_a_differences_link = link_to "Making A Difference", making_a_differences_path
   
   if !@family_rules.nil? 
     family_rules_link = link_to @family_rules.file_name.sub("Tricks_","").tr("_"," "), @family_rules
@@ -107,6 +108,7 @@
               </ul>
             </li>
             <li><%= testimonials_link %></li>
+            <!-- <li><%#= making_a_differences_link %></li> -->
             <li><%= family_rules_link %></li>
             <li><%= newsletter_link %></li>
           </ul>
@@ -250,6 +252,7 @@
                     </ul>
                   </li>
                   <li><%= testimonials_link %></li>
+                  <!-- <li> <%= making_a_differences_link %></li> -->
                   <%= try_to_show_link(family_rules_link) %>
                   <%= try_to_show_link(newsletter_link) %>
                 </ul>
@@ -288,8 +291,8 @@
       
       <% if content_for?(:header_image) %>
         <div id="header-secondary" class="row" style=" z-index: 5;">
-          <div style="overflow: hidden; width: 100%; position: absolute; left: 0;">
-            <%= image_tag yield(:header_image), height: "1000", width: "3000" %>
+          <div style="overflow: hidden; width: 100%; position: absolute; left: 0; max-height: 400px;">
+            <%= image_tag yield(:header_image), style:"width: 100%" %>
           </div>
         </div>
       
@@ -470,6 +473,7 @@
                         <%= if defined? sac_staff_link then ('<li>' + sac_staff_link + '</li>').html_safe end %>
                       </ul>
                     </li>
+                    <%#= try_to_show_link(making_a_differences_link) %>
                     <%= try_to_show_link(testimonials_link) %>
                     <%= try_to_show_link(family_rules_link) %>
                     <%= try_to_show_link(newsletter_link) %>

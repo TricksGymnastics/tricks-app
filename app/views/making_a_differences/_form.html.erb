@@ -1,0 +1,36 @@
+<%= form_for(@making_a_difference) do |f| %>
+  <% if @making_a_difference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@making_a_difference.errors.count, "error") %> prohibited this making_a_difference from being saved: %></h2>
+
+      <ul>
+      <% @making_a_difference.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row align-center">
+    <div class="column large-5 small-12">
+      <%= render partial: 'helper_fields/text', locals: {form: f, field: :name} %>
+    </div>
+    <div class="columns large-5">
+      <%= render partial: 'helper_fields/select', locals: {form: f, field: :type_of_life, options: ['Children', 'Parents'], prompt: "Select Story"} %>
+    </div>
+  </div>
+
+  <div class="row align-center">
+    <div class="column large-10">
+      <%= render partial: 'helper_fields/text_area', locals: {form: f, field: :comment} %>
+    </div>
+  </div>
+    
+    
+  
+  <div class="row align-center" style="margin-bottom: 100px; margin-top: 50px;">
+    <div class="columns small-6">
+      <%= f.submit "Submit", class: "button expanded" %>
+    </div>
+  </div>
+<% end %>
