@@ -1,11 +1,11 @@
 class MakingADifferencesController < ApplicationController
    load_and_authorize_resource :except => [:index]
    before_action :set_making_a_difference, only: [:show, :edit, :update, :destroy]
- 
+   
   # GET /making_a_differences
   def index
-    @children_comments = MakingADifference.where(type_of_life: "Children").page(params[:children_page]).per(8)
-    @parents_comments = MakingADifference.where(type_of_life: "Parents").page(params[:parent_page]).per(8)
+    @children_comments = MakingADifference.where(type_of_life: "Children").order(Arel.sql('RANDOM()')).page(params[:children_page]).per(8)
+    @parents_comments = MakingADifference.where(type_of_life: "Parents").order(Arel.sql('RANDOM()')).page(params[:parent_page]).per(8)
   end
 
   # GET /making_a_differences/1
