@@ -13,7 +13,7 @@ class StaticController < ApplicationController
   end
 
   def gymnastics
-    @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'")
+    @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'").where(sort_order: 1..249)
   end
 
   def tumblebunnies
@@ -34,5 +34,9 @@ class StaticController < ApplicationController
 
   def swim
     @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'").where("levels.levelname != 'Open By Request'")
+  end
+
+  def cheer
+    @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'").where(sort_order: 250..260)
   end
 end
