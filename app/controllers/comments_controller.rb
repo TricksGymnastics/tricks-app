@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.search(params[:search]).order(sort_column + " " + sort_direction).order(Arel.sql('RANDOM()'))(params[:page]).per(10)
+    @comments = Comment.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @comments }
