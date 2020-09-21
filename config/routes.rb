@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   resources :discontinue_notices
   resources :bubble_contents
 
-  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments campus recital_ad_order_thank_you recital_info thankyou our_story safety_video food_drive summer_recital covid_19].each do |page|
+  %w[gymnastics tumblebunnies tag dance preschool_dance swim locations site_comments campus recital_ad_order_thank_you recital_info thankyou our_story safety_video food_drive summer_recital].each do |page|
     get page, controller: "static", action: page
   end
 
