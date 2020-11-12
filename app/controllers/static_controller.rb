@@ -39,4 +39,8 @@ class StaticController < ApplicationController
   def cheer
     @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'").where(sort_order: 250..260)
   end
+
+  def recital_info
+    @website_pdf = WebsitePdf.where(:file_name => "Winter_Dance_Recital").first
+  end
 end
