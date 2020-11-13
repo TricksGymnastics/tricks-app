@@ -105,6 +105,7 @@ class LevelsController < ApplicationController
 
 					instructor = "<span style='color: red;'>Staff</span>".html_safe
 					if !r['instructors'][0].nil?
+
 						# puts ":" + r['instructors'][0] + ":"
 						name_parts = []
 						r['instructors'][0].split.map(&:capitalize).each do |section|
@@ -113,8 +114,15 @@ class LevelsController < ApplicationController
 								name_parts.push(section)
 							end
 						end
-						instructor = name_parts[0..-2].join(" ") #The [0..-2] get all members from the first to the second to last
-						# puts instructor
+						# puts "name_parts: " +  name_parts.to_s + ":"
+						if name_parts.size > 1
+							name_parts.pop(1) # Pop off the last name of the instructor
+							instructor = name_parts.join(" ")  # and join the rest
+						else 
+							instructor = name_parts[0]
+						end
+						# puts "dispaly name: " + instructor
+						# puts ""
 					end
 
   				entry['link'] = r['online_reg_link'].gsub("amp;", "")
