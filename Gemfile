@@ -67,7 +67,7 @@ gem 'cancancan'
 gem 'kaminari'
 
 # File uploads
-gem "carrierwave", "0.11.2"
+gem "carrierwave", "1.3.2"
 # Image manipulation (resize, rotate, scale)
 gem 'mini_magick', ">= 4.9.4"
 # File storage solution
