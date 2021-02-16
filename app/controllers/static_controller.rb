@@ -13,31 +13,31 @@ class StaticController < ApplicationController
   end
 
   def gymnastics
-    @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'").where(sort_order: 1..249)
+    @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'").where(sort_order: 1..249).where(active: true)
   end
 
   def tumblebunnies
-    @tumblebunnies = Level.joins(:classtype).where("classtypes.name = 'Tumblebunnies'")
+    @tumblebunnies = Level.joins(:classtype).where("classtypes.name = 'Tumblebunnies'").where(active: true)
   end
 
   def tag
-    @tag = Level.joins(:classtype).where("classtypes.name = 'TAG'")
+    @tag = Level.joins(:classtype).where("classtypes.name = 'TAG'").where(active: true)
   end
 
   def dance
-    @dance = Level.joins(:classtype).where("classtypes.name = 'Dance'").where(sort_order: 400..499)
+    @dance = Level.joins(:classtype).where("classtypes.name = 'Dance'").where(sort_order: 400..499).where(active: true)
   end
   
   def preschool_dance
-    @preschool_dance = Level.joins(:classtype).where("classtypes.name = 'Dance'").where(sort_order: 300..399)
+    @preschool_dance = Level.joins(:classtype).where("classtypes.name = 'Dance'").where(sort_order: 300..399).where(active: true)
   end
 
   def swim
-    @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'").where("levels.levelname != 'Open By Request'")
+    @swim = Level.joins(:classtype).where("classtypes.name = 'Swim'").where("levels.levelname != 'Open By Request'").where(active: true)
   end
 
   def cheer
-    @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'").where(sort_order: 250..260)
+    @school_aged = Level.joins(:classtype).where("classtypes.name = 'Gymnastics'").where(sort_order: 250..260).where(active: true)
   end
 
   def recital_info

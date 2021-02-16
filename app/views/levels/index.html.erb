@@ -12,6 +12,7 @@
 
 <table style="margin-left: 50px; margin-bottom: 50px">
   <tr>
+    <th>Active</th>
     <th>Order</th>
     <th>Level</th>
     <th>Length</th>
@@ -30,6 +31,7 @@
     <% color = level.color %>
   <% end %>
   <tr style="background-color: <%= color %>;">
+    <td style="background-color: white;"><% if level.active %> <span style="color: green;">&#x2714;</span> <% else %> <span style="color: red;">&#x2717;</span> <% end %></td>
     <td><%= level.sort_order %></td>
     <td><%= level.levelname %></td>
     <td><%= level.length %> mins</td>
