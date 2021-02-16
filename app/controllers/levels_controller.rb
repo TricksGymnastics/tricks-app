@@ -182,9 +182,9 @@ class LevelsController < ApplicationController
 								</tr>"
 								
 				sorted_classes.each do |c|
-					#view_context.link_to(c['link_text'], c['link'])
+					# puts view_context.link_to(c['link_text'], c['link'])
 					out += "<tr>
-						<td>" + (c['link'] == '' ? 'Call to Register' : view_context.link_to(c['link_text'], c['link'])) + "</td> 
+						<td style=\"padding: 7px;\">" + (c['link'] == '' ? 'Call to Register' : view_context.link_to(c['link_text'], c['link'], class: "button expanded", style: "margin: 0; padding: 7px;")) + "</td> 
 						<td>" + c['openings'].to_s + "</td>
 						<td>" + c['day'].values[0] + "</td>
 						<td>" + c['time'] + "</td>
