@@ -36,9 +36,9 @@
 <% valid_image = image.class.method_defined?(:attached?) ? image.attached? : false %>
 <% if !valid_image && !image.nil? %>
     <% if !image.file.nil? %>
-        <%# if image.file.exists? %>
+        <% if image.file.exists? %>
             <% valid_image = true %>
-        <%# end %>
+        <% end %>
     <% end %>
 <% end %>
 
