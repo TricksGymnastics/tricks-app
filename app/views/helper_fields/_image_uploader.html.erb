@@ -23,7 +23,7 @@
     <% required = false %>
 <% end %>
 <% if !defined? disabled %>
-    <% disabled = false %>
+    <% disabled = !image.class.method_defined?(:attached?) %>
 <% end %>
 <% if !defined? classes %>
     <% classes = "button expanded" %>
@@ -32,22 +32,26 @@
 
 <%# eventually need to incorporate logic to handle default images %>
 <%# if @coach.image_url != "/assets/boy_default.jpg" && @coach.image_url != "/assets/girl_default.jpg" %>
-<% valid_image = false %>
-<% if !image.nil? %>
+<%# image may come in from the old system (carrierwave/fog) or the new system (ActiveStorage), .attached? can tell the difference %>
+<% valid_image = image.class.method_defined?(:attached?) ? image.attached? : false %>
+<% if !valid_image && !image.nil? %>
     <% if !image.file.nil? %>
-        <% if image.file.exists? %>
+        <%# if image.file.exists? %>
             <% valid_image = true %>
-        <% end %>
+        <%# end %>
     <% end %>
 <% end %>
 
 <% if valid_image %>
     <%= image_tag image.url %>
-    <div style="border: solid 1px #ccc; padding: 10px 10px 0 10px;">
-    <%= render partial: 'helper_fields/switch', locals: {form: form, field: :remove_image, question: "Remove Image?"} %>
-<% end %>
+
+ <div style="border: solid 1px #ccc; padding: 10px 10px 0 10px;"> 
+    <% if !image.class.method_defined?(:attached?) && valid_image %>
+        <%= render partial: 'helper_fields/switch', locals: {form: form, field: :remove_image, question: "Remove Image?"} %>
+    <% end %>
+<%end %>
     
-    <%= form.label field, button_text, class: classes %>
+    <%= form.label field, (!image.class.method_defined?(:attached?) ? " (Disabled for Maintenance)" : button_text), class: classes, disabled: disabled %>
     <%= form.file_field field, required: required, disabled: disabled, class: "show-for-sr" %>
     
 <% if valid_image %>

@@ -60,6 +60,6 @@ class CampsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def camp_params
-      params.require(:camp).permit(:title, :registration_opens, :registration_closes, :image, :description)
+      params.require(:camp).permit(:title, :registration_opens, :registration_closes, :image, :remove_image, :description)
     end
 end

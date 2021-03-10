@@ -14,5 +14,5 @@
     <% required = false %>
 <% end %>
 
-<%= form.label field, label, class: "button expanded" %>
-<%= form.file_field field, required: required, class: "show-for-sr" %>
+<%= form.label field, "(Disabled for Maintenance)", class: "button expanded", disabled: true %>
+<%= form.file_field field, required: required, class: "show-for-sr", disabled: true %>

@@ -72,6 +72,7 @@ gem "carrierwave"
 gem 'mini_magick', ">= 4.9.4"
 # File storage solution
 gem 'fog-google'
+gem 'google-cloud-storage'
 
 # Used to integrate with stripe.com for payment handling
 gem "stripe"

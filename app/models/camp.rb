@@ -1,3 +1,3 @@
 class Camp < ActiveRecord::Base
-  mount_uploader :image, CampImageUploader
+	has_one_attached :image
 end
