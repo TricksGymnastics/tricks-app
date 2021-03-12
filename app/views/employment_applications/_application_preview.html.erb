@@ -4,7 +4,8 @@
     <%= link_to review.employment_application.firstname+" "+review.employment_application.lastname, link, id: "applicant-name" %>
     <h5><%= review.location.titleize + " - " + review.department.titleize %></h5>
     <div class="applicant_image_frame">
-        <%= link_to image_tag(review.employment_application.image_url), link %>
+        <% app = review.employment_application %>
+        <%= link_to image_tag(app.image_new.attached? ? app.image_new : app.image_url), link %>
     </div>
 </div>
 

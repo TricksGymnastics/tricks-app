@@ -68,12 +68,12 @@
 </div>
 
 <div class="row align-center">
-  <div class="columns large-3 small-8">
-    <%= image_tag @employment_application.image_url, style: "margin-bottom: 20px;" %>
-    <% if @employment_application.resume.blank? %>
+  <div class="columns large-3 small-8">        
+    <%= image_tag @employment_application.image_new.attached? ? @employment_application.image_new : @employment_application.image_url, style: "margin-bottom: 20px;" %>
+    <% if @employment_application.resume.blank? && !@employment_application.resume_new.attached? %>
       <%= link_to "No Resume Given", 'javascript:void(0);', class: "button expanded disabled" %>
     <% else %>
-      <%= link_to "Download Resume", @employment_application.resume.url, class: "button expanded" %>
+      <%= link_to "Download Resume", @employment_application.resume_new.attached? ? @employment_application.resume_new : @employment_application.resume.url, class: "button expanded" %>
     <% end %>
     <%= link_to 'Archive Application', {:controller => :employment_applications, :action => :archive}, data: { confirm: 'Archived Applications are no longer accessible and will be destroyed 30 days after being archived. If you need to recover an archived Application, contact the webmaster. Are you sure you want to Archive this Application?' }, method: "archive", class:"button expanded alert" %>
   </div>

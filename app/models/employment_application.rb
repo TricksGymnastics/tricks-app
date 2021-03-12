@@ -12,6 +12,9 @@ class EmploymentApplication < ActiveRecord::Base
 	mount_uploader :image, ApplicantImageUploader
     mount_uploader :resume, ApplicantResumeUploader
     
+	has_one_attached :image_new
+    has_one_attached :resume_new
+    
 	def self.search(search)
         if search
             where("concat(firstname, ' ', lastname) ILIKE ?", "%#{search}%")

@@ -24,7 +24,7 @@
       <%= render partial: 'helper_fields/date', locals: {form: f, field: :registration_closes, label: "Registration Closes", required: true} %>
     </div>
     <div class="columns small-10 large-6">
-      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, required: true, image: @camp.image} %>
+      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, required: true, image: @camp.image, uses_active_storage: true} %>
     </div>
   </div>
   

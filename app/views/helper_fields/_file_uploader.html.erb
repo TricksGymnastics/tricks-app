@@ -13,6 +13,12 @@
 <% if !defined? required %>
     <% required = false %>
 <% end %>
+<% if !defined? uses_active_storage %>
+    <% uses_active_storage = false %>
+<% end %>
+<% if !defined? disabled %>
+    <% disabled = !uses_active_storage %>
+<% end %>
 
-<%= form.label field, "(Disabled for Maintenance)", class: "button expanded", disabled: true %>
-<%= form.file_field field, required: required, class: "show-for-sr", disabled: true %>
+<%= form.label field, uses_active_storage ? label : "(Disabled for Maintenance)", class: "button expanded", disabled: disabled %>
+<%= form.file_field field, required: required, class: "show-for-sr", disabled: disabled %>
