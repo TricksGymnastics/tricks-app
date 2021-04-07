@@ -81,6 +81,6 @@ class PromoSlidesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def promo_slide_params
-      params.require(:promo_slide).permit(:data_type, :html_code, :image, :link, :live, :sort_order, :title, :link_path, :remove_image)
+      params.require(:promo_slide).permit(:data_type, :html_code, :image, :image_new, :link, :live, :sort_order, :title, :link_path, :remove_image)
     end
 end

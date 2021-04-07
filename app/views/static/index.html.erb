@@ -27,11 +27,11 @@
 						<li class="orbit-slide">
 							<% if promo.data_type == "html" %>
 								<%= render :inline => promo.html_code %>
-							<% elsif !promo.image.file.nil? %>
+							<% elsif (!promo.image.file.nil? || promo.image_new.attached?) %>
 								<% if promo.link == true %>
-									<%= link_to image_tag(promo.image_url, alt: promo.title, class: "orbit-image"), promo.link_path, style: "cursor: pointer;" %>
+									<%= link_to image_tag(promo.image_new.attached? ? promo.image_new : promo.image_url, alt: promo.title, class: "orbit-image"), promo.link_path, style: "cursor: pointer;" %>
 								<% else %>
-									<%= image_tag promo.image_url, alt: promo.title, class: "orbit-image" %>
+									<%= image_tag promo.image_new.attached? ? promo.image_new : promo.image_url, alt: promo.title, class: "orbit-image" %>
 								<% end %>
 								<figcaption class="orbit-caption"><%= promo.title %></figcaption>
 							<% else %>

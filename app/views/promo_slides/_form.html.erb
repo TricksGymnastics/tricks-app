@@ -37,7 +37,7 @@
 
     <div class="row" id="data_type_image_box" style="margin-top: 30px;">
       <div class="columns small-6 large-4">
-        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @promo_slide.image} %>
+        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image_new, image: @promo_slide.image_new.attached? ? @promo_slide.image_new : @promo_slide.image, uses_active_storage: true} %>
       </div>
       
       <div class="columns small-12 large-3"> 

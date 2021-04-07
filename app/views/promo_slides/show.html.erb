@@ -16,11 +16,6 @@
   <b>Data type:</b>
   <%= @promo_slide.data_type %><br>
 
-  <% unless @promo_slide.image_url == nil %>
-    <b>Image:</b>
-    <%= File.basename(@promo_slide.image.to_s) %><br>
-  <% end %>
-
   <% if @promo_slide.data_type == "html" %>
     <b>Html code:</b>
     <div style="border: solid 1px #444; padding: 8px; margin: 4px; line-height: auto">
@@ -45,11 +40,11 @@
     <div id="image_show">
       <% if @promo_slide.link == true %>
         <object class="promo_image">
-          <%= link_to image_tag(@promo_slide.image_url, alt: @promo_slide.title), @promo_slide.link_path, style: "display:block; cursor: pointer" %>
+          <%= link_to image_tag(@promo_slide.image_new.attached? ? @promo_slide.image_new : @promo_slide.image_url, alt: @promo_slide.title), @promo_slide.link_path, style: "display:block; cursor: pointer" %>
         </object>           
       <% else %>
         <object class="promo_image">
-          <%= image_tag @promo_slide.image_url, alt: @promo_slide.title %>
+          <%= image_tag @promo_slide.image_new.attached? ? @promo_slide.image_new : @promo_slide.image_url, alt: @promo_slide.title %>
         </object>
       <% end %>
     </div>

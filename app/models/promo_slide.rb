@@ -1,8 +1,7 @@
 class PromoSlide < ActiveRecord::Base
-  #attr_accessible :data_type, :html_code, :image, :link, :live, :sort_order, :title, :link_path, :remove_image
   validates_presence_of :title
 
   mount_uploader :image, PromoImageUploader
 
-
+	has_one_attached :image_new
 end
