@@ -85,6 +85,6 @@ class WebsitePdfsController < ApplicationController
   private
     # Only allow a trusted parameter "white list" through.
     def website_pdf_params
-      params.require(:website_pdf).permit(:file, :file_name)
+      params.require(:website_pdf).permit(:file, :file_name, :file_new)
     end
 end

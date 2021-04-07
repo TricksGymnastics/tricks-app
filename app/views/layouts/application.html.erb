@@ -50,10 +50,16 @@
   if !@release_form.nil?
     release_form_link = link_to @release_form.file_name.sub("Tricks_","").tr("_"," "), @release_form
   end
+  parties_link = link_to "Parties", parties_path
+  
+  if @parties.class.method_defined?(:file_name)
+    parties_link = link_to @parties.file_name, @parties
+  end
   show_summer_recital_link = true
   if show_summer_recital_link
     summer_recital_link = link_to "Summer Recital", summer_recital_path
   end
+
 
   %>
   <body>
@@ -88,7 +94,7 @@
         <li>
           <a href="#">Parties & Events</a>
           <ul class="vertical menu nested">
-            <li><%= parties_link = link_to "Parties", parties_path %></li>
+            <li><%= try_to_show_link(parties_link) %></li>
             <li><%= kids_night_outs_link %></li>
             <!-- <li><%#= bff_dance_parties_link %></li> -->
             <li><%= camps_link %></li>
@@ -214,7 +220,7 @@
               <li class="has-submenu">
                 <%= link_to "Parties & Events", 'javascript:void(0);', class: 'main-menu-item'  %>
                 <ul class="menu vertical load-hidden">
-                  <li><%= parties_link %></li>
+                  <li><%= try_to_show_link(parties_link) %></li>
                   <li><%= kids_night_outs_link %></li>
                   <!-- <li><%#= bff_dance_parties_link %></li> -->
                   <li><%= camps_link %></li>
@@ -432,7 +438,7 @@
                 <div class="columns medium-3 small-6">
                   <h3 class="footer-header">Parties & Events</h3>
                   <ul>
-                    <li><%= parties_link %></li>
+                    <li><%= try_to_show_link(parties_link) %></li>
                     <li><%= kids_night_outs_link %></li>
                     <!-- <li><%#= bff_dance_parties_link %></li> -->
                     <li><%= camps_link %></li>

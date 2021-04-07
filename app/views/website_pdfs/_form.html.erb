@@ -19,7 +19,7 @@
   </div>
   <div class="row align-center">
     <div class="columns large-4 small-10">
-      <%= render partial: 'helper_fields/file_uploader', locals: {form: f, field: :file, label: "Choose PDF"} %>
+      <%= render partial: 'helper_fields/file_uploader', locals: {form: f, field: :file_new, label: "Choose PDF", uses_active_storage: true} %>
     </div>
   </div>
   <div class="row align-center">

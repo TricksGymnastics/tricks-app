@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   	@application = WebsitePdf.where(file_name: "Tricks_Instructor_Application").first
     @office_application = WebsitePdf.where(file_name: "Tricks_Office_Application").first
     @summer_recital_info = WebsitePdf.where(file_name: "Summer_Recital_Info").first
+    @parties = WebsitePdf.where(file_name: "Parties").first
   end
   
   rescue_from CanCan::AccessDenied do |exception|
