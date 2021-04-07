@@ -4,7 +4,7 @@ class WebsitePdfsController < ApplicationController
   # GET /website_pdfs
   # GET /website_pdfs.json
   def index
-    @website_pdfs = WebsitePdf.all
+    @website_pdfs = WebsitePdf.all.order("updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +45,7 @@ class WebsitePdfsController < ApplicationController
     else
       @website_pdf = WebsitePdf.find(@file.id)
 
-      if @website_pdf.update_attributes(website_pdf_params)
+      if @website_pdf.update(website_pdf_params)
         redirect_to @website_pdf, notice: 'Website pdf was successfully updated.'
       else
         render :edit
@@ -85,6 +85,6 @@ class WebsitePdfsController < ApplicationController
   private
     # Only allow a trusted parameter "white list" through.
     def website_pdf_params
-      params.require(:website_pdf).permit(:file, :file_name, :file_new)
+      params.require(:website_pdf).permit(:file_new, :file_name)
     end
 end
