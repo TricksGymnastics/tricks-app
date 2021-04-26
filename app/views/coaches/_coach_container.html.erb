@@ -7,24 +7,36 @@
     <% id = "past-coach-name" %>
   <% end %>
 <% end %>
-
-<% image = coach.image.thumb %>
-<% should_use_tag_pic = 0 %>
 <% if !defined? tag %>
     <% tag = false %>
 <% end %>
-<%# Problem: if a tag image was requested, and we have a tag image, and the tag image is not the default, show the tag image %>
-<%# Solution: image.file.nil? tells us if we expect a file to be there. In production, !nil? and exists? are effectively the same thing %>
-<% if image.file.nil? || (tag && (!coach.tag_image.thumb.to_s.include? "default")) %>
-  <% should_use_tag_pic = 1 %>
-  <% image = coach.tag_image.thumb %>
-<% end %>
-<% if image.file.nil? %>
-  <% should_use_tag_pic = 0 %>
-  <% image = coach.image.default_url %>
-<% end %>
-<% puts image %>
-<% image = image.is_a?(String) ? image : image.url %>
+
+<% 
+  image = nil
+  should_use_tag_pic = 0
+  if tag
+    # check to make sure a tag image exists
+    should_use_tag_pic = 1
+    if coach.tag_image_new.attached? 
+      image = coach.tag_image_new.variant(resize_to_fill: [210,290])
+    elsif !coach.tag_image.file.nil? && (!coach.tag_image.thumb.to_s.include? "default")
+      image = coach.tag_image.thumb.url
+    end
+  end
+  if image.nil? 
+    # use the normal picture
+    if coach.image_new.attached? 
+      image = coach.image_new.variant(resize_to_fill: [210,290])
+    elsif !coach.image.file.nil?
+      image = coach.image.thumb.url
+    end
+  end
+  if image.nil?
+    # use the default picture
+    image = coach.image.default_url
+  end
+%>
+
 <div class="columns large-2 medium-4 small-6" id="coach_container">
   <%= link_to name, coach_path(coach, use_tag_picture: should_use_tag_pic), id: id %>
   <div class="coach_image_frame">

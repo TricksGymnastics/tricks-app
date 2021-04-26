@@ -407,6 +407,7 @@ DEPENDENCIES
   google-analytics-rails
   google-cloud-storage
   httparty
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-minicolors-rails
   jquery-rails
