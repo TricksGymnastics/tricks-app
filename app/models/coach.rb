@@ -20,6 +20,9 @@ class Coach < ActiveRecord::Base
 	mount_uploader :image, CoachImageUploader
 	mount_uploader :tag_image, CoachImageUploader
 
+	has_one_attached :image_new
+	has_one_attached :tag_image_new
+
 	default_scope {order('coaches.id')}
 
 

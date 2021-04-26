@@ -13,11 +13,11 @@
 
     <div class="row">
       <div class="columns large-2 ">
-        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @coach.image.thumb} %>
+        <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image_new, image: @coach.image_new.variant(resize_to_fill: [210,290]), uses_active_storage: true} %>
         
-          <div id="tag_image_container">
-            <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :tag_image, button_text: "Tag Image", image: @coach.tag_image} %>
-          </div>
+        <div id="tag_image_container">
+          <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :tag_image_new, button_text: "Tag Image", image: @coach.tag_image_new, uses_active_storage: true} %>
+        </div>
       </div>
       <div class="columns">
         <div class="row">
