@@ -55,7 +55,7 @@
   if @parties.class.method_defined?(:file_name)
     parties_link = link_to @parties.file_name, @parties
   end
-  show_summer_recital_link = true
+  show_summer_recital_link = false
   if show_summer_recital_link
     summer_recital_link = link_to "Summer Recital", summer_recital_path
   end
