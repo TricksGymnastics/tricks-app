@@ -15,8 +15,8 @@
     <div class="column small-8">
       <%= render partial: 'helper_fields/text', locals: {form: f, field: :title, required: true} %>
     </div>
-    <div class="column small-4">
-      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image, image: @kids_night_out.image} %>
+    <div class="column small-4">    
+      <%= render partial: 'helper_fields/image_uploader', locals: {form: f, field: :image_new, image: @kids_night_out.image_new, uses_active_storage: true} %>
     </div>
   </div> 
   

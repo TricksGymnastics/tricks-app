@@ -50,6 +50,6 @@ class KidsNightOutsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def kids_night_out_params
-      params.require(:kids_night_out).permit(:title, :date, :details, :sac_time, :fol_time, :gb_time, :image)
+      params.require(:kids_night_out).permit(:title, :date, :details, :sac_time, :fol_time, :gb_time, :image, :image_new)
     end
 end
