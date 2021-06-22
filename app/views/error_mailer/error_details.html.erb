@@ -6,8 +6,6 @@
   <div>
   	<h3>URL: <%= @url %></h3>
     <h4>error.inspect: <%= @error.inspect %></h4>
-		<p>@exception_wrapper</p>
-		<p><%= @exception_wrapper %></p>
 		<p style="margin-top: 100px;"><b>Stack Trace:</b></p>
 		<% if @trace %>
 			<table style="margin: 10px 10px 50px 10px; border-spacing: 0px; border: 1px #444 solid;">
@@ -16,14 +14,24 @@
 				<% end %>
 			</table>
 		<% end %>
-		<% if @error %>
-			<h4>error.backtrack</h4>
-			<table style="margin: 10px; border-spacing: 0px; border: 1px #444 solid;">
-				<% @error.backtrace.each do |trace| %>
-					<tr><td style="padding: 5px 15px; border: solid #444 1px;"><%= trace %></td></tr>
-				<% end %>
-			</table>
-		<% end %>
+		
+		<p>@exception_wrapper.exception_trace</p>
+		<p><%= @exception_wrapper.exception_trace %></p>
+
+		<p>@exception_wrapper.framework_trace</p>
+		<p><%= @exception_wrapper.framework_trace %></p>
+
+		<p>@exception_wrapper.full_trace</p>
+		<p><%= @exception_wrapper.full_trace %></p>
+
+		<p>@exception_wrapper.rescue_template</p>
+		<p><%= @exception_wrapper.rescue_template %></p>
+
+		<p>@exception_wrapper.traces</p>
+		<p><%= @exception_wrapper.traces %></p>
+
+		<p>@exception_wrapper.source_extracts</p>
+		<p><%= @exception_wrapper.source_extracts %></p>
   </div>
 </body>
 </html>
