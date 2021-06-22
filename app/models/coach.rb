@@ -23,6 +23,9 @@ class Coach < ActiveRecord::Base
 	has_one_attached :image_new
 	has_one_attached :tag_image_new
 
+	validates :image_new, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
+	validates :tag_image_new, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
+
 	default_scope {order('coaches.id')}
 
 

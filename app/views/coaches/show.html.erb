@@ -7,7 +7,7 @@
           image = nil
           # check if image should be set to tag image
           if params[:use_tag_picture].to_i == 1
-            if @coach.tag_image_new.attached? 
+            if @coach.tag_image_new.attached? && @coach.tag_image_new.variable?
               image = @coach.tag_image_new.variant(resize_to_fill: [210,290])
             elsif !@coach.tag_image.file.nil? && (!@coach.tag_image.thumb.to_s.include? "default")
               image = @coach.tag_image.thumb.url
@@ -16,7 +16,7 @@
 
           # image wasn't set to a tag image, try normal image
           if image.nil? 
-            if @coach.image_new.attached? 
+            if @coach.image_new.attached? && @coach.image_new.variable?
               image = @coach.image_new.variant(resize_to_fill: [210,290])
             elsif !@coach.image.file.nil?
               image = @coach.image.thumb.url
