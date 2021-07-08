@@ -101,31 +101,37 @@ class EmploymentApplicationsController < ApplicationController
   # POST /employment_applications
   def create
     @employment_application = EmploymentApplication.new(employment_application_params)
-    
-    if verify_recaptcha(model: @employment_application) && @employment_application.save
-      departments = ["gymnastics", "dance", "swim", "tag", "hospitality"]
-      Location.all.each do |loc|
-        loc = loc.name.downcase.gsub(" ", "_")
-        if (@employment_application.send loc)
-          departments.each do |dep|
-            if ((@employment_application.send dep) && !(loc != "folsom" && dep == "swim"))
-              review = EmploymentApplicationReview.new
-              review.employment_application_id = @employment_application.id
-              review.location = loc
-              review.department = dep
-              if review.save
-                EmploymentApplicationMailer.gym_notification(review).deliver_now
-              end
-            end
-          end
-        end
+
+    # if verify_recaptcha(model: @employment_application) && @employment_application.save
+      # reverse them so that we create the last review first, that way they can reference the next one
+      # review = EmploymentApplicationReview.new
+      params["app_priorities"].to_unsafe_h.to_a.reverse.each do |priority, app|
+        # need a way to chain the reviews together so that it can continue on when one priority rejects
+
+        puts priority + ": " + app["location"] + " " + app["department"]
+
+
+        # if (!review.id.nil?)
+        #   old_id = review.id
+        #   review = EmploymentApplicationReview.new
+        #   review.next_review_id = old_id
+        # end
+        # review.employment_application_id = @employment_application.id
+        # review.location = app["location"]
+        # review.department = app["department"]
+        # if review.save
+        #   # only deliver to the highest priority gym first
+        #   if (priority == 1)
+        #     EmploymentApplicationMailer.gym_notification(review).deliver_now
+        #   end
+        # end
       end
 
-      EmploymentApplicationMailer.application_confirmation(@employment_application).deliver_now
-      redirect_to thankyou_path, notice: 'Employment Application was successfully submitted.'
-    else
-      render :new
-    end
+      # EmploymentApplicationMailer.application_confirmation(@employment_application).deliver_now
+      # redirect_to thankyou_path, notice: 'Employment Application was successfully submitted.'
+    # else
+      # render :new
+    # end
   end
 
   # PATCH/PUT /employment_applications/1
@@ -155,18 +161,18 @@ class EmploymentApplicationsController < ApplicationController
     end
   end
 
-  def complete_interview
-    app = EmploymentApplication.find(params[:id])
-    app.interviewed_by = params[:employment_application][:interviewed_by]
-    app.comment = params[:employment_application][:comment]
-    app.status = params[:employment_application][:status]
-    app.interview_date = Time.now
-    if app.save
-      redirect_to employment_applications_url, notice: 'Interview status has been updated.'
-    else
-      redirect_to app, notice: "Failed to update the interview"
-    end
-  end
+  # def complete_interview
+  #   app = EmploymentApplication.find(params[:id])
+  #   app.interviewed_by = params[:employment_application][:interviewed_by]
+  #   app.comment = params[:employment_application][:comment]
+  #   app.status = params[:employment_application][:status]
+  #   app.interview_date = Time.now
+  #   if app.save
+  #     redirect_to employment_applications_url, notice: 'Interview status has been updated.'
+  #   else
+  #     redirect_to app, notice: "Failed to update the interview"
+  #   end
+  # end
 
   # DELETE /employment_applications/1
   def destroy
@@ -183,7 +189,7 @@ class EmploymentApplicationsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_employment_application      
+    def set_employment_application
       @review = EmploymentApplicationReview.find(params[:id])
       @employment_application = @review.employment_application
     end

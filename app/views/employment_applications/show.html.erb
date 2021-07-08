@@ -68,7 +68,7 @@
 </div>
 
 <div class="row align-center">
-  <div class="columns large-3 small-8">        
+  <div class="columns large-3 small-8">
     <%= image_tag @employment_application.image_new.attached? ? @employment_application.image_new : @employment_application.image_url, style: "margin-bottom: 20px;" %>
     <% if @employment_application.resume.blank? && !@employment_application.resume_new.attached? %>
       <%= link_to "No Resume Given", 'javascript:void(0);', class: "button expanded disabled" %>
