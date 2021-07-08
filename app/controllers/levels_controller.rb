@@ -51,18 +51,16 @@ class LevelsController < ApplicationController
   def get_jr_classes
     level = Level.find(params[:level_id])
     out = "<div class='columns 11-small'>"
-		locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"}
-		
-		locations.each do |loc|
-			url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc[1]+'&cat2='+level.jack_rabbit_name
+		Location.all.each do |loc|
+			url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc.shortname+'&cat2='+level.jack_rabbit_name
 			response = JSON.parse(HTTParty.get(url).body)
-			out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%; overflow: auto;'>"
+			out += '<div class="location-classes-information" id="'+loc.shortname+'" style="display: none; width: 100%; overflow: auto;">'
 			if response['rows'].length > 0
 			  sorted_classes = []
 				price = response['rows'][0]['tuition']['fee']
 
 					# out += "<script>
-					# 	$('."+loc[1]+"_price').text('$"+ '%.2f' % price +" / 4 Week Session');
+					# 	$('."+loc.shortname+"_price').text('$"+ '%.2f' % price +" / 4 Week Session');
 					# </script>"
 	
 				out +='

@@ -94,11 +94,10 @@ class PartiesController < ApplicationController
     # if the party id is for a dance party
       # clear response for folsom
     out = "<div class='columns 11-small'>"
-    locations = {"Granite Bay" => "GB", "Folsom" => "FOL", "Sacramento" => "SAC"}
     
-    locations.each do |loc|
-      out += "<div class='location-classes-information' id='" + loc[1] +"' style='display: none; width: 100%;'>"
-      url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc[1]+'&cat1=Parties'
+    Location.all.each do |loc|
+      out += "<div class='location-classes-information' id='"+loc.shortname+"' style='display: none; width: 100%;'>"
+      url = 'https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJson?orgid=313983&loc='+loc.shortname+'&cat1=Parties'
       response = JSON.parse(HTTParty.get(url).body)
       
       if response['rows'].length > 0 && !(loc[1] == "FOL" && (party.id == 2 || party.id == 4)) #exclude dance parties (id's 2 & 4) from folsom
@@ -131,7 +130,7 @@ class PartiesController < ApplicationController
         # note: when accessing a hash in a .each loop, key is at [0] and value is at [1] for each pair
         out += 
         "<script>
-          $('."+loc[1]+"_price').text('"+parties.first[1].first[1]['price'].gsub("\r\n"," | ")+"');
+          $('."+loc.shortname+"_price').text('"+parties.first[1].first[1]['price'].gsub("\r\n"," | ")+"');
         </script>"
         
         current_year = 1990
